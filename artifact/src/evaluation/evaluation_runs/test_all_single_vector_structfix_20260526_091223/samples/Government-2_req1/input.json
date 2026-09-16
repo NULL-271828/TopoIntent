@@ -1,0 +1,6 @@
+{
+  "sample_id": "Government-2_req1",
+  "template_id": "Government-2",
+  "user_intent": "We're commissioning a new data center for our government services. Security and uptime are paramount. The design must ensure our public-facing services are protected, while internal development and production systems are strictly isolated from each other. We need to log all network activity for compliance and have a plan for business continuity with a separate disaster recovery site.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

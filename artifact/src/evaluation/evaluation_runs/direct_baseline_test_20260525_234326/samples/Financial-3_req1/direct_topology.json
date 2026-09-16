@@ -1,0 +1,97 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Financial-3_req1",
+  "title": "Hybrid Cloud Financial Environment",
+  "description": "A hybrid cloud setup with an Azure Red Hat OpenShift cluster connected to an on-premises data center, managed through a central firewall.",
+  "scenario": "finance",
+  "topology_summary": "This topology includes an on-premises data center, an Azure Red Hat OpenShift cluster, and a central firewall to manage and secure the environment. The data center is connected to Azure via a private link.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "On-Premises Data Center",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Azure Cloud",
+      "zone_type": "cloud_hub"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Management Zone",
+      "zone_type": "management"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Data Center Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Data Center Router",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "Azure Red Hat OpenShift Cluster",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n4",
+      "name": "Azure Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n5",
+      "name": "Central Management Server",
+      "normalized_type": "server",
+      "zone_id": "z3"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "uplink",
+        "label": "Internal Uplink"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n4",
+        "link_type": "vpn",
+        "label": "Private Link"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n4",
+        "target": "n3",
+        "link_type": "uplink",
+        "label": "Cluster Uplink"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n5",
+        "target": "n1",
+        "link_type": "management",
+        "label": "Management Link"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n5",
+        "target": "n4",
+        "link_type": "management",
+        "label": "Management Link"
+      }
+    ],
+    "zone_links": []
+  }
+}

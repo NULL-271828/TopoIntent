@@ -1,0 +1,129 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Government-3_req2",
+  "title": "Azure Hub-and-Spoke Network with Centralized Security",
+  "description": "A hub-and-spoke Azure network with centralized security using Azure Firewall and Bastion, and separate VNETs for identity, operations, and workloads.",
+  "scenario": "government",
+  "topology_summary": "The central hub contains an Azure Firewall and Bastion for secure management. Spokes are separate VNETs for identity, operations, and workloads, with all inter-spoke traffic routed through the hub firewall. NSG rules and traffic logs are applied for enhanced security.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Central Hub",
+      "zone_type": "cloud_hub"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Identity Tier",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Operations Tier",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Workloads Tier",
+      "zone_type": "cloud_spoke"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Azure Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Azure Bastion",
+      "normalized_type": "bastion",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "Identity VNET",
+      "normalized_type": "other",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n4",
+      "name": "Operations VNET",
+      "normalized_type": "other",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n5",
+      "name": "Workloads VNET",
+      "normalized_type": "other",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n6",
+      "name": "Log Analytics Workspace",
+      "normalized_type": "siem",
+      "zone_id": "z1"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n3",
+        "link_type": "routing",
+        "label": "Firewall to Identity VNET"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n1",
+        "target": "n4",
+        "link_type": "routing",
+        "label": "Firewall to Operations VNET"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n1",
+        "target": "n5",
+        "link_type": "routing",
+        "label": "Firewall to Workloads VNET"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n2",
+        "target": "n1",
+        "link_type": "management",
+        "label": "Bastion to Firewall"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n3",
+        "target": "n1",
+        "link_type": "routing",
+        "label": "Identity VNET to Firewall"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n4",
+        "target": "n1",
+        "link_type": "routing",
+        "label": "Operations VNET to Firewall"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n5",
+        "target": "n1",
+        "link_type": "routing",
+        "label": "Workloads VNET to Firewall"
+      },
+      {
+        "link_id": "nl8",
+        "source": "n1",
+        "target": "n6",
+        "link_type": "monitoring",
+        "label": "Firewall to Log Analytics"
+      }
+    ],
+    "zone_links": []
+  }
+}

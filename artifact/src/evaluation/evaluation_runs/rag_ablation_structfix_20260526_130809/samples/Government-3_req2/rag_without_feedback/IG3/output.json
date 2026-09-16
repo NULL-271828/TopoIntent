@@ -1,0 +1,2682 @@
+{
+  "sample_id": "Government-3_req2",
+  "gt_template_id": "Government-3",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-3_req2",
+    "title": "Azure Hub-Spoke Network",
+    "description": "A hub-and-spoke Azure network with centralized security and management.",
+    "scenario": "cloud",
+    "topology_summary": "The hub contains an Azure Firewall and Azure Bastion. Spokes are VNETs for identity, operations, and workloads, with all inter-spoke traffic routed through the hub firewall.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Hub VNet",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Identity VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Operations VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Workload VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Management VNet",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z6",
+        "name": "External Testing VNet",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z_preserve1",
+        "name": "Non-Production VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Security Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new1",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new2",
+        "name": "Data Flow Documentation",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new3",
+        "name": "Remote Access",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Azure Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Azure Bastion",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Log Analytics Workspace",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "NSG - Identity VNet",
+        "normalized_type": "other",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n5",
+        "name": "NSG - Operations VNet",
+        "normalized_type": "other",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n6",
+        "name": "NSG - Workload VNet",
+        "normalized_type": "other",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n7",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n8",
+        "name": "Web Proxy",
+        "normalized_type": "proxy",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n9",
+        "name": "MFA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n12",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "802.1X Controller",
+        "normalized_type": "access_point",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "External Testing VNet External Endpoint",
+        "normalized_type": "endpoint",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n_struct2",
+        "name": "Non-Production VNet Representative Workload",
+        "normalized_type": "workload",
+        "zone_id": "z_preserve1"
+      },
+      {
+        "node_id": "n_struct3",
+        "name": "Security Management Management Service",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n_new1",
+        "name": "Asset Inventory System",
+        "normalized_type": "server",
+        "zone_id": "z_new1"
+      },
+      {
+        "node_id": "n_new2",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z_new2"
+      },
+      {
+        "node_id": "n_new3",
+        "name": "DNS Filtering Service",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n_new4",
+        "name": "IaC Management",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n_new5",
+        "name": "Secure Protocols",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n_new6",
+        "name": "VPN Service",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z_new3"
+      },
+      {
+        "node_id": "n_new7",
+        "name": "Access Control Policy",
+        "normalized_type": "other",
+        "zone_id": "z_new3"
+      },
+      {
+        "node_id": "n_new8",
+        "name": "Penetration Testing Service",
+        "normalized_type": "other",
+        "zone_id": "z6"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "Traffic Logs"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n4",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "Traffic Logs"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n5",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "Traffic Logs"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n6",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "Traffic Logs"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n7",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "DNS Logs"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n8",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "Proxy Logs"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n9",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "MFA Logs"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n10",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "AAA Logs"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n11",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Admin Access"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n12",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "IDS Alerts"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n13",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "IPS Alerts"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n14",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "802.1X Logs"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n15",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "WAF Logs"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n1",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct2",
+          "source": "n1",
+          "target": "n_struct2",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct3",
+          "source": "n1",
+          "target": "n_struct3",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_new1",
+          "source": "n_new1",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n_new1",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new3",
+          "source": "n_new1",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new4",
+          "source": "n_new1",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new5",
+          "source": "n_new1",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new6",
+          "source": "n_new1",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new7",
+          "source": "n_new1",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new8",
+          "source": "n_new1",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new9",
+          "source": "n_new1",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new10",
+          "source": "n_new1",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new11",
+          "source": "n_new1",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new12",
+          "source": "n_new1",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new13",
+          "source": "n_new1",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new14",
+          "source": "n_new1",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new15",
+          "source": "n_new1",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new16",
+          "source": "n_new1",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new17",
+          "source": "n_new1",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new18",
+          "source": "n_new1",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl_new19",
+          "source": "n_new2",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new20",
+          "source": "n_new2",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new21",
+          "source": "n_new2",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new22",
+          "source": "n_new2",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new23",
+          "source": "n_new2",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new24",
+          "source": "n_new2",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new25",
+          "source": "n_new2",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new26",
+          "source": "n_new2",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new27",
+          "source": "n_new2",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new28",
+          "source": "n_new2",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new29",
+          "source": "n_new2",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new30",
+          "source": "n_new2",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new31",
+          "source": "n_new2",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new32",
+          "source": "n_new2",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new33",
+          "source": "n_new2",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new34",
+          "source": "n_new2",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new35",
+          "source": "n_new2",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new36",
+          "source": "n_new2",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new37",
+          "source": "n_new3",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl_new38",
+          "source": "n_new4",
+          "target": "n1",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new39",
+          "source": "n_new4",
+          "target": "n2",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new40",
+          "source": "n_new4",
+          "target": "n3",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new41",
+          "source": "n_new4",
+          "target": "n4",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new42",
+          "source": "n_new4",
+          "target": "n5",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new43",
+          "source": "n_new4",
+          "target": "n6",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new44",
+          "source": "n_new4",
+          "target": "n7",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new45",
+          "source": "n_new4",
+          "target": "n8",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new46",
+          "source": "n_new4",
+          "target": "n9",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new47",
+          "source": "n_new4",
+          "target": "n10",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new48",
+          "source": "n_new4",
+          "target": "n11",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new49",
+          "source": "n_new4",
+          "target": "n12",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new50",
+          "source": "n_new4",
+          "target": "n13",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new51",
+          "source": "n_new4",
+          "target": "n14",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new52",
+          "source": "n_new4",
+          "target": "n15",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new53",
+          "source": "n_new4",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new54",
+          "source": "n_new4",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new55",
+          "source": "n_new4",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl_new56",
+          "source": "n_new5",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new57",
+          "source": "n_new5",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new58",
+          "source": "n_new5",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new59",
+          "source": "n_new5",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new60",
+          "source": "n_new5",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new61",
+          "source": "n_new5",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new62",
+          "source": "n_new5",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new63",
+          "source": "n_new5",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new64",
+          "source": "n_new5",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new65",
+          "source": "n_new5",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new66",
+          "source": "n_new5",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new67",
+          "source": "n_new5",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new68",
+          "source": "n_new5",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new69",
+          "source": "n_new5",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new70",
+          "source": "n_new5",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new71",
+          "source": "n_new5",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new72",
+          "source": "n_new5",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new73",
+          "source": "n_new5",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "Secure Protocols"
+        },
+        {
+          "link_id": "nl_new74",
+          "source": "n_new6",
+          "target": "n2",
+          "link_type": "vpn",
+          "label": "Remote Access"
+        },
+        {
+          "link_id": "nl_new75",
+          "source": "n_new6",
+          "target": "n9",
+          "link_type": "management",
+          "label": "AAA Integration"
+        },
+        {
+          "link_id": "nl_new76",
+          "source": "n_new7",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Access Control"
+        },
+        {
+          "link_id": "nl_new77",
+          "source": "n_new7",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Access Control"
+        },
+        {
+          "link_id": "nl_new78",
+          "source": "n_new8",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new79",
+          "source": "n_new8",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new80",
+          "source": "n_new8",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new81",
+          "source": "n_new8",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new82",
+          "source": "n_new8",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new83",
+          "source": "n_new8",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new84",
+          "source": "n_new8",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new85",
+          "source": "n_new8",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new86",
+          "source": "n_new8",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new87",
+          "source": "n_new8",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new88",
+          "source": "n_new8",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new89",
+          "source": "n_new8",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new90",
+          "source": "n_new8",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new91",
+          "source": "n_new8",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new92",
+          "source": "n_new8",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new93",
+          "source": "n_new8",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new94",
+          "source": "n_new8",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_new95",
+          "source": "n_new8",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z2",
+          "link_type": "routing",
+          "label": "Forced Tunnel"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z3",
+          "link_type": "routing",
+          "label": "Forced Tunnel"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "routing",
+          "label": "Forced Tunnel"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "management",
+          "label": "Admin Access"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "Pentest Access"
+        },
+        {
+          "link_id": "zl_new1",
+          "source": "z_new1",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl_new2",
+          "source": "z_new2",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "zl_new3",
+          "source": "z_new3",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Remote Access"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-3_req2",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Inventory System' (n_new1) in the 'Asset Management' zone (z_new1) that manages inventory for various nodes and zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation System' (n_new2) in the 'Data Flow Documentation' zone (z_new2) that manages data flow documentation for various nodes and zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple VNETs (Identity VNet, Operations VNet, Workload VNet) that are segmented and routed through the central 'Hub VNet' (z1) with an Azure Firewall (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Azure Firewall' (n1) in the 'Hub VNet' (z1) that manages traffic between different VNETs.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n7) in the 'Hub VNet' (z1) that is used by various nodes and zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Server' (n9) in the 'Hub VNet' (z1) that is integrated with the 'Remote Access' zone (z_new3) and 'Azure Bastion' (n2).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filtering Service' (n_new3) in the 'Hub VNet' (z1) that is connected to the 'DNS Server' (n7).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n8) in the 'Hub VNet' (z1) that is connected to the 'Log Analytics Workspace' (n3) for monitoring and enforcing URL filters.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a hub-and-spoke design with a central 'Hub VNet' (z1) and multiple VNETs (Identity VNet, Operations VNet, Workload VNet) that are segmented and managed securely.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IaC Management' (n_new4) and 'Secure Protocols' (n_new5) in the 'Hub VNet' (z1) that manage infrastructure as code and secure protocols for various nodes and zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'AAA Server' (n10) in the 'Hub VNet' (z1) that is integrated with various nodes and zones for centralized AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'VPN Service' (n_new6) in the 'Remote Access' zone (z_new3) that is integrated with the 'AAA Server' (n10) and 'Azure Bastion' (n2).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Admin Workstation' (n11) in the 'Management VNet' (z5) that is segmented from other networks and does not have internet access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIDS' (n12) in the 'Hub VNet' (z1) that is connected to the 'Log Analytics Workspace' (n3) for monitoring and alerting.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes 'NSG - Identity VNet' (n4), 'NSG - Operations VNet' (n5), and 'NSG - Workload VNet' (n6) that perform traffic filtering between different VNETs.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Access Control Policy' (n_new7) in the 'Remote Access' zone (z_new3) that is integrated with the 'Azure Bastion' (n2) and 'MFA Server' (n9).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple links (nl1, nl2, nl3, nl4) that collect traffic logs from various nodes and send them to the 'Log Analytics Workspace' (n3).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIPS' (n13) in the 'Hub VNet' (z1) that is connected to the 'Log Analytics Workspace' (n3) for monitoring and alerting.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an '802.1X Controller' (n14) in the 'Hub VNet' (z1) that is connected to the 'Log Analytics Workspace' (n3) for managing port-level access control.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Application Firewall' (n15) in the 'Hub VNet' (z1) that is connected to the 'Log Analytics Workspace' (n3) for performing application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Non-Production VNet' (z_preserve1) that is separate from the production VNETs (Identity VNet, Operations VNet, Workload VNet).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Penetration Testing Service' (n_new8) in the 'External Testing VNet' (z6) that is connected to various nodes and zones for conducting penetration tests.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity",
+        "stage4_ig_consistency"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z6\", \"name\": \"External Testing VNet\", \"zone_type\": \"external\"}",
+          "missing_reason": "Zone z6 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_ig_consistency",
+          "title": "ig3_missing_ig2_zone_semantics",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "[{\"zone_id\": \"z6\", \"name\": \"Non-Production VNet\", \"zone_type\": \"cloud_spoke\"}, {\"zone_id\": \"z7\", \"name\": \"Security Management\", \"zone_type\": \"management\"}]",
+          "missing_reason": "IG3 topology removed or failed to preserve IG2 zone semantics.",
+          "repair_suggestion": "Add the missing IG2 zone semantics to IG3 as preserved or stricter zones, with representative nodes and concrete node_links. IG3 may add controls but must not reduce segmentation."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_preserve1",
+            "name": "Non-Production VNet",
+            "zone_type": "cloud_spoke"
+          },
+          {
+            "zone_id": "z7",
+            "name": "Security Management",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "External Testing VNet External Endpoint",
+            "normalized_type": "endpoint",
+            "zone_id": "z6"
+          },
+          {
+            "node_id": "n_struct2",
+            "name": "Non-Production VNet Representative Workload",
+            "normalized_type": "workload",
+            "zone_id": "z_preserve1"
+          },
+          {
+            "node_id": "n_struct3",
+            "name": "Security Management Management Service",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n1",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct2",
+              "source": "n1",
+              "target": "n_struct2",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct3",
+              "source": "n1",
+              "target": "n_struct3",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 6,
+        "nodes": 15,
+        "zone_links": 5,
+        "node_links": 13
+      },
+      "counts_after": {
+        "zones": 8,
+        "nodes": 18,
+        "zone_links": 5,
+        "node_links": 16
+      },
+      "count_delta": {
+        "zones": 2,
+        "nodes": 3,
+        "zone_links": 0,
+        "node_links": 3
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "9.2",
+        "12.3",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology does not explicitly show an asset inventory system or process. However, the presence of various nodes and zones suggests that an inventory might exist.",
+          "missing_reason": "No explicit evidence of an asset inventory system or process.",
+          "repair_suggestion": "Add a node representing an asset inventory system and links to all other nodes."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology shows various links and zones, but there is no explicit documentation of data flows.",
+          "missing_reason": "No explicit evidence of documented data flows.",
+          "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes and zones."
+        },
+        {
+          "cis_safeguard_id": "9.2",
+          "title": "Use DNS Filtering Services",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a DNS Server (n7) but does not explicitly show DNS filtering services.",
+          "missing_reason": "No explicit evidence of DNS filtering services.",
+          "repair_suggestion": "Add a node representing a DNS filtering service and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various security nodes (firewall, bastion, MFA, etc.) but does not explicitly show secure management practices like IaC or secure protocols.",
+          "missing_reason": "No explicit evidence of secure management practices.",
+          "repair_suggestion": "Add nodes representing IaC and secure protocols and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an Azure Bastion (n2) but does not explicitly show a VPN or remote device connections.",
+          "missing_reason": "No explicit evidence of a VPN or remote device connections.",
+          "repair_suggestion": "Add a node representing a VPN and links to remote devices and the AAA infrastructure."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an Azure Bastion (n2) and an MFA Server (n9) but does not explicitly show access control for remote assets.",
+          "missing_reason": "No explicit evidence of access control for remote assets.",
+          "repair_suggestion": "Add nodes representing access control policies and links to remote assets."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an External Testing VNet (z6) but does not explicitly show penetration testing processes.",
+          "missing_reason": "No explicit evidence of periodic external penetration tests.",
+          "repair_suggestion": "Add a node representing a penetration testing service and links to relevant nodes."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_new1",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_new2",
+            "name": "Data Flow Documentation",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_new3",
+            "name": "Remote Access",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_new1",
+            "name": "Asset Inventory System",
+            "normalized_type": "server",
+            "zone_id": "z_new1"
+          },
+          {
+            "node_id": "n_new2",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z_new2"
+          },
+          {
+            "node_id": "n_new3",
+            "name": "DNS Filtering Service",
+            "normalized_type": "server",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n_new4",
+            "name": "IaC Management",
+            "normalized_type": "server",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n_new5",
+            "name": "Secure Protocols",
+            "normalized_type": "server",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n_new6",
+            "name": "VPN Service",
+            "normalized_type": "vpn_gateway",
+            "zone_id": "z_new3"
+          },
+          {
+            "node_id": "n_new7",
+            "name": "Access Control Policy",
+            "normalized_type": "other",
+            "zone_id": "z_new3"
+          },
+          {
+            "node_id": "n_new8",
+            "name": "Penetration Testing Service",
+            "normalized_type": "other",
+            "zone_id": "z6"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new1",
+              "source": "n_new1",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new2",
+              "source": "n_new1",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new3",
+              "source": "n_new1",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new4",
+              "source": "n_new1",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new5",
+              "source": "n_new1",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new6",
+              "source": "n_new1",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new7",
+              "source": "n_new1",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new8",
+              "source": "n_new1",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new9",
+              "source": "n_new1",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new10",
+              "source": "n_new1",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new11",
+              "source": "n_new1",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new12",
+              "source": "n_new1",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new13",
+              "source": "n_new1",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new14",
+              "source": "n_new1",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new15",
+              "source": "n_new1",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new16",
+              "source": "n_new1",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new17",
+              "source": "n_new1",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new18",
+              "source": "n_new1",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl_new19",
+              "source": "n_new2",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new20",
+              "source": "n_new2",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new21",
+              "source": "n_new2",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new22",
+              "source": "n_new2",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new23",
+              "source": "n_new2",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new24",
+              "source": "n_new2",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new25",
+              "source": "n_new2",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new26",
+              "source": "n_new2",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new27",
+              "source": "n_new2",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new28",
+              "source": "n_new2",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new29",
+              "source": "n_new2",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new30",
+              "source": "n_new2",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new31",
+              "source": "n_new2",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new32",
+              "source": "n_new2",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new33",
+              "source": "n_new2",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new34",
+              "source": "n_new2",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new35",
+              "source": "n_new2",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new36",
+              "source": "n_new2",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new37",
+              "source": "n_new3",
+              "target": "n7",
+              "link_type": "data_flow",
+              "label": "DNS Filtering"
+            },
+            {
+              "link_id": "nl_new38",
+              "source": "n_new4",
+              "target": "n1",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new39",
+              "source": "n_new4",
+              "target": "n2",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new40",
+              "source": "n_new4",
+              "target": "n3",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new41",
+              "source": "n_new4",
+              "target": "n4",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new42",
+              "source": "n_new4",
+              "target": "n5",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new43",
+              "source": "n_new4",
+              "target": "n6",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new44",
+              "source": "n_new4",
+              "target": "n7",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new45",
+              "source": "n_new4",
+              "target": "n8",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new46",
+              "source": "n_new4",
+              "target": "n9",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new47",
+              "source": "n_new4",
+              "target": "n10",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new48",
+              "source": "n_new4",
+              "target": "n11",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new49",
+              "source": "n_new4",
+              "target": "n12",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new50",
+              "source": "n_new4",
+              "target": "n13",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new51",
+              "source": "n_new4",
+              "target": "n14",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new52",
+              "source": "n_new4",
+              "target": "n15",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new53",
+              "source": "n_new4",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new54",
+              "source": "n_new4",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new55",
+              "source": "n_new4",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl_new56",
+              "source": "n_new5",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new57",
+              "source": "n_new5",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new58",
+              "source": "n_new5",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new59",
+              "source": "n_new5",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new60",
+              "source": "n_new5",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new61",
+              "source": "n_new5",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new62",
+              "source": "n_new5",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new63",
+              "source": "n_new5",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new64",
+              "source": "n_new5",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new65",
+              "source": "n_new5",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new66",
+              "source": "n_new5",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new67",
+              "source": "n_new5",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new68",
+              "source": "n_new5",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new69",
+              "source": "n_new5",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new70",
+              "source": "n_new5",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new71",
+              "source": "n_new5",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new72",
+              "source": "n_new5",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new73",
+              "source": "n_new5",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "Secure Protocols"
+            },
+            {
+              "link_id": "nl_new74",
+              "source": "n_new6",
+              "target": "n2",
+              "link_type": "vpn",
+              "label": "Remote Access"
+            },
+            {
+              "link_id": "nl_new75",
+              "source": "n_new6",
+              "target": "n9",
+              "link_type": "management",
+              "label": "AAA Integration"
+            },
+            {
+              "link_id": "nl_new76",
+              "source": "n_new7",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Access Control"
+            },
+            {
+              "link_id": "nl_new77",
+              "source": "n_new7",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Access Control"
+            },
+            {
+              "link_id": "nl_new78",
+              "source": "n_new8",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new79",
+              "source": "n_new8",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new80",
+              "source": "n_new8",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new81",
+              "source": "n_new8",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new82",
+              "source": "n_new8",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new83",
+              "source": "n_new8",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new84",
+              "source": "n_new8",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new85",
+              "source": "n_new8",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new86",
+              "source": "n_new8",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new87",
+              "source": "n_new8",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new88",
+              "source": "n_new8",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new89",
+              "source": "n_new8",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new90",
+              "source": "n_new8",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new91",
+              "source": "n_new8",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new92",
+              "source": "n_new8",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new93",
+              "source": "n_new8",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new94",
+              "source": "n_new8",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            },
+            {
+              "link_id": "nl_new95",
+              "source": "n_new8",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "Penetration Testing"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl_new1",
+              "source": "z_new1",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl_new2",
+              "source": "z_new2",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "zl_new3",
+              "source": "z_new3",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Remote Access"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 18,
+        "zone_links": 5,
+        "node_links": 16
+      },
+      "counts_after": {
+        "zones": 11,
+        "nodes": 26,
+        "zone_links": 8,
+        "node_links": 111
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 8,
+        "zone_links": 3,
+        "node_links": 95
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-3_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Identity VNet NSG, allowed via forced tunnel."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Operations VNet NSG, allowed via forced tunnel."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Workload VNet NSG, allowed via forced tunnel."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Firewall to Admin Workstation, allowed via admin access."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to External Testing VNet, allowed via peering."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Log Analytics Workspace, allowed via monitoring."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Firewall to DNS Server, allowed via DNS logs."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Firewall to Web Proxy, allowed via proxy logs."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to MFA Server, allowed via MFA logs."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to AAA Server, allowed via AAA logs."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to NIDS, allowed via IDS alerts."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to NIPS, allowed via IPS alerts."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to 802.1X Controller, allowed via 802.1X logs."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Application Firewall, allowed via WAF logs."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n_new3",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Firewall to DNS Filtering Service, allowed via DNS filtering."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n_new4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to IaC Management, allowed via management."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n_new5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Secure Protocols, allowed via management."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z1",
+        "target_zone": "z_new3",
+        "source_node": "n1",
+        "target_node": "n_new6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to VPN Service, allowed via remote access."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z1",
+        "target_zone": "z_new3",
+        "source_node": "n1",
+        "target_node": "n_new7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Access Control Policy, allowed via management."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n_new8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Penetration Testing Service, allowed via management."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Identity VNet NSG to Log Analytics Workspace, allowed via monitoring."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Operations VNet NSG to Log Analytics Workspace, allowed via monitoring."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Workload VNet NSG to Log Analytics Workspace, allowed via monitoring."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation to AAA Server, allowed via admin access."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n_struct1",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "External Testing VNet to Firewall, allowed via peering."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z_new1",
+        "source_node": "n1",
+        "target_node": "n_new1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Asset Inventory System, allowed via management."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z1",
+        "target_zone": "z_new2",
+        "source_node": "n1",
+        "target_node": "n_new2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Data Flow Documentation System, allowed via management."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z1",
+        "target_zone": "z_preserve1",
+        "source_node": "n1",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Non-Production VNet, allowed via structural attachment."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n_struct3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Security Management, allowed via structural attachment."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z_new3",
+        "source_node": "n1",
+        "target_node": "n_new6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Remote Access, allowed via remote access."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z_new3",
+        "source_node": "n1",
+        "target_node": "n_new7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Access Control Policy, allowed via management."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n_new8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Penetration Testing Service, allowed via management."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Firewall to Admin Workstation, blocked via admin access."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Firewall to External Testing VNet, blocked via peering."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Firewall to Identity VNet NSG, blocked via forced tunnel."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Firewall to Operations VNet NSG, blocked via forced tunnel."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Firewall to Workload VNet NSG, blocked via forced tunnel."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Firewall to Log Analytics Workspace, blocked via monitoring."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Firewall to DNS Server, blocked via DNS logs."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Firewall to Web Proxy, blocked via proxy logs."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-3_req2/rag_without_feedback/IG3/xml/IG3/generated_Government-3_req2_IG3.xml"
+}

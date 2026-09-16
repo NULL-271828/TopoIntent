@@ -1,0 +1,33 @@
+{
+  "metric": "stage4_cis_compliance_and_repair",
+  "run_dir": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223",
+  "stage4_outputs": 28,
+  "summary": {
+    "IG2": {
+      "samples": 14,
+      "cis_satisfaction_before_repair": 0.7183,
+      "cis_satisfaction_after_repair": 0.996,
+      "all_required_satisfied_after_rate": 0.9286,
+      "avg_repair_rounds": 1.4286,
+      "avg_test_cases": 41.1429,
+      "avg_allow_tests": 30.0,
+      "avg_block_tests": 11.1429,
+      "avg_zones": 8.6429,
+      "avg_nodes": 27.5714,
+      "avg_node_links": 53.3571
+    },
+    "IG3": {
+      "samples": 14,
+      "cis_satisfaction_before_repair": 0.7792,
+      "cis_satisfaction_after_repair": 0.9968,
+      "all_required_satisfied_after_rate": 0.9286,
+      "avg_repair_rounds": 1.3571,
+      "avg_test_cases": 41.1429,
+      "avg_allow_tests": 31.1429,
+      "avg_block_tests": 10.0,
+      "avg_zones": 11.7143,
+      "avg_nodes": 32.0714,
+      "avg_node_links": 58.0714
+    }
+  }
+}

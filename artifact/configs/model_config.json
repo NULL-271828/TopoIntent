@@ -1,0 +1,24 @@
+{
+  "llm": {
+    "paper_identifier": "Qwen2.5-72B-Instruct",
+    "source_checkpoint_basename": "Qwen2.5-72B-Instruct-AWQ",
+    "portable_identifier": "Qwen/Qwen2.5-72B-Instruct-AWQ",
+    "temperature": 0.1,
+    "stage1_max_tokens": 4096,
+    "stage3_callsite_max_tokens": 4096,
+    "stage4_max_tokens": 8192,
+    "top_p": "not explicitly set",
+    "seed": "not recorded",
+    "revision": "not recorded",
+    "original_vllm_version": "not recorded"
+  },
+  "embedding": {
+    "model": "BAAI/bge-m3",
+    "dimensions": 1024,
+    "live_ae_pooling": "CLS then L2 normalization",
+    "live_ae_dtype": "float32",
+    "live_ae_max_tokens": 8192,
+    "original_encoder_launch": "not recorded"
+  },
+  "full_model_execution_tested": false
+}

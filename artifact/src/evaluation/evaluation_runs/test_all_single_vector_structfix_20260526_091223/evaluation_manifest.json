@@ -1,0 +1,26 @@
+{
+  "run_id": "test_all_single_vector_structfix",
+  "mode": "evaluation_generation",
+  "dataset": "test",
+  "dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json",
+  "sample_count": 14,
+  "ig_levels": [
+    "IG2",
+    "IG3"
+  ],
+  "status": "waiting_for_wsl_reports",
+  "created_at": "2026-05-26T09:12:23",
+  "updated_at": "2026-05-26T11:10:16",
+  "run_dir": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223",
+  "outputs": {
+    "reports_from_wsl": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/reports_from_wsl",
+    "mininet_scripts_package": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/mininet_scripts_package",
+    "mininet_scripts_zip": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/mininet_scripts_package.zip",
+    "sample_records": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/sample_records.json",
+    "failures": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/failures.json"
+  },
+  "success_samples": 14,
+  "failed_samples": 0,
+  "generated_scripts": 28,
+  "elapsed_sec": 7073.787
+}

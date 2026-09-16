@@ -1,0 +1,111 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Financial-4_req2",
+  "title": "Branch Office with Resilient Voice",
+  "description": "A branch office network with redundant routers, MPLS WAN connectivity, and survivable voice capabilities.",
+  "scenario": "enterprise",
+  "topology_summary": "This topology includes redundant routers at the branch office connected via MPLS to the main data center. The branch has direct connections to the PSTN and a SIP provider for survivable voice. The data center hosts a unified communications manager, an access control server, and a netflow collector.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Branch Office",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Data Center",
+      "zone_type": "data_center"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Router A",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Router B",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "PSTN Gateway",
+      "normalized_type": "other",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "SIP Provider",
+      "normalized_type": "cloud_service",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n5",
+      "name": "Unified Communications Manager",
+      "normalized_type": "server",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n6",
+      "name": "Access Control Server",
+      "normalized_type": "identity_server",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n7",
+      "name": "Netflow Collector",
+      "normalized_type": "server",
+      "zone_id": "z2"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n5",
+        "link_type": "routing",
+        "label": "MPLS"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n5",
+        "link_type": "routing",
+        "label": "MPLS"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n1",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "PSTN"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n1",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "SIP"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n2",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "PSTN"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n2",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "SIP"
+      }
+    ],
+    "zone_links": []
+  }
+}

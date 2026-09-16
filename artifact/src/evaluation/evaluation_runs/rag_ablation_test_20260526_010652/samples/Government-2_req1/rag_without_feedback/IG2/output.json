@@ -1,0 +1,1578 @@
+{
+  "sample_id": "Government-2_req1",
+  "gt_template_id": "Government-2",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-2_req1",
+    "title": "Government Data Center Topology",
+    "description": "A secure and compliant data center design with isolated zones for public services, development, and production systems.",
+    "scenario": "government",
+    "topology_summary": "The topology includes a DMZ for public-facing services, isolated zones for development and production, and a disaster recovery site. All network activity is logged for compliance.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "DMZ",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Development Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Production Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Disaster Recovery Site",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Security Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z7",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Asset Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Asset Inventory Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z10",
+        "name": "Data Flow Documentation Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z11",
+        "name": "Remote Access Zone",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Web Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Load Balancer",
+        "normalized_type": "load_balancer",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n5",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n6",
+        "name": "Development Servers",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Production Servers",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n8",
+        "name": "Disaster Recovery Servers",
+        "normalized_type": "server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n9",
+        "name": "IDS/IPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n10",
+        "name": "Bastion Host",
+        "normalized_type": "bastion",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n11",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n12",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n13",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n14",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n15",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n16",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n17",
+        "name": "DNS Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n18",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n19",
+        "name": "Host Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n20",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n21",
+        "name": "Penetration Testing Node",
+        "normalized_type": "other",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n22",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n23",
+        "name": "MFA Gateway",
+        "normalized_type": "identity_server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n24",
+        "name": "IaC Management",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n25",
+        "name": "Remote Device Manager",
+        "normalized_type": "server",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n26",
+        "name": "Access Control Manager",
+        "normalized_type": "ids_ips",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n27",
+        "name": "Pen Test Scheduler",
+        "normalized_type": "other",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n28",
+        "name": "Asset Inventory System",
+        "normalized_type": "server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n29",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n30",
+        "name": "VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z11"
+      },
+      {
+        "node_id": "n31",
+        "name": "Remote Access Control Manager",
+        "normalized_type": "ids_ips",
+        "zone_id": "z11"
+      },
+      {
+        "node_id": "n32",
+        "name": "Network Traffic Flow Logger",
+        "normalized_type": "ids_ips",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n33",
+        "name": "Pen Test Manager",
+        "normalized_type": "other",
+        "zone_id": "z7"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n11",
+          "link_type": "uplink",
+          "label": "DMZ to Security"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n11",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Security to IDS/IPS"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n11",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Security to Bastion Host"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n11",
+          "target": "n4",
+          "link_type": "uplink",
+          "label": "DMZ to Development"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n12",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "Development to Development Servers"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n13",
+          "target": "n7",
+          "link_type": "uplink",
+          "label": "Production to Production Servers"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n14",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "Disaster Recovery to Disaster Recovery Servers"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n15",
+          "target": "n4",
+          "link_type": "uplink",
+          "label": "Management to SIEM"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n15",
+          "target": "n5",
+          "link_type": "uplink",
+          "label": "Management to Identity Server"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n16",
+          "target": "n11",
+          "link_type": "uplink",
+          "label": "DNS to DMZ"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n17",
+          "target": "n11",
+          "link_type": "uplink",
+          "label": "DNS Filter to DMZ"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n18",
+          "target": "n11",
+          "link_type": "uplink",
+          "label": "Web Proxy to DMZ"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n19",
+          "target": "n7",
+          "link_type": "uplink",
+          "label": "Host Firewall to Production Servers"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n20",
+          "target": "n11",
+          "link_type": "uplink",
+          "label": "NAC to DMZ"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n21",
+          "target": "n11",
+          "link_type": "uplink",
+          "label": "Pen Test to DMZ"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n22",
+          "target": "n15",
+          "link_type": "uplink",
+          "label": "Asset Management to Management"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n23",
+          "target": "n5",
+          "link_type": "uplink",
+          "label": "MFA Gateway to Identity Server"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n24",
+          "target": "n15",
+          "link_type": "uplink",
+          "label": "IaC Management to Management"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n25",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "Remote Device Manager to Bastion Host"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n26",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "Access Control Manager to Bastion Host"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n27",
+          "target": "n21",
+          "link_type": "uplink",
+          "label": "Pen Test Scheduler to Pen Test Node"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n28",
+          "target": "n15",
+          "link_type": "uplink",
+          "label": "Asset Inventory to Management"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n29",
+          "target": "n15",
+          "link_type": "uplink",
+          "label": "Data Flow Documentation to Management"
+        },
+        {
+          "link_id": "nl24",
+          "source": "n30",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "VPN to Bastion Host"
+        },
+        {
+          "link_id": "nl25",
+          "source": "n31",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "Remote Access Control to Bastion Host"
+        },
+        {
+          "link_id": "nl26",
+          "source": "n32",
+          "target": "n4",
+          "link_type": "uplink",
+          "label": "Traffic Logger to SIEM"
+        },
+        {
+          "link_id": "nl27",
+          "source": "n33",
+          "target": "n21",
+          "link_type": "uplink",
+          "label": "Pen Test Manager to Pen Test Node"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "DMZ to Security"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z6",
+          "target": "z2",
+          "link_type": "uplink",
+          "label": "Security to Development"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z6",
+          "target": "z3",
+          "link_type": "uplink",
+          "label": "Security to Production"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z6",
+          "target": "z4",
+          "link_type": "uplink",
+          "label": "Security to Disaster Recovery"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z6",
+          "target": "z5",
+          "link_type": "uplink",
+          "label": "Security to Management"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z7",
+          "target": "z1",
+          "link_type": "uplink",
+          "label": "External Testing to DMZ"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z8",
+          "target": "z5",
+          "link_type": "uplink",
+          "label": "Asset Management to Management"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z5",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "Management to Security"
+        },
+        {
+          "link_id": "zl9",
+          "source": "z6",
+          "target": "z7",
+          "link_type": "uplink",
+          "label": "Security to External Testing"
+        },
+        {
+          "link_id": "zl10",
+          "source": "z9",
+          "target": "z5",
+          "link_type": "uplink",
+          "label": "Asset Inventory to Management"
+        },
+        {
+          "link_id": "zl11",
+          "source": "z10",
+          "target": "z5",
+          "link_type": "uplink",
+          "label": "Data Flow Documentation to Management"
+        },
+        {
+          "link_id": "zl12",
+          "source": "z11",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "Remote Access to Security"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-2_req1",
+    "ig_level": "IG2",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Inventory Zone' (z9) with an 'Asset Inventory System' (n28) node, which suggests the presence of an asset inventory system.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation Zone' (z10) with a 'Data Flow Documentation System' (n29) node, indicating the presence of a system for documenting data flows.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for 'Development' (z2), 'Production' (z3), and 'Disaster Recovery' (z4), which suggests segmentation based on data sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Host Firewall' (n19) node in the 'Production Zone' (z3), indicating the presence of a firewall on servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n16) node in the 'Management Zone' (z5), which suggests the presence of trusted DNS servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Gateway' (n23) node in the 'Management Zone' (z5), which suggests the presence of MFA for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filter' (n17) node in the 'Security Zone' (z6), which suggests the presence of DNS filtering services.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n18) node in the 'Security Zone' (z6), which suggests the presence of network-based URL filters.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for 'DMZ', 'Development', 'Production', 'Disaster Recovery', 'Management', and 'Security', which suggests a well-segmented and secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IaC Management' (n24) node in the 'Management Zone' (z5), which suggests the use of Infrastructure-as-Code for managing network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Identity Server' (n5) node in the 'Management Zone' (z5), which suggests centralized network AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'VPN Gateway' (n30) node in the 'Remote Access Zone' (z11), which suggests the presence of a VPN for remote access, and it is connected to the 'Bastion Host' (n10) in the 'Security Zone' (z6).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IDS/IPS' (n9) node in the 'Security Zone' (z6), which suggests the deployment of a network intrusion detection solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple 'zone_links' and 'node_links' that suggest traffic filtering between different network segments, such as 'DMZ to Security', 'Security to Development', 'Security to Production', etc.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Remote Access Control Manager' (n31) node in the 'Remote Access Zone' (z11), which suggests the presence of a system for managing access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Network Traffic Flow Logger' (n32) node in the 'Security Zone' (z6), which suggests the collection of network traffic flow logs.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for 'Development' (z2) and 'Production' (z3), which suggests the separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Penetration Testing Node' (n21) and a 'Pen Test Manager' (n33) in the 'External Testing Zone' (z7), which suggests the presence of a system for performing periodic external penetration tests.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "6.4",
+        "12.3",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology does not explicitly show an asset inventory. However, it includes various nodes and zones which could be part of an inventory.",
+          "missing_reason": "Explicit asset inventory is not shown in the topology.",
+          "repair_suggestion": "Add a node representing an asset management system or include labels indicating asset ownership and management."
+        },
+        {
+          "cis_safeguard_id": "6.4",
+          "title": "Require MFA for Remote Network Access",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an identity server (n5) in the Management zone, but it does not explicitly indicate MFA for remote access.",
+          "missing_reason": "Explicit MFA configuration for remote access is not shown.",
+          "repair_suggestion": "Add a label or node indicating MFA for remote access."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes routers and other network devices, but it does not explicitly show secure management practices like IaC or secure protocols.",
+          "missing_reason": "Explicit secure management practices are not shown.",
+          "repair_suggestion": "Add labels or nodes indicating secure management practices."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a bastion host (n10) in the Security zone, but it does not explicitly show a VPN or remote device connections.",
+          "missing_reason": "Explicit VPN and remote device connections are not shown.",
+          "repair_suggestion": "Add a node representing a VPN and labels indicating remote device connections."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a bastion host (n10) and NAC (n20) in the Security zone, but it does not explicitly show access control for remote assets.",
+          "missing_reason": "Explicit access control for remote assets is not shown.",
+          "repair_suggestion": "Add labels or nodes indicating access control for remote assets."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a penetration testing node (n21) in the External Testing zone, but it does not explicitly show periodic testing.",
+          "missing_reason": "Explicit periodic testing is not shown.",
+          "repair_suggestion": "Add a label or node indicating periodic external penetration testing."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z8",
+            "name": "Asset Management Zone",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n22",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z8"
+          },
+          {
+            "node_id": "n23",
+            "name": "MFA Gateway",
+            "normalized_type": "identity_server",
+            "zone_id": "z5"
+          },
+          {
+            "node_id": "n24",
+            "name": "IaC Management",
+            "normalized_type": "server",
+            "zone_id": "z5"
+          },
+          {
+            "node_id": "n25",
+            "name": "Remote Device Manager",
+            "normalized_type": "server",
+            "zone_id": "z6"
+          },
+          {
+            "node_id": "n26",
+            "name": "Access Control Manager",
+            "normalized_type": "ids_ips",
+            "zone_id": "z6"
+          },
+          {
+            "node_id": "n27",
+            "name": "Pen Test Scheduler",
+            "normalized_type": "other",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl16",
+              "source": "n22",
+              "target": "n15",
+              "link_type": "uplink",
+              "label": "Asset Management to Management"
+            },
+            {
+              "link_id": "nl17",
+              "source": "n23",
+              "target": "n5",
+              "link_type": "uplink",
+              "label": "MFA Gateway to Identity Server"
+            },
+            {
+              "link_id": "nl18",
+              "source": "n24",
+              "target": "n15",
+              "link_type": "uplink",
+              "label": "IaC Management to Management"
+            },
+            {
+              "link_id": "nl19",
+              "source": "n25",
+              "target": "n10",
+              "link_type": "uplink",
+              "label": "Remote Device Manager to Bastion Host"
+            },
+            {
+              "link_id": "nl20",
+              "source": "n26",
+              "target": "n10",
+              "link_type": "uplink",
+              "label": "Access Control Manager to Bastion Host"
+            },
+            {
+              "link_id": "nl21",
+              "source": "n27",
+              "target": "n21",
+              "link_type": "uplink",
+              "label": "Pen Test Scheduler to Pen Test Node"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl7",
+              "source": "z8",
+              "target": "z5",
+              "link_type": "uplink",
+              "label": "Asset Management to Management"
+            },
+            {
+              "link_id": "zl8",
+              "source": "z5",
+              "target": "z6",
+              "link_type": "uplink",
+              "label": "Management to Security"
+            },
+            {
+              "link_id": "zl9",
+              "source": "z6",
+              "target": "z7",
+              "link_type": "uplink",
+              "label": "Security to External Testing"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 21,
+        "zone_links": 6,
+        "node_links": 15
+      },
+      "counts_after": {
+        "zones": 8,
+        "nodes": 27,
+        "zone_links": 9,
+        "node_links": 21
+      },
+      "count_delta": {
+        "zones": 1,
+        "nodes": 6,
+        "zone_links": 3,
+        "node_links": 6
+      }
+    },
+    {
+      "round": 2,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "12.7",
+        "13.5",
+        "13.6",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide explicit evidence of an asset inventory system or process.",
+          "missing_reason": "No node or link representing an asset inventory system or process.",
+          "repair_suggestion": "Add a node representing an asset inventory system and links to relevant zones and nodes."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide explicit evidence of documented data flows.",
+          "missing_reason": "No node or link representing data flow documentation.",
+          "repair_suggestion": "Add a node representing data flow documentation and links to relevant zones and nodes."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide explicit evidence of a VPN or remote device management.",
+          "missing_reason": "No node or link representing a VPN or remote device management.",
+          "repair_suggestion": "Add a node representing a VPN and links to relevant zones and nodes."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide explicit evidence of access control for remote assets.",
+          "missing_reason": "No node or link representing access control for remote assets.",
+          "repair_suggestion": "Add a node representing access control for remote assets and links to relevant zones and nodes."
+        },
+        {
+          "cis_safeguard_id": "13.6",
+          "title": "Collect Network Traffic Flow Logs",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide explicit evidence of network traffic flow log collection.",
+          "missing_reason": "No node or link representing network traffic flow log collection.",
+          "repair_suggestion": "Add a node representing network traffic flow log collection and links to relevant zones and nodes."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide explicit evidence of periodic external penetration tests.",
+          "missing_reason": "No node or link representing periodic external penetration tests.",
+          "repair_suggestion": "Add a node representing periodic external penetration tests and links to relevant zones and nodes."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z9",
+            "name": "Asset Inventory Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z10",
+            "name": "Data Flow Documentation Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z11",
+            "name": "Remote Access Zone",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n28",
+            "name": "Asset Inventory System",
+            "normalized_type": "server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n29",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z10"
+          },
+          {
+            "node_id": "n30",
+            "name": "VPN Gateway",
+            "normalized_type": "vpn_gateway",
+            "zone_id": "z11"
+          },
+          {
+            "node_id": "n31",
+            "name": "Remote Access Control Manager",
+            "normalized_type": "ids_ips",
+            "zone_id": "z11"
+          },
+          {
+            "node_id": "n32",
+            "name": "Network Traffic Flow Logger",
+            "normalized_type": "ids_ips",
+            "zone_id": "z6"
+          },
+          {
+            "node_id": "n33",
+            "name": "Pen Test Manager",
+            "normalized_type": "other",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl22",
+              "source": "n28",
+              "target": "n15",
+              "link_type": "uplink",
+              "label": "Asset Inventory to Management"
+            },
+            {
+              "link_id": "nl23",
+              "source": "n29",
+              "target": "n15",
+              "link_type": "uplink",
+              "label": "Data Flow Documentation to Management"
+            },
+            {
+              "link_id": "nl24",
+              "source": "n30",
+              "target": "n10",
+              "link_type": "uplink",
+              "label": "VPN to Bastion Host"
+            },
+            {
+              "link_id": "nl25",
+              "source": "n31",
+              "target": "n10",
+              "link_type": "uplink",
+              "label": "Remote Access Control to Bastion Host"
+            },
+            {
+              "link_id": "nl26",
+              "source": "n32",
+              "target": "n4",
+              "link_type": "uplink",
+              "label": "Traffic Logger to SIEM"
+            },
+            {
+              "link_id": "nl27",
+              "source": "n33",
+              "target": "n21",
+              "link_type": "uplink",
+              "label": "Pen Test Manager to Pen Test Node"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl10",
+              "source": "z9",
+              "target": "z5",
+              "link_type": "uplink",
+              "label": "Asset Inventory to Management"
+            },
+            {
+              "link_id": "zl11",
+              "source": "z10",
+              "target": "z5",
+              "link_type": "uplink",
+              "label": "Data Flow Documentation to Management"
+            },
+            {
+              "link_id": "zl12",
+              "source": "z11",
+              "target": "z6",
+              "link_type": "uplink",
+              "label": "Remote Access to Security"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 27,
+        "zone_links": 9,
+        "node_links": 21
+      },
+      "counts_after": {
+        "zones": 11,
+        "nodes": 33,
+        "zone_links": 12,
+        "node_links": 27
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 6,
+        "zone_links": 3,
+        "node_links": 6
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-2_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "DMZ to Security: Allowed web traffic."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n10",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Security to Development: Allowed SSH access."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z6",
+        "target_zone": "z3",
+        "source_node": "n10",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Security to Production: Allowed SSH access."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z6",
+        "target_zone": "z4",
+        "source_node": "n10",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Security to Disaster Recovery: Allowed SSH access."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z6",
+        "target_zone": "z5",
+        "source_node": "n10",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Security to Management: Allowed syslog traffic."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n21",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "External Testing to DMZ: Allowed HTTPS traffic."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z8",
+        "target_zone": "z5",
+        "source_node": "n22",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Asset Management to Management: Allowed syslog traffic."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z5",
+        "target_zone": "z6",
+        "source_node": "n5",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Management to Security: Allowed SSH access."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z6",
+        "target_zone": "z7",
+        "source_node": "n10",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Security to External Testing: Allowed SSH access."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z9",
+        "target_zone": "z5",
+        "source_node": "n28",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Asset Inventory to Management: Allowed syslog traffic."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z10",
+        "target_zone": "z5",
+        "source_node": "n29",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Data Flow Documentation to Management: Allowed syslog traffic."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z11",
+        "target_zone": "z6",
+        "source_node": "n30",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Remote Access to Security: Allowed SSH access."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "DMZ to Development: Blocked web traffic."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "DMZ to Production: Blocked web traffic."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "DMZ to Disaster Recovery: Blocked web traffic."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "DMZ to Management: Blocked web traffic."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n6",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Development to Production: Blocked web traffic."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n6",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Development to Disaster Recovery: Blocked web traffic."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n6",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Development to Management: Blocked web traffic."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z3",
+        "target_zone": "z4",
+        "source_node": "n7",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Production to Disaster Recovery: Blocked web traffic."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z3",
+        "target_zone": "z5",
+        "source_node": "n7",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Production to Management: Blocked web traffic."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z4",
+        "target_zone": "z5",
+        "source_node": "n8",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Disaster Recovery to Management: Blocked web traffic."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z5",
+        "target_zone": "z6",
+        "source_node": "n4",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Management to Security: Blocked web traffic."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z5",
+        "target_zone": "z7",
+        "source_node": "n4",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Management to External Testing: Blocked web traffic."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z5",
+        "target_zone": "z8",
+        "source_node": "n4",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Management to Asset Management: Blocked web traffic."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z5",
+        "target_zone": "z9",
+        "source_node": "n4",
+        "target_node": "n28",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Management to Asset Inventory: Blocked web traffic."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z5",
+        "target_zone": "z10",
+        "source_node": "n4",
+        "target_node": "n29",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Management to Data Flow Documentation: Blocked web traffic."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z6",
+        "target_zone": "z11",
+        "source_node": "n10",
+        "target_node": "n30",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Security to Remote Access: Blocked web traffic."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z7",
+        "target_zone": "z2",
+        "source_node": "n21",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "External Testing to Development: Blocked web traffic."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z7",
+        "target_zone": "z3",
+        "source_node": "n21",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "External Testing to Production: Blocked web traffic."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z7",
+        "target_zone": "z4",
+        "source_node": "n21",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "External Testing to Disaster Recovery: Blocked web traffic."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z7",
+        "target_zone": "z5",
+        "source_node": "n21",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "External Testing to Management: Blocked web traffic."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n22",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Asset Management to Development: Blocked web traffic."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n22",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Asset Management to Production: Blocked web traffic."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z8",
+        "target_zone": "z4",
+        "source_node": "n22",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Asset Management to Disaster Recovery: Blocked web traffic."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z8",
+        "target_zone": "z6",
+        "source_node": "n22",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Asset Management to Security: Blocked web traffic."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z9",
+        "target_zone": "z2",
+        "source_node": "n28",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Asset Inventory to Development: Blocked web traffic."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z9",
+        "target_zone": "z3",
+        "source_node": "n28",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Asset Inventory to Production: Blocked web traffic."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z9",
+        "target_zone": "z4",
+        "source_node": "n28",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Asset Inventory to Disaster Recovery: Blocked web traffic."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z9",
+        "target_zone": "z6",
+        "source_node": "n28",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Asset Inventory to Security: Blocked web traffic."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req1/rag_without_feedback/IG2/xml/IG2/generated_Government-2_req1_IG2.xml"
+}

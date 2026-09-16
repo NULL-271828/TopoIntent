@@ -1,0 +1,30 @@
+{
+  "IG2 Initial": {
+    "node_link_reachability": 1,
+    "pre_acl_pass_rate": 0.64,
+    "post_acl_pass_rate": 0.87,
+    "avg_latency_ms": 0.06,
+    "diagnostic_failures": 214
+  },
+  "IG2 After Feedback": {
+    "node_link_reachability": 1,
+    "pre_acl_pass_rate": 0.74,
+    "post_acl_pass_rate": 0.86,
+    "avg_latency_ms": 0.07,
+    "diagnostic_failures": 165
+  },
+  "IG3 Initial": {
+    "node_link_reachability": 1,
+    "pre_acl_pass_rate": 0.67,
+    "post_acl_pass_rate": 0.87,
+    "avg_latency_ms": 0.06,
+    "diagnostic_failures": 189
+  },
+  "IG3 After Feedback": {
+    "node_link_reachability": 1,
+    "pre_acl_pass_rate": 0.77,
+    "post_acl_pass_rate": 0.89,
+    "avg_latency_ms": 0.07,
+    "diagnostic_failures": 147
+  }
+}

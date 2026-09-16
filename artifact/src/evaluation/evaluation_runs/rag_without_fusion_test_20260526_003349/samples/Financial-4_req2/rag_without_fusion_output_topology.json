@@ -1,0 +1,287 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Enterprise-5",
+  "title": "Enterprise Network Topology",
+  "description": "A detailed topology of an enterprise network with multiple buildings, a data center, internet edge, and various remote sites including teleworkers.",
+  "scenario": "enterprise",
+  "topology_summary": "The final topology is based on the internvl_3_5_38b extraction, which correctly identified the main architectural zones (HQ, Data Center, Internet Edge, Remote/Regional Sites). It was modified to include a missing Teleworker zone and several missing nodes in the Data Center (UCS Servers, Voice Gateway) that were visible in the image. The link structure was simplified to reflect the high-level connectivity shown in the diagram.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Building 1",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Building 2",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Building 3",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Data Center",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Remote Site",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z6",
+      "name": "Regional Site",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z7",
+      "name": "Internet Edge",
+      "zone_type": "dmz"
+    },
+    {
+      "zone_id": "z8",
+      "name": "Teleworker / Mobile Worker",
+      "zone_type": "enterprise"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Core VSS Switch",
+      "normalized_type": "switch",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Distribution Switch Layer",
+      "normalized_type": "switch",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "User Access Layer",
+      "normalized_type": "switch",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "Nexus 5500",
+      "normalized_type": "switch",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n5",
+      "name": "Data Center Firewalls",
+      "normalized_type": "firewall",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n6",
+      "name": "WAN Routers",
+      "normalized_type": "router",
+      "zone_id": "z7"
+    },
+    {
+      "node_id": "n7",
+      "name": "VPN WAN Routers",
+      "normalized_type": "router",
+      "zone_id": "z7"
+    },
+    {
+      "node_id": "n8",
+      "name": "DMZ Switches",
+      "normalized_type": "switch",
+      "zone_id": "z7"
+    },
+    {
+      "node_id": "n9",
+      "name": "DMZ Servers",
+      "normalized_type": "server",
+      "zone_id": "z7"
+    },
+    {
+      "node_id": "n10",
+      "name": "Email Security Appliance",
+      "normalized_type": "other",
+      "zone_id": "z7"
+    },
+    {
+      "node_id": "n11",
+      "name": "Web Security Appliance",
+      "normalized_type": "other",
+      "zone_id": "z7"
+    },
+    {
+      "node_id": "n12",
+      "name": "RA-VPN",
+      "normalized_type": "vpn_gateway",
+      "zone_id": "z7"
+    },
+    {
+      "node_id": "n13",
+      "name": "WAN Aggregation",
+      "normalized_type": "switch",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n14",
+      "name": "Remote-Site Wireless LAN Controllers",
+      "normalized_type": "wireless_controller",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n15",
+      "name": "WAN Routers",
+      "normalized_type": "router",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n16",
+      "name": "Access Switches",
+      "normalized_type": "switch",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n17",
+      "name": "WAN Routers",
+      "normalized_type": "router",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n18",
+      "name": "Access Switches",
+      "normalized_type": "switch",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n19",
+      "name": "Distribution Switches",
+      "normalized_type": "switch",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n20",
+      "name": "Wireless LAN Controller",
+      "normalized_type": "wireless_controller",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n21",
+      "name": "UCS Rack-mount Servers",
+      "normalized_type": "server",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n22",
+      "name": "Voice Gateway",
+      "normalized_type": "other",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n23",
+      "name": "Hardware and Software VPN",
+      "normalized_type": "vpn_gateway",
+      "zone_id": "z8"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "trunk",
+        "label": "Core to Distribution"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n3",
+        "link_type": "trunk",
+        "label": "Distribution to Access"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n1",
+        "target": "n4",
+        "link_type": "uplink",
+        "label": "Core to DC Switch"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n4",
+        "target": "n5",
+        "link_type": "routing",
+        "label": "DC Switch to Firewall"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n5",
+        "target": "n21",
+        "link_type": "data_flow",
+        "label": "Firewall to DC Servers"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n1",
+        "target": "n13",
+        "link_type": "uplink",
+        "label": "Core to WAN Agg"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n7",
+        "target": "n8",
+        "link_type": "routing",
+        "label": "VPN Router to DMZ Switch"
+      },
+      {
+        "link_id": "nl8",
+        "source": "n8",
+        "target": "n9",
+        "link_type": "data_flow",
+        "label": "DMZ Switch to DMZ Servers"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z4",
+        "link_type": "uplink",
+        "label": "HQ to Data Center"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z1",
+        "target": "z7",
+        "link_type": "uplink",
+        "label": "HQ to Internet Edge"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z1",
+        "target": "z5",
+        "link_type": "routing",
+        "label": "HQ to Remote Site"
+      },
+      {
+        "link_id": "zl4",
+        "source": "z1",
+        "target": "z6",
+        "link_type": "routing",
+        "label": "HQ to Regional Site"
+      },
+      {
+        "link_id": "zl5",
+        "source": "z7",
+        "target": "z8",
+        "link_type": "vpn",
+        "label": "Internet to Teleworker"
+      }
+    ]
+  }
+}

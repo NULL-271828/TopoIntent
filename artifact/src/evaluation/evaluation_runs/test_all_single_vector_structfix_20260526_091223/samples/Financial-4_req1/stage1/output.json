@@ -1,0 +1,89 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-4_req1",
+    "title": "High Availability Branch Office",
+    "description": "A branch office network with emphasis on high availability and voice service continuity, connecting to the central data center and supporting SIP-based voice traffic.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes a primary connection to the central data center and a failover mechanism for voice services to the public phone network. It supports SIP-based voice traffic and includes centralized user authentication and network traffic logging.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Public Phone Network",
+        "zone_type": "external"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Primary Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Voice Gateway",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "SIP Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Central Data Center Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Public Phone Network Gateway",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Financial-4_req1\", \"title\": \"High Availability Branch Office\", \"description\": \"A branch office network with emphasis on high availability and voice service continuity, connecting to the central data center and supporting SIP-based voice traffic.\", \"scenario\": \"enterprise\", \"topology_summary\": \"The topology includes a primary connection to the central data center and a failover mechanism for voice services to the public phone network. It supports SIP-based voice traffic and includes centralized user authentication and network traffic logging.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Branch Office\", \"zone_type\": \"enterprise\"}, {\"zone_id\": \"z2\", \"name\": \"Data Center\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z3\", \"name\": \"Public Phone Network\", \"zone_type\": \"external\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Primary Router\", \"normalized_type\": \"router\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Voice Gateway\", \"normalized_type\": \"router\", \"zone_id\": \"z1\"}, {\"node_id\": \"n3\", \"name\": \"Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}, {\"node_id\": \"n4\", \"name\": \"SIP Server\", \"normalized_type\": \"server\", \"zone_id\": \"z1\"}, {\"node_id\": \"n5\", \"name\": \"Identity Server\", \"normalized_type\": \"identity_server\", \"zone_id\": \"z1\"}, {\"node_id\": \"n6\", \"name\": \"SIEM\", \"normalized_type\": \"siem\", \"zone_id\": \"z1\"}, {\"node_id\": \"n7\", \"name\": \"Central Data Center Router\", \"normalized_type\": \"router\", \"zone_id\": \"z2\"}, {\"node_id\": \"n8\", \"name\": \"Public Phone Network Gateway\", \"normalized_type\": \"router\", \"zone_id\": \"z3\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 8.448
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "sample_id": "Government-2_req2",
+  "template_id": "Government-2",
+  "user_intent": "Please design a secure government data center topology. The architecture must include a screened DMZ with a WAF and load-balanced web servers. Core application and database servers should reside in a separate production zone, protected by internal firewalls that also segment the staging and management networks. We need redundant connectivity, content filtering at the edge, and SIEM integration for monitoring across all segments. A connection to a DR site is also required.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

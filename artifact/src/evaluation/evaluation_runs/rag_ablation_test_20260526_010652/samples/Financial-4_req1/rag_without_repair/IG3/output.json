@@ -1,0 +1,921 @@
+{
+  "sample_id": "Financial-4_req1",
+  "gt_template_id": "Financial-4",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-4_req1",
+    "title": "High Availability Branch Office",
+    "description": "A branch office network with emphasis on high availability and voice service continuity, connected to the central data center with a primary link and public phone network failover for voice services.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes a branch office connected to the central data center via a primary link, with a failover mechanism for voice services to the public phone network. It supports SIP-based voice traffic and includes centralized user authentication and network traffic logging.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Public Phone Network",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Security Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Non-Production Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z7",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Primary Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Voice Gateway",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "SIP Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Central Data Center Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Public Phone Network Gateway",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n9",
+        "name": "Primary Link",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "Failover Link",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "MFA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n12",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n14",
+        "name": "IDS/IPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n15",
+        "name": "NAC",
+        "normalized_type": "access_point",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n16",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n17",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n18",
+        "name": "802.1X Controller",
+        "normalized_type": "access_point",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n19",
+        "name": "Penetration Testing Host",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n9",
+          "link_type": "uplink",
+          "label": "Primary Link to Data Center"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n9",
+          "target": "n7",
+          "link_type": "vpn",
+          "label": "Primary Link to Data Center"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n2",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "Failover Link to Public Phone Network"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n10",
+          "target": "n8",
+          "link_type": "vpn",
+          "label": "Failover Link to Public Phone Network"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n4",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "SIP Server to Identity Server"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n4",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "SIP Server to SIEM"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n11",
+          "target": "n9",
+          "link_type": "management",
+          "label": "MFA to VPN Gateway"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n12",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS to Primary Router"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n13",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Web Proxy to Primary Router"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n14",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "IDS/IPS to Primary Router"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "management",
+          "label": "NAC to Primary Router"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n16",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Admin Workstation to Identity Server"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n17",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Application Firewall to Primary Router"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n18",
+          "target": "n1",
+          "link_type": "management",
+          "label": "802.1X Controller to Primary Router"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n19",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Penetration Testing Host to Primary Router"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "Branch Office to Non-Production Zone"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "Branch Office to External Testing Zone"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-4_req1",
+    "ig_level": "IG3",
+    "all_required_satisfied": false,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide evidence of an asset inventory system or process.",
+        "missing_reason": "No evidence of an asset inventory system or process.",
+        "repair_suggestion": "Add a node representing an asset management system and links to all other nodes."
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide evidence of documented data flows.",
+        "missing_reason": "No evidence of documented data flows.",
+        "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not explicitly show segmentation based on data sensitivity.",
+        "missing_reason": "No explicit evidence of data segmentation based on sensitivity.",
+        "repair_suggestion": "Add zones and nodes specifically labeled for different data sensitivity levels."
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not show firewalls implemented on servers.",
+        "missing_reason": "No evidence of firewalls on servers.",
+        "repair_suggestion": "Add firewall nodes or labels to server nodes indicating firewall implementation."
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS server (n12) and a link (nl8) from the DNS server to the primary router (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA server (n11) and a link (nl7) from the MFA server to the primary link (n9).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide evidence of DNS filtering services.",
+        "missing_reason": "No evidence of DNS filtering services.",
+        "repair_suggestion": "Add a node representing a DNS filtering service and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide evidence of network-based URL filters.",
+        "missing_reason": "No evidence of network-based URL filters.",
+        "repair_suggestion": "Add a node representing a URL filtering service and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (z1, z2, z3, z4, z5, z6, z7) and nodes (n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19) with defined roles and connections, indicating a secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide evidence of securely managed network infrastructure, such as version-controlled IaC or secure network protocols.",
+        "missing_reason": "No evidence of securely managed network infrastructure.",
+        "repair_suggestion": "Add nodes and links representing IaC and secure network protocols."
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an identity server (n5) and an MFA server (n11) with links to relevant nodes, indicating centralized AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a primary link (n9) and a failover link (n10) with links to the MFA server (n11), indicating remote devices utilizing a VPN and connecting to the AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a management zone (z4) with an admin workstation (n16) and an MFA server (n11), indicating dedicated computing resources for administrative work.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an IDS/IPS (n14) with a monitoring link (nl10) to the primary router (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a firewall (n3) and multiple zones (z1, z2, z3, z4, z5, z6, z7) with defined connections, indicating traffic filtering between segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA server (n11) and a link (nl7) to the primary link (n9), indicating access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide evidence of network traffic flow log collection.",
+        "missing_reason": "No evidence of network traffic flow log collection.",
+        "repair_suggestion": "Add a node representing a log collection system and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an IDS/IPS (n14) with a monitoring link (nl10) to the primary router (n1), which can also serve as a network intrusion prevention solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 802.1X controller (n18) with a management link (nl14) to the primary router (n1), indicating port-level access control.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a web proxy (n13) and an application firewall (n17) with data flow links (nl9, nl13) to the primary router (n1), indicating application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a non-production zone (z6) with a peering link (zl1) to the branch office (z1), indicating separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide evidence of periodic external penetration tests.",
+        "missing_reason": "No evidence of periodic external penetration tests.",
+        "repair_suggestion": "Add a node representing a penetration testing service and links to relevant nodes."
+      }
+    ]
+  },
+  "repair_history": [],
+  "test_cases": {
+    "template_id": "generated_Financial-4_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary link to data center is active."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Failover link to public phone network is active."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "SIP server communicates with identity server."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "SIP server logs to SIEM."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA server manages primary link."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS server provides DNS to primary router."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web proxy forwards traffic to primary router."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IDS/IPS monitors primary router."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC manages primary router."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin workstation manages identity server."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Application firewall forwards traffic to primary router."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "802.1X controller manages primary router."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n19",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Penetration testing host manages primary router."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Branch office does not communicate with external testing zone."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "block",
+        "reason": "Public phone network does not initiate traffic to branch office."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Data center does not initiate traffic to branch office."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n11",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Management zone does not communicate with data center."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z5",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Security zone does not communicate with data center."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n19",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "External testing zone does not communicate with branch office."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Branch office does not manage admin workstation."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Branch office does not manage web proxy."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Branch office does not manage IDS/IPS."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Branch office does not manage NAC."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Branch office does not manage application firewall."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Branch office does not manage 802.1X controller."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Branch office does not manage penetration testing host."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z4",
+        "target_zone": "z5",
+        "source_node": "n11",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Management zone does not manage web proxy."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z4",
+        "target_zone": "z5",
+        "source_node": "n11",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Management zone does not manage IDS/IPS."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z4",
+        "target_zone": "z5",
+        "source_node": "n11",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Management zone does not manage NAC."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z4",
+        "target_zone": "z5",
+        "source_node": "n11",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Management zone does not manage application firewall."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z4",
+        "target_zone": "z5",
+        "source_node": "n11",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Management zone does not manage 802.1X controller."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z4",
+        "target_zone": "z7",
+        "source_node": "n11",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Management zone does not manage penetration testing host."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z5",
+        "target_zone": "z7",
+        "source_node": "n13",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Security zone does not manage penetration testing host."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z5",
+        "target_zone": "z4",
+        "source_node": "n13",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Security zone does not manage admin workstation."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Security zone does not communicate with non-production zone."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z7",
+        "target_zone": "z4",
+        "source_node": "n19",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "External testing zone does not manage admin workstation."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z7",
+        "target_zone": "z5",
+        "source_node": "n19",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "External testing zone does not manage web proxy."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n19",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "External testing zone does not communicate with non-production zone."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_repair/IG3/xml/IG3/generated_Financial-4_req1_IG3.xml"
+}

@@ -1,0 +1,22 @@
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+Copyright 2026 Xiaokang Qu.
+
+This license applies to TopoIntent author-owned source code and accompanying
+author-owned documentation unless a file states otherwise. It does not grant
+rights to third-party datasets, CIS materials, model weights, or dependencies;
+those remain subject to their own terms as described in THIRD_PARTY.md.

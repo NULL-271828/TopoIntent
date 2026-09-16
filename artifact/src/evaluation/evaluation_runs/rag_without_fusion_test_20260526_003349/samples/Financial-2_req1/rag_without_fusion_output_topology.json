@@ -1,0 +1,492 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Enterprise-3",
+  "title": "Enterprise Network Topology with Multi-Site Data Centers",
+  "description": "A topology diagram of an enterprise network with two secure data centers, featuring Cisco ACI, multi-layered security controls, and connectivity to cloud services.",
+  "scenario": "enterprise",
+  "topology_summary": "The topology depicts two secure data centers (Site 1 and Site N) connected to the Internet, WAN, and IPN. Each data center utilizes a Cisco ACI fabric (Spine/Leaf), Firepower for threat defense, Stealthwatch for flow monitoring, and HyperFlex for storage. The server infrastructure is segmented into Web, App, and Database zones. A cloud presence in AWS is also shown, with its own virtual firewall and application servers.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Internet",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z2",
+      "name": "WAN",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z3",
+      "name": "IPN",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Secure Data Center 1",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Secure Data Center N",
+      "zone_type": "data_center"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Amazon Web Services",
+      "normalized_type": "cloud_service",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Firepower Threat Defense Virtual",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "App Servers Tetration Agent & AMP4E",
+      "normalized_type": "workload",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "ACI Multi-Site Manager Cluster",
+      "normalized_type": "other",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n5",
+      "name": "Tetration Analytics",
+      "normalized_type": "other",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n6",
+      "name": "Firepower Management Center",
+      "normalized_type": "firewall",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n7",
+      "name": "Stealthwatch Management Center",
+      "normalized_type": "siem",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n8",
+      "name": "Stealthwatch Flow Collector Services",
+      "normalized_type": "siem",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n9",
+      "name": "Distribution Switch",
+      "normalized_type": "switch",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n10",
+      "name": "L3 Switch",
+      "normalized_type": "switch",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n11",
+      "name": "ACI Spine",
+      "normalized_type": "switch",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n12",
+      "name": "ACI Leaf",
+      "normalized_type": "switch",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n13",
+      "name": "Fabric Interconnect",
+      "normalized_type": "switch",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n14",
+      "name": "HyperFlex Cluster",
+      "normalized_type": "storage",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n16",
+      "name": "Firepower Threat Defense",
+      "normalized_type": "firewall",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n17",
+      "name": "Tetration Analytics",
+      "normalized_type": "other",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n18",
+      "name": "Firepower Management Center",
+      "normalized_type": "firewall",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n19",
+      "name": "Stealthwatch Management Center",
+      "normalized_type": "siem",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n20",
+      "name": "Stealthwatch Flow Collector Services",
+      "normalized_type": "siem",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n21",
+      "name": "Distribution Switch",
+      "normalized_type": "switch",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n22",
+      "name": "L3 Switch",
+      "normalized_type": "switch",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n23",
+      "name": "ACI Spine",
+      "normalized_type": "switch",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n24",
+      "name": "ACI Leaf",
+      "normalized_type": "switch",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n25",
+      "name": "Fabric Interconnect",
+      "normalized_type": "switch",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n26",
+      "name": "HyperFlex Cluster",
+      "normalized_type": "storage",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n28",
+      "name": "Firepower Threat Defense",
+      "normalized_type": "firewall",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n29",
+      "name": "Web Zone Servers Tetration Agent & AMP4E",
+      "normalized_type": "server",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n30",
+      "name": "App Zone Servers Tetration Agent & AMP4E",
+      "normalized_type": "server",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n31",
+      "name": "Database Zone Servers Tetration Agent & AMP4E",
+      "normalized_type": "server",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n32",
+      "name": "Biz Use Cases",
+      "normalized_type": "workload",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n33",
+      "name": "Web Zone Servers Tetration Agent & AMP4E",
+      "normalized_type": "server",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n34",
+      "name": "App Zone Servers Tetration Agent & AMP4E",
+      "normalized_type": "server",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n35",
+      "name": "Database Zone Servers Tetration Agent & AMP4E",
+      "normalized_type": "server",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n36",
+      "name": "Biz Use Cases",
+      "normalized_type": "workload",
+      "zone_id": "z5"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "data_flow",
+        "label": "Internet"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "App Servers"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n4",
+        "target": "n5",
+        "link_type": "management",
+        "label": "ACI Multi-Site Manager Cluster to Tetration Analytics"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n4",
+        "target": "n6",
+        "link_type": "management",
+        "label": "ACI Multi-Site Manager Cluster to Firepower Management Center"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n4",
+        "target": "n7",
+        "link_type": "management",
+        "label": "ACI Multi-Site Manager Cluster to Stealthwatch Management Center"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n4",
+        "target": "n8",
+        "link_type": "management",
+        "label": "ACI Multi-Site Manager Cluster to Stealthwatch Flow Collector Services"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n9",
+        "target": "n10",
+        "link_type": "trunk",
+        "label": "Distribution Switch to L3 Switch"
+      },
+      {
+        "link_id": "nl8",
+        "source": "n10",
+        "target": "n11",
+        "link_type": "uplink",
+        "label": "L3 Switch to ACI Spine"
+      },
+      {
+        "link_id": "nl9",
+        "source": "n11",
+        "target": "n12",
+        "link_type": "uplink",
+        "label": "ACI Spine to ACI Leaf"
+      },
+      {
+        "link_id": "nl10",
+        "source": "n12",
+        "target": "n13",
+        "link_type": "uplink",
+        "label": "ACI Leaf to Fabric Interconnect"
+      },
+      {
+        "link_id": "nl11",
+        "source": "n13",
+        "target": "n14",
+        "link_type": "data_flow",
+        "label": "Fabric Interconnect to HyperFlex Cluster"
+      },
+      {
+        "link_id": "nl13",
+        "source": "n16",
+        "target": "n12",
+        "link_type": "data_flow",
+        "label": "Firepower Threat Defense to ACI Leaf"
+      },
+      {
+        "link_id": "nl14",
+        "source": "n17",
+        "target": "n18",
+        "link_type": "management",
+        "label": "Tetration Analytics to Firepower Management Center"
+      },
+      {
+        "link_id": "nl15",
+        "source": "n17",
+        "target": "n19",
+        "link_type": "management",
+        "label": "Tetration Analytics to Stealthwatch Management Center"
+      },
+      {
+        "link_id": "nl16",
+        "source": "n17",
+        "target": "n20",
+        "link_type": "management",
+        "label": "Tetration Analytics to Stealthwatch Flow Collector Services"
+      },
+      {
+        "link_id": "nl17",
+        "source": "n21",
+        "target": "n22",
+        "link_type": "trunk",
+        "label": "Distribution Switch to L3 Switch"
+      },
+      {
+        "link_id": "nl18",
+        "source": "n22",
+        "target": "n23",
+        "link_type": "uplink",
+        "label": "L3 Switch to ACI Spine"
+      },
+      {
+        "link_id": "nl19",
+        "source": "n23",
+        "target": "n24",
+        "link_type": "uplink",
+        "label": "ACI Spine to ACI Leaf"
+      },
+      {
+        "link_id": "nl20",
+        "source": "n24",
+        "target": "n25",
+        "link_type": "uplink",
+        "label": "ACI Leaf to Fabric Interconnect"
+      },
+      {
+        "link_id": "nl21",
+        "source": "n25",
+        "target": "n26",
+        "link_type": "data_flow",
+        "label": "Fabric Interconnect to HyperFlex Cluster"
+      },
+      {
+        "link_id": "nl23",
+        "source": "n28",
+        "target": "n24",
+        "link_type": "data_flow",
+        "label": "Firepower Threat Defense to ACI Leaf"
+      },
+      {
+        "link_id": "nl24",
+        "source": "n12",
+        "target": "n29",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "nl25",
+        "source": "n12",
+        "target": "n30",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "nl26",
+        "source": "n12",
+        "target": "n31",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "nl27",
+        "source": "n12",
+        "target": "n32",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "nl28",
+        "source": "n24",
+        "target": "n33",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "nl29",
+        "source": "n24",
+        "target": "n34",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "nl30",
+        "source": "n24",
+        "target": "n35",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "nl31",
+        "source": "n24",
+        "target": "n36",
+        "link_type": "data_flow",
+        "label": ""
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z4",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "zl2",
+        "source": "z2",
+        "target": "z4",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl3",
+        "source": "z3",
+        "target": "z4",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl4",
+        "source": "z1",
+        "target": "z5",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "zl5",
+        "source": "z2",
+        "target": "z5",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl6",
+        "source": "z3",
+        "target": "z5",
+        "link_type": "uplink",
+        "label": ""
+      }
+    ]
+  }
+}

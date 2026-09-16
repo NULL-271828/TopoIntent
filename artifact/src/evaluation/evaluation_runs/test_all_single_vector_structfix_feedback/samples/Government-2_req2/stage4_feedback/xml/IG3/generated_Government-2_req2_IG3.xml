@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Government-2_req2" title="Secure Government Data Center" scenario="government" ig_level="IG3">
+  <Description>A secure government data center with a DMZ, load-balanced web servers, and segmented production, staging, and management zones.</Description>
+  <Summary>The topology includes a screened DMZ with a WAF and load-balanced web servers. The core application and database servers are in a production zone, while internal firewalls segment the staging and management networks. Redundant connectivity, content filtering, and SIEM integration are provided.</Summary>
+  <Domains>
+    <Domain id="z1" name="DMZ" type="dmz"/>
+    <Domain id="z2" name="Production" type="data_center"/>
+    <Domain id="z3" name="Staging" type="data_center"/>
+    <Domain id="z4" name="Management" type="management"/>
+    <Domain id="z5" name="DR Site" type="data_center"/>
+    <Domain id="z6" name="Content Filtering" type="security"/>
+    <Domain id="z7" name="External Testing" type="external"/>
+    <Domain id="z8" name="Admin Workstations" type="management"/>
+    <Domain id="z_preserve1" name="Asset Management" type="management"/>
+    <Domain id="z9" name="Remote Access" type="management"/>
+    <Domain id="z_new1" name="Asset Management" type="management"/>
+    <Domain id="z_new2" name="Data Flow Documentation" type="management"/>
+    <Domain id="z_new3" name="Penetration Testing" type="security"/>
+    <Domain id="z_new4" name="Asset Management" type="management"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="WAF" domain="z1" domain_name="DMZ" type="waf" ip=""/>
+    <Node id="n2" name="Load Balancer" domain="z1" domain_name="DMZ" type="load_balancer" ip=""/>
+    <Node id="n3" name="Web Server 1" domain="z1" domain_name="DMZ" type="server" ip=""/>
+    <Node id="n4" name="Web Server 2" domain="z1" domain_name="DMZ" type="server" ip=""/>
+    <Node id="n5" name="Internal Firewall 1" domain="z2" domain_name="Production" type="firewall" ip=""/>
+    <Node id="n6" name="Internal Firewall 2" domain="z2" domain_name="Production" type="firewall" ip=""/>
+    <Node id="n7" name="Application Server" domain="z2" domain_name="Production" type="server" ip=""/>
+    <Node id="n8" name="Database Server" domain="z2" domain_name="Production" type="database" ip=""/>
+    <Node id="n9" name="Internal Firewall 3" domain="z3" domain_name="Staging" type="firewall" ip=""/>
+    <Node id="n10" name="Staging Server" domain="z3" domain_name="Staging" type="server" ip=""/>
+    <Node id="n11" name="Management Firewall" domain="z4" domain_name="Management" type="firewall" ip=""/>
+    <Node id="n12" name="Management Server" domain="z4" domain_name="Management" type="server" ip=""/>
+    <Node id="n13" name="Edge Router" domain="z1" domain_name="DMZ" type="router" ip=""/>
+    <Node id="n14" name="SIEM" domain="z1" domain_name="DMZ" type="siem" ip=""/>
+    <Node id="n15" name="DR Router" domain="z5" domain_name="DR Site" type="router" ip=""/>
+    <Node id="n16" name="Content Filter" domain="z6" domain_name="Content Filtering" type="ids_ips" ip=""/>
+    <Node id="n17" name="Switch 1" domain="z2" domain_name="Production" type="switch" ip=""/>
+    <Node id="n18" name="Switch 2" domain="z2" domain_name="Production" type="switch" ip=""/>
+    <Node id="n19" name="Switch 3" domain="z3" domain_name="Staging" type="switch" ip=""/>
+    <Node id="n20" name="Switch 4" domain="z4" domain_name="Management" type="switch" ip=""/>
+    <Node id="n21" name="DR Switch" domain="z5" domain_name="DR Site" type="switch" ip=""/>
+    <Node id="n22" name="DNS Server 1" domain="z1" domain_name="DMZ" type="identity_server" ip=""/>
+    <Node id="n23" name="DNS Server 2" domain="z1" domain_name="DMZ" type="identity_server" ip=""/>
+    <Node id="n24" name="MFA Server" domain="z4" domain_name="Management" type="identity_server" ip=""/>
+    <Node id="n25" name="DNS Filter" domain="z6" domain_name="Content Filtering" type="ids_ips" ip=""/>
+    <Node id="n26" name="Web Proxy" domain="z6" domain_name="Content Filtering" type="ids_ips" ip=""/>
+    <Node id="n27" name="AAA Server" domain="z4" domain_name="Management" type="identity_server" ip=""/>
+    <Node id="n28" name="NIDS" domain="z2" domain_name="Production" type="ids_ips" ip=""/>
+    <Node id="n29" name="NIPS" domain="z2" domain_name="Production" type="ids_ips" ip=""/>
+    <Node id="n30" name="NAC" domain="z2" domain_name="Production" type="ids_ips" ip=""/>
+    <Node id="n31" name="Application Firewall" domain="z2" domain_name="Production" type="waf" ip=""/>
+    <Node id="n32" name="Admin Workstation 1" domain="z8" domain_name="Admin Workstations" type="endpoint" ip=""/>
+    <Node id="n33" name="Admin Workstation 2" domain="z8" domain_name="Admin Workstations" type="endpoint" ip=""/>
+    <Node id="n_struct1" name="External Testing External Endpoint" domain="z7" domain_name="External Testing" type="endpoint" ip=""/>
+    <Node id="n_struct2" name="Asset Management Management Service" domain="z_preserve1" domain_name="Asset Management" type="server" ip=""/>
+    <Node id="n_struct3" name="Remote Access Management Service" domain="z9" domain_name="Remote Access" type="server" ip=""/>
+    <Node id="n_new1" name="Asset Management System" domain="z_new1" domain_name="Asset Management" type="server" ip=""/>
+    <Node id="n_new2" name="Data Flow Documentation System" domain="z_new2" domain_name="Data Flow Documentation" type="server" ip=""/>
+    <Node id="n_new3" name="VPN Service" domain="z9" domain_name="Remote Access" type="vpn_gateway" ip=""/>
+    <Node id="n_new4" name="Access Control Policy Manager" domain="z9" domain_name="Remote Access" type="identity_server" ip=""/>
+    <Node id="n_new5" name="Penetration Testing Service" domain="z_new3" domain_name="Penetration Testing" type="ids_ips" ip=""/>
+    <Node id="n_new6" name="Asset Management System" domain="z_new4" domain_name="Asset Management" type="server" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z6" type="uplink" label="DMZ to Content Filtering"/>
+      <Link id="zl2" source="z2" target="z6" type="uplink" label="Production to Content Filtering"/>
+      <Link id="zl3" source="z3" target="z6" type="uplink" label="Staging to Content Filtering"/>
+      <Link id="zl4" source="z4" target="z6" type="uplink" label="Management to Content Filtering"/>
+      <Link id="zl5" source="z5" target="z6" type="uplink" label="DR Site to Content Filtering"/>
+      <Link id="zl6" source="z7" target="z1" type="uplink" label="External Testing to DMZ"/>
+      <Link id="zl7" source="z8" target="z4" type="uplink" label="Admin Workstations to Management"/>
+      <Link id="zl_new1" source="z_new1" target="z1" type="management" label="Asset Management to DMZ"/>
+      <Link id="zl_new2" source="z_new1" target="z2" type="management" label="Asset Management to Production"/>
+      <Link id="zl_new3" source="z_new1" target="z3" type="management" label="Asset Management to Staging"/>
+      <Link id="zl_new4" source="z_new1" target="z4" type="management" label="Asset Management to Management"/>
+      <Link id="zl_new5" source="z_new1" target="z5" type="management" label="Asset Management to DR Site"/>
+      <Link id="zl_new6" source="z_new1" target="z6" type="management" label="Asset Management to Content Filtering"/>
+      <Link id="zl_new7" source="z_new1" target="z7" type="management" label="Asset Management to External Testing"/>
+      <Link id="zl_new8" source="z_new1" target="z8" type="management" label="Asset Management to Admin Workstations"/>
+      <Link id="zl_new9" source="z_new1" target="z_preserve1" type="management" label="Asset Management to Asset Management"/>
+      <Link id="zl_new10" source="z_new1" target="z9" type="management" label="Asset Management to Remote Access"/>
+      <Link id="zl_new11" source="z_new2" target="z1" type="data_flow" label="Data Flow Documentation to DMZ"/>
+      <Link id="zl_new12" source="z_new2" target="z2" type="data_flow" label="Data Flow Documentation to Production"/>
+      <Link id="zl_new13" source="z_new2" target="z3" type="data_flow" label="Data Flow Documentation to Staging"/>
+      <Link id="zl_new14" source="z_new2" target="z4" type="data_flow" label="Data Flow Documentation to Management"/>
+      <Link id="zl_new15" source="z_new2" target="z5" type="data_flow" label="Data Flow Documentation to DR Site"/>
+      <Link id="zl_new16" source="z_new2" target="z6" type="data_flow" label="Data Flow Documentation to Content Filtering"/>
+      <Link id="zl_new17" source="z_new2" target="z7" type="data_flow" label="Data Flow Documentation to External Testing"/>
+      <Link id="zl_new18" source="z_new2" target="z8" type="data_flow" label="Data Flow Documentation to Admin Workstations"/>
+      <Link id="zl_new19" source="z_new2" target="z_preserve1" type="data_flow" label="Data Flow Documentation to Asset Management"/>
+      <Link id="zl_new20" source="z_new2" target="z9" type="data_flow" label="Data Flow Documentation to Remote Access"/>
+      <Link id="zl_new21" source="z_new3" target="z7" type="data_flow" label="Penetration Testing to External Testing"/>
+      <Link id="zl_new22" source="z_new3" target="z1" type="data_flow" label="Penetration Testing to DMZ"/>
+      <Link id="zl_new23" source="z_new4" target="z1" type="management" label="Asset Management to DMZ"/>
+      <Link id="zl_new24" source="z_new4" target="z2" type="management" label="Asset Management to Production"/>
+      <Link id="zl_new25" source="z_new4" target="z3" type="management" label="Asset Management to Staging"/>
+      <Link id="zl_new26" source="z_new4" target="z4" type="management" label="Asset Management to Management"/>
+      <Link id="zl_new27" source="z_new4" target="z5" type="management" label="Asset Management to DR Site"/>
+      <Link id="zl_new28" source="z_new4" target="z6" type="management" label="Asset Management to Content Filtering"/>
+      <Link id="zl_new29" source="z_new4" target="z7" type="management" label="Asset Management to External Testing"/>
+      <Link id="zl_new30" source="z_new4" target="z8" type="management" label="Asset Management to Admin Workstations"/>
+      <Link id="zl_new31" source="z_new4" target="z_preserve1" type="management" label="Asset Management to Asset Management"/>
+      <Link id="zl_new32" source="z_new4" target="z9" type="management" label="Asset Management to Remote Access"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n13" target="n17" type="uplink" label="Production to Switch 1"/>
+      <Link id="nl2" source="n17" target="n7" type="uplink" label="Switch 1 to Internal Firewall 1"/>
+      <Link id="nl3" source="n17" target="n8" type="uplink" label="Switch 1 to Internal Firewall 2"/>
+      <Link id="nl4" source="n18" target="n9" type="uplink" label="Switch 2 to Internal Firewall 3"/>
+      <Link id="nl5" source="n18" target="n11" type="uplink" label="Switch 2 to Management Firewall"/>
+      <Link id="nl6" source="n19" target="n10" type="uplink" label="Switch 3 to Staging Server"/>
+      <Link id="nl7" source="n20" target="n12" type="uplink" label="Switch 4 to Management Server"/>
+      <Link id="nl8" source="n16" target="n13" type="uplink" label="Content Filter to Edge Router"/>
+      <Link id="nl9" source="n16" target="n14" type="uplink" label="Content Filter to SIEM"/>
+      <Link id="nl10" source="n21" target="n15" type="uplink" label="DR Switch to DR Router"/>
+      <Link id="nl11" source="n22" target="n13" type="uplink" label="DNS Server 1 to Edge Router"/>
+      <Link id="nl12" source="n23" target="n13" type="uplink" label="DNS Server 2 to Edge Router"/>
+      <Link id="nl13" source="n24" target="n13" type="uplink" label="MFA Server to Edge Router"/>
+      <Link id="nl14" source="n25" target="n13" type="uplink" label="DNS Filter to Edge Router"/>
+      <Link id="nl15" source="n26" target="n13" type="uplink" label="Web Proxy to Edge Router"/>
+      <Link id="nl16" source="n27" target="n13" type="uplink" label="AAA Server to Edge Router"/>
+      <Link id="nl17" source="n28" target="n17" type="uplink" label="NIDS to Switch 1"/>
+      <Link id="nl18" source="n29" target="n17" type="uplink" label="NIPS to Switch 1"/>
+      <Link id="nl19" source="n30" target="n17" type="uplink" label="NAC to Switch 1"/>
+      <Link id="nl20" source="n31" target="n17" type="uplink" label="Application Firewall to Switch 1"/>
+      <Link id="nl21" source="n32" target="n20" type="uplink" label="Admin Workstation 1 to Switch 4"/>
+      <Link id="nl22" source="n33" target="n20" type="uplink" label="Admin Workstation 2 to Switch 4"/>
+      <Link id="nl_struct1" source="n5" target="n_struct1" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct2" source="n5" target="n_struct2" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct3" source="n5" target="n_struct3" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_new1" source="n_new1" target="n1" type="management" label="Manage WAF"/>
+      <Link id="nl_new2" source="n_new1" target="n2" type="management" label="Manage Load Balancer"/>
+      <Link id="nl_new3" source="n_new1" target="n3" type="management" label="Manage Web Server 1"/>
+      <Link id="nl_new4" source="n_new1" target="n4" type="management" label="Manage Web Server 2"/>
+      <Link id="nl_new5" source="n_new1" target="n5" type="management" label="Manage Internal Firewall 1"/>
+      <Link id="nl_new6" source="n_new1" target="n6" type="management" label="Manage Internal Firewall 2"/>
+      <Link id="nl_new7" source="n_new1" target="n7" type="management" label="Manage Application Server"/>
+      <Link id="nl_new8" source="n_new1" target="n8" type="management" label="Manage Database Server"/>
+      <Link id="nl_new9" source="n_new1" target="n9" type="management" label="Manage Internal Firewall 3"/>
+      <Link id="nl_new10" source="n_new1" target="n10" type="management" label="Manage Staging Server"/>
+      <Link id="nl_new11" source="n_new1" target="n11" type="management" label="Manage Management Firewall"/>
+      <Link id="nl_new12" source="n_new1" target="n12" type="management" label="Manage Management Server"/>
+      <Link id="nl_new13" source="n_new1" target="n13" type="management" label="Manage Edge Router"/>
+      <Link id="nl_new14" source="n_new1" target="n14" type="management" label="Manage SIEM"/>
+      <Link id="nl_new15" source="n_new1" target="n15" type="management" label="Manage DR Router"/>
+      <Link id="nl_new16" source="n_new1" target="n16" type="management" label="Manage Content Filter"/>
+      <Link id="nl_new17" source="n_new1" target="n17" type="management" label="Manage Switch 1"/>
+      <Link id="nl_new18" source="n_new1" target="n18" type="management" label="Manage Switch 2"/>
+      <Link id="nl_new19" source="n_new1" target="n19" type="management" label="Manage Switch 3"/>
+      <Link id="nl_new20" source="n_new1" target="n20" type="management" label="Manage Switch 4"/>
+      <Link id="nl_new21" source="n_new1" target="n21" type="management" label="Manage DR Switch"/>
+      <Link id="nl_new22" source="n_new1" target="n22" type="management" label="Manage DNS Server 1"/>
+      <Link id="nl_new23" source="n_new1" target="n23" type="management" label="Manage DNS Server 2"/>
+      <Link id="nl_new24" source="n_new1" target="n24" type="management" label="Manage MFA Server"/>
+      <Link id="nl_new25" source="n_new1" target="n25" type="management" label="Manage DNS Filter"/>
+      <Link id="nl_new26" source="n_new1" target="n26" type="management" label="Manage Web Proxy"/>
+      <Link id="nl_new27" source="n_new1" target="n27" type="management" label="Manage AAA Server"/>
+      <Link id="nl_new28" source="n_new1" target="n28" type="management" label="Manage NIDS"/>
+      <Link id="nl_new29" source="n_new1" target="n29" type="management" label="Manage NIPS"/>
+      <Link id="nl_new30" source="n_new1" target="n30" type="management" label="Manage NAC"/>
+      <Link id="nl_new31" source="n_new1" target="n31" type="management" label="Manage Application Firewall"/>
+      <Link id="nl_new32" source="n_new1" target="n32" type="management" label="Manage Admin Workstation 1"/>
+      <Link id="nl_new33" source="n_new1" target="n33" type="management" label="Manage Admin Workstation 2"/>
+      <Link id="nl_new34" source="n_new1" target="n_struct1" type="management" label="Manage External Testing External Endpoint"/>
+      <Link id="nl_new35" source="n_new1" target="n_struct2" type="management" label="Manage Asset Management Management Service"/>
+      <Link id="nl_new36" source="n_new1" target="n_struct3" type="management" label="Manage Remote Access Management Service"/>
+      <Link id="nl_new37" source="n_new2" target="n1" type="data_flow" label="Document WAF Data Flows"/>
+      <Link id="nl_new38" source="n_new2" target="n2" type="data_flow" label="Document Load Balancer Data Flows"/>
+      <Link id="nl_new39" source="n_new2" target="n3" type="data_flow" label="Document Web Server 1 Data Flows"/>
+      <Link id="nl_new40" source="n_new2" target="n4" type="data_flow" label="Document Web Server 2 Data Flows"/>
+      <Link id="nl_new41" source="n_new2" target="n5" type="data_flow" label="Document Internal Firewall 1 Data Flows"/>
+      <Link id="nl_new42" source="n_new2" target="n6" type="data_flow" label="Document Internal Firewall 2 Data Flows"/>
+      <Link id="nl_new43" source="n_new2" target="n7" type="data_flow" label="Document Application Server Data Flows"/>
+      <Link id="nl_new44" source="n_new2" target="n8" type="data_flow" label="Document Database Server Data Flows"/>
+      <Link id="nl_new45" source="n_new2" target="n9" type="data_flow" label="Document Internal Firewall 3 Data Flows"/>
+      <Link id="nl_new46" source="n_new2" target="n10" type="data_flow" label="Document Staging Server Data Flows"/>
+      <Link id="nl_new47" source="n_new2" target="n11" type="data_flow" label="Document Management Firewall Data Flows"/>
+      <Link id="nl_new48" source="n_new2" target="n12" type="data_flow" label="Document Management Server Data Flows"/>
+      <Link id="nl_new49" source="n_new2" target="n13" type="data_flow" label="Document Edge Router Data Flows"/>
+      <Link id="nl_new50" source="n_new2" target="n14" type="data_flow" label="Document SIEM Data Flows"/>
+      <Link id="nl_new51" source="n_new2" target="n15" type="data_flow" label="Document DR Router Data Flows"/>
+      <Link id="nl_new52" source="n_new2" target="n16" type="data_flow" label="Document Content Filter Data Flows"/>
+      <Link id="nl_new53" source="n_new2" target="n17" type="data_flow" label="Document Switch 1 Data Flows"/>
+      <Link id="nl_new54" source="n_new2" target="n18" type="data_flow" label="Document Switch 2 Data Flows"/>
+      <Link id="nl_new55" source="n_new2" target="n19" type="data_flow" label="Document Switch 3 Data Flows"/>
+      <Link id="nl_new56" source="n_new2" target="n20" type="data_flow" label="Document Switch 4 Data Flows"/>
+      <Link id="nl_new57" source="n_new2" target="n21" type="data_flow" label="Document DR Switch Data Flows"/>
+      <Link id="nl_new58" source="n_new2" target="n22" type="data_flow" label="Document DNS Server 1 Data Flows"/>
+      <Link id="nl_new59" source="n_new2" target="n23" type="data_flow" label="Document DNS Server 2 Data Flows"/>
+      <Link id="nl_new60" source="n_new2" target="n24" type="data_flow" label="Document MFA Server Data Flows"/>
+      <Link id="nl_new61" source="n_new2" target="n25" type="data_flow" label="Document DNS Filter Data Flows"/>
+      <Link id="nl_new62" source="n_new2" target="n26" type="data_flow" label="Document Web Proxy Data Flows"/>
+      <Link id="nl_new63" source="n_new2" target="n27" type="data_flow" label="Document AAA Server Data Flows"/>
+      <Link id="nl_new64" source="n_new2" target="n28" type="data_flow" label="Document NIDS Data Flows"/>
+      <Link id="nl_new65" source="n_new2" target="n29" type="data_flow" label="Document NIPS Data Flows"/>
+      <Link id="nl_new66" source="n_new2" target="n30" type="data_flow" label="Document NAC Data Flows"/>
+      <Link id="nl_new67" source="n_new2" target="n31" type="data_flow" label="Document Application Firewall Data Flows"/>
+      <Link id="nl_new68" source="n_new2" target="n32" type="data_flow" label="Document Admin Workstation 1 Data Flows"/>
+      <Link id="nl_new69" source="n_new2" target="n33" type="data_flow" label="Document Admin Workstation 2 Data Flows"/>
+      <Link id="nl_new70" source="n_new2" target="n_struct1" type="data_flow" label="Document External Testing External Endpoint Data Flows"/>
+      <Link id="nl_new71" source="n_new2" target="n_struct2" type="data_flow" label="Document Asset Management Management Service Data Flows"/>
+      <Link id="nl_new72" source="n_new2" target="n_struct3" type="data_flow" label="Document Remote Access Management Service Data Flows"/>
+      <Link id="nl_new73" source="n_new3" target="n_struct3" type="vpn" label="Remote Access via VPN"/>
+      <Link id="nl_new74" source="n_new3" target="n5" type="vpn" label="Internal Firewall via VPN"/>
+      <Link id="nl_new75" source="n_new4" target="n_struct3" type="management" label="Manage Remote Access Policies"/>
+      <Link id="nl_new76" source="n_new4" target="n5" type="management" label="Manage Internal Firewall Policies"/>
+      <Link id="nl_new77" source="n_new5" target="n_struct1" type="data_flow" label="Pen Test External Endpoint"/>
+      <Link id="nl_new78" source="n_new5" target="n1" type="data_flow" label="Pen Test WAF"/>
+      <Link id="nl_new79" source="n_new6" target="n1" type="management" label="Manage WAF"/>
+      <Link id="nl_new80" source="n_new6" target="n2" type="management" label="Manage Load Balancer"/>
+      <Link id="nl_new81" source="n_new6" target="n3" type="management" label="Manage Web Server 1"/>
+      <Link id="nl_new82" source="n_new6" target="n4" type="management" label="Manage Web Server 2"/>
+      <Link id="nl_new83" source="n_new6" target="n5" type="management" label="Manage Internal Firewall 1"/>
+      <Link id="nl_new84" source="n_new6" target="n6" type="management" label="Manage Internal Firewall 2"/>
+      <Link id="nl_new85" source="n_new6" target="n7" type="management" label="Manage Application Server"/>
+      <Link id="nl_new86" source="n_new6" target="n8" type="management" label="Manage Database Server"/>
+      <Link id="nl_new87" source="n_new6" target="n9" type="management" label="Manage Internal Firewall 3"/>
+      <Link id="nl_new88" source="n_new6" target="n10" type="management" label="Manage Staging Server"/>
+      <Link id="nl_new89" source="n_new6" target="n11" type="management" label="Manage Management Firewall"/>
+      <Link id="nl_new90" source="n_new6" target="n12" type="management" label="Manage Management Server"/>
+      <Link id="nl_new91" source="n_new6" target="n13" type="management" label="Manage Edge Router"/>
+      <Link id="nl_new92" source="n_new6" target="n14" type="management" label="Manage SIEM"/>
+      <Link id="nl_new93" source="n_new6" target="n15" type="management" label="Manage DR Router"/>
+      <Link id="nl_new94" source="n_new6" target="n16" type="management" label="Manage Content Filter"/>
+      <Link id="nl_new95" source="n_new6" target="n17" type="management" label="Manage Switch 1"/>
+      <Link id="nl_new96" source="n_new6" target="n18" type="management" label="Manage Switch 2"/>
+      <Link id="nl_new97" source="n_new6" target="n19" type="management" label="Manage Switch 3"/>
+      <Link id="nl_new98" source="n_new6" target="n20" type="management" label="Manage Switch 4"/>
+      <Link id="nl_new99" source="n_new6" target="n21" type="management" label="Manage DR Switch"/>
+      <Link id="nl_new100" source="n_new6" target="n22" type="management" label="Manage DNS Server 1"/>
+      <Link id="nl_new101" source="n_new6" target="n23" type="management" label="Manage DNS Server 2"/>
+      <Link id="nl_new102" source="n_new6" target="n24" type="management" label="Manage MFA Server"/>
+      <Link id="nl_new103" source="n_new6" target="n25" type="management" label="Manage DNS Filter"/>
+      <Link id="nl_new104" source="n_new6" target="n26" type="management" label="Manage Web Proxy"/>
+      <Link id="nl_new105" source="n_new6" target="n27" type="management" label="Manage AAA Server"/>
+      <Link id="nl_new106" source="n_new6" target="n28" type="management" label="Manage NIDS"/>
+      <Link id="nl_new107" source="n_new6" target="n29" type="management" label="Manage NIPS"/>
+      <Link id="nl_new108" source="n_new6" target="n30" type="management" label="Manage NAC"/>
+      <Link id="nl_new109" source="n_new6" target="n31" type="management" label="Manage Application Firewall"/>
+      <Link id="nl_new110" source="n_new6" target="n32" type="management" label="Manage Admin Workstation 1"/>
+      <Link id="nl_new111" source="n_new6" target="n33" type="management" label="Manage Admin Workstation 2"/>
+      <Link id="nl_new112" source="n_new6" target="n_struct1" type="management" label="Manage External Testing External Endpoint"/>
+      <Link id="nl_new113" source="n_new6" target="n_struct2" type="management" label="Manage Asset Management Management Service"/>
+      <Link id="nl_new114" source="n_new6" target="n_struct3" type="management" label="Manage Remote Access Management Service"/>
+      <Link id="nl_new115" source="n13" target="n7" type="routing" label="DMZ to Application Server"/>
+      <Link id="nl_new116" source="n13" target="n8" type="routing" label="DMZ to Database Server"/>
+      <Link id="nl_new117" source="n13" target="n28" type="routing" label="DMZ to NIDS"/>
+      <Link id="nl_new118" source="n13" target="n29" type="routing" label="DMZ to NIPS"/>
+      <Link id="nl_new119" source="n13" target="n30" type="routing" label="DMZ to NAC"/>
+      <Link id="nl_new120" source="n13" target="n31" type="routing" label="DMZ to Application Firewall"/>
+      <Link id="nl_new121" source="n13" target="n14" type="routing" label="DMZ to SIEM"/>
+      <Link id="nl_new122" source="n13" target="n15" type="routing" label="DMZ to DR Router"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n7" protocol="tcp" port="80">
+      <Reason>DMZ to Application Server HTTP access</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n8" protocol="tcp" port="3306">
+      <Reason>DMZ to Database Server MySQL access</Reason>
+    </Allow>
+    <Allow id="tc3" src_zone="z1" dst_zone="z6" src_node="n13" dst_node="n16" protocol="tcp" port="8080">
+      <Reason>DMZ to Content Filter HTTP proxy access</Reason>
+    </Allow>
+    <Allow id="tc4" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n28" protocol="tcp" port="443">
+      <Reason>DMZ to NIDS HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc5" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n29" protocol="tcp" port="443">
+      <Reason>DMZ to NIPS HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc6" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n30" protocol="tcp" port="443">
+      <Reason>DMZ to NAC HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc7" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n31" protocol="tcp" port="443">
+      <Reason>DMZ to Application Firewall HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc8" src_zone="z1" dst_zone="z1" src_node="n13" dst_node="n14" protocol="tcp" port="443">
+      <Reason>DMZ to SIEM HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z1" dst_zone="z5" src_node="n13" dst_node="n15" protocol="tcp" port="443">
+      <Reason>DMZ to DR Router HTTPS access</Reason>
+    </Allow>
+    <Deny id="tc10" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n7" protocol="tcp" port="22">
+      <Reason>DMZ to Application Server SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc11" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n8" protocol="tcp" port="22">
+      <Reason>DMZ to Database Server SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc12" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n28" protocol="tcp" port="22">
+      <Reason>DMZ to NIDS SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc13" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n29" protocol="tcp" port="22">
+      <Reason>DMZ to NIPS SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc14" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n30" protocol="tcp" port="22">
+      <Reason>DMZ to NAC SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc15" src_zone="z1" dst_zone="z2" src_node="n13" dst_node="n31" protocol="tcp" port="22">
+      <Reason>DMZ to Application Firewall SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc16" src_zone="z1" dst_zone="z1" src_node="n13" dst_node="n14" protocol="tcp" port="22">
+      <Reason>DMZ to SIEM SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc17" src_zone="z1" dst_zone="z5" src_node="n13" dst_node="n15" protocol="tcp" port="22">
+      <Reason>DMZ to DR Router SSH access blocked</Reason>
+    </Deny>
+    <Allow id="tc18" src_zone="z2" dst_zone="z3" src_node="n7" dst_node="n10" protocol="tcp" port="80">
+      <Reason>Production to Staging HTTP access</Reason>
+    </Allow>
+    <Allow id="tc19" src_zone="z2" dst_zone="z4" src_node="n7" dst_node="n12" protocol="tcp" port="443">
+      <Reason>Production to Management HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc20" src_zone="z2" dst_zone="z6" src_node="n7" dst_node="n16" protocol="tcp" port="8080">
+      <Reason>Production to Content Filter HTTP proxy access</Reason>
+    </Allow>
+    <Allow id="tc21" src_zone="z2" dst_zone="z2" src_node="n7" dst_node="n8" protocol="tcp" port="3306">
+      <Reason>Production to Database Server MySQL access</Reason>
+    </Allow>
+    <Allow id="tc22" src_zone="z2" dst_zone="z2" src_node="n7" dst_node="n28" protocol="tcp" port="443">
+      <Reason>Production to NIDS HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc23" src_zone="z2" dst_zone="z2" src_node="n7" dst_node="n29" protocol="tcp" port="443">
+      <Reason>Production to NIPS HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc24" src_zone="z2" dst_zone="z2" src_node="n7" dst_node="n30" protocol="tcp" port="443">
+      <Reason>Production to NAC HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc25" src_zone="z2" dst_zone="z2" src_node="n7" dst_node="n31" protocol="tcp" port="443">
+      <Reason>Production to Application Firewall HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc26" src_zone="z2" dst_zone="z1" src_node="n7" dst_node="n14" protocol="tcp" port="443">
+      <Reason>Production to SIEM HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc27" src_zone="z2" dst_zone="z5" src_node="n7" dst_node="n15" protocol="tcp" port="443">
+      <Reason>Production to DR Router HTTPS access</Reason>
+    </Allow>
+    <Deny id="tc28" src_zone="z2" dst_zone="z3" src_node="n7" dst_node="n10" protocol="tcp" port="22">
+      <Reason>Production to Staging SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc29" src_zone="z2" dst_zone="z4" src_node="n7" dst_node="n12" protocol="tcp" port="22">
+      <Reason>Production to Management SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc30" src_zone="z2" dst_zone="z6" src_node="n7" dst_node="n16" protocol="tcp" port="22">
+      <Reason>Production to Content Filter SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc31" src_zone="z2" dst_zone="z2" src_node="n7" dst_node="n8" protocol="tcp" port="22">
+      <Reason>Production to Database Server SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc32" src_zone="z2" dst_zone="z2" src_node="n7" dst_node="n28" protocol="tcp" port="22">
+      <Reason>Production to NIDS SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc33" src_zone="z2" dst_zone="z2" src_node="n7" dst_node="n29" protocol="tcp" port="22">
+      <Reason>Production to NIPS SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc34" src_zone="z2" dst_zone="z2" src_node="n7" dst_node="n30" protocol="tcp" port="22">
+      <Reason>Production to NAC SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc35" src_zone="z2" dst_zone="z2" src_node="n7" dst_node="n31" protocol="tcp" port="22">
+      <Reason>Production to Application Firewall SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc36" src_zone="z2" dst_zone="z1" src_node="n7" dst_node="n14" protocol="tcp" port="22">
+      <Reason>Production to SIEM SSH access blocked</Reason>
+    </Deny>
+    <Deny id="tc37" src_zone="z2" dst_zone="z5" src_node="n7" dst_node="n15" protocol="tcp" port="22">
+      <Reason>Production to DR Router SSH access blocked</Reason>
+    </Deny>
+    <Allow id="tc38" src_zone="z4" dst_zone="z2" src_node="n12" dst_node="n7" protocol="tcp" port="443">
+      <Reason>Management to Application Server HTTPS access</Reason>
+    </Allow>
+    <Allow id="tc39" src_zone="z4" dst_zone="z2" src_node="n12" dst_node="n8" protocol="tcp" port="3306">
+      <Reason>Management to Database Server MySQL access</Reason>
+    </Allow>
+    <Allow id="tc40" src_zone="z4" dst_zone="z2" src_node="n12" dst_node="n28" protocol="tcp" port="443">
+      <Reason>Management to NIDS HTTPS access</Reason>
+    </Allow>
+  </Policies>
+  <Compliance ig_level="IG3" all_required_satisfied="true">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple zones and nodes, including servers, firewalls, and management systems, which strongly imply an asset inventory is maintained.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Data Flow Documentation' zone with a server and numerous data flow links, indicating that data flows are documented.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones for DMZ, Production, Staging, and Management, which implies segmentation based on data sensitivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes internal firewalls (n5, n6, n9, n11) and a WAF (n1), which are used to protect servers in different zones.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes DNS servers (n22, n23) and links to various nodes, indicating that trusted DNS servers are configured.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an MFA server (n24) and a remote access management service (n_struct3), indicating that MFA is required for remote access.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a DNS filter (n25) and a web proxy (n26), which are used to filter DNS requests.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a web proxy (n26) and links to various nodes, indicating that URL filtering is enforced.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a well-defined network architecture with DMZ, production, staging, and management zones, and redundant connectivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an AAA server (n27) and management links to various nodes, indicating secure management of network infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an AAA server (n27) and links to various nodes, indicating centralized AAA.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a VPN service (n_new3) and links to the remote access management service (n_struct3) and internal firewall (n5), indicating that remote devices use a VPN and connect to the AAA infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.8" title="Establish and Maintain Dedicated Computing Resources for All Administrative Work" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a dedicated management zone (z4) with a management server (n12) and admin workstations (n32, n33), indicating dedicated computing resources for administrative tasks.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a NIDS (n28) and links to various nodes, indicating that a network intrusion detection solution is deployed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes internal firewalls (n5, n6, n9, n11) and links between different zones, indicating traffic filtering between network segments.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an MFA server (n24), a remote access management service (n_struct3), and links to various nodes, indicating that access control for remote assets is managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a SIEM (n14) and links to various nodes, indicating that network traffic flow logs are collected.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.8" title="Deploy a Network Intrusion Prevention Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a NIPS (n29) and links to various nodes, indicating that a network intrusion prevention solution is deployed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.9" title="Deploy Port-Level Access Control" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a NAC (n30) and links to various nodes, indicating that port-level access control is deployed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.10" title="Perform Application Layer Filtering" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an application firewall (n31) and links to various nodes, indicating that application layer filtering is performed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones for production (z2) and non-production (z3, z4, z5), indicating separation of production and non-production systems.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a penetration testing service (n_new5) and links to various nodes, indicating that periodic external penetration tests are performed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="0" controls="stage4_structural_integrity,stage4_ig_consistency" zones_added="2" nodes_added="3" zone_links_added="0" node_links_added="3"/>
+    <Repair round="1" controls="1.1,3.8,12.7,13.5,18.2" zones_added="3" nodes_added="5" zone_links_added="22" node_links_added="78"/>
+    <Repair round="2" controls="1.1" zones_added="1" nodes_added="1" zone_links_added="10" node_links_added="36"/>
+    <Repair round="4" controls="stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation" zones_added="0" nodes_added="0" zone_links_added="0" node_links_added="8"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

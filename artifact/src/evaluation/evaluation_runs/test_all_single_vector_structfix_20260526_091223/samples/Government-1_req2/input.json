@@ -1,0 +1,6 @@
+{
+  "sample_id": "Government-1_req2",
+  "template_id": "Government-1",
+  "user_intent": "Please design a hierarchical network architecture. This should include a secure Internet Edge zone with a firewall, a three-tier data center, and a WAN to connect our remote sites. We have a regional office and a branch office that need to be connected. The Internet Edge must handle remote access VPNs and have appliances for application-layer security. The remote sites should have their own local routing and switching.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

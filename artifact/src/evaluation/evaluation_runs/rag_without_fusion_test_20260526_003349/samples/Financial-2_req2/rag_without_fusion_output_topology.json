@@ -1,0 +1,174 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Healthcare-3",
+  "title": "Hospital Network Topology",
+  "description": "Network infrastructure for a hospital system with multiple campuses and data centers connected via a central transit network.",
+  "scenario": "hospital",
+  "topology_summary": "The topology includes two hospital regions with multiple campuses, two data centers providing core services, and a branch clinic site. All sites are interconnected via an SDA/IP Transit network, which also connects to the Internet.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Data Center 1",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Data Center 2",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Clinic Branches",
+      "zone_type": "campus"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Hospital Region 1",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Hospital Region 2",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z7",
+      "name": "SDA Transit or IP Transit",
+      "zone_type": "other"
+    },
+    {
+      "zone_id": "z8",
+      "name": "Internet",
+      "zone_type": "external"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "DHCP DNS AD",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "DNAC",
+      "normalized_type": "other",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "ISE",
+      "normalized_type": "identity_server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "DHCP DNS AD",
+      "normalized_type": "server",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n5",
+      "name": "DNAC",
+      "normalized_type": "other",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n6",
+      "name": "Access Point",
+      "normalized_type": "access_point",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n7",
+      "name": "Wireless Controller",
+      "normalized_type": "wireless_controller",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n8",
+      "name": "Medium Campus",
+      "normalized_type": "workload",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n9",
+      "name": "AnchorSite",
+      "normalized_type": "workload",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n10",
+      "name": "Large Main Campus",
+      "normalized_type": "workload",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n11",
+      "name": "Campus",
+      "normalized_type": "workload",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n12",
+      "name": "Clinics",
+      "normalized_type": "workload",
+      "zone_id": "z5"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl4",
+        "source": "n6",
+        "target": "n7",
+        "link_type": "wireless",
+        "label": "wireless connection"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z7",
+        "link_type": "uplink",
+        "label": "transit link"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z2",
+        "target": "z7",
+        "link_type": "uplink",
+        "label": "transit link"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z3",
+        "target": "z7",
+        "link_type": "uplink",
+        "label": "transit link"
+      },
+      {
+        "link_id": "zl4",
+        "source": "z4",
+        "target": "z7",
+        "link_type": "uplink",
+        "label": "transit link"
+      },
+      {
+        "link_id": "zl5",
+        "source": "z5",
+        "target": "z7",
+        "link_type": "uplink",
+        "label": "transit link"
+      },
+      {
+        "link_id": "zl7",
+        "source": "z7",
+        "target": "z8",
+        "link_type": "uplink",
+        "label": "internet link"
+      }
+    ]
+  }
+}

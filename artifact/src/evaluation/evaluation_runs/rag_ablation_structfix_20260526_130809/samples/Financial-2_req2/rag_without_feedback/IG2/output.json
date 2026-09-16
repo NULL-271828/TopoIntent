@@ -1,0 +1,2036 @@
+{
+  "sample_id": "Financial-2_req2",
+  "gt_template_id": "Financial-2",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-2_req2",
+    "title": "Financial Data Ingestion Network",
+    "description": "A network designed for ingesting financial data feeds and processing them in dedicated market data pods before distributing to three campus sites.",
+    "scenario": "finance",
+    "topology_summary": "The network includes dedicated pods for data ingestion and processing, with each pod containing feed handlers, analytics workloads, and execution engines. The processed data is then distributed to three campus sites, each equipped with a switch and connected via trunk links for inter-site communication.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Ingestion Pod",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Market Data Pod 1",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Market Data Pod 2",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Campus Site 1",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Campus Site 2",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Campus Site 3",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Security Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Non-Production Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z10",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z11",
+        "name": "Asset Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z12",
+        "name": "Remote Access Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z13",
+        "name": "Pen Testing Zone",
+        "zone_type": "security"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Ingestion Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Feed Handler 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Analytics Workload 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n4",
+        "name": "Execution Engine 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n5",
+        "name": "Feed Handler 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n6",
+        "name": "Analytics Workload 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n7",
+        "name": "Execution Engine 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n8",
+        "name": "Switch 1",
+        "normalized_type": "switch",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n9",
+        "name": "Switch 2",
+        "normalized_type": "switch",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n10",
+        "name": "Switch 3",
+        "normalized_type": "switch",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n11",
+        "name": "Firewall 1",
+        "normalized_type": "firewall",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n12",
+        "name": "Firewall 2",
+        "normalized_type": "firewall",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n13",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n14",
+        "name": "MFA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n15",
+        "name": "DNS Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n16",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n17",
+        "name": "Central AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n18",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n19",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n20",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n21",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n22",
+        "name": "Bastion Host",
+        "normalized_type": "bastion",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n23",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n24",
+        "name": "Pen Test Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Non-Production Zone Application Server",
+        "normalized_type": "server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n25",
+        "name": "Asset Inventory System",
+        "normalized_type": "server",
+        "zone_id": "z11"
+      },
+      {
+        "node_id": "n26",
+        "name": "VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z12"
+      },
+      {
+        "node_id": "n27",
+        "name": "Remote Access Control",
+        "normalized_type": "identity_server",
+        "zone_id": "z12"
+      },
+      {
+        "node_id": "n28",
+        "name": "Pen Testing Service",
+        "normalized_type": "other",
+        "zone_id": "z13"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl_new1",
+          "source": "n1",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Ingestion to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n1",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Ingestion to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new3",
+          "source": "n2",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Feed Handler 1 to Analytics Workload 1"
+        },
+        {
+          "link_id": "nl_new4",
+          "source": "n3",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Analytics Workload 1 to Execution Engine 1"
+        },
+        {
+          "link_id": "nl_new5",
+          "source": "n5",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Feed Handler 2 to Analytics Workload 2"
+        },
+        {
+          "link_id": "nl_new6",
+          "source": "n6",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Analytics Workload 2 to Execution Engine 2"
+        },
+        {
+          "link_id": "nl_new7",
+          "source": "n4",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Execution Engine 1 to Switch 1"
+        },
+        {
+          "link_id": "nl_new8",
+          "source": "n7",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Execution Engine 2 to Switch 2"
+        },
+        {
+          "link_id": "nl_new9",
+          "source": "n7",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Execution Engine 2 to Switch 3"
+        },
+        {
+          "link_id": "nl_new10",
+          "source": "n11",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Ingress to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new11",
+          "source": "n11",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Ingress to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new12",
+          "source": "n11",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Ingress to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new13",
+          "source": "n12",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Egress from Execution Engine 1"
+        },
+        {
+          "link_id": "nl_new14",
+          "source": "n12",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Egress from Execution Engine 2"
+        },
+        {
+          "link_id": "nl_new15",
+          "source": "n13",
+          "target": "n1",
+          "link_type": "management",
+          "label": "DNS to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new16",
+          "source": "n13",
+          "target": "n2",
+          "link_type": "management",
+          "label": "DNS to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new17",
+          "source": "n13",
+          "target": "n5",
+          "link_type": "management",
+          "label": "DNS to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new18",
+          "source": "n14",
+          "target": "n22",
+          "link_type": "management",
+          "label": "MFA to Bastion Host"
+        },
+        {
+          "link_id": "nl_new19",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS Filtering to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new20",
+          "source": "n15",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "DNS Filtering to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new21",
+          "source": "n15",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "DNS Filtering to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new22",
+          "source": "n16",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "URL Filtering to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new23",
+          "source": "n16",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "URL Filtering to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new24",
+          "source": "n16",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "URL Filtering to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new25",
+          "source": "n17",
+          "target": "n11",
+          "link_type": "management",
+          "label": "AAA to Firewall 1"
+        },
+        {
+          "link_id": "nl_new26",
+          "source": "n17",
+          "target": "n12",
+          "link_type": "management",
+          "label": "AAA to Firewall 2"
+        },
+        {
+          "link_id": "nl_new27",
+          "source": "n18",
+          "target": "n11",
+          "link_type": "monitoring",
+          "label": "NIDS to Firewall 1"
+        },
+        {
+          "link_id": "nl_new28",
+          "source": "n18",
+          "target": "n12",
+          "link_type": "monitoring",
+          "label": "NIDS to Firewall 2"
+        },
+        {
+          "link_id": "nl_new29",
+          "source": "n19",
+          "target": "n11",
+          "link_type": "monitoring",
+          "label": "SIEM to Firewall 1"
+        },
+        {
+          "link_id": "nl_new30",
+          "source": "n19",
+          "target": "n12",
+          "link_type": "monitoring",
+          "label": "SIEM to Firewall 2"
+        },
+        {
+          "link_id": "nl_new31",
+          "source": "n20",
+          "target": "n11",
+          "link_type": "management",
+          "label": "NAC to Firewall 1"
+        },
+        {
+          "link_id": "nl_new32",
+          "source": "n20",
+          "target": "n12",
+          "link_type": "management",
+          "label": "NAC to Firewall 2"
+        },
+        {
+          "link_id": "nl_new33",
+          "source": "n21",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "App-Layer Filtering to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new34",
+          "source": "n21",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "App-Layer Filtering to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new35",
+          "source": "n21",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "App-Layer Filtering to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new36",
+          "source": "n22",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Bastion to Firewall 1"
+        },
+        {
+          "link_id": "nl_new37",
+          "source": "n22",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Bastion to Firewall 2"
+        },
+        {
+          "link_id": "nl_new38",
+          "source": "n23",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Admin Workstation to AAA Server"
+        },
+        {
+          "link_id": "nl_new39",
+          "source": "n24",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Pen Test to Campus Site 3"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n11",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_new40",
+          "source": "n25",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Inventory to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new41",
+          "source": "n25",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Inventory to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new42",
+          "source": "n25",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Inventory to Analytics Workload 1"
+        },
+        {
+          "link_id": "nl_new43",
+          "source": "n25",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Inventory to Execution Engine 1"
+        },
+        {
+          "link_id": "nl_new44",
+          "source": "n25",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Inventory to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new45",
+          "source": "n25",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Inventory to Analytics Workload 2"
+        },
+        {
+          "link_id": "nl_new46",
+          "source": "n25",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Inventory to Execution Engine 2"
+        },
+        {
+          "link_id": "nl_new47",
+          "source": "n25",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Inventory to Switch 1"
+        },
+        {
+          "link_id": "nl_new48",
+          "source": "n25",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Inventory to Switch 2"
+        },
+        {
+          "link_id": "nl_new49",
+          "source": "n25",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Inventory to Switch 3"
+        },
+        {
+          "link_id": "nl_new50",
+          "source": "n25",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Inventory to Firewall 1"
+        },
+        {
+          "link_id": "nl_new51",
+          "source": "n25",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Inventory to Firewall 2"
+        },
+        {
+          "link_id": "nl_new52",
+          "source": "n25",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Inventory to DNS Server"
+        },
+        {
+          "link_id": "nl_new53",
+          "source": "n25",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Inventory to MFA Server"
+        },
+        {
+          "link_id": "nl_new54",
+          "source": "n25",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Inventory to DNS Filter"
+        },
+        {
+          "link_id": "nl_new55",
+          "source": "n25",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Inventory to Web Proxy"
+        },
+        {
+          "link_id": "nl_new56",
+          "source": "n25",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Inventory to Central AAA Server"
+        },
+        {
+          "link_id": "nl_new57",
+          "source": "n25",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Inventory to NIDS"
+        },
+        {
+          "link_id": "nl_new58",
+          "source": "n25",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Inventory to SIEM"
+        },
+        {
+          "link_id": "nl_new59",
+          "source": "n25",
+          "target": "n20",
+          "link_type": "management",
+          "label": "Inventory to NAC"
+        },
+        {
+          "link_id": "nl_new60",
+          "source": "n25",
+          "target": "n21",
+          "link_type": "management",
+          "label": "Inventory to Application Firewall"
+        },
+        {
+          "link_id": "nl_new61",
+          "source": "n25",
+          "target": "n22",
+          "link_type": "management",
+          "label": "Inventory to Bastion Host"
+        },
+        {
+          "link_id": "nl_new62",
+          "source": "n25",
+          "target": "n23",
+          "link_type": "management",
+          "label": "Inventory to Admin Workstation"
+        },
+        {
+          "link_id": "nl_new63",
+          "source": "n25",
+          "target": "n24",
+          "link_type": "management",
+          "label": "Inventory to Pen Test Workstation"
+        },
+        {
+          "link_id": "nl_new64",
+          "source": "n25",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Inventory to Non-Production Zone Application Server"
+        },
+        {
+          "link_id": "nl_new65",
+          "source": "n26",
+          "target": "n22",
+          "link_type": "vpn",
+          "label": "Bastion to VPN Gateway"
+        },
+        {
+          "link_id": "nl_new66",
+          "source": "n26",
+          "target": "n11",
+          "link_type": "vpn",
+          "label": "Firewall 1 to VPN Gateway"
+        },
+        {
+          "link_id": "nl_new67",
+          "source": "n26",
+          "target": "n12",
+          "link_type": "vpn",
+          "label": "Firewall 2 to VPN Gateway"
+        },
+        {
+          "link_id": "nl_new68",
+          "source": "n27",
+          "target": "n20",
+          "link_type": "management",
+          "label": "NAC to Remote Access Control"
+        },
+        {
+          "link_id": "nl_new69",
+          "source": "n27",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Firewall 1 to Remote Access Control"
+        },
+        {
+          "link_id": "nl_new70",
+          "source": "n27",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Firewall 2 to Remote Access Control"
+        },
+        {
+          "link_id": "nl_new71",
+          "source": "n28",
+          "target": "n24",
+          "link_type": "data_flow",
+          "label": "Pen Test Workstation to Pen Testing Service"
+        },
+        {
+          "link_id": "nl_new72",
+          "source": "n28",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Pen Testing Service to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new73",
+          "source": "n28",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Pen Testing Service to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new74",
+          "source": "n28",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Pen Testing Service to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new75",
+          "source": "n28",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Pen Testing Service to Switch 1"
+        },
+        {
+          "link_id": "nl_new76",
+          "source": "n28",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Pen Testing Service to Switch 2"
+        },
+        {
+          "link_id": "nl_new77",
+          "source": "n28",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Pen Testing Service to Switch 3"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl_new1",
+          "source": "z4",
+          "target": "z5",
+          "link_type": "trunk",
+          "label": "Trunk Link between Campus Site 1 and Campus Site 2"
+        },
+        {
+          "link_id": "zl_new2",
+          "source": "z5",
+          "target": "z6",
+          "link_type": "trunk",
+          "label": "Trunk Link between Campus Site 2 and Campus Site 3"
+        },
+        {
+          "link_id": "zl_new3",
+          "source": "z4",
+          "target": "z6",
+          "link_type": "trunk",
+          "label": "Trunk Link between Campus Site 1 and Campus Site 3"
+        },
+        {
+          "link_id": "zl_new4",
+          "source": "z1",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "Ingestion Pod to Security Zone"
+        },
+        {
+          "link_id": "zl_new5",
+          "source": "z2",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "Market Data Pod 1 to Security Zone"
+        },
+        {
+          "link_id": "zl_new6",
+          "source": "z3",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "Market Data Pod 2 to Security Zone"
+        },
+        {
+          "link_id": "zl_new7",
+          "source": "z4",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "Campus Site 1 to Security Zone"
+        },
+        {
+          "link_id": "zl_new8",
+          "source": "z5",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "Campus Site 2 to Security Zone"
+        },
+        {
+          "link_id": "zl_new9",
+          "source": "z6",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "Campus Site 3 to Security Zone"
+        },
+        {
+          "link_id": "zl_new10",
+          "source": "z7",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Management Zone to Security Zone"
+        },
+        {
+          "link_id": "zl_new11",
+          "source": "z9",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "Non-Production Zone to Security Zone"
+        },
+        {
+          "link_id": "zl_new12",
+          "source": "z10",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "External Testing Zone to Security Zone"
+        },
+        {
+          "link_id": "zl_new13",
+          "source": "z11",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Asset Management to Security Zone"
+        },
+        {
+          "link_id": "zl_new14",
+          "source": "z12",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Remote Access to Security Zone"
+        },
+        {
+          "link_id": "zl_new15",
+          "source": "z13",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "Pen Testing to Security Zone"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-2_req2",
+    "ig_level": "IG2",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Inventory System' (n25) that manages inventory for various nodes across different zones, indicating a detailed asset inventory is maintained.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes numerous data flow links (e.g., nl_new1, nl_new2, etc.) that document data flows between different nodes and zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for different types of data processing and storage, such as 'Ingestion Pod', 'Market Data Pod 1', 'Market Data Pod 2', and 'Non-Production Zone'.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n11, n12) that manage data flows to and from various servers and workloads.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS server (n13) that provides DNS services to various nodes (e.g., n1, n2, n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA server (n14) and a remote access control server (n27) that manage remote access to the network.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS filter (n15) that provides DNS filtering services to various nodes (e.g., n1, n2, n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a web proxy (n16) that enforces URL filtering for various nodes (e.g., n1, n2, n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (e.g., z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, z11, z12, z13) and links that demonstrate a segmented and secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes secure network infrastructure components such as firewalls (n11, n12), DNS server (n13), and central AAA server (n17).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a central AAA server (n17) that manages authentication, authorization, and auditing for various network components.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a VPN gateway (n26) and remote access control (n27) that ensure remote devices connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIDS (n18) that monitors network traffic for intrusions.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n11, n12) that perform traffic filtering between different network segments (e.g., z1, z2, z3, z4, z5, z6, z8).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes remote access control (n27) and NAC (n20) that manage access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a SIEM (n19) that collects network traffic flow logs from various network devices (e.g., n11, n12).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Non-Production Zone' (z9) that is separate from other production zones (e.g., z1, z2, z3).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a pen testing workstation (n24) and pen testing service (n28) that perform external penetration tests on various network components.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z9\", \"name\": \"Non-Production Zone\", \"zone_type\": \"data_center\"}",
+          "missing_reason": "Zone z9 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Non-Production Zone Application Server",
+            "normalized_type": "server",
+            "zone_id": "z9"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n11",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 10,
+        "nodes": 24,
+        "zone_links": 12,
+        "node_links": 39
+      },
+      "counts_after": {
+        "zones": 10,
+        "nodes": 25,
+        "zone_links": 12,
+        "node_links": 40
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 1,
+        "zone_links": 0,
+        "node_links": 1
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of an asset inventory system or process.",
+          "missing_reason": "No explicit evidence of an asset inventory system or process.",
+          "repair_suggestion": "Add a node representing an asset inventory system and links to all nodes to indicate inventory management."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a bastion host (n22) and links to firewalls, but there is no explicit evidence of a VPN.",
+          "missing_reason": "No explicit evidence of a VPN.",
+          "repair_suggestion": "Add a node representing a VPN and links to the bastion host and firewalls."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a NAC (n20) and links to firewalls, but there is no explicit evidence of access control for remote assets.",
+          "missing_reason": "No explicit evidence of access control for remote assets.",
+          "repair_suggestion": "Add a node representing a remote access control system and links to the NAC and firewalls."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a pen test workstation (n24) and links to a campus site, but there is no explicit evidence of periodic external penetration tests.",
+          "missing_reason": "No explicit evidence of periodic external penetration tests.",
+          "repair_suggestion": "Add a node representing a penetration testing service and links to the pen test workstation and other relevant nodes."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z11",
+            "name": "Asset Management Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z12",
+            "name": "Remote Access Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z13",
+            "name": "Pen Testing Zone",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n25",
+            "name": "Asset Inventory System",
+            "normalized_type": "server",
+            "zone_id": "z11"
+          },
+          {
+            "node_id": "n26",
+            "name": "VPN Gateway",
+            "normalized_type": "vpn_gateway",
+            "zone_id": "z12"
+          },
+          {
+            "node_id": "n27",
+            "name": "Remote Access Control",
+            "normalized_type": "identity_server",
+            "zone_id": "z12"
+          },
+          {
+            "node_id": "n28",
+            "name": "Pen Testing Service",
+            "normalized_type": "other",
+            "zone_id": "z13"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new40",
+              "source": "n25",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Inventory to Ingestion Server"
+            },
+            {
+              "link_id": "nl_new41",
+              "source": "n25",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Inventory to Feed Handler 1"
+            },
+            {
+              "link_id": "nl_new42",
+              "source": "n25",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Inventory to Analytics Workload 1"
+            },
+            {
+              "link_id": "nl_new43",
+              "source": "n25",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Inventory to Execution Engine 1"
+            },
+            {
+              "link_id": "nl_new44",
+              "source": "n25",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Inventory to Feed Handler 2"
+            },
+            {
+              "link_id": "nl_new45",
+              "source": "n25",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Inventory to Analytics Workload 2"
+            },
+            {
+              "link_id": "nl_new46",
+              "source": "n25",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Inventory to Execution Engine 2"
+            },
+            {
+              "link_id": "nl_new47",
+              "source": "n25",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Inventory to Switch 1"
+            },
+            {
+              "link_id": "nl_new48",
+              "source": "n25",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Inventory to Switch 2"
+            },
+            {
+              "link_id": "nl_new49",
+              "source": "n25",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Inventory to Switch 3"
+            },
+            {
+              "link_id": "nl_new50",
+              "source": "n25",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Inventory to Firewall 1"
+            },
+            {
+              "link_id": "nl_new51",
+              "source": "n25",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Inventory to Firewall 2"
+            },
+            {
+              "link_id": "nl_new52",
+              "source": "n25",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Inventory to DNS Server"
+            },
+            {
+              "link_id": "nl_new53",
+              "source": "n25",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Inventory to MFA Server"
+            },
+            {
+              "link_id": "nl_new54",
+              "source": "n25",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Inventory to DNS Filter"
+            },
+            {
+              "link_id": "nl_new55",
+              "source": "n25",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Inventory to Web Proxy"
+            },
+            {
+              "link_id": "nl_new56",
+              "source": "n25",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Inventory to Central AAA Server"
+            },
+            {
+              "link_id": "nl_new57",
+              "source": "n25",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Inventory to NIDS"
+            },
+            {
+              "link_id": "nl_new58",
+              "source": "n25",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Inventory to SIEM"
+            },
+            {
+              "link_id": "nl_new59",
+              "source": "n25",
+              "target": "n20",
+              "link_type": "management",
+              "label": "Inventory to NAC"
+            },
+            {
+              "link_id": "nl_new60",
+              "source": "n25",
+              "target": "n21",
+              "link_type": "management",
+              "label": "Inventory to Application Firewall"
+            },
+            {
+              "link_id": "nl_new61",
+              "source": "n25",
+              "target": "n22",
+              "link_type": "management",
+              "label": "Inventory to Bastion Host"
+            },
+            {
+              "link_id": "nl_new62",
+              "source": "n25",
+              "target": "n23",
+              "link_type": "management",
+              "label": "Inventory to Admin Workstation"
+            },
+            {
+              "link_id": "nl_new63",
+              "source": "n25",
+              "target": "n24",
+              "link_type": "management",
+              "label": "Inventory to Pen Test Workstation"
+            },
+            {
+              "link_id": "nl_new64",
+              "source": "n25",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Inventory to Non-Production Zone Application Server"
+            },
+            {
+              "link_id": "nl_new65",
+              "source": "n26",
+              "target": "n22",
+              "link_type": "vpn",
+              "label": "Bastion to VPN Gateway"
+            },
+            {
+              "link_id": "nl_new66",
+              "source": "n26",
+              "target": "n11",
+              "link_type": "vpn",
+              "label": "Firewall 1 to VPN Gateway"
+            },
+            {
+              "link_id": "nl_new67",
+              "source": "n26",
+              "target": "n12",
+              "link_type": "vpn",
+              "label": "Firewall 2 to VPN Gateway"
+            },
+            {
+              "link_id": "nl_new68",
+              "source": "n27",
+              "target": "n20",
+              "link_type": "management",
+              "label": "NAC to Remote Access Control"
+            },
+            {
+              "link_id": "nl_new69",
+              "source": "n27",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Firewall 1 to Remote Access Control"
+            },
+            {
+              "link_id": "nl_new70",
+              "source": "n27",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Firewall 2 to Remote Access Control"
+            },
+            {
+              "link_id": "nl_new71",
+              "source": "n28",
+              "target": "n24",
+              "link_type": "data_flow",
+              "label": "Pen Test Workstation to Pen Testing Service"
+            },
+            {
+              "link_id": "nl_new72",
+              "source": "n28",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Pen Testing Service to Ingestion Server"
+            },
+            {
+              "link_id": "nl_new73",
+              "source": "n28",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Pen Testing Service to Feed Handler 1"
+            },
+            {
+              "link_id": "nl_new74",
+              "source": "n28",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Pen Testing Service to Feed Handler 2"
+            },
+            {
+              "link_id": "nl_new75",
+              "source": "n28",
+              "target": "n8",
+              "link_type": "data_flow",
+              "label": "Pen Testing Service to Switch 1"
+            },
+            {
+              "link_id": "nl_new76",
+              "source": "n28",
+              "target": "n9",
+              "link_type": "data_flow",
+              "label": "Pen Testing Service to Switch 2"
+            },
+            {
+              "link_id": "nl_new77",
+              "source": "n28",
+              "target": "n10",
+              "link_type": "data_flow",
+              "label": "Pen Testing Service to Switch 3"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl_new13",
+              "source": "z11",
+              "target": "z8",
+              "link_type": "management",
+              "label": "Asset Management to Security Zone"
+            },
+            {
+              "link_id": "zl_new14",
+              "source": "z12",
+              "target": "z8",
+              "link_type": "management",
+              "label": "Remote Access to Security Zone"
+            },
+            {
+              "link_id": "zl_new15",
+              "source": "z13",
+              "target": "z8",
+              "link_type": "data_flow",
+              "label": "Pen Testing to Security Zone"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 10,
+        "nodes": 25,
+        "zone_links": 12,
+        "node_links": 40
+      },
+      "counts_after": {
+        "zones": 13,
+        "nodes": 29,
+        "zone_links": 15,
+        "node_links": 78
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 4,
+        "zone_links": 3,
+        "node_links": 38
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Financial-2_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Ingestion to Feed Handler 1"
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Ingestion to Feed Handler 2"
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 8081,
+        "expected": "allow",
+        "reason": "Feed Handler 1 to Analytics Workload 1"
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n3",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8082,
+        "expected": "allow",
+        "reason": "Analytics Workload 1 to Execution Engine 1"
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n5",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8081,
+        "expected": "allow",
+        "reason": "Feed Handler 2 to Analytics Workload 2"
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n6",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 8082,
+        "expected": "allow",
+        "reason": "Analytics Workload 2 to Execution Engine 2"
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n4",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 8083,
+        "expected": "allow",
+        "reason": "Execution Engine 1 to Switch 1"
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z3",
+        "target_zone": "z5",
+        "source_node": "n7",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 8083,
+        "expected": "allow",
+        "reason": "Execution Engine 2 to Switch 2"
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z3",
+        "target_zone": "z6",
+        "source_node": "n7",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 8083,
+        "expected": "allow",
+        "reason": "Execution Engine 2 to Switch 3"
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Ingress to Ingestion Server"
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n11",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Ingress to Feed Handler 1"
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n11",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Ingress to Feed Handler 2"
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n12",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8085,
+        "expected": "allow",
+        "reason": "Egress from Execution Engine 1"
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n12",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 8085,
+        "expected": "allow",
+        "reason": "Egress from Execution Engine 2"
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Ingestion Server"
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Feed Handler 1"
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n13",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Feed Handler 2"
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z7",
+        "target_zone": "z7",
+        "source_node": "n14",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA to Bastion Host"
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Filtering to Ingestion Server"
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n15",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Filtering to Feed Handler 1"
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n15",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Filtering to Feed Handler 2"
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL Filtering to Ingestion Server"
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n16",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL Filtering to Feed Handler 1"
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n16",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL Filtering to Feed Handler 2"
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z7",
+        "target_zone": "z8",
+        "source_node": "n17",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "AAA to Firewall 1"
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z7",
+        "target_zone": "z8",
+        "source_node": "n17",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "AAA to Firewall 2"
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n18",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to Firewall 1"
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n18",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to Firewall 2"
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n19",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "SIEM to Firewall 1"
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n19",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "SIEM to Firewall 2"
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n20",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC to Firewall 1"
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n20",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC to Firewall 2"
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n21",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8086,
+        "expected": "allow",
+        "reason": "App-Layer Filtering to Ingestion Server"
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n21",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8086,
+        "expected": "allow",
+        "reason": "App-Layer Filtering to Feed Handler 1"
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n21",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 8086,
+        "expected": "allow",
+        "reason": "App-Layer Filtering to Feed Handler 2"
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z7",
+        "target_zone": "z8",
+        "source_node": "n22",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Bastion to Firewall 1"
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z7",
+        "target_zone": "z8",
+        "source_node": "n22",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Bastion to Firewall 2"
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z7",
+        "target_zone": "z7",
+        "source_node": "n23",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation to AAA Server"
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z10",
+        "target_zone": "z6",
+        "source_node": "n24",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 8087,
+        "expected": "allow",
+        "reason": "Pen Test to Campus Site 3"
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z13",
+        "target_zone": "z1",
+        "source_node": "n28",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8088,
+        "expected": "allow",
+        "reason": "Pen Testing Service to Ingestion Server"
+      },
+      {
+        "test_id": "tc41",
+        "source_zone": "z13",
+        "target_zone": "z9",
+        "source_node": "n28",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc42",
+        "source_zone": "z13",
+        "target_zone": "z12",
+        "source_node": "n28",
+        "target_node": "n27",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc43",
+        "source_zone": "z13",
+        "target_zone": "z11",
+        "source_node": "n28",
+        "target_node": "n25",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc44",
+        "source_zone": "z13",
+        "target_zone": "z7",
+        "source_node": "n28",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-2_req2/rag_without_feedback/IG2/xml/IG2/generated_Financial-2_req2_IG2.xml"
+}

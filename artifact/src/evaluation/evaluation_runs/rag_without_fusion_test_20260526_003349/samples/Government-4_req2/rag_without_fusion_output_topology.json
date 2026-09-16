@@ -1,0 +1,162 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Education-2",
+  "title": "Higher Education Network Topology",
+  "description": "Topology representation of a higher education network infrastructure with various security and access control components.",
+  "scenario": "higher_education",
+  "topology_summary": "The topology includes core distribution, internet edge, district office, school sites, and various security and access control components.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Data Center",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Access",
+      "zone_type": "campus"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Core Distribution",
+      "zone_type": "campus"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Internet Edge",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z5",
+      "name": "District Office",
+      "zone_type": "campus"
+    },
+    {
+      "zone_id": "z6",
+      "name": "School Sites",
+      "zone_type": "campus"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Video Surveillance Media Server",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "NAC Manager",
+      "normalized_type": "identity_server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "Cisco ACS Appliance",
+      "normalized_type": "identity_server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "SRST/Video Gateway",
+      "normalized_type": "other",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n5",
+      "name": "Cisco Unified Communications Manager",
+      "normalized_type": "other",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n6",
+      "name": "NAC Server",
+      "normalized_type": "identity_server",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n7",
+      "name": "Web Security",
+      "normalized_type": "firewall",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n8",
+      "name": "Cisco ASA",
+      "normalized_type": "firewall",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n9",
+      "name": "Cisco IPS",
+      "normalized_type": "ids_ips",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n10",
+      "name": "Email Security",
+      "normalized_type": "firewall",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n11",
+      "name": "NAC Server",
+      "normalized_type": "identity_server",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n12",
+      "name": "NAC Server",
+      "normalized_type": "identity_server",
+      "zone_id": "z6"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n6",
+        "target": "n7",
+        "link_type": "data_flow",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n8",
+        "target": "n9",
+        "link_type": "data_flow",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n8",
+        "target": "n10",
+        "link_type": "data_flow",
+        "label": "(no label)"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z3",
+        "target": "z4",
+        "link_type": "uplink",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z5",
+        "target": "z3",
+        "link_type": "uplink",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z6",
+        "target": "z3",
+        "link_type": "uplink",
+        "label": "(no label)"
+      }
+    ]
+  }
+}

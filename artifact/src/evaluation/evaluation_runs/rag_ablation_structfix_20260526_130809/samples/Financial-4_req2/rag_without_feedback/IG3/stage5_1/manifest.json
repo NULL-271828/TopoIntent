@@ -1,0 +1,11 @@
+{
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req2/rag_without_feedback/IG3/xml/IG3/generated_Financial-4_req2_IG3.xml",
+  "script_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Financial-4_req2_IG3.py",
+  "expected_report_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Financial-4_req2_IG3.json",
+  "template_id": "generated_Financial-4_req2",
+  "ig_level": "IG3",
+  "domains": 11,
+  "nodes": 30,
+  "node_links": 49,
+  "policy_tests": 44
+}

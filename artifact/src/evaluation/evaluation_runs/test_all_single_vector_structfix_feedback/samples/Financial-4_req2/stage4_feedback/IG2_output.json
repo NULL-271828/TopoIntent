@@ -1,0 +1,1580 @@
+{
+  "sample_id": "Financial-4_req2",
+  "gt_template_id": "Financial-4",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-4_req2",
+    "title": "Resilient Branch Office Network",
+    "description": "Design for a branch office with redundant routers, MPLS WAN connectivity, and survivable voice capabilities.",
+    "scenario": "enterprise",
+    "topology_summary": "The branch office will have redundant routers connected via MPLS to the main data center. It will also have direct connections to the PSTN and a SIP provider for survivable voice functionality.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Security Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Non-Production Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z6",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Remote Access",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Primary Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Secondary Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "PSTN Gateway",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "SIP Provider",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Unified Communications Manager",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Access Control Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Netflow Collector",
+        "normalized_type": "other",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Voice Gateway",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n9",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n10",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n11",
+        "name": "MFA/Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n12",
+        "name": "DNS Filter",
+        "normalized_type": "other",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n13",
+        "name": "Web Proxy",
+        "normalized_type": "other",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n14",
+        "name": "Central AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n15",
+        "name": "IDS/IPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n16",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n17",
+        "name": "NAC",
+        "normalized_type": "other",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n18",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n19",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n20",
+        "name": "Penetration Testing Host",
+        "normalized_type": "other",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Non-Production Zone Representative Workload",
+        "normalized_type": "workload",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n21",
+        "name": "Asset Inventory System",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n22",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n23",
+        "name": "VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n24",
+        "name": "Remote Access Controller",
+        "normalized_type": "other",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n25",
+        "name": "Penetration Testing Process",
+        "normalized_type": "other",
+        "zone_id": "z6"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n5",
+          "link_type": "routing",
+          "label": "MPLS Connection"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n2",
+          "target": "n5",
+          "link_type": "routing",
+          "label": "MPLS Connection"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n1",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "PSTN Connection"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n2",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "PSTN Connection"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n1",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "SIP Connection"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n2",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "SIP Connection"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n1",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Internal Voice"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n2",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Internal Voice"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n9",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "Firewall to Primary Router"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n9",
+          "target": "n2",
+          "link_type": "uplink",
+          "label": "Firewall to Secondary Router"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n10",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS to Primary Router"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n10",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "DNS to Secondary Router"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n11",
+          "target": "n1",
+          "link_type": "management",
+          "label": "MFA to Primary Router"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n11",
+          "target": "n2",
+          "link_type": "management",
+          "label": "MFA to Secondary Router"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n12",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS Filter to Primary Router"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n12",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "DNS Filter to Secondary Router"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n13",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Web Proxy to Primary Router"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n13",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Web Proxy to Secondary Router"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n14",
+          "target": "n1",
+          "link_type": "management",
+          "label": "AAA to Primary Router"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n14",
+          "target": "n2",
+          "link_type": "management",
+          "label": "AAA to Secondary Router"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "IDS/IPS to Primary Router"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n15",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "IDS/IPS to Secondary Router"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n16",
+          "target": "n15",
+          "link_type": "monitoring",
+          "label": "SIEM to IDS/IPS"
+        },
+        {
+          "link_id": "nl24",
+          "source": "n17",
+          "target": "n1",
+          "link_type": "management",
+          "label": "NAC to Primary Router"
+        },
+        {
+          "link_id": "nl25",
+          "source": "n17",
+          "target": "n2",
+          "link_type": "management",
+          "label": "NAC to Secondary Router"
+        },
+        {
+          "link_id": "nl26",
+          "source": "n18",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "App Firewall to Primary Router"
+        },
+        {
+          "link_id": "nl27",
+          "source": "n18",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "App Firewall to Secondary Router"
+        },
+        {
+          "link_id": "nl28",
+          "source": "n19",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Admin Workstation to Primary Router"
+        },
+        {
+          "link_id": "nl29",
+          "source": "n19",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Admin Workstation to Secondary Router"
+        },
+        {
+          "link_id": "nl30",
+          "source": "n20",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Pen Test to Primary Router"
+        },
+        {
+          "link_id": "nl31",
+          "source": "n20",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Pen Test to Secondary Router"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n9",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl32",
+          "source": "n21",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Inventory to Primary Router"
+        },
+        {
+          "link_id": "nl33",
+          "source": "n21",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Inventory to Secondary Router"
+        },
+        {
+          "link_id": "nl34",
+          "source": "n22",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Documentation to Primary Router"
+        },
+        {
+          "link_id": "nl35",
+          "source": "n22",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Documentation to Secondary Router"
+        },
+        {
+          "link_id": "nl36",
+          "source": "n23",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "VPN to Primary Router"
+        },
+        {
+          "link_id": "nl37",
+          "source": "n23",
+          "target": "n2",
+          "link_type": "uplink",
+          "label": "VPN to Secondary Router"
+        },
+        {
+          "link_id": "nl38",
+          "source": "n23",
+          "target": "n14",
+          "link_type": "management",
+          "label": "VPN to AAA Server"
+        },
+        {
+          "link_id": "nl39",
+          "source": "n24",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Access Control to Primary Router"
+        },
+        {
+          "link_id": "nl40",
+          "source": "n24",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Access Control to Secondary Router"
+        },
+        {
+          "link_id": "nl41",
+          "source": "n25",
+          "target": "n20",
+          "link_type": "data_flow",
+          "label": "Pen Test Process to Pen Test Host"
+        },
+        {
+          "link_id": "nl_new1",
+          "source": "n25",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Pen Test to Non-Prod Workload"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n20",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Pen Test Host to Non-Prod Workload"
+        },
+        {
+          "link_id": "nl_new3",
+          "source": "n25",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Pen Test to Unified Communications Manager"
+        },
+        {
+          "link_id": "nl_new4",
+          "source": "n25",
+          "target": "n22",
+          "link_type": "data_flow",
+          "label": "Pen Test to Data Flow Documentation System"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Management Access"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "uplink",
+          "label": "Security Uplink"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Non-Prod Peering"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "data_flow",
+          "label": "External Testing"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z7",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Asset Management to Branch Office"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z8",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Remote Access to Branch Office"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-4_req2",
+    "ig_level": "IG2",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Inventory System' (n21) in the 'Asset Management' zone (z7), which is connected to the primary and secondary routers (n1, n2). This suggests that the system is used to manage and maintain an asset inventory.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation System' (n22) in the 'Asset Management' zone (z7), which is connected to the primary and secondary routers (n1, n2). This suggests that the system is used to document data flows.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones such as 'Data Center' (z2), 'Management Zone' (z3), 'Security Zone' (z4), 'Non-Production Zone' (z5), and 'External Testing Zone' (z6), which suggests that data processing and storage are segmented based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Firewall' (n9) in the 'Security Zone' (z4), which is connected to both the primary and secondary routers (n1, n2). This suggests that a firewall is implemented and managed on the network.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n10) in the 'Security Zone' (z4), which is connected to both the primary and secondary routers (n1, n2). This suggests that trusted DNS servers are configured on enterprise assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA/Identity Server' (n11) in the 'Management Zone' (z3), which is connected to both the primary and secondary routers (n1, n2). This suggests that MFA is required for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filter' (n12) in the 'Security Zone' (z4), which is connected to both the primary and secondary routers (n1, n2). This suggests that DNS filtering services are used.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n13) in the 'Security Zone' (z4), which is connected to both the primary and secondary routers (n1, n2). This suggests that network-based URL filters are maintained and enforced.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones and security controls such as firewalls, DNS servers, and identity servers, which suggest a secure network architecture is established and maintained.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Admin Workstation' (n19) in the 'Management Zone' (z3), which is connected to both the primary and secondary routers (n1, n2). This suggests that network infrastructure is securely managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central AAA Server' (n14) in the 'Management Zone' (z3), which is connected to both the primary and secondary routers (n1, n2). This suggests that network AAA is centralized.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'VPN Gateway' (n23) in the 'Remote Access' zone (z8), which is connected to both the primary and secondary routers (n1, n2) and the 'Central AAA Server' (n14). This suggests that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IDS/IPS' (n15) in the 'Security Zone' (z4), which is connected to both the primary and secondary routers (n1, n2). This suggests that a network intrusion detection solution is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Firewall' (n9) in the 'Security Zone' (z4), which is connected to both the primary and secondary routers (n1, n2). This suggests that traffic filtering between network segments is performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Remote Access Controller' (n24) in the 'Remote Access' zone (z8), which is connected to both the primary and secondary routers (n1, n2). This suggests that access control for remote assets is managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Netflow Collector' (n7) in the 'Data Center' zone (z2), which is connected to both the primary and secondary routers (n1, n2). This suggests that network traffic flow logs are collected.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Non-Production Zone' (z5) and a 'Data Center' (z2), which suggests that production and non-production systems are separated.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Penetration Testing Host' (n20) and a 'Penetration Testing Process' (n25) in the 'External Testing Zone' (z6), which suggests that periodic external penetration tests are performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z5\", \"name\": \"Non-Production Zone\", \"zone_type\": \"enterprise\"}",
+          "missing_reason": "Zone z5 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Non-Production Zone Representative Workload",
+            "normalized_type": "workload",
+            "zone_id": "z5"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n9",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 6,
+        "nodes": 20,
+        "zone_links": 4,
+        "node_links": 31
+      },
+      "counts_after": {
+        "zones": 6,
+        "nodes": 21,
+        "zone_links": 4,
+        "node_links": 32
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 1,
+        "zone_links": 0,
+        "node_links": 1
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide explicit evidence of an asset inventory system or process.",
+          "missing_reason": "No asset inventory system or process is represented in the topology.",
+          "repair_suggestion": "Add a node representing an asset inventory system and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide explicit evidence of documented data flows.",
+          "missing_reason": "No documentation of data flows is represented in the topology.",
+          "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show a VPN or remote device connections to the AAA infrastructure.",
+          "missing_reason": "No VPN or remote device connections are represented in the topology.",
+          "repair_suggestion": "Add a node representing a VPN and links to the AAA infrastructure."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show access control mechanisms for remote assets.",
+          "missing_reason": "No access control mechanisms for remote assets are represented in the topology.",
+          "repair_suggestion": "Add nodes and links representing access control mechanisms for remote assets."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide explicit evidence of periodic external penetration tests.",
+          "missing_reason": "No penetration testing process or schedule is represented in the topology.",
+          "repair_suggestion": "Add a node representing a penetration testing process and links to relevant nodes."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z7",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z8",
+            "name": "Remote Access",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n21",
+            "name": "Asset Inventory System",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n22",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n23",
+            "name": "VPN Gateway",
+            "normalized_type": "vpn_gateway",
+            "zone_id": "z8"
+          },
+          {
+            "node_id": "n24",
+            "name": "Remote Access Controller",
+            "normalized_type": "other",
+            "zone_id": "z8"
+          },
+          {
+            "node_id": "n25",
+            "name": "Penetration Testing Process",
+            "normalized_type": "other",
+            "zone_id": "z6"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl32",
+              "source": "n21",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Inventory to Primary Router"
+            },
+            {
+              "link_id": "nl33",
+              "source": "n21",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Inventory to Secondary Router"
+            },
+            {
+              "link_id": "nl34",
+              "source": "n22",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Documentation to Primary Router"
+            },
+            {
+              "link_id": "nl35",
+              "source": "n22",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Documentation to Secondary Router"
+            },
+            {
+              "link_id": "nl36",
+              "source": "n23",
+              "target": "n1",
+              "link_type": "uplink",
+              "label": "VPN to Primary Router"
+            },
+            {
+              "link_id": "nl37",
+              "source": "n23",
+              "target": "n2",
+              "link_type": "uplink",
+              "label": "VPN to Secondary Router"
+            },
+            {
+              "link_id": "nl38",
+              "source": "n23",
+              "target": "n14",
+              "link_type": "management",
+              "label": "VPN to AAA Server"
+            },
+            {
+              "link_id": "nl39",
+              "source": "n24",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Access Control to Primary Router"
+            },
+            {
+              "link_id": "nl40",
+              "source": "n24",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Access Control to Secondary Router"
+            },
+            {
+              "link_id": "nl41",
+              "source": "n25",
+              "target": "n20",
+              "link_type": "data_flow",
+              "label": "Pen Test Process to Pen Test Host"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl5",
+              "source": "z7",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Asset Management to Branch Office"
+            },
+            {
+              "link_id": "zl6",
+              "source": "z8",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Remote Access to Branch Office"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 6,
+        "nodes": 21,
+        "zone_links": 4,
+        "node_links": 32
+      },
+      "counts_after": {
+        "zones": 8,
+        "nodes": 26,
+        "zone_links": 6,
+        "node_links": 42
+      },
+      "count_delta": {
+        "zones": 2,
+        "nodes": 5,
+        "zone_links": 2,
+        "node_links": 10
+      }
+    },
+    {
+      "round": 3,
+      "controls_repaired": [
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc41\", \"src\": \"nz6n25\", \"dst\": \"nz5nbd7b\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc42\", \"src\": \"nz6n20\", \"dst\": \"nz5nbd7b\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc43\", \"src\": \"nz6n25\", \"dst\": \"nz2n5\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc44\", \"src\": \"nz6n25\", \"dst\": \"nz7n22\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new1",
+              "source": "n25",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Pen Test to Non-Prod Workload"
+            },
+            {
+              "link_id": "nl_new2",
+              "source": "n20",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Pen Test Host to Non-Prod Workload"
+            },
+            {
+              "link_id": "nl_new3",
+              "source": "n25",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Pen Test to Unified Communications Manager"
+            },
+            {
+              "link_id": "nl_new4",
+              "source": "n25",
+              "target": "n22",
+              "link_type": "data_flow",
+              "label": "Pen Test to Data Flow Documentation System"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 26,
+        "zone_links": 6,
+        "node_links": 42
+      },
+      "counts_after": {
+        "zones": 8,
+        "nodes": 26,
+        "zone_links": 6,
+        "node_links": 46
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 0,
+        "zone_links": 0,
+        "node_links": 4
+      },
+      "source": "stage5_diagnostic_report"
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Financial-4_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary Router to Unified Communications Manager over MPLS."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Secondary Router to Unified Communications Manager over MPLS."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Primary Router to PSTN Gateway for voice traffic."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n2",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Secondary Router to PSTN Gateway for voice traffic."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Primary Router to SIP Provider for voice traffic."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n2",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Secondary Router to SIP Provider for voice traffic."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Primary Router to Voice Gateway for internal voice."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n2",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Secondary Router to Voice Gateway for internal voice."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n9",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Firewall to Primary Router for uplink."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n9",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Firewall to Secondary Router for uplink."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Server to Primary Router for DNS resolution."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Server to Secondary Router for DNS resolution."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA/Identity Server to Primary Router for management."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA/Identity Server to Secondary Router for management."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Filter to Primary Router for DNS filtering."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Filter to Secondary Router for DNS filtering."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web Proxy to Primary Router for web traffic."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web Proxy to Secondary Router for web traffic."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Central AAA Server to Primary Router for management."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Central AAA Server to Secondary Router for management."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IDS/IPS to Primary Router for monitoring."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IDS/IPS to Secondary Router for monitoring."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z4",
+        "target_zone": "z4",
+        "source_node": "n16",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "SIEM to IDS/IPS for monitoring."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC to Primary Router for management."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC to Secondary Router for management."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Application Firewall to Primary Router for data flow."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Application Firewall to Secondary Router for data flow."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n19",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation to Primary Router for management."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n19",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation to Secondary Router for management."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n20",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Penetration Testing Host to Primary Router for testing."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n20",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Penetration Testing Host to Secondary Router for testing."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z5",
+        "target_zone": "z4",
+        "source_node": "n_struct1",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Non-Production Workload to Firewall for isolation."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n20",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Penetration Testing Host to Unified Communications Manager for isolation."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z6",
+        "target_zone": "z7",
+        "source_node": "n20",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Penetration Testing Host to Asset Inventory System for isolation."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z6",
+        "target_zone": "z7",
+        "source_node": "n20",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Penetration Testing Host to Data Flow Documentation System for isolation."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n23",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "VPN Gateway to Unified Communications Manager for isolation."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z8",
+        "target_zone": "z7",
+        "source_node": "n23",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "VPN Gateway to Asset Inventory System for isolation."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z8",
+        "target_zone": "z7",
+        "source_node": "n23",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "VPN Gateway to Data Flow Documentation System for isolation."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z6",
+        "target_zone": "z5",
+        "source_node": "n20",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Penetration Testing Host to Non-Production Workload for testing."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z6",
+        "target_zone": "z5",
+        "source_node": "n25",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Penetration Testing Process to Non-Production Workload for testing."
+      }
+    ]
+  },
+  "stage5_diagnostic_summary": {
+    "total": 44,
+    "executed": 44,
+    "skipped": 0,
+    "passed": 44,
+    "failed": 0
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-4_req2/stage4_feedback/xml/IG2/generated_Financial-4_req2_IG2.xml"
+}

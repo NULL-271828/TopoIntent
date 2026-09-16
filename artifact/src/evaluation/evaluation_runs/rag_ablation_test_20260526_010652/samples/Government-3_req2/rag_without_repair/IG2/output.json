@@ -1,0 +1,820 @@
+{
+  "sample_id": "Government-3_req2",
+  "gt_template_id": "Government-3",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-3_req2",
+    "title": "Azure Hub-Spoke Network",
+    "description": "A hub-and-spoke Azure network with centralized security and management.",
+    "scenario": "cloud",
+    "topology_summary": "The hub contains an Azure Firewall and Azure Bastion. Spokes are VNETs for identity, operations, and workloads, with all inter-spoke traffic routed through the hub firewall.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Hub VNet",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Identity VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Operations VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Workload VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Management VNet",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Non-Production VNet",
+        "zone_type": "cloud_spoke"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Azure Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Azure Bastion",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Log Analytics Workspace",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "DNS Server",
+        "normalized_type": "dns_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "MFA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n6",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n8",
+        "name": "AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n9",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z5"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "Firewall Logs"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n4",
+          "target": "n1",
+          "link_type": "management",
+          "label": "DNS Management"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n5",
+          "target": "n2",
+          "link_type": "management",
+          "label": "MFA Management"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n6",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Web Proxy Data Flow"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n7",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "NIDS Monitoring"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n8",
+          "target": "n2",
+          "link_type": "management",
+          "label": "AAA Management"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n9",
+          "target": "n1",
+          "link_type": "management",
+          "label": "NAC Management"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n10",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Admin Workstation Management"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z2",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z3",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-3_req2",
+    "ig_level": "IG2",
+    "all_required_satisfied": false,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology does not explicitly show an asset inventory system or process. However, it includes various nodes and zones that could be part of an inventory.",
+        "missing_reason": "No explicit asset inventory system or process is shown.",
+        "repair_suggestion": "Add a node representing an asset inventory system and links to all other nodes."
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide explicit documentation of data flows.",
+        "missing_reason": "No data flow documentation is present.",
+        "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes and zones."
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology shows multiple VNETs (Identity, Operations, Workload, Non-Production) which implies segmentation based on different purposes and likely sensitivity levels.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "An Azure Firewall is present in the Hub VNet, and it is linked to other VNets, indicating traffic filtering and management.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "A DNS Server is present in the Hub VNet and is linked to the Azure Firewall, indicating management of DNS traffic.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "An MFA Server is present in the Management VNet and is linked to the Azure Bastion, indicating MFA for remote access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not show any DNS filtering services.",
+        "missing_reason": "No DNS filtering services are present.",
+        "repair_suggestion": "Add a node representing a DNS filtering service and link it to the DNS Server and other relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not show any network-based URL filtering services.",
+        "missing_reason": "No URL filtering services are present.",
+        "repair_suggestion": "Add a node representing a URL filtering service and link it to the Web Proxy and other relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology shows a hub-and-spoke design with centralized security and management, indicating a secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes nodes like Azure Bastion, Log Analytics Workspace, and NIDS, which indicate secure management practices.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "An AAA Server is present in the Management VNet and is linked to the Azure Bastion, indicating centralized AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The Azure Bastion and AAA Server are present and linked, indicating that remote devices would use a VPN and connect to the AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "A NIDS is present in the Hub VNet and is linked to the Azure Firewall, indicating deployment of a network intrusion detection solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The Azure Firewall is present in the Hub VNet and is linked to other VNets, indicating traffic filtering between segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA Server and NAC, both linked to the Azure Bastion, indicating access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The Azure Firewall is linked to the Log Analytics Workspace, indicating collection of network traffic flow logs.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Non-Production VNet, indicating separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology does not explicitly show a process for performing external penetration tests.",
+        "missing_reason": "No explicit penetration testing process is shown.",
+        "repair_suggestion": "Add a node representing a penetration testing service and links to relevant nodes and zones."
+      }
+    ]
+  },
+  "repair_history": [],
+  "test_cases": {
+    "template_id": "generated_Government-3_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Firewall logs to SIEM"
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS server to firewall"
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA server to bastion"
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web proxy to firewall"
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to firewall"
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "AAA server to bastion"
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n9",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC to firewall"
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin workstation to bastion"
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to MFA server"
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to AAA server"
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to admin workstation"
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Firewall to web proxy"
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Firewall to DNS server"
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA server to firewall"
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "AAA server to firewall"
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin workstation to firewall"
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web proxy to firewall"
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS server to firewall"
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z5",
+        "target_zone": "z5",
+        "source_node": "n5",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Identity to operations"
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z5",
+        "target_zone": "z5",
+        "source_node": "n8",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Operations to workload"
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Workload to management"
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Management to non-production"
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Firewall to MFA server (HTTP)"
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Firewall to AAA server (HTTP)"
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Firewall to admin workstation (HTTP)"
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Firewall to web proxy (HTTPS)"
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Firewall to DNS server (DNS)"
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "MFA server to firewall (HTTP)"
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "AAA server to firewall (HTTP)"
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Admin workstation to firewall (HTTP)"
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Web proxy to firewall (HTTPS)"
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "block",
+        "reason": "DNS server to firewall (DNS)"
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Firewall to MFA server (UDP)"
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Firewall to AAA server (UDP)"
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n10",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Firewall to admin workstation (UDP)"
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Firewall to web proxy (UDP)"
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Firewall to DNS server (UDP)"
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n1",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "block",
+        "reason": "MFA server to firewall (UDP)"
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n1",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "block",
+        "reason": "AAA server to firewall (UDP)"
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n1",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Admin workstation to firewall (UDP)"
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req2/rag_without_repair/IG2/xml/IG2/generated_Government-3_req2_IG2.xml"
+}

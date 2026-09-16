@@ -1,0 +1,123 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-2_req1",
+    "title": "High-Frequency Trading Infrastructure",
+    "description": "Supports high-frequency trading with market data ingestion, processing, and order routing to three main sites.",
+    "scenario": "finance",
+    "topology_summary": "The topology includes a central data center for processing, connected to multiple exchange data feeds and three main sites for order execution. It ensures resilience and clear data flow.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Exchange Feeds",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Site 1",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Site 2",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Site 3",
+        "zone_type": "enterprise"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Market Data Ingestion Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Analytics Engine",
+        "normalized_type": "workload",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Algorithmic Engine",
+        "normalized_type": "workload",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "Order Routing Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Exchange Feed 1",
+        "normalized_type": "endpoint",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Exchange Feed 2",
+        "normalized_type": "endpoint",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n9",
+        "name": "Exchange Feed 3",
+        "normalized_type": "endpoint",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n10",
+        "name": "Site 1 Router",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n11",
+        "name": "Site 2 Router",
+        "normalized_type": "router",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n12",
+        "name": "Site 3 Router",
+        "normalized_type": "router",
+        "zone_id": "z5"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Financial-2_req1\", \"title\": \"High-Frequency Trading Infrastructure\", \"description\": \"Supports high-frequency trading with market data ingestion, processing, and order routing to three main sites.\", \"scenario\": \"finance\", \"topology_summary\": \"The topology includes a central data center for processing, connected to multiple exchange data feeds and three main sites for order execution. It ensures resilience and clear data flow.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Data Center\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z2\", \"name\": \"Exchange Feeds\", \"zone_type\": \"external\"}, {\"zone_id\": \"z3\", \"name\": \"Site 1\", \"zone_type\": \"enterprise\"}, {\"zone_id\": \"z4\", \"name\": \"Site 2\", \"zone_type\": \"enterprise\"}, {\"zone_id\": \"z5\", \"name\": \"Site 3\", \"zone_type\": \"enterprise\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Market Data Ingestion Server\", \"normalized_type\": \"server\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Analytics Engine\", \"normalized_type\": \"workload\", \"zone_id\": \"z1\"}, {\"node_id\": \"n3\", \"name\": \"Algorithmic Engine\", \"normalized_type\": \"workload\", \"zone_id\": \"z1\"}, {\"node_id\": \"n4\", \"name\": \"Order Routing Server\", \"normalized_type\": \"server\", \"zone_id\": \"z1\"}, {\"node_id\": \"n5\", \"name\": \"Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}, {\"node_id\": \"n6\", \"name\": \"Router\", \"normalized_type\": \"router\", \"zone_id\": \"z1\"}, {\"node_id\": \"n7\", \"name\": \"Exchange Feed 1\", \"normalized_type\": \"endpoint\", \"zone_id\": \"z2\"}, {\"node_id\": \"n8\", \"name\": \"Exchange Feed 2\", \"normalized_type\": \"endpoint\", \"zone_id\": \"z2\"}, {\"node_id\": \"n9\", \"name\": \"Exchange Feed 3\", \"normalized_type\": \"endpoint\", \"zone_id\": \"z2\"}, {\"node_id\": \"n10\", \"name\": \"Site 1 Router\", \"normalized_type\": \"router\", \"zone_id\": \"z3\"}, {\"node_id\": \"n11\", \"name\": \"Site 2 Router\", \"normalized_type\": \"router\", \"zone_id\": \"z4\"}, {\"node_id\": \"n12\", \"name\": \"Site 3 Router\", \"normalized_type\": \"router\", \"zone_id\": \"z5\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 11.513
+  }
+}

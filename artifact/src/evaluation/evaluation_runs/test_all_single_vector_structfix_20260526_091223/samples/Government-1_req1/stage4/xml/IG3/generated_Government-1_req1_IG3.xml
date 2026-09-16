@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Government-1_req1" title="Government Secure Network" scenario="government" ig_level="IG3">
+  <Description>Connect main data center to regional and branch offices with secure internet and remote access.</Description>
+  <Summary>The topology includes a main data center, a regional office, and a branch office connected via a dedicated WAN. It features a secure internet perimeter with email and web filtering, and remote access capabilities.</Summary>
+  <Domains>
+    <Domain id="z1" name="Main Data Center" type="data_center"/>
+    <Domain id="z2" name="Regional Office" type="enterprise"/>
+    <Domain id="z3" name="Branch Office" type="enterprise"/>
+    <Domain id="z4" name="DMZ" type="dmz"/>
+    <Domain id="z5" name="Remote Access" type="management"/>
+    <Domain id="z6" name="Internet" type="external"/>
+    <Domain id="z7" name="Management Zone" type="management"/>
+    <Domain id="z8" name="Non-Production Zone" type="enterprise"/>
+    <Domain id="z9" name="Security Operations" type="security"/>
+    <Domain id="z10" name="Asset Management" type="management"/>
+    <Domain id="z11" name="Documentation" type="management"/>
+    <Domain id="z12" name="Server Zone" type="enterprise"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="Data Center Router" domain="z1" domain_name="Main Data Center" type="router" ip=""/>
+    <Node id="n2" name="Data Center Switch" domain="z1" domain_name="Main Data Center" type="switch" ip=""/>
+    <Node id="n3" name="Firewall" domain="z1" domain_name="Main Data Center" type="firewall" ip=""/>
+    <Node id="n4" name="WAN Router" domain="z1" domain_name="Main Data Center" type="router" ip=""/>
+    <Node id="n5" name="Regional Office Router" domain="z2" domain_name="Regional Office" type="router" ip=""/>
+    <Node id="n6" name="Regional Office Switch" domain="z2" domain_name="Regional Office" type="switch" ip=""/>
+    <Node id="n7" name="Wireless Controller" domain="z2" domain_name="Regional Office" type="wireless_controller" ip=""/>
+    <Node id="n8" name="Branch Office Router" domain="z3" domain_name="Branch Office" type="router" ip=""/>
+    <Node id="n9" name="Branch Office Switch" domain="z3" domain_name="Branch Office" type="switch" ip=""/>
+    <Node id="n10" name="Wireless Controller" domain="z3" domain_name="Branch Office" type="wireless_controller" ip=""/>
+    <Node id="n11" name="Web Filter" domain="z4" domain_name="DMZ" type="waf" ip=""/>
+    <Node id="n12" name="Email Filter" domain="z4" domain_name="DMZ" type="ids_ips" ip=""/>
+    <Node id="n13" name="VPN Gateway" domain="z5" domain_name="Remote Access" type="vpn_gateway" ip=""/>
+    <Node id="n14" name="Internet Router" domain="z4" domain_name="DMZ" type="router" ip=""/>
+    <Node id="n15" name="Remote Access Router" domain="z5" domain_name="Remote Access" type="router" ip=""/>
+    <Node id="n16" name="Remote Access Switch" domain="z5" domain_name="Remote Access" type="switch" ip=""/>
+    <Node id="n17" name="Remote Access Wireless Controller" domain="z5" domain_name="Remote Access" type="wireless_controller" ip=""/>
+    <Node id="n18" name="Central AAA Server" domain="z7" domain_name="Management Zone" type="identity_server" ip=""/>
+    <Node id="n19" name="Admin Workstation" domain="z7" domain_name="Management Zone" type="endpoint" ip=""/>
+    <Node id="n20" name="NIDS Sensor" domain="z1" domain_name="Main Data Center" type="ids_ips" ip=""/>
+    <Node id="n21" name="NIPS Sensor" domain="z1" domain_name="Main Data Center" type="ids_ips" ip=""/>
+    <Node id="n22" name="DNS Server" domain="z1" domain_name="Main Data Center" type="server" ip=""/>
+    <Node id="n23" name="Web Proxy" domain="z1" domain_name="Main Data Center" type="waf" ip=""/>
+    <Node id="n24" name="NAC Server" domain="z1" domain_name="Main Data Center" type="ids_ips" ip=""/>
+    <Node id="n25" name="SIEM" domain="z1" domain_name="Main Data Center" type="siem" ip=""/>
+    <Node id="n_struct1" name="Internet External Endpoint" domain="z6" domain_name="Internet" type="endpoint" ip=""/>
+    <Node id="n_struct2" name="Non-Production Zone Representative Workload" domain="z8" domain_name="Non-Production Zone" type="workload" ip=""/>
+    <Node id="n_struct3" name="Security Operations Security Gateway" domain="z9" domain_name="Security Operations" type="firewall" ip=""/>
+    <Node id="n26" name="Asset Management System" domain="z10" domain_name="Asset Management" type="server" ip=""/>
+    <Node id="n27" name="Data Flow Documentation System" domain="z11" domain_name="Documentation" type="server" ip=""/>
+    <Node id="n28" name="Server 1" domain="z12" domain_name="Server Zone" type="server" ip=""/>
+    <Node id="n29" name="Server 2" domain="z12" domain_name="Server Zone" type="server" ip=""/>
+    <Node id="n30" name="Server Firewall" domain="z12" domain_name="Server Zone" type="firewall" ip=""/>
+    <Node id="n31" name="IaC Tool" domain="z7" domain_name="Management Zone" type="server" ip=""/>
+    <Node id="n32" name="Log Collector" domain="z1" domain_name="Main Data Center" type="server" ip=""/>
+    <Node id="n33" name="Pen Test Tool" domain="z9" domain_name="Security Operations" type="server" ip=""/>
+    <Node id="nl1" name="Recovered Endpoint nl1" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl2" name="Recovered Endpoint nl2" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl3" name="Recovered Endpoint nl3" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl4" name="Recovered Endpoint nl4" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl5" name="Recovered Endpoint nl5" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl6" name="Recovered Endpoint nl6" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl7" name="Recovered Endpoint nl7" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl8" name="Recovered Endpoint nl8" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl9" name="Recovered Endpoint nl9" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl10" name="Recovered Endpoint nl10" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl11" name="Recovered Endpoint nl11" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl12" name="Recovered Endpoint nl12" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="nl13" name="Recovered Endpoint nl13" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="z1" name="Recovered Endpoint z1" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="z2" name="Recovered Endpoint z2" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="z3" name="Recovered Endpoint z3" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="z4" name="Recovered Endpoint z4" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="z5" name="Recovered Endpoint z5" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="z6" name="Recovered Endpoint z6" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="z7" name="Recovered Endpoint z7" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="z8" name="Recovered Endpoint z8" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="z9" name="Recovered Endpoint z9" domain="z1" domain_name="Main Data Center" type="other" ip=""/>
+    <Node id="n_new1" name="Asset Management System 2" domain="z10" domain_name="Asset Management" type="server" ip=""/>
+    <Node id="n_new2" name="Port-Level Access Control" domain="z1" domain_name="Main Data Center" type="ids_ips" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z2" type="routing" label="Main Data Center to Regional Office"/>
+      <Link id="zl2" source="z1" target="z3" type="routing" label="Main Data Center to Branch Office"/>
+      <Link id="zl3" source="z4" target="z6" type="uplink" label="DMZ to Internet"/>
+      <Link id="zl4" source="z1" target="z8" type="routing" label="Main Data Center to Non-Production Zone"/>
+      <Link id="zl5" source="z10" target="z1" type="management" label="Asset Management to Main Data Center"/>
+      <Link id="zl6" source="z10" target="z2" type="management" label="Asset Management to Regional Office"/>
+      <Link id="zl7" source="z10" target="z3" type="management" label="Asset Management to Branch Office"/>
+      <Link id="zl8" source="z10" target="z4" type="management" label="Asset Management to DMZ"/>
+      <Link id="zl9" source="z10" target="z5" type="management" label="Asset Management to Remote Access"/>
+      <Link id="zl10" source="z10" target="z6" type="management" label="Asset Management to Internet"/>
+      <Link id="zl11" source="z10" target="z7" type="management" label="Asset Management to Management Zone"/>
+      <Link id="zl12" source="z10" target="z8" type="management" label="Asset Management to Non-Production Zone"/>
+      <Link id="zl13" source="z10" target="z9" type="management" label="Asset Management to Security Operations"/>
+      <Link id="zl14" source="z11" target="z1" type="management" label="Documentation to Main Data Center"/>
+      <Link id="zl15" source="z11" target="z2" type="management" label="Documentation to Regional Office"/>
+      <Link id="zl16" source="z11" target="z3" type="management" label="Documentation to Branch Office"/>
+      <Link id="zl17" source="z11" target="z4" type="management" label="Documentation to DMZ"/>
+      <Link id="zl18" source="z11" target="z5" type="management" label="Documentation to Remote Access"/>
+      <Link id="zl19" source="z11" target="z6" type="management" label="Documentation to Internet"/>
+      <Link id="zl20" source="z11" target="z7" type="management" label="Documentation to Management Zone"/>
+      <Link id="zl21" source="z11" target="z8" type="management" label="Documentation to Non-Production Zone"/>
+      <Link id="zl22" source="z11" target="z9" type="management" label="Documentation to Security Operations"/>
+      <Link id="zl23" source="z12" target="z1" type="routing" label="Server Zone to Main Data Center"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n4" target="n14" type="routing" label="Data Center to Internet"/>
+      <Link id="nl2" source="n14" target="n11" type="data_flow" label="Internet to Web Filter"/>
+      <Link id="nl3" source="n14" target="n12" type="data_flow" label="Internet to Email Filter"/>
+      <Link id="nl4" source="n13" target="n15" type="vpn" label="Remote Access to Data Center"/>
+      <Link id="nl5" source="n15" target="n16" type="uplink" label="Remote Access Router to Switch"/>
+      <Link id="nl6" source="n15" target="n17" type="uplink" label="Remote Access Router to Wireless Controller"/>
+      <Link id="nl7" source="n13" target="n18" type="vpn" label="Remote Access to AAA"/>
+      <Link id="nl8" source="n18" target="n19" type="management" label="AAA to Admin Workstation"/>
+      <Link id="nl9" source="n20" target="n25" type="monitoring" label="NIDS to SIEM"/>
+      <Link id="nl10" source="n21" target="n25" type="monitoring" label="NIPS to SIEM"/>
+      <Link id="nl11" source="n22" target="n14" type="data_flow" label="DNS to Internet"/>
+      <Link id="nl12" source="n23" target="n14" type="data_flow" label="Web Proxy to Internet"/>
+      <Link id="nl13" source="n24" target="n15" type="management" label="NAC to Remote Access Router"/>
+      <Link id="nl_struct1" source="n3" target="n_struct1" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct2" source="n3" target="n_struct2" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct3" source="n3" target="n_struct3" type="routing" label="Structural zone attachment"/>
+      <Link id="nl26" source="n26" target="n1" type="management" label="Asset Management to Data Center Router"/>
+      <Link id="nl27" source="n26" target="n2" type="management" label="Asset Management to Data Center Switch"/>
+      <Link id="nl28" source="n26" target="n3" type="management" label="Asset Management to Firewall"/>
+      <Link id="nl29" source="n26" target="n4" type="management" label="Asset Management to WAN Router"/>
+      <Link id="nl30" source="n26" target="n5" type="management" label="Asset Management to Regional Office Router"/>
+      <Link id="nl31" source="n26" target="n6" type="management" label="Asset Management to Regional Office Switch"/>
+      <Link id="nl32" source="n26" target="n7" type="management" label="Asset Management to Wireless Controller"/>
+      <Link id="nl33" source="n26" target="n8" type="management" label="Asset Management to Branch Office Router"/>
+      <Link id="nl34" source="n26" target="n9" type="management" label="Asset Management to Branch Office Switch"/>
+      <Link id="nl35" source="n26" target="n10" type="management" label="Asset Management to Wireless Controller"/>
+      <Link id="nl36" source="n26" target="n11" type="management" label="Asset Management to Web Filter"/>
+      <Link id="nl37" source="n26" target="n12" type="management" label="Asset Management to Email Filter"/>
+      <Link id="nl38" source="n26" target="n13" type="management" label="Asset Management to VPN Gateway"/>
+      <Link id="nl39" source="n26" target="n14" type="management" label="Asset Management to Internet Router"/>
+      <Link id="nl40" source="n26" target="n15" type="management" label="Asset Management to Remote Access Router"/>
+      <Link id="nl41" source="n26" target="n16" type="management" label="Asset Management to Remote Access Switch"/>
+      <Link id="nl42" source="n26" target="n17" type="management" label="Asset Management to Remote Access Wireless Controller"/>
+      <Link id="nl43" source="n26" target="n18" type="management" label="Asset Management to Central AAA Server"/>
+      <Link id="nl44" source="n26" target="n19" type="management" label="Asset Management to Admin Workstation"/>
+      <Link id="nl45" source="n26" target="n20" type="management" label="Asset Management to NIDS Sensor"/>
+      <Link id="nl46" source="n26" target="n21" type="management" label="Asset Management to NIPS Sensor"/>
+      <Link id="nl47" source="n26" target="n22" type="management" label="Asset Management to DNS Server"/>
+      <Link id="nl48" source="n26" target="n23" type="management" label="Asset Management to Web Proxy"/>
+      <Link id="nl49" source="n26" target="n24" type="management" label="Asset Management to NAC Server"/>
+      <Link id="nl50" source="n26" target="n25" type="management" label="Asset Management to SIEM"/>
+      <Link id="nl51" source="n26" target="n28" type="management" label="Asset Management to Server 1"/>
+      <Link id="nl52" source="n26" target="n29" type="management" label="Asset Management to Server 2"/>
+      <Link id="nl53" source="n26" target="n30" type="management" label="Asset Management to Server Firewall"/>
+      <Link id="nl54" source="n26" target="n31" type="management" label="Asset Management to IaC Tool"/>
+      <Link id="nl55" source="n26" target="n32" type="management" label="Asset Management to Log Collector"/>
+      <Link id="nl56" source="n26" target="n33" type="management" label="Asset Management to Pen Test Tool"/>
+      <Link id="nl57" source="n27" target="nl1" type="management" label="Data Flow Documentation to Data Center to Internet"/>
+      <Link id="nl58" source="n27" target="nl2" type="management" label="Data Flow Documentation to Internet to Web Filter"/>
+      <Link id="nl59" source="n27" target="nl3" type="management" label="Data Flow Documentation to Internet to Email Filter"/>
+      <Link id="nl60" source="n27" target="nl4" type="management" label="Data Flow Documentation to Remote Access to Data Center"/>
+      <Link id="nl61" source="n27" target="nl5" type="management" label="Data Flow Documentation to Remote Access Router to Switch"/>
+      <Link id="nl62" source="n27" target="nl6" type="management" label="Data Flow Documentation to Remote Access Router to Wireless Controller"/>
+      <Link id="nl63" source="n27" target="nl7" type="management" label="Data Flow Documentation to Remote Access to AAA"/>
+      <Link id="nl64" source="n27" target="nl8" type="management" label="Data Flow Documentation to AAA to Admin Workstation"/>
+      <Link id="nl65" source="n27" target="nl9" type="management" label="Data Flow Documentation to NIDS to SIEM"/>
+      <Link id="nl66" source="n27" target="nl10" type="management" label="Data Flow Documentation to NIPS to SIEM"/>
+      <Link id="nl67" source="n27" target="nl11" type="management" label="Data Flow Documentation to DNS to Internet"/>
+      <Link id="nl68" source="n27" target="nl12" type="management" label="Data Flow Documentation to Web Proxy to Internet"/>
+      <Link id="nl69" source="n27" target="nl13" type="management" label="Data Flow Documentation to NAC to Remote Access Router"/>
+      <Link id="nl70" source="n28" target="n30" type="data_flow" label="Server 1 to Server Firewall"/>
+      <Link id="nl71" source="n29" target="n30" type="data_flow" label="Server 2 to Server Firewall"/>
+      <Link id="nl72" source="n31" target="n1" type="management" label="IaC Tool to Data Center Router"/>
+      <Link id="nl73" source="n31" target="n2" type="management" label="IaC Tool to Data Center Switch"/>
+      <Link id="nl74" source="n31" target="n3" type="management" label="IaC Tool to Firewall"/>
+      <Link id="nl75" source="n31" target="n4" type="management" label="IaC Tool to WAN Router"/>
+      <Link id="nl76" source="n31" target="n5" type="management" label="IaC Tool to Regional Office Router"/>
+      <Link id="nl77" source="n31" target="n6" type="management" label="IaC Tool to Regional Office Switch"/>
+      <Link id="nl78" source="n31" target="n7" type="management" label="IaC Tool to Wireless Controller"/>
+      <Link id="nl79" source="n31" target="n8" type="management" label="IaC Tool to Branch Office Router"/>
+      <Link id="nl80" source="n31" target="n9" type="management" label="IaC Tool to Branch Office Switch"/>
+      <Link id="nl81" source="n31" target="n10" type="management" label="IaC Tool to Wireless Controller"/>
+      <Link id="nl82" source="n31" target="n11" type="management" label="IaC Tool to Web Filter"/>
+      <Link id="nl83" source="n31" target="n12" type="management" label="IaC Tool to Email Filter"/>
+      <Link id="nl84" source="n31" target="n13" type="management" label="IaC Tool to VPN Gateway"/>
+      <Link id="nl85" source="n31" target="n14" type="management" label="IaC Tool to Internet Router"/>
+      <Link id="nl86" source="n31" target="n15" type="management" label="IaC Tool to Remote Access Router"/>
+      <Link id="nl87" source="n31" target="n16" type="management" label="IaC Tool to Remote Access Switch"/>
+      <Link id="nl88" source="n31" target="n17" type="management" label="IaC Tool to Remote Access Wireless Controller"/>
+      <Link id="nl89" source="n31" target="n18" type="management" label="IaC Tool to Central AAA Server"/>
+      <Link id="nl90" source="n31" target="n19" type="management" label="IaC Tool to Admin Workstation"/>
+      <Link id="nl91" source="n31" target="n20" type="management" label="IaC Tool to NIDS Sensor"/>
+      <Link id="nl92" source="n31" target="n21" type="management" label="IaC Tool to NIPS Sensor"/>
+      <Link id="nl93" source="n31" target="n22" type="management" label="IaC Tool to DNS Server"/>
+      <Link id="nl94" source="n31" target="n23" type="management" label="IaC Tool to Web Proxy"/>
+      <Link id="nl95" source="n31" target="n24" type="management" label="IaC Tool to NAC Server"/>
+      <Link id="nl96" source="n31" target="n25" type="management" label="IaC Tool to SIEM"/>
+      <Link id="nl97" source="n31" target="n28" type="management" label="IaC Tool to Server 1"/>
+      <Link id="nl98" source="n31" target="n29" type="management" label="IaC Tool to Server 2"/>
+      <Link id="nl99" source="n31" target="n30" type="management" label="IaC Tool to Server Firewall"/>
+      <Link id="nl100" source="n31" target="n32" type="management" label="IaC Tool to Log Collector"/>
+      <Link id="nl101" source="n31" target="n33" type="management" label="IaC Tool to Pen Test Tool"/>
+      <Link id="nl102" source="n32" target="n1" type="data_flow" label="Log Collector to Data Center Router"/>
+      <Link id="nl103" source="n32" target="n2" type="data_flow" label="Log Collector to Data Center Switch"/>
+      <Link id="nl104" source="n32" target="n3" type="data_flow" label="Log Collector to Firewall"/>
+      <Link id="nl105" source="n32" target="n4" type="data_flow" label="Log Collector to WAN Router"/>
+      <Link id="nl106" source="n32" target="n5" type="data_flow" label="Log Collector to Regional Office Router"/>
+      <Link id="nl107" source="n32" target="n6" type="data_flow" label="Log Collector to Regional Office Switch"/>
+      <Link id="nl108" source="n32" target="n7" type="data_flow" label="Log Collector to Wireless Controller"/>
+      <Link id="nl109" source="n32" target="n8" type="data_flow" label="Log Collector to Branch Office Router"/>
+      <Link id="nl110" source="n32" target="n9" type="data_flow" label="Log Collector to Branch Office Switch"/>
+      <Link id="nl111" source="n32" target="n10" type="data_flow" label="Log Collector to Wireless Controller"/>
+      <Link id="nl112" source="n32" target="n11" type="data_flow" label="Log Collector to Web Filter"/>
+      <Link id="nl113" source="n32" target="n12" type="data_flow" label="Log Collector to Email Filter"/>
+      <Link id="nl114" source="n32" target="n13" type="data_flow" label="Log Collector to VPN Gateway"/>
+      <Link id="nl115" source="n32" target="n14" type="data_flow" label="Log Collector to Internet Router"/>
+      <Link id="nl116" source="n32" target="n15" type="data_flow" label="Log Collector to Remote Access Router"/>
+      <Link id="nl117" source="n32" target="n16" type="data_flow" label="Log Collector to Remote Access Switch"/>
+      <Link id="nl118" source="n32" target="n17" type="data_flow" label="Log Collector to Remote Access Wireless Controller"/>
+      <Link id="nl119" source="n32" target="n18" type="data_flow" label="Log Collector to Central AAA Server"/>
+      <Link id="nl120" source="n32" target="n19" type="data_flow" label="Log Collector to Admin Workstation"/>
+      <Link id="nl121" source="n32" target="n20" type="data_flow" label="Log Collector to NIDS Sensor"/>
+      <Link id="nl122" source="n32" target="n21" type="data_flow" label="Log Collector to NIPS Sensor"/>
+      <Link id="nl123" source="n32" target="n22" type="data_flow" label="Log Collector to DNS Server"/>
+      <Link id="nl124" source="n32" target="n23" type="data_flow" label="Log Collector to Web Proxy"/>
+      <Link id="nl125" source="n32" target="n24" type="data_flow" label="Log Collector to NAC Server"/>
+      <Link id="nl126" source="n32" target="n25" type="data_flow" label="Log Collector to SIEM"/>
+      <Link id="nl127" source="n32" target="n28" type="data_flow" label="Log Collector to Server 1"/>
+      <Link id="nl128" source="n32" target="n29" type="data_flow" label="Log Collector to Server 2"/>
+      <Link id="nl129" source="n32" target="n30" type="data_flow" label="Log Collector to Server Firewall"/>
+      <Link id="nl130" source="n32" target="n31" type="data_flow" label="Log Collector to IaC Tool"/>
+      <Link id="nl131" source="n32" target="n33" type="data_flow" label="Log Collector to Pen Test Tool"/>
+      <Link id="nl132" source="n33" target="z1" type="data_flow" label="Pen Test Tool to Main Data Center"/>
+      <Link id="nl133" source="n33" target="z2" type="data_flow" label="Pen Test Tool to Regional Office"/>
+      <Link id="nl134" source="n33" target="z3" type="data_flow" label="Pen Test Tool to Branch Office"/>
+      <Link id="nl135" source="n33" target="z4" type="data_flow" label="Pen Test Tool to DMZ"/>
+      <Link id="nl136" source="n33" target="z5" type="data_flow" label="Pen Test Tool to Remote Access"/>
+      <Link id="nl137" source="n33" target="z6" type="data_flow" label="Pen Test Tool to Internet"/>
+      <Link id="nl138" source="n33" target="z7" type="data_flow" label="Pen Test Tool to Management Zone"/>
+      <Link id="nl139" source="n33" target="z8" type="data_flow" label="Pen Test Tool to Non-Production Zone"/>
+      <Link id="nl140" source="n33" target="z9" type="data_flow" label="Pen Test Tool to Security Operations"/>
+      <Link id="nl_new1" source="n_new1" target="n1" type="management" label="Asset Management to Data Center Router"/>
+      <Link id="nl_new2" source="n_new1" target="n2" type="management" label="Asset Management to Data Center Switch"/>
+      <Link id="nl_new3" source="n_new1" target="n3" type="management" label="Asset Management to Firewall"/>
+      <Link id="nl_new4" source="n_new1" target="n4" type="management" label="Asset Management to WAN Router"/>
+      <Link id="nl_new5" source="n_new1" target="n5" type="management" label="Asset Management to Regional Office Router"/>
+      <Link id="nl_new6" source="n_new1" target="n6" type="management" label="Asset Management to Regional Office Switch"/>
+      <Link id="nl_new7" source="n_new1" target="n7" type="management" label="Asset Management to Wireless Controller"/>
+      <Link id="nl_new8" source="n_new1" target="n8" type="management" label="Asset Management to Branch Office Router"/>
+      <Link id="nl_new9" source="n_new1" target="n9" type="management" label="Asset Management to Branch Office Switch"/>
+      <Link id="nl_new10" source="n_new1" target="n10" type="management" label="Asset Management to Wireless Controller"/>
+      <Link id="nl_new11" source="n_new1" target="n11" type="management" label="Asset Management to Web Filter"/>
+      <Link id="nl_new12" source="n_new1" target="n12" type="management" label="Asset Management to Email Filter"/>
+      <Link id="nl_new13" source="n_new1" target="n13" type="management" label="Asset Management to VPN Gateway"/>
+      <Link id="nl_new14" source="n_new1" target="n14" type="management" label="Asset Management to Internet Router"/>
+      <Link id="nl_new15" source="n_new1" target="n15" type="management" label="Asset Management to Remote Access Router"/>
+      <Link id="nl_new16" source="n_new1" target="n16" type="management" label="Asset Management to Remote Access Switch"/>
+      <Link id="nl_new17" source="n_new1" target="n17" type="management" label="Asset Management to Remote Access Wireless Controller"/>
+      <Link id="nl_new18" source="n_new1" target="n18" type="management" label="Asset Management to Central AAA Server"/>
+      <Link id="nl_new19" source="n_new1" target="n19" type="management" label="Asset Management to Admin Workstation"/>
+      <Link id="nl_new20" source="n_new1" target="n20" type="management" label="Asset Management to NIDS Sensor"/>
+      <Link id="nl_new21" source="n_new1" target="n21" type="management" label="Asset Management to NIPS Sensor"/>
+      <Link id="nl_new22" source="n_new1" target="n22" type="management" label="Asset Management to DNS Server"/>
+      <Link id="nl_new23" source="n_new1" target="n23" type="management" label="Asset Management to Web Proxy"/>
+      <Link id="nl_new24" source="n_new1" target="n24" type="management" label="Asset Management to NAC Server"/>
+      <Link id="nl_new25" source="n_new1" target="n25" type="management" label="Asset Management to SIEM"/>
+      <Link id="nl_new26" source="n_new1" target="n28" type="management" label="Asset Management to Server 1"/>
+      <Link id="nl_new27" source="n_new1" target="n29" type="management" label="Asset Management to Server 2"/>
+      <Link id="nl_new28" source="n_new1" target="n30" type="management" label="Asset Management to Server Firewall"/>
+      <Link id="nl_new29" source="n_new1" target="n31" type="management" label="Asset Management to IaC Tool"/>
+      <Link id="nl_new30" source="n_new1" target="n32" type="management" label="Asset Management to Log Collector"/>
+      <Link id="nl_new31" source="n_new1" target="n33" type="management" label="Asset Management to Pen Test Tool"/>
+      <Link id="nl_new32" source="n_new2" target="n1" type="management" label="Port-Level Access Control to Data Center Router"/>
+      <Link id="nl_new33" source="n_new2" target="n2" type="management" label="Port-Level Access Control to Data Center Switch"/>
+      <Link id="nl_new34" source="n_new2" target="n5" type="management" label="Port-Level Access Control to Regional Office Router"/>
+      <Link id="nl_new35" source="n_new2" target="n6" type="management" label="Port-Level Access Control to Regional Office Switch"/>
+      <Link id="nl_new36" source="n_new2" target="n8" type="management" label="Port-Level Access Control to Branch Office Router"/>
+      <Link id="nl_new37" source="n_new2" target="n9" type="management" label="Port-Level Access Control to Branch Office Switch"/>
+      <Link id="nl_new38" source="n_new2" target="n15" type="management" label="Port-Level Access Control to Remote Access Router"/>
+      <Link id="nl_new39" source="n_new2" target="n16" type="management" label="Port-Level Access Control to Remote Access Switch"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Main Data Center to Regional Office allowed</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n8" protocol="tcp" port="443">
+      <Reason>Main Data Center to Branch Office allowed</Reason>
+    </Allow>
+    <Deny id="tc3" src_zone="z1" dst_zone="z4" src_node="n1" dst_node="n11" protocol="tcp" port="80">
+      <Reason>Main Data Center to DMZ blocked</Reason>
+    </Deny>
+    <Deny id="tc4" src_zone="z1" dst_zone="z6" src_node="n1" dst_node="n_struct1" protocol="tcp" port="80">
+      <Reason>Main Data Center to Internet blocked</Reason>
+    </Deny>
+    <Deny id="tc5" src_zone="z2" dst_zone="z3" src_node="n5" dst_node="n8" protocol="tcp" port="443">
+      <Reason>Regional Office to Branch Office blocked</Reason>
+    </Deny>
+    <Deny id="tc6" src_zone="z2" dst_zone="z4" src_node="n5" dst_node="n11" protocol="tcp" port="80">
+      <Reason>Regional Office to DMZ blocked</Reason>
+    </Deny>
+    <Deny id="tc7" src_zone="z3" dst_zone="z4" src_node="n8" dst_node="n11" protocol="tcp" port="80">
+      <Reason>Branch Office to DMZ blocked</Reason>
+    </Deny>
+    <Allow id="tc8" src_zone="z4" dst_zone="z6" src_node="n11" dst_node="n_struct1" protocol="tcp" port="80">
+      <Reason>DMZ to Internet allowed</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z5" dst_zone="z1" src_node="n15" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Remote Access to Main Data Center allowed</Reason>
+    </Allow>
+    <Allow id="tc10" src_zone="z5" dst_zone="z2" src_node="n15" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Remote Access to Regional Office allowed</Reason>
+    </Allow>
+    <Allow id="tc11" src_zone="z5" dst_zone="z3" src_node="n15" dst_node="n8" protocol="tcp" port="443">
+      <Reason>Remote Access to Branch Office allowed</Reason>
+    </Allow>
+    <Deny id="tc12" src_zone="z5" dst_zone="z4" src_node="n15" dst_node="n11" protocol="tcp" port="80">
+      <Reason>Remote Access to DMZ blocked</Reason>
+    </Deny>
+    <Allow id="tc13" src_zone="z7" dst_zone="z1" src_node="n18" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Management Zone to Main Data Center allowed</Reason>
+    </Allow>
+    <Allow id="tc14" src_zone="z7" dst_zone="z2" src_node="n18" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Management Zone to Regional Office allowed</Reason>
+    </Allow>
+    <Allow id="tc15" src_zone="z7" dst_zone="z3" src_node="n18" dst_node="n8" protocol="tcp" port="443">
+      <Reason>Management Zone to Branch Office allowed</Reason>
+    </Allow>
+    <Deny id="tc16" src_zone="z7" dst_zone="z4" src_node="n18" dst_node="n11" protocol="tcp" port="80">
+      <Reason>Management Zone to DMZ blocked</Reason>
+    </Deny>
+    <Deny id="tc17" src_zone="z8" dst_zone="z1" src_node="n_struct2" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Non-Production Zone to Main Data Center blocked</Reason>
+    </Deny>
+    <Deny id="tc18" src_zone="z8" dst_zone="z2" src_node="n_struct2" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Non-Production Zone to Regional Office blocked</Reason>
+    </Deny>
+    <Deny id="tc19" src_zone="z8" dst_zone="z3" src_node="n_struct2" dst_node="n8" protocol="tcp" port="443">
+      <Reason>Non-Production Zone to Branch Office blocked</Reason>
+    </Deny>
+    <Deny id="tc20" src_zone="z8" dst_zone="z4" src_node="n_struct2" dst_node="n11" protocol="tcp" port="80">
+      <Reason>Non-Production Zone to DMZ blocked</Reason>
+    </Deny>
+    <Allow id="tc21" src_zone="z9" dst_zone="z1" src_node="n_struct3" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Security Operations to Main Data Center allowed</Reason>
+    </Allow>
+    <Allow id="tc22" src_zone="z9" dst_zone="z2" src_node="n_struct3" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Security Operations to Regional Office allowed</Reason>
+    </Allow>
+    <Allow id="tc23" src_zone="z9" dst_zone="z3" src_node="n_struct3" dst_node="n8" protocol="tcp" port="443">
+      <Reason>Security Operations to Branch Office allowed</Reason>
+    </Allow>
+    <Deny id="tc24" src_zone="z9" dst_zone="z4" src_node="n_struct3" dst_node="n11" protocol="tcp" port="80">
+      <Reason>Security Operations to DMZ blocked</Reason>
+    </Deny>
+    <Allow id="tc25" src_zone="z10" dst_zone="z1" src_node="n26" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Asset Management to Main Data Center allowed</Reason>
+    </Allow>
+    <Allow id="tc26" src_zone="z10" dst_zone="z2" src_node="n26" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Asset Management to Regional Office allowed</Reason>
+    </Allow>
+    <Allow id="tc27" src_zone="z10" dst_zone="z3" src_node="n26" dst_node="n8" protocol="tcp" port="443">
+      <Reason>Asset Management to Branch Office allowed</Reason>
+    </Allow>
+    <Deny id="tc28" src_zone="z10" dst_zone="z4" src_node="n26" dst_node="n11" protocol="tcp" port="80">
+      <Reason>Asset Management to DMZ blocked</Reason>
+    </Deny>
+    <Allow id="tc29" src_zone="z11" dst_zone="z1" src_node="n27" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Documentation to Main Data Center allowed</Reason>
+    </Allow>
+    <Allow id="tc30" src_zone="z11" dst_zone="z2" src_node="n27" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Documentation to Regional Office allowed</Reason>
+    </Allow>
+    <Allow id="tc31" src_zone="z11" dst_zone="z3" src_node="n27" dst_node="n8" protocol="tcp" port="443">
+      <Reason>Documentation to Branch Office allowed</Reason>
+    </Allow>
+    <Deny id="tc32" src_zone="z11" dst_zone="z4" src_node="n27" dst_node="n11" protocol="tcp" port="80">
+      <Reason>Documentation to DMZ blocked</Reason>
+    </Deny>
+    <Allow id="tc33" src_zone="z12" dst_zone="z1" src_node="n28" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Server Zone to Main Data Center allowed</Reason>
+    </Allow>
+    <Allow id="tc34" src_zone="z12" dst_zone="z2" src_node="n28" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Server Zone to Regional Office allowed</Reason>
+    </Allow>
+    <Allow id="tc35" src_zone="z12" dst_zone="z3" src_node="n28" dst_node="n8" protocol="tcp" port="443">
+      <Reason>Server Zone to Branch Office allowed</Reason>
+    </Allow>
+    <Deny id="tc36" src_zone="z12" dst_zone="z4" src_node="n28" dst_node="n11" protocol="tcp" port="80">
+      <Reason>Server Zone to DMZ blocked</Reason>
+    </Deny>
+    <Deny id="tc37" src_zone="z1" dst_zone="z8" src_node="n1" dst_node="n_struct2" protocol="tcp" port="443">
+      <Reason>Main Data Center to Non-Production Zone blocked</Reason>
+    </Deny>
+    <Allow id="tc38" src_zone="z1" dst_zone="z9" src_node="n1" dst_node="n_struct3" protocol="tcp" port="443">
+      <Reason>Main Data Center to Security Operations allowed</Reason>
+    </Allow>
+    <Allow id="tc39" src_zone="z1" dst_zone="z10" src_node="n1" dst_node="n26" protocol="tcp" port="443">
+      <Reason>Main Data Center to Asset Management allowed</Reason>
+    </Allow>
+    <Allow id="tc40" src_zone="z1" dst_zone="z11" src_node="n1" dst_node="n27" protocol="tcp" port="443">
+      <Reason>Main Data Center to Documentation allowed</Reason>
+    </Allow>
+  </Policies>
+  <Compliance ig_level="IG3" all_required_satisfied="true">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Asset Management System' (n26) and 'Asset Management System 2' (n_new1) that manage various nodes across different zones, indicating an asset inventory is maintained.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Data Flow Documentation System' (n27) that manages data flow links, indicating data flows are documented.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple zones (e.g., Main Data Center, DMZ, Non-Production Zone) with specific nodes and links, indicating data processing and storage are segmented based on sensitivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Server Firewall' (n30) in the 'Server Zone' (z12), indicating firewalls are implemented on servers.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Server' (n22) in the 'Main Data Center' (z1), indicating trusted DNS servers are configured.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Central AAA Server' (n18) and 'Remote Access Wireless Controller' (n17) in the 'Remote Access' zone (z5), indicating MFA is required for remote network access.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Web Filter' (n11) and 'Email Filter' (n12) in the 'DMZ' (z4), indicating DNS filtering services are used.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Web Proxy' (n23) in the 'Main Data Center' (z1), indicating network-based URL filters are enforced.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple zones with specific nodes and links, indicating a secure network architecture is established and maintained.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'IaC Tool' (n31) that manages various nodes, indicating network infrastructure is securely managed using version-controlled Infrastructure-as-Code.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Central AAA Server' (n18) in the 'Management Zone' (z7), indicating centralized network AAA is implemented.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'VPN Gateway' (n13) and 'Remote Access Router' (n15) in the 'Remote Access' zone (z5), indicating remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.8" title="Establish and Maintain Dedicated Computing Resources for All Administrative Work" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Admin Workstation' (n19) in the 'Management Zone' (z7), indicating dedicated computing resources for administrative work are established and maintained.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NIDS Sensor' (n20) in the 'Main Data Center' (z1), indicating a network intrusion detection solution is deployed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple firewalls and routers with specific links between zones, indicating traffic filtering is performed between network segments.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NAC Server' (n24) in the 'Main Data Center' (z1), indicating access control for remote assets is managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Log Collector' (n32) that collects data from various nodes, indicating network traffic flow logs are collected.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.8" title="Deploy a Network Intrusion Prevention Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NIPS Sensor' (n21) in the 'Main Data Center' (z1), indicating a network intrusion prevention solution is deployed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.9" title="Deploy Port-Level Access Control" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Port-Level Access Control' (n_new2) that manages various nodes, indicating port-level access control is deployed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.10" title="Perform Application Layer Filtering" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Web Proxy' (n23) in the 'Main Data Center' (z1), indicating application layer filtering is performed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Non-Production Zone' (z8) that is separate from other zones, indicating production and non-production systems are separated.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Pen Test Tool' (n33) that performs data flows to various zones, indicating periodic external penetration tests are performed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="0" controls="stage4_structural_integrity,stage4_structural_integrity,stage4_ig_consistency" zones_added="1" nodes_added="3" zone_links_added="0" node_links_added="3"/>
+    <Repair round="1" controls="1.1,3.8,4.4,12.3,13.6,13.9,18.2" zones_added="3" nodes_added="30" zone_links_added="19" node_links_added="115"/>
+    <Repair round="2" controls="1.1,13.9" zones_added="0" nodes_added="2" zone_links_added="0" node_links_added="39"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

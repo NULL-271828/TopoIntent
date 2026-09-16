@@ -1,0 +1,2289 @@
+{
+  "samples": [
+    {
+      "sample_id": "Financial-2_req1",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 14,
+      "satisfaction_ratio": 0.7777777777777778,
+      "macro_contribution": 0.05555555555555556,
+      "findings_before": 4,
+      "finding_statuses": {
+        "manual_review": 4
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "12.7",
+        "13.6",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req1/stage4/IG2_output.json",
+      "sha256": "9add39f37af5d076c957e74548709a91b08644c7c6611e89ac8d2add18ed6970"
+    },
+    {
+      "sample_id": "Financial-2_req2",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 15,
+      "satisfaction_ratio": 0.8333333333333334,
+      "macro_contribution": 0.05952380952380953,
+      "findings_before": 3,
+      "finding_statuses": {
+        "manual_review": 3
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "12.7",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage4/IG2_output.json",
+      "sha256": "e06548f8a50e4a3ef2ce8e21d00f64a398ee8e574bbdb2b4e5859a180275ff1c"
+    },
+    {
+      "sample_id": "Financial-3_req1",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 13,
+      "satisfaction_ratio": 0.7222222222222222,
+      "macro_contribution": 0.051587301587301584,
+      "findings_before": 5,
+      "finding_statuses": {
+        "manual_review": 5
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "6.4",
+        "12.3",
+        "13.5",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-3_req1/stage4/IG2_output.json",
+      "sha256": "8aa7c16b435ce4dafd0381c702a4a352899d35b0749ffc5abf1bc5de0db15e5e"
+    },
+    {
+      "sample_id": "Financial-3_req2",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 12,
+      "satisfaction_ratio": 0.6666666666666666,
+      "macro_contribution": 0.047619047619047616,
+      "findings_before": 6,
+      "finding_statuses": {
+        "manual_review": 4,
+        "unsatisfied": 2
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "3.8",
+        "6.4",
+        "12.3",
+        "13.5",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-3_req2/stage4/IG2_output.json",
+      "sha256": "f5847391662a842a083f44b92618acbe257ec357faa8dce05eeba0eda9a608e6"
+    },
+    {
+      "sample_id": "Financial-4_req1",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 11,
+      "satisfaction_ratio": 0.6111111111111112,
+      "macro_contribution": 0.043650793650793655,
+      "findings_before": 7,
+      "finding_statuses": {
+        "unsatisfied": 7
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-4_req1/stage4/IG2_output.json",
+      "sha256": "621d3e4fd5fa77ce1a24a3b42c04d8d57a397dd6d6cc62598fb74c3011a92027"
+    },
+    {
+      "sample_id": "Financial-4_req2",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 13,
+      "satisfaction_ratio": 0.7222222222222222,
+      "macro_contribution": 0.051587301587301584,
+      "findings_before": 5,
+      "finding_statuses": {
+        "unsatisfied": 5
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "3.8",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-4_req2/stage4/IG2_output.json",
+      "sha256": "87813de4e4da0a4cac8c569ea52c1e62256b74d6b49ceba7a8710239078838d5"
+    },
+    {
+      "sample_id": "Government-1_req1",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 15,
+      "satisfaction_ratio": 0.8333333333333334,
+      "macro_contribution": 0.05952380952380953,
+      "findings_before": 3,
+      "finding_statuses": {
+        "manual_review": 2,
+        "unsatisfied": 1
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "3.8",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-1_req1/stage4/IG2_output.json",
+      "sha256": "2d71c5f9e7b91ebd14ba9fffcaae70f124f688d27fc20c79a1667dc52eb4a12a"
+    },
+    {
+      "sample_id": "Government-1_req2",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 12,
+      "satisfaction_ratio": 0.6666666666666666,
+      "macro_contribution": 0.047619047619047616,
+      "findings_before": 6,
+      "finding_statuses": {
+        "manual_review": 5,
+        "unsatisfied": 1
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "3.8",
+        "4.4",
+        "12.3",
+        "13.6",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-1_req2/stage4/IG2_output.json",
+      "sha256": "724e292c2f435c9d5546bdf7cc42e07edd1e6875bf2ac304dfba77e83c3bff4b"
+    },
+    {
+      "sample_id": "Government-2_req1",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 12,
+      "satisfaction_ratio": 0.6666666666666666,
+      "macro_contribution": 0.047619047619047616,
+      "findings_before": 6,
+      "finding_statuses": {
+        "manual_review": 6
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "3.8",
+        "12.3",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-2_req1/stage4/IG2_output.json",
+      "sha256": "4c95e1a07e11545225d238f729da0e30c5d5cfea75f5d16eb194a549a51c392b"
+    },
+    {
+      "sample_id": "Government-2_req2",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 12,
+      "satisfaction_ratio": 0.6666666666666666,
+      "macro_contribution": 0.047619047619047616,
+      "findings_before": 6,
+      "finding_statuses": {
+        "manual_review": 6
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "12.3",
+        "12.7",
+        "13.5",
+        "13.6",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-2_req2/stage4/IG2_output.json",
+      "sha256": "596a70567d4ab32fd82e12a79bad2201eb0419652b84c170c6db861ea318c367"
+    },
+    {
+      "sample_id": "Government-3_req1",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 14,
+      "satisfaction_ratio": 0.7777777777777778,
+      "macro_contribution": 0.05555555555555556,
+      "findings_before": 4,
+      "finding_statuses": {
+        "manual_review": 4
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-3_req1/stage4/IG2_output.json",
+      "sha256": "48b477d475faf668ee23eba9a013e9de062083b3184b0d1cc8209f8dd4a74074"
+    },
+    {
+      "sample_id": "Government-3_req2",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 13,
+      "satisfaction_ratio": 0.7222222222222222,
+      "macro_contribution": 0.051587301587301584,
+      "findings_before": 5,
+      "finding_statuses": {
+        "unsatisfied": 5
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "3.8",
+        "9.2",
+        "9.3",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-3_req2/stage4/IG2_output.json",
+      "sha256": "bc6f9a08e83c3aafa7de1c695890adb81cd4f375b765442914e533e008ab07e6"
+    },
+    {
+      "sample_id": "Government-4_req1",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 10,
+      "satisfaction_ratio": 0.5555555555555556,
+      "macro_contribution": 0.03968253968253969,
+      "findings_before": 8,
+      "finding_statuses": {
+        "manual_review": 8
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.7",
+        "13.5",
+        "13.6",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-4_req1/stage4/IG2_output.json",
+      "sha256": "4fd31e01f60a233d1310439ef0219baed22a35a4b97d40d625fd8654f214c7b2"
+    },
+    {
+      "sample_id": "Government-4_req2",
+      "required_ig2_safeguards": 18,
+      "satisfied_before": 15,
+      "satisfaction_ratio": 0.8333333333333334,
+      "macro_contribution": 0.05952380952380953,
+      "findings_before": 3,
+      "finding_statuses": {
+        "manual_review": 2,
+        "unsatisfied": 1
+      },
+      "control_ids": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "4.9",
+        "6.4",
+        "9.2",
+        "9.3",
+        "12.2",
+        "12.3",
+        "12.5",
+        "12.7",
+        "13.3",
+        "13.4",
+        "13.5",
+        "13.6",
+        "16.8",
+        "18.2"
+      ],
+      "finding_ids": [
+        "1.1",
+        "4.4",
+        "18.2"
+      ],
+      "source": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-4_req2/stage4/IG2_output.json",
+      "sha256": "f797d499522b8d45cb1d02c2b4d346d2119f4fba53f13969437b1de05ef557ec"
+    }
+  ],
+  "macro": 0.7182539682539683,
+  "micro": 0.7182539682539683,
+  "total_satisfied": 181,
+  "total_required": 252,
+  "historical_runs": [
+    {
+      "run": "direct_baseline_test_20260525_234326_stage4_eval_v2",
+      "branch": "stage4",
+      "ig": "IG2",
+      "n": 11,
+      "macro": 0.23737373737373738,
+      "micro": 0.23737373737373738,
+      "satisfied": 47,
+      "required": 198,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Financial-3_req2/stage4/IG2/output.json",
+          "sha256": "92144da6bdf881e20dd0fcddede3a691bbdf4a8fd265d77215cfc0938ba8cc9e"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Financial-4_req1/stage4/IG2/output.json",
+          "sha256": "cca792a338854a71dbb13b4de9aacfbb5ecd79280bf17b314a7f6c5c6ab98116"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Financial-4_req2/stage4/IG2/output.json",
+          "sha256": "0992eb94a05d0f03cd3a37dad207bc1a3a7254f759d725e120dfab071c2972dd"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-1_req1/stage4/IG2/output.json",
+          "sha256": "e8a07e64854a8556ce4ce630031c7874d9dfd5725f792276a7c830c92e2b42b2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-1_req2/stage4/IG2/output.json",
+          "sha256": "379945b439d1346943cfdfd7b4c9bc052e7e7fb9e487e170b4f928441dc29053"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-2_req1/stage4/IG2/output.json",
+          "sha256": "76ee1c8f1e635ce9de38e917150f26a71cca7505a699c16e986105f9abf97e34"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-2_req2/stage4/IG2/output.json",
+          "sha256": "01462192d4c146569e67eb1770c09333f98e0202c9ef27dbc7ec738d3ba12bf4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-3_req1/stage4/IG2/output.json",
+          "sha256": "41444286cc9440c2328172637b5d3c7ab3a68db1be1a1298558b8c26104c45e4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-3_req2/stage4/IG2/output.json",
+          "sha256": "0729d24600e0825c2d4d2e81e0b659ea775fa8e5fc1f0b9d4644f7423c5d3a3b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-4_req1/stage4/IG2/output.json",
+          "sha256": "26f1c4497fccfc901036550088decc7a33917ec5671ab6c81aa3593bcde1391b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-4_req2/stage4/IG2/output.json",
+          "sha256": "b40d5e46a60fd40a664058fa1d2f814e3527b2db048a747e11923cafd30f1994"
+        }
+      ]
+    },
+    {
+      "run": "direct_baseline_test_20260525_234326_stage4_eval_v2",
+      "branch": "stage4",
+      "ig": "IG3",
+      "n": 11,
+      "macro": 0.23553719008264462,
+      "micro": 0.23553719008264462,
+      "satisfied": 57,
+      "required": 242,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Financial-3_req2/stage4/IG3/output.json",
+          "sha256": "5675e3f0a291b3d0bdb524e11145ca0b401d0fe102f0c03b7745df4f91e8342b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Financial-4_req1/stage4/IG3/output.json",
+          "sha256": "53557c622765651db8122deb692a62e06b6c30fc4a0427fb5dc1bbd759b5a546"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Financial-4_req2/stage4/IG3/output.json",
+          "sha256": "325db3c812c912f9ff747e8f98424b35cb2e36f4a932ff6250546f76f54c6dd1"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-1_req1/stage4/IG3/output.json",
+          "sha256": "0028a6c3d824ded30f8d11b0e0361ef0e09d31438609d8166018aa5b505fb3a5"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-1_req2/stage4/IG3/output.json",
+          "sha256": "ecfc0233acd1a40ca4fd703add86d373110798e97b238789e1974f7fe9a06f07"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-2_req1/stage4/IG3/output.json",
+          "sha256": "901f660da97b40e18570f8418d81998b10bfb658baa98116543fcaab81d99c74"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-2_req2/stage4/IG3/output.json",
+          "sha256": "251971974d6ffbd99b1697a971e86e258f941e660e46d7babe1fe46e1cbe0c32"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-3_req1/stage4/IG3/output.json",
+          "sha256": "cd0b54ecd1dc97ecb2f83842d70c3f9928d2c0982bd5928db4918877a878f772"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-3_req2/stage4/IG3/output.json",
+          "sha256": "8a55c2c64b480e455ac2abad9504f2732326c1fdc5fcde07f7154d7f9323ebb0"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-4_req1/stage4/IG3/output.json",
+          "sha256": "ef3ff8a1aea8cf36603ca92f48b5daa692df65176280fa85a7aa909e239502bf"
+        },
+        {
+          "path": "evaluation/evaluation_runs/direct_baseline_test_20260525_234326_stage4_eval_v2/samples/Government-4_req2/stage4/IG3/output.json",
+          "sha256": "8d5ce505d70b5ecbd89694bed9fa3804a400a7172b857189d0199da5edb5bb18"
+        }
+      ]
+    },
+    {
+      "run": "fixcheck_financial2_req2_20260525_154358",
+      "branch": "stage4",
+      "ig": "IG2",
+      "n": 1,
+      "macro": 0.7777777777777778,
+      "micro": 0.7777777777777778,
+      "satisfied": 14,
+      "required": 18,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/fixcheck_financial2_req2_20260525_154358/samples/Financial-2_req2/stage4/IG2_output.json",
+          "sha256": "717a62caf4562aa9b31ebf4da72bd03deccd2a3c12030e84bd5df00f06a84b50"
+        }
+      ]
+    },
+    {
+      "run": "rag_ablation_structfix_20260526_130809",
+      "branch": "rag_without_feedback",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.746031746031746,
+      "micro": 0.746031746031746,
+      "satisfied": 188,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-2_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "2068053eec88e8238da408251391f620e4f385bfc56d38de7cb41fe87b5d50ee"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-2_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "f8d9a48a5d4c0cf75841f844f26799e193cc4ad90434cbcc04b8b3733cc4825b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-3_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "8a06ef380b06e42c8a7c5396288a1d6161d207cc6a7e2971f11e157c65c2d22a"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-3_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "f543f21e59d8cc115e1f609e969fdafc316841c7ae88f66217b994e1ca0644d9"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "dcf9e3fffff0217ce7fb1366b57c05c82b0eee1b6c9abd943823df4fca61a166"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "4b61ff7e698427bf7839eed6e6ed3029647725ec5a2bc847ef72de531fe78dc4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "d8fe7cc4cfc83fe96fa16f5878b442ed9dc7bb4e075291ce62dfad9ab54c02d5"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "c69e2e76ab3456e24b970eff74523e202d28b9f7efd50e950bf512edd98a6141"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-2_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "34d800b3d37ce3dc9ca3562c6c3faa1687d6c6797dfd1e6c299c96c5c05e1bcf"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-2_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "7a16dd2e4a1cdb034ad0b62be924434235d8b5242d1681a980c6cc4ee146cb5c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-3_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "2a386b3cd0479d43b487120577f7ac90854e7d54bbaa5d379dd64bc722f785f6"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-3_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "61fb3817f5708d45911bd3163e12d90bcbf17fdd96f0a3bea646111b7618c131"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-4_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "30c46e6a6ec9cb5113aa9ac64df79c2e12589e3e708ca22019dc3eb50193ab68"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-4_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "ce4bbafe7e98f85865415890374473cf0d11cebacb14b390363c0f5d57fa86ec"
+        }
+      ]
+    },
+    {
+      "run": "rag_ablation_structfix_20260526_130809",
+      "branch": "rag_without_feedback",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.7467532467532468,
+      "micro": 0.7467532467532467,
+      "satisfied": 230,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-2_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "e5ea6febe9ae5e5f2cb062e57220da769b07608b9acc4ed8aff1c4d777aec203"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-2_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "916df71353e7fcff211b355ddb8027c61a5e6ddc6ff4eb5c6addbe6c5301350d"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-3_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "b509c4de9741fb1b223ee120759076f7fefe1c3fedd7a6b19c918498e5ef7a66"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-3_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "ae378eb7b53fa25a070c5917f95e863663ec487314653cd087b70c5a5f64d5fb"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "53fa26a75004776baa43378b774ce1167a7992656efcebf72c237b6c4b43e301"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "287fa2b27c8ca01e371897a27b09eb01c52e6fce544084107c7f7107bd6fa404"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "0c5240f3739ec0d51cd344fb3a8c3e04e42a64feba5cde21fe496eba442aec29"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "69ca6caa03593526d2c6b3e20a11137cba40fdd98852af6342081859487758a1"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-2_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "f32e13ea4685582b834702698b932317dca947d22680be4148c11766e29f5bb7"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-2_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "7290fdc1d764d4d69b5f8a04045f70167adff2b73c50e4d470475a586a520140"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-3_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "c373d889630c78f70dffd4c79e96a042da8f1ce667f1e1aaa8b133986f483220"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-3_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "29cb90b5cc746d0166757ca2b66b52d6c4ec164de11adcb86e29aa71a0aca9e3"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-4_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "ef9c10820454efb718dc8e027bd1fae6dccf064ecfa284ba2e31e2c76b66b160"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-4_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "04a6756925bef4939c245ac29718c3eef45025e152329ae7d0e620b03d4561c5"
+        }
+      ]
+    },
+    {
+      "run": "rag_ablation_structfix_20260526_130809",
+      "branch": "rag_without_repair",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.7301587301587301,
+      "micro": 0.7301587301587301,
+      "satisfied": 184,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-2_req1/rag_without_repair/IG2/output.json",
+          "sha256": "03cb17fff87bf72e7999e573fb7007cf189341c9cc3e7688023ae8c09a4acd03"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-2_req2/rag_without_repair/IG2/output.json",
+          "sha256": "87eb4f57349bd456fa6e85b279fad4c8db2bb124c90b4fb98d932083406156de"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-3_req1/rag_without_repair/IG2/output.json",
+          "sha256": "3fdc3661005ffdf758ea7283bb0eed19ef77d32c98af535ccacb2f1a6dda87ae"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-3_req2/rag_without_repair/IG2/output.json",
+          "sha256": "b221b8afc0ace6ec76b54c8703a2af4098d80bc75cc0098da351f73a39f1fe8b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req1/rag_without_repair/IG2/output.json",
+          "sha256": "d456be184ac08930ba709bd5616a32c3d5643e182613d46097d0f454065147a9"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req2/rag_without_repair/IG2/output.json",
+          "sha256": "3f33aab7699b25fc6fb3b05b641265c8ea07b6dc29032005dfbc880efbcac269"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req1/rag_without_repair/IG2/output.json",
+          "sha256": "1708c399b5a526f689eccdd9b36bb7af1bed63c1de6bd76712bb317c66405370"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req2/rag_without_repair/IG2/output.json",
+          "sha256": "9f78b6925f86049d2dfbabfe3b6ab949dcc8571bd7634019eed0c2fd6407dcf0"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-2_req1/rag_without_repair/IG2/output.json",
+          "sha256": "05af1a778aca34849c64d51d14b14903c84b28680a30a7199a1a0e85e1dbad51"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-2_req2/rag_without_repair/IG2/output.json",
+          "sha256": "701f986b516a111f73ab79e37da7235f81564cd7c30164917d19f5be4b7d9bd3"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-3_req1/rag_without_repair/IG2/output.json",
+          "sha256": "c01cbe6b849d863e11856d86d5069f7a942d58869d223c8dd35dfb442fd158d8"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-3_req2/rag_without_repair/IG2/output.json",
+          "sha256": "e1b25e7b4eba7632c23ee4aac2b1b5b9b90ca4dc99be92f45f907cdad2d59917"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-4_req1/rag_without_repair/IG2/output.json",
+          "sha256": "3bbe6a962e46403cee993ef1065b8c015c350dee7de0e9fe1a5de75fac3889a6"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-4_req2/rag_without_repair/IG2/output.json",
+          "sha256": "385fe57c5ade8be6f187a5f3b004f0c57723fcbe2b217f21e9b3cc56f4547b1b"
+        }
+      ]
+    },
+    {
+      "run": "rag_ablation_structfix_20260526_130809",
+      "branch": "rag_without_repair",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.7337662337662338,
+      "micro": 0.7337662337662337,
+      "satisfied": 226,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-2_req1/rag_without_repair/IG3/output.json",
+          "sha256": "ace7ef19f2e1cbe1eb8038cc41aed46bf878836268de4e94c7c5e5d1b66a0eb5"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-2_req2/rag_without_repair/IG3/output.json",
+          "sha256": "a211a80edf1639fd42a9ffb36d9a5fdeac4c6d79b8fb053d5356c60e3e2c966c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-3_req1/rag_without_repair/IG3/output.json",
+          "sha256": "02c197043aa4e5ea2dbe3e14103032ba521e0f2699e03788fea352e88cac9f9f"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-3_req2/rag_without_repair/IG3/output.json",
+          "sha256": "44ddc16bb1dbd416f2bab18e093dc70ae9bf5a8ca001ce3f445ea3186a0f15ef"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req1/rag_without_repair/IG3/output.json",
+          "sha256": "b3a0d5fe696069bef460738a7c10611e3f91ac4bf13f77ab8f4503b4625a216f"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req2/rag_without_repair/IG3/output.json",
+          "sha256": "91836ac1dcd96d0ced1366a5a42b1f49d12675ec9ade060a42d8e8029cdde2b7"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req1/rag_without_repair/IG3/output.json",
+          "sha256": "f5de021603e3747a2449f5a99c97ce86263c4fe88ae9ae8ab03b6b6e9483cd76"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req2/rag_without_repair/IG3/output.json",
+          "sha256": "87bd961f6c23d530c2ef5d5fe75328204fae02825f5c833c2c207a1d3f5bdeaa"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-2_req1/rag_without_repair/IG3/output.json",
+          "sha256": "bfefef86f4be23ff0899b54cee313d591d5ffea69382cb2f5bc23dbdacec96ce"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-2_req2/rag_without_repair/IG3/output.json",
+          "sha256": "0cc045fde7e79ca3607cd1615f6e8dec84e84b40b848163d35ad8babf85dc649"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-3_req1/rag_without_repair/IG3/output.json",
+          "sha256": "148bf50dd8f6f149ec15ce8377caaa487e25a48479ee5b5937e2bc3545f79b65"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-3_req2/rag_without_repair/IG3/output.json",
+          "sha256": "525606d9548af33aa1c64ec798caa6b20eee82248dc650d6f02fd6a4624e239a"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-4_req1/rag_without_repair/IG3/output.json",
+          "sha256": "e6478645980ac88473c9a7ef3fcc45cd527819b872d389e0f5f1e4ca8a3991aa"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-4_req2/rag_without_repair/IG3/output.json",
+          "sha256": "4d6910614d6f1bb6784ced0e6687917f0fc54eebdf4db53e6413cc359d0464c9"
+        }
+      ]
+    },
+    {
+      "run": "rag_ablation_test_20260526_010652",
+      "branch": "rag_without_feedback",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.6825396825396826,
+      "micro": 0.6825396825396826,
+      "satisfied": 172,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "989240d73ca21c1dc37815b976e35c9ec57fd5fa6b05baa037cf1f1a282a6636"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "9eafb2b4d889a98cb65b760658090ed14c0d51843071501494a42309cecf7465"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "c9602daec9559ee14fe36072509382104312354ac9b4e809b9fdce1d421f2f78"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "f1e46368e5716a1a93d7ea2962eab328be6338e7959abb5c294cd74b578a53cb"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "09a0107990764f42ddb9b0d1f02f6fffb6d3916fc3c68f89e8c2767c894da3ea"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "1519b214240d33d62aaa3847dbb82a18d9c404cd3ab6a483b701a0159170f46b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "5d25e38f8ebfec69d1c60fed7ce79c026babf8cb42a8b7d549c22616610cf9d0"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "ac30b975ce6085af80aebf0ebbbc5abc02d245f2e4f438ea2908eaa11dd375c4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "4ca5b59b74f48264de996b7c31621a4800f1261d8594ea0d610e8de3378abae7"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "6628c49e340aa7bf401f64dce04f801d0c19df2a9b18db4843c1f0b93d4d5097"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "8d281856fdaaa3337758296e5ba7ce90f863199fd64fcde9c51175d9d64a3495"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "abd1c8250320e7a9e7f23466d830833f8e55909db915f6b316e02ee5d8f643e2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_feedback/IG2/output.json",
+          "sha256": "d475494fbf3b380382094a1764150af3ed80b40a47724fe3b44fa93485e00bf7"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req2/rag_without_feedback/IG2/output.json",
+          "sha256": "5047e7abea8d6a37814e9be31b3b410c55e17c3346f536f0fd2b447a34e07877"
+        }
+      ]
+    },
+    {
+      "run": "rag_ablation_test_20260526_010652",
+      "branch": "rag_without_feedback",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.7402597402597403,
+      "micro": 0.7402597402597403,
+      "satisfied": 228,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "7629486a05cb14e8092ec02d1ab15bca8f2e49c041bbe85e3952b68c4af65e66"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "937d9c493dd404483ec146f9cd02f3686ef95916e1963e768c8921733546c338"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "2aacf06f635018ea12a2d0bc2ab3894388c69e9e0d4b1f24a8c83cf3c8a0ae3a"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "6af34bab5cc4ac1f31ca101868be415da56cc275ace13fa6a875fe8b22e13859"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "a57a5774fcf1a586bd1f7068fbf3fc5357b7b89202bddcef7c88621f8c97c93b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "21d77b1d91bb1ae84348d18237316a4ad3a124beff56057d1081b14b897f0a78"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "800e1048112fc9a89d300ed990cde554e3b27edaee860870abeba89e3426e9a5"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "89265e169267fe575991adebeabaa8bdb7301deb74c690c467c9bfe8cc537d82"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "7a0af6e6af410539a13a42594f2cbdc16f0f56b30b7d697adb1318a4da28691e"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "e8f2ee1e1893ad171790e3db9f14ecffc5a41818e50466509a6a98786c00e8a6"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "e8f08c97c8180bbf97f96000a00e7404f2ef8a5d570b09a1c55261d0df4fc50a"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "96e9c4e0a07161aa60785386a8c7048db905b0548c2d8417618eba6d903bc316"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_feedback/IG3/output.json",
+          "sha256": "8fb833ba3e360f4f14293f9dc3682b3f8039d2ffe8195b50315738f9087f836b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req2/rag_without_feedback/IG3/output.json",
+          "sha256": "e8498f0830367823386ed2754b8cd33d2160257d957d4870f3e3ca7bc909c136"
+        }
+      ]
+    },
+    {
+      "run": "rag_ablation_test_20260526_010652",
+      "branch": "rag_without_repair",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.6825396825396826,
+      "micro": 0.6825396825396826,
+      "satisfied": 172,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req1/rag_without_repair/IG2/output.json",
+          "sha256": "9ce288aa03e18d5667f5d5ea52ffe7d062df280d994ca691b7aa829ca71ce42d"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req2/rag_without_repair/IG2/output.json",
+          "sha256": "8204bd86e8e78ed19f151c88726bcda2aa56a20f3d48d2d34b362214f4e3d7be"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req1/rag_without_repair/IG2/output.json",
+          "sha256": "1558911eaec6781bd6a3df5b313860632e542af6ce55cae177912712293ca379"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req2/rag_without_repair/IG2/output.json",
+          "sha256": "dfd92c0cc46b75503d7700ad87e87f643a7880487865cc77044110543151bd9d"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_repair/IG2/output.json",
+          "sha256": "c67567f90f05f25a11cb6f995356e36004f410538819b234237d1b4f165c14c9"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req2/rag_without_repair/IG2/output.json",
+          "sha256": "d4d3858d8ae056fd5ea78f105022d936271160ae67f4205462ba733f3b760448"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req1/rag_without_repair/IG2/output.json",
+          "sha256": "3fbd10553fd7ff486ed0c4450909a8639b7ccea253fa871153a9188843f73864"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req2/rag_without_repair/IG2/output.json",
+          "sha256": "d1ee09a32f9cda3364e6cfff6274db478ea7525cbefb029f26d3463137846e9b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req1/rag_without_repair/IG2/output.json",
+          "sha256": "93cc0b37ec462d4a2fec524cfcde4ad2c5b5cd509676482dd7bacfbd1a0fac53"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req2/rag_without_repair/IG2/output.json",
+          "sha256": "f3b2be269928d7e50f8c1a0fd9003b069ca0232ec468600d3ae28dfe5d067190"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req1/rag_without_repair/IG2/output.json",
+          "sha256": "e375f90e4f9bf9a9f37781cd8ffcb01cd13faa1a04efa55662bab8922bf3060d"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req2/rag_without_repair/IG2/output.json",
+          "sha256": "2e8523221cd0fc7df82cd79f664d5437ff0ff2499d3a02a240e2b4353d826d73"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_repair/IG2/output.json",
+          "sha256": "33a687c0e0b9735d2fe221ddfbe82c7a84e6a04b1f27932d92e84e2b22c2243e"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req2/rag_without_repair/IG2/output.json",
+          "sha256": "70bb9c0c9803ea5ffdb4f8295870582b43974e66ca3cec4d6d58c6681295e2ac"
+        }
+      ]
+    },
+    {
+      "run": "rag_ablation_test_20260526_010652",
+      "branch": "rag_without_repair",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.7142857142857143,
+      "micro": 0.7142857142857143,
+      "satisfied": 220,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req1/rag_without_repair/IG3/output.json",
+          "sha256": "1084a10f3f18a235d15dafee677136f2f736152bd7817e53e47350d3d441bcfc"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req2/rag_without_repair/IG3/output.json",
+          "sha256": "0a2c25ab73676834e35626a8d08340575c3c24c56425ec990e5b958d3703a64e"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req1/rag_without_repair/IG3/output.json",
+          "sha256": "8c5e2a047ec332048c6118fa559f9ed87573813b774c1aad8e4fdf3b5041e9d5"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req2/rag_without_repair/IG3/output.json",
+          "sha256": "213613973db0d67cb96f03b6d70d6555658f0c885c29ecf5d270eaab464ebb76"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_repair/IG3/output.json",
+          "sha256": "1fbc453f9e5a359fc54556f671c7981ff59c3b3f2f74936f1222218651d72d81"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req2/rag_without_repair/IG3/output.json",
+          "sha256": "bfc5d4062fb1a4d1e63147cda1615aaae60a75e269f6813fef500d112c6d63bf"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req1/rag_without_repair/IG3/output.json",
+          "sha256": "c8ce4e619ddcb4302c3ff112f708d7c0dfc6d8617f79008e169d535d88676b74"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req2/rag_without_repair/IG3/output.json",
+          "sha256": "84391b486e05e798058b1e445bbd5990ff8d13a8925eb52362498ff5e16b2b33"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req1/rag_without_repair/IG3/output.json",
+          "sha256": "6823410afbf6a1cb4f6271122293fded2b6f0a675100f03a97c8192b23c3c1d3"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req2/rag_without_repair/IG3/output.json",
+          "sha256": "21181e04c18bc9afe276fcc4a6e54a580354f5e70d6271316b65c5842c21317a"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req1/rag_without_repair/IG3/output.json",
+          "sha256": "81b23cae7e494fb1256b97ce3278ea9b5bdfba2bc23ebe988ce5d17e55d49910"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req2/rag_without_repair/IG3/output.json",
+          "sha256": "e317f2e28966497431c4ffe6199ee018f17e4691240e61e489c6fb33ddc6a71a"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_repair/IG3/output.json",
+          "sha256": "37040e483d34541ec1287fc7568ba313772a006fd76d3408230e05cd999e8ef2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req2/rag_without_repair/IG3/output.json",
+          "sha256": "6415d7058d7aab188063391f8f92847fbb72f8bb78e8b58c3bc01e2f193d8c58"
+        }
+      ]
+    },
+    {
+      "run": "smoke_eval_generation_20260525_145323",
+      "branch": "stage4",
+      "ig": "IG2",
+      "n": 1,
+      "macro": 0.8888888888888888,
+      "micro": 0.8888888888888888,
+      "satisfied": 16,
+      "required": 18,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/smoke_eval_generation_20260525_145323/samples/Financial-2_req1/stage4/IG2_output.json",
+          "sha256": "9bd8819f5118472ceebff25010ef22673f9e62fe20594f4a4270d390acb19826"
+        }
+      ]
+    },
+    {
+      "run": "test_all_evaluation_20260525_150120",
+      "branch": "stage4",
+      "ig": "IG2",
+      "n": 6,
+      "macro": 0.7777777777777777,
+      "micro": 0.7777777777777778,
+      "satisfied": 84,
+      "required": 108,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_150120/samples/Financial-2_req1/stage4/IG2_output.json",
+          "sha256": "3fc3e4e1215f21cca4df57bd4560d313f883286fa39c0d5b1e522ca8744d375b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_150120/samples/Financial-3_req1/stage4/IG2_output.json",
+          "sha256": "a2337815f2cb67e46c7efac4a2a611326ac79f8c17f09b9851d48697cd85357f"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_150120/samples/Financial-3_req2/stage4/IG2_output.json",
+          "sha256": "1b7e6a3c8c4c38563095e436ccfd39e9796a9b6206e0dfb531d51414ec650da1"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_150120/samples/Financial-4_req1/stage4/IG2_output.json",
+          "sha256": "6c1c8dc07da190c726478938b800f8fbf0513dbc81883313064ae793572b980d"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_150120/samples/Financial-4_req2/stage4/IG2_output.json",
+          "sha256": "8b40f0084b707dd8e3860ccfde41f7735db2d6a1f2589691fa50c49465e8aabe"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_150120/samples/Government-1_req1/stage4/IG2_output.json",
+          "sha256": "2e8bca6570fa1be3f786795be6ec71d924634f605986538f856a524c7c2e42b3"
+        }
+      ]
+    },
+    {
+      "run": "test_all_evaluation_20260525_150120",
+      "branch": "stage4",
+      "ig": "IG3",
+      "n": 4,
+      "macro": 0.8181818181818181,
+      "micro": 0.8181818181818182,
+      "satisfied": 72,
+      "required": 88,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_150120/samples/Financial-3_req1/stage4/IG3_output.json",
+          "sha256": "a463d6c8359e49c45ada18d279dcc2599a80359aded1f048db85a2a403065966"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_150120/samples/Financial-3_req2/stage4/IG3_output.json",
+          "sha256": "d23d0a1e70726d62f7cb26259c1b1edeb3f2f318c65406194e236f4af2e22ede"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_150120/samples/Financial-4_req1/stage4/IG3_output.json",
+          "sha256": "f6f01775bd2a33a4097f530c3efa9065c52f3269fda32324b217bd416b8a293f"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_150120/samples/Financial-4_req2/stage4/IG3_output.json",
+          "sha256": "ba98350f126a6c1736706f52b66a904ca2b98e8d5e2f0498a599105342633d1b"
+        }
+      ]
+    },
+    {
+      "run": "test_all_evaluation_20260525_155851",
+      "branch": "stage4",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.6865079365079365,
+      "micro": 0.6865079365079365,
+      "satisfied": 173,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-2_req1/stage4/IG2_output.json",
+          "sha256": "8d6a01e8d2b8dac3415e08e00b6a28f0118530fd97ac094ce695f97ef56c26ee"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-2_req2/stage4/IG2_output.json",
+          "sha256": "c36b4a2e5d77f0ab4023f67740e7cc12752c194e2bf12c1451837962f1028f9f"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-3_req1/stage4/IG2_output.json",
+          "sha256": "1bcf638f2b4638c480c940e78a5d4a3a0eb0dbe3b1c7f868282b2756ca9c6e69"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-3_req2/stage4/IG2_output.json",
+          "sha256": "4ca7b93b048623b2d0836ea26b54a569375a7975b916a38ca4dc2316e30d0a02"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-4_req1/stage4/IG2_output.json",
+          "sha256": "3c32dc40b135433ab63a6382620ea9c48ebd31cae64cf40a02529525c9b532a6"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-4_req2/stage4/IG2_output.json",
+          "sha256": "f90923a92e8ad9ba56b20c82b2d9d0f9e34ab7f0b3f0199ea120e3e483cd7308"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-1_req1/stage4/IG2_output.json",
+          "sha256": "ad35dccc24f8012f7448191c5ed7af9aef2784c1762c7960fbb374b828937baa"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-1_req2/stage4/IG2_output.json",
+          "sha256": "c059632ef9145ff9ea6a4575bdfbaf7d4704d052fb81b42dcb416cf5936edc6c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-2_req1/stage4/IG2_output.json",
+          "sha256": "e439ff26dacfc959ffbbb6c207b215d6247814563d175ae0d396656ba376e2ea"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-2_req2/stage4/IG2_output.json",
+          "sha256": "3448b1114d059b1c4897844d7ca09b6df7551087896880d84436774588a0d174"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-3_req1/stage4/IG2_output.json",
+          "sha256": "235cf3e6f1943717103c901a58e79c1d4b10ecbcf474cdadc1099915a12a93a9"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-3_req2/stage4/IG2_output.json",
+          "sha256": "1190476d7620223b4d38944d1ddf5bad92deaf2a7c82fbbb1c9d26d194010822"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-4_req1/stage4/IG2_output.json",
+          "sha256": "399c573612dc5261ff5f4b38f616229bc55b326fd7c892e7760fa5663f6b87a2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-4_req2/stage4/IG2_output.json",
+          "sha256": "f82ec68276e902a6d9c5d269e5d15bea8f6bda0a99c498d4872dd1388d1d7171"
+        }
+      ]
+    },
+    {
+      "run": "test_all_evaluation_20260525_155851",
+      "branch": "stage4",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.7532467532467532,
+      "micro": 0.7532467532467533,
+      "satisfied": 232,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-2_req1/stage4/IG3_output.json",
+          "sha256": "a5f73c24e861ad316fe6e1087e02cf843ebaf49035b632976893767f8d8a84ac"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-2_req2/stage4/IG3_output.json",
+          "sha256": "27e72e72cc51cc0fc85ed65ea27745f85344a16c3091034bd6ddeb7b44dbc085"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-3_req1/stage4/IG3_output.json",
+          "sha256": "1ed640a3d7ddff875289ad00636fe5ca7b6eba13fa46bda8b2a512afb0891323"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-3_req2/stage4/IG3_output.json",
+          "sha256": "a66e44a398d3bbe757c133d680364332e0c5a3c303b617a0fb48dd5fc7550397"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-4_req1/stage4/IG3_output.json",
+          "sha256": "e066520c2e0b446d90e53667f205d3116b689ea7a9dc756c7b19eeb18021646b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Financial-4_req2/stage4/IG3_output.json",
+          "sha256": "41226e3375dd702ca6e12ab50fa2e2bd83cc8e6501731a7db707396c45227048"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-1_req1/stage4/IG3_output.json",
+          "sha256": "78002ac998a9432ba00b179621a7f7489d0462453f6f17b6d958f50837ece6ab"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-1_req2/stage4/IG3_output.json",
+          "sha256": "36149b95c83f60e433a88bc87aa786557001fc199cbec1416c490d718f73712d"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-2_req1/stage4/IG3_output.json",
+          "sha256": "c12806da53c7f67c84b2a207e27da110a911db267e5e302c454fca7b842f67ae"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-2_req2/stage4/IG3_output.json",
+          "sha256": "5324df6248137e5416a2d7a5cbc07914c452e48c1bc834adfccc049c1f38d502"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-3_req1/stage4/IG3_output.json",
+          "sha256": "4444eb0170a0f657eef039f471fe073db9afd683d8849edb1f9bc28a25c39c47"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-3_req2/stage4/IG3_output.json",
+          "sha256": "469fcb263eefc3e5584ef7020772736fbe0626de1a67f02df52f69cc758d50d6"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-4_req1/stage4/IG3_output.json",
+          "sha256": "6e4c178cb95c58873ef9f9df3beb1823181bf861d55b15b2859b6b9804b773e5"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851/samples/Government-4_req2/stage4/IG3_output.json",
+          "sha256": "65775242e5cb0b735c9e3c2a25118b07eb81bfc31a597745200277845221db4d"
+        }
+      ]
+    },
+    {
+      "run": "test_all_evaluation_20260525_155851_feedback_v2",
+      "branch": "stage4_feedback",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.6865079365079365,
+      "micro": 0.6865079365079365,
+      "satisfied": 173,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-2_req1/stage4_feedback/IG2_output.json",
+          "sha256": "57557a55fcc1dfc454a3bb04403222ddf25c7fae13bd7d1d85c495550aa0c678"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-2_req2/stage4_feedback/IG2_output.json",
+          "sha256": "636a0ea8abd96dc231caf3886c01f8da72584aaaffd19adf4d8fe76cb0b80c80"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-3_req1/stage4_feedback/IG2_output.json",
+          "sha256": "490402c980f8aa84fdd7d928b543bbc5c33ff014b3db6d2a09ec2def2d9faa25"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-3_req2/stage4_feedback/IG2_output.json",
+          "sha256": "e2fe6a5b134a7722a64d5e6944bf257be5c82733a848631e059e2a34495d9fbe"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-4_req1/stage4_feedback/IG2_output.json",
+          "sha256": "f38fbb4c1e3a247fef3ba276273887081736f819686a7e6fb7981549d813f3a6"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-4_req2/stage4_feedback/IG2_output.json",
+          "sha256": "244c0dda3552a62c4a96c3d2e1c75870e5ba2fada4851abeec2d3dcf6104db99"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-1_req1/stage4_feedback/IG2_output.json",
+          "sha256": "6c7e3f6946ad9795baa8c75fd73c31834f0695ca5e17624a73f4355cfef38caa"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-1_req2/stage4_feedback/IG2_output.json",
+          "sha256": "b31f9756a640680ea99cb0f8251238cd3d57f996432628a174b563f64b809e16"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-2_req1/stage4_feedback/IG2_output.json",
+          "sha256": "3b6649ac93bbb0d3d9706d38527cf95655cd239a70e467c4d580baecd4490f9b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-2_req2/stage4_feedback/IG2_output.json",
+          "sha256": "9b06477d184884725b5fd00ddebd68901d86a18ea609c11befb429228d9290e3"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-3_req1/stage4_feedback/IG2_output.json",
+          "sha256": "3f0d8900bfd27a2f5ec7b8ba9a0106b73eed23de7bb196895f825140a940d4e2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-3_req2/stage4_feedback/IG2_output.json",
+          "sha256": "204cb103c1f027067d83d2033712b7f2a10d3b143bf125d3a885237105fce2f1"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-4_req1/stage4_feedback/IG2_output.json",
+          "sha256": "24001d037370bafc8f88ffb1a5cabb14c95b58f5563190c95ab5a1ba09a590f4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-4_req2/stage4_feedback/IG2_output.json",
+          "sha256": "2a99df521dc4ccfe8903fb7c707f5eb808ccf3ef0db9a56e0191f2f7b2afc6ad"
+        }
+      ]
+    },
+    {
+      "run": "test_all_evaluation_20260525_155851_feedback_v2",
+      "branch": "stage4_feedback",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.7532467532467532,
+      "micro": 0.7532467532467533,
+      "satisfied": 232,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-2_req1/stage4_feedback/IG3_output.json",
+          "sha256": "a9a9fd4ef60fd53ae8e0444c875ccbbb720cbda4a83663a90bfe76c0b9f7fa54"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-2_req2/stage4_feedback/IG3_output.json",
+          "sha256": "ca244d4c65df275113d4ea5a0aa8d81e72419c60e00eb1ea368096de222bf11c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-3_req1/stage4_feedback/IG3_output.json",
+          "sha256": "a37307938494363024f9c207a87cd5e5055788d517aa7e5d2c336cf39a83eca2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-3_req2/stage4_feedback/IG3_output.json",
+          "sha256": "0a45a886e4ba5546aa4fb35321dc8d9d8c7f00fc1a90d04a5b29368fbfced655"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-4_req1/stage4_feedback/IG3_output.json",
+          "sha256": "bbd0cdbb9a00254cf2be1778dfd4824cfaf4eedb04e5943c8a70b88ee5d0cc40"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Financial-4_req2/stage4_feedback/IG3_output.json",
+          "sha256": "9cf01acb379e992eea41c14589afdfde78fbb197cb7ea9106c5b496d55d9e58f"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-1_req1/stage4_feedback/IG3_output.json",
+          "sha256": "1b9c6768eacf3fc12f2ecf4cc090ecb768c175881768bac6c29c7bc054451ff1"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-1_req2/stage4_feedback/IG3_output.json",
+          "sha256": "e806d91513d3aa40df02e0cf054dd62ef82a381c08edd890c7e718202346fc22"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-2_req1/stage4_feedback/IG3_output.json",
+          "sha256": "253b1932a2a0f7244a3e9d3db84629a972c989773dd0311d00576e82ec5615cd"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-2_req2/stage4_feedback/IG3_output.json",
+          "sha256": "6cde6ccbb6d4b1974da107fe518a5398e2e39b92391cb04536e776a50ecb7922"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-3_req1/stage4_feedback/IG3_output.json",
+          "sha256": "eda2877dd42fedabfd3616b80f906028b79b5da3567cfa1f423b260b50d31fe4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-3_req2/stage4_feedback/IG3_output.json",
+          "sha256": "f277679da504c476b0ac69e88cd70fb477135b69930e3c5a6f8e8285c46a8d1f"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-4_req1/stage4_feedback/IG3_output.json",
+          "sha256": "f0e1a3ae27fe9283457758179763ce6fe3cb278dda8b58ff6f9c1b8af530e3cf"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_evaluation_20260525_155851_feedback_v2/samples/Government-4_req2/stage4_feedback/IG3_output.json",
+          "sha256": "2a773067f57c38d933f788485cd6980409ede2564c7e5b821e0e78dd5f204fb4"
+        }
+      ]
+    },
+    {
+      "run": "test_all_single_vector_evaluation_20260525_195001",
+      "branch": "stage4",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.6785714285714286,
+      "micro": 0.6785714285714286,
+      "satisfied": 171,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-2_req1/stage4/IG2_output.json",
+          "sha256": "bd7f13f0d2a62f1600e5db01675c7774a458a35272d319d8c954afd5dbac2707"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-2_req2/stage4/IG2_output.json",
+          "sha256": "288a9023a0670043c9aab90aeaf233f28f7b50a109dca4087159a8f6e7319366"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-3_req1/stage4/IG2_output.json",
+          "sha256": "736cb0f17fe959486e567aa1c3ef2ba56855bf6a3d2977bbf2e519d05e49a312"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-3_req2/stage4/IG2_output.json",
+          "sha256": "0711ef83edc4742b331bb4efa4b11f36d7877a24012fe2f5a884394ce3787687"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-4_req1/stage4/IG2_output.json",
+          "sha256": "b638ce980dfa5c9c9871e8264873e32b1797ef1e30871cbd81136972ef59f565"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-4_req2/stage4/IG2_output.json",
+          "sha256": "09289764c632afd28e359d75d09bc0f3e3cdcd02c0ec0bf969c67f2de9782ae4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-1_req1/stage4/IG2_output.json",
+          "sha256": "6acd24a5ef10f4106143c7fc833d9d9cb2045da46e345682a09d9d2417aabe31"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-1_req2/stage4/IG2_output.json",
+          "sha256": "fb68d82a80e85495d0e6af261894dd9b323ca41258f689a772ca82b65a11c515"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-2_req1/stage4/IG2_output.json",
+          "sha256": "f9e59b4e0c070fbecf7ece14fdbf4fb9834a2eecf904e4c9913c9532df831835"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-2_req2/stage4/IG2_output.json",
+          "sha256": "1642c5464d2021cc5aa856daad735fa9c3faad0a30027891091fdd854a4087f2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-3_req1/stage4/IG2_output.json",
+          "sha256": "4aed2cf2980b067a99d8e3fe104bf1f60f88dccf2e5f2aa159f807c9b3294dfb"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-3_req2/stage4/IG2_output.json",
+          "sha256": "e6931883d0ffa70100d0b35eac9063268684461fcccef5fe6842a4c952a8ace3"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-4_req1/stage4/IG2_output.json",
+          "sha256": "e7c2ce4913c90b93a577c2139a54df3a9d33770f56085710b948cd356496fd21"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-4_req2/stage4/IG2_output.json",
+          "sha256": "4f9c1164e5f111d3f9edcc09656203f17dd4d62f867ad1e357d09ea6c0c2cac5"
+        }
+      ]
+    },
+    {
+      "run": "test_all_single_vector_evaluation_20260525_195001",
+      "branch": "stage4",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.737012987012987,
+      "micro": 0.737012987012987,
+      "satisfied": 227,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-2_req1/stage4/IG3_output.json",
+          "sha256": "16a77b763e9aaceb6165eefeed2e346ebb56f66f1133b6090f33c91eef6154e0"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-2_req2/stage4/IG3_output.json",
+          "sha256": "4cd20a7eb7a956b600dcbc7bf1a699104db7ee305215235f7118fba541386501"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-3_req1/stage4/IG3_output.json",
+          "sha256": "296387e9455f8fc8630c7b2f8967b2003bad29e4525026dfd9b1dd5fa9611f01"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-3_req2/stage4/IG3_output.json",
+          "sha256": "cd6807ea369e84ca51a2fbf5ab3a1100db5a08dc7729871a7f38f5e39b6e43a1"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-4_req1/stage4/IG3_output.json",
+          "sha256": "38de00b2ec59005fc5cfec20aaa3be79c0e052347c8ba0bc61bc3b02a30a0fc4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Financial-4_req2/stage4/IG3_output.json",
+          "sha256": "f079cd686a90e8c0cf1aa2ce7398ec0b12ca530043c6f8b587e7261b54c33c36"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-1_req1/stage4/IG3_output.json",
+          "sha256": "bfba6b888769fadab739f39e4ec81b69ecffb24d1d0ebaa105cae69039147c96"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-1_req2/stage4/IG3_output.json",
+          "sha256": "bf7a8b149fef981d0ab77a582063a2a38c9c77b834b9848d2bb1afa4d10c536c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-2_req1/stage4/IG3_output.json",
+          "sha256": "51e1982eda29a89db21745f6713da2848ff13ce5bb0219c814bc083809d1960f"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-2_req2/stage4/IG3_output.json",
+          "sha256": "f12ab766e16b18f237de58a0f900d3a2311b66563c9118c7e3308c86219fadfd"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-3_req1/stage4/IG3_output.json",
+          "sha256": "d05ff3c529d6cfa00f909a4350295c3dd0235cf957f211ba125d5eba851fd990"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-3_req2/stage4/IG3_output.json",
+          "sha256": "21c6ce45a75f9dc340f463c7983b0cea28e631cd5060fd8f5e259fc18fe21e5e"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-4_req1/stage4/IG3_output.json",
+          "sha256": "6a6a4176d09d2d259f3915ce9e0ad34665c3727d66bf4cd3634e9ec279a15c09"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195001/samples/Government-4_req2/stage4/IG3_output.json",
+          "sha256": "239e91ca881cdc7278021b745f7fa5460efbcf19362af06cd02a1a5ac3659195"
+        }
+      ]
+    },
+    {
+      "run": "test_all_single_vector_evaluation_20260525_195550",
+      "branch": "stage4",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.7103174603174603,
+      "micro": 0.7103174603174603,
+      "satisfied": 179,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-2_req1/stage4/IG2_output.json",
+          "sha256": "4815332813ad89043ea7670d6361067b5ce9d1b531bb5fe72cae32a8c45ca5d4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-2_req2/stage4/IG2_output.json",
+          "sha256": "cef531f20068504e682e63cde5c47d822b5e6c47a8f18c14c1323bc8179637b7"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-3_req1/stage4/IG2_output.json",
+          "sha256": "d4c0245c9154ba65dfe5714b6d06436d4f1e51131baf633e13dc1eb6ef100bec"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-3_req2/stage4/IG2_output.json",
+          "sha256": "3ef0d3d226c2b78c3cbc38371059e6131c506dff3807c0125c2b80992ef82bb4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-4_req1/stage4/IG2_output.json",
+          "sha256": "fc45734399d5c99b018c92d75945a4e55e68723a59c073a40bf39c974afe420c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-4_req2/stage4/IG2_output.json",
+          "sha256": "fd6dc1999bc417c1a0f5d36d0bcf34ad9ea5e00708a6b731d603375ec4e20bc2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-1_req1/stage4/IG2_output.json",
+          "sha256": "b0065b6339fc43b7b639795e9e80978a0177ef1fd621c0cda38cdddb4dae00e1"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-1_req2/stage4/IG2_output.json",
+          "sha256": "f5c77f1f61bbff1b340601a353527d55458c6bc5b7b5a7692a97110fb32f3d7b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-2_req1/stage4/IG2_output.json",
+          "sha256": "1bb80b8d266404d29388aed38a9fc2ecb9031fbecf942a852d338b062ef925e8"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-2_req2/stage4/IG2_output.json",
+          "sha256": "6a07b8968a7d91e7d273c602b4eaea3fbc335d5080b84a108ba831599279e15a"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-3_req1/stage4/IG2_output.json",
+          "sha256": "73ec9a128d0f6f1afab399768c70ecc71b272606435396d036d699eb5a6fc312"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-3_req2/stage4/IG2_output.json",
+          "sha256": "23f45d5153a6c6cd48dd3f12212a5a4a1c367b3a79c8f0f1c70d33adcb446012"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-4_req1/stage4/IG2_output.json",
+          "sha256": "6e6ba95a6d19c337b27c47790fd3135fb81870a484be67a720b520257d159d12"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-4_req2/stage4/IG2_output.json",
+          "sha256": "7026bf7ff7e7f7d5353735fc4bb08c1a785ac8b649234fe912717537faf5a607"
+        }
+      ]
+    },
+    {
+      "run": "test_all_single_vector_evaluation_20260525_195550",
+      "branch": "stage4",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.7694805194805195,
+      "micro": 0.7694805194805194,
+      "satisfied": 237,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-2_req1/stage4/IG3_output.json",
+          "sha256": "86e3566fb4ec2dec94309184c7b161c6b33f3d7ffb807bab2bcc937af6fbd36c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-2_req2/stage4/IG3_output.json",
+          "sha256": "25913170280ba3c9e8d8156b281d824e498793a29bfcebe67f7f558d55aaf2dd"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-3_req1/stage4/IG3_output.json",
+          "sha256": "c8fd1abed41f3bb1233c6cf583e1bf27ac3bbefb12d7d5236f340b7ece567de1"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-3_req2/stage4/IG3_output.json",
+          "sha256": "60eee0a920bfa0dc5b67e74736896d83b049fe478e5ad021d31d4a1bafd30f8f"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-4_req1/stage4/IG3_output.json",
+          "sha256": "c92637524aa1ac6ce4ae86d7f8777b3e15dee1605d4f6f659bccd02156a50ef3"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Financial-4_req2/stage4/IG3_output.json",
+          "sha256": "63fd9ce8b6703980c53fc235bd3516ca527d6d83d1f25d8b41c136df6de6f4fa"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-1_req1/stage4/IG3_output.json",
+          "sha256": "e5243df13f7eb255e2a9924bf7bf6758397492bf249e94a0595759c735fc268c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-1_req2/stage4/IG3_output.json",
+          "sha256": "fa27b98ed634f2e1535c84dd7c4a339cf9ae34b8bb612a6485baa25b1f882519"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-2_req1/stage4/IG3_output.json",
+          "sha256": "30b5477da9342edf8a89b07d89fa9f3a0383eb6dd84e824b0bac65422925c9e0"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-2_req2/stage4/IG3_output.json",
+          "sha256": "cae8cb3ea13337d8ff171c7e2db6093e27a663d38e4615a27fe117f456fcc532"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-3_req1/stage4/IG3_output.json",
+          "sha256": "4e00b34fa94be4998207317a913da84a5e35ec1e45867dfc7dc0acdf93b60f77"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-3_req2/stage4/IG3_output.json",
+          "sha256": "0e581b0df87e3bb6723aab167d9bc8276a4fce073334cf0a59f425e0acaf8e50"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-4_req1/stage4/IG3_output.json",
+          "sha256": "d6e5bd0d3119dfa276b1fb0946b25cb859f1e9d3ecff3712d810ef0bba18d63d"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550/samples/Government-4_req2/stage4/IG3_output.json",
+          "sha256": "f596c94aa7ed017808bc82c4fbec90027f82de144fdd5f40f51664fd33aa0c46"
+        }
+      ]
+    },
+    {
+      "run": "test_all_single_vector_evaluation_20260525_195550_feedback",
+      "branch": "stage4_feedback",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.7103174603174603,
+      "micro": 0.7103174603174603,
+      "satisfied": 179,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-2_req1/stage4_feedback/IG2_output.json",
+          "sha256": "f90cae158882e0cd9fb769d678d77638799dcb5b05671dab307c0fb6884e2b01"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-2_req2/stage4_feedback/IG2_output.json",
+          "sha256": "4dc380a4c9a04e7f7d192d9bcb0912d10731a474db43887134921fce3cf13634"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-3_req1/stage4_feedback/IG2_output.json",
+          "sha256": "519878105fd53a8c24699fbdd158ad1aac7d7f4d1f15f7e7bd8b1187576f8259"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-3_req2/stage4_feedback/IG2_output.json",
+          "sha256": "0d5f3211d8f3f9f6f4dd7406e913e5ea655d9bcecb3c66308bc63c89c262f500"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-4_req1/stage4_feedback/IG2_output.json",
+          "sha256": "b02be22109bf99fdbc48f634feaca7d60dc488278010fa47a6d1d12fb5abf467"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-4_req2/stage4_feedback/IG2_output.json",
+          "sha256": "5d23b26b839f9eef03e968bfb53478d21f97dc723a7e5879fba97a8c9e12a297"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-1_req1/stage4_feedback/IG2_output.json",
+          "sha256": "37fab7ad990720f35388b456685dde8d379a989d6bf3a2ae2c1ebac997f53c87"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-1_req2/stage4_feedback/IG2_output.json",
+          "sha256": "f1f5428a6d8444fb60f4d2d1d58493fb5a2d723902851f99546b00e21faade11"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-2_req1/stage4_feedback/IG2_output.json",
+          "sha256": "a0e2bb0a36d9b046e54182d2e92068d4af49c18bb00969c300fb88ee2fa1e43c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-2_req2/stage4_feedback/IG2_output.json",
+          "sha256": "7d6ca426c87bab020eee1134111d2b482ef4b759d2daf0c5ab6f17497792a27b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-3_req1/stage4_feedback/IG2_output.json",
+          "sha256": "e6172b39cca62820b6a2cc05244d5d79e60f1db70c29395b8f300d82d4198f7c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-3_req2/stage4_feedback/IG2_output.json",
+          "sha256": "5019281dc7c53dcce42ab62aa41cc4d86532050bc1f145b2081baffcab9985f1"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-4_req1/stage4_feedback/IG2_output.json",
+          "sha256": "c075474abc3b3060e693054209a09961060a9c3ed5af87a9e1e6e25095d98dcd"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-4_req2/stage4_feedback/IG2_output.json",
+          "sha256": "a60d48307bcb6d46f4791f833e910d25ea7018f2c22a3c860becac04eb69103d"
+        }
+      ]
+    },
+    {
+      "run": "test_all_single_vector_evaluation_20260525_195550_feedback",
+      "branch": "stage4_feedback",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.7694805194805195,
+      "micro": 0.7694805194805194,
+      "satisfied": 237,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-2_req1/stage4_feedback/IG3_output.json",
+          "sha256": "4cbab85fa182f473808f0c492ab4a30672f37ad9c58a25fd2650c2bea19d86a3"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-2_req2/stage4_feedback/IG3_output.json",
+          "sha256": "efe5a9933673a74c34d3994a8b7945d754cd075a0cc272616aee433f5d06db80"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-3_req1/stage4_feedback/IG3_output.json",
+          "sha256": "bb61609883873a9004aae72431a8e37ebd9874fcc3ff5c3977c392bf1e59feb5"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-3_req2/stage4_feedback/IG3_output.json",
+          "sha256": "7767140d7b5d2ca0be8bf999d02e558021814d55fef4c872348ec61476b97173"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-4_req1/stage4_feedback/IG3_output.json",
+          "sha256": "fe4fc51a0a29df47f101650561866893b0b56e743301e2c5659452362ae970df"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Financial-4_req2/stage4_feedback/IG3_output.json",
+          "sha256": "c2441e290f8cd7aaa7df8e967b206d6f29b15e7f337989d0f8e45d21e2ce64e5"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-1_req1/stage4_feedback/IG3_output.json",
+          "sha256": "c935dd2e60344e609db06cc4d088e1e037cde27a9c9c0cf283eaa311e0033e41"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-1_req2/stage4_feedback/IG3_output.json",
+          "sha256": "10b991223365c2f21328ee53c05ac618e350a083ee18f5e0b63c820799a855b5"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-2_req1/stage4_feedback/IG3_output.json",
+          "sha256": "135c7771381194e3551d98ce58c6d1b991a036a3a64cdc8bfbb746b8d38ebab3"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-2_req2/stage4_feedback/IG3_output.json",
+          "sha256": "542b254410f63a7296f3660e83d584bfbd2850beb0f3bfc5c92e0db24a84fdc4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-3_req1/stage4_feedback/IG3_output.json",
+          "sha256": "84f1869dbd1e941c4ca8c90fe6fb2b9f024b81d567d874fec965aea38edbc12e"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-3_req2/stage4_feedback/IG3_output.json",
+          "sha256": "6a32bf8d84c67138fd19dc493b8a956f4f5eec56d71114503dc16d2b04636d4a"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-4_req1/stage4_feedback/IG3_output.json",
+          "sha256": "b45877116f1d0d3c243fbeb2538f62254f31a40a7bb9146358c7b149674819d2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_evaluation_20260525_195550_feedback/samples/Government-4_req2/stage4_feedback/IG3_output.json",
+          "sha256": "e506ff9d120e95942ca2b0b5d0b2a1f9ccb25ed11aaa9fb58b439eea21a9f530"
+        }
+      ]
+    },
+    {
+      "run": "test_all_single_vector_structfix_20260526_091223",
+      "branch": "stage4",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.7182539682539683,
+      "micro": 0.7182539682539683,
+      "satisfied": 181,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req1/stage4/IG2_output.json",
+          "sha256": "9add39f37af5d076c957e74548709a91b08644c7c6611e89ac8d2add18ed6970"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage4/IG2_output.json",
+          "sha256": "e06548f8a50e4a3ef2ce8e21d00f64a398ee8e574bbdb2b4e5859a180275ff1c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-3_req1/stage4/IG2_output.json",
+          "sha256": "8aa7c16b435ce4dafd0381c702a4a352899d35b0749ffc5abf1bc5de0db15e5e"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-3_req2/stage4/IG2_output.json",
+          "sha256": "f5847391662a842a083f44b92618acbe257ec357faa8dce05eeba0eda9a608e6"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-4_req1/stage4/IG2_output.json",
+          "sha256": "621d3e4fd5fa77ce1a24a3b42c04d8d57a397dd6d6cc62598fb74c3011a92027"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-4_req2/stage4/IG2_output.json",
+          "sha256": "87813de4e4da0a4cac8c569ea52c1e62256b74d6b49ceba7a8710239078838d5"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-1_req1/stage4/IG2_output.json",
+          "sha256": "2d71c5f9e7b91ebd14ba9fffcaae70f124f688d27fc20c79a1667dc52eb4a12a"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-1_req2/stage4/IG2_output.json",
+          "sha256": "724e292c2f435c9d5546bdf7cc42e07edd1e6875bf2ac304dfba77e83c3bff4b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-2_req1/stage4/IG2_output.json",
+          "sha256": "4c95e1a07e11545225d238f729da0e30c5d5cfea75f5d16eb194a549a51c392b"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-2_req2/stage4/IG2_output.json",
+          "sha256": "596a70567d4ab32fd82e12a79bad2201eb0419652b84c170c6db861ea318c367"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-3_req1/stage4/IG2_output.json",
+          "sha256": "48b477d475faf668ee23eba9a013e9de062083b3184b0d1cc8209f8dd4a74074"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-3_req2/stage4/IG2_output.json",
+          "sha256": "bc6f9a08e83c3aafa7de1c695890adb81cd4f375b765442914e533e008ab07e6"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-4_req1/stage4/IG2_output.json",
+          "sha256": "4fd31e01f60a233d1310439ef0219baed22a35a4b97d40d625fd8654f214c7b2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-4_req2/stage4/IG2_output.json",
+          "sha256": "f797d499522b8d45cb1d02c2b4d346d2119f4fba53f13969437b1de05ef557ec"
+        }
+      ]
+    },
+    {
+      "run": "test_all_single_vector_structfix_20260526_091223",
+      "branch": "stage4",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.7792207792207793,
+      "micro": 0.7792207792207793,
+      "satisfied": 240,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req1/stage4/IG3_output.json",
+          "sha256": "eb32bbbe5cbabea4586301716d4eb6e1772ad85802d3af28f22de024e9121932"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage4/IG3_output.json",
+          "sha256": "63f20bbe83750bcb477845472f28c4b911f72f39090401a26c9cfd6f30b445e8"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-3_req1/stage4/IG3_output.json",
+          "sha256": "31dfcf5d1576cb9156c64e2c4f8cbe157d08c0ee3a00ba1eb81627231f950612"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-3_req2/stage4/IG3_output.json",
+          "sha256": "af23e41dcae2361cd6f3f13794d912c07176b25baf113b50c24d57b312a7a059"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-4_req1/stage4/IG3_output.json",
+          "sha256": "b4ece437aec57b7fb40cd9c597a6a8ad999ecebb75447de088ffe9283ce78631"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-4_req2/stage4/IG3_output.json",
+          "sha256": "3284d6b378b429d7f4c003cd946feb73079c8189055e3394cd651e1ee303365e"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-1_req1/stage4/IG3_output.json",
+          "sha256": "1c07a3597485413bc449ead1f5dcb931c6dfd3294d19207bad5a5dff2260d200"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-1_req2/stage4/IG3_output.json",
+          "sha256": "07399d24aaeee19daf7b29a8d577dee0725e556540230b70979c1258d3484779"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-2_req1/stage4/IG3_output.json",
+          "sha256": "0c68cbcfaa381bbd6ed8d10e300caf0677fd5636f2af6774b05fb97336393819"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-2_req2/stage4/IG3_output.json",
+          "sha256": "08cd32fdd767f4854494f68c9aa901feeec253a18ba4bfd959a30a7a14de77d4"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-3_req1/stage4/IG3_output.json",
+          "sha256": "2271a93880fa3a47ddc7ab5641e4683ddcbc5db41e53e47b678aedd7c92d714d"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-3_req2/stage4/IG3_output.json",
+          "sha256": "e1d523953c4871956105dd42282a1eaf5ea9bce7f4a615e1789db8262ffd5c14"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-4_req1/stage4/IG3_output.json",
+          "sha256": "64fb96d09f56a958c5cf9f8044bf57fd1c844627b12a8d9cbb572af92b36cb9c"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-4_req2/stage4/IG3_output.json",
+          "sha256": "73064ef2ff4d42dc69706bf23ad1516804034d15f769d86d14df251a35d9e9b1"
+        }
+      ]
+    },
+    {
+      "run": "test_all_single_vector_structfix_feedback",
+      "branch": "stage4_feedback",
+      "ig": "IG2",
+      "n": 14,
+      "macro": 0.7182539682539683,
+      "micro": 0.7182539682539683,
+      "satisfied": 181,
+      "required": 252,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-2_req1/stage4_feedback/IG2_output.json",
+          "sha256": "69dcad2a60db5d271b80d46260b31990bdb61dbf82090e96433b2c1471bf3570"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-2_req2/stage4_feedback/IG2_output.json",
+          "sha256": "519216d3337773c650574e0a8195cfb0c678e1c9a6f52b82dd7c5aa5728ea83e"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-3_req1/stage4_feedback/IG2_output.json",
+          "sha256": "cd38ef58a3ba76ca11147e9d6285ad57fec87ef50ff17aebf89ced1a4cb3055d"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-3_req2/stage4_feedback/IG2_output.json",
+          "sha256": "8f449fdba59f2958355bc71caf849a9f825326fcea991a090575fab59e3fc9f9"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-4_req1/stage4_feedback/IG2_output.json",
+          "sha256": "2c4ed8885567228bd9600c9822f2a2111bf31b0757c547074dc17ce25d545ee2"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-4_req2/stage4_feedback/IG2_output.json",
+          "sha256": "3b2bd19df0bad901f01d393af61ca62eec858b48644e7acd1e9541bbf3d0d694"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-1_req1/stage4_feedback/IG2_output.json",
+          "sha256": "b5dc08e486b620fd8230914d8f2869c67771b58da6935221f5b28d69d5e32767"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-1_req2/stage4_feedback/IG2_output.json",
+          "sha256": "1cc3e7ee3200e523e76667c7c63cf575ccac96173379216a17ec36f719d5aaba"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-2_req1/stage4_feedback/IG2_output.json",
+          "sha256": "bf060404b7400ae19679ac28c86440df5d67cd53fb2413ab9f766ee2d2a07309"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-2_req2/stage4_feedback/IG2_output.json",
+          "sha256": "a40bd9652d7770b2ec01e7c054387cd5dbeccffe5202f3f894eb9e8d6faec09e"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-3_req1/stage4_feedback/IG2_output.json",
+          "sha256": "7effd5cb0cb141be53d52102609e79316149cc68544fb48b7d896940571cd8bd"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-3_req2/stage4_feedback/IG2_output.json",
+          "sha256": "39571d6050a8f5316973c7be94b1957ad698cefc9a7d5ba3da62f0cfc60f2276"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-4_req1/stage4_feedback/IG2_output.json",
+          "sha256": "c55f51215f92a8fcff1fa8455bafb5dc448d9f41b4f6e0eb0c12566f0c346a5f"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-4_req2/stage4_feedback/IG2_output.json",
+          "sha256": "0432682d8bd728a9d3a62f0a3b134c73251c7d59b8e874810d89b9083db783a7"
+        }
+      ]
+    },
+    {
+      "run": "test_all_single_vector_structfix_feedback",
+      "branch": "stage4_feedback",
+      "ig": "IG3",
+      "n": 14,
+      "macro": 0.7792207792207793,
+      "micro": 0.7792207792207793,
+      "satisfied": 240,
+      "required": 308,
+      "files": [
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-2_req1/stage4_feedback/IG3_output.json",
+          "sha256": "9de45b3d21b1458b44ee83aea0bab65b4de5c0176fb88d8793a1b83982bc6d33"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-2_req2/stage4_feedback/IG3_output.json",
+          "sha256": "a2ae86196b2629faf8bcef679b7a844bf6b75a10c79ee10c79853846f38e0994"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-3_req1/stage4_feedback/IG3_output.json",
+          "sha256": "997114a88b0616286faf94f98037465c6063e1fb93d24ab5f582aeaaf861d0d7"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-3_req2/stage4_feedback/IG3_output.json",
+          "sha256": "b3933bdd17e8fc1ab3c43f1cb48a99cfdcf26f6637fe2728eedb4ccc1b9aa263"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-4_req1/stage4_feedback/IG3_output.json",
+          "sha256": "8c6044f7d106ff3761924789cf05f656532295e8fed205500944d4e32cf17cf1"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-4_req2/stage4_feedback/IG3_output.json",
+          "sha256": "e0bc24d0cef0ad98722b6b2baaef1296bbf09b21d49c3afaebcdd30db73e67c3"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-1_req1/stage4_feedback/IG3_output.json",
+          "sha256": "6fbcad590b21517b9e5ed12196f3b03bec0227183aefd4a83c4032d8bf04c8d8"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-1_req2/stage4_feedback/IG3_output.json",
+          "sha256": "6626f62962beeb651ed29511a175b85d5dccc571c888649673f193abce8acff3"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-2_req1/stage4_feedback/IG3_output.json",
+          "sha256": "992fbfc2561f8503cd55ecfd5bd87fc9ee19bca515b92ef664a062c2c72b0b34"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-2_req2/stage4_feedback/IG3_output.json",
+          "sha256": "b507b9d3bea36180ac4441920b34da3e0350ad7ac492d0fd9c20d8d584b9ced6"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-3_req1/stage4_feedback/IG3_output.json",
+          "sha256": "ac359a4aea9545617cbf46cce4a426e2c33bf41f6feea57240ac2161e92998ce"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-3_req2/stage4_feedback/IG3_output.json",
+          "sha256": "f2dd35bcf780898422c5a011e55ab8af802cc00872b549905ef17dd85e5b2919"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-4_req1/stage4_feedback/IG3_output.json",
+          "sha256": "ef4acd0438aedfad3aa90195c82b60e550e81cc564135aa45ab11ce633291474"
+        },
+        {
+          "path": "evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-4_req2/stage4_feedback/IG3_output.json",
+          "sha256": "49d55f80398d1550cce955abb85940603c50736b6061679574759d29cb48917b"
+        }
+      ]
+    }
+  ],
+  "diagnostic_alternatives_not_paper_metric": {
+    "excluding_manual_review_from_denominator": 0.8916256157635468,
+    "treating_manual_review_as_satisfied": 0.9126984126984127,
+    "excluding_ig1": {
+      "satisfied": 148,
+      "required": 196,
+      "ratio": 0.7551020408163265
+    },
+    "maximum_after_excluding_one_sample": 0.7307692307692307
+  }
+}

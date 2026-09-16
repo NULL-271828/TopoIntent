@@ -1,0 +1,155 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Financial-2_req1",
+  "title": "High-Frequency Trading Infrastructure",
+  "description": "A resilient network for ingesting market data, processing it through custom engines, and routing execution orders to three main sites.",
+  "scenario": "finance",
+  "topology_summary": "The topology includes a data center for market data ingestion, a processing zone for analytics and algorithms, and three site zones for executing trades. Data flows are clearly defined and redundant connections ensure resilience.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Data Center",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Processing Zone",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Site A",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Site B",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Site C",
+      "zone_type": "enterprise"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Market Data Ingestion Server",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Analytics Engine",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n3",
+      "name": "Algorithmic Engine",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n4",
+      "name": "Execution Router Site A",
+      "normalized_type": "router",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n5",
+      "name": "Execution Router Site B",
+      "normalized_type": "router",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n6",
+      "name": "Execution Router Site C",
+      "normalized_type": "router",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n7",
+      "name": "Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "data_flow",
+        "label": "Market Data"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "Processed Data"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n3",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "Execution Orders"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n3",
+        "target": "n5",
+        "link_type": "data_flow",
+        "label": "Execution Orders"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n3",
+        "target": "n6",
+        "link_type": "data_flow",
+        "label": "Execution Orders"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n1",
+        "target": "n7",
+        "link_type": "management",
+        "label": "Security"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z2",
+        "link_type": "data_flow",
+        "label": "Data Processing"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z2",
+        "target": "z3",
+        "link_type": "data_flow",
+        "label": "Execution Orders"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z2",
+        "target": "z4",
+        "link_type": "data_flow",
+        "label": "Execution Orders"
+      },
+      {
+        "link_id": "zl4",
+        "source": "z2",
+        "target": "z5",
+        "link_type": "data_flow",
+        "label": "Execution Orders"
+      }
+    ]
+  }
+}

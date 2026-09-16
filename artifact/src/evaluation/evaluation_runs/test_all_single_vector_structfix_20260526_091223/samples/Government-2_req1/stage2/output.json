@@ -1,0 +1,31 @@
+{
+  "sample_id": "Government-2_req1",
+  "template_id": "Government-2",
+  "retrieved_templates": [
+    {
+      "template_id": "Enterprise-4",
+      "score": 0.7859,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Enterprise-5",
+      "score": 0.7811,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Enterprise-1",
+      "score": 0.7802,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Education-3",
+      "score": 0.7793,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Education-2",
+      "score": 0.7791,
+      "retrieval_mode": "single_vector"
+    }
+  ]
+}

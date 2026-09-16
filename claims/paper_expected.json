@@ -1,0 +1,109 @@
+{
+  "stage1": {
+    "scenario_accuracy": 0.98,
+    "zone_type_recall": 0.68,
+    "node_type_recall": 0.53
+  },
+  "retrieval": {
+    "single_vector": {
+      "top_k": {
+        "top_1": 0.75,
+        "top_3": 0.91,
+        "top_5": 1.0
+      },
+      "mrr": 0.84
+    },
+    "multi_field_uniform": {
+      "top_k": {
+        "top_1": 0.6,
+        "top_3": 0.93,
+        "top_5": 1.0
+      },
+      "mrr": 0.75
+    },
+    "multi_field_weighted": {
+      "top_k": {
+        "top_1": 0.57,
+        "top_3": 0.93,
+        "top_5": 0.98
+      },
+      "mrr": 0.75
+    }
+  },
+  "cis_repair": {
+    "IG2": {
+      "cis_satisfaction_before_repair": 0.78,
+      "cis_satisfaction_after_repair": 1.0,
+      "avg_repair_rounds": 1.43,
+      "avg_test_cases": 41.14
+    },
+    "IG3": {
+      "cis_satisfaction_before_repair": 0.78,
+      "cis_satisfaction_after_repair": 1.0,
+      "avg_repair_rounds": 1.36,
+      "avg_test_cases": 41.14
+    }
+  },
+  "stage5_validation": {
+    "IG2 Initial": {
+      "node_link_reachability": 1,
+      "pre_acl_pass_rate": 0.64,
+      "post_acl_pass_rate": 0.87,
+      "avg_latency_ms": 0.06,
+      "diagnostic_failures": 214
+    },
+    "IG2 After Feedback": {
+      "node_link_reachability": 1,
+      "pre_acl_pass_rate": 0.74,
+      "post_acl_pass_rate": 0.86,
+      "avg_latency_ms": 0.07,
+      "diagnostic_failures": 165
+    },
+    "IG3 Initial": {
+      "node_link_reachability": 1,
+      "pre_acl_pass_rate": 0.67,
+      "post_acl_pass_rate": 0.87,
+      "avg_latency_ms": 0.06,
+      "diagnostic_failures": 189
+    },
+    "IG3 After Feedback": {
+      "node_link_reachability": 1,
+      "pre_acl_pass_rate": 0.77,
+      "post_acl_pass_rate": 0.89,
+      "avg_latency_ms": 0.07,
+      "diagnostic_failures": 147
+    }
+  },
+  "end_to_end": [
+    {
+      "zone_type_recall": 0.63,
+      "node_type_recall": 0.61,
+      "cis_satisfaction_rate": null,
+      "post_acl_pass_rate": null
+    },
+    {
+      "zone_type_recall": 0.54,
+      "node_type_recall": 0.63,
+      "cis_satisfaction_rate": null,
+      "post_acl_pass_rate": null
+    },
+    {
+      "zone_type_recall": 0.75,
+      "node_type_recall": 0.73,
+      "cis_satisfaction_rate": 0.7,
+      "post_acl_pass_rate": null
+    },
+    {
+      "zone_type_recall": 0.74,
+      "node_type_recall": 0.82,
+      "cis_satisfaction_rate": 1,
+      "post_acl_pass_rate": 0.78
+    },
+    {
+      "zone_type_recall": 0.76,
+      "node_type_recall": 0.77,
+      "cis_satisfaction_rate": 1,
+      "post_acl_pass_rate": 0.88
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "sample_id": "Government-3_req1",
+  "template_id": "Government-3",
+  "user_intent": "We need a secure cloud infrastructure for our agency's operations. The design must support various departments, including identity management, operations, and team-specific workloads, all while maintaining central oversight. Secure administrative access is critical, as is the ability to monitor all network activity from a single point. Please ensure the architecture is segmented and follows best practices for government systems.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

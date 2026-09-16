@@ -1,0 +1,2142 @@
+{
+  "sample_id": "Government-4_req2",
+  "gt_template_id": "Government-4",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-4_req2",
+    "title": "Government Segmented Network",
+    "description": "A network with distinct zones for standard and sensitive information systems, each with dedicated administrative infrastructure.",
+    "scenario": "government",
+    "topology_summary": "The topology includes separate zones for standard and sensitive systems, each with its own administrative infrastructure. The standard zone has a secure internet gateway, while the sensitive zone is isolated and protected by a Class 1 gateway.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Standard Systems Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Sensitive Systems Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Standard Admin Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Sensitive Admin Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Internet Gateway Zone",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Non-Production Systems Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z7",
+        "name": "External Penetration Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Asset Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Data Flow Documentation Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z10",
+        "name": "Remote Access Zone",
+        "zone_type": "dmz"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Standard Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Sensitive Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Standard Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Sensitive Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n5",
+        "name": "Secure Internet Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n6",
+        "name": "Class 1 Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Standard Switch",
+        "normalized_type": "switch",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n8",
+        "name": "Sensitive Switch",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n9",
+        "name": "Standard Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "Sensitive Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n11",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n12",
+        "name": "DNS Filtering Service",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n13",
+        "name": "Web Proxy",
+        "normalized_type": "proxy",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n14",
+        "name": "Centralized AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n15",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n16",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n17",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n18",
+        "name": "NAC",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n19",
+        "name": "NAC",
+        "normalized_type": "other",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n20",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n21",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n22",
+        "name": "Non-Production Switch",
+        "normalized_type": "switch",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n23",
+        "name": "Non-Production Router",
+        "normalized_type": "router",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n24",
+        "name": "Penetration Testing Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n25",
+        "name": "Asset Inventory System",
+        "normalized_type": "server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n26",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n27",
+        "name": "MFA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n28",
+        "name": "VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n29",
+        "name": "Remote Device",
+        "normalized_type": "endpoint",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n30",
+        "name": "Access Control System",
+        "normalized_type": "other",
+        "zone_id": "z10"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n7",
+          "link_type": "trunk",
+          "label": "Internal Trunk"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n7",
+          "target": "n9",
+          "link_type": "uplink",
+          "label": "Uplink to Router"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n9",
+          "target": "n5",
+          "link_type": "routing",
+          "label": "Internet Gateway"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n2",
+          "target": "n8",
+          "link_type": "trunk",
+          "label": "Internal Trunk"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n8",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "Uplink to Router"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n10",
+          "target": "n6",
+          "link_type": "routing",
+          "label": "Class 1 Gateway"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n3",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Admin Management"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n4",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Admin Management"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n11",
+          "target": "n5",
+          "link_type": "management",
+          "label": "DNS Management"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n12",
+          "target": "n5",
+          "link_type": "management",
+          "label": "DNS Filtering Management"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n13",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Web Proxy Management"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n14",
+          "target": "n3",
+          "link_type": "management",
+          "label": "AAA Management"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "NIDS Monitoring"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n16",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "NIDS Monitoring"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n17",
+          "target": "n15",
+          "link_type": "monitoring",
+          "label": "SIEM Monitoring"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n17",
+          "target": "n16",
+          "link_type": "monitoring",
+          "label": "SIEM Monitoring"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n18",
+          "target": "n1",
+          "link_type": "management",
+          "label": "NAC Management"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n19",
+          "target": "n2",
+          "link_type": "management",
+          "label": "NAC Management"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n20",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "Application Firewall Uplink"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n21",
+          "target": "n2",
+          "link_type": "uplink",
+          "label": "Application Firewall Uplink"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n22",
+          "target": "n23",
+          "link_type": "uplink",
+          "label": "Uplink to Router"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n23",
+          "target": "n5",
+          "link_type": "routing",
+          "label": "Internet Gateway"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n24",
+          "target": "n5",
+          "link_type": "peering",
+          "label": "Penetration Testing Peering"
+        },
+        {
+          "link_id": "nl24",
+          "source": "n25",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl25",
+          "source": "n25",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl26",
+          "source": "n25",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl27",
+          "source": "n25",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl28",
+          "source": "n25",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl29",
+          "source": "n25",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl30",
+          "source": "n25",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl31",
+          "source": "n25",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl32",
+          "source": "n25",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl33",
+          "source": "n25",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl34",
+          "source": "n25",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl35",
+          "source": "n25",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl36",
+          "source": "n25",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl37",
+          "source": "n25",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl38",
+          "source": "n25",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl39",
+          "source": "n25",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl40",
+          "source": "n25",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl41",
+          "source": "n25",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl42",
+          "source": "n25",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl43",
+          "source": "n25",
+          "target": "n20",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl44",
+          "source": "n25",
+          "target": "n21",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl45",
+          "source": "n25",
+          "target": "n22",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl46",
+          "source": "n25",
+          "target": "n23",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl47",
+          "source": "n25",
+          "target": "n24",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl48",
+          "source": "n26",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl49",
+          "source": "n26",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl50",
+          "source": "n26",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl51",
+          "source": "n26",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl52",
+          "source": "n26",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl53",
+          "source": "n26",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl54",
+          "source": "n26",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl55",
+          "source": "n26",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl56",
+          "source": "n26",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl57",
+          "source": "n26",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl58",
+          "source": "n26",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl59",
+          "source": "n26",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl60",
+          "source": "n26",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl61",
+          "source": "n26",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl62",
+          "source": "n26",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl63",
+          "source": "n26",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl64",
+          "source": "n26",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl65",
+          "source": "n26",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl66",
+          "source": "n26",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl67",
+          "source": "n26",
+          "target": "n20",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl68",
+          "source": "n26",
+          "target": "n21",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl69",
+          "source": "n26",
+          "target": "n22",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl70",
+          "source": "n26",
+          "target": "n23",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl71",
+          "source": "n26",
+          "target": "n24",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl72",
+          "source": "n27",
+          "target": "n14",
+          "link_type": "management",
+          "label": "MFA Management"
+        },
+        {
+          "link_id": "nl73",
+          "source": "n28",
+          "target": "n29",
+          "link_type": "vpn",
+          "label": "Remote Access"
+        },
+        {
+          "link_id": "nl74",
+          "source": "n28",
+          "target": "n14",
+          "link_type": "management",
+          "label": "AAA Management"
+        },
+        {
+          "link_id": "nl75",
+          "source": "n30",
+          "target": "n29",
+          "link_type": "management",
+          "label": "Access Control Management"
+        },
+        {
+          "link_id": "nl76",
+          "source": "n30",
+          "target": "n14",
+          "link_type": "management",
+          "label": "AAA Management"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "Standard to Non-Production"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "Sensitive to Non-Production"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z5",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "Internet Gateway to Penetration Testing"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z8",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z8",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z8",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z8",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z8",
+          "target": "z5",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl9",
+          "source": "z8",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl10",
+          "source": "z8",
+          "target": "z7",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl11",
+          "source": "z9",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "zl12",
+          "source": "z9",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "zl13",
+          "source": "z9",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "zl14",
+          "source": "z9",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "zl15",
+          "source": "z9",
+          "target": "z5",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "zl16",
+          "source": "z9",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "zl17",
+          "source": "z9",
+          "target": "z7",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "zl18",
+          "source": "z10",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Remote Access Peering"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-4_req2",
+    "ig_level": "IG2",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Management Zone' (z8) with an 'Asset Inventory System' (n25) that manages various nodes and zones, indicating a detailed asset inventory is maintained.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation Zone' (z9) with a 'Data Flow Documentation System' (n26) that manages various nodes and zones, indicating data flows are documented.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for 'Standard Systems' (z1) and 'Sensitive Systems' (z2), each with dedicated administrative infrastructure, indicating data processing and storage are segmented based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n1, n2, n5, n6) in various zones, indicating firewalls are implemented and managed on servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n11) in the 'Internet Gateway Zone' (z5) and links to various nodes, indicating trusted DNS servers are configured on enterprise assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Server' (n27) in the 'Remote Access Zone' (z10) and links to the 'Centralized AAA Server' (n14), indicating MFA is required for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filtering Service' (n12) in the 'Internet Gateway Zone' (z5) and links to various nodes, indicating DNS filtering services are used.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n13) in the 'Internet Gateway Zone' (z5) and links to various nodes, indicating network-based URL filters are maintained and enforced.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for different types of systems and administrative functions, indicating a secure network architecture is established and maintained.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes various management links and zones, indicating network infrastructure is securely managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Centralized AAA Server' (n14) in the 'Standard Admin Zone' (z3) and links to various nodes, indicating centralized AAA is implemented.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'VPN Gateway' (n28) in the 'Remote Access Zone' (z10) and links to the 'Remote Device' (n29) and 'Centralized AAA Server' (n14), indicating remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes 'NIDS' (n15, n16) in the 'Standard Systems Zone' (z1) and 'Sensitive Systems Zone' (z2), indicating a network intrusion detection solution is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n1, n2, n5, n6) and links between different zones, indicating traffic filtering is performed between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Access Control System' (n30) in the 'Remote Access Zone' (z10) and links to the 'Remote Device' (n29) and 'Centralized AAA Server' (n14), indicating access control for remote assets is managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'SIEM' (n17) in the 'Standard Admin Zone' (z3) and links to NIDS (n15, n16), indicating network traffic flow logs are collected.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Non-Production Systems Zone' (z6) separate from the 'Standard Systems Zone' (z1) and 'Sensitive Systems Zone' (z2), indicating production and non-production systems are separated.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'External Penetration Testing Zone' (z7) with a 'Penetration Testing Workstation' (n24) and links to the 'Internet Gateway Zone' (z5), indicating periodic external penetration tests are performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "6.4",
+        "12.7",
+        "13.5"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology does not explicitly show an asset inventory system or process. However, it includes various nodes and zones that could be part of an inventory.",
+          "missing_reason": "No explicit asset inventory system or process is shown.",
+          "repair_suggestion": "Add a node representing an asset inventory system and links to all other nodes."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology shows various links and zones, but there is no explicit documentation of data flows.",
+          "missing_reason": "No explicit documentation of data flows is shown.",
+          "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes and zones."
+        },
+        {
+          "cis_safeguard_id": "6.4",
+          "title": "Require MFA for Remote Network Access",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a centralized AAA server (n14) but does not explicitly show MFA for remote access.",
+          "missing_reason": "No explicit MFA for remote access is shown.",
+          "repair_suggestion": "Add a node representing MFA and links to remote access points."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a centralized AAA server (n14) but does not explicitly show a VPN or remote device connections.",
+          "missing_reason": "No explicit VPN or remote device connections are shown.",
+          "repair_suggestion": "Add a node representing a VPN and links to remote devices and the AAA server."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a centralized AAA server (n14) but does not explicitly show access control for remote assets.",
+          "missing_reason": "No explicit access control for remote assets is shown.",
+          "repair_suggestion": "Add a node representing access control and links to remote assets and the AAA server."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z8",
+            "name": "Asset Management Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z9",
+            "name": "Data Flow Documentation Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z10",
+            "name": "Remote Access Zone",
+            "zone_type": "dmz"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n25",
+            "name": "Asset Inventory System",
+            "normalized_type": "server",
+            "zone_id": "z8"
+          },
+          {
+            "node_id": "n26",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n27",
+            "name": "MFA Server",
+            "normalized_type": "identity_server",
+            "zone_id": "z10"
+          },
+          {
+            "node_id": "n28",
+            "name": "VPN Gateway",
+            "normalized_type": "vpn_gateway",
+            "zone_id": "z10"
+          },
+          {
+            "node_id": "n29",
+            "name": "Remote Device",
+            "normalized_type": "endpoint",
+            "zone_id": "z10"
+          },
+          {
+            "node_id": "n30",
+            "name": "Access Control System",
+            "normalized_type": "other",
+            "zone_id": "z10"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl24",
+              "source": "n25",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl25",
+              "source": "n25",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl26",
+              "source": "n25",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl27",
+              "source": "n25",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl28",
+              "source": "n25",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl29",
+              "source": "n25",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl30",
+              "source": "n25",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl31",
+              "source": "n25",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl32",
+              "source": "n25",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl33",
+              "source": "n25",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl34",
+              "source": "n25",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl35",
+              "source": "n25",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl36",
+              "source": "n25",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl37",
+              "source": "n25",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl38",
+              "source": "n25",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl39",
+              "source": "n25",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl40",
+              "source": "n25",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl41",
+              "source": "n25",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl42",
+              "source": "n25",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl43",
+              "source": "n25",
+              "target": "n20",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl44",
+              "source": "n25",
+              "target": "n21",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl45",
+              "source": "n25",
+              "target": "n22",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl46",
+              "source": "n25",
+              "target": "n23",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl47",
+              "source": "n25",
+              "target": "n24",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl48",
+              "source": "n26",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl49",
+              "source": "n26",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl50",
+              "source": "n26",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl51",
+              "source": "n26",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl52",
+              "source": "n26",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl53",
+              "source": "n26",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl54",
+              "source": "n26",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl55",
+              "source": "n26",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl56",
+              "source": "n26",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl57",
+              "source": "n26",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl58",
+              "source": "n26",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl59",
+              "source": "n26",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl60",
+              "source": "n26",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl61",
+              "source": "n26",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl62",
+              "source": "n26",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl63",
+              "source": "n26",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl64",
+              "source": "n26",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl65",
+              "source": "n26",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl66",
+              "source": "n26",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl67",
+              "source": "n26",
+              "target": "n20",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl68",
+              "source": "n26",
+              "target": "n21",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl69",
+              "source": "n26",
+              "target": "n22",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl70",
+              "source": "n26",
+              "target": "n23",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl71",
+              "source": "n26",
+              "target": "n24",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl72",
+              "source": "n27",
+              "target": "n14",
+              "link_type": "management",
+              "label": "MFA Management"
+            },
+            {
+              "link_id": "nl73",
+              "source": "n28",
+              "target": "n29",
+              "link_type": "vpn",
+              "label": "Remote Access"
+            },
+            {
+              "link_id": "nl74",
+              "source": "n28",
+              "target": "n14",
+              "link_type": "management",
+              "label": "AAA Management"
+            },
+            {
+              "link_id": "nl75",
+              "source": "n30",
+              "target": "n29",
+              "link_type": "management",
+              "label": "Access Control Management"
+            },
+            {
+              "link_id": "nl76",
+              "source": "n30",
+              "target": "n14",
+              "link_type": "management",
+              "label": "AAA Management"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl4",
+              "source": "z8",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl5",
+              "source": "z8",
+              "target": "z2",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl6",
+              "source": "z8",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl7",
+              "source": "z8",
+              "target": "z4",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl8",
+              "source": "z8",
+              "target": "z5",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl9",
+              "source": "z8",
+              "target": "z6",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl10",
+              "source": "z8",
+              "target": "z7",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl11",
+              "source": "z9",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "zl12",
+              "source": "z9",
+              "target": "z2",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "zl13",
+              "source": "z9",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "zl14",
+              "source": "z9",
+              "target": "z4",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "zl15",
+              "source": "z9",
+              "target": "z5",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "zl16",
+              "source": "z9",
+              "target": "z6",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "zl17",
+              "source": "z9",
+              "target": "z7",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "zl18",
+              "source": "z10",
+              "target": "z5",
+              "link_type": "peering",
+              "label": "Remote Access Peering"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 24,
+        "zone_links": 3,
+        "node_links": 23
+      },
+      "counts_after": {
+        "zones": 10,
+        "nodes": 30,
+        "zone_links": 18,
+        "node_links": 76
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 6,
+        "zone_links": 15,
+        "node_links": 53
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-4_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Standard Firewall to Secure Internet Gateway"
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Secure Internet Gateway"
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Standard Admin Workstation to Standard Firewall"
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n4",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Sensitive Admin Workstation to Sensitive Firewall"
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Secure Internet Gateway to Standard Firewall"
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z5",
+        "target_zone": "z2",
+        "source_node": "n5",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Secure Internet Gateway to Sensitive Firewall"
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Standard Firewall to Non-Production Switch"
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z2",
+        "target_zone": "z6",
+        "source_node": "n2",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Non-Production Switch"
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z7",
+        "target_zone": "z5",
+        "source_node": "n24",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Penetration Testing Workstation to Secure Internet Gateway"
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z10",
+        "target_zone": "z5",
+        "source_node": "n29",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Remote Device to Secure Internet Gateway"
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Standard Firewall to Standard Admin Workstation"
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n2",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Sensitive Firewall to Sensitive Admin Workstation"
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Standard Firewall to DNS Server"
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Sensitive Firewall to DNS Server"
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Standard Firewall to DNS Filtering Service"
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Sensitive Firewall to DNS Filtering Service"
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Standard Firewall to Web Proxy"
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Web Proxy"
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n3",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Standard Admin Workstation to Centralized AAA Server"
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z4",
+        "target_zone": "z3",
+        "source_node": "n4",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Sensitive Admin Workstation to Centralized AAA Server"
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Standard Firewall to NIDS"
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Sensitive Firewall to NIDS"
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n15",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to SIEM"
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n16",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to SIEM"
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Standard Firewall to NAC"
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Sensitive Firewall to NAC"
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n20",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Standard Firewall to Application Firewall"
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Sensitive Firewall to Application Firewall"
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z6",
+        "target_zone": "z5",
+        "source_node": "n22",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Non-Production Switch to Secure Internet Gateway"
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n22",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Non-Production Switch to Sensitive Firewall"
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z7",
+        "target_zone": "z2",
+        "source_node": "n24",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Penetration Testing Workstation to Sensitive Firewall"
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z10",
+        "target_zone": "z2",
+        "source_node": "n29",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Remote Device to Sensitive Firewall"
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n25",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Inventory System to Standard Firewall"
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n25",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Inventory System to Sensitive Firewall"
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z9",
+        "target_zone": "z1",
+        "source_node": "n26",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data Flow Documentation System to Standard Firewall"
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z9",
+        "target_zone": "z2",
+        "source_node": "n26",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data Flow Documentation System to Sensitive Firewall"
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z10",
+        "target_zone": "z3",
+        "source_node": "n29",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Remote Device to Standard Admin Workstation"
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z10",
+        "target_zone": "z4",
+        "source_node": "n29",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Remote Device to Sensitive Admin Workstation"
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z10",
+        "target_zone": "z1",
+        "source_node": "n29",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Remote Device to Standard Firewall"
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z10",
+        "target_zone": "z2",
+        "source_node": "n29",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Remote Device to Sensitive Firewall"
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-4_req2/rag_without_feedback/IG2/xml/IG2/generated_Government-4_req2_IG2.xml"
+}

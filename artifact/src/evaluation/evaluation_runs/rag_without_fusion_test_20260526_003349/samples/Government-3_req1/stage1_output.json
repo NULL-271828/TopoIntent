@@ -1,0 +1,93 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-3_req1",
+    "title": "Government Cloud Segmentation",
+    "description": "Secure cloud infrastructure for government agency with departmental segmentation and centralized monitoring.",
+    "scenario": "government",
+    "topology_summary": "The topology will include a central hub for management and monitoring, with separate spokes for each department, ensuring secure and isolated environments.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Management Hub",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Identity Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Operations Zone",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Workload Zone 1",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Workload Zone 2",
+        "zone_type": "cloud_spoke"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Operations Server",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Workload 1",
+        "normalized_type": "workload",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n5",
+        "name": "Workload 2",
+        "normalized_type": "workload",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n6",
+        "name": "SIEM System",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Bastion Host",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Government-3_req1\", \"title\": \"Government Cloud Segmentation\", \"description\": \"Secure cloud infrastructure for government agency with departmental segmentation and centralized monitoring.\", \"scenario\": \"government\", \"topology_summary\": \"The topology will include a central hub for management and monitoring, with separate spokes for each department, ensuring secure and isolated environments.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Management Hub\", \"zone_type\": \"cloud_hub\"}, {\"zone_id\": \"z2\", \"name\": \"Identity Management Zone\", \"zone_type\": \"management\"}, {\"zone_id\": \"z3\", \"name\": \"Operations Zone\", \"zone_type\": \"dmz\"}, {\"zone_id\": \"z4\", \"name\": \"Workload Zone 1\", \"zone_type\": \"cloud_spoke\"}, {\"zone_id\": \"z5\", \"name\": \"Workload Zone 2\", \"zone_type\": \"cloud_spoke\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Central Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Identity Server\", \"normalized_type\": \"identity_server\", \"zone_id\": \"z2\"}, {\"node_id\": \"n3\", \"name\": \"Operations Server\", \"normalized_type\": \"server\", \"zone_id\": \"z3\"}, {\"node_id\": \"n4\", \"name\": \"Workload 1\", \"normalized_type\": \"workload\", \"zone_id\": \"z4\"}, {\"node_id\": \"n5\", \"name\": \"Workload 2\", \"normalized_type\": \"workload\", \"zone_id\": \"z5\"}, {\"node_id\": \"n6\", \"name\": \"SIEM System\", \"normalized_type\": \"siem\", \"zone_id\": \"z1\"}, {\"node_id\": \"n7\", \"name\": \"Bastion Host\", \"normalized_type\": \"bastion\", \"zone_id\": \"z1\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 10.553
+  }
+}

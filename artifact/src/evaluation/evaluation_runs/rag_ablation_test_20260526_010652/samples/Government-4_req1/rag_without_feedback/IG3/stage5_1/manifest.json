@@ -1,0 +1,11 @@
+{
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_feedback/IG3/xml/IG3/generated_Government-4_req1_IG3.xml",
+  "script_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Government-4_req1_IG3.py",
+  "expected_report_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Government-4_req1_IG3.json",
+  "template_id": "generated_Government-4_req1",
+  "ig_level": "IG3",
+  "domains": 9,
+  "nodes": 27,
+  "node_links": 24,
+  "policy_tests": 40
+}

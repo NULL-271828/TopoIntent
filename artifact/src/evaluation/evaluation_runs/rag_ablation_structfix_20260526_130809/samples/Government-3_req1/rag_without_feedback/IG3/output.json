@@ -1,0 +1,1416 @@
+{
+  "sample_id": "Government-3_req1",
+  "gt_template_id": "Government-3",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-3_req1",
+    "title": "Government Cloud Segmentation",
+    "description": "Secure cloud infrastructure for government agency with departmental segmentation and centralized monitoring.",
+    "scenario": "government",
+    "topology_summary": "The topology will include a central hub for management and monitoring, with separate spokes for each department, ensuring secure and isolated environments.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Management Hub",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Identity Management Spoke",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Operations Spoke",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Workload Spokes",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Security Services",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Production Zone",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Non-Production Zone",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z8",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z_preserve1",
+        "name": "External Penetration Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z_new1",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new2",
+        "name": "Remote Access",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new3",
+        "name": "Access Control",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Operations Server",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Workload Servers",
+        "normalized_type": "workload",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n5",
+        "name": "SIEM System",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Bastion Host",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Cloud Security Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n8",
+        "name": "MFA Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n9",
+        "name": "Secure Workload Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n10",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "Web Proxy",
+        "normalized_type": "proxy",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n12",
+        "name": "NIDS Sensor",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "NIPS Sensor",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "802.1X Controller",
+        "normalized_type": "access_point",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n16",
+        "name": "Dedicated Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n17",
+        "name": "Penetration Testing Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Production Zone Representative Workload",
+        "normalized_type": "workload",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n_struct2",
+        "name": "Non-Production Zone Representative Workload",
+        "normalized_type": "workload",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n_struct3",
+        "name": "External Penetration Testing Zone External Endpoint",
+        "normalized_type": "endpoint",
+        "zone_id": "z_preserve1"
+      },
+      {
+        "node_id": "n_new1",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z_new1"
+      },
+      {
+        "node_id": "n_new2",
+        "name": "VPN Service",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z_new2"
+      },
+      {
+        "node_id": "n_new3",
+        "name": "Access Control Policy Manager",
+        "normalized_type": "identity_server",
+        "zone_id": "z_new3"
+      },
+      {
+        "node_id": "n_new4",
+        "name": "Network Traffic Collector",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n_new5",
+        "name": "Penetration Testing Service",
+        "normalized_type": "endpoint",
+        "zone_id": "z8"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n2",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "MFA"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n3",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "MFA"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n4",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Workload Security"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n10",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "DNS Configuration"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n11",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "URL Filtering"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n12",
+          "target": "n5",
+          "link_type": "monitoring",
+          "label": "NIDS Alerts"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n13",
+          "target": "n5",
+          "link_type": "monitoring",
+          "label": "NIPS Alerts"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n14",
+          "target": "n5",
+          "link_type": "monitoring",
+          "label": "Application Layer Alerts"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n15",
+          "target": "n5",
+          "link_type": "monitoring",
+          "label": "802.1X Events"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n16",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Admin Access"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n17",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Pen Test Access"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n1",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct2",
+          "source": "n1",
+          "target": "n_struct2",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct3",
+          "source": "n1",
+          "target": "n_struct3",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_new1",
+          "source": "n_new1",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Inventory Data"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n_new2",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Remote Access"
+        },
+        {
+          "link_id": "nl_new3",
+          "source": "n_new2",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "MFA Integration"
+        },
+        {
+          "link_id": "nl_new4",
+          "source": "n_new3",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Policy Enforcement"
+        },
+        {
+          "link_id": "nl_new5",
+          "source": "n_new4",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Flow Logs"
+        },
+        {
+          "link_id": "nl_new6",
+          "source": "n_new5",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "Test Results"
+        },
+        {
+          "link_id": "nl_new7",
+          "source": "n_new5",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Pen Test Reports"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Security Services"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Security Services"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z3",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Security Services"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z4",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Security Services"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "Production Traffic"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "Non-Production Traffic"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z1",
+          "target": "z8",
+          "link_type": "peering",
+          "label": "External Testing"
+        },
+        {
+          "link_id": "zl_new1",
+          "source": "z_new1",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl_new2",
+          "source": "z_new2",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "Remote Access"
+        },
+        {
+          "link_id": "zl_new3",
+          "source": "z_new3",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "Access Control"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-3_req1",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Management System' (n_new1) in the 'Asset Management' zone (z_new1) which is linked to the 'Management Hub' (z1) for inventory data.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple data flow links (e.g., nl1, nl2, nl3) and peering links (e.g., zl1, zl2, zl3) that document data flows between different zones and nodes.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for 'Production Zone' (z6) and 'Non-Production Zone' (z7), indicating segmentation based on data sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central Firewall' (n1) in the 'Management Hub' (z1) and a 'Web Proxy' (n11) in the same zone, both of which can manage firewalls on servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n10) in the 'Management Hub' (z1) and a link (nl4) from the 'DNS Server' to the 'Identity Server' (n2) for DNS configuration.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Service' (n8) in the 'Security Services' zone (z5) and links (nl1, nl2, nl3, nl_new3) for MFA integration with various nodes.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n11) in the 'Management Hub' (z1) and a link (nl5) from the 'Web Proxy' to the 'Identity Server' (n2) for URL filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n11) in the 'Management Hub' (z1) and a link (nl5) from the 'Web Proxy' to the 'Identity Server' (n2) for URL filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (e.g., z1, z2, z3, z4, z5, z6, z7, z8) and links (e.g., zl1, zl2, zl3, zl4, zl5, zl6, zl7) that demonstrate a secure network architecture with segmentation and least privilege.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Bastion Host' (n6) in the 'Management Hub' (z1) and a 'Central Firewall' (n1) for secure management of network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Identity Server' (n2) in the 'Identity Management Spoke' (z2) and links (nl1, nl2, nl3, nl10, nl11) for centralized AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'VPN Service' (n_new2) in the 'Remote Access' zone (z_new2) and links (nl_new2, nl_new3) for remote access and MFA integration.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Dedicated Admin Workstation' (n16) in the 'Identity Management Spoke' (z2) and a link (nl10) for admin access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'NIDS Sensor' (n12) in the 'Management Hub' (z1) and a link (nl6) for NIDS alerts to the 'SIEM System' (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple peering links (e.g., zl1, zl2, zl3, zl4, zl5, zl6, zl7) that indicate traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Access Control Policy Manager' (n_new3) in the 'Access Control' zone (z_new3) and links (nl_new4) for policy enforcement.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Network Traffic Collector' (n_new4) in the 'Management Hub' (z1) and a link (nl_new5) for flow logs to the 'SIEM System' (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'NIPS Sensor' (n13) in the 'Management Hub' (z1) and a link (nl7) for NIPS alerts to the 'SIEM System' (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an '802.1X Controller' (n15) in the 'Management Hub' (z1) and a link (nl9) for 802.1X events to the 'SIEM System' (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Application Firewall' (n14) in the 'Management Hub' (z1) and a link (nl8) for application layer alerts to the 'SIEM System' (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for 'Production Zone' (z6) and 'Non-Production Zone' (z7), indicating separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'External Penetration Testing Zone' (z8) and a 'Penetration Testing Workstation' (n17) with links (nl_new6, nl_new7) for test results and reports.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity",
+        "stage4_structural_integrity",
+        "stage4_ig_consistency"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z6\", \"name\": \"Production Zone\", \"zone_type\": \"cloud_spoke\"}",
+          "missing_reason": "Zone z6 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z7\", \"name\": \"Non-Production Zone\", \"zone_type\": \"cloud_spoke\"}",
+          "missing_reason": "Zone z7 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_ig_consistency",
+          "title": "ig3_missing_ig2_zone_semantics",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "[{\"zone_id\": \"z8\", \"name\": \"External Penetration Testing Zone\", \"zone_type\": \"external\"}]",
+          "missing_reason": "IG3 topology removed or failed to preserve IG2 zone semantics.",
+          "repair_suggestion": "Add the missing IG2 zone semantics to IG3 as preserved or stricter zones, with representative nodes and concrete node_links. IG3 may add controls but must not reduce segmentation."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_preserve1",
+            "name": "External Penetration Testing Zone",
+            "zone_type": "external"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Production Zone Representative Workload",
+            "normalized_type": "workload",
+            "zone_id": "z6"
+          },
+          {
+            "node_id": "n_struct2",
+            "name": "Non-Production Zone Representative Workload",
+            "normalized_type": "workload",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n_struct3",
+            "name": "External Penetration Testing Zone External Endpoint",
+            "normalized_type": "endpoint",
+            "zone_id": "z_preserve1"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n1",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct2",
+              "source": "n1",
+              "target": "n_struct2",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct3",
+              "source": "n1",
+              "target": "n_struct3",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 17,
+        "zone_links": 7,
+        "node_links": 11
+      },
+      "counts_after": {
+        "zones": 9,
+        "nodes": 20,
+        "zone_links": 7,
+        "node_links": 14
+      },
+      "count_delta": {
+        "zones": 1,
+        "nodes": 3,
+        "zone_links": 0,
+        "node_links": 3
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "12.7",
+        "13.5",
+        "13.6",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of a detailed and up-to-date inventory of all enterprise assets, including their network addresses, hardware addresses, machine names, asset owners, and departments.",
+          "missing_reason": "No explicit inventory records are shown in the topology.",
+          "repair_suggestion": "Add a node representing an asset management system that maintains the required inventory."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology does not explicitly show a VPN service, but it includes an MFA Service (n8) and Bastion Host (n6) which could be part of a remote access solution.",
+          "missing_reason": "No explicit VPN service is shown in the topology.",
+          "repair_suggestion": "Add a node representing a VPN service and links to the Bastion Host and other remote access points."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an MFA Service (n8) and Bastion Host (n6), but there is no explicit evidence of managing access control based on anti-malware, configuration compliance, and OS/app updates.",
+          "missing_reason": "No explicit access control management is shown in the topology.",
+          "repair_suggestion": "Add nodes and links representing access control policies and enforcement mechanisms."
+        },
+        {
+          "cis_safeguard_id": "13.6",
+          "title": "Collect Network Traffic Flow Logs",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a SIEM System (n5) and monitoring links (nl6, nl7, nl8, nl9), but there is no explicit evidence of collecting network traffic flow logs.",
+          "missing_reason": "No explicit network traffic flow log collection is shown in the topology.",
+          "repair_suggestion": "Add a node representing a network traffic flow log collector and links to the SIEM System."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an External Penetration Testing Zone (z8) and a Penetration Testing Workstation (n17), but there is no explicit evidence of periodic external penetration tests.",
+          "missing_reason": "No explicit evidence of periodic external penetration tests is shown in the topology.",
+          "repair_suggestion": "Add a node representing a penetration testing service and links to the Penetration Testing Workstation and other relevant nodes."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_new1",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_new2",
+            "name": "Remote Access",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_new3",
+            "name": "Access Control",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_new1",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z_new1"
+          },
+          {
+            "node_id": "n_new2",
+            "name": "VPN Service",
+            "normalized_type": "vpn_gateway",
+            "zone_id": "z_new2"
+          },
+          {
+            "node_id": "n_new3",
+            "name": "Access Control Policy Manager",
+            "normalized_type": "identity_server",
+            "zone_id": "z_new3"
+          },
+          {
+            "node_id": "n_new4",
+            "name": "Network Traffic Collector",
+            "normalized_type": "ids_ips",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n_new5",
+            "name": "Penetration Testing Service",
+            "normalized_type": "endpoint",
+            "zone_id": "z8"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new1",
+              "source": "n_new1",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Inventory Data"
+            },
+            {
+              "link_id": "nl_new2",
+              "source": "n_new2",
+              "target": "n6",
+              "link_type": "data_flow",
+              "label": "Remote Access"
+            },
+            {
+              "link_id": "nl_new3",
+              "source": "n_new2",
+              "target": "n8",
+              "link_type": "data_flow",
+              "label": "MFA Integration"
+            },
+            {
+              "link_id": "nl_new4",
+              "source": "n_new3",
+              "target": "n8",
+              "link_type": "data_flow",
+              "label": "Policy Enforcement"
+            },
+            {
+              "link_id": "nl_new5",
+              "source": "n_new4",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Flow Logs"
+            },
+            {
+              "link_id": "nl_new6",
+              "source": "n_new5",
+              "target": "n17",
+              "link_type": "data_flow",
+              "label": "Test Results"
+            },
+            {
+              "link_id": "nl_new7",
+              "source": "n_new5",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Pen Test Reports"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl_new1",
+              "source": "z_new1",
+              "target": "z1",
+              "link_type": "peering",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl_new2",
+              "source": "z_new2",
+              "target": "z1",
+              "link_type": "peering",
+              "label": "Remote Access"
+            },
+            {
+              "link_id": "zl_new3",
+              "source": "z_new3",
+              "target": "z1",
+              "link_type": "peering",
+              "label": "Access Control"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 9,
+        "nodes": 20,
+        "zone_links": 7,
+        "node_links": 14
+      },
+      "counts_after": {
+        "zones": 12,
+        "nodes": 25,
+        "zone_links": 10,
+        "node_links": 21
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 5,
+        "zone_links": 3,
+        "node_links": 7
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-3_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Central Firewall to Identity Server for management."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Identity Server to MFA Service for authentication."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z3",
+        "target_zone": "z5",
+        "source_node": "n3",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Operations Server to MFA Service for operations."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z4",
+        "target_zone": "z5",
+        "source_node": "n4",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Workload Servers to Secure Workload Service for security."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n10",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Server to Identity Server for DNS configuration."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n11",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web Proxy to Identity Server for URL filtering."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "NIDS Sensor to SIEM System for alerts."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "NIPS Sensor to SIEM System for alerts."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Application Firewall to SIEM System for alerts."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "802.1X Controller to SIEM System for events."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n16",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Admin Workstation to Identity Server for admin access."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n17",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Pen Test Workstation to Identity Server for pen test access."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Central Firewall to Production Workload for routing."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Central Firewall to Non-Production Workload for routing."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z_preserve1",
+        "source_node": "n1",
+        "target_node": "n_struct3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Central Firewall to External Pen Test Endpoint for routing."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z_new1",
+        "target_zone": "z1",
+        "source_node": "n_new1",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Management System to Central Firewall for data flow."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z_new2",
+        "target_zone": "z1",
+        "source_node": "n_new2",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "VPN Service to Bastion Host for remote access."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z_new2",
+        "target_zone": "z5",
+        "source_node": "n_new2",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "VPN Service to MFA Service for MFA integration."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z_new3",
+        "target_zone": "z5",
+        "source_node": "n_new3",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Access Control Policy Manager to MFA Service for policy enforcement."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n_new4",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Network Traffic Collector to SIEM System for flow logs."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n_new5",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen Test Service to Pen Test Workstation for test results."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n_new5",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen Test Service to SIEM System for pen test reports."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z8",
+        "target_zone": "z6",
+        "source_node": "n17",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Pen Test Workstation to Production Workload for isolation."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z8",
+        "target_zone": "z7",
+        "source_node": "n17",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Pen Test Workstation to Non-Production Workload for isolation."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z8",
+        "target_zone": "z4",
+        "source_node": "n17",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Pen Test Workstation to Workload Servers for isolation."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z6",
+        "target_zone": "z7",
+        "source_node": "n_struct1",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Production Workload to Non-Production Workload for isolation."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z7",
+        "target_zone": "z6",
+        "source_node": "n_struct2",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Non-Production Workload to Production Workload for isolation."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z4",
+        "target_zone": "z6",
+        "source_node": "n4",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Workload Servers to Production Workload for isolation."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z4",
+        "target_zone": "z7",
+        "source_node": "n4",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Workload Servers to Non-Production Workload for isolation."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central Firewall to Pen Test Workstation for isolation."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z_preserve1",
+        "source_node": "n1",
+        "target_node": "n_struct3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central Firewall to External Pen Test Endpoint for isolation."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n_new5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central Firewall to Pen Test Service for isolation."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central Firewall to Workload Servers for isolation."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central Firewall to Production Workload for isolation."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central Firewall to Non-Production Workload for isolation."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Central Firewall to Identity Server for HTTP block."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Central Firewall to MFA Service for HTTP block."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Central Firewall to Secure Workload Service for HTTP block."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Central Firewall to SIEM System for HTTP block."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Central Firewall to DNS Server for HTTP block."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-3_req1/rag_without_feedback/IG3/xml/IG3/generated_Government-3_req1_IG3.xml"
+}

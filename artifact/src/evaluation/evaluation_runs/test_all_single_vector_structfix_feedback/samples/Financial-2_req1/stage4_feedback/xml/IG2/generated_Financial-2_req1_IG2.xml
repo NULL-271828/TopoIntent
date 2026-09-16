@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Financial-2_req1" title="High-Frequency Trading Infrastructure" scenario="finance" ig_level="IG2">
+  <Description>Supports high-frequency trading with market data ingestion, processing, and order routing to three main sites.</Description>
+  <Summary>The topology includes a central data center for processing, connected to multiple exchange data feeds and three main sites for order execution. It emphasizes resilience and clear data flow.</Summary>
+  <Domains>
+    <Domain id="z1" name="Data Center" type="data_center"/>
+    <Domain id="z2" name="Exchange Feeds" type="external"/>
+    <Domain id="z3" name="Site 1" type="enterprise"/>
+    <Domain id="z4" name="Site 2" type="enterprise"/>
+    <Domain id="z5" name="Site 3" type="enterprise"/>
+    <Domain id="z6" name="Management" type="management"/>
+    <Domain id="z7" name="Non-Production" type="enterprise"/>
+    <Domain id="z8" name="External Testing" type="external"/>
+    <Domain id="z9" name="Asset Management" type="management"/>
+    <Domain id="z10" name="Remote Access" type="management"/>
+    <Domain id="z11" name="Network Monitoring" type="management"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="Market Data Ingestion Server" domain="z1" domain_name="Data Center" type="server" ip=""/>
+    <Node id="n2" name="Analytics Engine" domain="z1" domain_name="Data Center" type="workload" ip=""/>
+    <Node id="n3" name="Algorithmic Engine" domain="z1" domain_name="Data Center" type="workload" ip=""/>
+    <Node id="n4" name="Order Routing Server" domain="z1" domain_name="Data Center" type="server" ip=""/>
+    <Node id="n5" name="Firewall" domain="z1" domain_name="Data Center" type="firewall" ip=""/>
+    <Node id="n6" name="Router" domain="z1" domain_name="Data Center" type="router" ip=""/>
+    <Node id="n7" name="Exchange Feed 1" domain="z2" domain_name="Exchange Feeds" type="endpoint" ip=""/>
+    <Node id="n8" name="Exchange Feed 2" domain="z2" domain_name="Exchange Feeds" type="endpoint" ip=""/>
+    <Node id="n9" name="Exchange Feed 3" domain="z2" domain_name="Exchange Feeds" type="endpoint" ip=""/>
+    <Node id="n10" name="Site 1 Router" domain="z3" domain_name="Site 1" type="router" ip=""/>
+    <Node id="n11" name="Site 2 Router" domain="z4" domain_name="Site 2" type="router" ip=""/>
+    <Node id="n12" name="Site 3 Router" domain="z5" domain_name="Site 3" type="router" ip=""/>
+    <Node id="n13" name="Management Server" domain="z6" domain_name="Management" type="server" ip=""/>
+    <Node id="n14" name="IDS/IPS" domain="z1" domain_name="Data Center" type="ids_ips" ip=""/>
+    <Node id="n15" name="SIEM" domain="z1" domain_name="Data Center" type="siem" ip=""/>
+    <Node id="n16" name="DNS Server" domain="z1" domain_name="Data Center" type="server" ip=""/>
+    <Node id="n17" name="DNS Filter" domain="z1" domain_name="Data Center" type="ids_ips" ip=""/>
+    <Node id="n18" name="Web Proxy" domain="z1" domain_name="Data Center" type="waf" ip=""/>
+    <Node id="n19" name="MFA Gateway" domain="z6" domain_name="Management" type="identity_server" ip=""/>
+    <Node id="n20" name="AAA Server" domain="z6" domain_name="Management" type="identity_server" ip=""/>
+    <Node id="n21" name="NAC Server" domain="z6" domain_name="Management" type="ids_ips" ip=""/>
+    <Node id="n22" name="Admin Workstation" domain="z6" domain_name="Management" type="endpoint" ip=""/>
+    <Node id="n23" name="IDS/IPS (Non-Prod)" domain="z7" domain_name="Non-Production" type="ids_ips" ip=""/>
+    <Node id="n24" name="SIEM (Non-Prod)" domain="z7" domain_name="Non-Production" type="siem" ip=""/>
+    <Node id="n25" name="Pen Test Workstation" domain="z8" domain_name="External Testing" type="endpoint" ip=""/>
+    <Node id="n26" name="Asset Inventory System" domain="z9" domain_name="Asset Management" type="server" ip=""/>
+    <Node id="n27" name="VPN Gateway" domain="z10" domain_name="Remote Access" type="vpn_gateway" ip=""/>
+    <Node id="n28" name="Traffic Flow Log Collector" domain="z11" domain_name="Network Monitoring" type="ids_ips" ip=""/>
+    <Node id="n29" name="Pen Test Process" domain="z8" domain_name="External Testing" type="workload" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z2" type="data_flow" label="Market Data Ingestion"/>
+      <Link id="zl2" source="z1" target="z3" type="data_flow" label="Site 1 Execution"/>
+      <Link id="zl3" source="z1" target="z4" type="data_flow" label="Site 2 Execution"/>
+      <Link id="zl4" source="z1" target="z5" type="data_flow" label="Site 3 Execution"/>
+      <Link id="zl5" source="z1" target="z6" type="management" label="Management"/>
+      <Link id="zl6" source="z1" target="z7" type="data_flow" label="Non-Prod Data Flow"/>
+      <Link id="zl7" source="z1" target="z8" type="data_flow" label="Pen Test Data Flow"/>
+      <Link id="zl8" source="z9" target="z1" type="management" label="Asset Management"/>
+      <Link id="zl9" source="z10" target="z6" type="management" label="Remote Access Management"/>
+      <Link id="zl10" source="z11" target="z1" type="data_flow" label="Traffic Flow Collection"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n7" target="n1" type="data_flow" label="Market Data Ingestion"/>
+      <Link id="nl2" source="n1" target="n2" type="data_flow" label="Analytics Processing"/>
+      <Link id="nl3" source="n2" target="n3" type="data_flow" label="Algorithmic Processing"/>
+      <Link id="nl4" source="n3" target="n4" type="data_flow" label="Order Routing"/>
+      <Link id="nl5" source="n4" target="n10" type="data_flow" label="Site 1 Execution"/>
+      <Link id="nl6" source="n4" target="n11" type="data_flow" label="Site 2 Execution"/>
+      <Link id="nl7" source="n4" target="n12" type="data_flow" label="Site 3 Execution"/>
+      <Link id="nl8" source="n5" target="n1" type="management" label="Firewall Management"/>
+      <Link id="nl9" source="n5" target="n6" type="management" label="Router Management"/>
+      <Link id="nl10" source="n5" target="n13" type="management" label="Management Server Management"/>
+      <Link id="nl11" source="n14" target="n1" type="monitoring" label="IDS/IPS Monitoring"/>
+      <Link id="nl12" source="n14" target="n2" type="monitoring" label="IDS/IPS Monitoring"/>
+      <Link id="nl13" source="n14" target="n3" type="monitoring" label="IDS/IPS Monitoring"/>
+      <Link id="nl14" source="n14" target="n4" type="monitoring" label="IDS/IPS Monitoring"/>
+      <Link id="nl15" source="n15" target="n1" type="monitoring" label="SIEM Monitoring"/>
+      <Link id="nl16" source="n15" target="n2" type="monitoring" label="SIEM Monitoring"/>
+      <Link id="nl17" source="n15" target="n3" type="monitoring" label="SIEM Monitoring"/>
+      <Link id="nl18" source="n15" target="n4" type="monitoring" label="SIEM Monitoring"/>
+      <Link id="nl19" source="n16" target="n1" type="data_flow" label="DNS Resolution"/>
+      <Link id="nl20" source="n17" target="n1" type="data_flow" label="DNS Filtering"/>
+      <Link id="nl21" source="n18" target="n1" type="data_flow" label="Web Proxy"/>
+      <Link id="nl22" source="n19" target="n10" type="management" label="MFA for Site 1"/>
+      <Link id="nl23" source="n19" target="n11" type="management" label="MFA for Site 2"/>
+      <Link id="nl24" source="n19" target="n12" type="management" label="MFA for Site 3"/>
+      <Link id="nl25" source="n20" target="n19" type="management" label="AAA Integration"/>
+      <Link id="nl26" source="n21" target="n10" type="management" label="NAC for Site 1"/>
+      <Link id="nl27" source="n21" target="n11" type="management" label="NAC for Site 2"/>
+      <Link id="nl28" source="n21" target="n12" type="management" label="NAC for Site 3"/>
+      <Link id="nl29" source="n22" target="n13" type="management" label="Admin Workstation Management"/>
+      <Link id="nl30" source="n23" target="n24" type="monitoring" label="IDS/IPS Monitoring (Non-Prod)"/>
+      <Link id="nl31" source="n25" target="n23" type="monitoring" label="SIEM Monitoring (Non-Prod)"/>
+      <Link id="nl32" source="n26" target="n1" type="management" label="Inventory Management"/>
+      <Link id="nl33" source="n26" target="n2" type="management" label="Inventory Management"/>
+      <Link id="nl34" source="n26" target="n3" type="management" label="Inventory Management"/>
+      <Link id="nl35" source="n26" target="n4" type="management" label="Inventory Management"/>
+      <Link id="nl36" source="n26" target="n5" type="management" label="Inventory Management"/>
+      <Link id="nl37" source="n26" target="n6" type="management" label="Inventory Management"/>
+      <Link id="nl38" source="n26" target="n10" type="management" label="Inventory Management"/>
+      <Link id="nl39" source="n26" target="n11" type="management" label="Inventory Management"/>
+      <Link id="nl40" source="n26" target="n12" type="management" label="Inventory Management"/>
+      <Link id="nl41" source="n26" target="n13" type="management" label="Inventory Management"/>
+      <Link id="nl42" source="n26" target="n14" type="management" label="Inventory Management"/>
+      <Link id="nl43" source="n26" target="n15" type="management" label="Inventory Management"/>
+      <Link id="nl44" source="n26" target="n16" type="management" label="Inventory Management"/>
+      <Link id="nl45" source="n26" target="n17" type="management" label="Inventory Management"/>
+      <Link id="nl46" source="n26" target="n18" type="management" label="Inventory Management"/>
+      <Link id="nl47" source="n26" target="n19" type="management" label="Inventory Management"/>
+      <Link id="nl48" source="n26" target="n20" type="management" label="Inventory Management"/>
+      <Link id="nl49" source="n26" target="n21" type="management" label="Inventory Management"/>
+      <Link id="nl50" source="n26" target="n22" type="management" label="Inventory Management"/>
+      <Link id="nl51" source="n26" target="n23" type="management" label="Inventory Management"/>
+      <Link id="nl52" source="n26" target="n24" type="management" label="Inventory Management"/>
+      <Link id="nl53" source="n26" target="n25" type="management" label="Inventory Management"/>
+      <Link id="nl54" source="n27" target="n19" type="management" label="Remote Access Management"/>
+      <Link id="nl55" source="n27" target="n20" type="management" label="Remote Access Management"/>
+      <Link id="nl56" source="n28" target="n15" type="data_flow" label="Traffic Flow Collection"/>
+      <Link id="nl57" source="n28" target="n14" type="data_flow" label="Traffic Flow Collection"/>
+      <Link id="nl58" source="n28" target="n6" type="data_flow" label="Traffic Flow Collection"/>
+      <Link id="nl59" source="n29" target="n25" type="data_flow" label="Pen Test Process"/>
+      <Link id="nl60" source="n29" target="n15" type="data_flow" label="Pen Test Process"/>
+      <Link id="nl_new1" source="n8" target="n1" type="data_flow" label="Market Data Ingestion"/>
+      <Link id="nl_new2" source="n9" target="n1" type="data_flow" label="Market Data Ingestion"/>
+      <Link id="nl_new3" source="n1" target="n25" type="data_flow" label="Pen Test Data Flow"/>
+      <Link id="nl_new4" source="n1" target="n23" type="data_flow" label="Non-Prod Data Flow"/>
+      <Link id="nl_new5" source="n1" target="n27" type="data_flow" label="Remote Access Data Flow"/>
+      <Link id="nl_new6" source="n1" target="n28" type="data_flow" label="Traffic Flow Collection"/>
+      <Link id="nl_new7" source="n13" target="n1" type="management" label="Management Server Management"/>
+      <Link id="nl_new8" source="n19" target="n1" type="management" label="MFA Gateway Management"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z2" dst_zone="z1" src_node="n7" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Market data ingestion from Exchange Feed 1</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z2" dst_zone="z1" src_node="n8" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Market data ingestion from Exchange Feed 2</Reason>
+    </Allow>
+    <Allow id="tc3" src_zone="z2" dst_zone="z1" src_node="n9" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Market data ingestion from Exchange Feed 3</Reason>
+    </Allow>
+    <Allow id="tc4" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n2" protocol="tcp" port="8081">
+      <Reason>Analytics processing from Market Data Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc5" src_zone="z1" dst_zone="z1" src_node="n2" dst_node="n3" protocol="tcp" port="8082">
+      <Reason>Algorithmic processing from Analytics Engine</Reason>
+    </Allow>
+    <Allow id="tc6" src_zone="z1" dst_zone="z1" src_node="n3" dst_node="n4" protocol="tcp" port="8083">
+      <Reason>Order routing from Algorithmic Engine</Reason>
+    </Allow>
+    <Allow id="tc7" src_zone="z1" dst_zone="z3" src_node="n4" dst_node="n10" protocol="tcp" port="8084">
+      <Reason>Order execution to Site 1 Router</Reason>
+    </Allow>
+    <Allow id="tc8" src_zone="z1" dst_zone="z4" src_node="n4" dst_node="n11" protocol="tcp" port="8084">
+      <Reason>Order execution to Site 2 Router</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z1" dst_zone="z5" src_node="n4" dst_node="n12" protocol="tcp" port="8084">
+      <Reason>Order execution to Site 3 Router</Reason>
+    </Allow>
+    <Allow id="tc10" src_zone="z1" dst_zone="z1" src_node="n5" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Firewall management of Market Data Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc11" src_zone="z1" dst_zone="z1" src_node="n5" dst_node="n6" protocol="tcp" port="443">
+      <Reason>Firewall management of Router</Reason>
+    </Allow>
+    <Allow id="tc12" src_zone="z1" dst_zone="z6" src_node="n5" dst_node="n13" protocol="tcp" port="443">
+      <Reason>Firewall management of Management Server</Reason>
+    </Allow>
+    <Allow id="tc13" src_zone="z1" dst_zone="z1" src_node="n14" dst_node="n1" protocol="tcp" port="443">
+      <Reason>IDS/IPS monitoring of Market Data Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc14" src_zone="z1" dst_zone="z1" src_node="n14" dst_node="n2" protocol="tcp" port="443">
+      <Reason>IDS/IPS monitoring of Analytics Engine</Reason>
+    </Allow>
+    <Allow id="tc15" src_zone="z1" dst_zone="z1" src_node="n14" dst_node="n3" protocol="tcp" port="443">
+      <Reason>IDS/IPS monitoring of Algorithmic Engine</Reason>
+    </Allow>
+    <Allow id="tc16" src_zone="z1" dst_zone="z1" src_node="n14" dst_node="n4" protocol="tcp" port="443">
+      <Reason>IDS/IPS monitoring of Order Routing Server</Reason>
+    </Allow>
+    <Allow id="tc17" src_zone="z1" dst_zone="z1" src_node="n15" dst_node="n1" protocol="tcp" port="443">
+      <Reason>SIEM monitoring of Market Data Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc18" src_zone="z1" dst_zone="z1" src_node="n15" dst_node="n2" protocol="tcp" port="443">
+      <Reason>SIEM monitoring of Analytics Engine</Reason>
+    </Allow>
+    <Allow id="tc19" src_zone="z1" dst_zone="z1" src_node="n15" dst_node="n3" protocol="tcp" port="443">
+      <Reason>SIEM monitoring of Algorithmic Engine</Reason>
+    </Allow>
+    <Allow id="tc20" src_zone="z1" dst_zone="z1" src_node="n15" dst_node="n4" protocol="tcp" port="443">
+      <Reason>SIEM monitoring of Order Routing Server</Reason>
+    </Allow>
+    <Allow id="tc21" src_zone="z1" dst_zone="z1" src_node="n16" dst_node="n1" protocol="tcp" port="53">
+      <Reason>DNS resolution for Market Data Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc22" src_zone="z1" dst_zone="z1" src_node="n17" dst_node="n1" protocol="tcp" port="53">
+      <Reason>DNS filtering for Market Data Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc23" src_zone="z1" dst_zone="z1" src_node="n18" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Web proxy for Market Data Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc24" src_zone="z6" dst_zone="z3" src_node="n19" dst_node="n10" protocol="tcp" port="443">
+      <Reason>MFA for Site 1 Router</Reason>
+    </Allow>
+    <Allow id="tc25" src_zone="z6" dst_zone="z4" src_node="n19" dst_node="n11" protocol="tcp" port="443">
+      <Reason>MFA for Site 2 Router</Reason>
+    </Allow>
+    <Allow id="tc26" src_zone="z6" dst_zone="z5" src_node="n19" dst_node="n12" protocol="tcp" port="443">
+      <Reason>MFA for Site 3 Router</Reason>
+    </Allow>
+    <Allow id="tc27" src_zone="z6" dst_zone="z6" src_node="n20" dst_node="n19" protocol="tcp" port="443">
+      <Reason>AAA integration with MFA Gateway</Reason>
+    </Allow>
+    <Allow id="tc28" src_zone="z6" dst_zone="z3" src_node="n21" dst_node="n10" protocol="tcp" port="443">
+      <Reason>NAC for Site 1 Router</Reason>
+    </Allow>
+    <Allow id="tc29" src_zone="z6" dst_zone="z4" src_node="n21" dst_node="n11" protocol="tcp" port="443">
+      <Reason>NAC for Site 2 Router</Reason>
+    </Allow>
+    <Allow id="tc30" src_zone="z6" dst_zone="z5" src_node="n21" dst_node="n12" protocol="tcp" port="443">
+      <Reason>NAC for Site 3 Router</Reason>
+    </Allow>
+    <Allow id="tc31" src_zone="z6" dst_zone="z6" src_node="n22" dst_node="n13" protocol="tcp" port="443">
+      <Reason>Admin workstation management of Management Server</Reason>
+    </Allow>
+    <Allow id="tc32" src_zone="z7" dst_zone="z7" src_node="n23" dst_node="n24" protocol="tcp" port="443">
+      <Reason>IDS/IPS monitoring in Non-Prod environment</Reason>
+    </Allow>
+    <Allow id="tc33" src_zone="z8" dst_zone="z1" src_node="n25" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Pen test data flow to Market Data Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc34" src_zone="z1" dst_zone="z8" src_node="n1" dst_node="n25" protocol="tcp" port="8080">
+      <Reason>Market Data Ingestion Server to Pen Test Workstation</Reason>
+    </Allow>
+    <Allow id="tc35" src_zone="z1" dst_zone="z7" src_node="n1" dst_node="n23" protocol="tcp" port="8080">
+      <Reason>Market Data Ingestion Server to Non-Prod IDS/IPS</Reason>
+    </Allow>
+    <Allow id="tc36" src_zone="z1" dst_zone="z10" src_node="n1" dst_node="n27" protocol="tcp" port="8080">
+      <Reason>Market Data Ingestion Server to Remote Access</Reason>
+    </Allow>
+    <Allow id="tc37" src_zone="z1" dst_zone="z11" src_node="n1" dst_node="n28" protocol="tcp" port="8080">
+      <Reason>Market Data Ingestion Server to Traffic Flow Log Collector</Reason>
+    </Allow>
+    <Allow id="tc38" src_zone="z6" dst_zone="z1" src_node="n13" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Management Server management of Market Data Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc39" src_zone="z10" dst_zone="z6" src_node="n27" dst_node="n19" protocol="tcp" port="443">
+      <Reason>Remote Access management of MFA Gateway</Reason>
+    </Allow>
+    <Allow id="tc40" src_zone="z11" dst_zone="z1" src_node="n28" dst_node="n15" protocol="tcp" port="443">
+      <Reason>Traffic Flow Log Collector to SIEM</Reason>
+    </Allow>
+    <Deny id="tc41" src_zone="z8" dst_zone="z1" src_node="n29" dst_node="n4" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc42" src_zone="z8" dst_zone="z9" src_node="n29" dst_node="n26" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc43" src_zone="z8" dst_zone="z6" src_node="n29" dst_node="n21" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc44" src_zone="z8" dst_zone="z6" src_node="n29" dst_node="n20" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+  </Policies>
+  <Compliance ig_level="IG2" all_required_satisfied="true">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Asset Inventory System' (n26) that manages inventory for various nodes, indicating a detailed asset inventory is maintained.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes numerous labeled data flows (e.g., nl1, nl2, etc.) and zone links (e.g., zl1, zl2, etc.), indicating documented data flows.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones for different types of data processing and storage (e.g., z1, z3, z4, z5, z7) and data flows between these zones are controlled.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>A firewall (n5) is present in the Data Center (z1) and manages traffic to other nodes (e.g., nl8, nl9).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>A DNS server (n16) is present in the Data Center (z1) and provides DNS resolution to other nodes (e.g., nl19).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>An MFA gateway (n19) is present and manages MFA for remote access to sites (e.g., nl22, nl23, nl24).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>A DNS filter (n17) is present in the Data Center (z1) and provides DNS filtering to other nodes (e.g., nl20).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>A web proxy (n18) is present in the Data Center (z1) and provides web filtering to other nodes (e.g., nl21).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones (e.g., z1, z3, z4, z5, z6, z7, z8, z9, z10, z11) and controlled data flows between them, indicating a secure network architecture.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes management links (e.g., nl8, nl9, nl10, nl11) and management zones (e.g., z6, z9, z10, z11) for securely managing network infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>An AAA server (n20) is present in the Management zone (z6) and integrates with other management nodes (e.g., nl25).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>A VPN gateway (n27) is present in the Remote Access zone (z10) and manages remote access to the network (e.g., nl54, nl55).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>An IDS/IPS (n14) is present in the Data Center (z1) and monitors traffic to other nodes (e.g., nl11, nl12, nl13, nl14).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a firewall (n5) and IDS/IPS (n14) that perform traffic filtering between network segments (e.g., nl8, nl9, nl11, nl12, nl13, nl14).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an NAC server (n21) that manages access control for remote assets (e.g., nl26, nl27, nl28).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>A traffic flow log collector (n28) is present in the Network Monitoring zone (z11) and collects traffic flow logs from various nodes (e.g., nl56, nl57, nl58).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a Non-Production zone (z7) that is separate from the Data Center (z1) and other production zones (e.g., z3, z4, z5).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="satisfied" confidence="1.0">
+      <Evidence>A pen test workstation (n25) and pen test process (n29) are present in the External Testing zone (z8) and are integrated with the Data Center (z1) and other zones (e.g., nl59, nl60).</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="1" controls="1.1,12.7,13.6,18.2" zones_added="3" nodes_added="4" zone_links_added="3" node_links_added="29"/>
+    <Repair round="2" controls="stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation" zones_added="0" nodes_added="0" zone_links_added="0" node_links_added="8"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

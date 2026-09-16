@@ -1,0 +1,42 @@
+{
+  "metric": "stage2_retrieval_reference_set",
+  "reference_dataset": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_train.json",
+  "stage1_extracted_source": "artifact/src/logs/stable_outputs/stage1_output/reference_train/stage1_extracted_intents.json",
+  "stage1_generated_source": "artifact/src/logs/stable_outputs/stage1_output/reference_train/stage1_generated_templates.json",
+  "stage2_weighted_stable_source": "artifact/src/logs/stable_outputs/stage2_output/reference_train/stage2_accuracy.json",
+  "reference_samples": 44,
+  "reference_templates": 22,
+  "variants": {
+    "single_vector": {
+      "top_k": {
+        "top_1": 0.75,
+        "top_3": 0.9091,
+        "top_5": 1.0
+      },
+      "mrr": 0.8409,
+      "avg_hit_rank": 1.5,
+      "miss_count": 0
+    },
+    "multi_field_uniform": {
+      "top_k": {
+        "top_1": 0.5909,
+        "top_3": 0.9318,
+        "top_5": 1.0
+      },
+      "mrr": 0.7519,
+      "avg_hit_rank": 1.7,
+      "miss_count": 0
+    },
+    "multi_field_weighted": {
+      "top_k": {
+        "top_1": 0.5682,
+        "top_3": 0.9318,
+        "top_5": 0.9773
+      },
+      "mrr": 0.7462,
+      "avg_hit_rank": 1.6,
+      "miss_count": 1
+    }
+  },
+  "note": "single_vector embeds a single flattened text representation of the Stage 1 generated topology and retrieves against one flattened text per reference template; multi-field_uniform uses equal weights across active fields; multi-field_weighted uses the previous weighted retrieval scheme."
+}

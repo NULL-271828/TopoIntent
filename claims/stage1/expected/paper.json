@@ -1,0 +1,5 @@
+{
+  "scenario_accuracy": 0.98,
+  "zone_type_recall": 0.68,
+  "node_type_recall": 0.53
+}

@@ -1,0 +1,3448 @@
+{
+  "sample_id": "Government-1_req1",
+  "gt_template_id": "Government-1",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-1_req1",
+    "title": "Government Secure Network",
+    "description": "Connect main data center to regional and branch offices with secure internet and remote access.",
+    "scenario": "government",
+    "topology_summary": "The main data center will be connected to regional and branch offices via a dedicated WAN. A secure internet perimeter with email and web filtering will be implemented, along with remote access capabilities.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Main Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Regional Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z4",
+        "name": "DMZ",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Remote Access Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Internet",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Non-Production Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z10",
+        "name": "Documentation",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z11",
+        "name": "IaC Tools",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Data Center Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Data Center Switch",
+        "normalized_type": "switch",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "WAN Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Regional Office Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Regional Office Switch",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Wireless Controller",
+        "normalized_type": "wireless_controller",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Access Point",
+        "normalized_type": "access_point",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n9",
+        "name": "Branch Office Router",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n10",
+        "name": "Branch Office Switch",
+        "normalized_type": "switch",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n11",
+        "name": "Wireless Controller",
+        "normalized_type": "wireless_controller",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n12",
+        "name": "Access Point",
+        "normalized_type": "access_point",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n13",
+        "name": "Web Filter",
+        "normalized_type": "waf",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n14",
+        "name": "Email Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n15",
+        "name": "VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n16",
+        "name": "Internet Gateway",
+        "normalized_type": "router",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n17",
+        "name": "Remote Access Server",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n18",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n19",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n20",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n21",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n22",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n23",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n24",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n25",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n26",
+        "name": "Test Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Internet External Endpoint",
+        "normalized_type": "endpoint",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n27",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n28",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n29",
+        "name": "IaC Tool",
+        "normalized_type": "server",
+        "zone_id": "z11"
+      },
+      {
+        "node_id": "n30",
+        "name": "Network Traffic Flow Log Collector",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n31",
+        "name": "Penetration Testing Service",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n4",
+          "target": "n5",
+          "link_type": "routing",
+          "label": "WAN to Regional Office"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n4",
+          "target": "n9",
+          "link_type": "routing",
+          "label": "WAN to Branch Office"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n3",
+          "target": "n16",
+          "link_type": "routing",
+          "label": "Firewall to Internet Gateway"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n15",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "VPN Gateway to Remote Access Server"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n15",
+          "target": "n18",
+          "link_type": "management",
+          "label": "VPN Gateway to Identity Server"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n3",
+          "target": "n20",
+          "link_type": "monitoring",
+          "label": "Firewall to NIDS"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n3",
+          "target": "n21",
+          "link_type": "monitoring",
+          "label": "Firewall to NIPS"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n3",
+          "target": "n19",
+          "link_type": "monitoring",
+          "label": "Firewall to SIEM"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n16",
+          "target": "n22",
+          "link_type": "data_flow",
+          "label": "Internet Gateway to DNS Server"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n16",
+          "target": "n23",
+          "link_type": "data_flow",
+          "label": "Internet Gateway to Web Proxy"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n15",
+          "target": "n24",
+          "link_type": "management",
+          "label": "VPN Gateway to NAC"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n25",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Admin Workstation to Identity Server"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n26",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Test Workstation to Identity Server"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n3",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n27",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Asset Management to Data Center Router"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n27",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Asset Management to Data Center Switch"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n27",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Asset Management to Firewall"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n27",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Asset Management to WAN Router"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n27",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Asset Management to Regional Office Router"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n27",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Asset Management to Regional Office Switch"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n27",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Asset Management to Wireless Controller"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n27",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Asset Management to Access Point"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n27",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Asset Management to Branch Office Router"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n27",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Asset Management to Branch Office Switch"
+        },
+        {
+          "link_id": "nl24",
+          "source": "n27",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Asset Management to Wireless Controller"
+        },
+        {
+          "link_id": "nl25",
+          "source": "n27",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Asset Management to Access Point"
+        },
+        {
+          "link_id": "nl26",
+          "source": "n27",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Asset Management to Web Filter"
+        },
+        {
+          "link_id": "nl27",
+          "source": "n27",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Asset Management to Email Filter"
+        },
+        {
+          "link_id": "nl28",
+          "source": "n27",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Asset Management to VPN Gateway"
+        },
+        {
+          "link_id": "nl29",
+          "source": "n27",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Asset Management to Internet Gateway"
+        },
+        {
+          "link_id": "nl30",
+          "source": "n27",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Asset Management to Remote Access Server"
+        },
+        {
+          "link_id": "nl31",
+          "source": "n27",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Asset Management to Identity Server"
+        },
+        {
+          "link_id": "nl32",
+          "source": "n27",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Asset Management to SIEM"
+        },
+        {
+          "link_id": "nl33",
+          "source": "n27",
+          "target": "n20",
+          "link_type": "management",
+          "label": "Asset Management to NIDS"
+        },
+        {
+          "link_id": "nl34",
+          "source": "n27",
+          "target": "n21",
+          "link_type": "management",
+          "label": "Asset Management to NIPS"
+        },
+        {
+          "link_id": "nl35",
+          "source": "n27",
+          "target": "n22",
+          "link_type": "management",
+          "label": "Asset Management to DNS Server"
+        },
+        {
+          "link_id": "nl36",
+          "source": "n27",
+          "target": "n23",
+          "link_type": "management",
+          "label": "Asset Management to Web Proxy"
+        },
+        {
+          "link_id": "nl37",
+          "source": "n27",
+          "target": "n24",
+          "link_type": "management",
+          "label": "Asset Management to NAC"
+        },
+        {
+          "link_id": "nl38",
+          "source": "n27",
+          "target": "n25",
+          "link_type": "management",
+          "label": "Asset Management to Admin Workstation"
+        },
+        {
+          "link_id": "nl39",
+          "source": "n27",
+          "target": "n26",
+          "link_type": "management",
+          "label": "Asset Management to Test Workstation"
+        },
+        {
+          "link_id": "nl40",
+          "source": "n27",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Asset Management to Internet External Endpoint"
+        },
+        {
+          "link_id": "nl41",
+          "source": "n28",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Data Center Router"
+        },
+        {
+          "link_id": "nl42",
+          "source": "n28",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Data Center Switch"
+        },
+        {
+          "link_id": "nl43",
+          "source": "n28",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Firewall"
+        },
+        {
+          "link_id": "nl44",
+          "source": "n28",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Data Flow Documentation to WAN Router"
+        },
+        {
+          "link_id": "nl45",
+          "source": "n28",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Regional Office Router"
+        },
+        {
+          "link_id": "nl46",
+          "source": "n28",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Regional Office Switch"
+        },
+        {
+          "link_id": "nl47",
+          "source": "n28",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Wireless Controller"
+        },
+        {
+          "link_id": "nl48",
+          "source": "n28",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Access Point"
+        },
+        {
+          "link_id": "nl49",
+          "source": "n28",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Branch Office Router"
+        },
+        {
+          "link_id": "nl50",
+          "source": "n28",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Branch Office Switch"
+        },
+        {
+          "link_id": "nl51",
+          "source": "n28",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Wireless Controller"
+        },
+        {
+          "link_id": "nl52",
+          "source": "n28",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Access Point"
+        },
+        {
+          "link_id": "nl53",
+          "source": "n28",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Web Filter"
+        },
+        {
+          "link_id": "nl54",
+          "source": "n28",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Email Filter"
+        },
+        {
+          "link_id": "nl55",
+          "source": "n28",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Data Flow Documentation to VPN Gateway"
+        },
+        {
+          "link_id": "nl56",
+          "source": "n28",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Internet Gateway"
+        },
+        {
+          "link_id": "nl57",
+          "source": "n28",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Remote Access Server"
+        },
+        {
+          "link_id": "nl58",
+          "source": "n28",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Identity Server"
+        },
+        {
+          "link_id": "nl59",
+          "source": "n28",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Data Flow Documentation to SIEM"
+        },
+        {
+          "link_id": "nl60",
+          "source": "n28",
+          "target": "n20",
+          "link_type": "management",
+          "label": "Data Flow Documentation to NIDS"
+        },
+        {
+          "link_id": "nl61",
+          "source": "n28",
+          "target": "n21",
+          "link_type": "management",
+          "label": "Data Flow Documentation to NIPS"
+        },
+        {
+          "link_id": "nl62",
+          "source": "n28",
+          "target": "n22",
+          "link_type": "management",
+          "label": "Data Flow Documentation to DNS Server"
+        },
+        {
+          "link_id": "nl63",
+          "source": "n28",
+          "target": "n23",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Web Proxy"
+        },
+        {
+          "link_id": "nl64",
+          "source": "n28",
+          "target": "n24",
+          "link_type": "management",
+          "label": "Data Flow Documentation to NAC"
+        },
+        {
+          "link_id": "nl65",
+          "source": "n28",
+          "target": "n25",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Admin Workstation"
+        },
+        {
+          "link_id": "nl66",
+          "source": "n28",
+          "target": "n26",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Test Workstation"
+        },
+        {
+          "link_id": "nl67",
+          "source": "n28",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Internet External Endpoint"
+        },
+        {
+          "link_id": "nl68",
+          "source": "n29",
+          "target": "n1",
+          "link_type": "management",
+          "label": "IaC Tool to Data Center Router"
+        },
+        {
+          "link_id": "nl69",
+          "source": "n29",
+          "target": "n2",
+          "link_type": "management",
+          "label": "IaC Tool to Data Center Switch"
+        },
+        {
+          "link_id": "nl70",
+          "source": "n29",
+          "target": "n3",
+          "link_type": "management",
+          "label": "IaC Tool to Firewall"
+        },
+        {
+          "link_id": "nl71",
+          "source": "n29",
+          "target": "n4",
+          "link_type": "management",
+          "label": "IaC Tool to WAN Router"
+        },
+        {
+          "link_id": "nl72",
+          "source": "n29",
+          "target": "n5",
+          "link_type": "management",
+          "label": "IaC Tool to Regional Office Router"
+        },
+        {
+          "link_id": "nl73",
+          "source": "n29",
+          "target": "n6",
+          "link_type": "management",
+          "label": "IaC Tool to Regional Office Switch"
+        },
+        {
+          "link_id": "nl74",
+          "source": "n29",
+          "target": "n7",
+          "link_type": "management",
+          "label": "IaC Tool to Wireless Controller"
+        },
+        {
+          "link_id": "nl75",
+          "source": "n29",
+          "target": "n8",
+          "link_type": "management",
+          "label": "IaC Tool to Access Point"
+        },
+        {
+          "link_id": "nl76",
+          "source": "n29",
+          "target": "n9",
+          "link_type": "management",
+          "label": "IaC Tool to Branch Office Router"
+        },
+        {
+          "link_id": "nl77",
+          "source": "n29",
+          "target": "n10",
+          "link_type": "management",
+          "label": "IaC Tool to Branch Office Switch"
+        },
+        {
+          "link_id": "nl78",
+          "source": "n29",
+          "target": "n11",
+          "link_type": "management",
+          "label": "IaC Tool to Wireless Controller"
+        },
+        {
+          "link_id": "nl79",
+          "source": "n29",
+          "target": "n12",
+          "link_type": "management",
+          "label": "IaC Tool to Access Point"
+        },
+        {
+          "link_id": "nl80",
+          "source": "n29",
+          "target": "n13",
+          "link_type": "management",
+          "label": "IaC Tool to Web Filter"
+        },
+        {
+          "link_id": "nl81",
+          "source": "n29",
+          "target": "n14",
+          "link_type": "management",
+          "label": "IaC Tool to Email Filter"
+        },
+        {
+          "link_id": "nl82",
+          "source": "n29",
+          "target": "n15",
+          "link_type": "management",
+          "label": "IaC Tool to VPN Gateway"
+        },
+        {
+          "link_id": "nl83",
+          "source": "n29",
+          "target": "n16",
+          "link_type": "management",
+          "label": "IaC Tool to Internet Gateway"
+        },
+        {
+          "link_id": "nl84",
+          "source": "n29",
+          "target": "n17",
+          "link_type": "management",
+          "label": "IaC Tool to Remote Access Server"
+        },
+        {
+          "link_id": "nl85",
+          "source": "n29",
+          "target": "n18",
+          "link_type": "management",
+          "label": "IaC Tool to Identity Server"
+        },
+        {
+          "link_id": "nl86",
+          "source": "n29",
+          "target": "n19",
+          "link_type": "management",
+          "label": "IaC Tool to SIEM"
+        },
+        {
+          "link_id": "nl87",
+          "source": "n29",
+          "target": "n20",
+          "link_type": "management",
+          "label": "IaC Tool to NIDS"
+        },
+        {
+          "link_id": "nl88",
+          "source": "n29",
+          "target": "n21",
+          "link_type": "management",
+          "label": "IaC Tool to NIPS"
+        },
+        {
+          "link_id": "nl89",
+          "source": "n29",
+          "target": "n22",
+          "link_type": "management",
+          "label": "IaC Tool to DNS Server"
+        },
+        {
+          "link_id": "nl90",
+          "source": "n29",
+          "target": "n23",
+          "link_type": "management",
+          "label": "IaC Tool to Web Proxy"
+        },
+        {
+          "link_id": "nl91",
+          "source": "n29",
+          "target": "n24",
+          "link_type": "management",
+          "label": "IaC Tool to NAC"
+        },
+        {
+          "link_id": "nl92",
+          "source": "n29",
+          "target": "n25",
+          "link_type": "management",
+          "label": "IaC Tool to Admin Workstation"
+        },
+        {
+          "link_id": "nl93",
+          "source": "n29",
+          "target": "n26",
+          "link_type": "management",
+          "label": "IaC Tool to Test Workstation"
+        },
+        {
+          "link_id": "nl94",
+          "source": "n29",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "IaC Tool to Internet External Endpoint"
+        },
+        {
+          "link_id": "nl95",
+          "source": "n30",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Data Center Router"
+        },
+        {
+          "link_id": "nl96",
+          "source": "n30",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Data Center Switch"
+        },
+        {
+          "link_id": "nl97",
+          "source": "n30",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Firewall"
+        },
+        {
+          "link_id": "nl98",
+          "source": "n30",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to WAN Router"
+        },
+        {
+          "link_id": "nl99",
+          "source": "n30",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Regional Office Router"
+        },
+        {
+          "link_id": "nl100",
+          "source": "n30",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Regional Office Switch"
+        },
+        {
+          "link_id": "nl101",
+          "source": "n30",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Wireless Controller"
+        },
+        {
+          "link_id": "nl102",
+          "source": "n30",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Access Point"
+        },
+        {
+          "link_id": "nl103",
+          "source": "n30",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Branch Office Router"
+        },
+        {
+          "link_id": "nl104",
+          "source": "n30",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Branch Office Switch"
+        },
+        {
+          "link_id": "nl105",
+          "source": "n30",
+          "target": "n11",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Wireless Controller"
+        },
+        {
+          "link_id": "nl106",
+          "source": "n30",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Access Point"
+        },
+        {
+          "link_id": "nl107",
+          "source": "n30",
+          "target": "n13",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Web Filter"
+        },
+        {
+          "link_id": "nl108",
+          "source": "n30",
+          "target": "n14",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Email Filter"
+        },
+        {
+          "link_id": "nl109",
+          "source": "n30",
+          "target": "n15",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to VPN Gateway"
+        },
+        {
+          "link_id": "nl110",
+          "source": "n30",
+          "target": "n16",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Internet Gateway"
+        },
+        {
+          "link_id": "nl111",
+          "source": "n30",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Remote Access Server"
+        },
+        {
+          "link_id": "nl112",
+          "source": "n30",
+          "target": "n18",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Identity Server"
+        },
+        {
+          "link_id": "nl113",
+          "source": "n30",
+          "target": "n19",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to SIEM"
+        },
+        {
+          "link_id": "nl114",
+          "source": "n30",
+          "target": "n20",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to NIDS"
+        },
+        {
+          "link_id": "nl115",
+          "source": "n30",
+          "target": "n21",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to NIPS"
+        },
+        {
+          "link_id": "nl116",
+          "source": "n30",
+          "target": "n22",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to DNS Server"
+        },
+        {
+          "link_id": "nl117",
+          "source": "n30",
+          "target": "n23",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Web Proxy"
+        },
+        {
+          "link_id": "nl118",
+          "source": "n30",
+          "target": "n24",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to NAC"
+        },
+        {
+          "link_id": "nl119",
+          "source": "n30",
+          "target": "n25",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Admin Workstation"
+        },
+        {
+          "link_id": "nl120",
+          "source": "n30",
+          "target": "n26",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Test Workstation"
+        },
+        {
+          "link_id": "nl121",
+          "source": "n30",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Network Traffic Flow Log Collector to Internet External Endpoint"
+        },
+        {
+          "link_id": "nl122",
+          "source": "n31",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Data Center Router"
+        },
+        {
+          "link_id": "nl123",
+          "source": "n31",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Data Center Switch"
+        },
+        {
+          "link_id": "nl124",
+          "source": "n31",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Firewall"
+        },
+        {
+          "link_id": "nl125",
+          "source": "n31",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to WAN Router"
+        },
+        {
+          "link_id": "nl126",
+          "source": "n31",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Regional Office Router"
+        },
+        {
+          "link_id": "nl127",
+          "source": "n31",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Regional Office Switch"
+        },
+        {
+          "link_id": "nl128",
+          "source": "n31",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Wireless Controller"
+        },
+        {
+          "link_id": "nl129",
+          "source": "n31",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Access Point"
+        },
+        {
+          "link_id": "nl130",
+          "source": "n31",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Branch Office Router"
+        },
+        {
+          "link_id": "nl131",
+          "source": "n31",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Branch Office Switch"
+        },
+        {
+          "link_id": "nl132",
+          "source": "n31",
+          "target": "n11",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Wireless Controller"
+        },
+        {
+          "link_id": "nl133",
+          "source": "n31",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Access Point"
+        },
+        {
+          "link_id": "nl134",
+          "source": "n31",
+          "target": "n13",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Web Filter"
+        },
+        {
+          "link_id": "nl135",
+          "source": "n31",
+          "target": "n14",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Email Filter"
+        },
+        {
+          "link_id": "nl136",
+          "source": "n31",
+          "target": "n15",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to VPN Gateway"
+        },
+        {
+          "link_id": "nl137",
+          "source": "n31",
+          "target": "n16",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Internet Gateway"
+        },
+        {
+          "link_id": "nl138",
+          "source": "n31",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Remote Access Server"
+        },
+        {
+          "link_id": "nl139",
+          "source": "n31",
+          "target": "n18",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Identity Server"
+        },
+        {
+          "link_id": "nl140",
+          "source": "n31",
+          "target": "n19",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to SIEM"
+        },
+        {
+          "link_id": "nl141",
+          "source": "n31",
+          "target": "n20",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to NIDS"
+        },
+        {
+          "link_id": "nl142",
+          "source": "n31",
+          "target": "n21",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to NIPS"
+        },
+        {
+          "link_id": "nl143",
+          "source": "n31",
+          "target": "n22",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to DNS Server"
+        },
+        {
+          "link_id": "nl144",
+          "source": "n31",
+          "target": "n23",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Web Proxy"
+        },
+        {
+          "link_id": "nl145",
+          "source": "n31",
+          "target": "n24",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to NAC"
+        },
+        {
+          "link_id": "nl146",
+          "source": "n31",
+          "target": "n25",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Admin Workstation"
+        },
+        {
+          "link_id": "nl147",
+          "source": "n31",
+          "target": "n26",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Test Workstation"
+        },
+        {
+          "link_id": "nl148",
+          "source": "n31",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Penetration Testing Service to Internet External Endpoint"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "routing",
+          "label": "Data Center to DMZ"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z4",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "DMZ to Internet"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z5",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Remote Access Zone to DMZ"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "management",
+          "label": "Data Center to Management Zone"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Data Center to Non-Production Zone"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z9",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Asset Management to Data Center"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z9",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Asset Management to Regional Office"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z9",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Asset Management to Branch Office"
+        },
+        {
+          "link_id": "zl9",
+          "source": "z9",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Asset Management to DMZ"
+        },
+        {
+          "link_id": "zl10",
+          "source": "z9",
+          "target": "z5",
+          "link_type": "management",
+          "label": "Asset Management to Remote Access Zone"
+        },
+        {
+          "link_id": "zl11",
+          "source": "z9",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Asset Management to Internet"
+        },
+        {
+          "link_id": "zl12",
+          "source": "z9",
+          "target": "z7",
+          "link_type": "management",
+          "label": "Asset Management to Management Zone"
+        },
+        {
+          "link_id": "zl13",
+          "source": "z9",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Asset Management to Non-Production Zone"
+        },
+        {
+          "link_id": "zl14",
+          "source": "z10",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Documentation to Data Center"
+        },
+        {
+          "link_id": "zl15",
+          "source": "z10",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Documentation to Regional Office"
+        },
+        {
+          "link_id": "zl16",
+          "source": "z10",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Documentation to Branch Office"
+        },
+        {
+          "link_id": "zl17",
+          "source": "z10",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Documentation to DMZ"
+        },
+        {
+          "link_id": "zl18",
+          "source": "z10",
+          "target": "z5",
+          "link_type": "management",
+          "label": "Documentation to Remote Access Zone"
+        },
+        {
+          "link_id": "zl19",
+          "source": "z10",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Documentation to Internet"
+        },
+        {
+          "link_id": "zl20",
+          "source": "z10",
+          "target": "z7",
+          "link_type": "management",
+          "label": "Documentation to Management Zone"
+        },
+        {
+          "link_id": "zl21",
+          "source": "z10",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Documentation to Non-Production Zone"
+        },
+        {
+          "link_id": "zl22",
+          "source": "z11",
+          "target": "z1",
+          "link_type": "management",
+          "label": "IaC Tools to Data Center"
+        },
+        {
+          "link_id": "zl23",
+          "source": "z11",
+          "target": "z2",
+          "link_type": "management",
+          "label": "IaC Tools to Regional Office"
+        },
+        {
+          "link_id": "zl24",
+          "source": "z11",
+          "target": "z3",
+          "link_type": "management",
+          "label": "IaC Tools to Branch Office"
+        },
+        {
+          "link_id": "zl25",
+          "source": "z11",
+          "target": "z4",
+          "link_type": "management",
+          "label": "IaC Tools to DMZ"
+        },
+        {
+          "link_id": "zl26",
+          "source": "z11",
+          "target": "z5",
+          "link_type": "management",
+          "label": "IaC Tools to Remote Access Zone"
+        },
+        {
+          "link_id": "zl27",
+          "source": "z11",
+          "target": "z6",
+          "link_type": "management",
+          "label": "IaC Tools to Internet"
+        },
+        {
+          "link_id": "zl28",
+          "source": "z11",
+          "target": "z7",
+          "link_type": "management",
+          "label": "IaC Tools to Management Zone"
+        },
+        {
+          "link_id": "zl29",
+          "source": "z11",
+          "target": "z8",
+          "link_type": "management",
+          "label": "IaC Tools to Non-Production Zone"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-1_req1",
+    "ig_level": "IG2",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Management System' (n27) that manages various nodes and zones, indicating an asset inventory is maintained.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation System' (n28) that manages various nodes and zones, indicating data flows are documented.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (e.g., Main Data Center, DMZ, Non-Production Zone) that are segmented, indicating data processing and storage are segmented based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Firewall' (n3) in the Main Data Center, which is connected to various nodes, indicating firewalls are implemented and managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n22) in the Main Data Center, which is connected to the Internet Gateway (n16), indicating trusted DNS servers are configured.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Remote Access Server' (n17) and an 'Identity Server' (n18) in the Remote Access Zone, indicating MFA is likely required for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n23) and 'Web Filter' (n13) in the DMZ, indicating DNS filtering services are used.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Filter' (n13) and 'Email Filter' (n14) in the DMZ, indicating network-based URL filters are enforced.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (e.g., Main Data Center, DMZ, Non-Production Zone) and security devices (e.g., Firewalls, NIDS, NIPS), indicating a secure network architecture is established and maintained.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IaC Tool' (n29) that manages various nodes and zones, indicating network infrastructure is securely managed using IaC.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Identity Server' (n18) and 'SIEM' (n19) in the Management Zone, indicating centralized AAA is implemented.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'VPN Gateway' (n15) and 'Remote Access Server' (n17) in the Remote Access Zone, indicating remote devices utilize a VPN and connect to the enterprise's AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes 'NIDS' (n20) and 'NIPS' (n21) in the Main Data Center, indicating a network intrusion detection solution is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Firewall' (n3) and multiple zones (e.g., Main Data Center, DMZ, Non-Production Zone) with routing and management links, indicating traffic filtering between network segments is performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NAC' (n24) in the Remote Access Zone, indicating access control for remote assets is managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Network Traffic Flow Log Collector' (n30) that collects logs from various nodes and zones, indicating network traffic flow logs are collected.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Non-Production Zone' (z8) that is separated from the Main Data Center, indicating production and non-production systems are separated.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Penetration Testing Service' (n31) that connects to various nodes and zones, indicating periodic external penetration tests are performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z6\", \"name\": \"Internet\", \"zone_type\": \"external\"}",
+          "missing_reason": "Zone z6 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Internet External Endpoint",
+            "normalized_type": "endpoint",
+            "zone_id": "z6"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n3",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 26,
+        "zone_links": 5,
+        "node_links": 13
+      },
+      "counts_after": {
+        "zones": 8,
+        "nodes": 27,
+        "zone_links": 5,
+        "node_links": 14
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 1,
+        "zone_links": 0,
+        "node_links": 1
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "12.3",
+        "13.6",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of an asset inventory system or process.",
+          "missing_reason": "No explicit evidence of an asset inventory system or process.",
+          "repair_suggestion": "Add a node representing an asset management system and links to all other nodes."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes links and data flows, but there is no explicit evidence of documented data flows.",
+          "missing_reason": "No explicit evidence of documented data flows.",
+          "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes and zones."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various network devices, but there is no explicit evidence of secure management practices (e.g., IaC, secure protocols).",
+          "missing_reason": "No explicit evidence of secure management practices.",
+          "repair_suggestion": "Add nodes representing IaC tools and links to network devices."
+        },
+        {
+          "cis_safeguard_id": "13.6",
+          "title": "Collect Network Traffic Flow Logs",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a SIEM (n19) and links to the Firewall (n3), but there is no explicit evidence of collecting network traffic flow logs.",
+          "missing_reason": "No explicit evidence of collecting network traffic flow logs.",
+          "repair_suggestion": "Add a node representing a network traffic flow log collector and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology does not include any explicit evidence of periodic external penetration tests.",
+          "missing_reason": "No explicit evidence of periodic external penetration tests.",
+          "repair_suggestion": "Add a node representing a penetration testing service and links to relevant nodes."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z9",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z10",
+            "name": "Documentation",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z11",
+            "name": "IaC Tools",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n27",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n28",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z10"
+          },
+          {
+            "node_id": "n29",
+            "name": "IaC Tool",
+            "normalized_type": "server",
+            "zone_id": "z11"
+          },
+          {
+            "node_id": "n30",
+            "name": "Network Traffic Flow Log Collector",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n31",
+            "name": "Penetration Testing Service",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl14",
+              "source": "n27",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Asset Management to Data Center Router"
+            },
+            {
+              "link_id": "nl15",
+              "source": "n27",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Asset Management to Data Center Switch"
+            },
+            {
+              "link_id": "nl16",
+              "source": "n27",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Asset Management to Firewall"
+            },
+            {
+              "link_id": "nl17",
+              "source": "n27",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Asset Management to WAN Router"
+            },
+            {
+              "link_id": "nl18",
+              "source": "n27",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Asset Management to Regional Office Router"
+            },
+            {
+              "link_id": "nl19",
+              "source": "n27",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Asset Management to Regional Office Switch"
+            },
+            {
+              "link_id": "nl20",
+              "source": "n27",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Asset Management to Wireless Controller"
+            },
+            {
+              "link_id": "nl21",
+              "source": "n27",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Asset Management to Access Point"
+            },
+            {
+              "link_id": "nl22",
+              "source": "n27",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Asset Management to Branch Office Router"
+            },
+            {
+              "link_id": "nl23",
+              "source": "n27",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Asset Management to Branch Office Switch"
+            },
+            {
+              "link_id": "nl24",
+              "source": "n27",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Asset Management to Wireless Controller"
+            },
+            {
+              "link_id": "nl25",
+              "source": "n27",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Asset Management to Access Point"
+            },
+            {
+              "link_id": "nl26",
+              "source": "n27",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Asset Management to Web Filter"
+            },
+            {
+              "link_id": "nl27",
+              "source": "n27",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Asset Management to Email Filter"
+            },
+            {
+              "link_id": "nl28",
+              "source": "n27",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Asset Management to VPN Gateway"
+            },
+            {
+              "link_id": "nl29",
+              "source": "n27",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Asset Management to Internet Gateway"
+            },
+            {
+              "link_id": "nl30",
+              "source": "n27",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Asset Management to Remote Access Server"
+            },
+            {
+              "link_id": "nl31",
+              "source": "n27",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Asset Management to Identity Server"
+            },
+            {
+              "link_id": "nl32",
+              "source": "n27",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Asset Management to SIEM"
+            },
+            {
+              "link_id": "nl33",
+              "source": "n27",
+              "target": "n20",
+              "link_type": "management",
+              "label": "Asset Management to NIDS"
+            },
+            {
+              "link_id": "nl34",
+              "source": "n27",
+              "target": "n21",
+              "link_type": "management",
+              "label": "Asset Management to NIPS"
+            },
+            {
+              "link_id": "nl35",
+              "source": "n27",
+              "target": "n22",
+              "link_type": "management",
+              "label": "Asset Management to DNS Server"
+            },
+            {
+              "link_id": "nl36",
+              "source": "n27",
+              "target": "n23",
+              "link_type": "management",
+              "label": "Asset Management to Web Proxy"
+            },
+            {
+              "link_id": "nl37",
+              "source": "n27",
+              "target": "n24",
+              "link_type": "management",
+              "label": "Asset Management to NAC"
+            },
+            {
+              "link_id": "nl38",
+              "source": "n27",
+              "target": "n25",
+              "link_type": "management",
+              "label": "Asset Management to Admin Workstation"
+            },
+            {
+              "link_id": "nl39",
+              "source": "n27",
+              "target": "n26",
+              "link_type": "management",
+              "label": "Asset Management to Test Workstation"
+            },
+            {
+              "link_id": "nl40",
+              "source": "n27",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Asset Management to Internet External Endpoint"
+            },
+            {
+              "link_id": "nl41",
+              "source": "n28",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Data Center Router"
+            },
+            {
+              "link_id": "nl42",
+              "source": "n28",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Data Center Switch"
+            },
+            {
+              "link_id": "nl43",
+              "source": "n28",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Firewall"
+            },
+            {
+              "link_id": "nl44",
+              "source": "n28",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Data Flow Documentation to WAN Router"
+            },
+            {
+              "link_id": "nl45",
+              "source": "n28",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Regional Office Router"
+            },
+            {
+              "link_id": "nl46",
+              "source": "n28",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Regional Office Switch"
+            },
+            {
+              "link_id": "nl47",
+              "source": "n28",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Wireless Controller"
+            },
+            {
+              "link_id": "nl48",
+              "source": "n28",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Access Point"
+            },
+            {
+              "link_id": "nl49",
+              "source": "n28",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Branch Office Router"
+            },
+            {
+              "link_id": "nl50",
+              "source": "n28",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Branch Office Switch"
+            },
+            {
+              "link_id": "nl51",
+              "source": "n28",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Wireless Controller"
+            },
+            {
+              "link_id": "nl52",
+              "source": "n28",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Access Point"
+            },
+            {
+              "link_id": "nl53",
+              "source": "n28",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Web Filter"
+            },
+            {
+              "link_id": "nl54",
+              "source": "n28",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Email Filter"
+            },
+            {
+              "link_id": "nl55",
+              "source": "n28",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Data Flow Documentation to VPN Gateway"
+            },
+            {
+              "link_id": "nl56",
+              "source": "n28",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Internet Gateway"
+            },
+            {
+              "link_id": "nl57",
+              "source": "n28",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Remote Access Server"
+            },
+            {
+              "link_id": "nl58",
+              "source": "n28",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Identity Server"
+            },
+            {
+              "link_id": "nl59",
+              "source": "n28",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Data Flow Documentation to SIEM"
+            },
+            {
+              "link_id": "nl60",
+              "source": "n28",
+              "target": "n20",
+              "link_type": "management",
+              "label": "Data Flow Documentation to NIDS"
+            },
+            {
+              "link_id": "nl61",
+              "source": "n28",
+              "target": "n21",
+              "link_type": "management",
+              "label": "Data Flow Documentation to NIPS"
+            },
+            {
+              "link_id": "nl62",
+              "source": "n28",
+              "target": "n22",
+              "link_type": "management",
+              "label": "Data Flow Documentation to DNS Server"
+            },
+            {
+              "link_id": "nl63",
+              "source": "n28",
+              "target": "n23",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Web Proxy"
+            },
+            {
+              "link_id": "nl64",
+              "source": "n28",
+              "target": "n24",
+              "link_type": "management",
+              "label": "Data Flow Documentation to NAC"
+            },
+            {
+              "link_id": "nl65",
+              "source": "n28",
+              "target": "n25",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Admin Workstation"
+            },
+            {
+              "link_id": "nl66",
+              "source": "n28",
+              "target": "n26",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Test Workstation"
+            },
+            {
+              "link_id": "nl67",
+              "source": "n28",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Internet External Endpoint"
+            },
+            {
+              "link_id": "nl68",
+              "source": "n29",
+              "target": "n1",
+              "link_type": "management",
+              "label": "IaC Tool to Data Center Router"
+            },
+            {
+              "link_id": "nl69",
+              "source": "n29",
+              "target": "n2",
+              "link_type": "management",
+              "label": "IaC Tool to Data Center Switch"
+            },
+            {
+              "link_id": "nl70",
+              "source": "n29",
+              "target": "n3",
+              "link_type": "management",
+              "label": "IaC Tool to Firewall"
+            },
+            {
+              "link_id": "nl71",
+              "source": "n29",
+              "target": "n4",
+              "link_type": "management",
+              "label": "IaC Tool to WAN Router"
+            },
+            {
+              "link_id": "nl72",
+              "source": "n29",
+              "target": "n5",
+              "link_type": "management",
+              "label": "IaC Tool to Regional Office Router"
+            },
+            {
+              "link_id": "nl73",
+              "source": "n29",
+              "target": "n6",
+              "link_type": "management",
+              "label": "IaC Tool to Regional Office Switch"
+            },
+            {
+              "link_id": "nl74",
+              "source": "n29",
+              "target": "n7",
+              "link_type": "management",
+              "label": "IaC Tool to Wireless Controller"
+            },
+            {
+              "link_id": "nl75",
+              "source": "n29",
+              "target": "n8",
+              "link_type": "management",
+              "label": "IaC Tool to Access Point"
+            },
+            {
+              "link_id": "nl76",
+              "source": "n29",
+              "target": "n9",
+              "link_type": "management",
+              "label": "IaC Tool to Branch Office Router"
+            },
+            {
+              "link_id": "nl77",
+              "source": "n29",
+              "target": "n10",
+              "link_type": "management",
+              "label": "IaC Tool to Branch Office Switch"
+            },
+            {
+              "link_id": "nl78",
+              "source": "n29",
+              "target": "n11",
+              "link_type": "management",
+              "label": "IaC Tool to Wireless Controller"
+            },
+            {
+              "link_id": "nl79",
+              "source": "n29",
+              "target": "n12",
+              "link_type": "management",
+              "label": "IaC Tool to Access Point"
+            },
+            {
+              "link_id": "nl80",
+              "source": "n29",
+              "target": "n13",
+              "link_type": "management",
+              "label": "IaC Tool to Web Filter"
+            },
+            {
+              "link_id": "nl81",
+              "source": "n29",
+              "target": "n14",
+              "link_type": "management",
+              "label": "IaC Tool to Email Filter"
+            },
+            {
+              "link_id": "nl82",
+              "source": "n29",
+              "target": "n15",
+              "link_type": "management",
+              "label": "IaC Tool to VPN Gateway"
+            },
+            {
+              "link_id": "nl83",
+              "source": "n29",
+              "target": "n16",
+              "link_type": "management",
+              "label": "IaC Tool to Internet Gateway"
+            },
+            {
+              "link_id": "nl84",
+              "source": "n29",
+              "target": "n17",
+              "link_type": "management",
+              "label": "IaC Tool to Remote Access Server"
+            },
+            {
+              "link_id": "nl85",
+              "source": "n29",
+              "target": "n18",
+              "link_type": "management",
+              "label": "IaC Tool to Identity Server"
+            },
+            {
+              "link_id": "nl86",
+              "source": "n29",
+              "target": "n19",
+              "link_type": "management",
+              "label": "IaC Tool to SIEM"
+            },
+            {
+              "link_id": "nl87",
+              "source": "n29",
+              "target": "n20",
+              "link_type": "management",
+              "label": "IaC Tool to NIDS"
+            },
+            {
+              "link_id": "nl88",
+              "source": "n29",
+              "target": "n21",
+              "link_type": "management",
+              "label": "IaC Tool to NIPS"
+            },
+            {
+              "link_id": "nl89",
+              "source": "n29",
+              "target": "n22",
+              "link_type": "management",
+              "label": "IaC Tool to DNS Server"
+            },
+            {
+              "link_id": "nl90",
+              "source": "n29",
+              "target": "n23",
+              "link_type": "management",
+              "label": "IaC Tool to Web Proxy"
+            },
+            {
+              "link_id": "nl91",
+              "source": "n29",
+              "target": "n24",
+              "link_type": "management",
+              "label": "IaC Tool to NAC"
+            },
+            {
+              "link_id": "nl92",
+              "source": "n29",
+              "target": "n25",
+              "link_type": "management",
+              "label": "IaC Tool to Admin Workstation"
+            },
+            {
+              "link_id": "nl93",
+              "source": "n29",
+              "target": "n26",
+              "link_type": "management",
+              "label": "IaC Tool to Test Workstation"
+            },
+            {
+              "link_id": "nl94",
+              "source": "n29",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "IaC Tool to Internet External Endpoint"
+            },
+            {
+              "link_id": "nl95",
+              "source": "n30",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Data Center Router"
+            },
+            {
+              "link_id": "nl96",
+              "source": "n30",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Data Center Switch"
+            },
+            {
+              "link_id": "nl97",
+              "source": "n30",
+              "target": "n3",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Firewall"
+            },
+            {
+              "link_id": "nl98",
+              "source": "n30",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to WAN Router"
+            },
+            {
+              "link_id": "nl99",
+              "source": "n30",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Regional Office Router"
+            },
+            {
+              "link_id": "nl100",
+              "source": "n30",
+              "target": "n6",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Regional Office Switch"
+            },
+            {
+              "link_id": "nl101",
+              "source": "n30",
+              "target": "n7",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Wireless Controller"
+            },
+            {
+              "link_id": "nl102",
+              "source": "n30",
+              "target": "n8",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Access Point"
+            },
+            {
+              "link_id": "nl103",
+              "source": "n30",
+              "target": "n9",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Branch Office Router"
+            },
+            {
+              "link_id": "nl104",
+              "source": "n30",
+              "target": "n10",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Branch Office Switch"
+            },
+            {
+              "link_id": "nl105",
+              "source": "n30",
+              "target": "n11",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Wireless Controller"
+            },
+            {
+              "link_id": "nl106",
+              "source": "n30",
+              "target": "n12",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Access Point"
+            },
+            {
+              "link_id": "nl107",
+              "source": "n30",
+              "target": "n13",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Web Filter"
+            },
+            {
+              "link_id": "nl108",
+              "source": "n30",
+              "target": "n14",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Email Filter"
+            },
+            {
+              "link_id": "nl109",
+              "source": "n30",
+              "target": "n15",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to VPN Gateway"
+            },
+            {
+              "link_id": "nl110",
+              "source": "n30",
+              "target": "n16",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Internet Gateway"
+            },
+            {
+              "link_id": "nl111",
+              "source": "n30",
+              "target": "n17",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Remote Access Server"
+            },
+            {
+              "link_id": "nl112",
+              "source": "n30",
+              "target": "n18",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Identity Server"
+            },
+            {
+              "link_id": "nl113",
+              "source": "n30",
+              "target": "n19",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to SIEM"
+            },
+            {
+              "link_id": "nl114",
+              "source": "n30",
+              "target": "n20",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to NIDS"
+            },
+            {
+              "link_id": "nl115",
+              "source": "n30",
+              "target": "n21",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to NIPS"
+            },
+            {
+              "link_id": "nl116",
+              "source": "n30",
+              "target": "n22",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to DNS Server"
+            },
+            {
+              "link_id": "nl117",
+              "source": "n30",
+              "target": "n23",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Web Proxy"
+            },
+            {
+              "link_id": "nl118",
+              "source": "n30",
+              "target": "n24",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to NAC"
+            },
+            {
+              "link_id": "nl119",
+              "source": "n30",
+              "target": "n25",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Admin Workstation"
+            },
+            {
+              "link_id": "nl120",
+              "source": "n30",
+              "target": "n26",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Test Workstation"
+            },
+            {
+              "link_id": "nl121",
+              "source": "n30",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Network Traffic Flow Log Collector to Internet External Endpoint"
+            },
+            {
+              "link_id": "nl122",
+              "source": "n31",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Data Center Router"
+            },
+            {
+              "link_id": "nl123",
+              "source": "n31",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Data Center Switch"
+            },
+            {
+              "link_id": "nl124",
+              "source": "n31",
+              "target": "n3",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Firewall"
+            },
+            {
+              "link_id": "nl125",
+              "source": "n31",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to WAN Router"
+            },
+            {
+              "link_id": "nl126",
+              "source": "n31",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Regional Office Router"
+            },
+            {
+              "link_id": "nl127",
+              "source": "n31",
+              "target": "n6",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Regional Office Switch"
+            },
+            {
+              "link_id": "nl128",
+              "source": "n31",
+              "target": "n7",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Wireless Controller"
+            },
+            {
+              "link_id": "nl129",
+              "source": "n31",
+              "target": "n8",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Access Point"
+            },
+            {
+              "link_id": "nl130",
+              "source": "n31",
+              "target": "n9",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Branch Office Router"
+            },
+            {
+              "link_id": "nl131",
+              "source": "n31",
+              "target": "n10",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Branch Office Switch"
+            },
+            {
+              "link_id": "nl132",
+              "source": "n31",
+              "target": "n11",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Wireless Controller"
+            },
+            {
+              "link_id": "nl133",
+              "source": "n31",
+              "target": "n12",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Access Point"
+            },
+            {
+              "link_id": "nl134",
+              "source": "n31",
+              "target": "n13",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Web Filter"
+            },
+            {
+              "link_id": "nl135",
+              "source": "n31",
+              "target": "n14",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Email Filter"
+            },
+            {
+              "link_id": "nl136",
+              "source": "n31",
+              "target": "n15",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to VPN Gateway"
+            },
+            {
+              "link_id": "nl137",
+              "source": "n31",
+              "target": "n16",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Internet Gateway"
+            },
+            {
+              "link_id": "nl138",
+              "source": "n31",
+              "target": "n17",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Remote Access Server"
+            },
+            {
+              "link_id": "nl139",
+              "source": "n31",
+              "target": "n18",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Identity Server"
+            },
+            {
+              "link_id": "nl140",
+              "source": "n31",
+              "target": "n19",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to SIEM"
+            },
+            {
+              "link_id": "nl141",
+              "source": "n31",
+              "target": "n20",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to NIDS"
+            },
+            {
+              "link_id": "nl142",
+              "source": "n31",
+              "target": "n21",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to NIPS"
+            },
+            {
+              "link_id": "nl143",
+              "source": "n31",
+              "target": "n22",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to DNS Server"
+            },
+            {
+              "link_id": "nl144",
+              "source": "n31",
+              "target": "n23",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Web Proxy"
+            },
+            {
+              "link_id": "nl145",
+              "source": "n31",
+              "target": "n24",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to NAC"
+            },
+            {
+              "link_id": "nl146",
+              "source": "n31",
+              "target": "n25",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Admin Workstation"
+            },
+            {
+              "link_id": "nl147",
+              "source": "n31",
+              "target": "n26",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Test Workstation"
+            },
+            {
+              "link_id": "nl148",
+              "source": "n31",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Penetration Testing Service to Internet External Endpoint"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl6",
+              "source": "z9",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Asset Management to Data Center"
+            },
+            {
+              "link_id": "zl7",
+              "source": "z9",
+              "target": "z2",
+              "link_type": "management",
+              "label": "Asset Management to Regional Office"
+            },
+            {
+              "link_id": "zl8",
+              "source": "z9",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Asset Management to Branch Office"
+            },
+            {
+              "link_id": "zl9",
+              "source": "z9",
+              "target": "z4",
+              "link_type": "management",
+              "label": "Asset Management to DMZ"
+            },
+            {
+              "link_id": "zl10",
+              "source": "z9",
+              "target": "z5",
+              "link_type": "management",
+              "label": "Asset Management to Remote Access Zone"
+            },
+            {
+              "link_id": "zl11",
+              "source": "z9",
+              "target": "z6",
+              "link_type": "management",
+              "label": "Asset Management to Internet"
+            },
+            {
+              "link_id": "zl12",
+              "source": "z9",
+              "target": "z7",
+              "link_type": "management",
+              "label": "Asset Management to Management Zone"
+            },
+            {
+              "link_id": "zl13",
+              "source": "z9",
+              "target": "z8",
+              "link_type": "management",
+              "label": "Asset Management to Non-Production Zone"
+            },
+            {
+              "link_id": "zl14",
+              "source": "z10",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Documentation to Data Center"
+            },
+            {
+              "link_id": "zl15",
+              "source": "z10",
+              "target": "z2",
+              "link_type": "management",
+              "label": "Documentation to Regional Office"
+            },
+            {
+              "link_id": "zl16",
+              "source": "z10",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Documentation to Branch Office"
+            },
+            {
+              "link_id": "zl17",
+              "source": "z10",
+              "target": "z4",
+              "link_type": "management",
+              "label": "Documentation to DMZ"
+            },
+            {
+              "link_id": "zl18",
+              "source": "z10",
+              "target": "z5",
+              "link_type": "management",
+              "label": "Documentation to Remote Access Zone"
+            },
+            {
+              "link_id": "zl19",
+              "source": "z10",
+              "target": "z6",
+              "link_type": "management",
+              "label": "Documentation to Internet"
+            },
+            {
+              "link_id": "zl20",
+              "source": "z10",
+              "target": "z7",
+              "link_type": "management",
+              "label": "Documentation to Management Zone"
+            },
+            {
+              "link_id": "zl21",
+              "source": "z10",
+              "target": "z8",
+              "link_type": "management",
+              "label": "Documentation to Non-Production Zone"
+            },
+            {
+              "link_id": "zl22",
+              "source": "z11",
+              "target": "z1",
+              "link_type": "management",
+              "label": "IaC Tools to Data Center"
+            },
+            {
+              "link_id": "zl23",
+              "source": "z11",
+              "target": "z2",
+              "link_type": "management",
+              "label": "IaC Tools to Regional Office"
+            },
+            {
+              "link_id": "zl24",
+              "source": "z11",
+              "target": "z3",
+              "link_type": "management",
+              "label": "IaC Tools to Branch Office"
+            },
+            {
+              "link_id": "zl25",
+              "source": "z11",
+              "target": "z4",
+              "link_type": "management",
+              "label": "IaC Tools to DMZ"
+            },
+            {
+              "link_id": "zl26",
+              "source": "z11",
+              "target": "z5",
+              "link_type": "management",
+              "label": "IaC Tools to Remote Access Zone"
+            },
+            {
+              "link_id": "zl27",
+              "source": "z11",
+              "target": "z6",
+              "link_type": "management",
+              "label": "IaC Tools to Internet"
+            },
+            {
+              "link_id": "zl28",
+              "source": "z11",
+              "target": "z7",
+              "link_type": "management",
+              "label": "IaC Tools to Management Zone"
+            },
+            {
+              "link_id": "zl29",
+              "source": "z11",
+              "target": "z8",
+              "link_type": "management",
+              "label": "IaC Tools to Non-Production Zone"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 27,
+        "zone_links": 5,
+        "node_links": 14
+      },
+      "counts_after": {
+        "zones": 11,
+        "nodes": 32,
+        "zone_links": 29,
+        "node_links": 149
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 5,
+        "zone_links": 24,
+        "node_links": 135
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-1_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n4",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "WAN to Regional Office allowed."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n4",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "WAN to Branch Office allowed."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n3",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Internet Gateway allowed."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z5",
+        "target_zone": "z5",
+        "source_node": "n15",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "VPN Gateway to Remote Access Server allowed."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z5",
+        "target_zone": "z7",
+        "source_node": "n15",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "VPN Gateway to Identity Server allowed."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n20",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to NIDS monitoring allowed."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to NIPS monitoring allowed."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n3",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to SIEM monitoring allowed."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Internet Gateway to DNS Server allowed."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z4",
+        "target_zone": "z4",
+        "source_node": "n16",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Internet Gateway to Web Proxy allowed."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z5",
+        "target_zone": "z5",
+        "source_node": "n15",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "VPN Gateway to NAC management allowed."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z7",
+        "target_zone": "z7",
+        "source_node": "n25",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation to Identity Server allowed."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z8",
+        "target_zone": "z7",
+        "source_node": "n26",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Test Workstation to Identity Server allowed."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z9",
+        "target_zone": "z1",
+        "source_node": "n27",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Management to Data Center Router allowed."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z9",
+        "target_zone": "z2",
+        "source_node": "n27",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Management to Regional Office Router allowed."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z9",
+        "target_zone": "z3",
+        "source_node": "n27",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Management to Branch Office Router allowed."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z9",
+        "target_zone": "z4",
+        "source_node": "n27",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Management to Internet Gateway allowed."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z9",
+        "target_zone": "z5",
+        "source_node": "n27",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Management to VPN Gateway allowed."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z9",
+        "target_zone": "z6",
+        "source_node": "n27",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Management to Internet External Endpoint allowed."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z9",
+        "target_zone": "z7",
+        "source_node": "n27",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Management to Identity Server allowed."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z9",
+        "target_zone": "z8",
+        "source_node": "n27",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Management to Test Workstation allowed."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z10",
+        "target_zone": "z1",
+        "source_node": "n28",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data Flow Documentation to Data Center Router allowed."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z10",
+        "target_zone": "z2",
+        "source_node": "n28",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data Flow Documentation to Regional Office Router allowed."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z10",
+        "target_zone": "z3",
+        "source_node": "n28",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data Flow Documentation to Branch Office Router allowed."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z10",
+        "target_zone": "z4",
+        "source_node": "n28",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data Flow Documentation to Internet Gateway allowed."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z10",
+        "target_zone": "z5",
+        "source_node": "n28",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data Flow Documentation to VPN Gateway allowed."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z10",
+        "target_zone": "z6",
+        "source_node": "n28",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data Flow Documentation to Internet External Endpoint allowed."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z10",
+        "target_zone": "z7",
+        "source_node": "n28",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data Flow Documentation to Identity Server allowed."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z10",
+        "target_zone": "z8",
+        "source_node": "n28",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data Flow Documentation to Test Workstation allowed."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z11",
+        "target_zone": "z1",
+        "source_node": "n29",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC Tool to Data Center Router allowed."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z11",
+        "target_zone": "z2",
+        "source_node": "n29",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC Tool to Regional Office Router allowed."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z11",
+        "target_zone": "z3",
+        "source_node": "n29",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC Tool to Branch Office Router allowed."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z11",
+        "target_zone": "z4",
+        "source_node": "n29",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC Tool to Internet Gateway allowed."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z11",
+        "target_zone": "z5",
+        "source_node": "n29",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC Tool to VPN Gateway allowed."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z11",
+        "target_zone": "z6",
+        "source_node": "n29",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC Tool to Internet External Endpoint allowed."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z11",
+        "target_zone": "z7",
+        "source_node": "n29",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC Tool to Identity Server allowed."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z11",
+        "target_zone": "z8",
+        "source_node": "n29",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC Tool to Test Workstation allowed."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n_struct1",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Internet to Data Center Router blocked."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n_struct1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Internet to Regional Office Router blocked."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z6",
+        "target_zone": "z3",
+        "source_node": "n_struct1",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Internet to Branch Office Router blocked."
+      },
+      {
+        "test_id": "tc41",
+        "source_zone": "z7",
+        "target_zone": "z11",
+        "source_node": "n31",
+        "target_node": "n29",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req1/rag_without_feedback/IG2/xml/IG2/generated_Government-1_req1_IG2.xml"
+}

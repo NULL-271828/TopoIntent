@@ -1,0 +1,32 @@
+[
+  {
+    "zone_type_recall": 0.63,
+    "node_type_recall": 0.61,
+    "cis_satisfaction_rate": null,
+    "post_acl_pass_rate": null
+  },
+  {
+    "zone_type_recall": 0.54,
+    "node_type_recall": 0.63,
+    "cis_satisfaction_rate": null,
+    "post_acl_pass_rate": null
+  },
+  {
+    "zone_type_recall": 0.75,
+    "node_type_recall": 0.73,
+    "cis_satisfaction_rate": 0.7,
+    "post_acl_pass_rate": null
+  },
+  {
+    "zone_type_recall": 0.74,
+    "node_type_recall": 0.82,
+    "cis_satisfaction_rate": 1,
+    "post_acl_pass_rate": 0.78
+  },
+  {
+    "zone_type_recall": 0.76,
+    "node_type_recall": 0.77,
+    "cis_satisfaction_rate": 1,
+    "post_acl_pass_rate": 0.88
+  }
+]

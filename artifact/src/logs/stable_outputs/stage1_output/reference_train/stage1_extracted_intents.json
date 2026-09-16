@@ -1,0 +1,1736 @@
+[
+  {
+    "sample_id": "Cloud-1_req1",
+    "template_id": "Cloud-1",
+    "description": "Set up Azure infrastructure with isolated production, development, and testing environments, secure connections from on-site offices, and comprehensive logging and inspection.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes a hub VNet with a firewall and a bastion host, connected to spoke VNets for production, development, and testing. On-site offices connect via a secure VPN gateway, and a SIEM system logs all network activity.",
+    "title": "Azure Isolated Workloads",
+    "zone_names": [
+      "Hub VNet",
+      "Production VNet",
+      "Development VNet",
+      "Testing VNet",
+      "On-site Office"
+    ],
+    "zone_types": [
+      "cloud_hub",
+      "cloud_spoke",
+      "cloud_spoke",
+      "cloud_spoke",
+      "external"
+    ],
+    "node_names": [
+      "Azure Firewall",
+      "Bastion Host",
+      "VPN Gateway",
+      "SIEM System",
+      "Production Workload",
+      "Development Workload",
+      "Testing Workload"
+    ],
+    "node_types": [
+      "firewall",
+      "bastion",
+      "vpn_gateway",
+      "siem",
+      "workload",
+      "workload",
+      "workload"
+    ]
+  },
+  {
+    "sample_id": "Cloud-1_req2",
+    "template_id": "Cloud-1",
+    "description": "A hub-and-spoke model in Azure with a central firewall and secure administrative access.",
+    "scenario": "cloud",
+    "topology_summary": "The hub VNet contains a central firewall and a VPN gateway. Spoke VNets for production and non-production workloads are peered to the hub, with all traffic routed through the central firewall.",
+    "title": "Azure Hub-Spoke Deployment",
+    "zone_names": [
+      "Hub VNet",
+      "Production Spoke VNet",
+      "Non-Production Spoke VNet",
+      "Management Zone"
+    ],
+    "zone_types": [
+      "cloud_hub",
+      "cloud_spoke",
+      "cloud_spoke",
+      "management"
+    ],
+    "node_names": [
+      "Azure Firewall",
+      "VPN Gateway",
+      "Bastion Host",
+      "Production Workload",
+      "Non-Production Workload"
+    ],
+    "node_types": [
+      "firewall",
+      "vpn_gateway",
+      "bastion",
+      "workload",
+      "workload"
+    ]
+  },
+  {
+    "sample_id": "Cloud-2_req1",
+    "template_id": "Cloud-2",
+    "description": "Secure hybrid connectivity for on-premises and remote offices to access Azure Kubernetes Service with central filtering and private access to PaaS services.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes an Azure VNet with a hub-spoke design, central filtering, and secure access to PaaS services. It connects to on-premises and remote offices via a secure gateway.",
+    "title": "Azure Secure Hybrid Connectivity",
+    "zone_names": [
+      "Hub VNet",
+      "Spoke VNet",
+      "On-Premises Data Center",
+      "Remote Offices"
+    ],
+    "zone_types": [
+      "cloud_hub",
+      "cloud_spoke",
+      "data_center",
+      "enterprise"
+    ],
+    "node_names": [
+      "Azure Firewall",
+      "Azure Load Balancer",
+      "Azure Kubernetes Service",
+      "Azure Key Vault",
+      "Container Registry",
+      "Bastion Host",
+      "VPN Gateway"
+    ],
+    "node_types": [
+      "firewall",
+      "load_balancer",
+      "workload",
+      "cloud_service",
+      "cloud_service",
+      "bastion",
+      "vpn_gateway"
+    ]
+  },
+  {
+    "sample_id": "Cloud-2_req2",
+    "template_id": "Cloud-2",
+    "description": "Design an Azure hub-spoke topology with a central firewall, AKS cluster, and secure access to PaaS services.",
+    "scenario": "cloud",
+    "topology_summary": "The hub VNet includes a central firewall for traffic inspection and connectivity to the corporate network. The spoke VNet hosts an AKS cluster with secure access to PaaS services via private endpoints and an application gateway for ingress management.",
+    "title": "Azure Hub-Spoke Topology",
+    "zone_names": [
+      "Hub VNet",
+      "Spoke VNet"
+    ],
+    "zone_types": [
+      "cloud_hub",
+      "cloud_spoke"
+    ],
+    "node_names": [
+      "Azure Firewall",
+      "AKS Cluster",
+      "Application Gateway",
+      "Container Registry",
+      "Key Vault",
+      "Bastion Host"
+    ],
+    "node_types": [
+      "firewall",
+      "workload",
+      "load_balancer",
+      "cloud_service",
+      "cloud_service",
+      "bastion"
+    ]
+  },
+  {
+    "sample_id": "Cloud-3_req1",
+    "template_id": "Cloud-3",
+    "description": "Connects on-premises data center to cloud with isolated production and dev/test environments, ensuring centralized security inspection.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes a central hub in the cloud connected to the on-premises data center, with separate spoke VNets for production and development/testing workloads. All traffic is inspected by a central firewall.",
+    "title": "Scalable Cloud Integration",
+    "zone_names": [
+      "Cloud Hub VNet",
+      "Production Spoke VNet",
+      "Dev/Test Spoke VNet",
+      "On-Premises Data Center"
+    ],
+    "zone_types": [
+      "cloud_hub",
+      "cloud_spoke",
+      "cloud_spoke",
+      "data_center"
+    ],
+    "node_names": [
+      "Cloud Firewall",
+      "Cloud Router",
+      "On-Premises Firewall",
+      "On-Premises Router"
+    ],
+    "node_types": [
+      "firewall",
+      "router",
+      "firewall",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Cloud-3_req2",
+    "template_id": "Cloud-3",
+    "description": "A multi-account AWS environment with a hub-and-spoke topology using a Transit Gateway for interconnecting VPCs and connecting to a corporate data center via Direct Connect.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes a hub VPC with a Transit Gateway, multiple spoke VPCs (Dev, Test, Prod), and a dedicated inspection VPC for centralized security. Traffic is routed through a firewall and IDS/IPS in the inspection VPC.",
+    "title": "AWS Hub-Spoke with Transit Gateway",
+    "zone_names": [
+      "Hub VPC",
+      "Dev VPC",
+      "Test VPC",
+      "Prod VPC",
+      "Inspection VPC"
+    ],
+    "zone_types": [
+      "cloud_hub",
+      "cloud_spoke",
+      "cloud_spoke",
+      "cloud_spoke",
+      "security"
+    ],
+    "node_names": [
+      "Transit Gateway",
+      "Firewall",
+      "IDS/IPS",
+      "Direct Connect Gateway"
+    ],
+    "node_types": [
+      "router",
+      "firewall",
+      "ids_ips",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Cloud-4_req1",
+    "template_id": "Cloud-4",
+    "description": "Deploy a highly available web application on AWS with protection against web attacks, auto-scaling, and secure connectivity to on-premises.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes a VPC with multiple subnets across different availability zones, a load balancer, auto-scaling groups, and a firewall for web protection. Secure connectivity to on-premises is established via a VPN gateway.",
+    "title": "AWS High Availability Web App",
+    "zone_names": [
+      "VPC",
+      "Public Subnet AZ1",
+      "Public Subnet AZ2",
+      "Private Subnet AZ1",
+      "Private Subnet AZ2",
+      "On-Premises Network"
+    ],
+    "zone_types": [
+      "cloud_hub",
+      "cloud_spoke",
+      "cloud_spoke",
+      "cloud_spoke",
+      "cloud_spoke",
+      "external"
+    ],
+    "node_names": [
+      "Application Load Balancer",
+      "Web Application Servers",
+      "Web Application Servers",
+      "Auto Scaling Group",
+      "AWS WAF",
+      "VPN Gateway",
+      "CloudWatch"
+    ],
+    "node_types": [
+      "load_balancer",
+      "workload",
+      "workload",
+      "other",
+      "waf",
+      "vpn_gateway",
+      "siem"
+    ]
+  },
+  {
+    "sample_id": "Cloud-4_req2",
+    "template_id": "Cloud-4",
+    "description": "Design a dual-AZ cloud architecture in AWS with CloudFront, WAF, ALB, auto-scaling groups, network firewall, and Transit Gateway.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes a public-facing layer with CloudFront and WAF, followed by Application Load Balancers distributing traffic to auto-scaling frontend application instances. A network firewall inspects inter-subnet traffic, and a Transit Gateway connects to the on-premises environment.",
+    "title": "AWS Dual-AZ Architecture",
+    "zone_names": [
+      "Public Zone",
+      "Application Zone",
+      "On-Premises"
+    ],
+    "zone_types": [
+      "cloud_hub",
+      "cloud_spoke",
+      "external"
+    ],
+    "node_names": [
+      "CloudFront",
+      "WAF",
+      "Application Load Balancer",
+      "Auto-Scaling Group",
+      "Network Firewall",
+      "Transit Gateway"
+    ],
+    "node_types": [
+      "cloud_service",
+      "waf",
+      "load_balancer",
+      "workload",
+      "firewall",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Education-1_req1",
+    "template_id": "Education-1",
+    "description": "Connects main and satellite campuses with central management and security for students and staff.",
+    "scenario": "higher_education",
+    "topology_summary": "The network will consist of a main campus connected to multiple satellite campuses via a secure, centrally managed infrastructure. Each campus will have its own local network with access to the internet and central services.",
+    "title": "University Campus Network",
+    "zone_names": [
+      "Main Campus",
+      "Satellite Campus 1",
+      "Satellite Campus 2",
+      "Management Zone"
+    ],
+    "zone_types": [
+      "campus",
+      "campus",
+      "campus",
+      "management"
+    ],
+    "node_names": [
+      "Core Router",
+      "Core Switch",
+      "Firewall",
+      "Identity Server",
+      "Wireless Controller",
+      "Access Point 1",
+      "Access Point 2",
+      "Access Point 3"
+    ],
+    "node_types": [
+      "router",
+      "switch",
+      "firewall",
+      "identity_server",
+      "wireless_controller",
+      "access_point",
+      "access_point",
+      "access_point"
+    ]
+  },
+  {
+    "sample_id": "Education-1_req2",
+    "template_id": "Education-1",
+    "description": "Design a hub-and-spoke network for a higher education institution with a main campus hub, data center, service block, and internet edge zone.",
+    "scenario": "higher_education",
+    "topology_summary": "The main campus acts as the hub, containing core routing, a data center, and a service block. Remote campuses connect via WAN links, and an internet edge zone provides filtered web access and hosts email servers.",
+    "title": "Campus Hub-Spoke Topology",
+    "zone_names": [
+      "Main Campus",
+      "Data Center",
+      "Service Block",
+      "Internet Edge"
+    ],
+    "zone_types": [
+      "campus",
+      "data_center",
+      "management",
+      "dmz"
+    ],
+    "node_names": [
+      "Core Router",
+      "Data Center Switch",
+      "Firewall",
+      "Email Server",
+      "WAN Router",
+      "NAC Controller"
+    ],
+    "node_types": [
+      "router",
+      "switch",
+      "firewall",
+      "server",
+      "router",
+      "identity_server"
+    ]
+  },
+  {
+    "sample_id": "Education-2_req1",
+    "template_id": "Education-2",
+    "description": "A secure network for a school district, connecting the main office and multiple school sites with controlled internet access, role-based access control, and support for unified communications and video surveillance.",
+    "scenario": "higher_education",
+    "topology_summary": "The topology includes a central management zone for security and access control, a DMZ for web and email security, and separate zones for staff and student internet access, as well as dedicated zones for unified communications and video surveillance.",
+    "title": "School District Secure Network",
+    "zone_names": [
+      "Main Office",
+      "Staff Internet",
+      "Student Internet",
+      "Unified Communications",
+      "Video Surveillance",
+      "School Sites"
+    ],
+    "zone_types": [
+      "management",
+      "dmz",
+      "dmz",
+      "enterprise",
+      "security",
+      "campus"
+    ],
+    "node_names": [
+      "Central Firewall",
+      "Identity Server",
+      "Web Application Firewall",
+      "Email Security Gateway",
+      "Wireless Controller",
+      "Access Point",
+      "Unified Communications Server",
+      "Video Surveillance System"
+    ],
+    "node_types": [
+      "firewall",
+      "identity_server",
+      "waf",
+      "ids_ips",
+      "wireless_controller",
+      "access_point",
+      "server",
+      "workload"
+    ]
+  },
+  {
+    "sample_id": "Education-2_req2",
+    "template_id": "Education-2",
+    "description": "A multi-site campus network with a central data center, internet edge, and NAC for secure access.",
+    "scenario": "higher_education",
+    "topology_summary": "The topology includes a central data center with identity services and a communications manager, an internet edge with a firewall and IPS, and remote sites connecting to a core distribution layer. NAC is implemented across all sites.",
+    "title": "Multi-Site Campus Network",
+    "zone_names": [
+      "Central Data Center",
+      "Internet Edge",
+      "Core Distribution Layer",
+      "Remote Sites"
+    ],
+    "zone_types": [
+      "data_center",
+      "dmz",
+      "enterprise",
+      "campus"
+    ],
+    "node_names": [
+      "Identity Server",
+      "Communications Manager",
+      "Firewall",
+      "Intrusion Prevention System",
+      "Core Router",
+      "Network Access Control",
+      "Remote Site Routers"
+    ],
+    "node_types": [
+      "identity_server",
+      "server",
+      "firewall",
+      "ids_ips",
+      "router",
+      "other",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Education-3_req1",
+    "template_id": "Education-3",
+    "description": "Securely connect multiple private cloud environments and a public-facing web environment through a central security zone.",
+    "scenario": "higher_education",
+    "topology_summary": "The topology includes a central security zone connected to SINET, private cloud environments for different departments, and a public-facing web environment. Secure remote access and SaaS security solutions are integrated.",
+    "title": "University Cloud Integration",
+    "zone_names": [
+      "Central Security Zone",
+      "Private Cloud Environment - Department A",
+      "Private Cloud Environment - Department B",
+      "Public Web Environment",
+      "Remote Access Zone"
+    ],
+    "zone_types": [
+      "security",
+      "cloud_spoke",
+      "cloud_spoke",
+      "dmz",
+      "management"
+    ],
+    "node_names": [
+      "Firewall",
+      "SINET Gateway",
+      "Department A Cloud Service",
+      "Department B Cloud Service",
+      "Web Application Firewall",
+      "Remote Access Server",
+      "SaaS Security Solution"
+    ],
+    "node_types": [
+      "firewall",
+      "vpn_gateway",
+      "cloud_service",
+      "cloud_service",
+      "waf",
+      "identity_server",
+      "siem"
+    ]
+  },
+  {
+    "sample_id": "Education-3_req2",
+    "template_id": "Education-3",
+    "description": "A hub-and-spoke network with a central transit hub, DMZ, and isolated private cloud spokes, incorporating SaaS security services and secure VPN access.",
+    "scenario": "enterprise",
+    "topology_summary": "The central transit hub connects to SINET and contains primary firewalls. The public cloud DMZ hosts web services, while multiple isolated private cloud spokes support internal applications. Centralized SaaS security services and secure VPN access are integrated.",
+    "title": "Hub-and-Spoke Segmented Network",
+    "zone_names": [
+      "Central Transit Hub",
+      "Public Cloud DMZ",
+      "Private Cloud Spoke 1",
+      "Private Cloud Spoke 2",
+      "Management Zone"
+    ],
+    "zone_types": [
+      "cloud_hub",
+      "dmz",
+      "cloud_spoke",
+      "cloud_spoke",
+      "management"
+    ],
+    "node_names": [
+      "Primary Firewall",
+      "Web Application Firewall",
+      "Internal Application Server 1",
+      "Internal Application Server 2",
+      "SaaS Security Service",
+      "VPN Gateway"
+    ],
+    "node_types": [
+      "firewall",
+      "waf",
+      "server",
+      "server",
+      "identity_server",
+      "vpn_gateway"
+    ]
+  },
+  {
+    "sample_id": "Education-4_req1",
+    "template_id": "Education-4",
+    "description": "A network connecting main campus buildings, data centers, and remote campuses with secure access to cloud providers, research networks, and commercial internet.",
+    "scenario": "higher_education",
+    "topology_summary": "The topology includes main campus, data center, and remote campus zones, with connections to cloud providers, research networks, and commercial internet services.",
+    "title": "University Campus Network",
+    "zone_names": [
+      "Main Campus",
+      "Data Center",
+      "Remote Campuses",
+      "Cloud Providers",
+      "Research Networks",
+      "Commercial Internet"
+    ],
+    "zone_types": [
+      "campus",
+      "data_center",
+      "campus",
+      "cloud_hub",
+      "external",
+      "external"
+    ],
+    "node_names": [
+      "Core Router",
+      "Data Center Switch",
+      "Firewall",
+      "Remote Campus Router",
+      "Cloud Gateway",
+      "Internet2 Gateway",
+      "Internet Gateway"
+    ],
+    "node_types": [
+      "router",
+      "switch",
+      "firewall",
+      "router",
+      "vpn_gateway",
+      "router",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Education-4_req2",
+    "template_id": "Education-4",
+    "description": "Connects campus buildings and remote sites to data centers, with a security buffer and cloud access.",
+    "scenario": "higher_education",
+    "topology_summary": "The topology includes two core data centers connected to a security buffer, which then connects to a transit network. The transit network provides access to a cloud hub and a separate path for general internet access.",
+    "title": "Campus to Cloud Connectivity",
+    "zone_names": [
+      "Campus Buildings",
+      "Remote Sites",
+      "Data Center 1",
+      "Data Center 2",
+      "Security Buffer",
+      "Enterprise Transit Network",
+      "Cloud Hub",
+      "Internet Access"
+    ],
+    "zone_types": [
+      "campus",
+      "enterprise",
+      "data_center",
+      "data_center",
+      "dmz",
+      "enterprise",
+      "cloud_hub",
+      "external"
+    ],
+    "node_names": [
+      "Core Router 1",
+      "Core Router 2",
+      "Firewall 1",
+      "Firewall 2",
+      "Transit Router",
+      "Cloud Gateway",
+      "Internet Gateway"
+    ],
+    "node_types": [
+      "router",
+      "router",
+      "firewall",
+      "firewall",
+      "router",
+      "vpn_gateway",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Enterprise-1_req1",
+    "template_id": "Enterprise-1",
+    "description": "Connects two main offices with a private cloud and redundant internet access for SaaS applications.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes two main office sites connected to a private cloud, with redundant internet access via a primary business internet link and a secondary MPLS circuit.",
+    "title": "Dual-Site Hybrid Cloud Network",
+    "zone_names": [
+      "Site 101",
+      "Site 102",
+      "Private Cloud",
+      "Internet"
+    ],
+    "zone_types": [
+      "enterprise",
+      "enterprise",
+      "data_center",
+      "external"
+    ],
+    "node_names": [
+      "Router Site 101",
+      "Router Site 102",
+      "Firewall Site 101",
+      "Firewall Site 102",
+      "Server Private Cloud",
+      "MPLS Gateway Site 101",
+      "MPLS Gateway Site 102",
+      "Internet Gateway Site 101",
+      "Internet Gateway Site 102"
+    ],
+    "node_types": [
+      "router",
+      "router",
+      "firewall",
+      "firewall",
+      "server",
+      "router",
+      "router",
+      "router",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Enterprise-1_req2",
+    "template_id": "Enterprise-1",
+    "description": "Interconnects two branch sites with a private cloud datacenter and supports secure uplinks to IaaS cloud and SaaS applications.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes two branch sites, a private cloud datacenter, and connections to IaaS and SaaS zones. Dual uplinks with business internet and MPLS ensure redundancy and all data plane traffic is encrypted via IPsec.",
+    "title": "Secure SD-WAN Topology",
+    "zone_names": [
+      "Branch Site 1",
+      "Branch Site 2",
+      "Private Cloud Datacenter",
+      "IaaS Management Zone",
+      "SaaS Application Zone"
+    ],
+    "zone_types": [
+      "enterprise",
+      "enterprise",
+      "data_center",
+      "cloud_hub",
+      "external"
+    ],
+    "node_names": [
+      "SD-WAN Router 1",
+      "SD-WAN Router 2",
+      "Firewall 1",
+      "Firewall 2",
+      "Datacenter Firewall",
+      "IaaS Management Gateway",
+      "SaaS Proxy"
+    ],
+    "node_types": [
+      "router",
+      "router",
+      "firewall",
+      "firewall",
+      "firewall",
+      "cloud_service",
+      "proxy"
+    ]
+  },
+  {
+    "sample_id": "Enterprise-2_req1",
+    "template_id": "Enterprise-2",
+    "description": "Connect remote offices and industrial sites to the central data center with reliable access to cloud applications.",
+    "scenario": "enterprise",
+    "topology_summary": "A centralized data center connects to multiple remote offices and industrial sites via a hybrid WAN, including primary internet links and cellular backups.",
+    "title": "Centralized Hybrid WAN",
+    "zone_names": [
+      "Data Center",
+      "Office Locations",
+      "Industrial Sites"
+    ],
+    "zone_types": [
+      "data_center",
+      "enterprise",
+      "ot"
+    ],
+    "node_names": [
+      "Central Router",
+      "Firewall",
+      "WAN Optimizer",
+      "Office Routers",
+      "Industrial Routers",
+      "Cellular Backup",
+      "Cellular Backup"
+    ],
+    "node_types": [
+      "router",
+      "firewall",
+      "other",
+      "router",
+      "router",
+      "other",
+      "other"
+    ]
+  },
+  {
+    "sample_id": "Enterprise-2_req2",
+    "template_id": "Enterprise-2",
+    "description": "Design an SD-WAN architecture connecting the primary data center with remote branches, including segmentation and protection.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes a primary data center with core management and communication services, protected by firewalls. Remote branches are connected via SD-WAN, with segmentation for external internet, cloud applications, and internal networks.",
+    "title": "SD-WAN Data Center to Branches",
+    "zone_names": [
+      "Data Center",
+      "External Internet",
+      "Cloud Applications",
+      "Internal Network",
+      "Remote Branches"
+    ],
+    "zone_types": [
+      "data_center",
+      "external",
+      "cloud_spoke",
+      "enterprise",
+      "enterprise"
+    ],
+    "node_names": [
+      "Data Center Firewall",
+      "SD-WAN Router",
+      "Management Server",
+      "Communication Server",
+      "Branch SD-WAN Router",
+      "Industrial Controller",
+      "Office Access Point"
+    ],
+    "node_types": [
+      "firewall",
+      "router",
+      "server",
+      "server",
+      "router",
+      "ot_controller",
+      "access_point"
+    ]
+  },
+  {
+    "sample_id": "Enterprise-3_req1",
+    "template_id": "Enterprise-3",
+    "description": "High availability network for business applications across two secure data centers, with internet threat protection and cloud connectivity.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes two secure data centers connected for high availability, with firewalls for internet threat protection and links to cloud services and remote sites via WAN.",
+    "title": "Dual Data Center HA",
+    "zone_names": [
+      "Data Center 1",
+      "Data Center 2",
+      "DMZ",
+      "Cloud Hub",
+      "Remote Sites"
+    ],
+    "zone_types": [
+      "data_center",
+      "data_center",
+      "dmz",
+      "cloud_hub",
+      "enterprise"
+    ],
+    "node_names": [
+      "Firewall DC1",
+      "Firewall DC2",
+      "Load Balancer",
+      "AWS VPC",
+      "WAN Router"
+    ],
+    "node_types": [
+      "firewall",
+      "firewall",
+      "load_balancer",
+      "cloud_service",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Enterprise-3_req2",
+    "template_id": "Enterprise-3",
+    "description": "A detailed architecture for a multi-site data center using Cisco ACI fabric with segmentation and threat defense.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes two primary data centers connected via a secure link, with web, application, and database tiers segmented within each data center. Threat defense and deep traffic visibility are implemented at the network edge.",
+    "title": "Multi-Site Data Center with ACI",
+    "zone_names": [
+      "Data Center 1",
+      "Data Center 2",
+      "Web Tier",
+      "Application Tier",
+      "Database Tier",
+      "AWS Cloud"
+    ],
+    "zone_types": [
+      "data_center",
+      "data_center",
+      "dmz",
+      "dmz",
+      "dmz",
+      "cloud_spoke"
+    ],
+    "node_names": [
+      "Cisco ACI Fabric",
+      "Cisco ACI Fabric",
+      "Web Servers",
+      "Application Servers",
+      "Database Servers",
+      "Cisco Firepower Threat Defense",
+      "Cisco Firepower Threat Defense",
+      "Cisco Stealthwatch",
+      "Cisco Stealthwatch",
+      "AWS Workloads",
+      "Cisco ASA Firewall",
+      "Cisco ASA Firewall"
+    ],
+    "node_types": [
+      "switch",
+      "switch",
+      "server",
+      "server",
+      "database",
+      "ids_ips",
+      "ids_ips",
+      "siem",
+      "siem",
+      "workload",
+      "firewall",
+      "firewall"
+    ]
+  },
+  {
+    "sample_id": "Enterprise-4_req1",
+    "template_id": "Enterprise-4",
+    "description": "A robust network for an enterprise campus with wired and wireless access, connected to WAN and internet through a secure SD-WAN solution.",
+    "scenario": "enterprise",
+    "topology_summary": "The network includes a central management zone, a wired access zone, a wireless access zone, and a DMZ for internet connectivity. SD-WAN ensures secure and efficient traffic routing.",
+    "title": "Enterprise Campus Network",
+    "zone_names": [
+      "Management Zone",
+      "Wired Access Zone",
+      "Wireless Access Zone",
+      "DMZ"
+    ],
+    "zone_types": [
+      "management",
+      "enterprise",
+      "enterprise",
+      "dmz"
+    ],
+    "node_names": [
+      "SD-WAN Gateway",
+      "Central Management Server",
+      "Firewall",
+      "Wired Switch",
+      "Wireless Controller",
+      "Access Points"
+    ],
+    "node_types": [
+      "router",
+      "server",
+      "firewall",
+      "switch",
+      "wireless_controller",
+      "access_point"
+    ]
+  },
+  {
+    "sample_id": "Enterprise-4_req2",
+    "template_id": "Enterprise-4",
+    "description": "A multi-tiered enterprise network with access, aggregation, and core layers, including SD-WAN gateways and a dedicated data center for essential services.",
+    "scenario": "enterprise",
+    "topology_summary": "The network consists of access, aggregation, and core layers, with SD-WAN gateways for internet and WAN egress. A dedicated data center hosts DNS, DHCP, and identity server services.",
+    "title": "Multi-Tiered Enterprise Network",
+    "zone_names": [
+      "Access Layer",
+      "Aggregation Layer",
+      "Core Layer",
+      "Data Center",
+      "Management"
+    ],
+    "zone_types": [
+      "enterprise",
+      "enterprise",
+      "enterprise",
+      "data_center",
+      "management"
+    ],
+    "node_names": [
+      "Access Switches",
+      "Aggregation Switches",
+      "Core Routers",
+      "SD-WAN Gateway",
+      "DNS Server",
+      "DHCP Server",
+      "Identity Server",
+      "Cloud Management Platform"
+    ],
+    "node_types": [
+      "switch",
+      "switch",
+      "router",
+      "vpn_gateway",
+      "server",
+      "server",
+      "identity_server",
+      "cloud_service"
+    ]
+  },
+  {
+    "sample_id": "Enterprise-5_req1",
+    "template_id": "Enterprise-5",
+    "description": "Secure network connecting main campus, data center, and remote offices with VPN access for mobile workers.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes a main campus with multiple buildings, a data center, and remote offices. It provides secure internet access and supports mobile worker connectivity via VPN.",
+    "title": "Campus to Data Center Network",
+    "zone_names": [
+      "Main Campus",
+      "Data Center",
+      "Remote Offices",
+      "Internet",
+      "Mobile Workers"
+    ],
+    "zone_types": [
+      "campus",
+      "data_center",
+      "enterprise",
+      "external",
+      "other"
+    ],
+    "node_names": [
+      "Core Router",
+      "Firewall",
+      "Switch",
+      "Data Center Router",
+      "Data Center Switch",
+      "Remote Office Router",
+      "Remote Office Switch",
+      "VPN Gateway",
+      "Internet Gateway"
+    ],
+    "node_types": [
+      "router",
+      "firewall",
+      "switch",
+      "router",
+      "switch",
+      "router",
+      "switch",
+      "vpn_gateway",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Enterprise-5_req2",
+    "template_id": "Enterprise-5",
+    "description": "Connects multiple enterprise buildings and a central data center with robust internet edge, security appliances, and a VPN gateway.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes a central data center connected to multiple enterprise buildings via WAN links. It features a secure internet edge with firewalls, web and email security appliances, and a VPN gateway for remote access.",
+    "title": "Enterprise Multi-Site Network",
+    "zone_names": [
+      "Main Site",
+      "Data Center",
+      "Remote Sites",
+      "Internet Edge"
+    ],
+    "zone_types": [
+      "enterprise",
+      "data_center",
+      "enterprise",
+      "dmz"
+    ],
+    "node_names": [
+      "WAN Router (Main Site)",
+      "Firewall (Main Site)",
+      "Web Security Appliance",
+      "Email Security Appliance",
+      "VPN Gateway",
+      "WAN Router (Data Center)",
+      "Firewall (Data Center)",
+      "Server",
+      "WAN Router (Remote Site)"
+    ],
+    "node_types": [
+      "router",
+      "firewall",
+      "waf",
+      "ids_ips",
+      "vpn_gateway",
+      "router",
+      "firewall",
+      "server",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Healthcare-1_req1",
+    "template_id": "Healthcare-1",
+    "description": "A network for a new hospital campus supporting clinical workstations, medical imaging devices, and guest WiFi, with secure remote access for doctors and private connections to ambulatory care centers.",
+    "scenario": "hospital",
+    "topology_summary": "The network will include zones for clinical workstations, medical imaging devices, guest WiFi, and remote access. It will also have a dedicated zone for private connections to ambulatory care centers.",
+    "title": "Hospital Campus Network",
+    "zone_names": [
+      "Clinical Workstations",
+      "Medical Imaging Devices",
+      "Guest WiFi",
+      "Remote Access",
+      "Ambulatory Care Centers"
+    ],
+    "zone_types": [
+      "enterprise",
+      "iot",
+      "dmz",
+      "management",
+      "external"
+    ],
+    "node_names": [
+      "Firewall",
+      "Medical Imaging Server",
+      "Wireless Controller",
+      "Access Point",
+      "VPN Gateway",
+      "Private Connection Gateway"
+    ],
+    "node_types": [
+      "firewall",
+      "server",
+      "wireless_controller",
+      "access_point",
+      "vpn_gateway",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Healthcare-1_req2",
+    "template_id": "Healthcare-1",
+    "description": "Segmented network for an acute care facility with distinct access, distribution, and core zones, including remote clinician access and a private WAN for ambulatory care sites.",
+    "scenario": "hospital",
+    "topology_summary": "The network includes access, distribution, and core zones, with a data center connection, port-level access control, and an intrusion prevention system. It supports remote clinician access and a private WAN for remote sites.",
+    "title": "Acute Care Facility Network",
+    "zone_names": [
+      "Access Zone",
+      "Distribution Zone",
+      "Core Zone",
+      "Remote Clinician Access",
+      "Ambulatory Care WAN"
+    ],
+    "zone_types": [
+      "campus",
+      "enterprise",
+      "data_center",
+      "external",
+      "wan"
+    ],
+    "node_names": [
+      "Access Switch",
+      "Distribution Switch",
+      "Core Router",
+      "Firewall",
+      "Intrusion Prevention System",
+      "PACS Server",
+      "Clinical Workstation",
+      "Remote Access Gateway",
+      "WAN Router"
+    ],
+    "node_types": [
+      "switch",
+      "switch",
+      "router",
+      "firewall",
+      "ids_ips",
+      "server",
+      "endpoint",
+      "vpn_gateway",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Healthcare-2_req1",
+    "template_id": "Healthcare-2",
+    "description": "A secure network for a hospital to support EHR systems and various medical devices, with a focus on protecting the core data center.",
+    "scenario": "hospital",
+    "topology_summary": "The network will include a core data center, a DMZ for external services, and multiple segments for different types of medical devices and guest Wi-Fi. Security measures such as firewalls and IDS/IPS will be implemented to protect sensitive data.",
+    "title": "Hospital Secure Network",
+    "zone_names": [
+      "Data Center",
+      "DMZ",
+      "Medical Devices",
+      "Guest Wi-Fi"
+    ],
+    "zone_types": [
+      "data_center",
+      "dmz",
+      "iot",
+      "external"
+    ],
+    "node_names": [
+      "Core Router",
+      "Firewall",
+      "IDS/IPS",
+      "EHR Server",
+      "DMZ Firewall",
+      "Web Application Firewall",
+      "Medical Device Controller",
+      "Wireless Controller",
+      "Access Point"
+    ],
+    "node_types": [
+      "router",
+      "firewall",
+      "ids_ips",
+      "server",
+      "firewall",
+      "waf",
+      "ot_controller",
+      "wireless_controller",
+      "access_point"
+    ]
+  },
+  {
+    "sample_id": "Healthcare-2_req2",
+    "template_id": "Healthcare-2",
+    "description": "Design a network with separate zones for IT LAN, SD-WAN, and data center, including firewalls, Wi-Fi, cellular gateway, and medical system integration.",
+    "scenario": "hospital",
+    "topology_summary": "The network will be segmented into distinct zones for the main IT LAN, SD-WAN, and enterprise data center. Firewalls will control traffic between these zones and the internet, while Wi-Fi access points and a cellular gateway will support mobile devices and proprietary medical systems.",
+    "title": "Facility Network Segmentation",
+    "zone_names": [
+      "Main IT LAN",
+      "SD-WAN",
+      "Data Center",
+      "Wi-Fi Zone",
+      "Cellular Gateway Zone"
+    ],
+    "zone_types": [
+      "enterprise",
+      "dmz",
+      "data_center",
+      "campus",
+      "external"
+    ],
+    "node_names": [
+      "Firewall (IT LAN)",
+      "Firewall (SD-WAN)",
+      "Firewall (Data Center)",
+      "Wi-Fi Access Point",
+      "Cellular Gateway",
+      "Medical System Integration"
+    ],
+    "node_types": [
+      "firewall",
+      "firewall",
+      "firewall",
+      "access_point",
+      "other",
+      "server"
+    ]
+  },
+  {
+    "sample_id": "Healthcare-3_req1",
+    "template_id": "Healthcare-3",
+    "description": "Connects multiple hospital regions, clinics, and data centers with secure internet access and wireless capabilities.",
+    "scenario": "hospital",
+    "topology_summary": "The topology will consist of two major hospital regions, each with multiple campuses, several remote clinic branches, and two primary data centers. All sites will be interconnected with secure internet access and wireless capabilities at the clinics.",
+    "title": "Hospital Network Expansion",
+    "zone_names": [
+      "Major Hospital Region 1",
+      "Major Hospital Region 2",
+      "Remote Clinic Branches",
+      "Data Center 1",
+      "Data Center 2",
+      "Internet DMZ",
+      "Wireless Network"
+    ],
+    "zone_types": [
+      "campus",
+      "campus",
+      "enterprise",
+      "data_center",
+      "data_center",
+      "dmz",
+      "enterprise"
+    ],
+    "node_names": [
+      "Core Router",
+      "Core Router",
+      "Branch Routers",
+      "Data Center Switch",
+      "Data Center Switch",
+      "Firewall",
+      "Wireless Controller",
+      "Access Points"
+    ],
+    "node_types": [
+      "router",
+      "router",
+      "router",
+      "switch",
+      "switch",
+      "firewall",
+      "wireless_controller",
+      "access_point"
+    ]
+  },
+  {
+    "sample_id": "Healthcare-3_req2",
+    "template_id": "Healthcare-3",
+    "description": "Architect a network with two geo-redundant data centers and multiple hospital campuses and clinics connected via a high-speed transit core.",
+    "scenario": "hospital",
+    "topology_summary": "The network includes two data centers hosting core infrastructure, multiple hospital campuses, and smaller clinics, all connected through a high-speed transit core with centralized internet ingress/egress and wireless management.",
+    "title": "Geo-Redundant Data Center Network",
+    "zone_names": [
+      "Data Center 1",
+      "Data Center 2",
+      "Transit Core",
+      "Hospital Campuses",
+      "Clinic Sites"
+    ],
+    "zone_types": [
+      "data_center",
+      "data_center",
+      "enterprise",
+      "campus",
+      "other"
+    ],
+    "node_names": [
+      "DNS Server",
+      "AD Server",
+      "Identity Services Engine",
+      "DNS Server",
+      "AD Server",
+      "Identity Services Engine",
+      "Transit Router",
+      "Internet Gateway",
+      "Wireless Controller",
+      "Access Point"
+    ],
+    "node_types": [
+      "server",
+      "server",
+      "identity_server",
+      "server",
+      "server",
+      "identity_server",
+      "router",
+      "router",
+      "wireless_controller",
+      "access_point"
+    ]
+  },
+  {
+    "sample_id": "Healthcare-4_req1",
+    "template_id": "Healthcare-4",
+    "description": "A secure network for a hospital with clinical applications, PACS, VNA, and guest internet access.",
+    "scenario": "hospital",
+    "topology_summary": "The network includes zones for clinical applications, databases, guest access, and external vendor access, with all traffic filtered and enterprise services integrated.",
+    "title": "Hospital Secure Network",
+    "zone_names": [
+      "Clinical Applications",
+      "Databases",
+      "Guest Access",
+      "External Vendor Access",
+      "Enterprise Services"
+    ],
+    "zone_types": [
+      "enterprise",
+      "data_center",
+      "dmz",
+      "dmz",
+      "management"
+    ],
+    "node_names": [
+      "PACS System",
+      "VNA System",
+      "Database Server",
+      "Firewall",
+      "IDS/IPS",
+      "Wireless Controller",
+      "Access Point",
+      "Bastion Host",
+      "Active Directory Server"
+    ],
+    "node_types": [
+      "server",
+      "server",
+      "database",
+      "firewall",
+      "ids_ips",
+      "wireless_controller",
+      "access_point",
+      "bastion",
+      "identity_server"
+    ]
+  },
+  {
+    "sample_id": "Healthcare-4_req2",
+    "template_id": "Healthcare-4",
+    "description": "A hospital network with a central firewall controlling traffic between multiple VLANs, including clinical, modality, database, and enterprise zones, with NAC and isolated external access zones.",
+    "scenario": "hospital",
+    "topology_summary": "The network is divided into several zones, each dedicated to specific functions such as clinical applications, modalities, databases, and enterprise services. A central firewall manages traffic between these zones and external access zones for guests, the internet, and third-party vendors.",
+    "title": "Segmented Hospital Network",
+    "zone_names": [
+      "Clinical Applications",
+      "Modalities",
+      "Databases",
+      "Enterprise Services",
+      "Guest Services",
+      "General Internet",
+      "Third-Party Vendors"
+    ],
+    "zone_types": [
+      "security",
+      "security",
+      "data_center",
+      "enterprise",
+      "external",
+      "external",
+      "external"
+    ],
+    "node_names": [
+      "Central Firewall",
+      "Network Access Control",
+      "Clinical Application Servers",
+      "Modality Devices",
+      "Database Servers",
+      "Enterprise Service Servers",
+      "Guest Wi-Fi Access Points",
+      "Internet Gateway",
+      "Vendor Access Gateway"
+    ],
+    "node_types": [
+      "firewall",
+      "ids_ips",
+      "server",
+      "endpoint",
+      "database",
+      "server",
+      "access_point",
+      "router",
+      "vpn_gateway"
+    ]
+  },
+  {
+    "sample_id": "Healthcare-5_req1",
+    "template_id": "Healthcare-5",
+    "description": "Secure and reliable connectivity for a hospital and a clinic branch with support for IoT devices and basic security monitoring.",
+    "scenario": "hospital",
+    "topology_summary": "The topology includes a main hospital and a clinic branch, each with its own network segment, connected to a central application server and the internet. Both segments will support IoT devices and include security monitoring.",
+    "title": "Hospital and Clinic Network",
+    "zone_names": [
+      "Main Hospital",
+      "Clinic Branch",
+      "IoT Devices",
+      "Security Monitoring"
+    ],
+    "zone_types": [
+      "enterprise",
+      "enterprise",
+      "iot",
+      "security"
+    ],
+    "node_names": [
+      "Main Hospital Router",
+      "Clinic Branch Router",
+      "Firewall",
+      "IDS/IPS",
+      "Central Application Server",
+      "IoT Sensor",
+      "Security Camera"
+    ],
+    "node_types": [
+      "router",
+      "router",
+      "firewall",
+      "ids_ips",
+      "server",
+      "iot_device",
+      "iot_device"
+    ]
+  },
+  {
+    "sample_id": "Healthcare-5_req2",
+    "template_id": "Healthcare-5",
+    "description": "A network design for a hospital and clinic connected via SD-WAN, with a data center and DMZ.",
+    "scenario": "hospital",
+    "topology_summary": "The topology includes a primary data center, a DMZ with a firewall, and two branch locations (main hospital and clinic). SD-WAN provides connectivity between the branches, and both locations have wired and wireless access for endpoints.",
+    "title": "Hospital Network with SD-WAN",
+    "zone_names": [
+      "Data Center",
+      "DMZ",
+      "Main Hospital",
+      "Clinic"
+    ],
+    "zone_types": [
+      "data_center",
+      "dmz",
+      "enterprise",
+      "enterprise"
+    ],
+    "node_names": [
+      "Firewall",
+      "SD-WAN Router",
+      "Switch",
+      "DNS Server",
+      "Active Directory Server",
+      "Wireless Controller",
+      "Access Point",
+      "Workstation",
+      "Camera",
+      "Wireless Controller",
+      "Access Point",
+      "Workstation",
+      "Camera"
+    ],
+    "node_types": [
+      "firewall",
+      "router",
+      "switch",
+      "server",
+      "identity_server",
+      "wireless_controller",
+      "access_point",
+      "endpoint",
+      "iot_device",
+      "wireless_controller",
+      "access_point",
+      "endpoint",
+      "iot_device"
+    ]
+  },
+  {
+    "sample_id": "Industrial-1_req1",
+    "template_id": "Industrial-1",
+    "description": "Integrate corporate network with industrial plant while ensuring secure segmentation and remote access.",
+    "scenario": "industrial",
+    "topology_summary": "The topology includes a secure segmentation between the enterprise and industrial zones, with a dedicated remote access solution and network monitoring capabilities.",
+    "title": "Secure Industrial Integration",
+    "zone_names": [
+      "Enterprise Network",
+      "Industrial Zone",
+      "DMZ"
+    ],
+    "zone_types": [
+      "enterprise",
+      "ot",
+      "dmz"
+    ],
+    "node_names": [
+      "Enterprise Router",
+      "Firewall",
+      "OT Controller",
+      "IDS/IPS",
+      "Bastion Host",
+      "SIEM"
+    ],
+    "node_types": [
+      "router",
+      "firewall",
+      "ot_controller",
+      "ids_ips",
+      "bastion",
+      "siem"
+    ]
+  },
+  {
+    "sample_id": "Industrial-1_req2",
+    "template_id": "Industrial-1",
+    "description": "Design a network architecture based on the Purdue model with an enterprise zone, industrial DMZ, and secure industrial zone for OT systems.",
+    "scenario": "industrial",
+    "topology_summary": "The topology includes an enterprise zone, an industrial DMZ, and a secure industrial zone. Firewalls control traffic between zones, and the industrial network features a hierarchical switch design with a NetFlow collector and remote access via a VPN gateway.",
+    "title": "Purdue Model Industrial Network",
+    "zone_names": [
+      "Enterprise Zone",
+      "Industrial DMZ",
+      "Secure Industrial Zone"
+    ],
+    "zone_types": [
+      "enterprise",
+      "dmz",
+      "ot"
+    ],
+    "node_names": [
+      "Firewall (Enterprise to DMZ)",
+      "Firewall (DMZ to Secure Industrial)",
+      "Core Switch",
+      "Distribution Switch",
+      "Access Switch",
+      "NetFlow Collector",
+      "VPN Gateway"
+    ],
+    "node_types": [
+      "firewall",
+      "firewall",
+      "switch",
+      "switch",
+      "switch",
+      "ids_ips",
+      "vpn_gateway"
+    ]
+  },
+  {
+    "sample_id": "Industrial-2_req1",
+    "template_id": "Industrial-2",
+    "description": "A secure network for an industrial plant, separating OT from IT with remote management capabilities.",
+    "scenario": "industrial",
+    "topology_summary": "The topology includes separate zones for OT and IT, with a DMZ for remote access and monitoring. All connections are secured and authenticated.",
+    "title": "Secure Industrial Plant Network",
+    "zone_names": [
+      "OT Zone",
+      "IT Zone",
+      "DMZ"
+    ],
+    "zone_types": [
+      "ot",
+      "enterprise",
+      "dmz"
+    ],
+    "node_names": [
+      "OT Controller",
+      "PLC",
+      "Firewall",
+      "Switch",
+      "Identity Server",
+      "Bastion Host",
+      "Firewall",
+      "Router"
+    ],
+    "node_types": [
+      "ot_controller",
+      "iot_device",
+      "firewall",
+      "switch",
+      "identity_server",
+      "bastion",
+      "firewall",
+      "router"
+    ]
+  },
+  {
+    "sample_id": "Industrial-2_req2",
+    "template_id": "Industrial-2",
+    "description": "Design a network architecture for a manufacturing facility with clear separation between the enterprise and industrial zones, including an IDMZ, multiple layers of security, and remote access capabilities.",
+    "scenario": "industrial",
+    "topology_summary": "The topology will include an enterprise zone, an IDMZ, and an industrial zone. Each zone will be segmented by firewalls, with additional security measures such as IDS/IPS, a centralized identity service, and a secure remote access solution.",
+    "title": "Purdue Model for Manufacturing",
+    "zone_names": [
+      "Enterprise Zone",
+      "IDMZ",
+      "Industrial Zone"
+    ],
+    "zone_types": [
+      "enterprise",
+      "dmz",
+      "ot"
+    ],
+    "node_names": [
+      "Enterprise Firewall",
+      "IDMZ Firewall",
+      "Industrial Firewall",
+      "IDS/IPS",
+      "Identity Server",
+      "Remote Access Gateway",
+      "SIEM"
+    ],
+    "node_types": [
+      "firewall",
+      "firewall",
+      "firewall",
+      "ids_ips",
+      "identity_server",
+      "vpn_gateway",
+      "siem"
+    ]
+  },
+  {
+    "sample_id": "Industrial-3_req1",
+    "template_id": "Industrial-3",
+    "description": "A secure network for plant operations with isolated factory floor and corporate systems, and controlled remote vendor access.",
+    "scenario": "industrial",
+    "topology_summary": "The network will have distinct zones for the factory floor, corporate systems, and remote access. The factory floor will be isolated with strict access controls, while corporate systems will be in a separate zone. Remote access will be through a dedicated DMZ with restricted access to specific industrial systems.",
+    "title": "Secure Plant Network",
+    "zone_names": [
+      "Factory Floor",
+      "Corporate Systems",
+      "Remote Access DMZ"
+    ],
+    "zone_types": [
+      "ot",
+      "enterprise",
+      "dmz"
+    ],
+    "node_names": [
+      "OT Controller",
+      "Firewall",
+      "Switch",
+      "Server",
+      "Firewall",
+      "Router",
+      "Bastion Host",
+      "Firewall"
+    ],
+    "node_types": [
+      "ot_controller",
+      "firewall",
+      "switch",
+      "server",
+      "firewall",
+      "router",
+      "bastion",
+      "firewall"
+    ]
+  },
+  {
+    "sample_id": "Industrial-3_req2",
+    "template_id": "Industrial-3",
+    "description": "Design a network with enterprise, IDMZ, and protected industrial zones, including firewalls, identity services, and secure wireless.",
+    "scenario": "industrial",
+    "topology_summary": "The topology will follow the Purdue model, segmenting the network into an enterprise zone, an IDMZ, and a protected industrial zone. Firewalls will enforce security between zones, and centralized identity services will manage access control. Secure wireless connectivity will be provided within the plant.",
+    "title": "Purdue Model Segmentation",
+    "zone_names": [
+      "Enterprise Zone",
+      "Industrial DMZ (IDMZ)",
+      "Protected Industrial Zone"
+    ],
+    "zone_types": [
+      "enterprise",
+      "dmz",
+      "ot"
+    ],
+    "node_names": [
+      "Enterprise Firewall",
+      "IDMZ Firewall",
+      "OT Firewall",
+      "Identity Server",
+      "Wireless Controller",
+      "Access Point"
+    ],
+    "node_types": [
+      "firewall",
+      "firewall",
+      "firewall",
+      "identity_server",
+      "wireless_controller",
+      "access_point"
+    ]
+  },
+  {
+    "sample_id": "Industrial-4_req1",
+    "template_id": "Industrial-4",
+    "description": "Design a network for an industrial facility that securely separates the corporate network from the plant floor systems.",
+    "scenario": "industrial",
+    "topology_summary": "The topology will include a secure separation between the corporate network and the plant floor, with a dedicated zone for data collection and analysis.",
+    "title": "Secure Industrial Network",
+    "zone_names": [
+      "Corporate Network",
+      "Plant Floor",
+      "Data Collection Zone"
+    ],
+    "zone_types": [
+      "enterprise",
+      "ot",
+      "data_center"
+    ],
+    "node_names": [
+      "Corporate Firewall",
+      "OT Controller",
+      "Data Server",
+      "IDS/IPS"
+    ],
+    "node_types": [
+      "firewall",
+      "ot_controller",
+      "server",
+      "ids_ips"
+    ]
+  },
+  {
+    "sample_id": "Industrial-4_req2",
+    "template_id": "Industrial-4",
+    "description": "Design a network based on the Purdue model with enterprise, industrial, and DMZ zones, using firewalls for segmentation and incorporating NAC and wireless connectivity.",
+    "scenario": "industrial",
+    "topology_summary": "The topology includes an Enterprise zone, an Industrial zone, and a DMZ. Firewalls enforce segmentation between these zones, and a centralized network access control system ensures proper authentication for wireless devices and sensors.",
+    "title": "Purdue Model Segmentation",
+    "zone_names": [
+      "Enterprise Zone",
+      "DMZ",
+      "Industrial Zone"
+    ],
+    "zone_types": [
+      "enterprise",
+      "dmz",
+      "ot"
+    ],
+    "node_names": [
+      "Enterprise Firewall",
+      "DMZ Firewall",
+      "Industrial Firewall",
+      "NAC Server",
+      "Wireless Controller",
+      "Access Point"
+    ],
+    "node_types": [
+      "firewall",
+      "firewall",
+      "firewall",
+      "identity_server",
+      "wireless_controller",
+      "access_point"
+    ]
+  }
+]

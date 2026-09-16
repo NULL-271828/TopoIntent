@@ -1,0 +1,155 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Government-4_req1",
+  "title": "Government Network with Isolated Sensitive Systems",
+  "description": "A network topology for government operations with isolated sensitive systems and secure management.",
+  "scenario": "government",
+  "topology_summary": "This topology includes separate zones for standard and sensitive systems, with dedicated management workstations and a secure gateway for internet-bound traffic.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Standard Environment",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Sensitive Environment",
+      "zone_type": "security"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Management",
+      "zone_type": "management"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Internet",
+      "zone_type": "external"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Standard Router",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Standard Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "Standard Workstation",
+      "normalized_type": "endpoint",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "Sensitive Router",
+      "normalized_type": "router",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n5",
+      "name": "Sensitive Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n6",
+      "name": "Sensitive Workstation",
+      "normalized_type": "endpoint",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n7",
+      "name": "Management Workstation (Standard)",
+      "normalized_type": "endpoint",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n8",
+      "name": "Management Workstation (Sensitive)",
+      "normalized_type": "endpoint",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n9",
+      "name": "Secure Gateway",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "routing",
+        "label": "Internal Routing"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n3",
+        "link_type": "uplink",
+        "label": "Workstation Access"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n2",
+        "target": "n9",
+        "link_type": "uplink",
+        "label": "Internet Access"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n4",
+        "target": "n5",
+        "link_type": "routing",
+        "label": "Internal Routing"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n5",
+        "target": "n6",
+        "link_type": "uplink",
+        "label": "Workstation Access"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n7",
+        "target": "n2",
+        "link_type": "management",
+        "label": "Management Access"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n8",
+        "target": "n5",
+        "link_type": "management",
+        "label": "Management Access"
+      },
+      {
+        "link_id": "nl8",
+        "source": "n9",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "Data Flow"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z4",
+        "link_type": "internet",
+        "label": "Internet Connection"
+      }
+    ]
+  }
+}

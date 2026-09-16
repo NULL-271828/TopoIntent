@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Government-4_req1" title="Government Isolated Network" scenario="government" ig_level="IG2">
+  <Description>A network for government operations with isolated sensitive systems and secure management workstations.</Description>
+  <Summary>The network will consist of separate zones for standard and sensitive information, with dedicated management workstations and a secure internet gateway for the standard environment.</Summary>
+  <Domains>
+    <Domain id="z1" name="Standard Environment" type="enterprise"/>
+    <Domain id="z2" name="Sensitive Environment" type="security"/>
+    <Domain id="z3" name="Management Workstations" type="management"/>
+    <Domain id="z4" name="Internet" type="external"/>
+    <Domain id="z5" name="Non-Production Environment" type="enterprise"/>
+    <Domain id="z6" name="External Penetration Testing" type="external"/>
+    <Domain id="z7" name="Security Operations" type="security"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="Standard Firewall" domain="z1" domain_name="Standard Environment" type="firewall" ip=""/>
+    <Node id="n2" name="Sensitive Firewall" domain="z2" domain_name="Sensitive Environment" type="firewall" ip=""/>
+    <Node id="n3" name="Management Workstation (Standard)" domain="z3" domain_name="Management Workstations" type="endpoint" ip=""/>
+    <Node id="n4" name="Management Workstation (Sensitive)" domain="z3" domain_name="Management Workstations" type="endpoint" ip=""/>
+    <Node id="n5" name="Secure Gateway" domain="z1" domain_name="Standard Environment" type="firewall" ip=""/>
+    <Node id="n6" name="Standard Router" domain="z1" domain_name="Standard Environment" type="router" ip=""/>
+    <Node id="n7" name="Sensitive Router" domain="z2" domain_name="Sensitive Environment" type="router" ip=""/>
+    <Node id="n8" name="Management Router" domain="z3" domain_name="Management Workstations" type="router" ip=""/>
+    <Node id="n9" name="DNS Server" domain="z1" domain_name="Standard Environment" type="server" ip=""/>
+    <Node id="n10" name="Web Proxy" domain="z1" domain_name="Standard Environment" type="waf" ip=""/>
+    <Node id="n11" name="IDS/IPS" domain="z1" domain_name="Standard Environment" type="ids_ips" ip=""/>
+    <Node id="n12" name="AAA Server" domain="z3" domain_name="Management Workstations" type="identity_server" ip=""/>
+    <Node id="n13" name="SIEM" domain="z3" domain_name="Management Workstations" type="siem" ip=""/>
+    <Node id="n14" name="NAC" domain="z1" domain_name="Standard Environment" type="access_point" ip=""/>
+    <Node id="n15" name="Non-Production Router" domain="z5" domain_name="Non-Production Environment" type="router" ip=""/>
+    <Node id="n16" name="Penetration Testing Workstation" domain="z6" domain_name="External Penetration Testing" type="endpoint" ip=""/>
+    <Node id="n_struct1" name="Internet External Endpoint" domain="z4" domain_name="Internet" type="endpoint" ip=""/>
+    <Node id="n17" name="Asset Inventory System" domain="z3" domain_name="Management Workstations" type="server" ip=""/>
+    <Node id="n18" name="MFA Service" domain="z3" domain_name="Management Workstations" type="identity_server" ip=""/>
+    <Node id="n19" name="DNS Filter" domain="z1" domain_name="Standard Environment" type="waf" ip=""/>
+    <Node id="n20" name="URL Filter" domain="z1" domain_name="Standard Environment" type="waf" ip=""/>
+    <Node id="n21" name="Remote Device" domain="z4" domain_name="Internet" type="endpoint" ip=""/>
+    <Node id="n22" name="VPN Gateway" domain="z1" domain_name="Standard Environment" type="vpn_gateway" ip=""/>
+    <Node id="n23" name="Access Control" domain="z3" domain_name="Management Workstations" type="identity_server" ip=""/>
+    <Node id="n24" name="Network Traffic Logger" domain="z7" domain_name="Security Operations" type="siem" ip=""/>
+    <Node id="n25" name="Pen Test Process" domain="z6" domain_name="External Penetration Testing" type="server" ip=""/>
+    <Node id="n_new1" name="Data Flow Documentation" domain="z3" domain_name="Management Workstations" type="server" ip=""/>
+    <Node id="n_new2" name="Pen Test Scheduler" domain="z6" domain_name="External Penetration Testing" type="server" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z4" type="uplink" label="Standard Environment to Internet"/>
+      <Link id="zl2" source="z2" target="z3" type="management" label="Sensitive Environment to Management Workstations"/>
+      <Link id="zl3" source="z1" target="z5" type="uplink" label="Standard to Non-Production"/>
+      <Link id="zl4" source="z6" target="z1" type="uplink" label="External Penetration Testing to Standard"/>
+      <Link id="zl5" source="z3" target="z7" type="management" label="Security Operations Management"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n1" target="n6" type="routing" label="Standard Environment Routing"/>
+      <Link id="nl2" source="n2" target="n7" type="routing" label="Sensitive Environment Routing"/>
+      <Link id="nl3" source="n3" target="n8" type="management" label="Management Workstation (Standard) Management"/>
+      <Link id="nl4" source="n4" target="n8" type="management" label="Management Workstation (Sensitive) Management"/>
+      <Link id="nl5" source="n5" target="n6" type="data_flow" label="Internet Traffic Filtering"/>
+      <Link id="nl6" source="n9" target="n6" type="data_flow" label="DNS Traffic"/>
+      <Link id="nl7" source="n10" target="n6" type="data_flow" label="Web Proxy Traffic"/>
+      <Link id="nl8" source="n11" target="n6" type="monitoring" label="IDS/IPS Monitoring"/>
+      <Link id="nl9" source="n12" target="n6" type="management" label="AAA Management"/>
+      <Link id="nl10" source="n13" target="n11" type="monitoring" label="SIEM Monitoring"/>
+      <Link id="nl11" source="n14" target="n6" type="management" label="NAC Management"/>
+      <Link id="nl12" source="n15" target="n6" type="routing" label="Non-Production Routing"/>
+      <Link id="nl13" source="n16" target="n6" type="data_flow" label="Penetration Testing Traffic"/>
+      <Link id="nl_struct1" source="n1" target="n_struct1" type="routing" label="Structural zone attachment"/>
+      <Link id="nl14" source="n17" target="n1" type="management" label="Inventory Management"/>
+      <Link id="nl15" source="n17" target="n2" type="management" label="Inventory Management"/>
+      <Link id="nl16" source="n17" target="n3" type="management" label="Inventory Management"/>
+      <Link id="nl17" source="n17" target="n4" type="management" label="Inventory Management"/>
+      <Link id="nl18" source="n17" target="n5" type="management" label="Inventory Management"/>
+      <Link id="nl19" source="n17" target="n6" type="management" label="Inventory Management"/>
+      <Link id="nl20" source="n17" target="n7" type="management" label="Inventory Management"/>
+      <Link id="nl21" source="n17" target="n8" type="management" label="Inventory Management"/>
+      <Link id="nl22" source="n17" target="n9" type="management" label="Inventory Management"/>
+      <Link id="nl23" source="n17" target="n10" type="management" label="Inventory Management"/>
+      <Link id="nl24" source="n17" target="n11" type="management" label="Inventory Management"/>
+      <Link id="nl25" source="n17" target="n12" type="management" label="Inventory Management"/>
+      <Link id="nl26" source="n17" target="n13" type="management" label="Inventory Management"/>
+      <Link id="nl27" source="n17" target="n14" type="management" label="Inventory Management"/>
+      <Link id="nl28" source="n17" target="n15" type="management" label="Inventory Management"/>
+      <Link id="nl29" source="n17" target="n16" type="management" label="Inventory Management"/>
+      <Link id="nl30" source="n17" target="n_struct1" type="management" label="Inventory Management"/>
+      <Link id="nl31" source="n18" target="n21" type="management" label="MFA Management"/>
+      <Link id="nl32" source="n18" target="n22" type="management" label="MFA Management"/>
+      <Link id="nl33" source="n19" target="n9" type="data_flow" label="DNS Filtering"/>
+      <Link id="nl34" source="n20" target="n10" type="data_flow" label="URL Filtering"/>
+      <Link id="nl35" source="n21" target="n22" type="vpn" label="Remote Access"/>
+      <Link id="nl36" source="n22" target="n12" type="management" label="AAA Management"/>
+      <Link id="nl37" source="n23" target="n21" type="management" label="Access Control"/>
+      <Link id="nl38" source="n24" target="n11" type="data_flow" label="Traffic Logging"/>
+      <Link id="nl39" source="n24" target="n13" type="data_flow" label="Traffic Logging"/>
+      <Link id="nl40" source="n25" target="n16" type="data_flow" label="Pen Test Process"/>
+      <Link id="nl_new1" source="n_new1" target="n17" type="management" label="Data Flow Management"/>
+      <Link id="nl_new2" source="n_new2" target="n25" type="management" label="Pen Test Scheduling"/>
+      <Link id="nl_new3" source="n16" target="n15" type="data_flow" label="Pen Test to Non-Prod"/>
+      <Link id="nl_new4" source="n21" target="n15" type="data_flow" label="Remote to Non-Prod"/>
+      <Link id="nl_new5" source="n_new2" target="n15" type="data_flow" label="Pen Test Scheduler to Non-Prod"/>
+      <Link id="nl_new6" source="n25" target="n15" type="data_flow" label="Pen Test Process to Non-Prod"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n6" protocol="tcp" port="80">
+      <Reason>Standard environment internal routing.</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z2" dst_zone="z2" src_node="n2" dst_node="n7" protocol="tcp" port="80">
+      <Reason>Sensitive environment internal routing.</Reason>
+    </Allow>
+    <Allow id="tc3" src_zone="z3" dst_zone="z3" src_node="n3" dst_node="n8" protocol="tcp" port="22">
+      <Reason>Management workstation to router management.</Reason>
+    </Allow>
+    <Allow id="tc4" src_zone="z3" dst_zone="z3" src_node="n4" dst_node="n8" protocol="tcp" port="22">
+      <Reason>Management workstation to router management.</Reason>
+    </Allow>
+    <Allow id="tc5" src_zone="z1" dst_zone="z1" src_node="n5" dst_node="n6" protocol="tcp" port="443">
+      <Reason>Secure gateway to standard router data flow.</Reason>
+    </Allow>
+    <Allow id="tc6" src_zone="z1" dst_zone="z1" src_node="n9" dst_node="n6" protocol="tcp" port="53">
+      <Reason>DNS server to standard router DNS traffic.</Reason>
+    </Allow>
+    <Allow id="tc7" src_zone="z1" dst_zone="z1" src_node="n10" dst_node="n6" protocol="tcp" port="8080">
+      <Reason>Web proxy to standard router web proxy traffic.</Reason>
+    </Allow>
+    <Allow id="tc8" src_zone="z1" dst_zone="z1" src_node="n11" dst_node="n6" protocol="tcp" port="443">
+      <Reason>IDS/IPS to standard router monitoring.</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z3" dst_zone="z1" src_node="n12" dst_node="n6" protocol="tcp" port="88">
+      <Reason>AAA server to standard router management.</Reason>
+    </Allow>
+    <Allow id="tc10" src_zone="z3" dst_zone="z1" src_node="n13" dst_node="n11" protocol="tcp" port="443">
+      <Reason>SIEM to IDS/IPS monitoring.</Reason>
+    </Allow>
+    <Allow id="tc11" src_zone="z1" dst_zone="z1" src_node="n14" dst_node="n6" protocol="tcp" port="80">
+      <Reason>NAC to standard router management.</Reason>
+    </Allow>
+    <Allow id="tc12" src_zone="z5" dst_zone="z1" src_node="n15" dst_node="n6" protocol="tcp" port="80">
+      <Reason>Non-production router to standard router routing.</Reason>
+    </Allow>
+    <Allow id="tc13" src_zone="z6" dst_zone="z1" src_node="n16" dst_node="n6" protocol="tcp" port="80">
+      <Reason>Penetration testing workstation to standard router data flow.</Reason>
+    </Allow>
+    <Allow id="tc14" src_zone="z4" dst_zone="z1" src_node="n_struct1" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Internet to standard firewall routing.</Reason>
+    </Allow>
+    <Allow id="tc15" src_zone="z3" dst_zone="z1" src_node="n17" dst_node="n1" protocol="tcp" port="22">
+      <Reason>Asset inventory system to standard firewall management.</Reason>
+    </Allow>
+    <Allow id="tc16" src_zone="z3" dst_zone="z2" src_node="n17" dst_node="n2" protocol="tcp" port="22">
+      <Reason>Asset inventory system to sensitive firewall management.</Reason>
+    </Allow>
+    <Allow id="tc17" src_zone="z3" dst_zone="z3" src_node="n17" dst_node="n3" protocol="tcp" port="22">
+      <Reason>Asset inventory system to management workstation management.</Reason>
+    </Allow>
+    <Allow id="tc18" src_zone="z3" dst_zone="z3" src_node="n17" dst_node="n4" protocol="tcp" port="22">
+      <Reason>Asset inventory system to management workstation management.</Reason>
+    </Allow>
+    <Allow id="tc19" src_zone="z3" dst_zone="z1" src_node="n17" dst_node="n5" protocol="tcp" port="22">
+      <Reason>Asset inventory system to secure gateway management.</Reason>
+    </Allow>
+    <Allow id="tc20" src_zone="z3" dst_zone="z1" src_node="n17" dst_node="n6" protocol="tcp" port="22">
+      <Reason>Asset inventory system to standard router management.</Reason>
+    </Allow>
+    <Allow id="tc21" src_zone="z3" dst_zone="z2" src_node="n17" dst_node="n7" protocol="tcp" port="22">
+      <Reason>Asset inventory system to sensitive router management.</Reason>
+    </Allow>
+    <Allow id="tc22" src_zone="z3" dst_zone="z3" src_node="n17" dst_node="n8" protocol="tcp" port="22">
+      <Reason>Asset inventory system to management router management.</Reason>
+    </Allow>
+    <Allow id="tc23" src_zone="z3" dst_zone="z1" src_node="n17" dst_node="n9" protocol="tcp" port="22">
+      <Reason>Asset inventory system to DNS server management.</Reason>
+    </Allow>
+    <Allow id="tc24" src_zone="z3" dst_zone="z1" src_node="n17" dst_node="n10" protocol="tcp" port="22">
+      <Reason>Asset inventory system to web proxy management.</Reason>
+    </Allow>
+    <Allow id="tc25" src_zone="z3" dst_zone="z1" src_node="n17" dst_node="n11" protocol="tcp" port="22">
+      <Reason>Asset inventory system to IDS/IPS management.</Reason>
+    </Allow>
+    <Allow id="tc26" src_zone="z3" dst_zone="z3" src_node="n17" dst_node="n12" protocol="tcp" port="22">
+      <Reason>Asset inventory system to AAA server management.</Reason>
+    </Allow>
+    <Allow id="tc27" src_zone="z3" dst_zone="z3" src_node="n17" dst_node="n13" protocol="tcp" port="22">
+      <Reason>Asset inventory system to SIEM management.</Reason>
+    </Allow>
+    <Allow id="tc28" src_zone="z3" dst_zone="z1" src_node="n17" dst_node="n14" protocol="tcp" port="22">
+      <Reason>Asset inventory system to NAC management.</Reason>
+    </Allow>
+    <Allow id="tc29" src_zone="z3" dst_zone="z5" src_node="n17" dst_node="n15" protocol="tcp" port="22">
+      <Reason>Asset inventory system to non-production router management.</Reason>
+    </Allow>
+    <Allow id="tc30" src_zone="z3" dst_zone="z6" src_node="n17" dst_node="n16" protocol="tcp" port="22">
+      <Reason>Asset inventory system to penetration testing workstation management.</Reason>
+    </Allow>
+    <Allow id="tc31" src_zone="z3" dst_zone="z4" src_node="n17" dst_node="n_struct1" protocol="tcp" port="22">
+      <Reason>Asset inventory system to internet external endpoint management.</Reason>
+    </Allow>
+    <Allow id="tc32" src_zone="z3" dst_zone="z4" src_node="n18" dst_node="n21" protocol="tcp" port="443">
+      <Reason>MFA service to remote device management.</Reason>
+    </Allow>
+    <Allow id="tc33" src_zone="z3" dst_zone="z1" src_node="n18" dst_node="n22" protocol="tcp" port="443">
+      <Reason>MFA service to VPN gateway management.</Reason>
+    </Allow>
+    <Allow id="tc34" src_zone="z1" dst_zone="z1" src_node="n19" dst_node="n9" protocol="tcp" port="53">
+      <Reason>DNS filter to DNS server data flow.</Reason>
+    </Allow>
+    <Allow id="tc35" src_zone="z1" dst_zone="z1" src_node="n20" dst_node="n10" protocol="tcp" port="8080">
+      <Reason>URL filter to web proxy data flow.</Reason>
+    </Allow>
+    <Allow id="tc36" src_zone="z4" dst_zone="z1" src_node="n21" dst_node="n22" protocol="tcp" port="443">
+      <Reason>Remote device to VPN gateway connection.</Reason>
+    </Allow>
+    <Allow id="tc37" src_zone="z1" dst_zone="z3" src_node="n22" dst_node="n12" protocol="tcp" port="88">
+      <Reason>VPN gateway to AAA server management.</Reason>
+    </Allow>
+    <Allow id="tc38" src_zone="z3" dst_zone="z4" src_node="n23" dst_node="n21" protocol="tcp" port="443">
+      <Reason>Access control to remote device management.</Reason>
+    </Allow>
+    <Allow id="tc39" src_zone="z7" dst_zone="z1" src_node="n24" dst_node="n11" protocol="tcp" port="443">
+      <Reason>Network traffic logger to IDS/IPS data flow.</Reason>
+    </Allow>
+    <Allow id="tc40" src_zone="z7" dst_zone="z3" src_node="n24" dst_node="n13" protocol="tcp" port="443">
+      <Reason>Network traffic logger to SIEM data flow.</Reason>
+    </Allow>
+    <Deny id="tc41" src_zone="z6" dst_zone="z5" src_node="n16" dst_node="n15" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc42" src_zone="z4" dst_zone="z5" src_node="n_struct1" dst_node="n15" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc43" src_zone="z6" dst_zone="z5" src_node="n_new2" dst_node="n15" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc44" src_zone="z6" dst_zone="z5" src_node="n25" dst_node="n15" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+  </Policies>
+  <Compliance ig_level="IG2" all_required_satisfied="true">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Asset Inventory System' (n17) that manages inventory for multiple nodes across different zones, indicating a detailed and maintained asset inventory.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Data Flow Documentation' node (n_new1) that is linked to the 'Asset Inventory System' (n17), indicating that data flows are documented.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes separate zones for 'Standard Environment' (z1), 'Sensitive Environment' (z2), and 'Non-Production Environment' (z5), indicating that data processing and storage are segmented based on sensitivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes firewalls (n1, n2) in the 'Standard Environment' and 'Sensitive Environment', respectively, indicating that firewalls are implemented and managed on servers.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Server' (n9) in the 'Standard Environment' (z1) and links to various nodes, indicating that trusted DNS servers are configured on enterprise assets.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'MFA Service' (n18) that manages MFA for remote devices (n21) and the 'VPN Gateway' (n22), indicating that MFA is required for remote network access.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Filter' (n19) that is linked to the 'DNS Server' (n9), indicating that DNS filtering services are used.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'URL Filter' (n20) that is linked to the 'Web Proxy' (n10), indicating that network-based URL filters are maintained and enforced.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes separate zones for different environments and security levels, with firewalls, routers, and management workstations, indicating a secure network architecture.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes secure network infrastructure components such as firewalls, routers, and management workstations, and links indicating secure management practices.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'AAA Server' (n12) that is linked to various nodes, indicating centralized network AAA.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'VPN Gateway' (n22) that is linked to the 'AAA Server' (n12) and remote devices (n21), indicating that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'IDS/IPS' (n11) that is linked to the 'Standard Router' (n6) and monitored by the 'SIEM' (n13), indicating a deployed network intrusion detection solution.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes firewalls (n1, n2) and links indicating traffic filtering between different network segments, such as 'Standard Environment' and 'Sensitive Environment'.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Access Control' node (n23) that is linked to remote devices (n21), indicating that access control for remote assets is managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Network Traffic Logger' (n24) that collects traffic logs from the 'IDS/IPS' (n11) and 'SIEM' (n13), indicating that network traffic flow logs are collected.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Non-Production Environment' (z5) that is separated from the 'Standard Environment' (z1), indicating that production and non-production systems are separated.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Penetration Testing Workstation' (n16) and a 'Pen Test Process' (n25) that are linked to the 'Non-Production Environment' (z5), indicating that periodic external penetration tests are performed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="0" controls="stage4_structural_integrity" zones_added="0" nodes_added="1" zone_links_added="0" node_links_added="1"/>
+    <Repair round="1" controls="1.1,6.4,9.2,9.3,12.7,13.5,13.6,18.2" zones_added="1" nodes_added="9" zone_links_added="1" node_links_added="27"/>
+    <Repair round="2" controls="3.8,18.2" zones_added="0" nodes_added="2" zone_links_added="0" node_links_added="2"/>
+    <Repair round="4" controls="stage5_validation,stage5_validation,stage5_validation,stage5_validation" zones_added="0" nodes_added="0" zone_links_added="0" node_links_added="4"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

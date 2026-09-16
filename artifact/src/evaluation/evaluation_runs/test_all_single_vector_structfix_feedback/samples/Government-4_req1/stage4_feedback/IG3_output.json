@@ -1,0 +1,2585 @@
+{
+  "sample_id": "Government-4_req1",
+  "gt_template_id": "Government-4",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-4_req1",
+    "title": "Government Isolated Network",
+    "description": "A network for government operations with isolated sensitive systems and secure management workstations.",
+    "scenario": "government",
+    "topology_summary": "The network will consist of separate zones for standard and sensitive information, with dedicated management workstations and a secure internet gateway for the standard environment.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Standard Environment",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Sensitive Environment",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Management Workstations",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Internet",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Non-Production Environment",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z6",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z_preserve1",
+        "name": "External Penetration Testing",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Security Operations",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z_new1",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new2",
+        "name": "Data Flow Documentation",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new3",
+        "name": "Remote Access Management",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Standard Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Sensitive Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Management Workstation (Standard)",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Management Workstation (Sensitive)",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n5",
+        "name": "Secure Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Standard Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Sensitive Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Management Router",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n9",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "DNS Filtering Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "Web Proxy",
+        "normalized_type": "proxy",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n12",
+        "name": "Central AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n13",
+        "name": "NIDS Sensor",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "NIPS Sensor",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n16",
+        "name": "802.1X Controller",
+        "normalized_type": "access_point",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n17",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n18",
+        "name": "Pentest Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Internet External Endpoint",
+        "normalized_type": "endpoint",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n_struct2",
+        "name": "Non-Production Environment Representative Workload",
+        "normalized_type": "workload",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n_struct3",
+        "name": "External Penetration Testing External Endpoint",
+        "normalized_type": "endpoint",
+        "zone_id": "z_preserve1"
+      },
+      {
+        "node_id": "n_struct4",
+        "name": "Security Operations Security Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n_new1",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z_new1"
+      },
+      {
+        "node_id": "n_new2",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z_new2"
+      },
+      {
+        "node_id": "n_new3",
+        "name": "MFA Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z_new3"
+      },
+      {
+        "node_id": "n_new4",
+        "name": "IaC Management System",
+        "normalized_type": "server",
+        "zone_id": "z_new3"
+      },
+      {
+        "node_id": "n_new5",
+        "name": "Remote Device Manager",
+        "normalized_type": "server",
+        "zone_id": "z_new3"
+      },
+      {
+        "node_id": "n_new6",
+        "name": "Network Traffic Logger",
+        "normalized_type": "server",
+        "zone_id": "z_new3"
+      },
+      {
+        "node_id": "n_new7",
+        "name": "Penetration Test Scheduler",
+        "normalized_type": "server",
+        "zone_id": "z_new3"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n6",
+          "link_type": "routing",
+          "label": "Standard Environment Routing"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n2",
+          "target": "n7",
+          "link_type": "routing",
+          "label": "Sensitive Environment Routing"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n3",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Management Workstation (Standard) Management"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n4",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Management Workstation (Sensitive) Management"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n5",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Internet Traffic Filtering"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n9",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "DNS Service to Standard Router"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n10",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "DNS Filtering to Standard Router"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n11",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Web Proxy to Standard Router"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n12",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Central AAA to Management Router"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n13",
+          "target": "n6",
+          "link_type": "monitoring",
+          "label": "NIDS to Standard Router"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n14",
+          "target": "n6",
+          "link_type": "monitoring",
+          "label": "NIPS to Standard Router"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n15",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Application Firewall to Standard Router"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n16",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "802.1X Controller to Standard Router"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n17",
+          "target": "n13",
+          "link_type": "monitoring",
+          "label": "SIEM to NIDS Sensor"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n17",
+          "target": "n14",
+          "link_type": "monitoring",
+          "label": "SIEM to NIPS Sensor"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n17",
+          "target": "n6",
+          "link_type": "monitoring",
+          "label": "SIEM to Standard Router"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n18",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Pentest to Secure Gateway"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n1",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct2",
+          "source": "n1",
+          "target": "n_struct2",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct3",
+          "source": "n1",
+          "target": "n_struct3",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct4",
+          "source": "n1",
+          "target": "n_struct4",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_new1",
+          "source": "n_new1",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Asset Management to Standard Firewall"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n_new1",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Asset Management to Sensitive Firewall"
+        },
+        {
+          "link_id": "nl_new3",
+          "source": "n_new1",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Asset Management to Management Workstation (Standard)"
+        },
+        {
+          "link_id": "nl_new4",
+          "source": "n_new1",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Asset Management to Management Workstation (Sensitive)"
+        },
+        {
+          "link_id": "nl_new5",
+          "source": "n_new1",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Asset Management to Secure Gateway"
+        },
+        {
+          "link_id": "nl_new6",
+          "source": "n_new1",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Asset Management to Standard Router"
+        },
+        {
+          "link_id": "nl_new7",
+          "source": "n_new1",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Asset Management to Sensitive Router"
+        },
+        {
+          "link_id": "nl_new8",
+          "source": "n_new1",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Asset Management to Management Router"
+        },
+        {
+          "link_id": "nl_new9",
+          "source": "n_new1",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Asset Management to DNS Server"
+        },
+        {
+          "link_id": "nl_new10",
+          "source": "n_new1",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Asset Management to DNS Filtering Server"
+        },
+        {
+          "link_id": "nl_new11",
+          "source": "n_new1",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Asset Management to Web Proxy"
+        },
+        {
+          "link_id": "nl_new12",
+          "source": "n_new1",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Asset Management to Central AAA Server"
+        },
+        {
+          "link_id": "nl_new13",
+          "source": "n_new1",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Asset Management to NIDS Sensor"
+        },
+        {
+          "link_id": "nl_new14",
+          "source": "n_new1",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Asset Management to NIPS Sensor"
+        },
+        {
+          "link_id": "nl_new15",
+          "source": "n_new1",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Asset Management to Application Firewall"
+        },
+        {
+          "link_id": "nl_new16",
+          "source": "n_new1",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Asset Management to 802.1X Controller"
+        },
+        {
+          "link_id": "nl_new17",
+          "source": "n_new1",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Asset Management to SIEM"
+        },
+        {
+          "link_id": "nl_new18",
+          "source": "n_new1",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Asset Management to Pentest Workstation"
+        },
+        {
+          "link_id": "nl_new19",
+          "source": "n_new1",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Asset Management to Internet External Endpoint"
+        },
+        {
+          "link_id": "nl_new20",
+          "source": "n_new1",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Asset Management to Non-Production Environment Representative Workload"
+        },
+        {
+          "link_id": "nl_new21",
+          "source": "n_new1",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "Asset Management to External Penetration Testing External Endpoint"
+        },
+        {
+          "link_id": "nl_new22",
+          "source": "n_new1",
+          "target": "n_struct4",
+          "link_type": "management",
+          "label": "Asset Management to Security Operations Security Gateway"
+        },
+        {
+          "link_id": "nl_new23",
+          "source": "n_new2",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Standard Firewall"
+        },
+        {
+          "link_id": "nl_new24",
+          "source": "n_new2",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Sensitive Firewall"
+        },
+        {
+          "link_id": "nl_new25",
+          "source": "n_new2",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Management Workstation (Standard)"
+        },
+        {
+          "link_id": "nl_new26",
+          "source": "n_new2",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Management Workstation (Sensitive)"
+        },
+        {
+          "link_id": "nl_new27",
+          "source": "n_new2",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Secure Gateway"
+        },
+        {
+          "link_id": "nl_new28",
+          "source": "n_new2",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Standard Router"
+        },
+        {
+          "link_id": "nl_new29",
+          "source": "n_new2",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Sensitive Router"
+        },
+        {
+          "link_id": "nl_new30",
+          "source": "n_new2",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Management Router"
+        },
+        {
+          "link_id": "nl_new31",
+          "source": "n_new2",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Data Flow Documentation to DNS Server"
+        },
+        {
+          "link_id": "nl_new32",
+          "source": "n_new2",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Data Flow Documentation to DNS Filtering Server"
+        },
+        {
+          "link_id": "nl_new33",
+          "source": "n_new2",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Web Proxy"
+        },
+        {
+          "link_id": "nl_new34",
+          "source": "n_new2",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Central AAA Server"
+        },
+        {
+          "link_id": "nl_new35",
+          "source": "n_new2",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Data Flow Documentation to NIDS Sensor"
+        },
+        {
+          "link_id": "nl_new36",
+          "source": "n_new2",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Data Flow Documentation to NIPS Sensor"
+        },
+        {
+          "link_id": "nl_new37",
+          "source": "n_new2",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Application Firewall"
+        },
+        {
+          "link_id": "nl_new38",
+          "source": "n_new2",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Data Flow Documentation to 802.1X Controller"
+        },
+        {
+          "link_id": "nl_new39",
+          "source": "n_new2",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Data Flow Documentation to SIEM"
+        },
+        {
+          "link_id": "nl_new40",
+          "source": "n_new2",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Pentest Workstation"
+        },
+        {
+          "link_id": "nl_new41",
+          "source": "n_new2",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Internet External Endpoint"
+        },
+        {
+          "link_id": "nl_new42",
+          "source": "n_new2",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Non-Production Environment Representative Workload"
+        },
+        {
+          "link_id": "nl_new43",
+          "source": "n_new2",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "Data Flow Documentation to External Penetration Testing External Endpoint"
+        },
+        {
+          "link_id": "nl_new44",
+          "source": "n_new2",
+          "target": "n_struct4",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Security Operations Security Gateway"
+        },
+        {
+          "link_id": "nl_new45",
+          "source": "n_new3",
+          "target": "n12",
+          "link_type": "management",
+          "label": "MFA Gateway to Central AAA Server"
+        },
+        {
+          "link_id": "nl_new46",
+          "source": "n_new4",
+          "target": "n12",
+          "link_type": "management",
+          "label": "IaC Management to Central AAA Server"
+        },
+        {
+          "link_id": "nl_new47",
+          "source": "n_new5",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Remote Device Manager to Central AAA Server"
+        },
+        {
+          "link_id": "nl_new48",
+          "source": "n_new6",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "Network Traffic Logger to SIEM"
+        },
+        {
+          "link_id": "nl_new49",
+          "source": "n_new7",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Penetration Test Scheduler to Pentest Workstation"
+        },
+        {
+          "link_id": "nl_new50",
+          "source": "n1",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Standard Firewall to Management Workstation (Standard)"
+        },
+        {
+          "link_id": "nl_new51",
+          "source": "n1",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Standard Firewall to Management Workstation (Sensitive)"
+        },
+        {
+          "link_id": "nl_new52",
+          "source": "n2",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Sensitive Firewall to Standard Router"
+        },
+        {
+          "link_id": "nl_new53",
+          "source": "n18",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Pentest Workstation to Sensitive Firewall"
+        },
+        {
+          "link_id": "nl_new54",
+          "source": "n_struct2",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Non-Production Environment Representative Workload to Sensitive Firewall"
+        },
+        {
+          "link_id": "nl_new55",
+          "source": "n18",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Pentest Workstation to Internet External Endpoint"
+        },
+        {
+          "link_id": "nl_new56",
+          "source": "n3",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Management Workstation (Standard) to Standard Router"
+        },
+        {
+          "link_id": "nl_new57",
+          "source": "n4",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Management Workstation (Sensitive) to Standard Router"
+        },
+        {
+          "link_id": "nl_new58",
+          "source": "n3",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Management Workstation (Standard) to Sensitive Router"
+        },
+        {
+          "link_id": "nl_new59",
+          "source": "n4",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Management Workstation (Sensitive) to Sensitive Router"
+        },
+        {
+          "link_id": "nl_new60",
+          "source": "n1",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Standard Firewall to SIEM"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "uplink",
+          "label": "Standard Environment to Internet"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Sensitive Environment to Management Workstations"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Standard to Non-Production Environment"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z6",
+          "target": "z4",
+          "link_type": "uplink",
+          "label": "External Testing Zone to Internet"
+        },
+        {
+          "link_id": "zl_new1",
+          "source": "z_new1",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Asset Management to Standard Environment"
+        },
+        {
+          "link_id": "zl_new2",
+          "source": "z_new1",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Asset Management to Sensitive Environment"
+        },
+        {
+          "link_id": "zl_new3",
+          "source": "z_new1",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Asset Management to Management Workstations"
+        },
+        {
+          "link_id": "zl_new4",
+          "source": "z_new1",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Asset Management to Internet"
+        },
+        {
+          "link_id": "zl_new5",
+          "source": "z_new1",
+          "target": "z5",
+          "link_type": "management",
+          "label": "Asset Management to Non-Production Environment"
+        },
+        {
+          "link_id": "zl_new6",
+          "source": "z_new1",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Asset Management to External Testing Zone"
+        },
+        {
+          "link_id": "zl_new7",
+          "source": "z_new1",
+          "target": "z_preserve1",
+          "link_type": "management",
+          "label": "Asset Management to External Penetration Testing"
+        },
+        {
+          "link_id": "zl_new8",
+          "source": "z_new1",
+          "target": "z7",
+          "link_type": "management",
+          "label": "Asset Management to Security Operations"
+        },
+        {
+          "link_id": "zl_new9",
+          "source": "z_new2",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Standard Environment"
+        },
+        {
+          "link_id": "zl_new10",
+          "source": "z_new2",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Data Flow Documentation to Sensitive Environment"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-4_req1",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Management System' (n_new1) that is connected to various nodes and zones, indicating the presence of an asset management system.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation System' (n_new2) that is connected to various nodes and zones, indicating the presence of a system for documenting data flows.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for 'Standard Environment' (z1), 'Sensitive Environment' (z2), and 'Non-Production Environment' (z5), indicating that data processing and storage are segmented based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n1, n2, n5, n_struct4) in various zones, indicating that firewalls are implemented and managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n9) and a 'DNS Filtering Server' (n10) connected to the 'Standard Router' (n6), indicating that trusted DNS servers are configured.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Gateway' (n_new3) connected to the 'Central AAA Server' (n12), indicating that MFA is required for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filtering Server' (n10) connected to the 'Standard Router' (n6), indicating that DNS filtering services are used.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n11) connected to the 'Standard Router' (n6), indicating that network-based URL filters are maintained and enforced.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for different environments and security levels, and various security controls (firewalls, routers, DNS servers, etc.), indicating a secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IaC Management System' (n_new4) connected to the 'Central AAA Server' (n12), indicating that network infrastructure is securely managed using IaC.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central AAA Server' (n12) connected to various nodes and zones, indicating centralized network AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Gateway' (n_new3) connected to the 'Central AAA Server' (n12), indicating that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Management Workstations' zone (z3) with dedicated workstations (n3, n4) and a 'Management Router' (n8), indicating dedicated computing resources for administrative work.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'NIDS Sensor' (n13) connected to the 'Standard Router' (n6) and 'SIEM' (n17), indicating the deployment of a network intrusion detection solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n1, n2, n5, n_struct4) and routers (n6, n7) that perform traffic filtering between network segments, as indicated by the links between these nodes.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Gateway' (n_new3) and a 'Remote Device Manager' (n_new5) connected to the 'Central AAA Server' (n12), indicating that access control for remote assets is managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Network Traffic Logger' (n_new6) connected to the 'SIEM' (n17), indicating that network traffic flow logs are collected.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'NIPS Sensor' (n14) connected to the 'Standard Router' (n6) and 'SIEM' (n17), indicating the deployment of a network intrusion prevention solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an '802.1X Controller' (n16) connected to the 'Standard Router' (n6), indicating the deployment of port-level access control.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Application Firewall' (n15) connected to the 'Standard Router' (n6), indicating the performance of application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for 'Standard Environment' (z1) and 'Non-Production Environment' (z5), indicating that production and non-production systems are separated.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'External Penetration Testing Zone' (z6) with a 'Pentest Workstation' (n18) and a 'Penetration Test Scheduler' (n_new7) connected to the 'Pentest Workstation', indicating that periodic external penetration tests are performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity",
+        "stage4_structural_integrity",
+        "stage4_ig_consistency"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z4\", \"name\": \"Internet\", \"zone_type\": \"external\"}",
+          "missing_reason": "Zone z4 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z5\", \"name\": \"Non-Production Environment\", \"zone_type\": \"enterprise\"}",
+          "missing_reason": "Zone z5 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_ig_consistency",
+          "title": "ig3_missing_ig2_zone_semantics",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "[{\"zone_id\": \"z6\", \"name\": \"External Penetration Testing\", \"zone_type\": \"external\"}, {\"zone_id\": \"z7\", \"name\": \"Security Operations\", \"zone_type\": \"security\"}]",
+          "missing_reason": "IG3 topology removed or failed to preserve IG2 zone semantics.",
+          "repair_suggestion": "Add the missing IG2 zone semantics to IG3 as preserved or stricter zones, with representative nodes and concrete node_links. IG3 may add controls but must not reduce segmentation."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_preserve1",
+            "name": "External Penetration Testing",
+            "zone_type": "external"
+          },
+          {
+            "zone_id": "z7",
+            "name": "Security Operations",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Internet External Endpoint",
+            "normalized_type": "endpoint",
+            "zone_id": "z4"
+          },
+          {
+            "node_id": "n_struct2",
+            "name": "Non-Production Environment Representative Workload",
+            "normalized_type": "workload",
+            "zone_id": "z5"
+          },
+          {
+            "node_id": "n_struct3",
+            "name": "External Penetration Testing External Endpoint",
+            "normalized_type": "endpoint",
+            "zone_id": "z_preserve1"
+          },
+          {
+            "node_id": "n_struct4",
+            "name": "Security Operations Security Gateway",
+            "normalized_type": "firewall",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n1",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct2",
+              "source": "n1",
+              "target": "n_struct2",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct3",
+              "source": "n1",
+              "target": "n_struct3",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct4",
+              "source": "n1",
+              "target": "n_struct4",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 6,
+        "nodes": 18,
+        "zone_links": 4,
+        "node_links": 17
+      },
+      "counts_after": {
+        "zones": 8,
+        "nodes": 22,
+        "zone_links": 4,
+        "node_links": 21
+      },
+      "count_delta": {
+        "zones": 2,
+        "nodes": 4,
+        "zone_links": 0,
+        "node_links": 4
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "6.4",
+        "12.3",
+        "12.7",
+        "13.5",
+        "13.6",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of an asset inventory system or process.",
+          "missing_reason": "No explicit asset inventory system or process is shown in the topology.",
+          "repair_suggestion": "Add a node representing an asset management system and links to all other nodes."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes labeled links indicating data flows, but there is no explicit evidence of documented data flows.",
+          "missing_reason": "No explicit documentation of data flows is shown in the topology.",
+          "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes and zones."
+        },
+        {
+          "cis_safeguard_id": "6.4",
+          "title": "Require MFA for Remote Network Access",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a Central AAA Server (n12), but there is no explicit evidence of MFA being required for remote access.",
+          "missing_reason": "No explicit evidence of MFA requirement for remote access.",
+          "repair_suggestion": "Add a label or node indicating MFA is required for remote access."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various network devices, but there is no explicit evidence of secure management practices such as IaC or secure protocols.",
+          "missing_reason": "No explicit evidence of secure management practices.",
+          "repair_suggestion": "Add nodes or labels indicating secure management practices like IaC or secure protocols."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a Secure Gateway (n5) and a Central AAA Server (n12), but there is no explicit evidence of a VPN or remote device connections.",
+          "missing_reason": "No explicit evidence of a VPN or remote device connections.",
+          "repair_suggestion": "Add a node representing a VPN and links to relevant nodes and zones."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a Secure Gateway (n5) and a Central AAA Server (n12), but there is no explicit evidence of access control for remote assets.",
+          "missing_reason": "No explicit evidence of access control for remote assets.",
+          "repair_suggestion": "Add a node or label indicating access control for remote assets."
+        },
+        {
+          "cis_safeguard_id": "13.6",
+          "title": "Collect Network Traffic Flow Logs",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a SIEM (n17) connected to various nodes, but there is no explicit evidence of collecting network traffic flow logs.",
+          "missing_reason": "No explicit evidence of collecting network traffic flow logs.",
+          "repair_suggestion": "Add a node or label indicating network traffic flow log collection."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an External Penetration Testing Zone (z6) and a Pentest Workstation (n18), but there is no explicit evidence of periodic external penetration tests.",
+          "missing_reason": "No explicit evidence of periodic external penetration tests.",
+          "repair_suggestion": "Add a node or label indicating periodic external penetration tests."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_new1",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_new2",
+            "name": "Data Flow Documentation",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_new3",
+            "name": "Remote Access Management",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_new1",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z_new1"
+          },
+          {
+            "node_id": "n_new2",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z_new2"
+          },
+          {
+            "node_id": "n_new3",
+            "name": "MFA Gateway",
+            "normalized_type": "vpn_gateway",
+            "zone_id": "z_new3"
+          },
+          {
+            "node_id": "n_new4",
+            "name": "IaC Management System",
+            "normalized_type": "server",
+            "zone_id": "z_new3"
+          },
+          {
+            "node_id": "n_new5",
+            "name": "Remote Device Manager",
+            "normalized_type": "server",
+            "zone_id": "z_new3"
+          },
+          {
+            "node_id": "n_new6",
+            "name": "Network Traffic Logger",
+            "normalized_type": "server",
+            "zone_id": "z_new3"
+          },
+          {
+            "node_id": "n_new7",
+            "name": "Penetration Test Scheduler",
+            "normalized_type": "server",
+            "zone_id": "z_new3"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new1",
+              "source": "n_new1",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Asset Management to Standard Firewall"
+            },
+            {
+              "link_id": "nl_new2",
+              "source": "n_new1",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Asset Management to Sensitive Firewall"
+            },
+            {
+              "link_id": "nl_new3",
+              "source": "n_new1",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Asset Management to Management Workstation (Standard)"
+            },
+            {
+              "link_id": "nl_new4",
+              "source": "n_new1",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Asset Management to Management Workstation (Sensitive)"
+            },
+            {
+              "link_id": "nl_new5",
+              "source": "n_new1",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Asset Management to Secure Gateway"
+            },
+            {
+              "link_id": "nl_new6",
+              "source": "n_new1",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Asset Management to Standard Router"
+            },
+            {
+              "link_id": "nl_new7",
+              "source": "n_new1",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Asset Management to Sensitive Router"
+            },
+            {
+              "link_id": "nl_new8",
+              "source": "n_new1",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Asset Management to Management Router"
+            },
+            {
+              "link_id": "nl_new9",
+              "source": "n_new1",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Asset Management to DNS Server"
+            },
+            {
+              "link_id": "nl_new10",
+              "source": "n_new1",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Asset Management to DNS Filtering Server"
+            },
+            {
+              "link_id": "nl_new11",
+              "source": "n_new1",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Asset Management to Web Proxy"
+            },
+            {
+              "link_id": "nl_new12",
+              "source": "n_new1",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Asset Management to Central AAA Server"
+            },
+            {
+              "link_id": "nl_new13",
+              "source": "n_new1",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Asset Management to NIDS Sensor"
+            },
+            {
+              "link_id": "nl_new14",
+              "source": "n_new1",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Asset Management to NIPS Sensor"
+            },
+            {
+              "link_id": "nl_new15",
+              "source": "n_new1",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Asset Management to Application Firewall"
+            },
+            {
+              "link_id": "nl_new16",
+              "source": "n_new1",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Asset Management to 802.1X Controller"
+            },
+            {
+              "link_id": "nl_new17",
+              "source": "n_new1",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Asset Management to SIEM"
+            },
+            {
+              "link_id": "nl_new18",
+              "source": "n_new1",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Asset Management to Pentest Workstation"
+            },
+            {
+              "link_id": "nl_new19",
+              "source": "n_new1",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Asset Management to Internet External Endpoint"
+            },
+            {
+              "link_id": "nl_new20",
+              "source": "n_new1",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Asset Management to Non-Production Environment Representative Workload"
+            },
+            {
+              "link_id": "nl_new21",
+              "source": "n_new1",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "Asset Management to External Penetration Testing External Endpoint"
+            },
+            {
+              "link_id": "nl_new22",
+              "source": "n_new1",
+              "target": "n_struct4",
+              "link_type": "management",
+              "label": "Asset Management to Security Operations Security Gateway"
+            },
+            {
+              "link_id": "nl_new23",
+              "source": "n_new2",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Standard Firewall"
+            },
+            {
+              "link_id": "nl_new24",
+              "source": "n_new2",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Sensitive Firewall"
+            },
+            {
+              "link_id": "nl_new25",
+              "source": "n_new2",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Management Workstation (Standard)"
+            },
+            {
+              "link_id": "nl_new26",
+              "source": "n_new2",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Management Workstation (Sensitive)"
+            },
+            {
+              "link_id": "nl_new27",
+              "source": "n_new2",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Secure Gateway"
+            },
+            {
+              "link_id": "nl_new28",
+              "source": "n_new2",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Standard Router"
+            },
+            {
+              "link_id": "nl_new29",
+              "source": "n_new2",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Sensitive Router"
+            },
+            {
+              "link_id": "nl_new30",
+              "source": "n_new2",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Management Router"
+            },
+            {
+              "link_id": "nl_new31",
+              "source": "n_new2",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Data Flow Documentation to DNS Server"
+            },
+            {
+              "link_id": "nl_new32",
+              "source": "n_new2",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Data Flow Documentation to DNS Filtering Server"
+            },
+            {
+              "link_id": "nl_new33",
+              "source": "n_new2",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Web Proxy"
+            },
+            {
+              "link_id": "nl_new34",
+              "source": "n_new2",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Central AAA Server"
+            },
+            {
+              "link_id": "nl_new35",
+              "source": "n_new2",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Data Flow Documentation to NIDS Sensor"
+            },
+            {
+              "link_id": "nl_new36",
+              "source": "n_new2",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Data Flow Documentation to NIPS Sensor"
+            },
+            {
+              "link_id": "nl_new37",
+              "source": "n_new2",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Application Firewall"
+            },
+            {
+              "link_id": "nl_new38",
+              "source": "n_new2",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Data Flow Documentation to 802.1X Controller"
+            },
+            {
+              "link_id": "nl_new39",
+              "source": "n_new2",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Data Flow Documentation to SIEM"
+            },
+            {
+              "link_id": "nl_new40",
+              "source": "n_new2",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Pentest Workstation"
+            },
+            {
+              "link_id": "nl_new41",
+              "source": "n_new2",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Internet External Endpoint"
+            },
+            {
+              "link_id": "nl_new42",
+              "source": "n_new2",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Non-Production Environment Representative Workload"
+            },
+            {
+              "link_id": "nl_new43",
+              "source": "n_new2",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "Data Flow Documentation to External Penetration Testing External Endpoint"
+            },
+            {
+              "link_id": "nl_new44",
+              "source": "n_new2",
+              "target": "n_struct4",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Security Operations Security Gateway"
+            },
+            {
+              "link_id": "nl_new45",
+              "source": "n_new3",
+              "target": "n12",
+              "link_type": "management",
+              "label": "MFA Gateway to Central AAA Server"
+            },
+            {
+              "link_id": "nl_new46",
+              "source": "n_new4",
+              "target": "n12",
+              "link_type": "management",
+              "label": "IaC Management to Central AAA Server"
+            },
+            {
+              "link_id": "nl_new47",
+              "source": "n_new5",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Remote Device Manager to Central AAA Server"
+            },
+            {
+              "link_id": "nl_new48",
+              "source": "n_new6",
+              "target": "n17",
+              "link_type": "data_flow",
+              "label": "Network Traffic Logger to SIEM"
+            },
+            {
+              "link_id": "nl_new49",
+              "source": "n_new7",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Penetration Test Scheduler to Pentest Workstation"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl_new1",
+              "source": "z_new1",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Asset Management to Standard Environment"
+            },
+            {
+              "link_id": "zl_new2",
+              "source": "z_new1",
+              "target": "z2",
+              "link_type": "management",
+              "label": "Asset Management to Sensitive Environment"
+            },
+            {
+              "link_id": "zl_new3",
+              "source": "z_new1",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Asset Management to Management Workstations"
+            },
+            {
+              "link_id": "zl_new4",
+              "source": "z_new1",
+              "target": "z4",
+              "link_type": "management",
+              "label": "Asset Management to Internet"
+            },
+            {
+              "link_id": "zl_new5",
+              "source": "z_new1",
+              "target": "z5",
+              "link_type": "management",
+              "label": "Asset Management to Non-Production Environment"
+            },
+            {
+              "link_id": "zl_new6",
+              "source": "z_new1",
+              "target": "z6",
+              "link_type": "management",
+              "label": "Asset Management to External Testing Zone"
+            },
+            {
+              "link_id": "zl_new7",
+              "source": "z_new1",
+              "target": "z_preserve1",
+              "link_type": "management",
+              "label": "Asset Management to External Penetration Testing"
+            },
+            {
+              "link_id": "zl_new8",
+              "source": "z_new1",
+              "target": "z7",
+              "link_type": "management",
+              "label": "Asset Management to Security Operations"
+            },
+            {
+              "link_id": "zl_new9",
+              "source": "z_new2",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Standard Environment"
+            },
+            {
+              "link_id": "zl_new10",
+              "source": "z_new2",
+              "target": "z2",
+              "link_type": "management",
+              "label": "Data Flow Documentation to Sensitive Environment"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 22,
+        "zone_links": 4,
+        "node_links": 21
+      },
+      "counts_after": {
+        "zones": 11,
+        "nodes": 29,
+        "zone_links": 14,
+        "node_links": 70
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 7,
+        "zone_links": 10,
+        "node_links": 49
+      }
+    },
+    {
+      "round": 3,
+      "controls_repaired": [
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc22\", \"src\": \"nz1n1\", \"dst\": \"nz3n3\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc23\", \"src\": \"nz1n1\", \"dst\": \"nz3n4\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc24\", \"src\": \"nz2n2\", \"dst\": \"nz1n6\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc25\", \"src\": \"nz4n1abe\", \"dst\": \"nz2n2\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc26\", \"src\": \"nz5n542f\", \"dst\": \"nz2n2\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc27\", \"src\": \"nz6n18\", \"dst\": \"nz2n2\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc30\", \"src\": \"nz6n18\", \"dst\": \"nz4n1abe\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc31\", \"src\": \"nz1n1\", \"dst\": \"nz3n8\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc32\", \"src\": \"nz2n2\", \"dst\": \"nz3n8\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc33\", \"src\": \"nz3n3\", \"dst\": \"nz1n6\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc34\", \"src\": \"nz3n4\", \"dst\": \"nz1n6\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc35\", \"src\": \"nz3n3\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc36\", \"src\": \"nz3n4\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc37\", \"src\": \"nz1n1\", \"dst\": \"nz3n17\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc38\", \"src\": \"nz2n2\", \"dst\": \"nz3n17\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc39\", \"src\": \"nz3n3\", \"dst\": \"nz3n17\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc40\", \"src\": \"nz3n4\", \"dst\": \"nz3n17\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc30\", \"src\": \"nz6n18\", \"dst\": \"nz4n1abe\", \"resolved_src\": \"nz6n18\", \"resolved_dst\": \"nz4n1abe\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new50",
+              "source": "n1",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Standard Firewall to Management Workstation (Standard)"
+            },
+            {
+              "link_id": "nl_new51",
+              "source": "n1",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Standard Firewall to Management Workstation (Sensitive)"
+            },
+            {
+              "link_id": "nl_new52",
+              "source": "n2",
+              "target": "n6",
+              "link_type": "data_flow",
+              "label": "Sensitive Firewall to Standard Router"
+            },
+            {
+              "link_id": "nl_new53",
+              "source": "n18",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Pentest Workstation to Sensitive Firewall"
+            },
+            {
+              "link_id": "nl_new54",
+              "source": "n_struct2",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Non-Production Environment Representative Workload to Sensitive Firewall"
+            },
+            {
+              "link_id": "nl_new55",
+              "source": "n18",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Pentest Workstation to Internet External Endpoint"
+            },
+            {
+              "link_id": "nl_new56",
+              "source": "n3",
+              "target": "n6",
+              "link_type": "data_flow",
+              "label": "Management Workstation (Standard) to Standard Router"
+            },
+            {
+              "link_id": "nl_new57",
+              "source": "n4",
+              "target": "n6",
+              "link_type": "data_flow",
+              "label": "Management Workstation (Sensitive) to Standard Router"
+            },
+            {
+              "link_id": "nl_new58",
+              "source": "n3",
+              "target": "n7",
+              "link_type": "data_flow",
+              "label": "Management Workstation (Standard) to Sensitive Router"
+            },
+            {
+              "link_id": "nl_new59",
+              "source": "n4",
+              "target": "n7",
+              "link_type": "data_flow",
+              "label": "Management Workstation (Sensitive) to Sensitive Router"
+            },
+            {
+              "link_id": "nl_new60",
+              "source": "n1",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Standard Firewall to SIEM"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 11,
+        "nodes": 29,
+        "zone_links": 14,
+        "node_links": 70
+      },
+      "counts_after": {
+        "zones": 11,
+        "nodes": 29,
+        "zone_links": 14,
+        "node_links": 81
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 0,
+        "zone_links": 0,
+        "node_links": 11
+      },
+      "source": "stage5_diagnostic_report"
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-4_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Standard Firewall to Standard Router routing"
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Sensitive Firewall to Sensitive Router routing"
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n3",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Management Workstation (Standard) to Management Router management"
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n4",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Management Workstation (Sensitive) to Management Router management"
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Secure Gateway to Standard Router data flow"
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n9",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Server to Standard Router data flow"
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Filtering Server to Standard Router data flow"
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web Proxy to Standard Router data flow"
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n12",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Central AAA Server to Management Router management"
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS Sensor to Standard Router monitoring"
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIPS Sensor to Standard Router monitoring"
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Application Firewall to Standard Router data flow"
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8021,
+        "expected": "allow",
+        "reason": "802.1X Controller to Standard Router data flow"
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "SIEM to NIDS Sensor monitoring"
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "SIEM to NIPS Sensor monitoring"
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "SIEM to Standard Router monitoring"
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pentest Workstation to Secure Gateway data flow"
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n_struct1",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Internet External Endpoint to Standard Firewall routing"
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n_struct2",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Non-Production Environment to Standard Firewall routing"
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z6",
+        "target_zone": "z4",
+        "source_node": "n18",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pentest Workstation to Internet External Endpoint data flow"
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Management Workstation (Standard) to Standard Router data flow"
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Management Workstation (Sensitive) to Standard Router data flow"
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n3",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Management Workstation (Standard) to Sensitive Router data flow"
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n4",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Management Workstation (Sensitive) to Sensitive Router data flow"
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Standard Firewall to Sensitive Firewall blocked"
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n_struct1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Internet to Sensitive Firewall blocked"
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z5",
+        "target_zone": "z2",
+        "source_node": "n_struct2",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Non-Production to Sensitive Firewall blocked"
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n18",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Pentest Workstation to Sensitive Firewall blocked"
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Standard Firewall to Management Workstation (Standard) blocked"
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Standard Firewall to Management Workstation (Sensitive) blocked"
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Management Workstation (Standard) blocked"
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Management Workstation (Sensitive) blocked"
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z4",
+        "target_zone": "z3",
+        "source_node": "n_struct1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Internet to Management Workstation (Standard) blocked"
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z4",
+        "target_zone": "z3",
+        "source_node": "n_struct1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Internet to Management Workstation (Sensitive) blocked"
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z5",
+        "target_zone": "z3",
+        "source_node": "n_struct2",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Non-Production to Management Workstation (Standard) blocked"
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z5",
+        "target_zone": "z3",
+        "source_node": "n_struct2",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Non-Production to Management Workstation (Sensitive) blocked"
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z6",
+        "target_zone": "z3",
+        "source_node": "n18",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Pentest Workstation to Management Workstation (Standard) blocked"
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z6",
+        "target_zone": "z3",
+        "source_node": "n18",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Pentest Workstation to Management Workstation (Sensitive) blocked"
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Standard Firewall to Internet External Endpoint routing"
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Standard Firewall to Non-Production Environment routing"
+      }
+    ]
+  },
+  "stage5_diagnostic_summary": {
+    "total": 40,
+    "executed": 40,
+    "skipped": 0,
+    "passed": 39,
+    "failed": 1
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-4_req1/stage4_feedback/xml/IG3/generated_Government-4_req1_IG3.xml"
+}

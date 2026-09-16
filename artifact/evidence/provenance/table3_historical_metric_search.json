@@ -1,0 +1,32 @@
+[
+  {
+    "path": "evaluation/metrics_outputs/test_all_single_vector_evaluation_20260525_195550_feedback_metric_stage4_summary.json",
+    "key": "/summary/IG2/cis_satisfaction_before_repair",
+    "value": 0.7103
+  },
+  {
+    "path": "evaluation/metrics_outputs/test_all_single_vector_evaluation_20260525_195550_feedback_metric_stage4_summary.json",
+    "key": "/summary/IG3/cis_satisfaction_before_repair",
+    "value": 0.7695
+  },
+  {
+    "path": "evaluation/metrics_outputs/test_all_single_vector_evaluation_20260525_195550_metric_stage4_summary.json",
+    "key": "/summary/IG2/cis_satisfaction_before_repair",
+    "value": 0.7103
+  },
+  {
+    "path": "evaluation/metrics_outputs/test_all_single_vector_evaluation_20260525_195550_metric_stage4_summary.json",
+    "key": "/summary/IG3/cis_satisfaction_before_repair",
+    "value": 0.7695
+  },
+  {
+    "path": "evaluation/metrics_outputs/test_all_single_vector_structfix_20260526_091223_metric_stage4_summary.json",
+    "key": "/summary/IG2/cis_satisfaction_before_repair",
+    "value": 0.7183
+  },
+  {
+    "path": "evaluation/metrics_outputs/test_all_single_vector_structfix_20260526_091223_metric_stage4_summary.json",
+    "key": "/summary/IG3/cis_satisfaction_before_repair",
+    "value": 0.7792
+  }
+]

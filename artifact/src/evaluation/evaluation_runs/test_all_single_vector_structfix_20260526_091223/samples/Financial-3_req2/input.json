@@ -1,0 +1,6 @@
+{
+  "sample_id": "Financial-3_req2",
+  "template_id": "Financial-3",
+  "user_intent": "Design a secure hybrid cloud architecture using a hub-spoke topology in Azure. The spoke network will contain a private ARO cluster, while the hub will provide shared services like a firewall and a bastion host for secure access. This setup needs to be linked to our on-premises network, which has its own OCP cluster and databases, via an ExpressRoute connection. All public-facing web traffic must be protected by a WAF.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

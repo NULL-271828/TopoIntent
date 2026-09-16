@@ -1,0 +1,14 @@
+{
+  "IG2": {
+    "cis_satisfaction_before_repair": 0.78,
+    "cis_satisfaction_after_repair": 1.0,
+    "avg_repair_rounds": 1.43,
+    "avg_test_cases": 41.14
+  },
+  "IG3": {
+    "cis_satisfaction_before_repair": 0.78,
+    "cis_satisfaction_after_repair": 1.0,
+    "avg_repair_rounds": 1.36,
+    "avg_test_cases": 41.14
+  }
+}

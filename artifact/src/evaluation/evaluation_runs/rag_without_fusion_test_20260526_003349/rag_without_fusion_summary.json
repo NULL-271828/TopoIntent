@@ -1,0 +1,20 @@
+{
+  "variant": "RAG w/o Fusion",
+  "definition": "Stage1 extracts structured intent; Stage2 retrieves Top-1 template; the Top-1 retrieved template is used directly as the final output topology. No Stage3 fusion, no Stage4 repair, no Stage5 feedback.",
+  "run_dir": "artifact/src/evaluation/evaluation_runs/rag_without_fusion_test_20260526_003349",
+  "dataset": "test",
+  "dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json",
+  "samples": 14,
+  "success_samples": 14,
+  "failed_samples": 0,
+  "scenario_accuracy": 0.0,
+  "zone_type_recall": 0.5381,
+  "node_type_recall": 0.6278,
+  "top1_template_match_rate": 0.0,
+  "top3_template_match_rate": 0.0,
+  "top5_template_match_rate": 0.0,
+  "cis_satisfaction_rate": null,
+  "post_acl_pass_rate": null,
+  "note": "CIS satisfaction and Post-ACL pass rate are not computed for this baseline because it intentionally skips Stage4 and Stage5.",
+  "elapsed_sec": 166.891
+}

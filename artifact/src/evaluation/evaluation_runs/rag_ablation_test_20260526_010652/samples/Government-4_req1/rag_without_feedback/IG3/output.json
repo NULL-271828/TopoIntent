@@ -1,0 +1,1460 @@
+{
+  "sample_id": "Government-4_req1",
+  "gt_template_id": "Government-4",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-4_req1",
+    "title": "Government Isolated Network",
+    "description": "A network for government operations with isolated sensitive systems and secure management workstations.",
+    "scenario": "government",
+    "topology_summary": "The network will consist of separate zones for standard and sensitive information, with dedicated management workstations and a secure internet gateway for the standard environment.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Standard Environment",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Sensitive Environment",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Management Workstations",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Internet",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Non-Production Environment",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z6",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Data Flow Documentation",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Remote Access",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Standard Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Sensitive Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Management Workstation (Standard)",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Management Workstation (Sensitive)",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n5",
+        "name": "Secure Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Standard Core Switch",
+        "normalized_type": "switch",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Sensitive Core Switch",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Internet Gateway",
+        "normalized_type": "router",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n9",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "DNS Filtering Service",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "Web Proxy",
+        "normalized_type": "proxy",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n12",
+        "name": "Central AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n13",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n16",
+        "name": "802.1X Controller",
+        "normalized_type": "access_point",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n17",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n18",
+        "name": "Dedicated Admin Workstation (Non-Prod)",
+        "normalized_type": "endpoint",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n19",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n20",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n21",
+        "name": "Server Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n22",
+        "name": "MFA Service",
+        "normalized_type": "identity_server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n23",
+        "name": "Version-Controlled IaC",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n24",
+        "name": "Remote Device Manager",
+        "normalized_type": "server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n25",
+        "name": "Log Collection System",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n26",
+        "name": "Penetration Testing Service",
+        "normalized_type": "server",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n_new1",
+        "name": "Detailed Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "Standard Uplink"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n2",
+          "target": "n7",
+          "link_type": "uplink",
+          "label": "Sensitive Uplink"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n5",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "Internet Uplink"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n9",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "DNS Uplink"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n10",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "DNS Filtering Uplink"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n11",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "Web Proxy Uplink"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n12",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "AAA Uplink"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n13",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "NIDS Uplink"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n14",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "NIPS Uplink"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n15",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "App Firewall Uplink"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n16",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "802.1X Uplink"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n17",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "SIEM Uplink"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n18",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "Admin Uplink (Non-Prod)"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n12",
+          "target": "n5",
+          "link_type": "uplink",
+          "label": "AAA to Secure Gateway"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n17",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "Firewall to SIEM"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n19",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Asset Management to AAA"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n20",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Data Flow to SIEM"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n21",
+          "target": "n9",
+          "link_type": "uplink",
+          "label": "Server Firewall to DNS"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n22",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "MFA to Internet Gateway"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n23",
+          "target": "n6",
+          "link_type": "management",
+          "label": "IaC to Core Switch"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n24",
+          "target": "n22",
+          "link_type": "uplink",
+          "label": "Remote Device to MFA"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n25",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "Log Collection to Core Switch"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n26",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "Pen Test to Core Switch"
+        },
+        {
+          "link_id": "nl_new1",
+          "source": "n_new1",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Asset Management to AAA"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "uplink",
+          "label": "Standard Internet Uplink"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z3",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Management Uplink (Standard)"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z3",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Management Uplink (Sensitive)"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "uplink",
+          "label": "Prod to Non-Prod Uplink"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z6",
+          "target": "z1",
+          "link_type": "uplink",
+          "label": "External Testing to Standard Environment"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z7",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Asset Management to Management Workstations"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z8",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Data Flow to Standard Environment"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z9",
+          "target": "z4",
+          "link_type": "uplink",
+          "label": "Remote Access to Internet"
+        },
+        {
+          "link_id": "zl9",
+          "source": "z9",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Remote Access to Management Workstations"
+        },
+        {
+          "link_id": "zl10",
+          "source": "z6",
+          "target": "z1",
+          "link_type": "uplink",
+          "label": "Pen Test to Standard Environment"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-4_req1",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Detailed Asset Management System' (n_new1) and 'Asset Management System' (n19) in the 'Asset Management' zone (z7). These systems are linked to the 'Central AAA Server' (n12) and 'Management Workstations' (z3), indicating a structured approach to asset management.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation System' (n20) in the 'Data Flow Documentation' zone (z8). This system is linked to the 'SIEM' (n17) in the 'Standard Environment' (z1), indicating that data flows are documented and integrated into the monitoring system.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for 'Standard Environment' (z1) and 'Sensitive Environment' (z2), with dedicated firewalls (n1 and n2) and core switches (n6 and n7) for each. This indicates that data processing and storage are segmented based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Server Firewall' (n21) in the 'Standard Environment' (z1), which is linked to the 'DNS Server' (n9). This indicates that firewalls are implemented on servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n9) in the 'Standard Environment' (z1), which is linked to the 'Standard Core Switch' (n6). This indicates that trusted DNS servers are configured on network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Service' (n22) in the 'Remote Access' zone (z9), which is linked to the 'Internet Gateway' (n8). This indicates that MFA is required for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filtering Service' (n10) in the 'Standard Environment' (z1), which is linked to the 'Standard Core Switch' (n6). This indicates that DNS filtering services are used on end-user devices.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n11) in the 'Standard Environment' (z1), which is linked to the 'Standard Core Switch' (n6). This indicates that network-based URL filters are enforced.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for different environments (Standard, Sensitive, Management, Non-Production, etc.), with dedicated firewalls, switches, and other security controls. This indicates a secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Version-Controlled IaC' (n23) in the 'Management Workstations' zone (z3), which is linked to the 'Standard Core Switch' (n6). This indicates that network infrastructure is securely managed using version-controlled Infrastructure-as-Code.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central AAA Server' (n12) in the 'Management Workstations' zone (z3), which is linked to multiple nodes in the 'Standard Environment' (z1). This indicates centralized network AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Remote Device Manager' (n24) in the 'Remote Access' zone (z9), which is linked to the 'MFA Service' (n22) and 'Management Workstations' (z3). This indicates that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes 'Management Workstations' (z3) and 'Dedicated Admin Workstation (Non-Prod)' (n18) in the 'Non-Production Environment' (z5). These workstations are segmented from the primary network and do not have direct internet access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIDS' (n13) in the 'Standard Environment' (z1), which is linked to the 'Standard Core Switch' (n6). This indicates that a network intrusion detection solution is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for 'Standard Environment' (z1) and 'Sensitive Environment' (z2), with dedicated firewalls (n1 and n2) and core switches (n6 and n7). This indicates that traffic filtering is performed between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Service' (n22) in the 'Remote Access' zone (z9), which is linked to the 'Internet Gateway' (n8) and 'Management Workstations' (z3). This indicates that access control for remote assets is managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Log Collection System' (n25) in the 'Standard Environment' (z1), which is linked to the 'Standard Core Switch' (n6). This indicates that network traffic flow logs are collected.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIPS' (n14) in the 'Standard Environment' (z1), which is linked to the 'Standard Core Switch' (n6). This indicates that a network intrusion prevention solution is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an '802.1X Controller' (n16) in the 'Standard Environment' (z1), which is linked to the 'Standard Core Switch' (n6). This indicates that port-level access control is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Application Firewall' (n15) in the 'Standard Environment' (z1), which is linked to the 'Standard Core Switch' (n6). This indicates that application layer filtering is performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for 'Standard Environment' (z1) and 'Non-Production Environment' (z5), with dedicated workstations and servers. This indicates that production and non-production systems are separated.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Penetration Testing Service' (n26) in the 'External Testing Zone' (z6), which is linked to the 'Standard Environment' (z1). This indicates that periodic external penetration tests are performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "4.4",
+        "6.4",
+        "12.3",
+        "12.7",
+        "13.5",
+        "13.6",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology shows various nodes and zones but does not explicitly list an inventory of all enterprise assets, their network addresses, hardware addresses, machine names, asset owners, and departments.",
+          "missing_reason": "Explicit asset inventory details are missing.",
+          "repair_suggestion": "Add a node representing an asset management system or provide a detailed inventory list."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology shows links and zones but does not explicitly document data flows or service provider data flows.",
+          "missing_reason": "Explicit data flow documentation is missing.",
+          "repair_suggestion": "Add a node representing a data flow documentation system or provide a detailed data flow diagram."
+        },
+        {
+          "cis_safeguard_id": "4.4",
+          "title": "Implement and Manage a Firewall on Servers",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology includes firewalls but does not show firewalls specifically implemented on servers.",
+          "missing_reason": "Firewalls on servers are not explicitly shown.",
+          "repair_suggestion": "Add firewalls to server nodes."
+        },
+        {
+          "cis_safeguard_id": "6.4",
+          "title": "Require MFA for Remote Network Access",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show MFA requirements for remote network access.",
+          "missing_reason": "MFA for remote access is not explicitly shown.",
+          "repair_suggestion": "Add a node representing an MFA service and link it to remote access points."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various network devices but does not explicitly show secure management practices such as version-controlled IaC or secure network protocols.",
+          "missing_reason": "Secure management practices are not explicitly shown.",
+          "repair_suggestion": "Add nodes or labels indicating secure management practices."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show a VPN service or remote devices connecting to the AAA infrastructure.",
+          "missing_reason": "VPN and remote device connections to AAA are not explicitly shown.",
+          "repair_suggestion": "Add a node representing a VPN service and link it to remote access points and the AAA server."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show access control for remote assets based on up-to-date anti-malware, configuration compliance, and OS/app updates.",
+          "missing_reason": "Access control for remote assets is not explicitly shown.",
+          "repair_suggestion": "Add nodes or labels indicating access control policies for remote assets."
+        },
+        {
+          "cis_safeguard_id": "13.6",
+          "title": "Collect Network Traffic Flow Logs",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show the collection of network traffic flow logs.",
+          "missing_reason": "Network traffic flow log collection is not explicitly shown.",
+          "repair_suggestion": "Add a node representing a log collection system and link it to network devices."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an External Testing Zone (z6) but does not explicitly show periodic external penetration tests.",
+          "missing_reason": "Periodic external penetration tests are not explicitly shown.",
+          "repair_suggestion": "Add a node representing a penetration testing service and link it to the External Testing Zone."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z7",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z8",
+            "name": "Data Flow Documentation",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z9",
+            "name": "Remote Access",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n19",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n20",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z8"
+          },
+          {
+            "node_id": "n21",
+            "name": "Server Firewall",
+            "normalized_type": "firewall",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n22",
+            "name": "MFA Service",
+            "normalized_type": "identity_server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n23",
+            "name": "Version-Controlled IaC",
+            "normalized_type": "server",
+            "zone_id": "z3"
+          },
+          {
+            "node_id": "n24",
+            "name": "Remote Device Manager",
+            "normalized_type": "server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n25",
+            "name": "Log Collection System",
+            "normalized_type": "server",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n26",
+            "name": "Penetration Testing Service",
+            "normalized_type": "server",
+            "zone_id": "z6"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl16",
+              "source": "n19",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Asset Management to AAA"
+            },
+            {
+              "link_id": "nl17",
+              "source": "n20",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Data Flow to SIEM"
+            },
+            {
+              "link_id": "nl18",
+              "source": "n21",
+              "target": "n9",
+              "link_type": "uplink",
+              "label": "Server Firewall to DNS"
+            },
+            {
+              "link_id": "nl19",
+              "source": "n22",
+              "target": "n8",
+              "link_type": "uplink",
+              "label": "MFA to Internet Gateway"
+            },
+            {
+              "link_id": "nl20",
+              "source": "n23",
+              "target": "n6",
+              "link_type": "management",
+              "label": "IaC to Core Switch"
+            },
+            {
+              "link_id": "nl21",
+              "source": "n24",
+              "target": "n22",
+              "link_type": "uplink",
+              "label": "Remote Device to MFA"
+            },
+            {
+              "link_id": "nl22",
+              "source": "n25",
+              "target": "n6",
+              "link_type": "uplink",
+              "label": "Log Collection to Core Switch"
+            },
+            {
+              "link_id": "nl23",
+              "source": "n26",
+              "target": "n6",
+              "link_type": "uplink",
+              "label": "Pen Test to Core Switch"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl6",
+              "source": "z7",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Asset Management to Management Workstations"
+            },
+            {
+              "link_id": "zl7",
+              "source": "z8",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Data Flow to Standard Environment"
+            },
+            {
+              "link_id": "zl8",
+              "source": "z9",
+              "target": "z4",
+              "link_type": "uplink",
+              "label": "Remote Access to Internet"
+            },
+            {
+              "link_id": "zl9",
+              "source": "z9",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Remote Access to Management Workstations"
+            },
+            {
+              "link_id": "zl10",
+              "source": "z6",
+              "target": "z1",
+              "link_type": "uplink",
+              "label": "Pen Test to Standard Environment"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 6,
+        "nodes": 18,
+        "zone_links": 5,
+        "node_links": 15
+      },
+      "counts_after": {
+        "zones": 9,
+        "nodes": 26,
+        "zone_links": 10,
+        "node_links": 23
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 8,
+        "zone_links": 5,
+        "node_links": 8
+      }
+    },
+    {
+      "round": 2,
+      "controls_repaired": [
+        "1.1"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show an asset management system that records all required details such as network address, hardware address, machine name, asset owner, and department.",
+          "missing_reason": "No explicit asset management system with required details.",
+          "repair_suggestion": "Add an asset management system node that records all required details and link it to the management zone."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [
+          {
+            "node_id": "n_new1",
+            "name": "Detailed Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new1",
+              "source": "n_new1",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Asset Management to AAA"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 9,
+        "nodes": 26,
+        "zone_links": 10,
+        "node_links": 23
+      },
+      "counts_after": {
+        "zones": 9,
+        "nodes": 27,
+        "zone_links": 10,
+        "node_links": 24
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 1,
+        "zone_links": 0,
+        "node_links": 1
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-4_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Standard firewall to core switch communication."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Sensitive firewall to core switch communication."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n5",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Secure gateway to internet gateway communication."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n9",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS server to core switch communication."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "DNS filtering service to core switch communication."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web proxy to core switch communication."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Central AAA server to core switch communication."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to core switch communication."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIPS to core switch communication."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Application firewall to core switch communication."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8021,
+        "expected": "allow",
+        "reason": "802.1X controller to core switch communication."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "SIEM to core switch communication."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Admin workstation to core switch communication."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Central AAA server to secure gateway communication."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "SIEM to standard firewall communication."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z7",
+        "target_zone": "z3",
+        "source_node": "n19",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset management system to central AAA server communication."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n20",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data flow documentation system to SIEM communication."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n21",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Server firewall to DNS server communication."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z9",
+        "target_zone": "z4",
+        "source_node": "n22",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA service to internet gateway communication."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n23",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Version-controlled IaC to core switch communication."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z9",
+        "target_zone": "z9",
+        "source_node": "n24",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Remote device manager to MFA service communication."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n25",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Log collection system to core switch communication."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n26",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Penetration testing service to core switch communication."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z7",
+        "target_zone": "z3",
+        "source_node": "n_new1",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Detailed asset management system to central AAA server communication."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Internet gateway to core switch communication blocked."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n6",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Core switch to sensitive core switch communication blocked."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n6",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Core switch to admin workstation communication blocked."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n6",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Core switch to penetration testing service communication blocked."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n6",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Core switch to asset management system communication blocked."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n6",
+        "target_node": "n20",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Core switch to data flow documentation system communication blocked."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z9",
+        "source_node": "n6",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Core switch to MFA service communication blocked."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n6",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "block",
+        "reason": "Core switch to central AAA server communication blocked."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "block",
+        "reason": "Core switch to SIEM communication blocked."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n25",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "block",
+        "reason": "Core switch to log collection system communication blocked."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Core switch to server firewall communication blocked."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Core switch to DNS filtering service communication blocked."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Core switch to web proxy communication blocked."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Core switch to NIDS communication blocked."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Core switch to NIPS communication blocked."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Core switch to application firewall communication blocked."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_feedback/IG3/xml/IG3/generated_Government-4_req1_IG3.xml"
+}

@@ -1,0 +1,11 @@
+{
+  "xml_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-4_req2/stage4_feedback/xml/IG2/generated_Financial-4_req2_IG2.xml",
+  "script_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-4_req2/stage5_1_feedback/mininet_scripts/IG2/validation_generated_Financial-4_req2_IG2.py",
+  "expected_report_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-4_req2/stage5_1_feedback/mininet_scripts/IG2/policy_test_report_generated_Financial-4_req2_IG2.json",
+  "template_id": "generated_Financial-4_req2",
+  "ig_level": "IG2",
+  "domains": 8,
+  "nodes": 26,
+  "node_links": 46,
+  "policy_tests": 40
+}

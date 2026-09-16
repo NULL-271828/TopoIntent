@@ -1,0 +1,111 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Financial-3_req2",
+  "title": "Secure Hybrid Cloud Architecture with Hub-Spoke Topology",
+  "description": "A hybrid cloud setup with a hub in Azure providing shared services and a spoke containing a private ARO cluster, connected to an on-premises network via ExpressRoute.",
+  "scenario": "finance",
+  "topology_summary": "The hub in Azure includes a firewall and a bastion host, while the spoke contains a private ARO cluster. The on-premises network has an OCP cluster and databases, connected to Azure via ExpressRoute. Public web traffic is protected by a WAF.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Azure Hub",
+      "zone_type": "cloud_hub"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Azure Spoke",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z3",
+      "name": "On-Premises Network",
+      "zone_type": "data_center"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Azure Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Bastion Host",
+      "normalized_type": "bastion",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "Private ARO Cluster",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n4",
+      "name": "OCP Cluster",
+      "normalized_type": "workload",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n5",
+      "name": "Databases",
+      "normalized_type": "database",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n6",
+      "name": "WAF",
+      "normalized_type": "waf",
+      "zone_id": "z1"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "management",
+        "label": "Management"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n1",
+        "target": "n3",
+        "link_type": "routing",
+        "label": "Routing"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n1",
+        "target": "n6",
+        "link_type": "data_flow",
+        "label": "Web Traffic"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n6",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "Web Traffic"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z2",
+        "link_type": "routing",
+        "label": "Routing"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z1",
+        "target": "z3",
+        "link_type": "vpn",
+        "label": "ExpressRoute"
+      }
+    ]
+  }
+}

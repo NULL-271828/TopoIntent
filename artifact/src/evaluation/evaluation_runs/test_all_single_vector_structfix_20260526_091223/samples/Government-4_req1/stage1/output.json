@@ -1,0 +1,71 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-4_req1",
+    "title": "Government Isolated Network",
+    "description": "A network for government operations with isolated sensitive systems and secure management workstations.",
+    "scenario": "government",
+    "topology_summary": "The network will consist of separate zones for standard and sensitive information, with dedicated management workstations and a secure internet gateway for the standard environment.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Standard Environment",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Sensitive Environment",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Management Workstations",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Standard Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Sensitive Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Management Workstation (Standard)",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Management Workstation (Sensitive)",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n5",
+        "name": "Secure Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Government-4_req1\", \"title\": \"Government Isolated Network\", \"description\": \"A network for government operations with isolated sensitive systems and secure management workstations.\", \"scenario\": \"government\", \"topology_summary\": \"The network will consist of separate zones for standard and sensitive information, with dedicated management workstations and a secure internet gateway for the standard environment.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Standard Environment\", \"zone_type\": \"enterprise\"}, {\"zone_id\": \"z2\", \"name\": \"Sensitive Environment\", \"zone_type\": \"security\"}, {\"zone_id\": \"z3\", \"name\": \"Management Workstations\", \"zone_type\": \"management\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Standard Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Sensitive Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z2\"}, {\"node_id\": \"n3\", \"name\": \"Management Workstation (Standard)\", \"normalized_type\": \"endpoint\", \"zone_id\": \"z3\"}, {\"node_id\": \"n4\", \"name\": \"Management Workstation (Sensitive)\", \"normalized_type\": \"endpoint\", \"zone_id\": \"z3\"}, {\"node_id\": \"n5\", \"name\": \"Secure Gateway\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 6.434
+  }
+}

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Government-3_req2" title="Azure Hub-Spoke Network" scenario="cloud" ig_level="IG3">
+  <Description>A hub-and-spoke Azure network with centralized security and management.</Description>
+  <Summary>The hub contains an Azure Firewall and Azure Bastion. Spokes are VNETs for identity, operations, and workloads, with all inter-spoke traffic routed through the hub firewall.</Summary>
+  <Domains>
+    <Domain id="z1" name="Hub VNet" type="cloud_hub"/>
+    <Domain id="z2" name="Identity VNet" type="cloud_spoke"/>
+    <Domain id="z3" name="Operations VNet" type="cloud_spoke"/>
+    <Domain id="z4" name="Workload VNet" type="cloud_spoke"/>
+    <Domain id="z5" name="Management VNet" type="management"/>
+    <Domain id="z6" name="Non-Production VNet" type="cloud_spoke"/>
+    <Domain id="z7" name="Security Tools" type="security"/>
+    <Domain id="z8" name="Asset Management" type="management"/>
+    <Domain id="z9" name="Documentation" type="management"/>
+    <Domain id="z10" name="Pen Testing" type="security"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="Azure Firewall" domain="z1" domain_name="Hub VNet" type="firewall" ip=""/>
+    <Node id="n2" name="Azure Bastion" domain="z1" domain_name="Hub VNet" type="bastion" ip=""/>
+    <Node id="n3" name="Log Analytics Workspace" domain="z1" domain_name="Hub VNet" type="siem" ip=""/>
+    <Node id="n4" name="DNS Server" domain="z1" domain_name="Hub VNet" type="dns_server" ip=""/>
+    <Node id="n5" name="MFA/Identity Server" domain="z5" domain_name="Management VNet" type="identity_server" ip=""/>
+    <Node id="n6" name="Web Proxy" domain="z1" domain_name="Hub VNet" type="waf" ip=""/>
+    <Node id="n7" name="NIDS" domain="z1" domain_name="Hub VNet" type="ids_ips" ip=""/>
+    <Node id="n8" name="NIPS" domain="z1" domain_name="Hub VNet" type="ids_ips" ip=""/>
+    <Node id="n9" name="Application Firewall" domain="z1" domain_name="Hub VNet" type="waf" ip=""/>
+    <Node id="n10" name="NAC" domain="z1" domain_name="Hub VNet" type="access_point" ip=""/>
+    <Node id="n11" name="Admin Workstation" domain="z5" domain_name="Management VNet" type="endpoint" ip=""/>
+    <Node id="n_struct1" name="Identity VNet Identity Service" domain="z2" domain_name="Identity VNet" type="identity_server" ip=""/>
+    <Node id="n_struct2" name="Operations VNet Representative Workload" domain="z3" domain_name="Operations VNet" type="workload" ip=""/>
+    <Node id="n_struct3" name="Workload VNet Representative Workload" domain="z4" domain_name="Workload VNet" type="workload" ip=""/>
+    <Node id="n_struct4" name="Non-Production VNet Representative Workload" domain="z6" domain_name="Non-Production VNet" type="workload" ip=""/>
+    <Node id="n_struct5" name="Security Tools Security Gateway" domain="z7" domain_name="Security Tools" type="firewall" ip=""/>
+    <Node id="n12" name="Asset Inventory System" domain="z8" domain_name="Asset Management" type="server" ip=""/>
+    <Node id="n13" name="Data Flow Documentation" domain="z9" domain_name="Documentation" type="server" ip=""/>
+    <Node id="n14" name="DNS Filtering Service" domain="z1" domain_name="Hub VNet" type="waf" ip=""/>
+    <Node id="n15" name="IaC Repository" domain="z5" domain_name="Management VNet" type="server" ip=""/>
+    <Node id="n16" name="Secure Network Protocols" domain="z5" domain_name="Management VNet" type="server" ip=""/>
+    <Node id="n17" name="Pen Testing Service" domain="z10" domain_name="Pen Testing" type="other" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z2" type="peering" label="VNet Peering"/>
+      <Link id="zl2" source="z1" target="z3" type="peering" label="VNet Peering"/>
+      <Link id="zl3" source="z1" target="z4" type="peering" label="VNet Peering"/>
+      <Link id="zl4" source="z1" target="z5" type="peering" label="VNet Peering"/>
+      <Link id="zl5" source="z1" target="z6" type="peering" label="VNet Peering"/>
+      <Link id="zl6" source="z8" target="z1" type="management" label="Asset Management"/>
+      <Link id="zl7" source="z9" target="z1" type="management" label="Documentation Management"/>
+      <Link id="zl8" source="z10" target="z1" type="management" label="Pen Testing Management"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n1" target="n3" type="monitoring" label="Firewall Logs"/>
+      <Link id="nl2" source="n4" target="n1" type="management" label="DNS Management"/>
+      <Link id="nl3" source="n5" target="n2" type="management" label="MFA Management"/>
+      <Link id="nl4" source="n6" target="n1" type="data_flow" label="Web Proxy Data Flow"/>
+      <Link id="nl5" source="n7" target="n1" type="monitoring" label="NIDS Monitoring"/>
+      <Link id="nl6" source="n8" target="n1" type="monitoring" label="NIPS Monitoring"/>
+      <Link id="nl7" source="n9" target="n1" type="data_flow" label="Application Layer Filtering"/>
+      <Link id="nl8" source="n10" target="n1" type="management" label="NAC Management"/>
+      <Link id="nl9" source="n11" target="n2" type="management" label="Admin Workstation Management"/>
+      <Link id="nl_struct1" source="n1" target="n_struct1" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct2" source="n1" target="n_struct2" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct3" source="n1" target="n_struct3" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct4" source="n1" target="n_struct4" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct5" source="n1" target="n_struct5" type="routing" label="Structural zone attachment"/>
+      <Link id="nl10" source="n12" target="n1" type="management" label="Inventory Management"/>
+      <Link id="nl11" source="n12" target="n3" type="monitoring" label="Inventory Monitoring"/>
+      <Link id="nl12" source="n13" target="n1" type="management" label="Documentation Management"/>
+      <Link id="nl13" source="n13" target="n3" type="monitoring" label="Documentation Monitoring"/>
+      <Link id="nl14" source="n14" target="n4" type="data_flow" label="DNS Filtering"/>
+      <Link id="nl15" source="n15" target="n1" type="management" label="IaC Management"/>
+      <Link id="nl16" source="n16" target="n1" type="management" label="Protocol Management"/>
+      <Link id="nl17" source="n17" target="n1" type="data_flow" label="Pen Test Data Flow"/>
+      <Link id="nl_new1" source="n1" target="n5" type="management" label="Firewall to MFA/Identity Server"/>
+      <Link id="nl_new2" source="n5" target="n1" type="management" label="MFA/Identity Server to Firewall"/>
+      <Link id="nl_new3" source="n11" target="n1" type="management" label="Admin Workstation to Firewall"/>
+      <Link id="nl_new4" source="n1" target="n11" type="management" label="Firewall to Admin Workstation"/>
+      <Link id="nl_new5" source="n_struct1" target="n1" type="management" label="Identity VNet Identity Service to Firewall"/>
+      <Link id="nl_new6" source="n1" target="n_struct1" type="management" label="Firewall to Identity VNet Identity Service"/>
+      <Link id="nl_new7" source="n_struct2" target="n1" type="management" label="Operations VNet Representative Workload to Firewall"/>
+      <Link id="nl_new8" source="n1" target="n_struct2" type="management" label="Firewall to Operations VNet Representative Workload"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n3" protocol="tcp" port="443">
+      <Reason>Firewall to Log Analytics Workspace monitoring</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z1" dst_zone="z1" src_node="n4" dst_node="n1" protocol="tcp" port="53">
+      <Reason>DNS Server to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc3" src_zone="z5" dst_zone="z1" src_node="n5" dst_node="n2" protocol="tcp" port="443">
+      <Reason>MFA/Identity Server to Azure Bastion management</Reason>
+    </Allow>
+    <Allow id="tc4" src_zone="z1" dst_zone="z1" src_node="n6" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Web Proxy to Firewall data flow</Reason>
+    </Allow>
+    <Allow id="tc5" src_zone="z1" dst_zone="z1" src_node="n7" dst_node="n1" protocol="tcp" port="443">
+      <Reason>NIDS to Firewall monitoring</Reason>
+    </Allow>
+    <Allow id="tc6" src_zone="z1" dst_zone="z1" src_node="n8" dst_node="n1" protocol="tcp" port="443">
+      <Reason>NIPS to Firewall monitoring</Reason>
+    </Allow>
+    <Allow id="tc7" src_zone="z1" dst_zone="z1" src_node="n9" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Application Firewall to Firewall data flow</Reason>
+    </Allow>
+    <Allow id="tc8" src_zone="z1" dst_zone="z1" src_node="n10" dst_node="n1" protocol="tcp" port="443">
+      <Reason>NAC to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z5" dst_zone="z1" src_node="n11" dst_node="n2" protocol="tcp" port="443">
+      <Reason>Admin Workstation to Azure Bastion management</Reason>
+    </Allow>
+    <Allow id="tc10" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n_struct1" protocol="tcp" port="443">
+      <Reason>Firewall to Identity VNet Identity Service routing</Reason>
+    </Allow>
+    <Allow id="tc11" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n_struct2" protocol="tcp" port="443">
+      <Reason>Firewall to Operations VNet Representative Workload routing</Reason>
+    </Allow>
+    <Allow id="tc12" src_zone="z1" dst_zone="z4" src_node="n1" dst_node="n_struct3" protocol="tcp" port="443">
+      <Reason>Firewall to Workload VNet Representative Workload routing</Reason>
+    </Allow>
+    <Allow id="tc13" src_zone="z1" dst_zone="z6" src_node="n1" dst_node="n_struct4" protocol="tcp" port="443">
+      <Reason>Firewall to Non-Production VNet Representative Workload routing</Reason>
+    </Allow>
+    <Allow id="tc14" src_zone="z1" dst_zone="z7" src_node="n1" dst_node="n_struct5" protocol="tcp" port="443">
+      <Reason>Firewall to Security Tools Security Gateway routing</Reason>
+    </Allow>
+    <Allow id="tc15" src_zone="z8" dst_zone="z1" src_node="n12" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Asset Inventory System to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc16" src_zone="z8" dst_zone="z1" src_node="n12" dst_node="n3" protocol="tcp" port="443">
+      <Reason>Asset Inventory System to Log Analytics Workspace monitoring</Reason>
+    </Allow>
+    <Allow id="tc17" src_zone="z9" dst_zone="z1" src_node="n13" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Data Flow Documentation to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc18" src_zone="z9" dst_zone="z1" src_node="n13" dst_node="n3" protocol="tcp" port="443">
+      <Reason>Data Flow Documentation to Log Analytics Workspace monitoring</Reason>
+    </Allow>
+    <Allow id="tc19" src_zone="z1" dst_zone="z1" src_node="n14" dst_node="n4" protocol="tcp" port="53">
+      <Reason>DNS Filtering Service to DNS Server data flow</Reason>
+    </Allow>
+    <Allow id="tc20" src_zone="z5" dst_zone="z1" src_node="n15" dst_node="n1" protocol="tcp" port="443">
+      <Reason>IaC Repository to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc21" src_zone="z5" dst_zone="z1" src_node="n16" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Secure Network Protocols to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc22" src_zone="z10" dst_zone="z1" src_node="n17" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Pen Testing Service to Firewall data flow</Reason>
+    </Allow>
+    <Allow id="tc23" src_zone="z1" dst_zone="z5" src_node="n1" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Firewall to MFA/Identity Server management</Reason>
+    </Allow>
+    <Allow id="tc24" src_zone="z5" dst_zone="z1" src_node="n5" dst_node="n1" protocol="tcp" port="443">
+      <Reason>MFA/Identity Server to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc25" src_zone="z5" dst_zone="z1" src_node="n11" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Admin Workstation to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc26" src_zone="z1" dst_zone="z5" src_node="n1" dst_node="n11" protocol="tcp" port="443">
+      <Reason>Firewall to Admin Workstation management</Reason>
+    </Allow>
+    <Allow id="tc27" src_zone="z2" dst_zone="z1" src_node="n_struct1" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Identity VNet Identity Service to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc28" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n_struct1" protocol="tcp" port="443">
+      <Reason>Firewall to Identity VNet Identity Service management</Reason>
+    </Allow>
+    <Allow id="tc29" src_zone="z3" dst_zone="z1" src_node="n_struct2" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Operations VNet Representative Workload to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc30" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n_struct2" protocol="tcp" port="443">
+      <Reason>Firewall to Operations VNet Representative Workload management</Reason>
+    </Allow>
+    <Allow id="tc31" src_zone="z4" dst_zone="z1" src_node="n_struct3" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Workload VNet Representative Workload to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc32" src_zone="z1" dst_zone="z4" src_node="n1" dst_node="n_struct3" protocol="tcp" port="443">
+      <Reason>Firewall to Workload VNet Representative Workload management</Reason>
+    </Allow>
+    <Allow id="tc33" src_zone="z6" dst_zone="z1" src_node="n_struct4" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Non-Production VNet Representative Workload to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc34" src_zone="z1" dst_zone="z6" src_node="n1" dst_node="n_struct4" protocol="tcp" port="443">
+      <Reason>Firewall to Non-Production VNet Representative Workload management</Reason>
+    </Allow>
+    <Allow id="tc35" src_zone="z7" dst_zone="z1" src_node="n_struct5" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Security Tools Security Gateway to Firewall management</Reason>
+    </Allow>
+    <Allow id="tc36" src_zone="z1" dst_zone="z7" src_node="n1" dst_node="n_struct5" protocol="tcp" port="443">
+      <Reason>Firewall to Security Tools Security Gateway management</Reason>
+    </Allow>
+    <Allow id="tc37" src_zone="z1" dst_zone="z8" src_node="n1" dst_node="n12" protocol="tcp" port="443">
+      <Reason>Firewall to Asset Inventory System management</Reason>
+    </Allow>
+    <Allow id="tc38" src_zone="z1" dst_zone="z9" src_node="n1" dst_node="n13" protocol="tcp" port="443">
+      <Reason>Firewall to Data Flow Documentation management</Reason>
+    </Allow>
+    <Allow id="tc39" src_zone="z1" dst_zone="z10" src_node="n1" dst_node="n17" protocol="tcp" port="443">
+      <Reason>Firewall to Pen Testing Service data flow</Reason>
+    </Allow>
+    <Allow id="tc40" src_zone="z10" dst_zone="z1" src_node="n17" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Pen Testing Service to Firewall data flow</Reason>
+    </Allow>
+    <Deny id="tc41" src_zone="z10" dst_zone="z6" src_node="n17" dst_node="n_struct4" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc42" src_zone="z10" dst_zone="z2" src_node="n17" dst_node="n_struct1" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc43" src_zone="z10" dst_zone="z5" src_node="n17" dst_node="n5" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc44" src_zone="z10" dst_zone="z1" src_node="n17" dst_node="n4" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+  </Policies>
+  <Compliance ig_level="IG3" all_required_satisfied="true">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Asset Inventory System' node (n12) in the 'Asset Management' zone (z8), which is linked to the 'Azure Firewall' (n1) and 'Log Analytics Workspace' (n3) for management and monitoring.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Data Flow Documentation' node (n13) in the 'Documentation' zone (z9), which is linked to the 'Azure Firewall' (n1) and 'Log Analytics Workspace' (n3) for management and monitoring.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology shows multiple VNETs (Identity, Operations, Workload, Non-Production) that are peered with the Hub VNet, indicating segmentation of data processing and storage based on sensitivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Azure Firewall' (n1) in the 'Hub VNet' (z1), which is linked to various nodes and VNETs, indicating firewall management on servers.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Server' (n4) in the 'Hub VNet' (z1), which is linked to the 'Azure Firewall' (n1) for management.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'MFA/Identity Server' (n5) in the 'Management VNet' (z5), which is linked to the 'Azure Bastion' (n2) for management.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Filtering Service' (n14) in the 'Hub VNet' (z1), which is linked to the 'DNS Server' (n4) for data flow.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Web Proxy' (n6) in the 'Hub VNet' (z1), which is linked to the 'Azure Firewall' (n1) for data flow, indicating URL filtering.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology shows a hub-and-spoke design with a central 'Hub VNet' (z1) containing security and management services, and multiple peered VNETs for different functions, indicating a secure network architecture.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'IaC Repository' (n15) and 'Secure Network Protocols' (n16) in the 'Management VNet' (z5), both linked to the 'Azure Firewall' (n1) for management.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'MFA/Identity Server' (n5) in the 'Management VNet' (z5), which is linked to the 'Azure Bastion' (n2) for management, indicating centralized AAA.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Azure Bastion' (n2) in the 'Hub VNet' (z1), which is linked to the 'MFA/Identity Server' (n5) for management, indicating remote device connection to AAA infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.8" title="Establish and Maintain Dedicated Computing Resources for All Administrative Work" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Admin Workstation' (n11) in the 'Management VNet' (z5), which is linked to the 'Azure Bastion' (n2) and 'Azure Firewall' (n1) for management, indicating dedicated administrative resources.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NIDS' (n7) in the 'Hub VNet' (z1), which is linked to the 'Azure Firewall' (n1) for monitoring.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology shows VNET peering links between the 'Hub VNet' (z1) and other VNETs (Identity, Operations, Workload, Non-Production), indicating traffic filtering between segments.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'MFA/Identity Server' (n5) in the 'Management VNet' (z5), which is linked to the 'Azure Bastion' (n2) for management, indicating access control for remote assets.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Log Analytics Workspace' (n3) in the 'Hub VNet' (z1), which is linked to the 'Azure Firewall' (n1) for monitoring, indicating collection of network traffic flow logs.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.8" title="Deploy a Network Intrusion Prevention Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NIPS' (n8) in the 'Hub VNet' (z1), which is linked to the 'Azure Firewall' (n1) for monitoring.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.9" title="Deploy Port-Level Access Control" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NAC' (n10) in the 'Hub VNet' (z1), which is linked to the 'Azure Firewall' (n1) for management, indicating port-level access control.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.10" title="Perform Application Layer Filtering" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Application Firewall' (n9) in the 'Hub VNet' (z1), which is linked to the 'Azure Firewall' (n1) for data flow, indicating application layer filtering.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Non-Production VNet' (z6) and other VNETs (Identity, Operations, Workload) that are peered with the 'Hub VNet' (z1), indicating separation of production and non-production systems.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Pen Testing Service' (n17) in the 'Pen Testing' zone (z10), which is linked to the 'Azure Firewall' (n1) for data flow, indicating periodic external penetration testing.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="0" controls="stage4_structural_integrity,stage4_structural_integrity,stage4_structural_integrity,stage4_structural_integrity,stage4_ig_consistency" zones_added="1" nodes_added="5" zone_links_added="0" node_links_added="5"/>
+    <Repair round="1" controls="1.1,3.8,9.2,12.3,18.2" zones_added="3" nodes_added="6" zone_links_added="3" node_links_added="8"/>
+    <Repair round="3" controls="stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation" zones_added="0" nodes_added="0" zone_links_added="0" node_links_added="8"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

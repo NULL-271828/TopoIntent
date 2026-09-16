@@ -1,0 +1,1493 @@
+{
+  "sample_id": "Financial-2_req1",
+  "gt_template_id": "Financial-2",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-2_req1",
+    "title": "High-Frequency Trading Infrastructure",
+    "description": "Supports high-frequency trading with market data ingestion, processing, and order routing to three main sites.",
+    "scenario": "finance",
+    "topology_summary": "The topology includes a central data center for processing, connected to multiple exchange feeds and three main sites. It ensures resilience and clear data flow from ingestion to execution.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Exchange Feeds",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Site 1",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Site 2",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Site 3",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Non-Production",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z8",
+        "name": "External Testing",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Remote Access",
+        "zone_type": "dmz"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Market Data Ingestion Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Analytics Engine",
+        "normalized_type": "workload",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Algorithmic Engine",
+        "normalized_type": "workload",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "Execution Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Exchange Feed 1",
+        "normalized_type": "endpoint",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Exchange Feed 2",
+        "normalized_type": "endpoint",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Exchange Feed 3",
+        "normalized_type": "endpoint",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n9",
+        "name": "Site 1 Router",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n10",
+        "name": "Site 2 Router",
+        "normalized_type": "router",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n11",
+        "name": "Site 3 Router",
+        "normalized_type": "router",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n12",
+        "name": "Management Server",
+        "normalized_type": "server",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n13",
+        "name": "IDS/IPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n16",
+        "name": "MFA/Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n17",
+        "name": "DNS Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n18",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n19",
+        "name": "Central AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n20",
+        "name": "NAC/Compliance Check",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n21",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n22",
+        "name": "802.1X/NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n23",
+        "name": "Asset Inventory System",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n24",
+        "name": "VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n25",
+        "name": "Remote Device",
+        "normalized_type": "endpoint",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n26",
+        "name": "Access Control Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n27",
+        "name": "Penetration Testing Service",
+        "normalized_type": "other",
+        "zone_id": "z8"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n6",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Market Data"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n1",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Analytics Data"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n2",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Algorithmic Data"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n3",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Execution Orders"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n4",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Execution to Site 1"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n4",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Execution to Site 2"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n4",
+          "target": "n11",
+          "link_type": "data_flow",
+          "label": "Execution to Site 3"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n13",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "IDS/IPS Monitoring"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n13",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "IDS/IPS Monitoring"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n13",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "IDS/IPS Monitoring"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n13",
+          "target": "n4",
+          "link_type": "monitoring",
+          "label": "IDS/IPS Monitoring"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n14",
+          "target": "n13",
+          "link_type": "data_flow",
+          "label": "SIEM Data"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS Resolution"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n15",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "DNS Resolution"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n15",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "DNS Resolution"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n15",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "DNS Resolution"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n16",
+          "target": "n9",
+          "link_type": "management",
+          "label": "MFA/Identity Management"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n16",
+          "target": "n10",
+          "link_type": "management",
+          "label": "MFA/Identity Management"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n16",
+          "target": "n11",
+          "link_type": "management",
+          "label": "MFA/Identity Management"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n17",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n17",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n17",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n17",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl24",
+          "source": "n18",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "URL Filtering"
+        },
+        {
+          "link_id": "nl25",
+          "source": "n18",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "URL Filtering"
+        },
+        {
+          "link_id": "nl26",
+          "source": "n18",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "URL Filtering"
+        },
+        {
+          "link_id": "nl27",
+          "source": "n18",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "URL Filtering"
+        },
+        {
+          "link_id": "nl28",
+          "source": "n19",
+          "target": "n16",
+          "link_type": "data_flow",
+          "label": "AAA Data"
+        },
+        {
+          "link_id": "nl29",
+          "source": "n20",
+          "target": "n9",
+          "link_type": "management",
+          "label": "NAC/Compliance Check"
+        },
+        {
+          "link_id": "nl30",
+          "source": "n20",
+          "target": "n10",
+          "link_type": "management",
+          "label": "NAC/Compliance Check"
+        },
+        {
+          "link_id": "nl31",
+          "source": "n20",
+          "target": "n11",
+          "link_type": "management",
+          "label": "NAC/Compliance Check"
+        },
+        {
+          "link_id": "nl32",
+          "source": "n21",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Application Layer Filtering"
+        },
+        {
+          "link_id": "nl33",
+          "source": "n21",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Application Layer Filtering"
+        },
+        {
+          "link_id": "nl34",
+          "source": "n21",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Application Layer Filtering"
+        },
+        {
+          "link_id": "nl35",
+          "source": "n21",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Application Layer Filtering"
+        },
+        {
+          "link_id": "nl36",
+          "source": "n22",
+          "target": "n9",
+          "link_type": "management",
+          "label": "802.1X/NAC"
+        },
+        {
+          "link_id": "nl37",
+          "source": "n22",
+          "target": "n10",
+          "link_type": "management",
+          "label": "802.1X/NAC"
+        },
+        {
+          "link_id": "nl38",
+          "source": "n22",
+          "target": "n11",
+          "link_type": "management",
+          "label": "802.1X/NAC"
+        },
+        {
+          "link_id": "nl39",
+          "source": "n13",
+          "target": "n14",
+          "link_type": "data_flow",
+          "label": "Flow Logs"
+        },
+        {
+          "link_id": "nl40",
+          "source": "n23",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Inventory Data"
+        },
+        {
+          "link_id": "nl41",
+          "source": "n23",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Inventory Data"
+        },
+        {
+          "link_id": "nl42",
+          "source": "n23",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Inventory Data"
+        },
+        {
+          "link_id": "nl43",
+          "source": "n23",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Inventory Data"
+        },
+        {
+          "link_id": "nl44",
+          "source": "n24",
+          "target": "n25",
+          "link_type": "vpn",
+          "label": "Remote Access"
+        },
+        {
+          "link_id": "nl45",
+          "source": "n25",
+          "target": "n26",
+          "link_type": "management",
+          "label": "Access Control"
+        },
+        {
+          "link_id": "nl46",
+          "source": "n27",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Pen Test Results"
+        },
+        {
+          "link_id": "nl47",
+          "source": "n27",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Pen Test Results"
+        },
+        {
+          "link_id": "nl48",
+          "source": "n27",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Pen Test Results"
+        },
+        {
+          "link_id": "nl49",
+          "source": "n27",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Pen Test Results"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z2",
+          "link_type": "data_flow",
+          "label": "Market Data Ingestion"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z3",
+          "link_type": "data_flow",
+          "label": "Execution to Site 1"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "data_flow",
+          "label": "Execution to Site 2"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "data_flow",
+          "label": "Execution to Site 3"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Management"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "data_flow",
+          "label": "Non-Production Data Flow"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z1",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "External Testing Data Flow"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z1",
+          "target": "z9",
+          "link_type": "management",
+          "label": "Remote Access Management"
+        },
+        {
+          "link_id": "zl9",
+          "source": "z8",
+          "target": "z1",
+          "link_type": "data_flow",
+          "label": "Pen Test Data Flow"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-2_req1",
+    "ig_level": "IG2",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n23 (Asset Inventory System) is present and linked to multiple nodes, indicating the presence of an asset inventory system.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Multiple data flow links (e.g., nl1, nl2, etc.) and zone links (e.g., zl1, zl2, etc.) are explicitly defined, indicating documented data flows.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Zones z1 (Data Center), z3-z5 (Sites), z6 (Management), z7 (Non-Production), and z9 (Remote Access) are clearly defined, indicating segmentation based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n5 (Firewall) is present in the Data Center (z1) and is linked to other nodes, indicating the presence of a firewall on servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n15 (DNS Server) is present and linked to multiple nodes (n1, n2, n3, n4), indicating the configuration of trusted DNS servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n16 (MFA/Identity Server) is present and linked to multiple nodes (n9, n10, n11), indicating the requirement of MFA for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n17 (DNS Filter) is present and linked to multiple nodes (n1, n2, n3, n4), indicating the use of DNS filtering services.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n18 (Web Proxy) is present and linked to multiple nodes (n1, n2, n3, n4), indicating the enforcement of network-based URL filters.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes clear segmentation, least privilege, and availability, as indicated by the defined zones and links.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Nodes n19 (Central AAA Server), n20 (NAC/Compliance Check), and n22 (802.1X/NAC) are present, indicating secure management of network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n19 (Central AAA Server) is present and linked to multiple nodes, indicating centralized network AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n24 (VPN Gateway) is present and linked to n25 (Remote Device), which is further linked to n26 (Access Control Server), indicating the use of a VPN and connection to the AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n13 (IDS/IPS) is present and linked to multiple nodes (n1, n2, n3, n4), indicating the deployment of a network intrusion detection solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n5 (Firewall) is present and linked to multiple nodes, indicating traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n26 (Access Control Server) is present and linked to n25 (Remote Device), indicating management of access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Link nl39 (Flow Logs) from n13 (IDS/IPS) to n14 (SIEM) indicates the collection of network traffic flow logs.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Zone z7 (Non-Production) is clearly defined and separated from other zones, indicating separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n27 (Penetration Testing Service) is present and linked to multiple nodes (n1, n2, n3, n4), indicating the performance of periodic external penetration tests.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide evidence of an asset inventory system or process.",
+          "missing_reason": "No evidence of an asset inventory system or process.",
+          "repair_suggestion": "Add a node representing an asset inventory system and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show a VPN or remote device connections.",
+          "missing_reason": "No evidence of a VPN or remote device connections.",
+          "repair_suggestion": "Add a node representing a VPN and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show access control for remote assets.",
+          "missing_reason": "No evidence of access control for remote assets.",
+          "repair_suggestion": "Add nodes and links representing access control mechanisms for remote assets."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide evidence of periodic external penetration tests.",
+          "missing_reason": "No evidence of periodic external penetration tests.",
+          "repair_suggestion": "Add a node representing a penetration testing service and links to relevant nodes."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z9",
+            "name": "Remote Access",
+            "zone_type": "dmz"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n23",
+            "name": "Asset Inventory System",
+            "normalized_type": "server",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n24",
+            "name": "VPN Gateway",
+            "normalized_type": "vpn_gateway",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n25",
+            "name": "Remote Device",
+            "normalized_type": "endpoint",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n26",
+            "name": "Access Control Server",
+            "normalized_type": "identity_server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n27",
+            "name": "Penetration Testing Service",
+            "normalized_type": "other",
+            "zone_id": "z8"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl40",
+              "source": "n23",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Inventory Data"
+            },
+            {
+              "link_id": "nl41",
+              "source": "n23",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Inventory Data"
+            },
+            {
+              "link_id": "nl42",
+              "source": "n23",
+              "target": "n3",
+              "link_type": "data_flow",
+              "label": "Inventory Data"
+            },
+            {
+              "link_id": "nl43",
+              "source": "n23",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "Inventory Data"
+            },
+            {
+              "link_id": "nl44",
+              "source": "n24",
+              "target": "n25",
+              "link_type": "vpn",
+              "label": "Remote Access"
+            },
+            {
+              "link_id": "nl45",
+              "source": "n25",
+              "target": "n26",
+              "link_type": "management",
+              "label": "Access Control"
+            },
+            {
+              "link_id": "nl46",
+              "source": "n27",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Pen Test Results"
+            },
+            {
+              "link_id": "nl47",
+              "source": "n27",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Pen Test Results"
+            },
+            {
+              "link_id": "nl48",
+              "source": "n27",
+              "target": "n3",
+              "link_type": "data_flow",
+              "label": "Pen Test Results"
+            },
+            {
+              "link_id": "nl49",
+              "source": "n27",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "Pen Test Results"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl8",
+              "source": "z1",
+              "target": "z9",
+              "link_type": "management",
+              "label": "Remote Access Management"
+            },
+            {
+              "link_id": "zl9",
+              "source": "z8",
+              "target": "z1",
+              "link_type": "data_flow",
+              "label": "Pen Test Data Flow"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 22,
+        "zone_links": 7,
+        "node_links": 39
+      },
+      "counts_after": {
+        "zones": 9,
+        "nodes": 27,
+        "zone_links": 9,
+        "node_links": 49
+      },
+      "count_delta": {
+        "zones": 1,
+        "nodes": 5,
+        "zone_links": 2,
+        "node_links": 10
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Financial-2_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Market data ingestion from Exchange Feed 1 to Market Data Ingestion Server."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8081,
+        "expected": "allow",
+        "reason": "Analytics data flow from Market Data Ingestion Server to Analytics Engine."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n2",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 8082,
+        "expected": "allow",
+        "reason": "Algorithmic data flow from Analytics Engine to Algorithmic Engine."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8083,
+        "expected": "allow",
+        "reason": "Execution orders from Algorithmic Engine to Execution Router."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n4",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Execution to Site 1 from Execution Router to Site 1 Router."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n4",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 8085,
+        "expected": "allow",
+        "reason": "Execution to Site 2 from Execution Router to Site 2 Router."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n4",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 8086,
+        "expected": "allow",
+        "reason": "Execution to Site 3 from Execution Router to Site 3 Router."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8087,
+        "expected": "allow",
+        "reason": "IDS/IPS monitoring from IDS/IPS to Market Data Ingestion Server."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8088,
+        "expected": "allow",
+        "reason": "IDS/IPS monitoring from IDS/IPS to Analytics Engine."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 8089,
+        "expected": "allow",
+        "reason": "IDS/IPS monitoring from IDS/IPS to Algorithmic Engine."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8090,
+        "expected": "allow",
+        "reason": "IDS/IPS monitoring from IDS/IPS to Execution Router."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8091,
+        "expected": "allow",
+        "reason": "SIEM data flow from SIEM to IDS/IPS."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS resolution from DNS Server to Market Data Ingestion Server."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS resolution from DNS Server to Analytics Engine."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS resolution from DNS Server to Algorithmic Engine."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS resolution from DNS Server to Execution Router."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z6",
+        "target_zone": "z3",
+        "source_node": "n16",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA/Identity management from MFA/Identity Server to Site 1 Router."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z6",
+        "target_zone": "z4",
+        "source_node": "n16",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA/Identity management from MFA/Identity Server to Site 2 Router."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z6",
+        "target_zone": "z5",
+        "source_node": "n16",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA/Identity management from MFA/Identity Server to Site 3 Router."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS filtering from DNS Filter to Market Data Ingestion Server."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS filtering from DNS Filter to Analytics Engine."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS filtering from DNS Filter to Algorithmic Engine."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS filtering from DNS Filter to Execution Router."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL filtering from Web Proxy to Market Data Ingestion Server."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL filtering from Web Proxy to Analytics Engine."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL filtering from Web Proxy to Algorithmic Engine."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL filtering from Web Proxy to Execution Router."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z6",
+        "target_zone": "z6",
+        "source_node": "n19",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "AAA data flow from Central AAA Server to MFA/Identity Server."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n20",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC/Compliance check from NAC/Compliance Check to Site 1 Router."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n20",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC/Compliance check from NAC/Compliance Check to Site 2 Router."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n20",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC/Compliance check from NAC/Compliance Check to Site 3 Router."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n21",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Application layer filtering from Application Firewall to Market Data Ingestion Server."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n21",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8081,
+        "expected": "allow",
+        "reason": "Application layer filtering from Application Firewall to Analytics Engine."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n21",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 8082,
+        "expected": "allow",
+        "reason": "Application layer filtering from Application Firewall to Algorithmic Engine."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n21",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8083,
+        "expected": "allow",
+        "reason": "Application layer filtering from Application Firewall to Execution Router."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n22",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "802.1X/NAC management from 802.1X/NAC to Site 1 Router."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n22",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "802.1X/NAC management from 802.1X/NAC to Site 2 Router."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n22",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "802.1X/NAC management from 802.1X/NAC to Site 3 Router."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z9",
+        "target_zone": "z9",
+        "source_node": "n25",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Access control from Remote Device to Access Control Server."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n27",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Pen test results from Penetration Testing Service to Market Data Ingestion Server."
+      },
+      {
+        "test_id": "tc41",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n27",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc42",
+        "source_zone": "z8",
+        "target_zone": "z6",
+        "source_node": "n27",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc43",
+        "source_zone": "z8",
+        "target_zone": "z6",
+        "source_node": "n27",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc44",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n27",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req1/rag_without_feedback/IG2/xml/IG2/generated_Financial-2_req1_IG2.xml"
+}

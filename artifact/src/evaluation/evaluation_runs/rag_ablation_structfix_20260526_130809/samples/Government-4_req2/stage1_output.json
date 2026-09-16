@@ -1,0 +1,87 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-4_req2",
+    "title": "Government Segmented Network",
+    "description": "A network with distinct zones for standard and sensitive information systems, each with dedicated administrative infrastructure.",
+    "scenario": "government",
+    "topology_summary": "The topology includes separate zones for standard and sensitive systems, each with its own administrative infrastructure. The standard zone has a secure internet gateway, while the sensitive zone is isolated and protected by a Class 1 gateway.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Standard Systems Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Sensitive Systems Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Standard Admin Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Sensitive Admin Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Internet Gateway Zone",
+        "zone_type": "dmz"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Standard Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Sensitive Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Standard Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Sensitive Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n5",
+        "name": "Secure Internet Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n6",
+        "name": "Class 1 Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Government-4_req2\", \"title\": \"Government Segmented Network\", \"description\": \"A network with distinct zones for standard and sensitive information systems, each with dedicated administrative infrastructure.\", \"scenario\": \"government\", \"topology_summary\": \"The topology includes separate zones for standard and sensitive systems, each with its own administrative infrastructure. The standard zone has a secure internet gateway, while the sensitive zone is isolated and protected by a Class 1 gateway.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Standard Systems Zone\", \"zone_type\": \"enterprise\"}, {\"zone_id\": \"z2\", \"name\": \"Sensitive Systems Zone\", \"zone_type\": \"security\"}, {\"zone_id\": \"z3\", \"name\": \"Standard Admin Zone\", \"zone_type\": \"management\"}, {\"zone_id\": \"z4\", \"name\": \"Sensitive Admin Zone\", \"zone_type\": \"management\"}, {\"zone_id\": \"z5\", \"name\": \"Internet Gateway Zone\", \"zone_type\": \"dmz\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Standard Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Sensitive Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z2\"}, {\"node_id\": \"n3\", \"name\": \"Standard Admin Workstation\", \"normalized_type\": \"endpoint\", \"zone_id\": \"z3\"}, {\"node_id\": \"n4\", \"name\": \"Sensitive Admin Workstation\", \"normalized_type\": \"endpoint\", \"zone_id\": \"z4\"}, {\"node_id\": \"n5\", \"name\": \"Secure Internet Gateway\", \"normalized_type\": \"firewall\", \"zone_id\": \"z5\"}, {\"node_id\": \"n6\", \"name\": \"Class 1 Gateway\", \"normalized_type\": \"firewall\", \"zone_id\": \"z2\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 8.115
+  }
+}

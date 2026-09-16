@@ -1,0 +1,883 @@
+{
+  "sample_id": "Government-3_req1",
+  "gt_template_id": "Government-3",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-3_req1",
+    "title": "Government Cloud Segmentation",
+    "description": "Secure cloud infrastructure for government agency with departmental segmentation and centralized monitoring.",
+    "scenario": "government",
+    "topology_summary": "The topology will include a central hub for management and monitoring, with separate spokes for each department, ensuring secure and isolated environments.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Management Hub",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Identity Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Operations Zone",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Workload Zone",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Monitoring Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Non-Production Zone",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z7",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Operations Server",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Workload VMs",
+        "normalized_type": "workload",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n5",
+        "name": "SIEM System",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Bastion Host",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Central Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n8",
+        "name": "Central Switch",
+        "normalized_type": "switch",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n9",
+        "name": "Monitoring Server",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n10",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n11",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n12",
+        "name": "NIDS Sensor",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "NAC Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "Non-Production Workloads",
+        "normalized_type": "workload",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n15",
+        "name": "Penetration Testing Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n7",
+          "link_type": "uplink",
+          "label": "Management"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n7",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "Internal"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n8",
+          "target": "n2",
+          "link_type": "uplink",
+          "label": "Identity Management"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n8",
+          "target": "n3",
+          "link_type": "uplink",
+          "label": "Operations"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n8",
+          "target": "n4",
+          "link_type": "uplink",
+          "label": "Workload"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n8",
+          "target": "n5",
+          "link_type": "uplink",
+          "label": "Monitoring"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n8",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "Bastion Access"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n5",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Monitoring Data"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n10",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "DNS"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n11",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "Web Proxy"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n12",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "NIDS"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n13",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "NAC"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n8",
+          "target": "n14",
+          "link_type": "uplink",
+          "label": "Non-Prod Workloads"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n15",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "Pen Test"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "uplink",
+          "label": "Monitoring"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "Non-Prod"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "uplink",
+          "label": "Pen Test"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-3_req1",
+    "ig_level": "IG2",
+    "all_required_satisfied": false,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of an asset inventory system or process.",
+        "missing_reason": "No explicit asset inventory system or process is shown in the topology.",
+        "repair_suggestion": "Add a node representing an asset inventory system and links to all other nodes."
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology includes links and data flows, but there is no explicit evidence of documented data flows.",
+        "missing_reason": "No explicit documentation of data flows is shown in the topology.",
+        "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes and zones."
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for different types of workloads (e.g., Workload Zone, Non-Production Zone).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Central Firewall (n1) and a Web Proxy (n11), which can be considered as firewalls.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS Server (n10) and links to the internal network (n8).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes a Bastion Host (n6) and Identity Server (n2), which could support MFA, but there is no explicit evidence of MFA being required.",
+        "missing_reason": "No explicit evidence of MFA requirement is shown in the topology.",
+        "repair_suggestion": "Add a label or note indicating that MFA is required for remote access."
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology includes a DNS Server (n10) but no explicit evidence of DNS filtering services.",
+        "missing_reason": "No explicit DNS filtering service is shown in the topology.",
+        "repair_suggestion": "Add a node representing a DNS filtering service and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology includes a Web Proxy (n11) but no explicit evidence of URL filtering.",
+        "missing_reason": "No explicit URL filtering service is shown in the topology.",
+        "repair_suggestion": "Add a node representing a URL filtering service and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a central hub (z1) and separate zones for different functions (e.g., Identity Management Zone, Operations Zone, Workload Zone, Monitoring Zone, Non-Production Zone, External Testing Zone).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Central Router (n7), Central Switch (n8), and other network devices, which can be managed securely.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an Identity Server (n2) and a SIEM System (n5), which can support centralized AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes a Bastion Host (n6) and Identity Server (n2), which could support remote access via a VPN, but there is no explicit evidence of a VPN.",
+        "missing_reason": "No explicit evidence of a VPN is shown in the topology.",
+        "repair_suggestion": "Add a node representing a VPN service and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIDS Sensor (n12).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Central Firewall (n1) and links between different zones, which can perform traffic filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes a Bastion Host (n6) and Identity Server (n2), which could support access control, but there is no explicit evidence of access control policies.",
+        "missing_reason": "No explicit evidence of access control policies is shown in the topology.",
+        "repair_suggestion": "Add a node representing an access control policy management system and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology includes a SIEM System (n5) but no explicit evidence of collecting network traffic flow logs.",
+        "missing_reason": "No explicit network traffic flow log collection is shown in the topology.",
+        "repair_suggestion": "Add a node representing a network traffic flow log collector and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for production (Workload Zone) and non-production (Non-Production Zone).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology includes an External Testing Zone (z7) with a Penetration Testing Workstation (n15), but there is no explicit evidence of periodic external penetration tests.",
+        "missing_reason": "No explicit evidence of periodic external penetration tests is shown in the topology.",
+        "repair_suggestion": "Add a node representing a penetration testing management system and links to relevant nodes."
+      }
+    ]
+  },
+  "repair_history": [],
+  "test_cases": {
+    "template_id": "generated_Government-3_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Management access to central router."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Identity management access from central router."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n7",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Operations server access from central router."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n7",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Workload VM access from central router."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "SIEM system access from central router."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Bastion host access from central router."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS server access from central router."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web proxy access from central router."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS sensor access from central router."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "NAC server access from central router."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n7",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Non-production workload access from central router."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n7",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Pen testing workstation access from central router."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n2",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Identity server to central firewall."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n2",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Identity server to central router."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Identity server to DNS server."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Operations server to central firewall."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Operations server to central router."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Workload VM to central firewall."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Workload VM to central router."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n5",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "SIEM to monitoring server data flow."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Non-production workload to central firewall."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Non-production workload to central router."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen testing workstation to central firewall."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Pen testing workstation to central router."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall to identity server."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Central firewall to operations server."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Central firewall to workload VM."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall to SIEM system."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Central firewall to bastion host."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Central firewall to DNS server."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Central firewall to web proxy."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall to NIDS sensor."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Central firewall to NAC server."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Central firewall to non-production workload."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Central firewall to pen testing workstation."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Identity server to operations server."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n2",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Identity server to workload VM."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z3",
+        "target_zone": "z4",
+        "source_node": "n3",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Operations server to workload VM."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z4",
+        "target_zone": "z6",
+        "source_node": "n4",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Workload VM to non-production workload."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z6",
+        "target_zone": "z7",
+        "source_node": "n14",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Non-production workload to pen testing workstation."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req1/rag_without_repair/IG2/xml/IG2/generated_Government-3_req1_IG2.xml"
+}

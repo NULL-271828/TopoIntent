@@ -1,0 +1,45 @@
+{
+  "schema_version": "2.1",
+  "split_strategy": "template_level_split_with_optional_scenario_holdout",
+  "test_scenarios": [
+    "government",
+    "finance"
+  ],
+  "test_template_ids": [
+    "Financial-2",
+    "Financial-3",
+    "Financial-4",
+    "Government-1",
+    "Government-2",
+    "Government-3",
+    "Government-4"
+  ],
+  "train_template_count": 22,
+  "test_template_count": 7,
+  "train_sample_count": 44,
+  "test_sample_count": 14,
+  "train_template_ids": [
+    "Cloud-1",
+    "Cloud-2",
+    "Cloud-3",
+    "Cloud-4",
+    "Education-1",
+    "Education-2",
+    "Education-3",
+    "Education-4",
+    "Enterprise-1",
+    "Enterprise-2",
+    "Enterprise-3",
+    "Enterprise-4",
+    "Enterprise-5",
+    "Healthcare-1",
+    "Healthcare-2",
+    "Healthcare-3",
+    "Healthcare-4",
+    "Healthcare-5",
+    "Industrial-1",
+    "Industrial-2",
+    "Industrial-3",
+    "Industrial-4"
+  ]
+}

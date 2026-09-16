@@ -1,0 +1,129 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Financial-4_req1",
+  "title": "High Availability Branch Office Network",
+  "description": "A network design for a branch office with emphasis on high availability and voice service continuity.",
+  "scenario": "finance",
+  "topology_summary": "The branch office connects to the central data center via a primary link, with voice services failing over to the public phone network. Centralized user authentication and network traffic logging are supported.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Branch Office",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Data Center",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Public Phone Network",
+      "zone_type": "external"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Branch Router",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Branch Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "SIP Server",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "Data Center Router",
+      "normalized_type": "router",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n5",
+      "name": "Data Center Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n6",
+      "name": "Identity Server",
+      "normalized_type": "identity_server",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n7",
+      "name": "SIEM",
+      "normalized_type": "siem",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n8",
+      "name": "Public Phone Gateway",
+      "normalized_type": "other",
+      "zone_id": "z3"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "uplink",
+        "label": "Internal Uplink"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "SIP Traffic"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n1",
+        "target": "n4",
+        "link_type": "routing",
+        "label": "Primary Link"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n4",
+        "target": "n5",
+        "link_type": "uplink",
+        "label": "Internal Uplink"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n5",
+        "target": "n6",
+        "link_type": "management",
+        "label": "Authentication"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n5",
+        "target": "n7",
+        "link_type": "monitoring",
+        "label": "Traffic Logging"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n3",
+        "target": "n8",
+        "link_type": "data_flow",
+        "label": "Failover Voice"
+      }
+    ],
+    "zone_links": []
+  }
+}

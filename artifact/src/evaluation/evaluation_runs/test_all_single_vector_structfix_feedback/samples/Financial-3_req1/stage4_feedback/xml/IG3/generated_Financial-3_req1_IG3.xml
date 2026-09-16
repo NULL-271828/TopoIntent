@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Financial-3_req1" title="Hybrid Cloud for Finance" scenario="cloud" ig_level="IG3">
+  <Description>Set up a hybrid cloud environment with Azure Red Hat OpenShift and secure connection to on-premises datacenter.</Description>
+  <Summary>The topology includes an Azure VNet with a Red Hat OpenShift cluster, a central firewall, and a private connection to the on-premises datacenter.</Summary>
+  <Domains>
+    <Domain id="z1" name="Azure VNet" type="cloud_hub"/>
+    <Domain id="z2" name="On-Premises Datacenter" type="data_center"/>
+    <Domain id="z3" name="Management Zone" type="management"/>
+    <Domain id="z4" name="Sensitive Data Zone" type="data_center"/>
+    <Domain id="z5" name="Non-Sensitive Data Zone" type="data_center"/>
+    <Domain id="z6" name="External Testing Zone" type="external"/>
+    <Domain id="z7" name="Security Management" type="management"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="Azure Red Hat OpenShift Cluster" domain="z1" domain_name="Azure VNet" type="workload" ip=""/>
+    <Node id="n2" name="Central Firewall" domain="z1" domain_name="Azure VNet" type="firewall" ip=""/>
+    <Node id="n3" name="On-Premises Firewall" domain="z2" domain_name="On-Premises Datacenter" type="firewall" ip=""/>
+    <Node id="n4" name="On-Premises Workloads" domain="z2" domain_name="On-Premises Datacenter" type="workload" ip=""/>
+    <Node id="n5" name="Azure Bastion" domain="z1" domain_name="Azure VNet" type="bastion" ip=""/>
+    <Node id="n6" name="Azure Monitor" domain="z3" domain_name="Management Zone" type="cloud_service" ip=""/>
+    <Node id="n7" name="Azure PaaS Services" domain="z3" domain_name="Management Zone" type="cloud_service" ip=""/>
+    <Node id="n8" name="DNS Server" domain="z3" domain_name="Management Zone" type="server" ip=""/>
+    <Node id="n9" name="DNS Filter" domain="z3" domain_name="Management Zone" type="ids_ips" ip=""/>
+    <Node id="n10" name="Web Proxy" domain="z3" domain_name="Management Zone" type="waf" ip=""/>
+    <Node id="n11" name="Identity Server" domain="z3" domain_name="Management Zone" type="identity_server" ip=""/>
+    <Node id="n12" name="NIDS" domain="z1" domain_name="Azure VNet" type="ids_ips" ip=""/>
+    <Node id="n13" name="NIPS" domain="z1" domain_name="Azure VNet" type="ids_ips" ip=""/>
+    <Node id="n14" name="NAC" domain="z1" domain_name="Azure VNet" type="ids_ips" ip=""/>
+    <Node id="n15" name="Admin Workstation" domain="z3" domain_name="Management Zone" type="endpoint" ip=""/>
+    <Node id="n16" name="SIEM" domain="z3" domain_name="Management Zone" type="siem" ip=""/>
+    <Node id="n_struct1" name="Sensitive Data Zone Application Server" domain="z4" domain_name="Sensitive Data Zone" type="server" ip=""/>
+    <Node id="n_struct2" name="Non-Sensitive Data Zone Application Server" domain="z5" domain_name="Non-Sensitive Data Zone" type="server" ip=""/>
+    <Node id="n_struct3" name="External Testing Zone External Endpoint" domain="z6" domain_name="External Testing Zone" type="endpoint" ip=""/>
+    <Node id="n_struct4" name="Security Management Management Service" domain="z7" domain_name="Security Management" type="server" ip=""/>
+    <Node id="n_new1" name="Asset Management System" domain="z3" domain_name="Management Zone" type="server" ip=""/>
+    <Node id="n_new2" name="Penetration Testing Service" domain="z6" domain_name="External Testing Zone" type="cloud_service" ip=""/>
+    <Node id="n_new3" name="Asset Inventory Database" domain="z3" domain_name="Management Zone" type="database" ip=""/>
+    <Node id="n6469" name="Recovered Endpoint n6469" domain="z1" domain_name="Azure VNet" type="other" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z2" type="vpn" label="Private connection"/>
+      <Link id="zl2" source="z1" target="z3" type="management" label="Management access"/>
+      <Link id="zl3" source="z1" target="z4" type="peering" label="Sensitive data flow"/>
+      <Link id="zl4" source="z1" target="z5" type="peering" label="Non-sensitive data flow"/>
+      <Link id="zl5" source="z2" target="z4" type="peering" label="Sensitive data flow"/>
+      <Link id="zl6" source="z2" target="z5" type="peering" label="Non-sensitive data flow"/>
+      <Link id="zl7" source="z6" target="z1" type="peering" label="External testing access"/>
+      <Link id="zl8" source="z6" target="z2" type="peering" label="External testing access"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n2" target="n5" type="management" label="Bastion access"/>
+      <Link id="nl2" source="n1" target="n6" type="monitoring" label="Monitoring"/>
+      <Link id="nl3" source="n1" target="n7" type="data_flow" label="PaaS services"/>
+      <Link id="nl4" source="n8" target="n1" type="data_flow" label="DNS resolution"/>
+      <Link id="nl5" source="n8" target="n4" type="data_flow" label="DNS resolution"/>
+      <Link id="nl6" source="n9" target="n1" type="data_flow" label="DNS filtering"/>
+      <Link id="nl7" source="n9" target="n4" type="data_flow" label="DNS filtering"/>
+      <Link id="nl8" source="n10" target="n1" type="data_flow" label="Web proxy"/>
+      <Link id="nl9" source="n10" target="n4" type="data_flow" label="Web proxy"/>
+      <Link id="nl10" source="n11" target="n5" type="management" label="MFA for remote access"/>
+      <Link id="nl11" source="n12" target="n2" type="monitoring" label="NIDS monitoring"/>
+      <Link id="nl12" source="n13" target="n2" type="monitoring" label="NIPS monitoring"/>
+      <Link id="nl13" source="n14" target="n5" type="management" label="NAC for remote access"/>
+      <Link id="nl14" source="n15" target="n11" type="management" label="Admin workstation to identity server"/>
+      <Link id="nl15" source="n2" target="n16" type="monitoring" label="Flow logs to SIEM"/>
+      <Link id="nl_struct1" source="n2" target="n_struct1" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct2" source="n2" target="n_struct2" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct3" source="n2" target="n_struct3" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct4" source="n2" target="n_struct4" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_new1" source="n_new1" target="n15" type="management" label="Admin workstation to asset management"/>
+      <Link id="nl_new2" source="n_new2" target="n_struct3" type="data_flow" label="Pen test results to external endpoint"/>
+      <Link id="nl_new3" source="n_new1" target="n_new3" type="data_flow" label="Asset data to inventory DB"/>
+      <Link id="nl_new4" source="n15" target="n_new3" type="management" label="Admin access to inventory DB"/>
+      <Link id="nl_new5" source="n1" target="n5" type="management" label="Bastion access"/>
+      <Link id="nl_new6" source="n2" target="n_struct3" type="data_flow" label="Pen test results to external endpoint"/>
+      <Link id="nl_new7" source="n2" target="n_struct1" type="data_flow" label="Sensitive data flow"/>
+      <Link id="nl_new8" source="n2" target="n_struct2" type="data_flow" label="Non-sensitive data flow"/>
+      <Link id="nl_new9" source="n1" target="n_struct1" type="data_flow" label="Sensitive data flow"/>
+      <Link id="nl_new10" source="n1" target="n_struct2" type="data_flow" label="Non-sensitive data flow"/>
+      <Link id="nl_new11" source="n4" target="n_struct1" type="data_flow" label="Sensitive data flow"/>
+      <Link id="nl_new12" source="n4" target="n_struct2" type="data_flow" label="Non-sensitive data flow"/>
+      <Link id="nl_new13" source="n6469" target="n15" type="data_flow" label="Admin access to inventory DB"/>
+      <Link id="nl_new14" source="n6469" target="n11" type="data_flow" label="Admin access to identity server"/>
+      <Link id="nl_new15" source="n6469" target="n16" type="data_flow" label="Admin access to SIEM"/>
+      <Link id="nl_new16" source="n6469" target="n8" type="data_flow" label="DNS resolution"/>
+      <Link id="nl_new17" source="n6469" target="n9" type="data_flow" label="DNS filtering"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n5" protocol="tcp" port="22">
+      <Reason>Bastion access from Azure Red Hat OpenShift Cluster.</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n6" protocol="tcp" port="8080">
+      <Reason>Monitoring from Azure Red Hat OpenShift Cluster to Azure Monitor.</Reason>
+    </Allow>
+    <Allow id="tc3" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n7" protocol="tcp" port="8080">
+      <Reason>Data flow from Azure Red Hat OpenShift Cluster to Azure PaaS Services.</Reason>
+    </Allow>
+    <Allow id="tc4" src_zone="z3" dst_zone="z1" src_node="n8" dst_node="n1" protocol="udp" port="53">
+      <Reason>DNS resolution from DNS Server to Azure Red Hat OpenShift Cluster.</Reason>
+    </Allow>
+    <Allow id="tc5" src_zone="z3" dst_zone="z2" src_node="n8" dst_node="n4" protocol="udp" port="53">
+      <Reason>DNS resolution from DNS Server to On-Premises Workloads.</Reason>
+    </Allow>
+    <Allow id="tc6" src_zone="z3" dst_zone="z1" src_node="n9" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>DNS filtering from DNS Filter to Azure Red Hat OpenShift Cluster.</Reason>
+    </Allow>
+    <Allow id="tc7" src_zone="z3" dst_zone="z2" src_node="n9" dst_node="n4" protocol="tcp" port="8080">
+      <Reason>DNS filtering from DNS Filter to On-Premises Workloads.</Reason>
+    </Allow>
+    <Allow id="tc8" src_zone="z3" dst_zone="z1" src_node="n10" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Web proxy from Web Proxy to Azure Red Hat OpenShift Cluster.</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z3" dst_zone="z2" src_node="n10" dst_node="n4" protocol="tcp" port="8080">
+      <Reason>Web proxy from Web Proxy to On-Premises Workloads.</Reason>
+    </Allow>
+    <Allow id="tc10" src_zone="z3" dst_zone="z1" src_node="n11" dst_node="n5" protocol="tcp" port="443">
+      <Reason>MFA for remote access from Identity Server to Azure Bastion.</Reason>
+    </Allow>
+    <Allow id="tc11" src_zone="z1" dst_zone="z1" src_node="n12" dst_node="n2" protocol="tcp" port="443">
+      <Reason>NIDS monitoring from NIDS to Central Firewall.</Reason>
+    </Allow>
+    <Allow id="tc12" src_zone="z1" dst_zone="z1" src_node="n13" dst_node="n2" protocol="tcp" port="443">
+      <Reason>NIPS monitoring from NIPS to Central Firewall.</Reason>
+    </Allow>
+    <Allow id="tc13" src_zone="z1" dst_zone="z1" src_node="n14" dst_node="n5" protocol="tcp" port="443">
+      <Reason>NAC for remote access from NAC to Azure Bastion.</Reason>
+    </Allow>
+    <Allow id="tc14" src_zone="z3" dst_zone="z3" src_node="n15" dst_node="n11" protocol="tcp" port="443">
+      <Reason>Admin workstation to identity server.</Reason>
+    </Allow>
+    <Allow id="tc15" src_zone="z1" dst_zone="z3" src_node="n2" dst_node="n16" protocol="tcp" port="443">
+      <Reason>Flow logs to SIEM from Central Firewall.</Reason>
+    </Allow>
+    <Allow id="tc16" src_zone="z1" dst_zone="z4" src_node="n2" dst_node="n_struct1" protocol="tcp" port="443">
+      <Reason>Sensitive data flow from Central Firewall to Sensitive Data Zone.</Reason>
+    </Allow>
+    <Allow id="tc17" src_zone="z1" dst_zone="z5" src_node="n2" dst_node="n_struct2" protocol="tcp" port="443">
+      <Reason>Non-sensitive data flow from Central Firewall to Non-Sensitive Data Zone.</Reason>
+    </Allow>
+    <Allow id="tc18" src_zone="z2" dst_zone="z4" src_node="n3" dst_node="n_struct1" protocol="tcp" port="443">
+      <Reason>Sensitive data flow from On-Premises Firewall to Sensitive Data Zone.</Reason>
+    </Allow>
+    <Allow id="tc19" src_zone="z2" dst_zone="z5" src_node="n3" dst_node="n_struct2" protocol="tcp" port="443">
+      <Reason>Non-sensitive data flow from On-Premises Firewall to Non-Sensitive Data Zone.</Reason>
+    </Allow>
+    <Deny id="tc20" src_zone="z1" dst_zone="z6" src_node="n1" dst_node="n_struct3" protocol="tcp" port="443">
+      <Reason>External testing access blocked from Azure Red Hat OpenShift Cluster.</Reason>
+    </Deny>
+    <Deny id="tc21" src_zone="z2" dst_zone="z6" src_node="n4" dst_node="n_struct3" protocol="tcp" port="443">
+      <Reason>External testing access blocked from On-Premises Workloads.</Reason>
+    </Deny>
+    <Deny id="tc22" src_zone="z6" dst_zone="z1" src_node="n_struct3" dst_node="n1" protocol="tcp" port="443">
+      <Reason>External testing access blocked to Azure Red Hat OpenShift Cluster.</Reason>
+    </Deny>
+    <Deny id="tc23" src_zone="z6" dst_zone="z2" src_node="n_struct3" dst_node="n4" protocol="tcp" port="443">
+      <Reason>External testing access blocked to On-Premises Workloads.</Reason>
+    </Deny>
+    <Allow id="tc24" src_zone="z1" dst_zone="z4" src_node="n1" dst_node="n_struct1" protocol="tcp" port="443">
+      <Reason>Sensitive data flow from Azure Red Hat OpenShift Cluster to Sensitive Data Zone.</Reason>
+    </Allow>
+    <Allow id="tc25" src_zone="z1" dst_zone="z5" src_node="n1" dst_node="n_struct2" protocol="tcp" port="443">
+      <Reason>Non-sensitive data flow from Azure Red Hat OpenShift Cluster to Non-Sensitive Data Zone.</Reason>
+    </Allow>
+    <Allow id="tc26" src_zone="z2" dst_zone="z4" src_node="n4" dst_node="n_struct1" protocol="tcp" port="443">
+      <Reason>Sensitive data flow from On-Premises Workloads to Sensitive Data Zone.</Reason>
+    </Allow>
+    <Allow id="tc27" src_zone="z2" dst_zone="z5" src_node="n4" dst_node="n_struct2" protocol="tcp" port="443">
+      <Reason>Non-sensitive data flow from On-Premises Workloads to Non-Sensitive Data Zone.</Reason>
+    </Allow>
+    <Allow id="tc28" src_zone="z3" dst_zone="z3" src_node="n15" dst_node="n_new3" protocol="tcp" port="443">
+      <Reason>Admin access to inventory DB from Admin Workstation.</Reason>
+    </Allow>
+    <Allow id="tc29" src_zone="z1" dst_zone="z3" src_node="n6469" dst_node="n15" protocol="tcp" port="443">
+      <Reason>Admin access to inventory DB from Recovered Endpoint.</Reason>
+    </Allow>
+    <Allow id="tc30" src_zone="z1" dst_zone="z3" src_node="n6469" dst_node="n11" protocol="tcp" port="443">
+      <Reason>Admin access to identity server from Recovered Endpoint.</Reason>
+    </Allow>
+    <Allow id="tc31" src_zone="z1" dst_zone="z3" src_node="n6469" dst_node="n16" protocol="tcp" port="443">
+      <Reason>Admin access to SIEM from Recovered Endpoint.</Reason>
+    </Allow>
+    <Allow id="tc32" src_zone="z1" dst_zone="z3" src_node="n6469" dst_node="n8" protocol="udp" port="53">
+      <Reason>DNS resolution from Recovered Endpoint to DNS Server.</Reason>
+    </Allow>
+    <Allow id="tc33" src_zone="z1" dst_zone="z3" src_node="n6469" dst_node="n9" protocol="tcp" port="8080">
+      <Reason>DNS filtering from Recovered Endpoint to DNS Filter.</Reason>
+    </Allow>
+    <Deny id="tc34" src_zone="z6" dst_zone="z1" src_node="n_new2" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Pen test results to Azure Red Hat OpenShift Cluster blocked.</Reason>
+    </Deny>
+    <Deny id="tc35" src_zone="z6" dst_zone="z2" src_node="n_new2" dst_node="n4" protocol="tcp" port="443">
+      <Reason>Pen test results to On-Premises Workloads blocked.</Reason>
+    </Deny>
+    <Deny id="tc36" src_zone="z3" dst_zone="z4" src_node="n15" dst_node="n_struct1" protocol="tcp" port="443">
+      <Reason>Admin access to Sensitive Data Zone blocked.</Reason>
+    </Deny>
+    <Deny id="tc37" src_zone="z3" dst_zone="z5" src_node="n15" dst_node="n_struct2" protocol="tcp" port="443">
+      <Reason>Admin access to Non-Sensitive Data Zone blocked.</Reason>
+    </Deny>
+    <Deny id="tc38" src_zone="z3" dst_zone="z6" src_node="n15" dst_node="n_struct3" protocol="tcp" port="443">
+      <Reason>Admin access to External Testing Zone blocked.</Reason>
+    </Deny>
+    <Deny id="tc39" src_zone="z3" dst_zone="z7" src_node="n15" dst_node="n_struct4" protocol="tcp" port="443">
+      <Reason>Admin access to Security Management blocked.</Reason>
+    </Deny>
+    <Deny id="tc40" src_zone="z1" dst_zone="z7" src_node="n1" dst_node="n_struct4" protocol="tcp" port="443">
+      <Reason>Access to Security Management from Azure Red Hat OpenShift Cluster blocked.</Reason>
+    </Deny>
+  </Policies>
+  <Compliance ig_level="IG3" all_required_satisfied="true">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Asset Management System' and an 'Asset Inventory Database', which suggests that an asset inventory is being maintained.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple data flow links (e.g., 'nl4', 'nl5', 'nl6', 'nl7') and peering links (e.g., 'zl3', 'zl4', 'zl5', 'zl6') that document data flows between different zones and nodes.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones for 'Sensitive Data Zone' (z4) and 'Non-Sensitive Data Zone' (z5), with specific data flow links (e.g., 'nl_new7', 'nl_new8', 'nl_new9', 'nl_new10', 'nl_new11', 'nl_new12') that indicate segmentation based on data sensitivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Central Firewall' (n2) and an 'On-Premises Firewall' (n3), which are explicitly labeled as firewalls and are connected to various zones and nodes.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Server' (n8) and multiple DNS resolution links (e.g., 'nl4', 'nl5', 'nl_new16') that indicate the configuration of trusted DNS servers.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Identity Server' (n11) and a link (nl10) labeled 'MFA for remote access', indicating that MFA is required for remote network access.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Filter' (n9) and multiple DNS filtering links (e.g., 'nl6', 'nl7', 'nl_new17') that indicate the use of DNS filtering services.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Web Proxy' (n10) and multiple web proxy links (e.g., 'nl8', 'nl9') that suggest the enforcement of network-based URL filters.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple zones (e.g., 'Management Zone', 'Sensitive Data Zone', 'Non-Sensitive Data Zone') and links (e.g., 'zl3', 'zl4', 'zl5', 'zl6') that indicate a secure network architecture with segmentation and least privilege.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Central Firewall' (n2), an 'On-Premises Firewall' (n3), and a 'Management Zone' (z3) with nodes like 'Azure Monitor' (n6) and 'Azure PaaS Services' (n7), suggesting secure management of network infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Identity Server' (n11) and multiple links (e.g., 'nl10', 'nl14', 'nl_new14') that indicate centralized network AAA.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Private connection' (zl1) labeled as a VPN and an 'Identity Server' (n11) with links (e.g., 'nl10', 'nl14') that suggest remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.8" title="Establish and Maintain Dedicated Computing Resources for All Administrative Work" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Admin Workstation' (n15) in the 'Management Zone' (z3) and links (e.g., 'nl14', 'nl_new4', 'nl_new13') that indicate dedicated computing resources for administrative work.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NIDS' (n12) and links (e.g., 'nl11') that indicate the deployment of a network intrusion detection solution.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Central Firewall' (n2) and multiple peering links (e.g., 'zl3', 'zl4', 'zl5', 'zl6') that suggest traffic filtering between network segments.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Identity Server' (n11) and links (e.g., 'nl10', 'nl14') that suggest the management of access control for remote assets.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'SIEM' (n16) and a link (nl15) labeled 'Flow logs to SIEM', indicating the collection of network traffic flow logs.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.8" title="Deploy a Network Intrusion Prevention Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NIPS' (n13) and links (e.g., 'nl12') that indicate the deployment of a network intrusion prevention solution.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.9" title="Deploy Port-Level Access Control" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NAC' (n14) and links (e.g., 'nl13') that suggest the deployment of port-level access control.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.10" title="Perform Application Layer Filtering" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Web Proxy' (n10) and links (e.g., 'nl8', 'nl9') that suggest the performance of application layer filtering.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones for 'Sensitive Data Zone' (z4) and 'Non-Sensitive Data Zone' (z5), which can be interpreted as production and non-production systems.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Penetration Testing Service' (n_new2) and links (e.g., 'nl_new2', 'nl_new6') that suggest the performance of periodic external penetration tests.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="0" controls="stage4_structural_integrity,stage4_structural_integrity,stage4_structural_integrity,stage4_ig_consistency" zones_added="1" nodes_added="4" zone_links_added="0" node_links_added="4"/>
+    <Repair round="1" controls="1.1,18.2" zones_added="0" nodes_added="2" zone_links_added="0" node_links_added="2"/>
+    <Repair round="2" controls="1.1" zones_added="0" nodes_added="1" zone_links_added="0" node_links_added="2"/>
+    <Repair round="4" controls="stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation" zones_added="0" nodes_added="1" zone_links_added="0" node_links_added="13"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

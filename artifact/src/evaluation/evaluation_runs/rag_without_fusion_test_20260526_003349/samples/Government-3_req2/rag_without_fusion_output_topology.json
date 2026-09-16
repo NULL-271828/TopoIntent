@@ -1,0 +1,183 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Cloud-2",
+  "title": "Azure Hub-Spoke with AKS and Private PaaS",
+  "description": "A hub-spoke cloud architecture in Azure. The hub provides centralized services like firewall, bastion, and on-premises connectivity. The spoke VNet hosts an Azure Kubernetes Service (AKS) cluster and connects to PaaS services via private endpoints.",
+  "scenario": "cloud",
+  "topology_summary": "This topology consists of a hub VNet and a spoke VNet peered together. The hub contains Azure Firewall, Bastion, and a VPN Gateway. The spoke contains an AKS cluster with multiple node pools and ingress controllers. PaaS services like Azure Key Vault, Container Registry, and Azure Monitor are accessed privately from the spoke via a dedicated private link subnet.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Hub virtual network",
+      "zone_type": "cloud_hub"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Spoke virtual network",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z3",
+      "name": "On-premises network",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Remote office",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Azure PaaS Services",
+      "zone_type": "external"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Azure Bastion",
+      "normalized_type": "bastion",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Azure Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "VPN Gateway",
+      "normalized_type": "vpn_gateway",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "Private Link endpoints",
+      "normalized_type": "cloud_service",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n5",
+      "name": "API server integration",
+      "normalized_type": "cloud_service",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n6",
+      "name": "Ingress resources",
+      "normalized_type": "load_balancer",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n7",
+      "name": "Azure Application Gateway",
+      "normalized_type": "load_balancer",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n8",
+      "name": "Internal load balancer",
+      "normalized_type": "load_balancer",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n9",
+      "name": "Azure Kubernetes Service (AKS) cluster",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n10",
+      "name": "Key Vault",
+      "normalized_type": "cloud_service",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n11",
+      "name": "Container Registry",
+      "normalized_type": "cloud_service",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n12",
+      "name": "Azure Monitor workspace",
+      "normalized_type": "cloud_service",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n13",
+      "name": "Metrics",
+      "normalized_type": "cloud_service",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n14",
+      "name": "Managed Prometheus",
+      "normalized_type": "cloud_service",
+      "zone_id": "z5"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n4",
+        "target": "n10",
+        "link_type": "data_flow",
+        "label": "Private endpoint"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n4",
+        "target": "n11",
+        "link_type": "data_flow",
+        "label": "Private endpoint"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n9",
+        "target": "n12",
+        "link_type": "monitoring",
+        "label": "Metrics"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n1",
+        "target": "n9",
+        "link_type": "management",
+        "label": "kubectl"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z2",
+        "link_type": "peering",
+        "label": "Virtual network peering"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z1",
+        "target": "z3",
+        "link_type": "vpn",
+        "label": "Site-to-site VPN"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z1",
+        "target": "z4",
+        "link_type": "vpn",
+        "label": "Site-to-site VPN"
+      },
+      {
+        "link_id": "zl4",
+        "source": "z2",
+        "target": "z5",
+        "link_type": "data_flow",
+        "label": "Private Link"
+      }
+    ]
+  }
+}

@@ -1,0 +1,949 @@
+{
+  "sample_id": "Financial-3_req1",
+  "gt_template_id": "Financial-3",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-3_req1",
+    "title": "Hybrid Cloud for Finance",
+    "description": "Set up a hybrid cloud environment with Azure Red Hat OpenShift and secure connection to on-premises datacenter.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes an Azure Red Hat OpenShift cluster in the cloud, connected to an on-premises datacenter via a secure link, with all traffic filtered through a central firewall.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "On-Premises Datacenter",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Azure VNet",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Azure Spoke VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Sensitive Data Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Non-Production Zone",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z7",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Azure Red Hat OpenShift Cluster",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n2",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n3",
+        "name": "On-Premises Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "On-Premises Workloads",
+        "normalized_type": "workload",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Azure VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Azure Bastion",
+        "normalized_type": "bastion",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Azure Monitor",
+        "normalized_type": "cloud_service",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Azure Workloads",
+        "normalized_type": "workload",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n9",
+        "name": "DNS Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n10",
+        "name": "DNS Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n11",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n12",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n13",
+        "name": "AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n14",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n15",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n16",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n17",
+        "name": "Sensitive Data Workload",
+        "normalized_type": "workload",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n18",
+        "name": "Non-Production Workload",
+        "normalized_type": "workload",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n19",
+        "name": "Penetration Testing Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n2",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Firewall Management"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n5",
+          "target": "n1",
+          "link_type": "vpn",
+          "label": "Private Connection"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n5",
+          "target": "n3",
+          "link_type": "vpn",
+          "label": "Private Connection"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n6",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Bastion Access"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n7",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "Diagnostics"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n8",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Application Traffic"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n9",
+          "target": "n2",
+          "link_type": "management",
+          "label": "DNS Configuration"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n10",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n11",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "URL Filtering"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n12",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "Intrusion Detection"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n13",
+          "target": "n2",
+          "link_type": "management",
+          "label": "AAA Configuration"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n14",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "Flow Logs"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n15",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Access Control"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n16",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Admin Access"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n17",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Sensitive Data Traffic"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n18",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Non-Production Traffic"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n19",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Penetration Testing"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z2",
+          "target": "z1",
+          "link_type": "vpn",
+          "label": "Private Connection"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Firewall Management"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z2",
+          "target": "z4",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z5",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "Sensitive Data Peering"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z6",
+          "target": "z2",
+          "link_type": "peering",
+          "label": "Non-Production Peering"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z7",
+          "target": "z2",
+          "link_type": "peering",
+          "label": "External Testing Peering"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-3_req1",
+    "ig_level": "IG2",
+    "all_required_satisfied": false,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of an asset inventory system or process.",
+        "missing_reason": "No explicit asset inventory system or process is shown in the topology.",
+        "repair_suggestion": "Add a node representing an asset inventory system and links to all other nodes."
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple data flow links (e.g., nl6, nl15, nl16) and zone peering links (e.g., zl3, zl4, zl5) that document data flows between different zones and nodes.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Sensitive Data Zone (z5) and a Non-Production Zone (z6), indicating that data processing and storage are segmented based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Central Firewall (n2) and On-Premises Firewall (n3) with management links (e.g., nl1, nl3) and data flow links (e.g., nl15).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS Server (n9) with a management link (nl7) to the Central Firewall (n2), indicating that trusted DNS servers are configured.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes an Azure Bastion (n6) and a link (nl4) for Bastion Access, but there is no explicit evidence of MFA being required.",
+        "missing_reason": "No explicit evidence of MFA requirement for remote network access.",
+        "repair_suggestion": "Add a label or node indicating MFA is required for remote access."
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS Filter (n10) with a data flow link (nl8) to the Central Firewall (n2), indicating that DNS filtering services are used.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Web Proxy (n11) with a data flow link (nl9) to the Central Firewall (n2), indicating that network-based URL filters are enforced.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (e.g., z1, z2, z3, z4, z5, z6, z7) and links (e.g., zl1, zl2, zl3, zl4, zl5, zl6) that demonstrate a secure network architecture with segmentation, least privilege, and availability.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Central Firewall (n2), On-Premises Firewall (n3), and management links (e.g., nl1, nl3) that indicate secure management of network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an AAA Server (n13) with a management link (nl11) to the Central Firewall (n2), indicating centralized network AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an Azure VPN Gateway (n5) with a private connection link (nl3) to the On-Premises Firewall (n3) and a management link (nl1) to the Central Firewall (n2), indicating that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIDS (n12) with a monitoring link (nl10) to the Central Firewall (n2), indicating that a network intrusion detection solution is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zone peering links (e.g., zl3, zl4, zl5, zl6) and data flow links (e.g., nl6, nl15, nl16) that indicate traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NAC (n15) with a management link (nl13) to the Central Firewall (n2), indicating that access control for remote assets is managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a SIEM (n14) with a monitoring link (nl12) to the Central Firewall (n2), indicating that network traffic flow logs are collected.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Non-Production Zone (z6) and a Sensitive Data Zone (z5), indicating that production and non-production systems are separated.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes an External Testing Zone (z7) and a Penetration Testing Workstation (n19) with a data flow link (nl17) to the Central Firewall (n2), but there is no explicit evidence of periodic external penetration tests.",
+        "missing_reason": "No explicit evidence of periodic external penetration tests.",
+        "repair_suggestion": "Add a label or node indicating that periodic external penetration tests are performed."
+      }
+    ]
+  },
+  "repair_history": [],
+  "test_cases": {
+    "template_id": "generated_Financial-3_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via private connection."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n4",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via private connection."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Allowed via management access."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Allowed via management access."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Allowed via VNet peering."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n8",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Allowed via VNet peering."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Blocked by sensitive data zone policy."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z5",
+        "target_zone": "z2",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Blocked by sensitive data zone policy."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z2",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Allowed via non-production peering."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n18",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Allowed via non-production peering."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z2",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Blocked by external testing zone policy."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z7",
+        "target_zone": "z2",
+        "source_node": "n19",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Blocked by external testing zone policy."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via management access."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n5",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via management access."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Allowed via bastion access."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n6",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Allowed via bastion access."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via monitoring access."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via monitoring access."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n9",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Allowed via DNS configuration."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Allowed via DNS configuration."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n10",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Allowed via DNS filtering."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Allowed via DNS filtering."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n11",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Allowed via URL filtering."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Allowed via URL filtering."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n12",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via intrusion detection."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via intrusion detection."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n13",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via AAA configuration."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via AAA configuration."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n14",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via flow logs."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via flow logs."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n15",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via access control."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via access control."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n16",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via admin access."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Allowed via admin access."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Blocked by sensitive data zone policy."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z5",
+        "target_zone": "z2",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Blocked by sensitive data zone policy."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z2",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Blocked by external testing zone policy."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z7",
+        "target_zone": "z2",
+        "source_node": "n19",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Blocked by external testing zone policy."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z2",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Blocked by non-production zone policy."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n18",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Blocked by non-production zone policy."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req1/rag_without_repair/IG2/xml/IG2/generated_Financial-3_req1_IG2.xml"
+}

@@ -1,0 +1,2530 @@
+{
+  "sample_id": "Government-1_req2",
+  "gt_template_id": "Government-1",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-1_req2",
+    "title": "Hierarchical Network Architecture",
+    "description": "A secure hierarchical network with an Internet Edge, a three-tier data center, and WAN connections to remote sites.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes an Internet Edge with a firewall and application-layer security, a three-tier data center, and WAN links to a regional and branch office with local routing and switching.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Internet Edge",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Regional Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z5",
+        "name": "WAN",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Non-Production Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z_preserve1",
+        "name": "Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_preserve2",
+        "name": "Sensitive Data Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z8",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z10",
+        "name": "IaC Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z11",
+        "name": "Pen Testing",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z_new1",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new2",
+        "name": "Data Flow Documentation",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new3",
+        "name": "DNS Filtering",
+        "zone_type": "security"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Application Layer Security Appliance",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Web Server",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n4",
+        "name": "Application Server",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n5",
+        "name": "Database Server",
+        "normalized_type": "database",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n7",
+        "name": "Switch",
+        "normalized_type": "switch",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n8",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n9",
+        "name": "Switch",
+        "normalized_type": "switch",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n10",
+        "name": "Remote Access VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "WAN Router",
+        "normalized_type": "router",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n12",
+        "name": "IDS/IPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n14",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n15",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n16",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n17",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n18",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n19",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n20",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n21",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n22",
+        "name": "802.1X Controller",
+        "normalized_type": "access_point",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Non-Production Zone Application Server",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n_struct2",
+        "name": "Management Management Service",
+        "normalized_type": "server",
+        "zone_id": "z_preserve1"
+      },
+      {
+        "node_id": "n_struct3",
+        "name": "Sensitive Data Zone Application Server",
+        "normalized_type": "server",
+        "zone_id": "z_preserve2"
+      },
+      {
+        "node_id": "n_struct4",
+        "name": "External Testing Zone External Endpoint",
+        "normalized_type": "endpoint",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n_struct5",
+        "name": "Asset Management Management Service",
+        "normalized_type": "server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n_struct6",
+        "name": "IaC Management Management Service",
+        "normalized_type": "server",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n_struct7",
+        "name": "Pen Testing Security Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z11"
+      },
+      {
+        "node_id": "n_new1",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z_new1"
+      },
+      {
+        "node_id": "n_new2",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z_new2"
+      },
+      {
+        "node_id": "n_new3",
+        "name": "Server Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n_new4",
+        "name": "Non-Prod Server Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n_new5",
+        "name": "DNS Filtering Service",
+        "normalized_type": "waf",
+        "zone_id": "z_new3"
+      },
+      {
+        "node_id": "n_new6",
+        "name": "URL Filtering Service",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n_new7",
+        "name": "Pen Testing Service",
+        "normalized_type": "other",
+        "zone_id": "z11"
+      },
+      {
+        "node_id": "nl1",
+        "name": "Recovered Endpoint nl1",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl2",
+        "name": "Recovered Endpoint nl2",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl3",
+        "name": "Recovered Endpoint nl3",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl4",
+        "name": "Recovered Endpoint nl4",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl5",
+        "name": "Recovered Endpoint nl5",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl6",
+        "name": "Recovered Endpoint nl6",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl7",
+        "name": "Recovered Endpoint nl7",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl8",
+        "name": "Recovered Endpoint nl8",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl9",
+        "name": "Recovered Endpoint nl9",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl10",
+        "name": "Recovered Endpoint nl10",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl11",
+        "name": "Recovered Endpoint nl11",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl12",
+        "name": "Recovered Endpoint nl12",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl13",
+        "name": "Recovered Endpoint nl13",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl_struct1",
+        "name": "Recovered Endpoint nl_struct1",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl_struct2",
+        "name": "Recovered Endpoint nl_struct2",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl_struct3",
+        "name": "Recovered Endpoint nl_struct3",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl_struct4",
+        "name": "Recovered Endpoint nl_struct4",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl_struct5",
+        "name": "Recovered Endpoint nl_struct5",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl_struct6",
+        "name": "Recovered Endpoint nl_struct6",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "nl_struct7",
+        "name": "Recovered Endpoint nl_struct7",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n10",
+          "link_type": "vpn",
+          "label": "Remote Access"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n1",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "Security Monitoring"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n11",
+          "target": "n6",
+          "link_type": "uplink",
+          "label": "WAN to Regional Office"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n11",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "WAN to Branch Office"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n10",
+          "target": "n13",
+          "link_type": "management",
+          "label": "AAA Integration"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n1",
+          "target": "n14",
+          "link_type": "monitoring",
+          "label": "Flow Logs"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n1",
+          "target": "n15",
+          "link_type": "data_flow",
+          "label": "DNS Requests"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n1",
+          "target": "n16",
+          "link_type": "data_flow",
+          "label": "Web Traffic"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n1",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "NAC Checks"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n1",
+          "target": "n19",
+          "link_type": "data_flow",
+          "label": "Intrusion Detection"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n1",
+          "target": "n20",
+          "link_type": "data_flow",
+          "label": "Intrusion Prevention"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n1",
+          "target": "n21",
+          "link_type": "data_flow",
+          "label": "Application Layer Filtering"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n1",
+          "target": "n22",
+          "link_type": "data_flow",
+          "label": "Port-Level Access Control"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n1",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct2",
+          "source": "n1",
+          "target": "n_struct2",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct3",
+          "source": "n1",
+          "target": "n_struct3",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct4",
+          "source": "n1",
+          "target": "n_struct4",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct5",
+          "source": "n1",
+          "target": "n_struct5",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct6",
+          "source": "n1",
+          "target": "n_struct6",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct7",
+          "source": "n1",
+          "target": "n_struct7",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_new1",
+          "source": "n_new1",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n_new1",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new3",
+          "source": "n_new1",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new4",
+          "source": "n_new1",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new5",
+          "source": "n_new1",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new6",
+          "source": "n_new1",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new7",
+          "source": "n_new1",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new8",
+          "source": "n_new1",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new9",
+          "source": "n_new1",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new10",
+          "source": "n_new1",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new11",
+          "source": "n_new1",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new12",
+          "source": "n_new1",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new13",
+          "source": "n_new1",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new14",
+          "source": "n_new1",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new15",
+          "source": "n_new1",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new16",
+          "source": "n_new1",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new17",
+          "source": "n_new1",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new18",
+          "source": "n_new1",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new19",
+          "source": "n_new1",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new20",
+          "source": "n_new1",
+          "target": "n20",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new21",
+          "source": "n_new1",
+          "target": "n21",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new22",
+          "source": "n_new1",
+          "target": "n22",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new23",
+          "source": "n_new1",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new24",
+          "source": "n_new1",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new25",
+          "source": "n_new1",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new26",
+          "source": "n_new1",
+          "target": "n_struct4",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new27",
+          "source": "n_new1",
+          "target": "n_struct5",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new28",
+          "source": "n_new1",
+          "target": "n_struct6",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new29",
+          "source": "n_new1",
+          "target": "n_struct7",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl_new30",
+          "source": "n_new2",
+          "target": "nl1",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new31",
+          "source": "n_new2",
+          "target": "nl2",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new32",
+          "source": "n_new2",
+          "target": "nl3",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new33",
+          "source": "n_new2",
+          "target": "nl4",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new34",
+          "source": "n_new2",
+          "target": "nl5",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new35",
+          "source": "n_new2",
+          "target": "nl6",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new36",
+          "source": "n_new2",
+          "target": "nl7",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new37",
+          "source": "n_new2",
+          "target": "nl8",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new38",
+          "source": "n_new2",
+          "target": "nl9",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new39",
+          "source": "n_new2",
+          "target": "nl10",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new40",
+          "source": "n_new2",
+          "target": "nl11",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new41",
+          "source": "n_new2",
+          "target": "nl12",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new42",
+          "source": "n_new2",
+          "target": "nl13",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new43",
+          "source": "n_new2",
+          "target": "nl_struct1",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new44",
+          "source": "n_new2",
+          "target": "nl_struct2",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new45",
+          "source": "n_new2",
+          "target": "nl_struct3",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new46",
+          "source": "n_new2",
+          "target": "nl_struct4",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new47",
+          "source": "n_new2",
+          "target": "nl_struct5",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new48",
+          "source": "n_new2",
+          "target": "nl_struct6",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new49",
+          "source": "n_new2",
+          "target": "nl_struct7",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl_new50",
+          "source": "n_new3",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Firewall Protection"
+        },
+        {
+          "link_id": "nl_new51",
+          "source": "n_new3",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Firewall Protection"
+        },
+        {
+          "link_id": "nl_new52",
+          "source": "n_new3",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Firewall Protection"
+        },
+        {
+          "link_id": "nl_new53",
+          "source": "n_new4",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Firewall Protection"
+        },
+        {
+          "link_id": "nl_new54",
+          "source": "n_new5",
+          "target": "n15",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl_new55",
+          "source": "n_new5",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl_new56",
+          "source": "n_new6",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "URL Filtering"
+        },
+        {
+          "link_id": "nl_new57",
+          "source": "n_new6",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "URL Filtering"
+        },
+        {
+          "link_id": "nl_new58",
+          "source": "n_new7",
+          "target": "n_struct7",
+          "link_type": "data_flow",
+          "label": "Pen Testing"
+        },
+        {
+          "link_id": "nl_new59",
+          "source": "n_new7",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Pen Testing"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "uplink",
+          "label": "Internet Edge to WAN"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z5",
+          "link_type": "uplink",
+          "label": "Data Center to WAN"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z2",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "Prod/Non-Prod Separation"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-1_req2",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Management System' (n_new1) that tracks assets across various zones, including servers, routers, switches, and endpoints.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation System' (n_new2) that documents data flows between various nodes and zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Sensitive Data Zone' (z_preserve2) and a 'Non-Production Zone' (z7), indicating that data processing and storage are segmented based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes 'Server Firewalls' (n_new3 and n_new4) protecting servers in the Data Center and Non-Production Zone.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n15) in the Internet Edge zone, and there are links indicating DNS requests from the firewall (n1) to the DNS server.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Remote Access VPN Gateway' (n10) and links indicating integration with the 'Identity Server' (n13) for AAA, which typically includes MFA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filtering Service' (n_new5) with links to the firewall (n1) and DNS server (n15).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'URL Filtering Service' (n_new6) with links to the firewall (n1) and remote access VPN gateway (n10).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (Internet Edge, Data Center, Regional Office, Branch Office, Management Zone, Non-Production Zone) and links indicating proper segmentation and least privilege.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IaC Management Management Service' (n_struct6) in the IaC Management zone, indicating the use of version-controlled Infrastructure-as-Code.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Identity Server' (n13) in the Management Zone, and links indicating integration with the firewall (n1) and remote access VPN gateway (n10).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Remote Access VPN Gateway' (n10) and links indicating integration with the 'Identity Server' (n13) for AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Admin Workstation' (n18) in the Management Zone, which is segmented from other zones and does not have internet access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IDS/IPS' (n12) and 'NIDS' (n19) in the Internet Edge zone, indicating the deployment of network intrusion detection solutions.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n1, n_new3, n_new4) and links indicating traffic filtering between different zones (e.g., Internet Edge to WAN, Data Center to Non-Production Zone).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Remote Access VPN Gateway' (n10) and links indicating integration with the 'Identity Server' (n13) for AAA, which typically includes access control checks.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'SIEM' (n14) in the Management Zone, and links indicating flow logs from the firewall (n1) to the SIEM.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIPS' (n20) in the Internet Edge zone, indicating the deployment of a network intrusion prevention solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an '802.1X Controller' (n22) in the Internet Edge zone, indicating the deployment of port-level access control.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Application Layer Security Appliance' (n2) and 'Application Firewall' (n21) in the Internet Edge zone, indicating the deployment of application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Center' (z2) and a 'Non-Production Zone' (z7), indicating the separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Pen Testing Security Gateway' (n_struct7) and 'Pen Testing Service' (n_new7) in the Pen Testing zone, indicating the capability to perform external penetration tests.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity",
+        "stage4_ig_consistency"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z7\", \"name\": \"Non-Production Zone\", \"zone_type\": \"data_center\"}",
+          "missing_reason": "Zone z7 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_ig_consistency",
+          "title": "ig3_missing_ig2_zone_semantics",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "[{\"zone_id\": \"z5\", \"name\": \"Management\", \"zone_type\": \"management\"}, {\"zone_id\": \"z6\", \"name\": \"Sensitive Data Zone\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z8\", \"name\": \"External Testing Zone\", \"zone_type\": \"external\"}, {\"zone_id\": \"z9\", \"name\": \"Asset Management\", \"zone_type\": \"management\"}, {\"zone_id\": \"z10\", \"name\": \"IaC Management\", \"zone_type\": \"management\"}, {\"zone_id\": \"z11\", \"name\": \"Pen Testing\", \"zone_type\": \"security\"}]",
+          "missing_reason": "IG3 topology removed or failed to preserve IG2 zone semantics.",
+          "repair_suggestion": "Add the missing IG2 zone semantics to IG3 as preserved or stricter zones, with representative nodes and concrete node_links. IG3 may add controls but must not reduce segmentation."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_preserve1",
+            "name": "Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_preserve2",
+            "name": "Sensitive Data Zone",
+            "zone_type": "data_center"
+          },
+          {
+            "zone_id": "z8",
+            "name": "External Testing Zone",
+            "zone_type": "external"
+          },
+          {
+            "zone_id": "z9",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z10",
+            "name": "IaC Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z11",
+            "name": "Pen Testing",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Non-Production Zone Application Server",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n_struct2",
+            "name": "Management Management Service",
+            "normalized_type": "server",
+            "zone_id": "z_preserve1"
+          },
+          {
+            "node_id": "n_struct3",
+            "name": "Sensitive Data Zone Application Server",
+            "normalized_type": "server",
+            "zone_id": "z_preserve2"
+          },
+          {
+            "node_id": "n_struct4",
+            "name": "External Testing Zone External Endpoint",
+            "normalized_type": "endpoint",
+            "zone_id": "z8"
+          },
+          {
+            "node_id": "n_struct5",
+            "name": "Asset Management Management Service",
+            "normalized_type": "server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n_struct6",
+            "name": "IaC Management Management Service",
+            "normalized_type": "server",
+            "zone_id": "z10"
+          },
+          {
+            "node_id": "n_struct7",
+            "name": "Pen Testing Security Gateway",
+            "normalized_type": "firewall",
+            "zone_id": "z11"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n1",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct2",
+              "source": "n1",
+              "target": "n_struct2",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct3",
+              "source": "n1",
+              "target": "n_struct3",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct4",
+              "source": "n1",
+              "target": "n_struct4",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct5",
+              "source": "n1",
+              "target": "n_struct5",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct6",
+              "source": "n1",
+              "target": "n_struct6",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct7",
+              "source": "n1",
+              "target": "n_struct7",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 22,
+        "zone_links": 3,
+        "node_links": 13
+      },
+      "counts_after": {
+        "zones": 13,
+        "nodes": 29,
+        "zone_links": 3,
+        "node_links": 20
+      },
+      "count_delta": {
+        "zones": 6,
+        "nodes": 7,
+        "zone_links": 0,
+        "node_links": 7
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "4.4",
+        "9.2",
+        "9.3",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of an asset inventory system or process.",
+          "missing_reason": "No explicit asset inventory system or process is shown in the topology.",
+          "repair_suggestion": "Add a node representing an asset management system and links to all other nodes to indicate asset tracking."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes data flow links, but there is no explicit evidence of documented data flows.",
+          "missing_reason": "No explicit documentation of data flows is shown in the topology.",
+          "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant data flow links."
+        },
+        {
+          "cis_safeguard_id": "4.4",
+          "title": "Implement and Manage a Firewall on Servers",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not show firewalls implemented on any servers.",
+          "missing_reason": "No firewalls are shown on servers.",
+          "repair_suggestion": "Add firewall nodes to server zones and link them to the servers."
+        },
+        {
+          "cis_safeguard_id": "9.2",
+          "title": "Use DNS Filtering Services",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not show any DNS filtering services.",
+          "missing_reason": "No DNS filtering services are shown in the topology.",
+          "repair_suggestion": "Add a node representing a DNS filtering service and link it to the DNS server and other relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "9.3",
+          "title": "Maintain and Enforce Network-Based URL Filters",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not show any network-based URL filters.",
+          "missing_reason": "No network-based URL filters are shown in the topology.",
+          "repair_suggestion": "Add a node representing a URL filtering service and link it to the firewall and other relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a Pen Testing Security Gateway (n_struct7) in the Pen Testing zone (z11), but there is no explicit evidence of periodic external penetration tests.",
+          "missing_reason": "No explicit evidence of periodic external penetration tests is shown in the topology.",
+          "repair_suggestion": "Add a node representing a penetration testing service and links to the Pen Testing Security Gateway and other relevant nodes."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_new1",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_new2",
+            "name": "Data Flow Documentation",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_new3",
+            "name": "DNS Filtering",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_new1",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z_new1"
+          },
+          {
+            "node_id": "n_new2",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z_new2"
+          },
+          {
+            "node_id": "n_new3",
+            "name": "Server Firewall",
+            "normalized_type": "firewall",
+            "zone_id": "z2"
+          },
+          {
+            "node_id": "n_new4",
+            "name": "Non-Prod Server Firewall",
+            "normalized_type": "firewall",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n_new5",
+            "name": "DNS Filtering Service",
+            "normalized_type": "waf",
+            "zone_id": "z_new3"
+          },
+          {
+            "node_id": "n_new6",
+            "name": "URL Filtering Service",
+            "normalized_type": "waf",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n_new7",
+            "name": "Pen Testing Service",
+            "normalized_type": "other",
+            "zone_id": "z11"
+          },
+          {
+            "node_id": "nl1",
+            "name": "Recovered Endpoint nl1",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl2",
+            "name": "Recovered Endpoint nl2",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl3",
+            "name": "Recovered Endpoint nl3",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl4",
+            "name": "Recovered Endpoint nl4",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl5",
+            "name": "Recovered Endpoint nl5",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl6",
+            "name": "Recovered Endpoint nl6",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl7",
+            "name": "Recovered Endpoint nl7",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl8",
+            "name": "Recovered Endpoint nl8",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl9",
+            "name": "Recovered Endpoint nl9",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl10",
+            "name": "Recovered Endpoint nl10",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl11",
+            "name": "Recovered Endpoint nl11",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl12",
+            "name": "Recovered Endpoint nl12",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl13",
+            "name": "Recovered Endpoint nl13",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl_struct1",
+            "name": "Recovered Endpoint nl_struct1",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl_struct2",
+            "name": "Recovered Endpoint nl_struct2",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl_struct3",
+            "name": "Recovered Endpoint nl_struct3",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl_struct4",
+            "name": "Recovered Endpoint nl_struct4",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl_struct5",
+            "name": "Recovered Endpoint nl_struct5",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl_struct6",
+            "name": "Recovered Endpoint nl_struct6",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "nl_struct7",
+            "name": "Recovered Endpoint nl_struct7",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new1",
+              "source": "n_new1",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new2",
+              "source": "n_new1",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new3",
+              "source": "n_new1",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new4",
+              "source": "n_new1",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new5",
+              "source": "n_new1",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new6",
+              "source": "n_new1",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new7",
+              "source": "n_new1",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new8",
+              "source": "n_new1",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new9",
+              "source": "n_new1",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new10",
+              "source": "n_new1",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new11",
+              "source": "n_new1",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new12",
+              "source": "n_new1",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new13",
+              "source": "n_new1",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new14",
+              "source": "n_new1",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new15",
+              "source": "n_new1",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new16",
+              "source": "n_new1",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new17",
+              "source": "n_new1",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new18",
+              "source": "n_new1",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new19",
+              "source": "n_new1",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new20",
+              "source": "n_new1",
+              "target": "n20",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new21",
+              "source": "n_new1",
+              "target": "n21",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new22",
+              "source": "n_new1",
+              "target": "n22",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new23",
+              "source": "n_new1",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new24",
+              "source": "n_new1",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new25",
+              "source": "n_new1",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new26",
+              "source": "n_new1",
+              "target": "n_struct4",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new27",
+              "source": "n_new1",
+              "target": "n_struct5",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new28",
+              "source": "n_new1",
+              "target": "n_struct6",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new29",
+              "source": "n_new1",
+              "target": "n_struct7",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl_new30",
+              "source": "n_new2",
+              "target": "nl1",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new31",
+              "source": "n_new2",
+              "target": "nl2",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new32",
+              "source": "n_new2",
+              "target": "nl3",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new33",
+              "source": "n_new2",
+              "target": "nl4",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new34",
+              "source": "n_new2",
+              "target": "nl5",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new35",
+              "source": "n_new2",
+              "target": "nl6",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new36",
+              "source": "n_new2",
+              "target": "nl7",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new37",
+              "source": "n_new2",
+              "target": "nl8",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new38",
+              "source": "n_new2",
+              "target": "nl9",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new39",
+              "source": "n_new2",
+              "target": "nl10",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new40",
+              "source": "n_new2",
+              "target": "nl11",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new41",
+              "source": "n_new2",
+              "target": "nl12",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new42",
+              "source": "n_new2",
+              "target": "nl13",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new43",
+              "source": "n_new2",
+              "target": "nl_struct1",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new44",
+              "source": "n_new2",
+              "target": "nl_struct2",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new45",
+              "source": "n_new2",
+              "target": "nl_struct3",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new46",
+              "source": "n_new2",
+              "target": "nl_struct4",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new47",
+              "source": "n_new2",
+              "target": "nl_struct5",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new48",
+              "source": "n_new2",
+              "target": "nl_struct6",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new49",
+              "source": "n_new2",
+              "target": "nl_struct7",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl_new50",
+              "source": "n_new3",
+              "target": "n3",
+              "link_type": "data_flow",
+              "label": "Firewall Protection"
+            },
+            {
+              "link_id": "nl_new51",
+              "source": "n_new3",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "Firewall Protection"
+            },
+            {
+              "link_id": "nl_new52",
+              "source": "n_new3",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Firewall Protection"
+            },
+            {
+              "link_id": "nl_new53",
+              "source": "n_new4",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Firewall Protection"
+            },
+            {
+              "link_id": "nl_new54",
+              "source": "n_new5",
+              "target": "n15",
+              "link_type": "data_flow",
+              "label": "DNS Filtering"
+            },
+            {
+              "link_id": "nl_new55",
+              "source": "n_new5",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "DNS Filtering"
+            },
+            {
+              "link_id": "nl_new56",
+              "source": "n_new6",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "URL Filtering"
+            },
+            {
+              "link_id": "nl_new57",
+              "source": "n_new6",
+              "target": "n10",
+              "link_type": "data_flow",
+              "label": "URL Filtering"
+            },
+            {
+              "link_id": "nl_new58",
+              "source": "n_new7",
+              "target": "n_struct7",
+              "link_type": "data_flow",
+              "label": "Pen Testing"
+            },
+            {
+              "link_id": "nl_new59",
+              "source": "n_new7",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Pen Testing"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 13,
+        "nodes": 29,
+        "zone_links": 3,
+        "node_links": 20
+      },
+      "counts_after": {
+        "zones": 16,
+        "nodes": 56,
+        "zone_links": 3,
+        "node_links": 79
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 27,
+        "zone_links": 0,
+        "node_links": 59
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-1_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web server access from firewall."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Application server access from firewall."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 3306,
+        "expected": "allow",
+        "reason": "Database server access from firewall."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Secure web server access from firewall."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Secure application server access from firewall."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Secure database server access from firewall."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to web server blocked."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to application server blocked."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to database server blocked."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Kerberos authentication from firewall."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "SIEM logs from firewall."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Admin workstation access from firewall."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to identity server blocked."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to SIEM blocked."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "HTTP access to admin workstation blocked."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Web server access to non-prod zone blocked."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Secure web server access to non-prod zone blocked."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to non-prod zone blocked."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n_struct4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Web server access to external testing zone blocked."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n_struct4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Secure web server access to external testing zone blocked."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n_struct4",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to external testing zone blocked."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z1",
+        "target_zone": "z11",
+        "source_node": "n1",
+        "target_node": "n_struct7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Web server access to pen testing zone blocked."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z1",
+        "target_zone": "z11",
+        "source_node": "n1",
+        "target_node": "n_struct7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Secure web server access to pen testing zone blocked."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z1",
+        "target_zone": "z11",
+        "source_node": "n1",
+        "target_node": "n_struct7",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to pen testing zone blocked."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z2",
+        "target_zone": "z7",
+        "source_node": "n3",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Web server access to non-prod zone blocked."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z2",
+        "target_zone": "z7",
+        "source_node": "n3",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Secure web server access to non-prod zone blocked."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z2",
+        "target_zone": "z7",
+        "source_node": "n3",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to non-prod zone blocked."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z2",
+        "target_zone": "z8",
+        "source_node": "n3",
+        "target_node": "n_struct4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Web server access to external testing zone blocked."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z2",
+        "target_zone": "z8",
+        "source_node": "n3",
+        "target_node": "n_struct4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Secure web server access to external testing zone blocked."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z2",
+        "target_zone": "z8",
+        "source_node": "n3",
+        "target_node": "n_struct4",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to external testing zone blocked."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z2",
+        "target_zone": "z11",
+        "source_node": "n3",
+        "target_node": "n_struct7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Web server access to pen testing zone blocked."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z2",
+        "target_zone": "z11",
+        "source_node": "n3",
+        "target_node": "n_struct7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Secure web server access to pen testing zone blocked."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z2",
+        "target_zone": "z11",
+        "source_node": "n3",
+        "target_node": "n_struct7",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access to pen testing zone blocked."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n6",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web server access from regional office."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n6",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Application server access from regional office."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n6",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 3306,
+        "expected": "allow",
+        "reason": "Database server access from regional office."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n8",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web server access from branch office."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n8",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Application server access from branch office."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n8",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 3306,
+        "expected": "allow",
+        "reason": "Database server access from branch office."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 1723,
+        "expected": "allow",
+        "reason": "WAN router access from firewall."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req2/rag_without_feedback/IG3/xml/IG3/generated_Government-1_req2_IG3.xml"
+}

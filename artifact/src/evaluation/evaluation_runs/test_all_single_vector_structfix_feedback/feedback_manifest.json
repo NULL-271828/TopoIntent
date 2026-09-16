@@ -1,0 +1,20 @@
+{
+  "mode": "stage5_feedback_repair",
+  "original_run_dir": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223",
+  "initial_reports_dir": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/reports_from_wsl",
+  "feedback_run_dir": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback",
+  "created_at": "2026-05-26T14:17:59",
+  "elapsed_sec": 4095.683,
+  "records": 28,
+  "failures": 0,
+  "repair_required_records": 27,
+  "generated_scripts": 28,
+  "outputs": {
+    "records": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/feedback_records.json",
+    "failures": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/failures.json",
+    "html_records": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/html_records.json",
+    "mininet_scripts_package": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package",
+    "mininet_scripts_zip": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package.zip",
+    "reports_from_wsl": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/reports_from_wsl/all_reports"
+  }
+}

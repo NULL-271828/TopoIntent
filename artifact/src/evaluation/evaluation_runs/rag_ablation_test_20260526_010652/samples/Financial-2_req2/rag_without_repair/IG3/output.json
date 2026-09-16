@@ -1,0 +1,1217 @@
+{
+  "sample_id": "Financial-2_req2",
+  "gt_template_id": "Financial-2",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-2_req2",
+    "title": "Financial Data Ingestion Network",
+    "description": "A network designed for ingesting financial data feeds and processing them in dedicated market data pods, with outputs distributed to three campus sites.",
+    "scenario": "finance",
+    "topology_summary": "The network includes dedicated pods for data ingestion and processing, connected to three campus sites via trunk links for inter-site communication. Segmentation is enforced by function.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Ingestion Pod",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Market Data Pod 1",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Market Data Pod 2",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Campus Site 1",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Campus Site 2",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Campus Site 3",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Security Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z9",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Ingestion Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Feed Handler 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Analytics Workload 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n4",
+        "name": "Execution Engine 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n5",
+        "name": "Feed Handler 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n6",
+        "name": "Analytics Workload 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n7",
+        "name": "Execution Engine 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n8",
+        "name": "Switch 1",
+        "normalized_type": "switch",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n9",
+        "name": "Switch 2",
+        "normalized_type": "switch",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n10",
+        "name": "Switch 3",
+        "normalized_type": "switch",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n11",
+        "name": "Firewall 1",
+        "normalized_type": "firewall",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n12",
+        "name": "Firewall 2",
+        "normalized_type": "firewall",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n13",
+        "name": "DNS Server 1",
+        "normalized_type": "server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n14",
+        "name": "DNS Server 2",
+        "normalized_type": "server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n15",
+        "name": "MFA/Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n16",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n17",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n18",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n19",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n20",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n21",
+        "name": "NAC",
+        "normalized_type": "other",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n22",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n23",
+        "name": "Penetration Testing Host",
+        "normalized_type": "endpoint",
+        "zone_id": "z9"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl_new1",
+          "source": "n1",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Ingestion to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n1",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Ingestion to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new3",
+          "source": "n2",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Feed Handler 1 to Analytics Workload 1"
+        },
+        {
+          "link_id": "nl_new4",
+          "source": "n3",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Analytics Workload 1 to Execution Engine 1"
+        },
+        {
+          "link_id": "nl_new5",
+          "source": "n5",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Feed Handler 2 to Analytics Workload 2"
+        },
+        {
+          "link_id": "nl_new6",
+          "source": "n6",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Analytics Workload 2 to Execution Engine 2"
+        },
+        {
+          "link_id": "nl_new7",
+          "source": "n4",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Execution Engine 1 to Switch 1"
+        },
+        {
+          "link_id": "nl_new8",
+          "source": "n7",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Execution Engine 2 to Switch 2"
+        },
+        {
+          "link_id": "nl_new9",
+          "source": "n7",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Execution Engine 2 to Switch 3"
+        },
+        {
+          "link_id": "nl_new10",
+          "source": "n11",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Firewall to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new11",
+          "source": "n11",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Firewall to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new12",
+          "source": "n11",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Firewall to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new13",
+          "source": "n12",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Firewall to Analytics Workload 1"
+        },
+        {
+          "link_id": "nl_new14",
+          "source": "n12",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Firewall to Execution Engine 1"
+        },
+        {
+          "link_id": "nl_new15",
+          "source": "n12",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Firewall to Analytics Workload 2"
+        },
+        {
+          "link_id": "nl_new16",
+          "source": "n12",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Firewall to Execution Engine 2"
+        },
+        {
+          "link_id": "nl_new17",
+          "source": "n13",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new18",
+          "source": "n13",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "DNS to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new19",
+          "source": "n13",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "DNS to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new20",
+          "source": "n14",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "DNS to Analytics Workload 1"
+        },
+        {
+          "link_id": "nl_new21",
+          "source": "n14",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "DNS to Execution Engine 1"
+        },
+        {
+          "link_id": "nl_new22",
+          "source": "n14",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "DNS to Analytics Workload 2"
+        },
+        {
+          "link_id": "nl_new23",
+          "source": "n14",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "DNS to Execution Engine 2"
+        },
+        {
+          "link_id": "nl_new24",
+          "source": "n15",
+          "target": "n11",
+          "link_type": "management",
+          "label": "MFA to Firewall 1"
+        },
+        {
+          "link_id": "nl_new25",
+          "source": "n15",
+          "target": "n12",
+          "link_type": "management",
+          "label": "MFA to Firewall 2"
+        },
+        {
+          "link_id": "nl_new26",
+          "source": "n16",
+          "target": "n11",
+          "link_type": "data_flow",
+          "label": "Web Proxy to Firewall 1"
+        },
+        {
+          "link_id": "nl_new27",
+          "source": "n16",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "Web Proxy to Firewall 2"
+        },
+        {
+          "link_id": "nl_new28",
+          "source": "n17",
+          "target": "n11",
+          "link_type": "data_flow",
+          "label": "App Firewall to Firewall 1"
+        },
+        {
+          "link_id": "nl_new29",
+          "source": "n17",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "App Firewall to Firewall 2"
+        },
+        {
+          "link_id": "nl_new30",
+          "source": "n18",
+          "target": "n11",
+          "link_type": "monitoring",
+          "label": "NIDS to Firewall 1"
+        },
+        {
+          "link_id": "nl_new31",
+          "source": "n18",
+          "target": "n12",
+          "link_type": "monitoring",
+          "label": "NIDS to Firewall 2"
+        },
+        {
+          "link_id": "nl_new32",
+          "source": "n19",
+          "target": "n11",
+          "link_type": "data_flow",
+          "label": "NIPS to Firewall 1"
+        },
+        {
+          "link_id": "nl_new33",
+          "source": "n19",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "NIPS to Firewall 2"
+        },
+        {
+          "link_id": "nl_new34",
+          "source": "n20",
+          "target": "n18",
+          "link_type": "monitoring",
+          "label": "SIEM to NIDS"
+        },
+        {
+          "link_id": "nl_new35",
+          "source": "n20",
+          "target": "n19",
+          "link_type": "monitoring",
+          "label": "SIEM to NIPS"
+        },
+        {
+          "link_id": "nl_new36",
+          "source": "n21",
+          "target": "n11",
+          "link_type": "management",
+          "label": "NAC to Firewall 1"
+        },
+        {
+          "link_id": "nl_new37",
+          "source": "n21",
+          "target": "n12",
+          "link_type": "management",
+          "label": "NAC to Firewall 2"
+        },
+        {
+          "link_id": "nl_new38",
+          "source": "n22",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Admin Workstation to MFA/Identity Server"
+        },
+        {
+          "link_id": "nl_new39",
+          "source": "n23",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Pen Test Host to Firewall 1"
+        },
+        {
+          "link_id": "nl_new40",
+          "source": "n23",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Pen Test Host to Firewall 2"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl_new1",
+          "source": "z4",
+          "target": "z5",
+          "link_type": "trunk",
+          "label": "Trunk Link between Campus Site 1 and Campus Site 2"
+        },
+        {
+          "link_id": "zl_new2",
+          "source": "z5",
+          "target": "z6",
+          "link_type": "trunk",
+          "label": "Trunk Link between Campus Site 2 and Campus Site 3"
+        },
+        {
+          "link_id": "zl_new3",
+          "source": "z4",
+          "target": "z6",
+          "link_type": "trunk",
+          "label": "Trunk Link between Campus Site 1 and Campus Site 3"
+        },
+        {
+          "link_id": "zl_new4",
+          "source": "z7",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Management to Security"
+        },
+        {
+          "link_id": "zl_new5",
+          "source": "z8",
+          "target": "z9",
+          "link_type": "management",
+          "label": "Security to External Testing"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-2_req2",
+    "ig_level": "IG3",
+    "all_required_satisfied": false,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology shows various nodes and their types but does not provide detailed information about asset owners, departments, or network addresses.",
+        "missing_reason": "Detailed asset inventory information is not provided in the topology.",
+        "repair_suggestion": "Add detailed asset inventory information, including asset owners, departments, and network addresses."
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes explicit data flow links between nodes, indicating documented data flows.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for different functions (e.g., Ingestion Pod, Market Data Pods, Management Zone, Security Zone), which suggests segmentation based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n11, n12) that are connected to various servers and workloads, indicating the implementation of firewalls on servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes DNS servers (n13, n14) that are connected to various nodes, indicating the configuration of trusted DNS servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA/Identity Server (n15) that is connected to firewalls (n11, n12), indicating the requirement for MFA for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes DNS servers but does not explicitly show DNS filtering services.",
+        "missing_reason": "DNS filtering services are not explicitly shown in the topology.",
+        "repair_suggestion": "Add explicit DNS filtering services to the topology."
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Web Proxy (n16) and an Application Firewall (n17) that are connected to firewalls, indicating the enforcement of network-based URL filters.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones, firewalls, and other security measures, indicating a secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls, switches, and other network devices, and shows management links, indicating secure management of network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA/Identity Server (n15) and management links to firewalls, indicating centralized AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology does not explicitly show a VPN or remote devices connecting to the AAA infrastructure.",
+        "missing_reason": "VPN and remote device connections are not explicitly shown in the topology.",
+        "repair_suggestion": "Add explicit representation of a VPN and remote device connections to the AAA infrastructure."
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Management Zone (z7) with an Admin Workstation (n22) and an MFA/Identity Server (n15), indicating dedicated computing resources for administrative work.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIDS (n18) that is connected to firewalls, indicating the deployment of a network intrusion detection solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n11, n12) that are connected to various zones, indicating traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology does not explicitly show remote assets or access control mechanisms for remote assets.",
+        "missing_reason": "Remote assets and access control mechanisms are not explicitly shown in the topology.",
+        "repair_suggestion": "Add explicit representation of remote assets and access control mechanisms."
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology does not explicitly show the collection of network traffic flow logs.",
+        "missing_reason": "Network traffic flow log collection is not explicitly shown in the topology.",
+        "repair_suggestion": "Add explicit representation of network traffic flow log collection."
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIPS (n19) that is connected to firewalls, indicating the deployment of a network intrusion prevention solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology does not explicitly show port-level access control mechanisms.",
+        "missing_reason": "Port-level access control mechanisms are not explicitly shown in the topology.",
+        "repair_suggestion": "Add explicit representation of port-level access control mechanisms."
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an Application Firewall (n17) that is connected to firewalls, indicating the performance of application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for different functions, suggesting separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes an External Testing Zone (z9) with a Penetration Testing Host (n23), but does not explicitly show the process of performing periodic external penetration tests.",
+        "missing_reason": "Periodic external penetration testing process is not explicitly shown in the topology.",
+        "repair_suggestion": "Add explicit representation of the periodic external penetration testing process."
+      }
+    ]
+  },
+  "repair_history": [],
+  "test_cases": {
+    "template_id": "generated_Financial-2_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Ingestion to Feed Handler 1"
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Ingestion to Feed Handler 2"
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 8081,
+        "expected": "allow",
+        "reason": "Feed Handler 1 to Analytics Workload 1"
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n3",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8082,
+        "expected": "allow",
+        "reason": "Analytics Workload 1 to Execution Engine 1"
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n5",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8081,
+        "expected": "allow",
+        "reason": "Feed Handler 2 to Analytics Workload 2"
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n6",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 8082,
+        "expected": "allow",
+        "reason": "Analytics Workload 2 to Execution Engine 2"
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n4",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 8083,
+        "expected": "allow",
+        "reason": "Execution Engine 1 to Switch 1"
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z3",
+        "target_zone": "z5",
+        "source_node": "n7",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 8083,
+        "expected": "allow",
+        "reason": "Execution Engine 2 to Switch 2"
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z3",
+        "target_zone": "z6",
+        "source_node": "n7",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 8083,
+        "expected": "allow",
+        "reason": "Execution Engine 2 to Switch 3"
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Firewall to Ingestion Server"
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n11",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Firewall to Feed Handler 1"
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n11",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Firewall to Feed Handler 2"
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n12",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Firewall to Analytics Workload 1"
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n12",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Firewall to Execution Engine 1"
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n12",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Firewall to Analytics Workload 2"
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n12",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 8084,
+        "expected": "allow",
+        "reason": "Firewall to Execution Engine 2"
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Ingestion Server"
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Feed Handler 1"
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n13",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Feed Handler 2"
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n14",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Analytics Workload 1"
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n14",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Execution Engine 1"
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n14",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Analytics Workload 2"
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n14",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Execution Engine 2"
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z7",
+        "target_zone": "z8",
+        "source_node": "n15",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA to Firewall 1"
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z7",
+        "target_zone": "z8",
+        "source_node": "n15",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA to Firewall 2"
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n16",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web Proxy to Firewall 1"
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n16",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web Proxy to Firewall 2"
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n17",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "App Firewall to Firewall 1"
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n17",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "App Firewall to Firewall 2"
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n18",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to Firewall 1"
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n18",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to Firewall 2"
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n19",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIPS to Firewall 1"
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n19",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIPS to Firewall 2"
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n20",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "SIEM to NIDS"
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n20",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "SIEM to NIPS"
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n21",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC to Firewall 1"
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n21",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC to Firewall 2"
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z7",
+        "target_zone": "z7",
+        "source_node": "n22",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation to MFA/Identity Server"
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z9",
+        "target_zone": "z8",
+        "source_node": "n23",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen Test Host to Firewall 1"
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z9",
+        "target_zone": "z8",
+        "source_node": "n23",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen Test Host to Firewall 2"
+      },
+      {
+        "test_id": "tc41",
+        "source_zone": "z9",
+        "target_zone": "z7",
+        "source_node": "n23",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc42",
+        "source_zone": "z9",
+        "target_zone": "z8",
+        "source_node": "n23",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc43",
+        "source_zone": "z9",
+        "target_zone": "z8",
+        "source_node": "n23",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc44",
+        "source_zone": "z9",
+        "target_zone": "z1",
+        "source_node": "n23",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req2/rag_without_repair/IG3/xml/IG3/generated_Financial-2_req2_IG3.xml"
+}

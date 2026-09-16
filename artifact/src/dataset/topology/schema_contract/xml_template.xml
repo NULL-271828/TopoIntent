@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TopoIntent XML topology template.
+
+  Intended Stage 4 flow:
+    1. Validate repaired Stage 3 topology against all required CIS controls for the target IG level.
+    2. If any required control is not satisfied, repair the topology first.
+    3. Generate or regenerate connectivity test cases from the final repaired topology.
+    4. Export the final topology, policies, compliance evidence, and repair history to this XML shape.
+
+  Mapping from current JSON schema:
+    zones -> Domains/Domain
+    nodes -> Nodes/Node
+    links.zone_links -> Links/ZoneLinks/Link
+    links.node_links -> Links/NodeLinks/Link
+    test_cases -> Policies/Allow or Policies/Deny
+    stage4 compliance check -> Compliance/Control
+-->
+<Topology schema_version="2.1" template_id="generated_sample_id" title="Topology Title" scenario="cloud" ig_level="IG2">
+  <Description>Human-readable topology description.</Description>
+  <Summary>Human-readable topology summary.</Summary>
+
+  <Domains>
+    <Domain id="z1" name="Zone Name" type="enterprise"/>
+  </Domains>
+
+  <Nodes>
+    <Node id="n1" name="Node Name" domain="z1" domain_name="Zone Name" type="firewall" ip="">
+      <Attributes>
+        <Attribute name="asset_level" value=""/>
+        <Attribute name="is_target" value="false"/>
+        <Attribute name="is_exposed" value="false"/>
+        <Attribute name="is_high_priv" value="false"/>
+      </Attributes>
+    </Node>
+  </Nodes>
+
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z2" type="routing" label=""/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n1" target="n2" type="data_flow" label=""/>
+    </NodeLinks>
+  </Links>
+
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n2" protocol="tcp" port="443">
+      <Reason>Expected allowed connectivity reason.</Reason>
+    </Allow>
+    <Deny id="tc2" src_zone="z3" dst_zone="z1" src_node="" dst_node="" protocol="" port="">
+      <Reason>Expected denied connectivity reason.</Reason>
+    </Deny>
+  </Policies>
+
+  <Compliance ig_level="IG2" all_required_satisfied="true">
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>Topology evidence explaining why this control is satisfied.</Evidence>
+      <Remediation></Remediation>
+    </Control>
+  </Compliance>
+
+  <RepairHistory>
+    <Repair iteration="1" control_id="13.4" action="add" target_type="node" target_id="n1">
+      <Reason>Reason for the topology repair.</Reason>
+    </Repair>
+  </RepairHistory>
+
+  <DataFlows>
+    <Flow id="df1" src="z1" dst="z2" protocol="" port="" trust_boundary="true">
+      <Reason>Derived data-flow explanation.</Reason>
+    </Flow>
+  </DataFlows>
+
+  <Risks>
+    <Risk id="risk1" severity="medium" control_id="13.4">
+      <Description>Derived residual risk description.</Description>
+      <Mitigation>Mitigation or compensating control.</Mitigation>
+    </Risk>
+  </Risks>
+</Topology>

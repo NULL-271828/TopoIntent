@@ -1,0 +1,53 @@
+{
+  "metric": "stage5_executable_validation",
+  "initial_reports_dir": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/reports_from_wsl",
+  "feedback_reports_dir": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/reports_from_wsl/all_reports",
+  "initial_reports": 28,
+  "feedback_reports": 28,
+  "summary": {
+    "IG2 After Feedback": {
+      "setting": "After Feedback",
+      "ig_level": "IG2",
+      "samples": 14,
+      "node_link_reachability": 1.0,
+      "pre_acl_pass_rate": 0.7359,
+      "post_acl_pass_rate": 0.8637,
+      "avg_latency_ms": 0.0664,
+      "diagnostic_failures": 165,
+      "repair_required_samples": 14
+    },
+    "IG3 After Feedback": {
+      "setting": "After Feedback",
+      "ig_level": "IG3",
+      "samples": 14,
+      "node_link_reachability": 1.0,
+      "pre_acl_pass_rate": 0.7684,
+      "post_acl_pass_rate": 0.8885,
+      "avg_latency_ms": 0.0682,
+      "diagnostic_failures": 147,
+      "repair_required_samples": 13
+    },
+    "IG2 Initial": {
+      "setting": "Initial",
+      "ig_level": "IG2",
+      "samples": 14,
+      "node_link_reachability": 1.0,
+      "pre_acl_pass_rate": 0.6354,
+      "post_acl_pass_rate": 0.8733,
+      "avg_latency_ms": 0.0566,
+      "diagnostic_failures": 214,
+      "repair_required_samples": 14
+    },
+    "IG3 Initial": {
+      "setting": "Initial",
+      "ig_level": "IG3",
+      "samples": 14,
+      "node_link_reachability": 1.0,
+      "pre_acl_pass_rate": 0.6719,
+      "post_acl_pass_rate": 0.8663,
+      "avg_latency_ms": 0.0567,
+      "diagnostic_failures": 189,
+      "repair_required_samples": 13
+    }
+  }
+}

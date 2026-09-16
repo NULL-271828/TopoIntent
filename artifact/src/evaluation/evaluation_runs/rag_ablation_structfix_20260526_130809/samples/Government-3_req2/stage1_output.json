@@ -1,0 +1,64 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-3_req2",
+    "title": "Azure Hub-Spoke Network",
+    "description": "A hub-and-spoke Azure network with centralized security and management.",
+    "scenario": "cloud",
+    "topology_summary": "The hub contains an Azure Firewall and Azure Bastion. Spokes are VNETs for identity, operations, and workloads, with all inter-spoke traffic routed through the hub firewall.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Hub VNet",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Identity VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Operations VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Workload VNet",
+        "zone_type": "cloud_spoke"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Azure Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Azure Bastion",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Log Analytics Workspace",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Government-3_req2\", \"title\": \"Azure Hub-Spoke Network\", \"description\": \"A hub-and-spoke Azure network with centralized security and management.\", \"scenario\": \"cloud\", \"topology_summary\": \"The hub contains an Azure Firewall and Azure Bastion. Spokes are VNETs for identity, operations, and workloads, with all inter-spoke traffic routed through the hub firewall.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Hub VNet\", \"zone_type\": \"cloud_hub\"}, {\"zone_id\": \"z2\", \"name\": \"Identity VNet\", \"zone_type\": \"cloud_spoke\"}, {\"zone_id\": \"z3\", \"name\": \"Operations VNet\", \"zone_type\": \"cloud_spoke\"}, {\"zone_id\": \"z4\", \"name\": \"Workload VNet\", \"zone_type\": \"cloud_spoke\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Azure Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Azure Bastion\", \"normalized_type\": \"bastion\", \"zone_id\": \"z1\"}, {\"node_id\": \"n3\", \"name\": \"Log Analytics Workspace\", \"normalized_type\": \"siem\", \"zone_id\": \"z1\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 5.959
+  }
+}

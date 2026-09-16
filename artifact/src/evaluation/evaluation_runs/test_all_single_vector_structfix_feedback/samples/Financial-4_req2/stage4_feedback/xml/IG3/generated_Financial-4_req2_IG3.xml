@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Financial-4_req2" title="Resilient Branch Office Network" scenario="enterprise" ig_level="IG3">
+  <Description>Design for a branch office with redundant routers, MPLS WAN connectivity, and survivable voice capabilities.</Description>
+  <Summary>The branch office will have redundant routers connected via MPLS to the main data center. It will also have direct connections to the PSTN and a SIP provider for survivable voice functionality.</Summary>
+  <Domains>
+    <Domain id="z1" name="Branch Office" type="enterprise"/>
+    <Domain id="z2" name="Data Center" type="data_center"/>
+    <Domain id="z3" name="Management Zone" type="management"/>
+    <Domain id="z4" name="Security Zone" type="security"/>
+    <Domain id="z5" name="Non-Production Zone" type="enterprise"/>
+    <Domain id="z6" name="External Testing Zone" type="external"/>
+    <Domain id="z7" name="Asset Management" type="management"/>
+    <Domain id="z8" name="Remote Access" type="management"/>
+    <Domain id="z9" name="Asset Management System" type="management"/>
+    <Domain id="z10" name="Data Flow Documentation" type="management"/>
+    <Domain id="z11" name="IaC Management" type="management"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="Primary Router" domain="z1" domain_name="Branch Office" type="router" ip=""/>
+    <Node id="n2" name="Secondary Router" domain="z1" domain_name="Branch Office" type="router" ip=""/>
+    <Node id="n3" name="PSTN Gateway" domain="z1" domain_name="Branch Office" type="other" ip=""/>
+    <Node id="n4" name="SIP Provider" domain="z1" domain_name="Branch Office" type="other" ip=""/>
+    <Node id="n5" name="Unified Communications Manager" domain="z2" domain_name="Data Center" type="server" ip=""/>
+    <Node id="n6" name="Access Control Server" domain="z2" domain_name="Data Center" type="identity_server" ip=""/>
+    <Node id="n7" name="Netflow Collector" domain="z2" domain_name="Data Center" type="other" ip=""/>
+    <Node id="n8" name="Voice Gateway" domain="z1" domain_name="Branch Office" type="other" ip=""/>
+    <Node id="n9" name="Firewall" domain="z4" domain_name="Security Zone" type="firewall" ip=""/>
+    <Node id="n10" name="DNS Server" domain="z4" domain_name="Security Zone" type="server" ip=""/>
+    <Node id="n11" name="MFA/Identity Server" domain="z3" domain_name="Management Zone" type="identity_server" ip=""/>
+    <Node id="n12" name="DNS Filter" domain="z4" domain_name="Security Zone" type="other" ip=""/>
+    <Node id="n13" name="Web Proxy" domain="z4" domain_name="Security Zone" type="waf" ip=""/>
+    <Node id="n14" name="Central AAA Server" domain="z3" domain_name="Management Zone" type="identity_server" ip=""/>
+    <Node id="n15" name="Admin Workstation" domain="z3" domain_name="Management Zone" type="endpoint" ip=""/>
+    <Node id="n16" name="NIDS" domain="z4" domain_name="Security Zone" type="ids_ips" ip=""/>
+    <Node id="n17" name="NIPS" domain="z4" domain_name="Security Zone" type="ids_ips" ip=""/>
+    <Node id="n18" name="802.1X Controller" domain="z4" domain_name="Security Zone" type="other" ip=""/>
+    <Node id="n19" name="Application Firewall" domain="z4" domain_name="Security Zone" type="waf" ip=""/>
+    <Node id="n20" name="SIEM" domain="z4" domain_name="Security Zone" type="siem" ip=""/>
+    <Node id="n_struct1" name="Non-Production Zone Representative Workload" domain="z5" domain_name="Non-Production Zone" type="workload" ip=""/>
+    <Node id="n_struct2" name="External Testing Zone External Endpoint" domain="z6" domain_name="External Testing Zone" type="endpoint" ip=""/>
+    <Node id="n_struct3" name="Asset Management Management Service" domain="z7" domain_name="Asset Management" type="server" ip=""/>
+    <Node id="n_struct4" name="Remote Access Management Service" domain="z8" domain_name="Remote Access" type="server" ip=""/>
+    <Node id="n21" name="Asset Management System" domain="z9" domain_name="Asset Management System" type="server" ip=""/>
+    <Node id="n22" name="Data Flow Documentation System" domain="z10" domain_name="Data Flow Documentation" type="server" ip=""/>
+    <Node id="n23" name="IaC Management System" domain="z11" domain_name="IaC Management" type="server" ip=""/>
+    <Node id="n24" name="VPN Gateway" domain="z8" domain_name="Remote Access" type="vpn_gateway" ip=""/>
+    <Node id="n25" name="Access Control Management System" domain="z8" domain_name="Remote Access" type="identity_server" ip=""/>
+    <Node id="n26" name="Penetration Testing Service" domain="z6" domain_name="External Testing Zone" type="other" ip=""/>
+    <Node id="n_new1" name="Asset Inventory System" domain="z3" domain_name="Management Zone" type="server" ip=""/>
+    <Node id="n_new2" name="External Endpoint" domain="z6" domain_name="External Testing Zone" type="endpoint" ip=""/>
+    <Node id="n_new3" name="Non-Prod Workload" domain="z5" domain_name="Non-Production Zone" type="workload" ip=""/>
+    <Node id="n_new4" name="Asset Management Service" domain="z7" domain_name="Asset Management" type="server" ip=""/>
+    <Node id="n_new5" name="Remote Access Service" domain="z8" domain_name="Remote Access" type="server" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z3" type="management" label="Management Link"/>
+      <Link id="zl2" source="z1" target="z4" type="security" label="Security Link"/>
+      <Link id="zl3" source="z1" target="z5" type="peering" label="Non-Prod Link"/>
+      <Link id="zl4" source="z6" target="z1" type="external" label="External Testing Link"/>
+      <Link id="zl5" source="z9" target="z1" type="management" label="Asset Management Link"/>
+      <Link id="zl6" source="z10" target="z1" type="management" label="Data Flow Documentation Link"/>
+      <Link id="zl7" source="z11" target="z1" type="management" label="IaC Management Link"/>
+      <Link id="zl8" source="z8" target="z1" type="management" label="Remote Access Management Link"/>
+      <Link id="zl9" source="z6" target="z1" type="external" label="Penetration Testing Link"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n1" target="n5" type="routing" label="MPLS Connection"/>
+      <Link id="nl2" source="n2" target="n5" type="routing" label="MPLS Connection"/>
+      <Link id="nl3" source="n1" target="n3" type="data_flow" label="PSTN Connection"/>
+      <Link id="nl4" source="n2" target="n3" type="data_flow" label="PSTN Connection"/>
+      <Link id="nl5" source="n1" target="n4" type="data_flow" label="SIP Connection"/>
+      <Link id="nl6" source="n2" target="n4" type="data_flow" label="SIP Connection"/>
+      <Link id="nl7" source="n1" target="n8" type="data_flow" label="Voice Gateway Connection"/>
+      <Link id="nl8" source="n2" target="n8" type="data_flow" label="Voice Gateway Connection"/>
+      <Link id="nl9" source="n9" target="n1" type="peering" label="Firewall to Primary Router"/>
+      <Link id="nl10" source="n9" target="n2" type="peering" label="Firewall to Secondary Router"/>
+      <Link id="nl11" source="n10" target="n1" type="data_flow" label="DNS to Primary Router"/>
+      <Link id="nl12" source="n10" target="n2" type="data_flow" label="DNS to Secondary Router"/>
+      <Link id="nl13" source="n11" target="n1" type="management" label="MFA to Primary Router"/>
+      <Link id="nl14" source="n11" target="n2" type="management" label="MFA to Secondary Router"/>
+      <Link id="nl15" source="n12" target="n1" type="data_flow" label="DNS Filter to Primary Router"/>
+      <Link id="nl16" source="n12" target="n2" type="data_flow" label="DNS Filter to Secondary Router"/>
+      <Link id="nl17" source="n13" target="n1" type="data_flow" label="Web Proxy to Primary Router"/>
+      <Link id="nl18" source="n13" target="n2" type="data_flow" label="Web Proxy to Secondary Router"/>
+      <Link id="nl19" source="n14" target="n1" type="management" label="AAA to Primary Router"/>
+      <Link id="nl20" source="n14" target="n2" type="management" label="AAA to Secondary Router"/>
+      <Link id="nl21" source="n15" target="n1" type="management" label="Admin Workstation to Primary Router"/>
+      <Link id="nl22" source="n15" target="n2" type="management" label="Admin Workstation to Secondary Router"/>
+      <Link id="nl23" source="n16" target="n1" type="monitoring" label="NIDS to Primary Router"/>
+      <Link id="nl24" source="n16" target="n2" type="monitoring" label="NIDS to Secondary Router"/>
+      <Link id="nl25" source="n17" target="n1" type="monitoring" label="NIPS to Primary Router"/>
+      <Link id="nl26" source="n17" target="n2" type="monitoring" label="NIPS to Secondary Router"/>
+      <Link id="nl27" source="n18" target="n1" type="management" label="802.1X to Primary Router"/>
+      <Link id="nl28" source="n18" target="n2" type="management" label="802.1X to Secondary Router"/>
+      <Link id="nl29" source="n19" target="n1" type="data_flow" label="App Firewall to Primary Router"/>
+      <Link id="nl30" source="n19" target="n2" type="data_flow" label="App Firewall to Secondary Router"/>
+      <Link id="nl31" source="n20" target="n9" type="monitoring" label="SIEM to Firewall"/>
+      <Link id="nl_struct1" source="n9" target="n_struct1" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct2" source="n9" target="n_struct2" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct3" source="n9" target="n_struct3" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct4" source="n9" target="n_struct4" type="routing" label="Structural zone attachment"/>
+      <Link id="nl32" source="n22" target="n2" type="management" label="Data Flow Documentation to Secondary Router"/>
+      <Link id="nl33" source="n23" target="n1" type="management" label="IaC Management to Primary Router"/>
+      <Link id="nl34" source="n23" target="n2" type="management" label="IaC Management to Secondary Router"/>
+      <Link id="nl35" source="n24" target="n_struct4" type="vpn" label="VPN to Remote Access Management Service"/>
+      <Link id="nl36" source="n25" target="n_struct4" type="management" label="Access Control Management to Remote Access Management Service"/>
+      <Link id="nl37" source="n26" target="n_struct2" type="data_flow" label="Penetration Testing to External Testing Zone Endpoint"/>
+      <Link id="nl_new1" source="n_new1" target="n1" type="management" label="Inventory to Primary Router"/>
+      <Link id="nl_new2" source="n_new1" target="n2" type="management" label="Inventory to Secondary Router"/>
+      <Link id="nl_new3" source="n_new1" target="n11" type="management" label="Inventory to MFA/Identity Server"/>
+      <Link id="nl_new4" source="n_new1" target="n14" type="management" label="Inventory to Central AAA Server"/>
+      <Link id="nl_new5" source="n1" target="n_new2" type="data_flow" label="External Endpoint Connection"/>
+      <Link id="nl_new6" source="n1" target="n_new3" type="data_flow" label="Non-Prod Workload Connection"/>
+      <Link id="nl_new7" source="n1" target="n_new4" type="data_flow" label="Asset Management Service Connection"/>
+      <Link id="nl_new8" source="n1" target="n_new5" type="data_flow" label="Remote Access Service Connection"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n5" protocol="tcp" port="443">
+      <Reason>MPLS connection allows secure communication.</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z1" dst_zone="z2" src_node="n2" dst_node="n5" protocol="tcp" port="443">
+      <Reason>MPLS connection allows secure communication.</Reason>
+    </Allow>
+    <Allow id="tc3" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n3" protocol="tcp" port="5060">
+      <Reason>PSTN connection for voice services.</Reason>
+    </Allow>
+    <Allow id="tc4" src_zone="z1" dst_zone="z1" src_node="n2" dst_node="n3" protocol="tcp" port="5060">
+      <Reason>PSTN connection for voice services.</Reason>
+    </Allow>
+    <Allow id="tc5" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n4" protocol="tcp" port="5060">
+      <Reason>SIP connection for voice services.</Reason>
+    </Allow>
+    <Allow id="tc6" src_zone="z1" dst_zone="z1" src_node="n2" dst_node="n4" protocol="tcp" port="5060">
+      <Reason>SIP connection for voice services.</Reason>
+    </Allow>
+    <Allow id="tc7" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n8" protocol="tcp" port="5060">
+      <Reason>Voice gateway connection for voice services.</Reason>
+    </Allow>
+    <Allow id="tc8" src_zone="z1" dst_zone="z1" src_node="n2" dst_node="n8" protocol="tcp" port="5060">
+      <Reason>Voice gateway connection for voice services.</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z4" dst_zone="z1" src_node="n9" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Firewall to primary router for management.</Reason>
+    </Allow>
+    <Allow id="tc10" src_zone="z4" dst_zone="z1" src_node="n9" dst_node="n2" protocol="tcp" port="80">
+      <Reason>Firewall to secondary router for management.</Reason>
+    </Allow>
+    <Allow id="tc11" src_zone="z4" dst_zone="z1" src_node="n10" dst_node="n1" protocol="tcp" port="53">
+      <Reason>DNS to primary router for resolution.</Reason>
+    </Allow>
+    <Allow id="tc12" src_zone="z4" dst_zone="z1" src_node="n10" dst_node="n2" protocol="tcp" port="53">
+      <Reason>DNS to secondary router for resolution.</Reason>
+    </Allow>
+    <Allow id="tc13" src_zone="z3" dst_zone="z1" src_node="n11" dst_node="n1" protocol="tcp" port="443">
+      <Reason>MFA to primary router for authentication.</Reason>
+    </Allow>
+    <Allow id="tc14" src_zone="z3" dst_zone="z1" src_node="n11" dst_node="n2" protocol="tcp" port="443">
+      <Reason>MFA to secondary router for authentication.</Reason>
+    </Allow>
+    <Allow id="tc15" src_zone="z4" dst_zone="z1" src_node="n12" dst_node="n1" protocol="tcp" port="53">
+      <Reason>DNS filter to primary router for filtering.</Reason>
+    </Allow>
+    <Allow id="tc16" src_zone="z4" dst_zone="z1" src_node="n12" dst_node="n2" protocol="tcp" port="53">
+      <Reason>DNS filter to secondary router for filtering.</Reason>
+    </Allow>
+    <Allow id="tc17" src_zone="z4" dst_zone="z1" src_node="n13" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Web proxy to primary router for web traffic.</Reason>
+    </Allow>
+    <Allow id="tc18" src_zone="z4" dst_zone="z1" src_node="n13" dst_node="n2" protocol="tcp" port="8080">
+      <Reason>Web proxy to secondary router for web traffic.</Reason>
+    </Allow>
+    <Allow id="tc19" src_zone="z3" dst_zone="z1" src_node="n14" dst_node="n1" protocol="tcp" port="443">
+      <Reason>AAA to primary router for authentication.</Reason>
+    </Allow>
+    <Allow id="tc20" src_zone="z3" dst_zone="z1" src_node="n14" dst_node="n2" protocol="tcp" port="443">
+      <Reason>AAA to secondary router for authentication.</Reason>
+    </Allow>
+    <Allow id="tc21" src_zone="z3" dst_zone="z1" src_node="n15" dst_node="n1" protocol="tcp" port="22">
+      <Reason>Admin workstation to primary router for management.</Reason>
+    </Allow>
+    <Allow id="tc22" src_zone="z3" dst_zone="z1" src_node="n15" dst_node="n2" protocol="tcp" port="22">
+      <Reason>Admin workstation to secondary router for management.</Reason>
+    </Allow>
+    <Allow id="tc23" src_zone="z4" dst_zone="z1" src_node="n16" dst_node="n1" protocol="tcp" port="443">
+      <Reason>NIDS to primary router for monitoring.</Reason>
+    </Allow>
+    <Allow id="tc24" src_zone="z4" dst_zone="z1" src_node="n16" dst_node="n2" protocol="tcp" port="443">
+      <Reason>NIDS to secondary router for monitoring.</Reason>
+    </Allow>
+    <Allow id="tc25" src_zone="z4" dst_zone="z1" src_node="n17" dst_node="n1" protocol="tcp" port="443">
+      <Reason>NIPS to primary router for monitoring.</Reason>
+    </Allow>
+    <Allow id="tc26" src_zone="z4" dst_zone="z1" src_node="n17" dst_node="n2" protocol="tcp" port="443">
+      <Reason>NIPS to secondary router for monitoring.</Reason>
+    </Allow>
+    <Allow id="tc27" src_zone="z4" dst_zone="z1" src_node="n18" dst_node="n1" protocol="tcp" port="443">
+      <Reason>802.1X to primary router for management.</Reason>
+    </Allow>
+    <Allow id="tc28" src_zone="z4" dst_zone="z1" src_node="n18" dst_node="n2" protocol="tcp" port="443">
+      <Reason>802.1X to secondary router for management.</Reason>
+    </Allow>
+    <Allow id="tc29" src_zone="z4" dst_zone="z1" src_node="n19" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>App firewall to primary router for application traffic.</Reason>
+    </Allow>
+    <Allow id="tc30" src_zone="z4" dst_zone="z1" src_node="n19" dst_node="n2" protocol="tcp" port="8080">
+      <Reason>App firewall to secondary router for application traffic.</Reason>
+    </Allow>
+    <Allow id="tc31" src_zone="z4" dst_zone="z4" src_node="n20" dst_node="n9" protocol="tcp" port="443">
+      <Reason>SIEM to firewall for monitoring.</Reason>
+    </Allow>
+    <Deny id="tc32" src_zone="z5" dst_zone="z1" src_node="n_struct1" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Non-production to primary router is blocked.</Reason>
+    </Deny>
+    <Deny id="tc33" src_zone="z6" dst_zone="z1" src_node="n_struct2" dst_node="n1" protocol="tcp" port="80">
+      <Reason>External testing to primary router is blocked.</Reason>
+    </Deny>
+    <Deny id="tc34" src_zone="z7" dst_zone="z1" src_node="n_struct3" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Asset management to primary router is blocked.</Reason>
+    </Deny>
+    <Deny id="tc35" src_zone="z8" dst_zone="z1" src_node="n_struct4" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Remote access to primary router is blocked.</Reason>
+    </Deny>
+    <Deny id="tc36" src_zone="z6" dst_zone="z1" src_node="n26" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Penetration testing to primary router is blocked.</Reason>
+    </Deny>
+    <Deny id="tc37" src_zone="z1" dst_zone="z6" src_node="n1" dst_node="n26" protocol="tcp" port="80">
+      <Reason>Primary router to penetration testing is blocked.</Reason>
+    </Deny>
+    <Deny id="tc38" src_zone="z1" dst_zone="z5" src_node="n1" dst_node="n_struct1" protocol="tcp" port="80">
+      <Reason>Primary router to non-production is blocked.</Reason>
+    </Deny>
+    <Deny id="tc39" src_zone="z1" dst_zone="z7" src_node="n1" dst_node="n_struct3" protocol="tcp" port="80">
+      <Reason>Primary router to asset management is blocked.</Reason>
+    </Deny>
+    <Deny id="tc40" src_zone="z1" dst_zone="z8" src_node="n1" dst_node="n_struct4" protocol="tcp" port="80">
+      <Reason>Primary router to remote access is blocked.</Reason>
+    </Deny>
+  </Policies>
+  <Compliance ig_level="IG3" all_required_satisfied="true">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Asset Inventory System' (n_new1) connected to the primary and secondary routers, MFA/Identity Server, and Central AAA Server, indicating the presence of an asset inventory system.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Data Flow Documentation System' (n22) connected to the primary and secondary routers, indicating the presence of a system for documenting data flows.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple zones (e.g., 'Data Center', 'Management Zone', 'Security Zone', 'Non-Production Zone') that are connected through specific links, indicating segmentation based on sensitivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Firewall' (n9) connected to the primary and secondary routers, indicating the presence of a firewall on the network.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Server' (n10) connected to the primary and secondary routers, indicating the presence of trusted DNS servers.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'MFA/Identity Server' (n11) connected to the primary and secondary routers, indicating the presence of MFA for remote network access.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Filter' (n12) connected to the primary and secondary routers, indicating the presence of DNS filtering services.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Web Proxy' (n13) connected to the primary and secondary routers, indicating the presence of network-based URL filters.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple zones and specific links between them, indicating a secure network architecture with segmentation, least privilege, and availability.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'IaC Management System' (n23) connected to the primary and secondary routers, indicating the use of Infrastructure-as-Code (IaC) for managing network infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Central AAA Server' (n14) connected to the primary and secondary routers, indicating centralized network AAA.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'VPN Gateway' (n24) and 'Access Control Management System' (n25) connected to the 'Remote Access Management Service' (n_struct4), indicating the use of a VPN and connection to the enterprise’s AAA infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.8" title="Establish and Maintain Dedicated Computing Resources for All Administrative Work" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Admin Workstation' (n15) in the 'Management Zone' (z3), indicating dedicated computing resources for administrative work.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NIDS' (n16) connected to the primary and secondary routers, indicating the deployment of a network intrusion detection solution.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Firewall' (n9) and specific links between zones, indicating traffic filtering between network segments.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Access Control Management System' (n25) connected to the 'Remote Access Management Service' (n_struct4), indicating management of access control for remote assets.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Netflow Collector' (n7) connected to the primary and secondary routers, indicating the collection of network traffic flow logs.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.8" title="Deploy a Network Intrusion Prevention Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'NIPS' (n17) connected to the primary and secondary routers, indicating the deployment of a network intrusion prevention solution.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.9" title="Deploy Port-Level Access Control" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an '802.1X Controller' (n18) connected to the primary and secondary routers, indicating the deployment of port-level access control.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.10" title="Perform Application Layer Filtering" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Application Firewall' (n19) connected to the primary and secondary routers, indicating the performance of application layer filtering.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Non-Production Zone' (z5) with a representative workload (n_struct1) and a link to the 'Security Zone' (z4), indicating separation of production and non-production systems.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Penetration Testing Service' (n26) connected to an 'External Testing Zone External Endpoint' (n_struct2), indicating the presence of a system for performing periodic external penetration tests.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="0" controls="stage4_structural_integrity,stage4_structural_integrity,stage4_ig_consistency" zones_added="2" nodes_added="4" zone_links_added="0" node_links_added="4"/>
+    <Repair round="1" controls="1.1,3.8,12.3,12.7,13.5,18.2" zones_added="3" nodes_added="6" zone_links_added="5" node_links_added="9"/>
+    <Repair round="2" controls="1.1" zones_added="0" nodes_added="1" zone_links_added="0" node_links_added="4"/>
+    <Repair round="4" controls="stage5_validation,stage5_validation,stage5_validation,stage5_validation" zones_added="0" nodes_added="4" zone_links_added="0" node_links_added="4"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

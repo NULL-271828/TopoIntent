@@ -1,0 +1,6 @@
+{
+  "sample_id": "Financial-4_req1",
+  "template_id": "Financial-4",
+  "user_intent": "We need a network for a new branch office that emphasizes high availability and voice service continuity. The branch must connect to our central data center via a primary link, but voice services must fail over to the public phone network if that link is down. It also needs to support SIP-based voice traffic. We need centralized user authentication and the ability to log network traffic flows for security monitoring.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

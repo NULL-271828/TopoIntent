@@ -1,0 +1,6 @@
+{
+  "sample_id": "Financial-3_req1",
+  "template_id": "Financial-3",
+  "user_intent": "We need to set up a hybrid cloud environment for our financial applications. Our plan is to run containerized workloads on an Azure Red Hat OpenShift cluster, which must be privately connected to our on-premises datacenter. It's critical that we can securely manage the environment and filter all traffic through a central firewall. We will also need to deploy to Azure from our existing on-prem pipelines.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

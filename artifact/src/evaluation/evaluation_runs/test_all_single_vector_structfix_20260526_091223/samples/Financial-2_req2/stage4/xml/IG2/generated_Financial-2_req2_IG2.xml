@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Financial-2_req2" title="Financial Data Ingestion Network" scenario="finance" ig_level="IG2">
+  <Description>A network designed for ingesting financial data feeds and processing them in dedicated market data pods, with outputs distributed to three campus sites.</Description>
+  <Summary>The network includes dedicated pods for data ingestion and processing, connected to three campus sites via trunk links for inter-site communication. Segmentation is enforced by function.</Summary>
+  <Domains>
+    <Domain id="z1" name="Ingestion Pod" type="data_center"/>
+    <Domain id="z2" name="Market Data Pod 1" type="data_center"/>
+    <Domain id="z3" name="Market Data Pod 2" type="data_center"/>
+    <Domain id="z4" name="Campus Site 1" type="campus"/>
+    <Domain id="z5" name="Campus Site 2" type="campus"/>
+    <Domain id="z6" name="Campus Site 3" type="campus"/>
+    <Domain id="z7" name="Management Zone" type="management"/>
+    <Domain id="z8" name="Security Zone" type="security"/>
+    <Domain id="z9" name="Non-Production Zone" type="data_center"/>
+    <Domain id="z10" name="External Testing Zone" type="external"/>
+    <Domain id="z11" name="Asset Management Zone" type="management"/>
+    <Domain id="z12" name="Asset Inventory Zone" type="management"/>
+    <Domain id="z13" name="Log Collection Zone" type="security"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="Ingestion Server" domain="z1" domain_name="Ingestion Pod" type="server" ip=""/>
+    <Node id="n2" name="Feed Handler 1" domain="z2" domain_name="Market Data Pod 1" type="workload" ip=""/>
+    <Node id="n3" name="Analytics Workload 1" domain="z2" domain_name="Market Data Pod 1" type="workload" ip=""/>
+    <Node id="n4" name="Execution Engine 1" domain="z2" domain_name="Market Data Pod 1" type="workload" ip=""/>
+    <Node id="n5" name="Feed Handler 2" domain="z3" domain_name="Market Data Pod 2" type="workload" ip=""/>
+    <Node id="n6" name="Analytics Workload 2" domain="z3" domain_name="Market Data Pod 2" type="workload" ip=""/>
+    <Node id="n7" name="Execution Engine 2" domain="z3" domain_name="Market Data Pod 2" type="workload" ip=""/>
+    <Node id="n8" name="Switch 1" domain="z4" domain_name="Campus Site 1" type="switch" ip=""/>
+    <Node id="n9" name="Switch 2" domain="z5" domain_name="Campus Site 2" type="switch" ip=""/>
+    <Node id="n10" name="Switch 3" domain="z6" domain_name="Campus Site 3" type="switch" ip=""/>
+    <Node id="n11" name="Firewall 1" domain="z8" domain_name="Security Zone" type="firewall" ip=""/>
+    <Node id="n12" name="Firewall 2" domain="z8" domain_name="Security Zone" type="firewall" ip=""/>
+    <Node id="n13" name="DNS Server" domain="z8" domain_name="Security Zone" type="server" ip=""/>
+    <Node id="n14" name="MFA/Identity Server" domain="z7" domain_name="Management Zone" type="identity_server" ip=""/>
+    <Node id="n15" name="DNS Filter" domain="z8" domain_name="Security Zone" type="server" ip=""/>
+    <Node id="n16" name="Web Proxy" domain="z8" domain_name="Security Zone" type="waf" ip=""/>
+    <Node id="n17" name="Central AAA Server" domain="z7" domain_name="Management Zone" type="identity_server" ip=""/>
+    <Node id="n18" name="NIDS" domain="z8" domain_name="Security Zone" type="ids_ips" ip=""/>
+    <Node id="n19" name="SIEM" domain="z8" domain_name="Security Zone" type="siem" ip=""/>
+    <Node id="n20" name="NAC" domain="z8" domain_name="Security Zone" type="other" ip=""/>
+    <Node id="n21" name="Application Firewall" domain="z8" domain_name="Security Zone" type="waf" ip=""/>
+    <Node id="n22" name="Bastion Host" domain="z7" domain_name="Management Zone" type="bastion" ip=""/>
+    <Node id="n23" name="Admin Workstation" domain="z7" domain_name="Management Zone" type="endpoint" ip=""/>
+    <Node id="n24" name="Pen Test Workstation" domain="z10" domain_name="External Testing Zone" type="endpoint" ip=""/>
+    <Node id="n_struct1" name="Non-Production Zone Application Server" domain="z9" domain_name="Non-Production Zone" type="server" ip=""/>
+    <Node id="n25" name="Asset Management System" domain="z11" domain_name="Asset Management Zone" type="server" ip=""/>
+    <Node id="n26" name="VPN Gateway" domain="z8" domain_name="Security Zone" type="vpn_gateway" ip=""/>
+    <Node id="n27" name="Pen Test Results Repository" domain="z10" domain_name="External Testing Zone" type="server" ip=""/>
+    <Node id="n28" name="Asset Management System 2" domain="z12" domain_name="Asset Inventory Zone" type="server" ip=""/>
+    <Node id="n29" name="Log Collector" domain="z13" domain_name="Log Collection Zone" type="server" ip=""/>
+    <Node id="n30" name="Pen Test Service" domain="z10" domain_name="External Testing Zone" type="other" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl_new1" source="z4" target="z5" type="trunk" label="Trunk Link between Campus Site 1 and Campus Site 2"/>
+      <Link id="zl_new2" source="z5" target="z6" type="trunk" label="Trunk Link between Campus Site 2 and Campus Site 3"/>
+      <Link id="zl_new3" source="z4" target="z6" type="trunk" label="Trunk Link between Campus Site 1 and Campus Site 3"/>
+      <Link id="zl_new4" source="z1" target="z8" type="data_flow" label="Ingestion Pod to Security Zone"/>
+      <Link id="zl_new5" source="z2" target="z8" type="data_flow" label="Market Data Pod 1 to Security Zone"/>
+      <Link id="zl_new6" source="z3" target="z8" type="data_flow" label="Market Data Pod 2 to Security Zone"/>
+      <Link id="zl_new7" source="z7" target="z8" type="management" label="Management Zone to Security Zone"/>
+      <Link id="zl_new8" source="z7" target="z10" type="management" label="Management Zone to External Testing Zone"/>
+      <Link id="zl_new9" source="z8" target="z9" type="data_flow" label="Security Zone to Non-Production Zone"/>
+      <Link id="zl_new10" source="z11" target="z7" type="management" label="Asset Management Zone to Management Zone"/>
+      <Link id="zl_new11" source="z12" target="z7" type="management" label="Asset Inventory Zone to Management Zone"/>
+      <Link id="zl_new12" source="z13" target="z8" type="data_flow" label="Log Collection Zone to Security Zone"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl_new1" source="n1" target="n2" type="data_flow" label="Ingestion to Feed Handler 1"/>
+      <Link id="nl_new2" source="n1" target="n5" type="data_flow" label="Ingestion to Feed Handler 2"/>
+      <Link id="nl_new3" source="n2" target="n3" type="data_flow" label="Feed Handler 1 to Analytics Workload 1"/>
+      <Link id="nl_new4" source="n3" target="n4" type="data_flow" label="Analytics Workload 1 to Execution Engine 1"/>
+      <Link id="nl_new5" source="n5" target="n6" type="data_flow" label="Feed Handler 2 to Analytics Workload 2"/>
+      <Link id="nl_new6" source="n6" target="n7" type="data_flow" label="Analytics Workload 2 to Execution Engine 2"/>
+      <Link id="nl_new7" source="n4" target="n8" type="data_flow" label="Execution Engine 1 to Switch 1"/>
+      <Link id="nl_new8" source="n7" target="n9" type="data_flow" label="Execution Engine 2 to Switch 2"/>
+      <Link id="nl_new9" source="n7" target="n10" type="data_flow" label="Execution Engine 2 to Switch 3"/>
+      <Link id="nl_new10" source="n11" target="n1" type="data_flow" label="Firewall to Ingestion Server"/>
+      <Link id="nl_new11" source="n11" target="n2" type="data_flow" label="Firewall to Feed Handler 1"/>
+      <Link id="nl_new12" source="n11" target="n5" type="data_flow" label="Firewall to Feed Handler 2"/>
+      <Link id="nl_new13" source="n12" target="n3" type="data_flow" label="Firewall to Analytics Workload 1"/>
+      <Link id="nl_new14" source="n12" target="n4" type="data_flow" label="Firewall to Execution Engine 1"/>
+      <Link id="nl_new15" source="n12" target="n6" type="data_flow" label="Firewall to Analytics Workload 2"/>
+      <Link id="nl_new16" source="n12" target="n7" type="data_flow" label="Firewall to Execution Engine 2"/>
+      <Link id="nl_new17" source="n13" target="n1" type="data_flow" label="DNS to Ingestion Server"/>
+      <Link id="nl_new18" source="n13" target="n2" type="data_flow" label="DNS to Feed Handler 1"/>
+      <Link id="nl_new19" source="n13" target="n5" type="data_flow" label="DNS to Feed Handler 2"/>
+      <Link id="nl_new20" source="n14" target="n22" type="management" label="MFA to Bastion Host"/>
+      <Link id="nl_new21" source="n15" target="n1" type="data_flow" label="DNS Filter to Ingestion Server"/>
+      <Link id="nl_new22" source="n15" target="n2" type="data_flow" label="DNS Filter to Feed Handler 1"/>
+      <Link id="nl_new23" source="n15" target="n5" type="data_flow" label="DNS Filter to Feed Handler 2"/>
+      <Link id="nl_new24" source="n16" target="n1" type="data_flow" label="Web Proxy to Ingestion Server"/>
+      <Link id="nl_new25" source="n16" target="n2" type="data_flow" label="Web Proxy to Feed Handler 1"/>
+      <Link id="nl_new26" source="n16" target="n5" type="data_flow" label="Web Proxy to Feed Handler 2"/>
+      <Link id="nl_new27" source="n17" target="n11" type="management" label="AAA to Firewall 1"/>
+      <Link id="nl_new28" source="n17" target="n12" type="management" label="AAA to Firewall 2"/>
+      <Link id="nl_new29" source="n17" target="n22" type="management" label="AAA to Bastion Host"/>
+      <Link id="nl_new30" source="n18" target="n11" type="monitoring" label="NIDS to Firewall 1"/>
+      <Link id="nl_new31" source="n18" target="n12" type="monitoring" label="NIDS to Firewall 2"/>
+      <Link id="nl_new32" source="n18" target="n19" type="monitoring" label="NIDS to NAC"/>
+      <Link id="nl_new33" source="n19" target="n11" type="management" label="NAC to Firewall 1"/>
+      <Link id="nl_new34" source="n19" target="n12" type="management" label="NAC to Firewall 2"/>
+      <Link id="nl_new35" source="n20" target="n11" type="data_flow" label="Application Firewall to Firewall 1"/>
+      <Link id="nl_new36" source="n20" target="n12" type="data_flow" label="Application Firewall to Firewall 2"/>
+      <Link id="nl_new37" source="n21" target="n11" type="management" label="Admin Workstation to Firewall 1"/>
+      <Link id="nl_new38" source="n21" target="n12" type="management" label="Admin Workstation to Firewall 2"/>
+      <Link id="nl_new39" source="n21" target="n22" type="management" label="Admin Workstation to Bastion Host"/>
+      <Link id="nl_new40" source="n22" target="n11" type="management" label="Bastion Host to Firewall 1"/>
+      <Link id="nl_new41" source="n22" target="n12" type="management" label="Bastion Host to Firewall 2"/>
+      <Link id="nl_new42" source="n23" target="n22" type="management" label="Admin Workstation to Bastion Host"/>
+      <Link id="nl_new43" source="n24" target="n11" type="management" label="Pen Test Workstation to Firewall 1"/>
+      <Link id="nl_new44" source="n24" target="n12" type="management" label="Pen Test Workstation to Firewall 2"/>
+      <Link id="nl_struct1" source="n11" target="n_struct1" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_new45" source="n25" target="n14" type="management" label="Asset Management to MFA/Identity Server"/>
+      <Link id="nl_new46" source="n25" target="n17" type="management" label="Asset Management to Central AAA Server"/>
+      <Link id="nl_new47" source="n26" target="n22" type="management" label="VPN Gateway to Bastion Host"/>
+      <Link id="nl_new48" source="n26" target="n23" type="management" label="VPN Gateway to Admin Workstation"/>
+      <Link id="nl_new49" source="n27" target="n24" type="data_flow" label="Pen Test Results to Pen Test Workstation"/>
+      <Link id="nl_new50" source="n28" target="n1" type="management" label="Asset Management to Ingestion Server"/>
+      <Link id="nl_new51" source="n28" target="n2" type="management" label="Asset Management to Feed Handler 1"/>
+      <Link id="nl_new52" source="n28" target="n3" type="management" label="Asset Management to Analytics Workload 1"/>
+      <Link id="nl_new53" source="n28" target="n4" type="management" label="Asset Management to Execution Engine 1"/>
+      <Link id="nl_new54" source="n28" target="n5" type="management" label="Asset Management to Feed Handler 2"/>
+      <Link id="nl_new55" source="n28" target="n6" type="management" label="Asset Management to Analytics Workload 2"/>
+      <Link id="nl_new56" source="n28" target="n7" type="management" label="Asset Management to Execution Engine 2"/>
+      <Link id="nl_new57" source="n28" target="n8" type="management" label="Asset Management to Switch 1"/>
+      <Link id="nl_new58" source="n28" target="n9" type="management" label="Asset Management to Switch 2"/>
+      <Link id="nl_new59" source="n28" target="n10" type="management" label="Asset Management to Switch 3"/>
+      <Link id="nl_new60" source="n28" target="n11" type="management" label="Asset Management to Firewall 1"/>
+      <Link id="nl_new61" source="n28" target="n12" type="management" label="Asset Management to Firewall 2"/>
+      <Link id="nl_new62" source="n28" target="n13" type="management" label="Asset Management to DNS Server"/>
+      <Link id="nl_new63" source="n28" target="n14" type="management" label="Asset Management to MFA/Identity Server"/>
+      <Link id="nl_new64" source="n28" target="n15" type="management" label="Asset Management to DNS Filter"/>
+      <Link id="nl_new65" source="n28" target="n16" type="management" label="Asset Management to Web Proxy"/>
+      <Link id="nl_new66" source="n28" target="n17" type="management" label="Asset Management to Central AAA Server"/>
+      <Link id="nl_new67" source="n28" target="n18" type="management" label="Asset Management to NIDS"/>
+      <Link id="nl_new68" source="n28" target="n19" type="management" label="Asset Management to SIEM"/>
+      <Link id="nl_new69" source="n28" target="n20" type="management" label="Asset Management to NAC"/>
+      <Link id="nl_new70" source="n28" target="n21" type="management" label="Asset Management to Admin Workstation"/>
+      <Link id="nl_new71" source="n28" target="n22" type="management" label="Asset Management to Bastion Host"/>
+      <Link id="nl_new72" source="n28" target="n23" type="management" label="Asset Management to Admin Workstation"/>
+      <Link id="nl_new73" source="n28" target="n24" type="management" label="Asset Management to Pen Test Workstation"/>
+      <Link id="nl_new74" source="n28" target="n25" type="management" label="Asset Management to Asset Management System"/>
+      <Link id="nl_new75" source="n28" target="n26" type="management" label="Asset Management to VPN Gateway"/>
+      <Link id="nl_new76" source="n28" target="n27" type="management" label="Asset Management to Pen Test Results Repository"/>
+      <Link id="nl_new77" source="n28" target="n_struct1" type="management" label="Asset Management to Non-Production Zone Application Server"/>
+      <Link id="nl_new78" source="n29" target="n11" type="data_flow" label="Log Collector to Firewall 1"/>
+      <Link id="nl_new79" source="n29" target="n12" type="data_flow" label="Log Collector to Firewall 2"/>
+      <Link id="nl_new80" source="n29" target="n18" type="data_flow" label="Log Collector to NIDS"/>
+      <Link id="nl_new81" source="n29" target="n19" type="data_flow" label="Log Collector to SIEM"/>
+      <Link id="nl_new82" source="n30" target="n24" type="data_flow" label="Pen Test Service to Pen Test Workstation"/>
+      <Link id="nl_new83" source="n30" target="n27" type="data_flow" label="Pen Test Service to Pen Test Results Repository"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n2" protocol="tcp" port="8080">
+      <Reason>Ingestion to Feed Handler 1</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n5" protocol="tcp" port="8080">
+      <Reason>Ingestion to Feed Handler 2</Reason>
+    </Allow>
+    <Allow id="tc3" src_zone="z2" dst_zone="z2" src_node="n2" dst_node="n3" protocol="tcp" port="8081">
+      <Reason>Feed Handler 1 to Analytics Workload 1</Reason>
+    </Allow>
+    <Allow id="tc4" src_zone="z2" dst_zone="z2" src_node="n3" dst_node="n4" protocol="tcp" port="8082">
+      <Reason>Analytics Workload 1 to Execution Engine 1</Reason>
+    </Allow>
+    <Allow id="tc5" src_zone="z3" dst_zone="z3" src_node="n5" dst_node="n6" protocol="tcp" port="8081">
+      <Reason>Feed Handler 2 to Analytics Workload 2</Reason>
+    </Allow>
+    <Allow id="tc6" src_zone="z3" dst_zone="z3" src_node="n6" dst_node="n7" protocol="tcp" port="8082">
+      <Reason>Analytics Workload 2 to Execution Engine 2</Reason>
+    </Allow>
+    <Allow id="tc7" src_zone="z2" dst_zone="z4" src_node="n4" dst_node="n8" protocol="tcp" port="8083">
+      <Reason>Execution Engine 1 to Switch 1</Reason>
+    </Allow>
+    <Allow id="tc8" src_zone="z3" dst_zone="z5" src_node="n7" dst_node="n9" protocol="tcp" port="8083">
+      <Reason>Execution Engine 2 to Switch 2</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z3" dst_zone="z6" src_node="n7" dst_node="n10" protocol="tcp" port="8083">
+      <Reason>Execution Engine 2 to Switch 3</Reason>
+    </Allow>
+    <Allow id="tc10" src_zone="z8" dst_zone="z1" src_node="n11" dst_node="n1" protocol="tcp" port="8084">
+      <Reason>Firewall to Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc11" src_zone="z8" dst_zone="z2" src_node="n11" dst_node="n2" protocol="tcp" port="8084">
+      <Reason>Firewall to Feed Handler 1</Reason>
+    </Allow>
+    <Allow id="tc12" src_zone="z8" dst_zone="z3" src_node="n11" dst_node="n5" protocol="tcp" port="8084">
+      <Reason>Firewall to Feed Handler 2</Reason>
+    </Allow>
+    <Allow id="tc13" src_zone="z8" dst_zone="z2" src_node="n12" dst_node="n3" protocol="tcp" port="8085">
+      <Reason>Firewall to Analytics Workload 1</Reason>
+    </Allow>
+    <Allow id="tc14" src_zone="z8" dst_zone="z2" src_node="n12" dst_node="n4" protocol="tcp" port="8085">
+      <Reason>Firewall to Execution Engine 1</Reason>
+    </Allow>
+    <Allow id="tc15" src_zone="z8" dst_zone="z3" src_node="n12" dst_node="n6" protocol="tcp" port="8085">
+      <Reason>Firewall to Analytics Workload 2</Reason>
+    </Allow>
+    <Allow id="tc16" src_zone="z8" dst_zone="z3" src_node="n12" dst_node="n7" protocol="tcp" port="8085">
+      <Reason>Firewall to Execution Engine 2</Reason>
+    </Allow>
+    <Allow id="tc17" src_zone="z8" dst_zone="z1" src_node="n13" dst_node="n1" protocol="tcp" port="53">
+      <Reason>DNS to Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc18" src_zone="z8" dst_zone="z2" src_node="n13" dst_node="n2" protocol="tcp" port="53">
+      <Reason>DNS to Feed Handler 1</Reason>
+    </Allow>
+    <Allow id="tc19" src_zone="z8" dst_zone="z3" src_node="n13" dst_node="n5" protocol="tcp" port="53">
+      <Reason>DNS to Feed Handler 2</Reason>
+    </Allow>
+    <Allow id="tc20" src_zone="z7" dst_zone="z7" src_node="n14" dst_node="n22" protocol="tcp" port="443">
+      <Reason>MFA to Bastion Host</Reason>
+    </Allow>
+    <Allow id="tc21" src_zone="z8" dst_zone="z1" src_node="n15" dst_node="n1" protocol="tcp" port="53">
+      <Reason>DNS Filter to Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc22" src_zone="z8" dst_zone="z2" src_node="n15" dst_node="n2" protocol="tcp" port="53">
+      <Reason>DNS Filter to Feed Handler 1</Reason>
+    </Allow>
+    <Allow id="tc23" src_zone="z8" dst_zone="z3" src_node="n15" dst_node="n5" protocol="tcp" port="53">
+      <Reason>DNS Filter to Feed Handler 2</Reason>
+    </Allow>
+    <Allow id="tc24" src_zone="z8" dst_zone="z1" src_node="n16" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Web Proxy to Ingestion Server</Reason>
+    </Allow>
+    <Allow id="tc25" src_zone="z8" dst_zone="z2" src_node="n16" dst_node="n2" protocol="tcp" port="80">
+      <Reason>Web Proxy to Feed Handler 1</Reason>
+    </Allow>
+    <Allow id="tc26" src_zone="z8" dst_zone="z3" src_node="n16" dst_node="n5" protocol="tcp" port="80">
+      <Reason>Web Proxy to Feed Handler 2</Reason>
+    </Allow>
+    <Allow id="tc27" src_zone="z7" dst_zone="z8" src_node="n17" dst_node="n11" protocol="tcp" port="443">
+      <Reason>AAA to Firewall 1</Reason>
+    </Allow>
+    <Allow id="tc28" src_zone="z7" dst_zone="z8" src_node="n17" dst_node="n12" protocol="tcp" port="443">
+      <Reason>AAA to Firewall 2</Reason>
+    </Allow>
+    <Allow id="tc29" src_zone="z7" dst_zone="z7" src_node="n17" dst_node="n22" protocol="tcp" port="443">
+      <Reason>AAA to Bastion Host</Reason>
+    </Allow>
+    <Allow id="tc30" src_zone="z8" dst_zone="z8" src_node="n18" dst_node="n11" protocol="tcp" port="443">
+      <Reason>NIDS to Firewall 1</Reason>
+    </Allow>
+    <Allow id="tc31" src_zone="z8" dst_zone="z8" src_node="n18" dst_node="n12" protocol="tcp" port="443">
+      <Reason>NIDS to Firewall 2</Reason>
+    </Allow>
+    <Allow id="tc32" src_zone="z8" dst_zone="z8" src_node="n18" dst_node="n19" protocol="tcp" port="443">
+      <Reason>NIDS to NAC</Reason>
+    </Allow>
+    <Allow id="tc33" src_zone="z8" dst_zone="z8" src_node="n19" dst_node="n11" protocol="tcp" port="443">
+      <Reason>NAC to Firewall 1</Reason>
+    </Allow>
+    <Allow id="tc34" src_zone="z8" dst_zone="z8" src_node="n19" dst_node="n12" protocol="tcp" port="443">
+      <Reason>NAC to Firewall 2</Reason>
+    </Allow>
+    <Allow id="tc35" src_zone="z8" dst_zone="z8" src_node="n20" dst_node="n11" protocol="tcp" port="443">
+      <Reason>Application Firewall to Firewall 1</Reason>
+    </Allow>
+    <Allow id="tc36" src_zone="z8" dst_zone="z8" src_node="n20" dst_node="n12" protocol="tcp" port="443">
+      <Reason>Application Firewall to Firewall 2</Reason>
+    </Allow>
+    <Allow id="tc37" src_zone="z8" dst_zone="z8" src_node="n21" dst_node="n11" protocol="tcp" port="443">
+      <Reason>Admin Workstation to Firewall 1</Reason>
+    </Allow>
+    <Allow id="tc38" src_zone="z8" dst_zone="z8" src_node="n21" dst_node="n12" protocol="tcp" port="443">
+      <Reason>Admin Workstation to Firewall 2</Reason>
+    </Allow>
+    <Allow id="tc39" src_zone="z8" dst_zone="z7" src_node="n21" dst_node="n22" protocol="tcp" port="443">
+      <Reason>Admin Workstation to Bastion Host</Reason>
+    </Allow>
+    <Allow id="tc40" src_zone="z10" dst_zone="z8" src_node="n24" dst_node="n11" protocol="tcp" port="443">
+      <Reason>Pen Test Workstation to Firewall 1</Reason>
+    </Allow>
+    <Deny id="tc41" src_zone="z10" dst_zone="z9" src_node="n30" dst_node="n_struct1" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc42" src_zone="z10" dst_zone="z9" src_node="n27" dst_node="n_struct1" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc43" src_zone="z10" dst_zone="z9" src_node="n24" dst_node="n_struct1" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc44" src_zone="z10" dst_zone="z13" src_node="n30" dst_node="n29" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+  </Policies>
+  <Compliance ig_level="IG2" all_required_satisfied="false">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple zones and nodes, and there are explicit links between an Asset Management System and various nodes, indicating that asset management is in place.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes detailed data flow links between various nodes and zones, which strongly implies that data flows are documented.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones for different functions (e.g., Ingestion Pod, Market Data Pods, Security Zone, Non-Production Zone), indicating that data processing and storage are segmented based on sensitivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes firewalls (n11, n12) that are linked to various servers and workloads, indicating that firewalls are implemented and managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a DNS server (n13) that is linked to various nodes, indicating that trusted DNS servers are configured on enterprise assets.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an MFA/Identity Server (n14) and a Central AAA Server (n17), both of which are linked to various nodes, indicating that MFA is required for remote network access.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a DNS Filter (n15) that is linked to various nodes, indicating that DNS filtering services are used.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a Web Proxy (n16) that is linked to various nodes, indicating that network-based URL filters are maintained and enforced.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones, firewalls, and other security controls, indicating that a secure network architecture is established and maintained.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes nodes such as switches, firewalls, and a central AAA server, indicating that network infrastructure is securely managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a Central AAA Server (n17) that is linked to various nodes, indicating that network AAA is centralized.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a VPN Gateway (n26) that is linked to the Bastion Host (n22) and Admin Workstation (n23), indicating that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a NIDS (n18) that is linked to various nodes, indicating that a network intrusion detection solution is deployed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes firewalls (n11, n12) that are linked to various zones, indicating that traffic filtering is performed between network segments.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a Central AAA Server (n17) and a NAC (n19) that are linked to various nodes, indicating that access control for remote assets is managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a Log Collector (n29) that is linked to various nodes, indicating that network traffic flow logs are collected.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a Non-Production Zone (z9) that is separated from other zones, indicating that production and non-production systems are separated.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="manual_review" confidence="0.5">
+      <Evidence>The topology includes a Pen Test Workstation (n24) and a Pen Test Results Repository (n27), but there is no explicit evidence of periodic external penetration tests being performed.</Evidence>
+      <MissingReason>No explicit evidence of periodic external penetration tests being performed.</MissingReason>
+      <Remediation>Add a node or link that explicitly indicates the scheduling and execution of periodic external penetration tests.</Remediation>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="0" controls="stage4_structural_integrity" zones_added="0" nodes_added="1" zone_links_added="0" node_links_added="1"/>
+    <Repair round="1" controls="1.1,12.7,18.2" zones_added="1" nodes_added="3" zone_links_added="1" node_links_added="5"/>
+    <Repair round="2" controls="1.1,13.6,18.2" zones_added="2" nodes_added="3" zone_links_added="2" node_links_added="34"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

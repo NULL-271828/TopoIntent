@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Government-1_req2" title="Hierarchical Network Architecture" scenario="government" ig_level="IG3">
+  <Description>A secure hierarchical network design for a government entity, including an Internet Edge, a three-tier data center, and WAN connectivity for remote sites.</Description>
+  <Summary>The topology includes an Internet Edge zone with a firewall and application-layer security, a three-tier data center, and WAN connections to regional and branch offices. Remote sites have local routing and switching.</Summary>
+  <Domains>
+    <Domain id="z1" name="Internet Edge" type="dmz"/>
+    <Domain id="z2" name="Data Center" type="data_center"/>
+    <Domain id="z3" name="Regional Office" type="enterprise"/>
+    <Domain id="z4" name="Branch Office" type="enterprise"/>
+    <Domain id="z5" name="Management Zone" type="management"/>
+    <Domain id="z6" name="Non-Production Zone" type="data_center"/>
+    <Domain id="z7" name="External Testing Zone" type="external"/>
+    <Domain id="z8" name="Asset Management" type="management"/>
+    <Domain id="z9" name="Data Flow Documentation" type="management"/>
+    <Domain id="z10" name="IaC Tools" type="management"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="Firewall" domain="z1" domain_name="Internet Edge" type="firewall" ip=""/>
+    <Node id="n2" name="Application Layer Security Appliance" domain="z1" domain_name="Internet Edge" type="waf" ip=""/>
+    <Node id="n3" name="Remote Access VPN Gateway" domain="z1" domain_name="Internet Edge" type="vpn_gateway" ip=""/>
+    <Node id="n4" name="Core Router" domain="z2" domain_name="Data Center" type="router" ip=""/>
+    <Node id="n5" name="Distribution Switch" domain="z2" domain_name="Data Center" type="switch" ip=""/>
+    <Node id="n6" name="Access Switch" domain="z2" domain_name="Data Center" type="switch" ip=""/>
+    <Node id="n7" name="Regional Office Router" domain="z3" domain_name="Regional Office" type="router" ip=""/>
+    <Node id="n8" name="Regional Office Switch" domain="z3" domain_name="Regional Office" type="switch" ip=""/>
+    <Node id="n9" name="Branch Office Router" domain="z4" domain_name="Branch Office" type="router" ip=""/>
+    <Node id="n10" name="Branch Office Switch" domain="z4" domain_name="Branch Office" type="switch" ip=""/>
+    <Node id="n11" name="IDS/IPS" domain="z1" domain_name="Internet Edge" type="ids_ips" ip=""/>
+    <Node id="n12" name="SIEM" domain="z1" domain_name="Internet Edge" type="siem" ip=""/>
+    <Node id="n13" name="Identity Server" domain="z5" domain_name="Management Zone" type="identity_server" ip=""/>
+    <Node id="n14" name="MFA/Identity Node" domain="z5" domain_name="Management Zone" type="bastion" ip=""/>
+    <Node id="n15" name="DNS Server" domain="z1" domain_name="Internet Edge" type="server" ip=""/>
+    <Node id="n16" name="DNS Filtering Node" domain="z1" domain_name="Internet Edge" type="ids_ips" ip=""/>
+    <Node id="n17" name="Web Proxy" domain="z1" domain_name="Internet Edge" type="waf" ip=""/>
+    <Node id="n18" name="Application Firewall" domain="z1" domain_name="Internet Edge" type="waf" ip=""/>
+    <Node id="n19" name="NAC Node" domain="z1" domain_name="Internet Edge" type="ids_ips" ip=""/>
+    <Node id="n20" name="802.1X Controller" domain="z1" domain_name="Internet Edge" type="access_point" ip=""/>
+    <Node id="n21" name="Dedicated Admin Workstation" domain="z5" domain_name="Management Zone" type="endpoint" ip=""/>
+    <Node id="n22" name="Penetration Testing Node" domain="z7" domain_name="External Testing Zone" type="other" ip=""/>
+    <Node id="n_struct1" name="Non-Production Zone Application Server" domain="z6" domain_name="Non-Production Zone" type="server" ip=""/>
+    <Node id="n_struct2" name="Asset Management Management Service" domain="z8" domain_name="Asset Management" type="server" ip=""/>
+    <Node id="n_struct3" name="Data Flow Documentation Management Service" domain="z9" domain_name="Data Flow Documentation" type="server" ip=""/>
+    <Node id="n_struct4" name="IaC Tools Management Service" domain="z10" domain_name="IaC Tools" type="server" ip=""/>
+    <Node id="n_new1" name="Asset Inventory System" domain="z8" domain_name="Asset Management" type="server" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z2" type="uplink" label="Internet Edge to Data Center"/>
+      <Link id="zl2" source="z1" target="z3" type="uplink" label="Internet Edge to Regional Office"/>
+      <Link id="zl3" source="z1" target="z4" type="uplink" label="Internet Edge to Branch Office"/>
+      <Link id="zl4" source="z5" target="z1" type="management" label="Management Zone to Internet Edge"/>
+      <Link id="zl5" source="z6" target="z2" type="uplink" label="Non-Production Zone to Data Center"/>
+      <Link id="zl6" source="z7" target="z1" type="uplink" label="External Testing Zone to Internet Edge"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n1" target="n2" type="data_flow" label="Firewall to Application Layer Security"/>
+      <Link id="nl2" source="n1" target="n3" type="data_flow" label="Firewall to Remote Access VPN Gateway"/>
+      <Link id="nl3" source="n1" target="n11" type="data_flow" label="Firewall to IDS/IPS"/>
+      <Link id="nl4" source="n11" target="n12" type="data_flow" label="IDS/IPS to SIEM"/>
+      <Link id="nl5" source="n4" target="n5" type="uplink" label="Core Router to Distribution Switch"/>
+      <Link id="nl6" source="n5" target="n6" type="uplink" label="Distribution Switch to Access Switch"/>
+      <Link id="nl7" source="n7" target="n8" type="uplink" label="Regional Office Router to Regional Office Switch"/>
+      <Link id="nl8" source="n9" target="n10" type="uplink" label="Branch Office Router to Branch Office Switch"/>
+      <Link id="nl9" source="n13" target="n3" type="data_flow" label="Identity Server to Remote Access VPN Gateway"/>
+      <Link id="nl10" source="n14" target="n3" type="data_flow" label="MFA/Identity Node to Remote Access VPN Gateway"/>
+      <Link id="nl11" source="n15" target="n1" type="data_flow" label="DNS Server to Firewall"/>
+      <Link id="nl12" source="n16" target="n1" type="data_flow" label="DNS Filtering Node to Firewall"/>
+      <Link id="nl13" source="n17" target="n1" type="data_flow" label="Web Proxy to Firewall"/>
+      <Link id="nl14" source="n18" target="n1" type="data_flow" label="Application Firewall to Firewall"/>
+      <Link id="nl15" source="n19" target="n1" type="data_flow" label="NAC Node to Firewall"/>
+      <Link id="nl16" source="n20" target="n1" type="data_flow" label="802.1X Controller to Firewall"/>
+      <Link id="nl17" source="n21" target="n13" type="data_flow" label="Dedicated Admin Workstation to Identity Server"/>
+      <Link id="nl18" source="n22" target="n1" type="data_flow" label="Penetration Testing Node to Firewall"/>
+      <Link id="nl_struct1" source="n1" target="n_struct1" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct2" source="n1" target="n_struct2" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct3" source="n1" target="n_struct3" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct4" source="n1" target="n_struct4" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_new1" source="n_new1" target="n13" type="data_flow" label="Asset Inventory to Identity Server"/>
+      <Link id="nl_new2" source="n_new1" target="n1" type="data_flow" label="Asset Inventory to Firewall"/>
+      <Link id="nl_new3" source="n1" target="n4" type="data_flow" label="Firewall to Core Router"/>
+      <Link id="nl_new4" source="n1" target="n5" type="data_flow" label="Firewall to Distribution Switch"/>
+      <Link id="nl_new5" source="n1" target="n6" type="data_flow" label="Firewall to Access Switch"/>
+      <Link id="nl_new6" source="n1" target="n7" type="data_flow" label="Firewall to Regional Office Router"/>
+      <Link id="nl_new7" source="n1" target="n9" type="data_flow" label="Firewall to Branch Office Router"/>
+      <Link id="nl_new8" source="n1" target="n13" type="data_flow" label="Firewall to Identity Server"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n4" protocol="tcp" port="80">
+      <Reason>Firewall to Core Router - HTTP allowed</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Firewall to Distribution Switch - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc3" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n6" protocol="tcp" port="22">
+      <Reason>Firewall to Access Switch - SSH allowed</Reason>
+    </Allow>
+    <Allow id="tc4" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n7" protocol="tcp" port="80">
+      <Reason>Firewall to Regional Office Router - HTTP allowed</Reason>
+    </Allow>
+    <Allow id="tc5" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n8" protocol="tcp" port="443">
+      <Reason>Firewall to Regional Office Switch - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc6" src_zone="z1" dst_zone="z4" src_node="n1" dst_node="n9" protocol="tcp" port="80">
+      <Reason>Firewall to Branch Office Router - HTTP allowed</Reason>
+    </Allow>
+    <Allow id="tc7" src_zone="z1" dst_zone="z4" src_node="n1" dst_node="n10" protocol="tcp" port="443">
+      <Reason>Firewall to Branch Office Switch - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc8" src_zone="z1" dst_zone="z5" src_node="n1" dst_node="n13" protocol="tcp" port="443">
+      <Reason>Firewall to Identity Server - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z1" dst_zone="z5" src_node="n1" dst_node="n14" protocol="tcp" port="443">
+      <Reason>Firewall to MFA/Identity Node - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc10" src_zone="z1" dst_zone="z6" src_node="n1" dst_node="n_struct1" protocol="tcp" port="80">
+      <Reason>Firewall to Non-Production Zone App Server - HTTP allowed</Reason>
+    </Allow>
+    <Allow id="tc11" src_zone="z1" dst_zone="z7" src_node="n1" dst_node="n22" protocol="tcp" port="443">
+      <Reason>Firewall to Penetration Testing Node - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc12" src_zone="z1" dst_zone="z8" src_node="n1" dst_node="n_struct2" protocol="tcp" port="443">
+      <Reason>Firewall to Asset Management Service - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc13" src_zone="z1" dst_zone="z9" src_node="n1" dst_node="n_struct3" protocol="tcp" port="443">
+      <Reason>Firewall to Data Flow Documentation Service - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc14" src_zone="z1" dst_zone="z10" src_node="n1" dst_node="n_struct4" protocol="tcp" port="443">
+      <Reason>Firewall to IaC Tools Service - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc15" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n11" protocol="tcp" port="443">
+      <Reason>Firewall to IDS/IPS - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc16" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n12" protocol="tcp" port="443">
+      <Reason>Firewall to SIEM - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc17" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n15" protocol="tcp" port="53">
+      <Reason>Firewall to DNS Server - DNS allowed</Reason>
+    </Allow>
+    <Allow id="tc18" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n16" protocol="tcp" port="443">
+      <Reason>Firewall to DNS Filtering Node - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc19" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n17" protocol="tcp" port="8080">
+      <Reason>Firewall to Web Proxy - HTTP Proxy allowed</Reason>
+    </Allow>
+    <Allow id="tc20" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n18" protocol="tcp" port="443">
+      <Reason>Firewall to Application Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc21" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n19" protocol="tcp" port="443">
+      <Reason>Firewall to NAC Node - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc22" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n20" protocol="tcp" port="443">
+      <Reason>Firewall to 802.1X Controller - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc23" src_zone="z5" dst_zone="z1" src_node="n13" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Identity Server to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc24" src_zone="z5" dst_zone="z1" src_node="n14" dst_node="n1" protocol="tcp" port="443">
+      <Reason>MFA/Identity Node to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc25" src_zone="z5" dst_zone="z1" src_node="n21" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Admin Workstation to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc26" src_zone="z8" dst_zone="z5" src_node="n_new1" dst_node="n13" protocol="tcp" port="443">
+      <Reason>Asset Inventory to Identity Server - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc27" src_zone="z8" dst_zone="z1" src_node="n_new1" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Asset Inventory to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc28" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n2" protocol="tcp" port="443">
+      <Reason>Firewall to Application Layer Security - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc29" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n3" protocol="tcp" port="443">
+      <Reason>Firewall to Remote Access VPN Gateway - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc30" src_zone="z1" dst_zone="z1" src_node="n11" dst_node="n12" protocol="tcp" port="443">
+      <Reason>IDS/IPS to SIEM - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc31" src_zone="z1" dst_zone="z1" src_node="n15" dst_node="n1" protocol="tcp" port="53">
+      <Reason>DNS Server to Firewall - DNS allowed</Reason>
+    </Allow>
+    <Allow id="tc32" src_zone="z1" dst_zone="z1" src_node="n16" dst_node="n1" protocol="tcp" port="443">
+      <Reason>DNS Filtering Node to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc33" src_zone="z1" dst_zone="z1" src_node="n17" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Web Proxy to Firewall - HTTP Proxy allowed</Reason>
+    </Allow>
+    <Allow id="tc34" src_zone="z1" dst_zone="z1" src_node="n18" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Application Firewall to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc35" src_zone="z1" dst_zone="z1" src_node="n19" dst_node="n1" protocol="tcp" port="443">
+      <Reason>NAC Node to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc36" src_zone="z1" dst_zone="z1" src_node="n20" dst_node="n1" protocol="tcp" port="443">
+      <Reason>802.1X Controller to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc37" src_zone="z7" dst_zone="z1" src_node="n22" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Penetration Testing Node to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc38" src_zone="z6" dst_zone="z1" src_node="n_struct1" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Non-Production Zone App Server to Firewall - HTTP allowed</Reason>
+    </Allow>
+    <Allow id="tc39" src_zone="z8" dst_zone="z1" src_node="n_struct2" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Asset Management Service to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Allow id="tc40" src_zone="z9" dst_zone="z1" src_node="n_struct3" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Data Flow Documentation Service to Firewall - HTTPS allowed</Reason>
+    </Allow>
+    <Deny id="tc41" src_zone="z7" dst_zone="z6" src_node="n22" dst_node="n_struct1" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc42" src_zone="z7" dst_zone="z10" src_node="n22" dst_node="n_struct4" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc43" src_zone="z7" dst_zone="z9" src_node="n22" dst_node="n_struct3" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+    <Deny id="tc44" src_zone="z7" dst_zone="z8" src_node="n22" dst_node="n_struct2" protocol="tcp" port="8443">
+      <Reason>Cross-boundary ACL deny</Reason>
+    </Deny>
+  </Policies>
+  <Compliance ig_level="IG3" all_required_satisfied="true">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Asset Management' zone with an 'Asset Inventory System' node, which suggests the presence of an asset management system.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Data Flow Documentation' zone with a 'Data Flow Documentation Management Service' node, indicating that data flow documentation is managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple zones (e.g., 'Data Center', 'Non-Production Zone', 'Management Zone') that suggest segmentation based on data sensitivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Firewall' node in the 'Internet Edge' zone, which is connected to various other zones, suggesting that firewalls are implemented and managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Server' node in the 'Internet Edge' zone, which is connected to the firewall, suggesting that trusted DNS servers are configured.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Remote Access VPN Gateway' node and an 'MFA/Identity Node' in the 'Internet Edge' zone, both of which are connected to the identity server, suggesting that MFA is required for remote access.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Filtering Node' in the 'Internet Edge' zone, which is connected to the firewall, suggesting that DNS filtering services are used.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Web Proxy' and an 'Application Firewall' in the 'Internet Edge' zone, both of which are connected to the firewall, suggesting that network-based URL filters are maintained and enforced.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple zones and nodes that suggest a secure network architecture, including segmentation, least privilege, and availability.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'IaC Tools' zone with an 'IaC Tools Management Service' node, suggesting that network infrastructure is securely managed using IaC.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Identity Server' and an 'MFA/Identity Node' in the 'Management Zone', both of which are connected to the remote access VPN gateway, suggesting centralized AAA.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Remote Access VPN Gateway' node in the 'Internet Edge' zone, which is connected to the identity server and MFA/identity node, suggesting that remote devices utilize a VPN and connect to the AAA infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.8" title="Establish and Maintain Dedicated Computing Resources for All Administrative Work" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Dedicated Admin Workstation' node in the 'Management Zone', which is connected to the identity server, suggesting dedicated computing resources for administrative work.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'IDS/IPS' node in the 'Internet Edge' zone, which is connected to the firewall and SIEM, suggesting that a network intrusion detection solution is deployed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes multiple zones and links between them, suggesting that traffic filtering is performed between network segments.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Remote Access VPN Gateway' node and an 'MFA/Identity Node' in the 'Internet Edge' zone, both of which are connected to the identity server, suggesting that access control for remote assets is managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'SIEM' node in the 'Internet Edge' zone, which is connected to the IDS/IPS, suggesting that network traffic flow logs are collected.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.8" title="Deploy a Network Intrusion Prevention Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'IDS/IPS' node in the 'Internet Edge' zone, which is connected to the firewall and SIEM, suggesting that a network intrusion prevention solution is deployed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.9" title="Deploy Port-Level Access Control" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an '802.1X Controller' node in the 'Internet Edge' zone, which is connected to the firewall, suggesting that port-level access control is deployed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.10" title="Perform Application Layer Filtering" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Application Layer Security Appliance' and an 'Application Firewall' in the 'Internet Edge' zone, both of which are connected to the firewall, suggesting that application layer filtering is performed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Non-Production Zone' that is separated from the 'Data Center', suggesting that production and non-production systems are separated.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'External Testing Zone' with a 'Penetration Testing Node', suggesting that periodic external penetration tests are performed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="0" controls="stage4_structural_integrity,stage4_ig_consistency" zones_added="3" nodes_added="4" zone_links_added="0" node_links_added="4"/>
+    <Repair round="1" controls="1.1" zones_added="0" nodes_added="1" zone_links_added="0" node_links_added="2"/>
+    <Repair round="3" controls="stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation" zones_added="0" nodes_added="0" zone_links_added="0" node_links_added="6"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

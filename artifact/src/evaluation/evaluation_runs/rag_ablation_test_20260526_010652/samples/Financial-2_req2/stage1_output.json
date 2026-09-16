@@ -1,0 +1,116 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-2_req2",
+    "title": "Financial Data Ingestion Network",
+    "description": "A network designed for ingesting financial data feeds and processing them in dedicated market data pods, with outputs distributed to three campus sites.",
+    "scenario": "finance",
+    "topology_summary": "The network includes dedicated pods for data ingestion and processing, connected to three campus sites via trunk links for inter-site communication. Segmentation is enforced by function.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Ingestion Pod",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Market Data Pod 1",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Market Data Pod 2",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Campus Site 1",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Campus Site 2",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Campus Site 3",
+        "zone_type": "campus"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Ingestion Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Feed Handler 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Analytics Workload 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n4",
+        "name": "Execution Engine 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n5",
+        "name": "Feed Handler 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n6",
+        "name": "Analytics Workload 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n7",
+        "name": "Execution Engine 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n8",
+        "name": "Switch 1",
+        "normalized_type": "switch",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n9",
+        "name": "Switch 2",
+        "normalized_type": "switch",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n10",
+        "name": "Switch 3",
+        "normalized_type": "switch",
+        "zone_id": "z6"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Financial-2_req2\", \"title\": \"Financial Data Ingestion Network\", \"description\": \"A network designed for ingesting financial data feeds and processing them in dedicated market data pods, with outputs distributed to three campus sites.\", \"scenario\": \"finance\", \"topology_summary\": \"The network includes dedicated pods for data ingestion and processing, connected to three campus sites via trunk links for inter-site communication. Segmentation is enforced by function.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Ingestion Pod\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z2\", \"name\": \"Market Data Pod 1\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z3\", \"name\": \"Market Data Pod 2\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z4\", \"name\": \"Campus Site 1\", \"zone_type\": \"campus\"}, {\"zone_id\": \"z5\", \"name\": \"Campus Site 2\", \"zone_type\": \"campus\"}, {\"zone_id\": \"z6\", \"name\": \"Campus Site 3\", \"zone_type\": \"campus\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Ingestion Server\", \"normalized_type\": \"server\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Feed Handler 1\", \"normalized_type\": \"workload\", \"zone_id\": \"z2\"}, {\"node_id\": \"n3\", \"name\": \"Analytics Workload 1\", \"normalized_type\": \"workload\", \"zone_id\": \"z2\"}, {\"node_id\": \"n4\", \"name\": \"Execution Engine 1\", \"normalized_type\": \"workload\", \"zone_id\": \"z2\"}, {\"node_id\": \"n5\", \"name\": \"Feed Handler 2\", \"normalized_type\": \"workload\", \"zone_id\": \"z3\"}, {\"node_id\": \"n6\", \"name\": \"Analytics Workload 2\", \"normalized_type\": \"workload\", \"zone_id\": \"z3\"}, {\"node_id\": \"n7\", \"name\": \"Execution Engine 2\", \"normalized_type\": \"workload\", \"zone_id\": \"z3\"}, {\"node_id\": \"n8\", \"name\": \"Switch 1\", \"normalized_type\": \"switch\", \"zone_id\": \"z4\"}, {\"node_id\": \"n9\", \"name\": \"Switch 2\", \"normalized_type\": \"switch\", \"zone_id\": \"z5\"}, {\"node_id\": \"n10\", \"name\": \"Switch 3\", \"normalized_type\": \"switch\", \"zone_id\": \"z6\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 12.079
+  }
+}

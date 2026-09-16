@@ -1,0 +1,43 @@
+{
+  "sample_id": "Financial-2_req2",
+  "template_id": "Financial-2",
+  "ig_levels": [
+    "IG2",
+    "IG3"
+  ],
+  "started_at": "2026-05-26T09:20:37",
+  "status": "generated",
+  "outputs": {
+    "stage1": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage1/output.json",
+    "stage2": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage2/output.json",
+    "stage5_2": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage5_2/output.json",
+    "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage5_2/stage5_2_visualization_generated_Financial-2_req2_20260526_092955.html"
+  },
+  "ig_results": {
+    "IG2": {
+      "status": "generated",
+      "outputs": {
+        "stage3": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage3/IG2_output.json",
+        "stage4": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage4/IG2_output.json",
+        "xml": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage4/xml/IG2/generated_Financial-2_req2_IG2.xml",
+        "stage5_1_manifest": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage5_1/IG2_manifest.json",
+        "mininet_script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage5_1/mininet_scripts/IG2/validation_generated_Financial-2_req2_IG2.py",
+        "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage5_1/mininet_scripts/IG2/policy_test_report_generated_Financial-2_req2_IG2.json"
+      }
+    },
+    "IG3": {
+      "status": "generated",
+      "outputs": {
+        "stage3": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage3/IG3_output.json",
+        "stage4": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage4/IG3_output.json",
+        "xml": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage4/xml/IG3/generated_Financial-2_req2_IG3.xml",
+        "stage5_1_manifest": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage5_1/IG3_manifest.json",
+        "mininet_script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage5_1/mininet_scripts/IG3/validation_generated_Financial-2_req2_IG3.py",
+        "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-2_req2/stage5_1/mininet_scripts/IG3/policy_test_report_generated_Financial-2_req2_IG3.json"
+      }
+    }
+  },
+  "failures": [],
+  "elapsed_sec": 557.806,
+  "completed_at": "2026-05-26T09:29:55"
+}

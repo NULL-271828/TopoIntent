@@ -1,0 +1,6 @@
+{
+  "sample_id": "Financial-2_req2",
+  "template_id": "Financial-2",
+  "user_intent": "Design a network with dedicated pods for ingesting financial data feeds. This data should then flow to separate market data pods, each containing feed handlers, analytics workloads, and execution engines. The output from these processing pods should be distributed to three distinct campus sites, each with its own switch. Ensure there are trunk links connecting the site switches for inter-site communication. The overall architecture must be segmented by function.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

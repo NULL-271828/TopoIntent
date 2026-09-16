@@ -1,0 +1,901 @@
+{
+  "sample_id": "Financial-4_req1",
+  "gt_template_id": "Financial-4",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-4_req1",
+    "title": "High Availability Branch Office",
+    "description": "A branch office network with emphasis on high availability and voice service continuity, connected to the central data center with a primary link and public phone network failover for voice services.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes a branch office connected to the central data center via a primary link, with a failover mechanism for voice services to the public phone network. It supports SIP-based voice traffic and includes centralized user authentication and network traffic logging.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Public Phone Network",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Non-Production Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z6",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Primary Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Voice Gateway",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "SIP Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Central Data Center Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Public Phone Network Gateway",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n9",
+        "name": "Primary Link",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "Failover Link",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "Internal DNS Server",
+        "normalized_type": "dns_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n12",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "MFA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n14",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n16",
+        "name": "Central AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n17",
+        "name": "Dedicated Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n18",
+        "name": "Non-Production Router",
+        "normalized_type": "router",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n19",
+        "name": "Non-Production Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n20",
+        "name": "Penetration Testing Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z6"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n9",
+          "link_type": "uplink",
+          "label": "Primary Link to Data Center"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n9",
+          "target": "n7",
+          "link_type": "uplink",
+          "label": "Primary Link to Data Center Router"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n2",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "Failover Link to Public Phone Network"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n10",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "Failover Link to Public Phone Network Gateway"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n11",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "DNS to Primary Router"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n12",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "Web Proxy to Primary Router"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n13",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "MFA to Primary Router"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n14",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "NIDS to Primary Router"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "NAC to Primary Router"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n16",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "Central AAA to Primary Router"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n17",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "Admin Workstation to Primary Router"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n18",
+          "target": "n19",
+          "link_type": "uplink",
+          "label": "Non-Prod Router to Non-Prod Firewall"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n20",
+          "target": "n18",
+          "link_type": "uplink",
+          "label": "Pen Test Workstation to Non-Prod Router"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Management Zone Link"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Prod to Non-Prod Link"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "External Testing Zone Link"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-4_req1",
+    "ig_level": "IG2",
+    "all_required_satisfied": false,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide explicit evidence of an asset inventory system or process.",
+        "missing_reason": "No asset inventory system or process is represented in the topology.",
+        "repair_suggestion": "Add a node representing an asset inventory system and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide explicit evidence of documented data flows.",
+        "missing_reason": "No documentation of data flows is represented in the topology.",
+        "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for different types of data processing and storage, such as 'Branch Office', 'Data Center', 'Non-Production Zone', and 'Management Zone'.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n3, n19) and a firewall link to the primary router (nl9).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an internal DNS server (n11) linked to the primary router (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA server (n13) linked to the primary router (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide explicit evidence of DNS filtering services.",
+        "missing_reason": "No DNS filtering service is represented in the topology.",
+        "repair_suggestion": "Add a node representing a DNS filtering service and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide explicit evidence of network-based URL filters.",
+        "missing_reason": "No network-based URL filter is represented in the topology.",
+        "repair_suggestion": "Add a node representing a URL filtering service and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a well-defined network architecture with multiple zones, firewalls, and management infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a management zone (z4) with a dedicated admin workstation (n17) and a central AAA server (n16).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a central AAA server (n16) linked to the primary router (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a primary link (n9) and a failover link (n10) with a central AAA server (n16) linked to the primary router (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIDS (n14) linked to the primary router (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n3, n19) and links between different zones (z1, z5, z6).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a central AAA server (n16) and an MFA server (n13) linked to the primary router (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a SIEM (n6) linked to the primary router (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a non-production zone (z5) with its own router (n18) and firewall (n19).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not provide explicit evidence of periodic external penetration tests.",
+        "missing_reason": "No penetration testing process or schedule is represented in the topology.",
+        "repair_suggestion": "Add a node representing a penetration testing process and links to relevant nodes."
+      }
+    ]
+  },
+  "repair_history": [],
+  "test_cases": {
+    "template_id": "generated_Financial-4_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary link to data center is operational."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Voice gateway to public phone network is operational."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Internal DNS server to primary router is operational."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web proxy to primary router is operational."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA server to primary router is operational."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to primary router is operational."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC to primary router is operational."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Central AAA server to primary router is operational."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin workstation to primary router is operational."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z5",
+        "target_zone": "z5",
+        "source_node": "n18",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Non-production router to firewall is operational."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z6",
+        "target_zone": "z5",
+        "source_node": "n20",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen test workstation to non-production router is operational."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to MFA server is operational."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to central AAA server is operational."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to admin workstation is operational."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to non-production router is operational."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n20",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to pen test workstation is operational."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Primary router to SIP server is operational."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to identity server is operational."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to SIEM is operational."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to firewall is operational."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to primary link is operational."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to failover link is operational."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Primary router to internal DNS server is operational."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Primary router to web proxy is operational."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to MFA server is operational."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to NIDS is operational."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to NAC is operational."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to central AAA server is operational."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to admin workstation is operational."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to non-production router is operational."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n20",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary router to pen test workstation is operational."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access from branch to data center is blocked."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access from branch to public phone network is blocked."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access from branch to management zone is blocked."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access from branch to non-production zone is blocked."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n20",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access from branch to external testing zone is blocked."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access from management to branch is blocked."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access from non-production to branch is blocked."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n20",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access from external testing to branch is blocked."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "SSH access from public phone network to branch is blocked."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_repair/IG2/xml/IG2/generated_Financial-4_req1_IG2.xml"
+}

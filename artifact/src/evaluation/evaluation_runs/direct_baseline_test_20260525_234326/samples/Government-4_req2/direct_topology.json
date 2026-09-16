@@ -1,0 +1,108 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Government-4_req2",
+  "title": "Segmented Network for Government",
+  "description": "A network topology with distinct zones for standard and sensitive information systems, each with dedicated administrative infrastructure.",
+  "scenario": "government",
+  "topology_summary": "The network is divided into two main zones: Standard Systems and Sensitive Systems. Each zone has its own administrative infrastructure. The Standard Systems zone includes a secure internet gateway, while the Sensitive Systems zone is isolated from the internet and protected by a Class 1 gateway.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Standard Systems",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Sensitive Systems",
+      "zone_type": "security"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Standard Admin",
+      "zone_type": "management"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Sensitive Admin",
+      "zone_type": "management"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Standard Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Standard Internet Gateway",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "Standard Workstation",
+      "normalized_type": "endpoint",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n4",
+      "name": "Sensitive Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n5",
+      "name": "Class 1 Gateway",
+      "normalized_type": "firewall",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n6",
+      "name": "Sensitive Workstation",
+      "normalized_type": "endpoint",
+      "zone_id": "z4"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "routing",
+        "label": "Internet Access"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n1",
+        "target": "n3",
+        "link_type": "management",
+        "label": "Admin Access"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n4",
+        "target": "n5",
+        "link_type": "routing",
+        "label": "Zone Protection"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n4",
+        "target": "n6",
+        "link_type": "management",
+        "label": "Admin Access"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n5",
+        "target": "n1",
+        "link_type": "routing",
+        "label": "Traffic Filtering"
+      }
+    ],
+    "zone_links": []
+  }
+}

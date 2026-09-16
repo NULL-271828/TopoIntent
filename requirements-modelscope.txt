@@ -1,0 +1,3 @@
+# Optional download source for the live BGE-M3 retrieval claim.
+# Inference still uses transformers.AutoTokenizer/AutoModel.
+modelscope>=1.25.0,<2

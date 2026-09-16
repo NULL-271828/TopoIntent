@@ -1,0 +1,71 @@
+{
+  "variant_group": "RAG ablations",
+  "run_dir": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809",
+  "dataset": "test",
+  "dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json",
+  "ig_levels": [
+    "IG2",
+    "IG3"
+  ],
+  "samples": 14,
+  "records": 56,
+  "failures": 0,
+  "rag_without_repair": {
+    "definition": "Stage1 + Stage2 + Stage3 + Stage4 verification/testcase/XML export with Stage4 repair disabled. No Stage5.",
+    "overall": {
+      "samples": 28,
+      "zone_type_recall": 0.7429,
+      "node_type_recall": 0.7865,
+      "cis_satisfaction_rate": 0.7321,
+      "avg_test_cases": 40.75
+    },
+    "by_ig": {
+      "IG2": {
+        "samples": 14,
+        "zone_type_recall": 0.7429,
+        "node_type_recall": 0.7966,
+        "cis_satisfaction_rate": 0.7302,
+        "avg_test_cases": 40.5
+      },
+      "IG3": {
+        "samples": 14,
+        "zone_type_recall": 0.7429,
+        "node_type_recall": 0.7764,
+        "cis_satisfaction_rate": 0.7338,
+        "avg_test_cases": 41.0
+      }
+    },
+    "post_acl_pass_rate": null
+  },
+  "rag_without_feedback": {
+    "definition": "Stage1 + Stage2 + Stage3 + Stage4 verification, repair, testcase/XML export, and Stage5.1 script generation. No Stage5 diagnostic feedback repair.",
+    "overall": {
+      "samples": 28,
+      "zone_type_recall": 0.7429,
+      "node_type_recall": 0.8184,
+      "cis_satisfaction_rate": 0.9982,
+      "avg_test_cases": 40.9286
+    },
+    "by_ig": {
+      "IG2": {
+        "samples": 14,
+        "zone_type_recall": 0.7429,
+        "node_type_recall": 0.8204,
+        "cis_satisfaction_rate": 1.0,
+        "avg_test_cases": 41.2857
+      },
+      "IG3": {
+        "samples": 14,
+        "zone_type_recall": 0.7429,
+        "node_type_recall": 0.8163,
+        "cis_satisfaction_rate": 0.9968,
+        "avg_test_cases": 40.5714
+      }
+    },
+    "post_acl_pass_rate": "pending_wsl_reports"
+  },
+  "generated_scripts": 28,
+  "mininet_scripts_zip": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/mininet_scripts_package.zip",
+  "reports_from_wsl": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/reports_from_wsl/rag_without_feedback",
+  "elapsed_sec": 10608.24
+}

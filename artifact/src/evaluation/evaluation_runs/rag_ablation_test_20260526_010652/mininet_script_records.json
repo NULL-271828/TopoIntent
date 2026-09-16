@@ -1,0 +1,170 @@
+[
+  {
+    "sample_id": "Financial-2_req1",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Financial-2_req1_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Financial-2_req1_IG2.json"
+  },
+  {
+    "sample_id": "Financial-2_req1",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Financial-2_req1_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Financial-2_req1_IG3.json"
+  },
+  {
+    "sample_id": "Financial-2_req2",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Financial-2_req2_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Financial-2_req2_IG2.json"
+  },
+  {
+    "sample_id": "Financial-2_req2",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Financial-2_req2_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-2_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Financial-2_req2_IG3.json"
+  },
+  {
+    "sample_id": "Financial-3_req1",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Financial-3_req1_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Financial-3_req1_IG2.json"
+  },
+  {
+    "sample_id": "Financial-3_req1",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Financial-3_req1_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Financial-3_req1_IG3.json"
+  },
+  {
+    "sample_id": "Financial-3_req2",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Financial-3_req2_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Financial-3_req2_IG2.json"
+  },
+  {
+    "sample_id": "Financial-3_req2",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Financial-3_req2_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-3_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Financial-3_req2_IG3.json"
+  },
+  {
+    "sample_id": "Financial-4_req1",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Financial-4_req1_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Financial-4_req1_IG2.json"
+  },
+  {
+    "sample_id": "Financial-4_req1",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Financial-4_req1_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Financial-4_req1_IG3.json"
+  },
+  {
+    "sample_id": "Financial-4_req2",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Financial-4_req2_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Financial-4_req2_IG2.json"
+  },
+  {
+    "sample_id": "Financial-4_req2",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Financial-4_req2_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Financial-4_req2_IG3.json"
+  },
+  {
+    "sample_id": "Government-1_req1",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Government-1_req1_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Government-1_req1_IG2.json"
+  },
+  {
+    "sample_id": "Government-1_req1",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Government-1_req1_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Government-1_req1_IG3.json"
+  },
+  {
+    "sample_id": "Government-1_req2",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Government-1_req2_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Government-1_req2_IG2.json"
+  },
+  {
+    "sample_id": "Government-1_req2",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Government-1_req2_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Government-1_req2_IG3.json"
+  },
+  {
+    "sample_id": "Government-2_req1",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Government-2_req1_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Government-2_req1_IG2.json"
+  },
+  {
+    "sample_id": "Government-2_req1",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Government-2_req1_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Government-2_req1_IG3.json"
+  },
+  {
+    "sample_id": "Government-2_req2",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Government-2_req2_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Government-2_req2_IG2.json"
+  },
+  {
+    "sample_id": "Government-2_req2",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Government-2_req2_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-2_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Government-2_req2_IG3.json"
+  },
+  {
+    "sample_id": "Government-3_req1",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Government-3_req1_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Government-3_req1_IG2.json"
+  },
+  {
+    "sample_id": "Government-3_req1",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Government-3_req1_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Government-3_req1_IG3.json"
+  },
+  {
+    "sample_id": "Government-3_req2",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Government-3_req2_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Government-3_req2_IG2.json"
+  },
+  {
+    "sample_id": "Government-3_req2",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Government-3_req2_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Government-3_req2_IG3.json"
+  },
+  {
+    "sample_id": "Government-4_req1",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Government-4_req1_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Government-4_req1_IG2.json"
+  },
+  {
+    "sample_id": "Government-4_req1",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Government-4_req1_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Government-4_req1_IG3.json"
+  },
+  {
+    "sample_id": "Government-4_req2",
+    "ig_level": "IG2",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/validation_generated_Government-4_req2_IG2.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req2/rag_without_feedback/IG2/stage5_1/mininet_scripts/policy_test_report_generated_Government-4_req2_IG2.json"
+  },
+  {
+    "sample_id": "Government-4_req2",
+    "ig_level": "IG3",
+    "mininet_script": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/validation_generated_Government-4_req2_IG3.py",
+    "expected_stage5_report": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req2/rag_without_feedback/IG3/stage5_1/mininet_scripts/policy_test_report_generated_Government-4_req2_IG3.json"
+  }
+]

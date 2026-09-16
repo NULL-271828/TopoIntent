@@ -1,0 +1,1000 @@
+{
+  "sample_id": "Government-4_req2",
+  "gt_template_id": "Government-4",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-4_req2",
+    "title": "Government Segmented Network",
+    "description": "A network with distinct zones for standard and sensitive information systems, each with dedicated administrative infrastructure.",
+    "scenario": "government",
+    "topology_summary": "The topology includes separate zones for standard and sensitive systems, each with its own administrative infrastructure. The standard zone has a secure internet gateway, while the sensitive zone is isolated and protected by a Class 1 gateway.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Standard Systems Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Sensitive Systems Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Standard Admin Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Sensitive Admin Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Internet Gateway Zone",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Non-Production Systems Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z7",
+        "name": "External Penetration Testing Zone",
+        "zone_type": "external"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Standard Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Sensitive Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Standard Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Sensitive Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n5",
+        "name": "Secure Internet Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n6",
+        "name": "Class 1 Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Standard Switch",
+        "normalized_type": "switch",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n8",
+        "name": "Sensitive Switch",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n9",
+        "name": "Standard Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "Sensitive Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n11",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n12",
+        "name": "DNS Filtering Service",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n13",
+        "name": "Web Proxy",
+        "normalized_type": "proxy",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n14",
+        "name": "Centralized AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n15",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n16",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n17",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n18",
+        "name": "NAC",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n19",
+        "name": "NAC",
+        "normalized_type": "other",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n20",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n21",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n22",
+        "name": "Non-Production Switch",
+        "normalized_type": "switch",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n23",
+        "name": "Non-Production Router",
+        "normalized_type": "router",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n24",
+        "name": "Penetration Testing Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n7",
+          "link_type": "trunk",
+          "label": "Internal Trunk"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n7",
+          "target": "n9",
+          "link_type": "uplink",
+          "label": "Uplink to Router"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n9",
+          "target": "n5",
+          "link_type": "routing",
+          "label": "Internet Gateway"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n2",
+          "target": "n8",
+          "link_type": "trunk",
+          "label": "Internal Trunk"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n8",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "Uplink to Router"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n10",
+          "target": "n6",
+          "link_type": "routing",
+          "label": "Class 1 Gateway"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n3",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Admin Management"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n4",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Admin Management"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n11",
+          "target": "n5",
+          "link_type": "management",
+          "label": "DNS Management"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n12",
+          "target": "n5",
+          "link_type": "management",
+          "label": "DNS Filtering Management"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n13",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Web Proxy Management"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n14",
+          "target": "n3",
+          "link_type": "management",
+          "label": "AAA Management"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "NIDS Monitoring"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n16",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "NIDS Monitoring"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n17",
+          "target": "n15",
+          "link_type": "monitoring",
+          "label": "SIEM Monitoring"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n17",
+          "target": "n16",
+          "link_type": "monitoring",
+          "label": "SIEM Monitoring"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n18",
+          "target": "n1",
+          "link_type": "management",
+          "label": "NAC Management"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n19",
+          "target": "n2",
+          "link_type": "management",
+          "label": "NAC Management"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n20",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "Application Firewall Uplink"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n21",
+          "target": "n2",
+          "link_type": "uplink",
+          "label": "Application Firewall Uplink"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n22",
+          "target": "n23",
+          "link_type": "uplink",
+          "label": "Uplink to Router"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n23",
+          "target": "n5",
+          "link_type": "routing",
+          "label": "Internet Gateway"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n24",
+          "target": "n5",
+          "link_type": "peering",
+          "label": "Penetration Testing Peering"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "Standard to Non-Production"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "Sensitive to Non-Production"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z5",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "Internet Gateway to Penetration Testing"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-4_req2",
+    "ig_level": "IG2",
+    "all_required_satisfied": false,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology does not explicitly show an asset inventory system or process. However, it includes various nodes and zones that could be part of an inventory.",
+        "missing_reason": "No explicit asset inventory system or process is shown.",
+        "repair_suggestion": "Add a node representing an asset inventory system and links to all other nodes."
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology shows various links and zones, but there is no explicit documentation of data flows.",
+        "missing_reason": "No explicit documentation of data flows is shown.",
+        "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes and zones."
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for standard and sensitive systems, each with its own administrative infrastructure and firewalls.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n1, n2, n5, n6) in the standard and sensitive zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS server (n11) in the Internet Gateway Zone, which is linked to the secure internet gateway (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes a centralized AAA server (n14) but does not explicitly show MFA for remote access.",
+        "missing_reason": "No explicit MFA for remote access is shown.",
+        "repair_suggestion": "Add a node representing MFA and links to the AAA server and remote access points."
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS filtering service (n12) in the Internet Gateway Zone, which is linked to the secure internet gateway (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a web proxy (n13) in the Internet Gateway Zone, which is linked to the secure internet gateway (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for standard and sensitive systems, each with its own administrative infrastructure, firewalls, and routers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a centralized AAA server (n14) and management links to various nodes, indicating secure management practices.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a centralized AAA server (n14) in the Standard Admin Zone, which is linked to the standard admin workstation (n3).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes a centralized AAA server (n14) but does not explicitly show a VPN or remote device connections.",
+        "missing_reason": "No explicit VPN or remote device connections are shown.",
+        "repair_suggestion": "Add a node representing a VPN and links to the AAA server and remote devices."
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes NIDS (n15, n16) in the standard and sensitive zones, which are linked to their respective firewalls (n1, n2).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls (n1, n2, n5, n6) and links between zones, indicating traffic filtering between segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes a centralized AAA server (n14) but does not explicitly show access control for remote assets.",
+        "missing_reason": "No explicit access control for remote assets is shown.",
+        "repair_suggestion": "Add a node representing access control for remote assets and links to the AAA server and remote devices."
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a SIEM (n17) that is linked to the NIDS (n15, n16) in the standard and sensitive zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Non-Production Systems Zone (z6) that is separated from the standard and sensitive zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an External Penetration Testing Zone (z7) with a penetration testing workstation (n24) that is linked to the Internet Gateway Zone (z5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [],
+  "test_cases": {
+    "template_id": "generated_Government-4_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Standard Firewall to Secure Internet Gateway allowed."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Secure Internet Gateway blocked."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Standard Admin Workstation to Standard Firewall allowed."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n4",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Sensitive Admin Workstation to Sensitive Firewall allowed."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Standard Firewall to Standard Admin Workstation allowed."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n2",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Sensitive Firewall to Sensitive Admin Workstation allowed."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Standard Firewall to DNS Server allowed."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Sensitive Firewall to DNS Server blocked."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Standard Firewall to DNS Filtering Service allowed."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Sensitive Firewall to DNS Filtering Service blocked."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Standard Firewall to Web Proxy allowed."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Web Proxy blocked."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Centralized AAA Server to Standard Firewall allowed."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n14",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "block",
+        "reason": "Centralized AAA Server to Sensitive Firewall blocked."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Standard Firewall to SIEM allowed."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "block",
+        "reason": "Sensitive Firewall to SIEM blocked."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Standard Firewall to NIDS allowed."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Sensitive Firewall to NIDS allowed."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Standard Firewall to NAC allowed."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Sensitive Firewall to NAC allowed."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n20",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Standard Firewall to Application Firewall allowed."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Sensitive Firewall to Application Firewall allowed."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z6",
+        "target_zone": "z5",
+        "source_node": "n22",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Non-Production Switch to Secure Internet Gateway allowed."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z6",
+        "target_zone": "z5",
+        "source_node": "n23",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Non-Production Router to Secure Internet Gateway allowed."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z7",
+        "target_zone": "z5",
+        "source_node": "n24",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Penetration Testing Workstation to Secure Internet Gateway allowed."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Standard Firewall to Non-Production Switch allowed."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z2",
+        "target_zone": "z6",
+        "source_node": "n2",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Non-Production Switch blocked."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Standard Firewall to Penetration Testing Workstation blocked."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z2",
+        "target_zone": "z7",
+        "source_node": "n2",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Penetration Testing Workstation blocked."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z3",
+        "target_zone": "z7",
+        "source_node": "n3",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Standard Admin Workstation to Penetration Testing Workstation blocked."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z4",
+        "target_zone": "z7",
+        "source_node": "n4",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Sensitive Admin Workstation to Penetration Testing Workstation blocked."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Standard Firewall to Sensitive Firewall blocked."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n2",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Standard Firewall blocked."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Standard Firewall to Sensitive Admin Workstation blocked."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Standard Admin Workstation blocked."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Standard Firewall to Non-Production Router allowed."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z2",
+        "target_zone": "z6",
+        "source_node": "n2",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Sensitive Firewall to Non-Production Router blocked."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z5",
+        "target_zone": "z7",
+        "source_node": "n5",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Secure Internet Gateway to Penetration Testing Workstation allowed."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z5",
+        "target_zone": "z6",
+        "source_node": "n5",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Secure Internet Gateway to Non-Production Switch allowed."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z5",
+        "target_zone": "z6",
+        "source_node": "n5",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Secure Internet Gateway to Non-Production Router allowed."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-4_req2/rag_without_repair/IG2/xml/IG2/generated_Government-4_req2_IG2.xml"
+}

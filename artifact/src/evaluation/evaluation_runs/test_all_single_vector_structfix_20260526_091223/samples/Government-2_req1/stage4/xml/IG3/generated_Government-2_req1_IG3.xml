@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Government-2_req1" title="Government Data Center Topology" scenario="government" ig_level="IG3">
+  <Description>A secure and compliant data center design with isolated zones for public services, development, and production systems.</Description>
+  <Summary>The topology includes a DMZ for public-facing services, isolated zones for development and production, and a disaster recovery site. All network activity is logged for compliance.</Summary>
+  <Domains>
+    <Domain id="z1" name="DMZ" type="dmz"/>
+    <Domain id="z2" name="Development Zone" type="enterprise"/>
+    <Domain id="z3" name="Production Zone" type="enterprise"/>
+    <Domain id="z4" name="Disaster Recovery Site" type="data_center"/>
+    <Domain id="z5" name="Management Zone" type="management"/>
+    <Domain id="z6" name="Security Zone" type="security"/>
+    <Domain id="z7" name="External Testing Zone" type="external"/>
+    <Domain id="z8" name="Asset Management Zone" type="management"/>
+    <Domain id="z9" name="Documentation Zone" type="management"/>
+    <Domain id="z10" name="Remote Access Zone" type="management"/>
+    <Domain id="z_new1" name="Asset Management System Zone" type="management"/>
+    <Domain id="z_new2" name="Data Flow Documentation Zone" type="management"/>
+    <Domain id="z_new3" name="Remote Access Control Zone" type="management"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="Firewall" domain="z1" domain_name="DMZ" type="firewall" ip=""/>
+    <Node id="n2" name="Web Application Firewall" domain="z1" domain_name="DMZ" type="waf" ip=""/>
+    <Node id="n3" name="Load Balancer" domain="z1" domain_name="DMZ" type="load_balancer" ip=""/>
+    <Node id="n4" name="SIEM" domain="z5" domain_name="Management Zone" type="siem" ip=""/>
+    <Node id="n5" name="Identity Server" domain="z5" domain_name="Management Zone" type="identity_server" ip=""/>
+    <Node id="n6" name="Development Servers" domain="z2" domain_name="Development Zone" type="server" ip=""/>
+    <Node id="n7" name="Production Servers" domain="z3" domain_name="Production Zone" type="server" ip=""/>
+    <Node id="n8" name="Disaster Recovery Servers" domain="z4" domain_name="Disaster Recovery Site" type="server" ip=""/>
+    <Node id="n9" name="Router" domain="z1" domain_name="DMZ" type="router" ip=""/>
+    <Node id="n10" name="Router" domain="z2" domain_name="Development Zone" type="router" ip=""/>
+    <Node id="n11" name="Router" domain="z3" domain_name="Production Zone" type="router" ip=""/>
+    <Node id="n12" name="Router" domain="z4" domain_name="Disaster Recovery Site" type="router" ip=""/>
+    <Node id="n13" name="IDS/IPS" domain="z6" domain_name="Security Zone" type="ids_ips" ip=""/>
+    <Node id="n14" name="DNS Server" domain="z5" domain_name="Management Zone" type="server" ip=""/>
+    <Node id="n15" name="MFA/Identity Node" domain="z5" domain_name="Management Zone" type="identity_server" ip=""/>
+    <Node id="n16" name="DNS Filtering Node" domain="z5" domain_name="Management Zone" type="server" ip=""/>
+    <Node id="n17" name="Web Proxy/URL Filter" domain="z5" domain_name="Management Zone" type="waf" ip=""/>
+    <Node id="n18" name="Application Firewall" domain="z5" domain_name="Management Zone" type="waf" ip=""/>
+    <Node id="n19" name="NAC/Compliance Check Node" domain="z5" domain_name="Management Zone" type="ids_ips" ip=""/>
+    <Node id="n20" name="802.1X/NAC Node" domain="z5" domain_name="Management Zone" type="ids_ips" ip=""/>
+    <Node id="n21" name="Dedicated Admin Workstation" domain="z5" domain_name="Management Zone" type="endpoint" ip=""/>
+    <Node id="n22" name="Penetration Testing Node" domain="z7" domain_name="External Testing Zone" type="other" ip=""/>
+    <Node id="n_struct1" name="Asset Management Zone Management Service" domain="z8" domain_name="Asset Management Zone" type="server" ip=""/>
+    <Node id="n_struct2" name="Documentation Zone Management Service" domain="z9" domain_name="Documentation Zone" type="server" ip=""/>
+    <Node id="n_struct3" name="Remote Access Zone Management Service" domain="z10" domain_name="Remote Access Zone" type="server" ip=""/>
+    <Node id="n_new1" name="Asset Management System" domain="z_new1" domain_name="Asset Management System Zone" type="server" ip=""/>
+    <Node id="n_new2" name="Data Flow Documentation System" domain="z_new2" domain_name="Data Flow Documentation Zone" type="server" ip=""/>
+    <Node id="n_new3" name="VPN Service" domain="z10" domain_name="Remote Access Zone" type="vpn_gateway" ip=""/>
+    <Node id="n_new4" name="Access Control System" domain="z_new3" domain_name="Remote Access Control Zone" type="identity_server" ip=""/>
+    <Node id="n_new5" name="Log Collection System" domain="z5" domain_name="Management Zone" type="siem" ip=""/>
+    <Node id="n_new6" name="Penetration Testing Management System" domain="z7" domain_name="External Testing Zone" type="other" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z2" type="uplink" label="DMZ to Development"/>
+      <Link id="zl2" source="z2" target="z3" type="uplink" label="Development to Production"/>
+      <Link id="zl3" source="z3" target="z4" type="uplink" label="Production to DR"/>
+      <Link id="zl4" source="z4" target="z5" type="uplink" label="DR to Management"/>
+      <Link id="zl5" source="z6" target="z5" type="monitoring" label="Security to Management"/>
+      <Link id="zl6" source="z7" target="z1" type="peering" label="External Testing to DMZ"/>
+      <Link id="zl_new1" source="z_new1" target="z1" type="management" label="Asset Management to DMZ"/>
+      <Link id="zl_new2" source="z_new1" target="z2" type="management" label="Asset Management to Development"/>
+      <Link id="zl_new3" source="z_new1" target="z3" type="management" label="Asset Management to Production"/>
+      <Link id="zl_new4" source="z_new1" target="z4" type="management" label="Asset Management to DR"/>
+      <Link id="zl_new5" source="z_new2" target="z1" type="peering" label="Data Flow Documentation to DMZ"/>
+      <Link id="zl_new6" source="z_new2" target="z2" type="peering" label="Data Flow Documentation to Development"/>
+      <Link id="zl_new7" source="z_new2" target="z3" type="peering" label="Data Flow Documentation to Production"/>
+      <Link id="zl_new8" source="z_new2" target="z4" type="peering" label="Data Flow Documentation to DR"/>
+      <Link id="zl_new9" source="z10" target="z5" type="peering" label="Remote Access to Management"/>
+      <Link id="zl_new10" source="z_new3" target="z5" type="peering" label="Access Control to Management"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n9" target="n1" type="uplink" label="DMZ to Development"/>
+      <Link id="nl2" source="n10" target="n6" type="uplink" label="Development to Production"/>
+      <Link id="nl3" source="n11" target="n7" type="uplink" label="Production to DR"/>
+      <Link id="nl4" source="n12" target="n8" type="uplink" label="DR to Management"/>
+      <Link id="nl5" source="n13" target="n4" type="monitoring" label="IDS/IPS to SIEM"/>
+      <Link id="nl6" source="n14" target="n5" type="peering" label="DNS to Identity Server"/>
+      <Link id="nl7" source="n15" target="n1" type="management" label="MFA to Firewall"/>
+      <Link id="nl8" source="n16" target="n1" type="peering" label="DNS Filtering to Firewall"/>
+      <Link id="nl9" source="n17" target="n1" type="peering" label="Web Proxy/URL Filter to Firewall"/>
+      <Link id="nl10" source="n18" target="n1" type="peering" label="Application Firewall to Firewall"/>
+      <Link id="nl11" source="n19" target="n1" type="peering" label="NAC/Compliance Check to Firewall"/>
+      <Link id="nl12" source="n20" target="n1" type="peering" label="802.1X/NAC to Firewall"/>
+      <Link id="nl13" source="n21" target="n1" type="management" label="Admin Workstation to Firewall"/>
+      <Link id="nl14" source="n22" target="n1" type="peering" label="Penetration Testing to Firewall"/>
+      <Link id="nl_struct1" source="n1" target="n_struct1" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct2" source="n1" target="n_struct2" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct3" source="n1" target="n_struct3" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_new1" source="n_new1" target="n1" type="management" label="Asset Management to Firewall"/>
+      <Link id="nl_new2" source="n_new1" target="n6" type="management" label="Asset Management to Development Servers"/>
+      <Link id="nl_new3" source="n_new1" target="n7" type="management" label="Asset Management to Production Servers"/>
+      <Link id="nl_new4" source="n_new1" target="n8" type="management" label="Asset Management to DR Servers"/>
+      <Link id="nl_new5" source="n_new2" target="n1" type="peering" label="Data Flow Documentation to Firewall"/>
+      <Link id="nl_new6" source="n_new2" target="n6" type="peering" label="Data Flow Documentation to Development Servers"/>
+      <Link id="nl_new7" source="n_new2" target="n7" type="peering" label="Data Flow Documentation to Production Servers"/>
+      <Link id="nl_new8" source="n_new2" target="n8" type="peering" label="Data Flow Documentation to DR Servers"/>
+      <Link id="nl_new9" source="n_new3" target="n1" type="peering" label="VPN Service to Firewall"/>
+      <Link id="nl_new10" source="n_new3" target="n5" type="peering" label="VPN Service to Identity Server"/>
+      <Link id="nl_new11" source="n_new4" target="n1" type="peering" label="Access Control to Firewall"/>
+      <Link id="nl_new12" source="n_new4" target="n5" type="peering" label="Access Control to Identity Server"/>
+      <Link id="nl_new13" source="n_new5" target="n9" type="monitoring" label="Log Collection to Router"/>
+      <Link id="nl_new14" source="n_new5" target="n10" type="monitoring" label="Log Collection to Router"/>
+      <Link id="nl_new15" source="n_new5" target="n11" type="monitoring" label="Log Collection to Router"/>
+      <Link id="nl_new16" source="n_new5" target="n12" type="monitoring" label="Log Collection to Router"/>
+      <Link id="nl_new17" source="n_new6" target="n22" type="peering" label="Pen Test Management to Pen Test Node"/>
+      <Link id="nl_new18" source="n_new6" target="n1" type="peering" label="Pen Test Management to Firewall"/>
+      <Link id="nl_new19" source="n_new6" target="n5" type="peering" label="Pen Test Management to Identity Server"/>
+      <Link id="nl_new20" source="n_new6" target="n4" type="peering" label="Pen Test Management to SIEM"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n6" protocol="tcp" port="80">
+      <Reason>DMZ to Development HTTP traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z2" dst_zone="z3" src_node="n6" dst_node="n7" protocol="tcp" port="443">
+      <Reason>Development to Production HTTPS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc3" src_zone="z3" dst_zone="z4" src_node="n7" dst_node="n8" protocol="tcp" port="22">
+      <Reason>Production to DR SSH traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc4" src_zone="z4" dst_zone="z5" src_node="n8" dst_node="n4" protocol="tcp" port="514">
+      <Reason>DR to Management syslog traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc5" src_zone="z6" dst_zone="z5" src_node="n13" dst_node="n4" protocol="tcp" port="514">
+      <Reason>IDS/IPS to SIEM syslog traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc6" src_zone="z5" dst_zone="z1" src_node="n5" dst_node="n1" protocol="tcp" port="53">
+      <Reason>Identity Server to Firewall DNS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc7" src_zone="z5" dst_zone="z1" src_node="n14" dst_node="n1" protocol="tcp" port="53">
+      <Reason>DNS Server to Firewall DNS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc8" src_zone="z5" dst_zone="z1" src_node="n15" dst_node="n1" protocol="tcp" port="443">
+      <Reason>MFA/Identity Node to Firewall management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z5" dst_zone="z1" src_node="n16" dst_node="n1" protocol="tcp" port="53">
+      <Reason>DNS Filtering Node to Firewall DNS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc10" src_zone="z5" dst_zone="z1" src_node="n17" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Web Proxy/URL Filter to Firewall HTTP proxy traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc11" src_zone="z5" dst_zone="z1" src_node="n18" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>Application Firewall to Firewall HTTP proxy traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc12" src_zone="z5" dst_zone="z1" src_node="n19" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>NAC/Compliance Check to Firewall HTTP proxy traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc13" src_zone="z5" dst_zone="z1" src_node="n20" dst_node="n1" protocol="tcp" port="8080">
+      <Reason>802.1X/NAC to Firewall HTTP proxy traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc14" src_zone="z5" dst_zone="z1" src_node="n21" dst_node="n1" protocol="tcp" port="22">
+      <Reason>Admin Workstation to Firewall SSH management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc15" src_zone="z7" dst_zone="z1" src_node="n22" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Penetration Testing Node to Firewall HTTPS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc16" src_zone="z8" dst_zone="z1" src_node="n_struct1" dst_node="n1" protocol="tcp" port="22">
+      <Reason>Asset Management Zone to Firewall SSH management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc17" src_zone="z8" dst_zone="z2" src_node="n_struct1" dst_node="n6" protocol="tcp" port="22">
+      <Reason>Asset Management Zone to Development SSH management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc18" src_zone="z8" dst_zone="z3" src_node="n_struct1" dst_node="n7" protocol="tcp" port="22">
+      <Reason>Asset Management Zone to Production SSH management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc19" src_zone="z8" dst_zone="z4" src_node="n_struct1" dst_node="n8" protocol="tcp" port="22">
+      <Reason>Asset Management Zone to DR SSH management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc20" src_zone="z9" dst_zone="z1" src_node="n_struct2" dst_node="n1" protocol="tcp" port="22">
+      <Reason>Documentation Zone to Firewall SSH management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc21" src_zone="z9" dst_zone="z2" src_node="n_struct2" dst_node="n6" protocol="tcp" port="22">
+      <Reason>Documentation Zone to Development SSH management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc22" src_zone="z9" dst_zone="z3" src_node="n_struct2" dst_node="n7" protocol="tcp" port="22">
+      <Reason>Documentation Zone to Production SSH management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc23" src_zone="z9" dst_zone="z4" src_node="n_struct2" dst_node="n8" protocol="tcp" port="22">
+      <Reason>Documentation Zone to DR SSH management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc24" src_zone="z10" dst_zone="z5" src_node="n_struct3" dst_node="n4" protocol="tcp" port="22">
+      <Reason>Remote Access Zone to Management SSH management traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc25" src_zone="z10" dst_zone="z5" src_node="n_new3" dst_node="n5" protocol="tcp" port="443">
+      <Reason>VPN Service to Identity Server HTTPS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc26" src_zone="z10" dst_zone="z1" src_node="n_new3" dst_node="n1" protocol="tcp" port="443">
+      <Reason>VPN Service to Firewall HTTPS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc27" src_zone="z_new3" dst_zone="z1" src_node="n_new4" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Access Control to Firewall HTTPS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc28" src_zone="z_new3" dst_zone="z5" src_node="n_new4" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Access Control to Identity Server HTTPS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc29" src_zone="z5" dst_zone="z1" src_node="n_new5" dst_node="n9" protocol="tcp" port="514">
+      <Reason>Log Collection to Router syslog traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc30" src_zone="z5" dst_zone="z2" src_node="n_new5" dst_node="n10" protocol="tcp" port="514">
+      <Reason>Log Collection to Router syslog traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc31" src_zone="z5" dst_zone="z3" src_node="n_new5" dst_node="n11" protocol="tcp" port="514">
+      <Reason>Log Collection to Router syslog traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc32" src_zone="z5" dst_zone="z4" src_node="n_new5" dst_node="n12" protocol="tcp" port="514">
+      <Reason>Log Collection to Router syslog traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc33" src_zone="z7" dst_zone="z7" src_node="n_new6" dst_node="n22" protocol="tcp" port="443">
+      <Reason>Pen Test Management to Pen Test Node HTTPS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc34" src_zone="z7" dst_zone="z1" src_node="n_new6" dst_node="n1" protocol="tcp" port="443">
+      <Reason>Pen Test Management to Firewall HTTPS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc35" src_zone="z7" dst_zone="z5" src_node="n_new6" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Pen Test Management to Identity Server HTTPS traffic allowed.</Reason>
+    </Allow>
+    <Allow id="tc36" src_zone="z7" dst_zone="z5" src_node="n_new6" dst_node="n4" protocol="tcp" port="443">
+      <Reason>Pen Test Management to SIEM HTTPS traffic allowed.</Reason>
+    </Allow>
+    <Deny id="tc37" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n7" protocol="tcp" port="22">
+      <Reason>DMZ to Production SSH traffic blocked.</Reason>
+    </Deny>
+    <Deny id="tc38" src_zone="z2" dst_zone="z4" src_node="n6" dst_node="n8" protocol="tcp" port="22">
+      <Reason>Development to DR SSH traffic blocked.</Reason>
+    </Deny>
+    <Deny id="tc39" src_zone="z5" dst_zone="z7" src_node="n4" dst_node="n22" protocol="tcp" port="443">
+      <Reason>Management to External Testing HTTPS traffic blocked.</Reason>
+    </Deny>
+    <Deny id="tc40" src_zone="z10" dst_zone="z2" src_node="n_new3" dst_node="n6" protocol="tcp" port="22">
+      <Reason>Remote Access to Development SSH traffic blocked.</Reason>
+    </Deny>
+  </Policies>
+  <Compliance ig_level="IG3" all_required_satisfied="true">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Asset Management Zone' and 'Asset Management System' which suggests the presence of an asset management system. There are also links and zones indicating management of assets across different zones.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Data Flow Documentation Zone' and 'Data Flow Documentation System' which suggests the presence of a system for documenting data flows. There are also links and zones indicating data flow documentation across different zones.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones for 'DMZ', 'Development Zone', 'Production Zone', and 'Disaster Recovery Site', which indicates proper segmentation based on data sensitivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Firewall' node in the 'DMZ' zone, and there are multiple links indicating that the firewall manages traffic to and from other zones.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Server' node in the 'Management Zone' and links indicating that it is used by other nodes, suggesting that trusted DNS servers are configured.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'MFA/Identity Node' and a 'Remote Access Zone' with a 'VPN Service' node, indicating that MFA is required for remote network access.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Filtering Node' in the 'Management Zone' and links indicating that it is used by other nodes, suggesting that DNS filtering services are in place.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Web Proxy/URL Filter' node in the 'Management Zone' and links indicating that it is used by other nodes, suggesting that network-based URL filters are enforced.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones for 'DMZ', 'Development Zone', 'Production Zone', 'Disaster Recovery Site', and 'Management Zone', indicating a well-segmented and secure network architecture.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Management Zone' with nodes such as 'Identity Server', 'SIEM', and 'NAC/Compliance Check Node', indicating secure management of network infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Identity Server' and 'MFA/Identity Node' in the 'Management Zone', indicating centralized network AAA.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Remote Access Zone' with a 'VPN Service' node and links to the 'Identity Server', indicating that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.8" title="Establish and Maintain Dedicated Computing Resources for All Administrative Work" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Dedicated Admin Workstation' in the 'Management Zone', indicating dedicated computing resources for administrative work.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'IDS/IPS' node in the 'Security Zone' and links to the 'SIEM', indicating the deployment of a network intrusion detection solution.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Firewall' node in the 'DMZ' zone and links indicating that it performs traffic filtering between different zones.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Access Control System' in the 'Remote Access Control Zone' and links to the 'Firewall' and 'Identity Server', indicating management of access control for remote assets.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Log Collection System' in the 'Management Zone' and links to routers, indicating the collection of network traffic flow logs.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.8" title="Deploy a Network Intrusion Prevention Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'IDS/IPS' node in the 'Security Zone' and links to the 'SIEM', indicating the deployment of a network intrusion prevention solution.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.9" title="Deploy Port-Level Access Control" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an '802.1X/NAC Node' in the 'Management Zone' and links to the 'Firewall', indicating the deployment of port-level access control.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.10" title="Perform Application Layer Filtering" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Application Firewall' node in the 'Management Zone' and links to the 'Firewall', indicating the performance of application layer filtering.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes distinct zones for 'Development Zone' and 'Production Zone', indicating separation of production and non-production systems.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'External Testing Zone' with a 'Penetration Testing Node' and a 'Penetration Testing Management System', indicating the performance of periodic external penetration tests.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="0" controls="stage4_ig_consistency" zones_added="3" nodes_added="3" zone_links_added="0" node_links_added="3"/>
+    <Repair round="1" controls="1.1,3.8,12.7,13.5,13.6,18.2" zones_added="3" nodes_added="6" zone_links_added="10" node_links_added="20"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

@@ -1,0 +1,1574 @@
+{
+  "total_samples": 44,
+  "scenario_accuracy": 0.9773,
+  "avg_zone_type_recall": 0.6769,
+  "avg_node_type_recall": 0.5323,
+  "details": [
+    {
+      "sample_id": "Cloud-1_req1",
+      "scenario_match": true,
+      "gt_scenario": "cloud",
+      "pred_scenario": "cloud",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "external"
+      ],
+      "node_type_recall": 0.8,
+      "gt_node_types": [
+        "bastion",
+        "cloud_service",
+        "firewall",
+        "vpn_gateway",
+        "workload"
+      ],
+      "pred_node_types": [
+        "bastion",
+        "firewall",
+        "siem",
+        "vpn_gateway",
+        "workload"
+      ]
+    },
+    {
+      "sample_id": "Cloud-1_req2",
+      "scenario_match": true,
+      "gt_scenario": "cloud",
+      "pred_scenario": "cloud",
+      "zone_type_recall": 0.667,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "management"
+      ],
+      "node_type_recall": 0.8,
+      "gt_node_types": [
+        "bastion",
+        "cloud_service",
+        "firewall",
+        "vpn_gateway",
+        "workload"
+      ],
+      "pred_node_types": [
+        "bastion",
+        "firewall",
+        "vpn_gateway",
+        "workload"
+      ]
+    },
+    {
+      "sample_id": "Cloud-2_req1",
+      "scenario_match": true,
+      "gt_scenario": "cloud",
+      "pred_scenario": "cloud",
+      "zone_type_recall": 0.75,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "enterprise",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "data_center",
+        "enterprise"
+      ],
+      "node_type_recall": 1.0,
+      "gt_node_types": [
+        "bastion",
+        "cloud_service",
+        "firewall",
+        "load_balancer",
+        "vpn_gateway",
+        "workload"
+      ],
+      "pred_node_types": [
+        "bastion",
+        "cloud_service",
+        "firewall",
+        "load_balancer",
+        "vpn_gateway",
+        "workload"
+      ]
+    },
+    {
+      "sample_id": "Cloud-2_req2",
+      "scenario_match": true,
+      "gt_scenario": "cloud",
+      "pred_scenario": "cloud",
+      "zone_type_recall": 0.5,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "enterprise",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "cloud_spoke"
+      ],
+      "node_type_recall": 0.833,
+      "gt_node_types": [
+        "bastion",
+        "cloud_service",
+        "firewall",
+        "load_balancer",
+        "vpn_gateway",
+        "workload"
+      ],
+      "pred_node_types": [
+        "bastion",
+        "cloud_service",
+        "firewall",
+        "load_balancer",
+        "workload"
+      ]
+    },
+    {
+      "sample_id": "Cloud-3_req1",
+      "scenario_match": true,
+      "gt_scenario": "cloud",
+      "pred_scenario": "cloud",
+      "zone_type_recall": 0.4,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "dmz",
+        "enterprise",
+        "security"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "data_center"
+      ],
+      "node_type_recall": 0.222,
+      "gt_node_types": [
+        "cloud_service",
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "load_balancer",
+        "other",
+        "router",
+        "storage",
+        "vpn_gateway"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "router"
+      ]
+    },
+    {
+      "sample_id": "Cloud-3_req2",
+      "scenario_match": true,
+      "gt_scenario": "cloud",
+      "pred_scenario": "cloud",
+      "zone_type_recall": 0.6,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "dmz",
+        "enterprise",
+        "security"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "security"
+      ],
+      "node_type_recall": 0.333,
+      "gt_node_types": [
+        "cloud_service",
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "load_balancer",
+        "other",
+        "router",
+        "storage",
+        "vpn_gateway"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "ids_ips",
+        "router"
+      ]
+    },
+    {
+      "sample_id": "Cloud-4_req1",
+      "scenario_match": true,
+      "gt_scenario": "cloud",
+      "pred_scenario": "cloud",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "external"
+      ],
+      "node_type_recall": 0.667,
+      "gt_node_types": [
+        "cloud_service",
+        "firewall",
+        "load_balancer",
+        "other",
+        "waf",
+        "workload"
+      ],
+      "pred_node_types": [
+        "load_balancer",
+        "other",
+        "siem",
+        "vpn_gateway",
+        "waf",
+        "workload"
+      ]
+    },
+    {
+      "sample_id": "Cloud-4_req2",
+      "scenario_match": true,
+      "gt_scenario": "cloud",
+      "pred_scenario": "cloud",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "external"
+      ],
+      "node_type_recall": 0.833,
+      "gt_node_types": [
+        "cloud_service",
+        "firewall",
+        "load_balancer",
+        "other",
+        "waf",
+        "workload"
+      ],
+      "pred_node_types": [
+        "cloud_service",
+        "firewall",
+        "load_balancer",
+        "router",
+        "waf",
+        "workload"
+      ]
+    },
+    {
+      "sample_id": "Education-1_req1",
+      "scenario_match": true,
+      "gt_scenario": "higher_education",
+      "pred_scenario": "higher_education",
+      "zone_type_recall": 0.25,
+      "gt_zone_types": [
+        "campus",
+        "data_center",
+        "dmz",
+        "external"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "management"
+      ],
+      "node_type_recall": 0.625,
+      "gt_node_types": [
+        "cloud_service",
+        "firewall",
+        "identity_server",
+        "other",
+        "router",
+        "server",
+        "switch",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "firewall",
+        "identity_server",
+        "router",
+        "switch",
+        "wireless_controller"
+      ]
+    },
+    {
+      "sample_id": "Education-1_req2",
+      "scenario_match": true,
+      "gt_scenario": "higher_education",
+      "pred_scenario": "higher_education",
+      "zone_type_recall": 0.75,
+      "gt_zone_types": [
+        "campus",
+        "data_center",
+        "dmz",
+        "external"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "data_center",
+        "dmz",
+        "management"
+      ],
+      "node_type_recall": 0.625,
+      "gt_node_types": [
+        "cloud_service",
+        "firewall",
+        "identity_server",
+        "other",
+        "router",
+        "server",
+        "switch",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "identity_server",
+        "router",
+        "server",
+        "switch"
+      ]
+    },
+    {
+      "sample_id": "Education-2_req1",
+      "scenario_match": true,
+      "gt_scenario": "higher_education",
+      "pred_scenario": "higher_education",
+      "zone_type_recall": 0.333,
+      "gt_zone_types": [
+        "campus",
+        "data_center",
+        "external"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "dmz",
+        "enterprise",
+        "management",
+        "security"
+      ],
+      "node_type_recall": 0.8,
+      "gt_node_types": [
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "other",
+        "server"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "server",
+        "waf",
+        "wireless_controller",
+        "workload"
+      ]
+    },
+    {
+      "sample_id": "Education-2_req2",
+      "scenario_match": true,
+      "gt_scenario": "higher_education",
+      "pred_scenario": "higher_education",
+      "zone_type_recall": 0.667,
+      "gt_zone_types": [
+        "campus",
+        "data_center",
+        "external"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "data_center",
+        "dmz",
+        "enterprise"
+      ],
+      "node_type_recall": 1.0,
+      "gt_node_types": [
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "other",
+        "server"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "other",
+        "router",
+        "server"
+      ]
+    },
+    {
+      "sample_id": "Education-3_req1",
+      "scenario_match": true,
+      "gt_scenario": "higher_education",
+      "pred_scenario": "higher_education",
+      "zone_type_recall": 0.333,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_spoke",
+        "dmz",
+        "management",
+        "security"
+      ],
+      "node_type_recall": 0.5,
+      "gt_node_types": [
+        "cloud_service",
+        "database",
+        "firewall",
+        "identity_server",
+        "router",
+        "server",
+        "switch",
+        "vpn_gateway"
+      ],
+      "pred_node_types": [
+        "cloud_service",
+        "firewall",
+        "identity_server",
+        "siem",
+        "vpn_gateway",
+        "waf"
+      ]
+    },
+    {
+      "sample_id": "Education-3_req2",
+      "scenario_match": false,
+      "gt_scenario": "higher_education",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 0.667,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "dmz",
+        "management"
+      ],
+      "node_type_recall": 0.5,
+      "gt_node_types": [
+        "cloud_service",
+        "database",
+        "firewall",
+        "identity_server",
+        "router",
+        "server",
+        "switch",
+        "vpn_gateway"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "identity_server",
+        "server",
+        "vpn_gateway",
+        "waf"
+      ]
+    },
+    {
+      "sample_id": "Education-4_req1",
+      "scenario_match": true,
+      "gt_scenario": "higher_education",
+      "pred_scenario": "higher_education",
+      "zone_type_recall": 0.75,
+      "gt_zone_types": [
+        "cloud_hub",
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "cloud_hub",
+        "data_center",
+        "external"
+      ],
+      "node_type_recall": 0.2,
+      "gt_node_types": [
+        "cloud_service",
+        "endpoint",
+        "firewall",
+        "storage",
+        "workload"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "router",
+        "switch",
+        "vpn_gateway"
+      ]
+    },
+    {
+      "sample_id": "Education-4_req2",
+      "scenario_match": true,
+      "gt_scenario": "higher_education",
+      "pred_scenario": "higher_education",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "cloud_hub",
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "cloud_hub",
+        "data_center",
+        "dmz",
+        "enterprise",
+        "external"
+      ],
+      "node_type_recall": 0.2,
+      "gt_node_types": [
+        "cloud_service",
+        "endpoint",
+        "firewall",
+        "storage",
+        "workload"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "router",
+        "vpn_gateway"
+      ]
+    },
+    {
+      "sample_id": "Enterprise-1_req1",
+      "scenario_match": true,
+      "gt_scenario": "enterprise",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 0.6,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "pred_zone_types": [
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "node_type_recall": 0.5,
+      "gt_node_types": [
+        "cloud_service",
+        "other",
+        "router",
+        "server"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "router",
+        "server"
+      ]
+    },
+    {
+      "sample_id": "Enterprise-1_req2",
+      "scenario_match": true,
+      "gt_scenario": "enterprise",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 0.8,
+      "gt_zone_types": [
+        "cloud_hub",
+        "cloud_spoke",
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "node_type_recall": 0.5,
+      "gt_node_types": [
+        "cloud_service",
+        "other",
+        "router",
+        "server"
+      ],
+      "pred_node_types": [
+        "cloud_service",
+        "firewall",
+        "proxy",
+        "router"
+      ]
+    },
+    {
+      "sample_id": "Enterprise-2_req1",
+      "scenario_match": true,
+      "gt_scenario": "enterprise",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 0.5,
+      "gt_zone_types": [
+        "cloud_hub",
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "pred_zone_types": [
+        "data_center",
+        "enterprise",
+        "ot"
+      ],
+      "node_type_recall": 0.4,
+      "gt_node_types": [
+        "cloud_service",
+        "firewall",
+        "router",
+        "server",
+        "switch"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "other",
+        "router"
+      ]
+    },
+    {
+      "sample_id": "Enterprise-2_req2",
+      "scenario_match": true,
+      "gt_scenario": "enterprise",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 0.75,
+      "gt_zone_types": [
+        "cloud_hub",
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_spoke",
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "node_type_recall": 0.6,
+      "gt_node_types": [
+        "cloud_service",
+        "firewall",
+        "router",
+        "server",
+        "switch"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "firewall",
+        "ot_controller",
+        "router",
+        "server"
+      ]
+    },
+    {
+      "sample_id": "Enterprise-3_req1",
+      "scenario_match": true,
+      "gt_scenario": "enterprise",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 0.5,
+      "gt_zone_types": [
+        "data_center",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_hub",
+        "data_center",
+        "dmz",
+        "enterprise"
+      ],
+      "node_type_recall": 0.25,
+      "gt_node_types": [
+        "cloud_service",
+        "firewall",
+        "other",
+        "server",
+        "siem",
+        "storage",
+        "switch",
+        "workload"
+      ],
+      "pred_node_types": [
+        "cloud_service",
+        "firewall",
+        "load_balancer",
+        "router"
+      ]
+    },
+    {
+      "sample_id": "Enterprise-3_req2",
+      "scenario_match": true,
+      "gt_scenario": "enterprise",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 0.5,
+      "gt_zone_types": [
+        "data_center",
+        "external"
+      ],
+      "pred_zone_types": [
+        "cloud_spoke",
+        "data_center",
+        "dmz"
+      ],
+      "node_type_recall": 0.625,
+      "gt_node_types": [
+        "cloud_service",
+        "firewall",
+        "other",
+        "server",
+        "siem",
+        "storage",
+        "switch",
+        "workload"
+      ],
+      "pred_node_types": [
+        "database",
+        "firewall",
+        "ids_ips",
+        "server",
+        "siem",
+        "switch",
+        "workload"
+      ]
+    },
+    {
+      "sample_id": "Enterprise-4_req1",
+      "scenario_match": true,
+      "gt_scenario": "enterprise",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 0.25,
+      "gt_zone_types": [
+        "cloud_hub",
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "pred_zone_types": [
+        "dmz",
+        "enterprise",
+        "management"
+      ],
+      "node_type_recall": 0.667,
+      "gt_node_types": [
+        "access_point",
+        "cloud_service",
+        "identity_server",
+        "router",
+        "server",
+        "switch"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "firewall",
+        "router",
+        "server",
+        "switch",
+        "wireless_controller"
+      ]
+    },
+    {
+      "sample_id": "Enterprise-4_req2",
+      "scenario_match": true,
+      "gt_scenario": "enterprise",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 0.5,
+      "gt_zone_types": [
+        "cloud_hub",
+        "data_center",
+        "enterprise",
+        "external"
+      ],
+      "pred_zone_types": [
+        "data_center",
+        "enterprise",
+        "management"
+      ],
+      "node_type_recall": 0.833,
+      "gt_node_types": [
+        "access_point",
+        "cloud_service",
+        "identity_server",
+        "router",
+        "server",
+        "switch"
+      ],
+      "pred_node_types": [
+        "cloud_service",
+        "identity_server",
+        "router",
+        "server",
+        "switch",
+        "vpn_gateway"
+      ]
+    },
+    {
+      "sample_id": "Enterprise-5_req1",
+      "scenario_match": true,
+      "gt_scenario": "enterprise",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 0.667,
+      "gt_zone_types": [
+        "data_center",
+        "dmz",
+        "enterprise"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "data_center",
+        "enterprise",
+        "external",
+        "other"
+      ],
+      "node_type_recall": 0.571,
+      "gt_node_types": [
+        "firewall",
+        "other",
+        "router",
+        "server",
+        "switch",
+        "vpn_gateway",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "router",
+        "switch",
+        "vpn_gateway"
+      ]
+    },
+    {
+      "sample_id": "Enterprise-5_req2",
+      "scenario_match": true,
+      "gt_scenario": "enterprise",
+      "pred_scenario": "enterprise",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "data_center",
+        "dmz",
+        "enterprise"
+      ],
+      "pred_zone_types": [
+        "data_center",
+        "dmz",
+        "enterprise"
+      ],
+      "node_type_recall": 0.571,
+      "gt_node_types": [
+        "firewall",
+        "other",
+        "router",
+        "server",
+        "switch",
+        "vpn_gateway",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "ids_ips",
+        "router",
+        "server",
+        "vpn_gateway",
+        "waf"
+      ]
+    },
+    {
+      "sample_id": "Healthcare-1_req1",
+      "scenario_match": true,
+      "gt_scenario": "hospital",
+      "pred_scenario": "hospital",
+      "zone_type_recall": 0.333,
+      "gt_zone_types": [
+        "campus",
+        "data_center",
+        "external"
+      ],
+      "pred_zone_types": [
+        "dmz",
+        "enterprise",
+        "external",
+        "iot",
+        "management"
+      ],
+      "node_type_recall": 0.444,
+      "gt_node_types": [
+        "access_point",
+        "endpoint",
+        "identity_server",
+        "ids_ips",
+        "other",
+        "router",
+        "server",
+        "switch",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "firewall",
+        "router",
+        "server",
+        "vpn_gateway",
+        "wireless_controller"
+      ]
+    },
+    {
+      "sample_id": "Healthcare-1_req2",
+      "scenario_match": true,
+      "gt_scenario": "hospital",
+      "pred_scenario": "hospital",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "campus",
+        "data_center",
+        "external"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "data_center",
+        "enterprise",
+        "external",
+        "wan"
+      ],
+      "node_type_recall": 0.556,
+      "gt_node_types": [
+        "access_point",
+        "endpoint",
+        "identity_server",
+        "ids_ips",
+        "other",
+        "router",
+        "server",
+        "switch",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "endpoint",
+        "firewall",
+        "ids_ips",
+        "router",
+        "server",
+        "switch",
+        "vpn_gateway"
+      ]
+    },
+    {
+      "sample_id": "Healthcare-2_req1",
+      "scenario_match": true,
+      "gt_scenario": "hospital",
+      "pred_scenario": "hospital",
+      "zone_type_recall": 0.5,
+      "gt_zone_types": [
+        "data_center",
+        "enterprise",
+        "external",
+        "other"
+      ],
+      "pred_zone_types": [
+        "data_center",
+        "dmz",
+        "external",
+        "iot"
+      ],
+      "node_type_recall": 0.5,
+      "gt_node_types": [
+        "access_point",
+        "endpoint",
+        "firewall",
+        "router",
+        "switch",
+        "workload"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "firewall",
+        "ids_ips",
+        "ot_controller",
+        "router",
+        "server",
+        "waf",
+        "wireless_controller"
+      ]
+    },
+    {
+      "sample_id": "Healthcare-2_req2",
+      "scenario_match": true,
+      "gt_scenario": "hospital",
+      "pred_scenario": "hospital",
+      "zone_type_recall": 0.75,
+      "gt_zone_types": [
+        "data_center",
+        "enterprise",
+        "external",
+        "other"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "data_center",
+        "dmz",
+        "enterprise",
+        "external"
+      ],
+      "node_type_recall": 0.333,
+      "gt_node_types": [
+        "access_point",
+        "endpoint",
+        "firewall",
+        "router",
+        "switch",
+        "workload"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "firewall",
+        "other",
+        "server"
+      ]
+    },
+    {
+      "sample_id": "Healthcare-3_req1",
+      "scenario_match": true,
+      "gt_scenario": "hospital",
+      "pred_scenario": "hospital",
+      "zone_type_recall": 0.6,
+      "gt_zone_types": [
+        "campus",
+        "data_center",
+        "enterprise",
+        "external",
+        "other"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "data_center",
+        "dmz",
+        "enterprise"
+      ],
+      "node_type_recall": 0.333,
+      "gt_node_types": [
+        "access_point",
+        "identity_server",
+        "other",
+        "server",
+        "wireless_controller",
+        "workload"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "firewall",
+        "router",
+        "switch",
+        "wireless_controller"
+      ]
+    },
+    {
+      "sample_id": "Healthcare-3_req2",
+      "scenario_match": true,
+      "gt_scenario": "hospital",
+      "pred_scenario": "hospital",
+      "zone_type_recall": 0.8,
+      "gt_zone_types": [
+        "campus",
+        "data_center",
+        "enterprise",
+        "external",
+        "other"
+      ],
+      "pred_zone_types": [
+        "campus",
+        "data_center",
+        "enterprise",
+        "other"
+      ],
+      "node_type_recall": 0.667,
+      "gt_node_types": [
+        "access_point",
+        "identity_server",
+        "other",
+        "server",
+        "wireless_controller",
+        "workload"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "identity_server",
+        "router",
+        "server",
+        "wireless_controller"
+      ]
+    },
+    {
+      "sample_id": "Healthcare-4_req1",
+      "scenario_match": true,
+      "gt_scenario": "hospital",
+      "pred_scenario": "hospital",
+      "zone_type_recall": 0.5,
+      "gt_zone_types": [
+        "data_center",
+        "enterprise",
+        "external",
+        "security"
+      ],
+      "pred_zone_types": [
+        "data_center",
+        "dmz",
+        "enterprise",
+        "management"
+      ],
+      "node_type_recall": 0.333,
+      "gt_node_types": [
+        "firewall",
+        "router",
+        "switch"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "bastion",
+        "database",
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "server",
+        "wireless_controller"
+      ]
+    },
+    {
+      "sample_id": "Healthcare-4_req2",
+      "scenario_match": true,
+      "gt_scenario": "hospital",
+      "pred_scenario": "hospital",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "data_center",
+        "enterprise",
+        "external",
+        "security"
+      ],
+      "pred_zone_types": [
+        "data_center",
+        "enterprise",
+        "external",
+        "security"
+      ],
+      "node_type_recall": 0.667,
+      "gt_node_types": [
+        "firewall",
+        "router",
+        "switch"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "database",
+        "endpoint",
+        "firewall",
+        "ids_ips",
+        "router",
+        "server",
+        "vpn_gateway"
+      ]
+    },
+    {
+      "sample_id": "Healthcare-5_req1",
+      "scenario_match": true,
+      "gt_scenario": "hospital",
+      "pred_scenario": "hospital",
+      "zone_type_recall": 0.0,
+      "gt_zone_types": [
+        "campus",
+        "cloud_hub",
+        "data_center",
+        "dmz",
+        "external"
+      ],
+      "pred_zone_types": [
+        "enterprise",
+        "iot",
+        "security"
+      ],
+      "node_type_recall": 0.444,
+      "gt_node_types": [
+        "access_point",
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "iot_device",
+        "other",
+        "server",
+        "switch",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "ids_ips",
+        "iot_device",
+        "router",
+        "server"
+      ]
+    },
+    {
+      "sample_id": "Healthcare-5_req2",
+      "scenario_match": true,
+      "gt_scenario": "hospital",
+      "pred_scenario": "hospital",
+      "zone_type_recall": 0.4,
+      "gt_zone_types": [
+        "campus",
+        "cloud_hub",
+        "data_center",
+        "dmz",
+        "external"
+      ],
+      "pred_zone_types": [
+        "data_center",
+        "dmz",
+        "enterprise"
+      ],
+      "node_type_recall": 0.778,
+      "gt_node_types": [
+        "access_point",
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "iot_device",
+        "other",
+        "server",
+        "switch",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "endpoint",
+        "firewall",
+        "identity_server",
+        "iot_device",
+        "router",
+        "server",
+        "switch",
+        "wireless_controller"
+      ]
+    },
+    {
+      "sample_id": "Industrial-1_req1",
+      "scenario_match": true,
+      "gt_scenario": "industrial",
+      "pred_scenario": "industrial",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "pred_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "node_type_recall": 0.2,
+      "gt_node_types": [
+        "access_point",
+        "endpoint",
+        "firewall",
+        "identity_server",
+        "ot_controller",
+        "server",
+        "switch",
+        "vpn_gateway",
+        "wireless_controller",
+        "workload"
+      ],
+      "pred_node_types": [
+        "bastion",
+        "firewall",
+        "ids_ips",
+        "ot_controller",
+        "router",
+        "siem"
+      ]
+    },
+    {
+      "sample_id": "Industrial-1_req2",
+      "scenario_match": true,
+      "gt_scenario": "industrial",
+      "pred_scenario": "industrial",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "pred_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "node_type_recall": 0.3,
+      "gt_node_types": [
+        "access_point",
+        "endpoint",
+        "firewall",
+        "identity_server",
+        "ot_controller",
+        "server",
+        "switch",
+        "vpn_gateway",
+        "wireless_controller",
+        "workload"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "ids_ips",
+        "switch",
+        "vpn_gateway"
+      ]
+    },
+    {
+      "sample_id": "Industrial-2_req1",
+      "scenario_match": true,
+      "gt_scenario": "industrial",
+      "pred_scenario": "industrial",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "pred_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "node_type_recall": 0.455,
+      "gt_node_types": [
+        "access_point",
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "iot_device",
+        "ot_controller",
+        "other",
+        "switch",
+        "vpn_gateway",
+        "waf",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "bastion",
+        "firewall",
+        "identity_server",
+        "iot_device",
+        "ot_controller",
+        "router",
+        "switch"
+      ]
+    },
+    {
+      "sample_id": "Industrial-2_req2",
+      "scenario_match": true,
+      "gt_scenario": "industrial",
+      "pred_scenario": "industrial",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "pred_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "node_type_recall": 0.364,
+      "gt_node_types": [
+        "access_point",
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "iot_device",
+        "ot_controller",
+        "other",
+        "switch",
+        "vpn_gateway",
+        "waf",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "identity_server",
+        "ids_ips",
+        "siem",
+        "vpn_gateway"
+      ]
+    },
+    {
+      "sample_id": "Industrial-3_req1",
+      "scenario_match": true,
+      "gt_scenario": "industrial",
+      "pred_scenario": "industrial",
+      "zone_type_recall": 0.75,
+      "gt_zone_types": [
+        "dmz",
+        "enterprise",
+        "external",
+        "ot"
+      ],
+      "pred_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "node_type_recall": 0.444,
+      "gt_node_types": [
+        "access_point",
+        "endpoint",
+        "firewall",
+        "identity_server",
+        "iot_device",
+        "ot_controller",
+        "server",
+        "switch",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "bastion",
+        "firewall",
+        "ot_controller",
+        "router",
+        "server",
+        "switch"
+      ]
+    },
+    {
+      "sample_id": "Industrial-3_req2",
+      "scenario_match": true,
+      "gt_scenario": "industrial",
+      "pred_scenario": "industrial",
+      "zone_type_recall": 0.75,
+      "gt_zone_types": [
+        "dmz",
+        "enterprise",
+        "external",
+        "ot"
+      ],
+      "pred_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "node_type_recall": 0.444,
+      "gt_node_types": [
+        "access_point",
+        "endpoint",
+        "firewall",
+        "identity_server",
+        "iot_device",
+        "ot_controller",
+        "server",
+        "switch",
+        "wireless_controller"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "firewall",
+        "identity_server",
+        "wireless_controller"
+      ]
+    },
+    {
+      "sample_id": "Industrial-4_req1",
+      "scenario_match": true,
+      "gt_scenario": "industrial",
+      "pred_scenario": "industrial",
+      "zone_type_recall": 0.667,
+      "gt_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "pred_zone_types": [
+        "data_center",
+        "enterprise",
+        "ot"
+      ],
+      "node_type_recall": 0.3,
+      "gt_node_types": [
+        "access_point",
+        "endpoint",
+        "firewall",
+        "identity_server",
+        "iot_device",
+        "ot_controller",
+        "server",
+        "switch",
+        "wireless_controller",
+        "workload"
+      ],
+      "pred_node_types": [
+        "firewall",
+        "ids_ips",
+        "ot_controller",
+        "server"
+      ]
+    },
+    {
+      "sample_id": "Industrial-4_req2",
+      "scenario_match": true,
+      "gt_scenario": "industrial",
+      "pred_scenario": "industrial",
+      "zone_type_recall": 1.0,
+      "gt_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "pred_zone_types": [
+        "dmz",
+        "enterprise",
+        "ot"
+      ],
+      "node_type_recall": 0.4,
+      "gt_node_types": [
+        "access_point",
+        "endpoint",
+        "firewall",
+        "identity_server",
+        "iot_device",
+        "ot_controller",
+        "server",
+        "switch",
+        "wireless_controller",
+        "workload"
+      ],
+      "pred_node_types": [
+        "access_point",
+        "firewall",
+        "identity_server",
+        "wireless_controller"
+      ]
+    }
+  ]
+}

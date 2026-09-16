@@ -1,0 +1,170 @@
+[
+  {
+    "sample_id": "Financial-2_req1",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-2_req1/mininet_scripts/IG2/validation_generated_Financial-2_req1_IG2.py",
+    "relative_script": "Financial-2_req1/mininet_scripts/IG2/validation_generated_Financial-2_req1_IG2.py"
+  },
+  {
+    "sample_id": "Financial-2_req1",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-2_req1/mininet_scripts/IG3/validation_generated_Financial-2_req1_IG3.py",
+    "relative_script": "Financial-2_req1/mininet_scripts/IG3/validation_generated_Financial-2_req1_IG3.py"
+  },
+  {
+    "sample_id": "Financial-2_req2",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-2_req2/mininet_scripts/IG2/validation_generated_Financial-2_req2_IG2.py",
+    "relative_script": "Financial-2_req2/mininet_scripts/IG2/validation_generated_Financial-2_req2_IG2.py"
+  },
+  {
+    "sample_id": "Financial-2_req2",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-2_req2/mininet_scripts/IG3/validation_generated_Financial-2_req2_IG3.py",
+    "relative_script": "Financial-2_req2/mininet_scripts/IG3/validation_generated_Financial-2_req2_IG3.py"
+  },
+  {
+    "sample_id": "Financial-3_req1",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-3_req1/mininet_scripts/IG2/validation_generated_Financial-3_req1_IG2.py",
+    "relative_script": "Financial-3_req1/mininet_scripts/IG2/validation_generated_Financial-3_req1_IG2.py"
+  },
+  {
+    "sample_id": "Financial-3_req1",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-3_req1/mininet_scripts/IG3/validation_generated_Financial-3_req1_IG3.py",
+    "relative_script": "Financial-3_req1/mininet_scripts/IG3/validation_generated_Financial-3_req1_IG3.py"
+  },
+  {
+    "sample_id": "Financial-3_req2",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-3_req2/mininet_scripts/IG2/validation_generated_Financial-3_req2_IG2.py",
+    "relative_script": "Financial-3_req2/mininet_scripts/IG2/validation_generated_Financial-3_req2_IG2.py"
+  },
+  {
+    "sample_id": "Financial-3_req2",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-3_req2/mininet_scripts/IG3/validation_generated_Financial-3_req2_IG3.py",
+    "relative_script": "Financial-3_req2/mininet_scripts/IG3/validation_generated_Financial-3_req2_IG3.py"
+  },
+  {
+    "sample_id": "Financial-4_req1",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-4_req1/mininet_scripts/IG2/validation_generated_Financial-4_req1_IG2.py",
+    "relative_script": "Financial-4_req1/mininet_scripts/IG2/validation_generated_Financial-4_req1_IG2.py"
+  },
+  {
+    "sample_id": "Financial-4_req1",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-4_req1/mininet_scripts/IG3/validation_generated_Financial-4_req1_IG3.py",
+    "relative_script": "Financial-4_req1/mininet_scripts/IG3/validation_generated_Financial-4_req1_IG3.py"
+  },
+  {
+    "sample_id": "Financial-4_req2",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-4_req2/mininet_scripts/IG2/validation_generated_Financial-4_req2_IG2.py",
+    "relative_script": "Financial-4_req2/mininet_scripts/IG2/validation_generated_Financial-4_req2_IG2.py"
+  },
+  {
+    "sample_id": "Financial-4_req2",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Financial-4_req2/mininet_scripts/IG3/validation_generated_Financial-4_req2_IG3.py",
+    "relative_script": "Financial-4_req2/mininet_scripts/IG3/validation_generated_Financial-4_req2_IG3.py"
+  },
+  {
+    "sample_id": "Government-1_req1",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-1_req1/mininet_scripts/IG2/validation_generated_Government-1_req1_IG2.py",
+    "relative_script": "Government-1_req1/mininet_scripts/IG2/validation_generated_Government-1_req1_IG2.py"
+  },
+  {
+    "sample_id": "Government-1_req1",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-1_req1/mininet_scripts/IG3/validation_generated_Government-1_req1_IG3.py",
+    "relative_script": "Government-1_req1/mininet_scripts/IG3/validation_generated_Government-1_req1_IG3.py"
+  },
+  {
+    "sample_id": "Government-1_req2",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-1_req2/mininet_scripts/IG2/validation_generated_Government-1_req2_IG2.py",
+    "relative_script": "Government-1_req2/mininet_scripts/IG2/validation_generated_Government-1_req2_IG2.py"
+  },
+  {
+    "sample_id": "Government-1_req2",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-1_req2/mininet_scripts/IG3/validation_generated_Government-1_req2_IG3.py",
+    "relative_script": "Government-1_req2/mininet_scripts/IG3/validation_generated_Government-1_req2_IG3.py"
+  },
+  {
+    "sample_id": "Government-2_req1",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-2_req1/mininet_scripts/IG2/validation_generated_Government-2_req1_IG2.py",
+    "relative_script": "Government-2_req1/mininet_scripts/IG2/validation_generated_Government-2_req1_IG2.py"
+  },
+  {
+    "sample_id": "Government-2_req1",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-2_req1/mininet_scripts/IG3/validation_generated_Government-2_req1_IG3.py",
+    "relative_script": "Government-2_req1/mininet_scripts/IG3/validation_generated_Government-2_req1_IG3.py"
+  },
+  {
+    "sample_id": "Government-2_req2",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-2_req2/mininet_scripts/IG2/validation_generated_Government-2_req2_IG2.py",
+    "relative_script": "Government-2_req2/mininet_scripts/IG2/validation_generated_Government-2_req2_IG2.py"
+  },
+  {
+    "sample_id": "Government-2_req2",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-2_req2/mininet_scripts/IG3/validation_generated_Government-2_req2_IG3.py",
+    "relative_script": "Government-2_req2/mininet_scripts/IG3/validation_generated_Government-2_req2_IG3.py"
+  },
+  {
+    "sample_id": "Government-3_req1",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-3_req1/mininet_scripts/IG2/validation_generated_Government-3_req1_IG2.py",
+    "relative_script": "Government-3_req1/mininet_scripts/IG2/validation_generated_Government-3_req1_IG2.py"
+  },
+  {
+    "sample_id": "Government-3_req1",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-3_req1/mininet_scripts/IG3/validation_generated_Government-3_req1_IG3.py",
+    "relative_script": "Government-3_req1/mininet_scripts/IG3/validation_generated_Government-3_req1_IG3.py"
+  },
+  {
+    "sample_id": "Government-3_req2",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-3_req2/mininet_scripts/IG2/validation_generated_Government-3_req2_IG2.py",
+    "relative_script": "Government-3_req2/mininet_scripts/IG2/validation_generated_Government-3_req2_IG2.py"
+  },
+  {
+    "sample_id": "Government-3_req2",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-3_req2/mininet_scripts/IG3/validation_generated_Government-3_req2_IG3.py",
+    "relative_script": "Government-3_req2/mininet_scripts/IG3/validation_generated_Government-3_req2_IG3.py"
+  },
+  {
+    "sample_id": "Government-4_req1",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-4_req1/mininet_scripts/IG2/validation_generated_Government-4_req1_IG2.py",
+    "relative_script": "Government-4_req1/mininet_scripts/IG2/validation_generated_Government-4_req1_IG2.py"
+  },
+  {
+    "sample_id": "Government-4_req1",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-4_req1/mininet_scripts/IG3/validation_generated_Government-4_req1_IG3.py",
+    "relative_script": "Government-4_req1/mininet_scripts/IG3/validation_generated_Government-4_req1_IG3.py"
+  },
+  {
+    "sample_id": "Government-4_req2",
+    "ig_level": "IG2",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-4_req2/mininet_scripts/IG2/validation_generated_Government-4_req2_IG2.py",
+    "relative_script": "Government-4_req2/mininet_scripts/IG2/validation_generated_Government-4_req2_IG2.py"
+  },
+  {
+    "sample_id": "Government-4_req2",
+    "ig_level": "IG3",
+    "script": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/mininet_scripts_package/Government-4_req2/mininet_scripts/IG3/validation_generated_Government-4_req2_IG3.py",
+    "relative_script": "Government-4_req2/mininet_scripts/IG3/validation_generated_Government-4_req2_IG3.py"
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "sample_id": "Financial-2_req1",
+    "template_id": "Financial-2",
+    "status": "ok",
+    "elapsed_sec": 23.999,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-2_req1/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-2_req1/raw_output.txt"
+  },
+  {
+    "sample_id": "Financial-2_req2",
+    "template_id": "Financial-2",
+    "status": "ok",
+    "elapsed_sec": 30.819,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-2_req2/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-2_req2/raw_output.txt"
+  },
+  {
+    "sample_id": "Financial-3_req1",
+    "template_id": "Financial-3",
+    "status": "ok",
+    "elapsed_sec": 13.901,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-3_req1/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-3_req1/raw_output.txt"
+  },
+  {
+    "sample_id": "Financial-3_req2",
+    "template_id": "Financial-3",
+    "status": "ok",
+    "elapsed_sec": 16.006,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-3_req2/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-3_req2/raw_output.txt"
+  },
+  {
+    "sample_id": "Financial-4_req1",
+    "template_id": "Financial-4",
+    "status": "ok",
+    "elapsed_sec": 17.71,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-4_req1/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-4_req1/raw_output.txt"
+  },
+  {
+    "sample_id": "Financial-4_req2",
+    "template_id": "Financial-4",
+    "status": "ok",
+    "elapsed_sec": 21.824,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-4_req2/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Financial-4_req2/raw_output.txt"
+  },
+  {
+    "sample_id": "Government-1_req1",
+    "template_id": "Government-1",
+    "status": "ok",
+    "elapsed_sec": 31.063,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-1_req1/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-1_req1/raw_output.txt"
+  },
+  {
+    "sample_id": "Government-1_req2",
+    "template_id": "Government-1",
+    "status": "ok",
+    "elapsed_sec": 24.174,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-1_req2/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-1_req2/raw_output.txt"
+  },
+  {
+    "sample_id": "Government-2_req1",
+    "template_id": "Government-2",
+    "status": "ok",
+    "elapsed_sec": 31.571,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-2_req1/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-2_req1/raw_output.txt"
+  },
+  {
+    "sample_id": "Government-2_req2",
+    "template_id": "Government-2",
+    "status": "ok",
+    "elapsed_sec": 36.907,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-2_req2/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-2_req2/raw_output.txt"
+  },
+  {
+    "sample_id": "Government-3_req1",
+    "template_id": "Government-3",
+    "status": "ok",
+    "elapsed_sec": 30.044,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-3_req1/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-3_req1/raw_output.txt"
+  },
+  {
+    "sample_id": "Government-3_req2",
+    "template_id": "Government-3",
+    "status": "ok",
+    "elapsed_sec": 18.899,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-3_req2/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-3_req2/raw_output.txt"
+  },
+  {
+    "sample_id": "Government-4_req1",
+    "template_id": "Government-4",
+    "status": "ok",
+    "elapsed_sec": 23.756,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-4_req1/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-4_req1/raw_output.txt"
+  },
+  {
+    "sample_id": "Government-4_req2",
+    "template_id": "Government-4",
+    "status": "ok",
+    "elapsed_sec": 14.975,
+    "direct_topology": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-4_req2/direct_topology.json",
+    "raw_output": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326/samples/Government-4_req2/raw_output.txt"
+  }
+]

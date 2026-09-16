@@ -1,0 +1,2036 @@
+{
+  "sample_id": "Financial-2_req2",
+  "gt_template_id": "Financial-2",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-2_req2",
+    "title": "Financial Data Ingestion Network",
+    "description": "A network designed for ingesting financial data feeds and processing them in dedicated market data pods, with outputs distributed to three campus sites.",
+    "scenario": "finance",
+    "topology_summary": "The network includes dedicated pods for data ingestion and processing, connected to three campus sites via trunk links for inter-site communication. Segmentation is enforced by function.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Ingestion Pod",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Market Data Pod 1",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Market Data Pod 2",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Campus Site 1",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Campus Site 2",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Campus Site 3",
+        "zone_type": "campus"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Security Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Non-Production Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z10",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z11",
+        "name": "Asset Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z12",
+        "name": "Asset Inventory Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z13",
+        "name": "Log Collection Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z14",
+        "name": "Asset Inventory Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z15",
+        "name": "Remote Access Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z16",
+        "name": "Compliance Check Zone",
+        "zone_type": "security"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Ingestion Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Feed Handler 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Analytics Workload 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n4",
+        "name": "Execution Engine 1",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n5",
+        "name": "Feed Handler 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n6",
+        "name": "Analytics Workload 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n7",
+        "name": "Execution Engine 2",
+        "normalized_type": "workload",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n8",
+        "name": "Switch 1",
+        "normalized_type": "switch",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n9",
+        "name": "Switch 2",
+        "normalized_type": "switch",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n10",
+        "name": "Switch 3",
+        "normalized_type": "switch",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n11",
+        "name": "Firewall 1",
+        "normalized_type": "firewall",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n12",
+        "name": "Firewall 2",
+        "normalized_type": "firewall",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n13",
+        "name": "DNS Server 1",
+        "normalized_type": "identity_server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n14",
+        "name": "DNS Server 2",
+        "normalized_type": "identity_server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n15",
+        "name": "MFA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n16",
+        "name": "DNS Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n17",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n18",
+        "name": "Central AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n19",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n20",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n21",
+        "name": "802.1X Controller",
+        "normalized_type": "access_point",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n22",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n23",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n24",
+        "name": "Bastion Host",
+        "normalized_type": "bastion",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n25",
+        "name": "Admin Workstation 1",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n26",
+        "name": "Admin Workstation 2",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n27",
+        "name": "Pen Test Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Non-Production Zone Application Server",
+        "normalized_type": "server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n_struct2",
+        "name": "Asset Management Zone Management Service",
+        "normalized_type": "server",
+        "zone_id": "z11"
+      },
+      {
+        "node_id": "n_struct3",
+        "name": "Asset Inventory Zone Management Service",
+        "normalized_type": "server",
+        "zone_id": "z12"
+      },
+      {
+        "node_id": "n_struct4",
+        "name": "Log Collection Zone Security Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z13"
+      },
+      {
+        "node_id": "n28",
+        "name": "Asset Inventory System",
+        "normalized_type": "server",
+        "zone_id": "z14"
+      },
+      {
+        "node_id": "n29",
+        "name": "VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z15"
+      },
+      {
+        "node_id": "n30",
+        "name": "Compliance Checker",
+        "normalized_type": "ids_ips",
+        "zone_id": "z16"
+      },
+      {
+        "node_id": "n31",
+        "name": "Pen Test Scheduler",
+        "normalized_type": "server",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n_new1",
+        "name": "Router 1",
+        "normalized_type": "router",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n_new2",
+        "name": "Router 2",
+        "normalized_type": "router",
+        "zone_id": "z9"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl_new1",
+          "source": "n1",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Ingestion to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n1",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Ingestion to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new3",
+          "source": "n2",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Feed Handler 1 to Analytics Workload 1"
+        },
+        {
+          "link_id": "nl_new4",
+          "source": "n3",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Analytics Workload 1 to Execution Engine 1"
+        },
+        {
+          "link_id": "nl_new5",
+          "source": "n5",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Feed Handler 2 to Analytics Workload 2"
+        },
+        {
+          "link_id": "nl_new6",
+          "source": "n6",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Analytics Workload 2 to Execution Engine 2"
+        },
+        {
+          "link_id": "nl_new7",
+          "source": "n4",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Execution Engine 1 to Switch 1"
+        },
+        {
+          "link_id": "nl_new8",
+          "source": "n7",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Execution Engine 2 to Switch 2"
+        },
+        {
+          "link_id": "nl_new9",
+          "source": "n7",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Execution Engine 2 to Switch 3"
+        },
+        {
+          "link_id": "nl_new10",
+          "source": "n11",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Ingress to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new11",
+          "source": "n11",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Ingress to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new12",
+          "source": "n11",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Ingress to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new13",
+          "source": "n12",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Egress from Execution Engine 1"
+        },
+        {
+          "link_id": "nl_new14",
+          "source": "n12",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Egress from Execution Engine 2"
+        },
+        {
+          "link_id": "nl_new15",
+          "source": "n13",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new16",
+          "source": "n13",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "DNS to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new17",
+          "source": "n13",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "DNS to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new18",
+          "source": "n14",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "DNS to Execution Engine 1"
+        },
+        {
+          "link_id": "nl_new19",
+          "source": "n14",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "DNS to Execution Engine 2"
+        },
+        {
+          "link_id": "nl_new20",
+          "source": "n15",
+          "target": "n24",
+          "link_type": "management",
+          "label": "MFA to Bastion Host"
+        },
+        {
+          "link_id": "nl_new21",
+          "source": "n16",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS Filtering to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new22",
+          "source": "n16",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "DNS Filtering to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new23",
+          "source": "n16",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "DNS Filtering to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new24",
+          "source": "n17",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "URL Filtering to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new25",
+          "source": "n17",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "URL Filtering to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new26",
+          "source": "n17",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "URL Filtering to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new27",
+          "source": "n18",
+          "target": "n24",
+          "link_type": "management",
+          "label": "AAA to Bastion Host"
+        },
+        {
+          "link_id": "nl_new28",
+          "source": "n19",
+          "target": "n11",
+          "link_type": "monitoring",
+          "label": "NIDS to Firewall 1"
+        },
+        {
+          "link_id": "nl_new29",
+          "source": "n19",
+          "target": "n12",
+          "link_type": "monitoring",
+          "label": "NIDS to Firewall 2"
+        },
+        {
+          "link_id": "nl_new30",
+          "source": "n20",
+          "target": "n11",
+          "link_type": "monitoring",
+          "label": "NIPS to Firewall 1"
+        },
+        {
+          "link_id": "nl_new31",
+          "source": "n20",
+          "target": "n12",
+          "link_type": "monitoring",
+          "label": "NIPS to Firewall 2"
+        },
+        {
+          "link_id": "nl_new32",
+          "source": "n21",
+          "target": "n11",
+          "link_type": "management",
+          "label": "802.1X to Firewall 1"
+        },
+        {
+          "link_id": "nl_new33",
+          "source": "n21",
+          "target": "n12",
+          "link_type": "management",
+          "label": "802.1X to Firewall 2"
+        },
+        {
+          "link_id": "nl_new34",
+          "source": "n22",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "App-Layer Filtering to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new35",
+          "source": "n22",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "App-Layer Filtering to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new36",
+          "source": "n22",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "App-Layer Filtering to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new37",
+          "source": "n23",
+          "target": "n11",
+          "link_type": "monitoring",
+          "label": "Flow Logs to SIEM"
+        },
+        {
+          "link_id": "nl_new38",
+          "source": "n23",
+          "target": "n12",
+          "link_type": "monitoring",
+          "label": "Flow Logs to SIEM"
+        },
+        {
+          "link_id": "nl_new39",
+          "source": "n24",
+          "target": "n25",
+          "link_type": "management",
+          "label": "Admin Workstation 1 to Bastion Host"
+        },
+        {
+          "link_id": "nl_new40",
+          "source": "n24",
+          "target": "n26",
+          "link_type": "management",
+          "label": "Admin Workstation 2 to Bastion Host"
+        },
+        {
+          "link_id": "nl_new41",
+          "source": "n27",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Pen Test to Ingestion Server"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n11",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct2",
+          "source": "n11",
+          "target": "n_struct2",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct3",
+          "source": "n11",
+          "target": "n_struct3",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct4",
+          "source": "n11",
+          "target": "n_struct4",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_new42",
+          "source": "n28",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Inventory to Ingestion Server"
+        },
+        {
+          "link_id": "nl_new43",
+          "source": "n28",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Inventory to Feed Handler 1"
+        },
+        {
+          "link_id": "nl_new44",
+          "source": "n28",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Inventory to Feed Handler 2"
+        },
+        {
+          "link_id": "nl_new45",
+          "source": "n28",
+          "target": "n24",
+          "link_type": "data_flow",
+          "label": "Inventory to Bastion Host"
+        },
+        {
+          "link_id": "nl_new46",
+          "source": "n29",
+          "target": "n24",
+          "link_type": "vpn",
+          "label": "Remote Access to Bastion Host"
+        },
+        {
+          "link_id": "nl_new47",
+          "source": "n29",
+          "target": "n25",
+          "link_type": "vpn",
+          "label": "Remote Access to Admin Workstation 1"
+        },
+        {
+          "link_id": "nl_new48",
+          "source": "n29",
+          "target": "n26",
+          "link_type": "vpn",
+          "label": "Remote Access to Admin Workstation 2"
+        },
+        {
+          "link_id": "nl_new49",
+          "source": "n30",
+          "target": "n15",
+          "link_type": "data_flow",
+          "label": "Compliance to MFA Server"
+        },
+        {
+          "link_id": "nl_new50",
+          "source": "n30",
+          "target": "n18",
+          "link_type": "data_flow",
+          "label": "Compliance to Central AAA Server"
+        },
+        {
+          "link_id": "nl_new51",
+          "source": "n31",
+          "target": "n27",
+          "link_type": "data_flow",
+          "label": "Schedule Pen Test"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl_new1",
+          "source": "z4",
+          "target": "z5",
+          "link_type": "trunk",
+          "label": "Trunk Link between Campus Site 1 and Campus Site 2"
+        },
+        {
+          "link_id": "zl_new2",
+          "source": "z5",
+          "target": "z6",
+          "link_type": "trunk",
+          "label": "Trunk Link between Campus Site 2 and Campus Site 3"
+        },
+        {
+          "link_id": "zl_new3",
+          "source": "z4",
+          "target": "z6",
+          "link_type": "trunk",
+          "label": "Trunk Link between Campus Site 1 and Campus Site 3"
+        },
+        {
+          "link_id": "zl_new4",
+          "source": "z1",
+          "target": "z9",
+          "link_type": "peering",
+          "label": "Ingestion Pod to Non-Production Zone"
+        },
+        {
+          "link_id": "zl_new5",
+          "source": "z2",
+          "target": "z9",
+          "link_type": "peering",
+          "label": "Market Data Pod 1 to Non-Production Zone"
+        },
+        {
+          "link_id": "zl_new6",
+          "source": "z3",
+          "target": "z9",
+          "link_type": "peering",
+          "label": "Market Data Pod 2 to Non-Production Zone"
+        },
+        {
+          "link_id": "zl_new7",
+          "source": "z8",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "Security Zone to Ingestion Pod"
+        },
+        {
+          "link_id": "zl_new8",
+          "source": "z8",
+          "target": "z2",
+          "link_type": "peering",
+          "label": "Security Zone to Market Data Pod 1"
+        },
+        {
+          "link_id": "zl_new9",
+          "source": "z8",
+          "target": "z3",
+          "link_type": "peering",
+          "label": "Security Zone to Market Data Pod 2"
+        },
+        {
+          "link_id": "zl_new10",
+          "source": "z8",
+          "target": "z4",
+          "link_type": "peering",
+          "label": "Security Zone to Campus Site 1"
+        },
+        {
+          "link_id": "zl_new11",
+          "source": "z8",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Security Zone to Campus Site 2"
+        },
+        {
+          "link_id": "zl_new12",
+          "source": "z8",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "Security Zone to Campus Site 3"
+        },
+        {
+          "link_id": "zl_new13",
+          "source": "z7",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Management Zone to Security Zone"
+        },
+        {
+          "link_id": "zl_new14",
+          "source": "z10",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "External Testing Zone to Ingestion Pod"
+        },
+        {
+          "link_id": "zl_new15",
+          "source": "z14",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "Asset Inventory to Ingestion Pod"
+        },
+        {
+          "link_id": "zl_new16",
+          "source": "z14",
+          "target": "z2",
+          "link_type": "peering",
+          "label": "Asset Inventory to Market Data Pod 1"
+        },
+        {
+          "link_id": "zl_new17",
+          "source": "z14",
+          "target": "z3",
+          "link_type": "peering",
+          "label": "Asset Inventory to Market Data Pod 2"
+        },
+        {
+          "link_id": "zl_new18",
+          "source": "z14",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "Asset Inventory to Management Zone"
+        },
+        {
+          "link_id": "zl_new19",
+          "source": "z15",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "Remote Access to Management Zone"
+        },
+        {
+          "link_id": "zl_new20",
+          "source": "z16",
+          "target": "z8",
+          "link_type": "peering",
+          "label": "Compliance Check to Security Zone"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-2_req2",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Inventory Zone' with an 'Asset Inventory System' and multiple 'Asset Inventory Zone Management Service' nodes, indicating a structured approach to maintaining an asset inventory.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes detailed data flow links between various nodes, such as 'Ingestion to Feed Handler 1', 'Feed Handler 1 to Analytics Workload 1', etc., which strongly implies documented data flows.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for different functions, such as 'Ingestion Pod', 'Market Data Pod 1', 'Market Data Pod 2', 'Non-Production Zone', and 'Security Zone', indicating segmentation based on data sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls ('Firewall 1' and 'Firewall 2') in the 'Security Zone', and there are peering links between the security zone and other zones, indicating the presence and management of firewalls.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes 'DNS Server 1' and 'DNS Server 2' in the 'Security Zone', and there are data flow links from these DNS servers to various nodes, indicating that trusted DNS servers are configured.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Server' in the 'Security Zone' and data flow links from the MFA server to the 'Bastion Host' and 'Admin Workstations', indicating that MFA is required for remote access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filter' in the 'Security Zone' with data flow links to various nodes, indicating the use of DNS filtering services.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' in the 'Security Zone' with data flow links to various nodes, indicating the enforcement of network-based URL filters.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones with defined functions and peering links, indicating a well-designed and maintained secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central AAA Server' and '802.1X Controller' in the 'Security Zone', indicating secure management of network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central AAA Server' in the 'Security Zone' with management links to various nodes, indicating centralized AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'VPN Gateway' in the 'Remote Access Zone' with data flow links to the 'Bastion Host' and 'Admin Workstations', indicating that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Management Zone' with 'Admin Workstations' and a 'Bastion Host', indicating dedicated computing resources for administrative work.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIDS' in the 'Security Zone' with monitoring links to firewalls, indicating the deployment of a network intrusion detection solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes firewalls ('Firewall 1' and 'Firewall 2') in the 'Security Zone' with peering links to other zones, indicating traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Server' and 'Central AAA Server' in the 'Security Zone' with management links to the 'Bastion Host' and 'Admin Workstations', indicating managed access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'SIEM' in the 'Security Zone' with monitoring links from firewalls, indicating the collection of network traffic flow logs.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIPS' in the 'Security Zone' with monitoring links to firewalls, indicating the deployment of a network intrusion prevention solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an '802.1X Controller' in the 'Security Zone' with management links to firewalls, indicating the deployment of port-level access control.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Application Firewall' in the 'Security Zone' with data flow links to various nodes, indicating the performance of application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Non-Production Zone' with a 'Non-Production Zone Application Server', indicating separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'External Testing Zone' with a 'Pen Test Workstation' and a 'Pen Test Scheduler', indicating the capability to perform periodic external penetration tests.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity",
+        "stage4_ig_consistency"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z9\", \"name\": \"Non-Production Zone\", \"zone_type\": \"data_center\"}",
+          "missing_reason": "Zone z9 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_ig_consistency",
+          "title": "ig3_missing_ig2_zone_semantics",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "[{\"zone_id\": \"z11\", \"name\": \"Asset Management Zone\", \"zone_type\": \"management\"}, {\"zone_id\": \"z12\", \"name\": \"Asset Inventory Zone\", \"zone_type\": \"management\"}, {\"zone_id\": \"z13\", \"name\": \"Log Collection Zone\", \"zone_type\": \"security\"}]",
+          "missing_reason": "IG3 topology removed or failed to preserve IG2 zone semantics.",
+          "repair_suggestion": "Add the missing IG2 zone semantics to IG3 as preserved or stricter zones, with representative nodes and concrete node_links. IG3 may add controls but must not reduce segmentation."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z11",
+            "name": "Asset Management Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z12",
+            "name": "Asset Inventory Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z13",
+            "name": "Log Collection Zone",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Non-Production Zone Application Server",
+            "normalized_type": "server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n_struct2",
+            "name": "Asset Management Zone Management Service",
+            "normalized_type": "server",
+            "zone_id": "z11"
+          },
+          {
+            "node_id": "n_struct3",
+            "name": "Asset Inventory Zone Management Service",
+            "normalized_type": "server",
+            "zone_id": "z12"
+          },
+          {
+            "node_id": "n_struct4",
+            "name": "Log Collection Zone Security Gateway",
+            "normalized_type": "firewall",
+            "zone_id": "z13"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n11",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct2",
+              "source": "n11",
+              "target": "n_struct2",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct3",
+              "source": "n11",
+              "target": "n_struct3",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct4",
+              "source": "n11",
+              "target": "n_struct4",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 10,
+        "nodes": 27,
+        "zone_links": 14,
+        "node_links": 41
+      },
+      "counts_after": {
+        "zones": 13,
+        "nodes": 31,
+        "zone_links": 14,
+        "node_links": 45
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 4,
+        "zone_links": 0,
+        "node_links": 4
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various zones and nodes, but there is no explicit evidence of an asset inventory system or process.",
+          "missing_reason": "No explicit evidence of an asset inventory system or process.",
+          "repair_suggestion": "Add nodes representing an asset inventory system and links indicating data flows for inventory updates."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a bastion host (n24) and links indicating its use by admin workstations, but there is no explicit evidence of a VPN.",
+          "missing_reason": "No explicit evidence of a VPN.",
+          "repair_suggestion": "Add a node representing a VPN and links indicating its use by remote devices."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an MFA server (n15) and a central AAA server (n18), but there is no explicit evidence of access control based on software and configuration compliance.",
+          "missing_reason": "No explicit evidence of access control based on software and configuration compliance.",
+          "repair_suggestion": "Add nodes and links indicating access control policies and compliance checks."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an external testing zone (z10) and a pen test workstation (n27), but there is no explicit evidence of periodic penetration tests.",
+          "missing_reason": "No explicit evidence of periodic penetration tests.",
+          "repair_suggestion": "Add nodes and links indicating the scheduling and execution of periodic penetration tests."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z14",
+            "name": "Asset Inventory Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z15",
+            "name": "Remote Access Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z16",
+            "name": "Compliance Check Zone",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n28",
+            "name": "Asset Inventory System",
+            "normalized_type": "server",
+            "zone_id": "z14"
+          },
+          {
+            "node_id": "n29",
+            "name": "VPN Gateway",
+            "normalized_type": "vpn_gateway",
+            "zone_id": "z15"
+          },
+          {
+            "node_id": "n30",
+            "name": "Compliance Checker",
+            "normalized_type": "ids_ips",
+            "zone_id": "z16"
+          },
+          {
+            "node_id": "n31",
+            "name": "Pen Test Scheduler",
+            "normalized_type": "server",
+            "zone_id": "z10"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new42",
+              "source": "n28",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Inventory to Ingestion Server"
+            },
+            {
+              "link_id": "nl_new43",
+              "source": "n28",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Inventory to Feed Handler 1"
+            },
+            {
+              "link_id": "nl_new44",
+              "source": "n28",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Inventory to Feed Handler 2"
+            },
+            {
+              "link_id": "nl_new45",
+              "source": "n28",
+              "target": "n24",
+              "link_type": "data_flow",
+              "label": "Inventory to Bastion Host"
+            },
+            {
+              "link_id": "nl_new46",
+              "source": "n29",
+              "target": "n24",
+              "link_type": "vpn",
+              "label": "Remote Access to Bastion Host"
+            },
+            {
+              "link_id": "nl_new47",
+              "source": "n29",
+              "target": "n25",
+              "link_type": "vpn",
+              "label": "Remote Access to Admin Workstation 1"
+            },
+            {
+              "link_id": "nl_new48",
+              "source": "n29",
+              "target": "n26",
+              "link_type": "vpn",
+              "label": "Remote Access to Admin Workstation 2"
+            },
+            {
+              "link_id": "nl_new49",
+              "source": "n30",
+              "target": "n15",
+              "link_type": "data_flow",
+              "label": "Compliance to MFA Server"
+            },
+            {
+              "link_id": "nl_new50",
+              "source": "n30",
+              "target": "n18",
+              "link_type": "data_flow",
+              "label": "Compliance to Central AAA Server"
+            },
+            {
+              "link_id": "nl_new51",
+              "source": "n31",
+              "target": "n27",
+              "link_type": "data_flow",
+              "label": "Schedule Pen Test"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl_new15",
+              "source": "z14",
+              "target": "z1",
+              "link_type": "peering",
+              "label": "Asset Inventory to Ingestion Pod"
+            },
+            {
+              "link_id": "zl_new16",
+              "source": "z14",
+              "target": "z2",
+              "link_type": "peering",
+              "label": "Asset Inventory to Market Data Pod 1"
+            },
+            {
+              "link_id": "zl_new17",
+              "source": "z14",
+              "target": "z3",
+              "link_type": "peering",
+              "label": "Asset Inventory to Market Data Pod 2"
+            },
+            {
+              "link_id": "zl_new18",
+              "source": "z14",
+              "target": "z7",
+              "link_type": "peering",
+              "label": "Asset Inventory to Management Zone"
+            },
+            {
+              "link_id": "zl_new19",
+              "source": "z15",
+              "target": "z7",
+              "link_type": "peering",
+              "label": "Remote Access to Management Zone"
+            },
+            {
+              "link_id": "zl_new20",
+              "source": "z16",
+              "target": "z8",
+              "link_type": "peering",
+              "label": "Compliance Check to Security Zone"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 13,
+        "nodes": 31,
+        "zone_links": 14,
+        "node_links": 45
+      },
+      "counts_after": {
+        "zones": 16,
+        "nodes": 35,
+        "zone_links": 20,
+        "node_links": 55
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 4,
+        "zone_links": 6,
+        "node_links": 10
+      }
+    },
+    {
+      "round": 3,
+      "controls_repaired": [
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc41\", \"src\": \"nz10n31\", \"dst\": \"nz9n9414\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc42\", \"src\": \"nz10n27\", \"dst\": \"nz9n9414\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc43\", \"src\": \"nz124fa1\", \"dst\": \"nz9n9414\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc44\", \"src\": \"nz117dce\", \"dst\": \"nz9n9414\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [
+          {
+            "node_id": "n_new1",
+            "name": "Router 1",
+            "normalized_type": "router",
+            "zone_id": "z10"
+          },
+          {
+            "node_id": "n_new2",
+            "name": "Router 2",
+            "normalized_type": "router",
+            "zone_id": "z9"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new1",
+              "source": "n31",
+              "target": "n_new1",
+              "link_type": "routing",
+              "label": "Router to Router 1"
+            },
+            {
+              "link_id": "nl_new2",
+              "source": "n_new1",
+              "target": "n_new2",
+              "link_type": "routing",
+              "label": "Router 1 to Router 2"
+            },
+            {
+              "link_id": "nl_new3",
+              "source": "n_new2",
+              "target": "n9414",
+              "link_type": "routing",
+              "label": "Router 2 to Non-Prod App Server"
+            },
+            {
+              "link_id": "nl_new4",
+              "source": "n27",
+              "target": "n_new1",
+              "link_type": "routing",
+              "label": "Pen Test to Router 1"
+            },
+            {
+              "link_id": "nl_new5",
+              "source": "n124fa1",
+              "target": "n_new1",
+              "link_type": "routing",
+              "label": "Asset Inventory to Router 1"
+            },
+            {
+              "link_id": "nl_new6",
+              "source": "n117dce",
+              "target": "n_new1",
+              "link_type": "routing",
+              "label": "Asset Management to Router 1"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 16,
+        "nodes": 35,
+        "zone_links": 20,
+        "node_links": 55
+      },
+      "counts_after": {
+        "zones": 16,
+        "nodes": 37,
+        "zone_links": 20,
+        "node_links": 55
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 2,
+        "zone_links": 0,
+        "node_links": 0
+      },
+      "source": "stage5_diagnostic_report"
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Financial-2_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Ingestion to Feed Handler 1"
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Ingestion to Feed Handler 2"
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Feed Handler 1 to Analytics Workload 1"
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n3",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Analytics Workload 1 to Execution Engine 1"
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n5",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Feed Handler 2 to Analytics Workload 2"
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n6",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Analytics Workload 2 to Execution Engine 2"
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n4",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Execution Engine 1 to Switch 1"
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z3",
+        "target_zone": "z5",
+        "source_node": "n7",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Execution Engine 2 to Switch 2"
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z3",
+        "target_zone": "z6",
+        "source_node": "n7",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Execution Engine 2 to Switch 3"
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Ingress to Ingestion Server"
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n11",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Ingress to Feed Handler 1"
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n11",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Ingress to Feed Handler 2"
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n12",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Egress from Execution Engine 1"
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n12",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Egress from Execution Engine 2"
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Ingestion Server"
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Feed Handler 1"
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n13",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Feed Handler 2"
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n14",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Execution Engine 1"
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n14",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS to Execution Engine 2"
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z8",
+        "target_zone": "z7",
+        "source_node": "n15",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA to Bastion Host"
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Filtering to Ingestion Server"
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n16",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Filtering to Feed Handler 1"
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n16",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Filtering to Feed Handler 2"
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL Filtering to Ingestion Server"
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n17",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL Filtering to Feed Handler 1"
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n17",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL Filtering to Feed Handler 2"
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z8",
+        "target_zone": "z7",
+        "source_node": "n18",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "AAA to Bastion Host"
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n19",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to Firewall 1"
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n19",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to Firewall 2"
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n20",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIPS to Firewall 1"
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n20",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIPS to Firewall 2"
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n21",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "802.1X to Firewall 1"
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n21",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "802.1X to Firewall 2"
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n22",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "App-Layer Filtering to Ingestion Server"
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n22",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "App-Layer Filtering to Feed Handler 1"
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n22",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "App-Layer Filtering to Feed Handler 2"
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n23",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Flow Logs to SIEM"
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z8",
+        "target_zone": "z8",
+        "source_node": "n23",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Flow Logs to SIEM"
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z7",
+        "target_zone": "z7",
+        "source_node": "n24",
+        "target_node": "n25",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation 1 to Bastion Host"
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z7",
+        "target_zone": "z7",
+        "source_node": "n24",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation 2 to Bastion Host"
+      },
+      {
+        "test_id": "tc41",
+        "source_zone": "z10",
+        "target_zone": "z9",
+        "source_node": "n31",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc42",
+        "source_zone": "z10",
+        "target_zone": "z9",
+        "source_node": "n27",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc43",
+        "source_zone": "z12",
+        "target_zone": "z9",
+        "source_node": "n_struct3",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      },
+      {
+        "test_id": "tc44",
+        "source_zone": "z11",
+        "target_zone": "z9",
+        "source_node": "n_struct2",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 8443,
+        "expected": "block",
+        "reason": "Cross-boundary ACL deny"
+      }
+    ]
+  },
+  "stage5_diagnostic_summary": {
+    "total": 44,
+    "executed": 44,
+    "skipped": 0,
+    "passed": 44,
+    "failed": 0
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-2_req2/stage4_feedback/xml/IG3/generated_Financial-2_req2_IG3.xml"
+}

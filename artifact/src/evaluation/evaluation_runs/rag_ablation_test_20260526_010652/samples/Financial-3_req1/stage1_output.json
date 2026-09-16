@@ -1,0 +1,65 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-3_req1",
+    "title": "Hybrid Cloud for Finance",
+    "description": "Set up a hybrid cloud environment with Azure Red Hat OpenShift and secure connection to on-premises datacenter.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes an Azure Red Hat OpenShift cluster in the cloud, connected to an on-premises datacenter via a secure link, with all traffic filtered through a central firewall.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "On-Premises Datacenter",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Azure VNet",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Management Zone",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Azure Red Hat OpenShift Cluster",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n2",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n3",
+        "name": "On-Premises Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "On-Premises Workloads",
+        "normalized_type": "workload",
+        "zone_id": "z1"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Financial-3_req1\", \"title\": \"Hybrid Cloud for Finance\", \"description\": \"Set up a hybrid cloud environment with Azure Red Hat OpenShift and secure connection to on-premises datacenter.\", \"scenario\": \"cloud\", \"topology_summary\": \"The topology includes an Azure Red Hat OpenShift cluster in the cloud, connected to an on-premises datacenter via a secure link, with all traffic filtered through a central firewall.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"On-Premises Datacenter\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z2\", \"name\": \"Azure VNet\", \"zone_type\": \"cloud_hub\"}, {\"zone_id\": \"z3\", \"name\": \"Management Zone\", \"zone_type\": \"management\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Azure Red Hat OpenShift Cluster\", \"normalized_type\": \"workload\", \"zone_id\": \"z2\"}, {\"node_id\": \"n2\", \"name\": \"Central Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z3\"}, {\"node_id\": \"n3\", \"name\": \"On-Premises Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}, {\"node_id\": \"n4\", \"name\": \"On-Premises Workloads\", \"normalized_type\": \"workload\", \"zone_id\": \"z1\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 6.352
+  }
+}

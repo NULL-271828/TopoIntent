@@ -1,0 +1,204 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Government-1_req1",
+  "title": "Secure Government Network",
+  "description": "A secure network connecting a main data center, a regional office, and a branch office with dedicated WAN links and remote access.",
+  "scenario": "government",
+  "topology_summary": "The main data center is connected to a regional office and a branch office via dedicated WAN links. The network includes a secure internet perimeter with email and web filtering, and provides remote access for authorized personnel. Both the regional and branch offices have wired and wireless connectivity.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Main Data Center",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Regional Office",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Branch Office",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Internet Perimeter",
+      "zone_type": "dmz"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Remote Access",
+      "zone_type": "management"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Data Center Router",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Data Center Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "Data Center Server",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "Regional Office Router",
+      "normalized_type": "router",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n5",
+      "name": "Regional Office Switch",
+      "normalized_type": "switch",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n6",
+      "name": "Regional Office Wireless Controller",
+      "normalized_type": "wireless_controller",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n7",
+      "name": "Branch Office Router",
+      "normalized_type": "router",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n8",
+      "name": "Branch Office Switch",
+      "normalized_type": "switch",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n9",
+      "name": "Branch Office Wireless Controller",
+      "normalized_type": "wireless_controller",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n10",
+      "name": "Internet Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n11",
+      "name": "Web Filter",
+      "normalized_type": "waf",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n12",
+      "name": "Email Filter",
+      "normalized_type": "ids_ips",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n13",
+      "name": "VPN Gateway",
+      "normalized_type": "vpn_gateway",
+      "zone_id": "z5"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "uplink",
+        "label": "Data Center Uplink"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "Server Connection"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n1",
+        "target": "n4",
+        "link_type": "wan",
+        "label": "WAN Link to Regional Office"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n4",
+        "target": "n5",
+        "link_type": "uplink",
+        "label": "Regional Office Uplink"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n4",
+        "target": "n6",
+        "link_type": "uplink",
+        "label": "Wireless Controller Uplink"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n1",
+        "target": "n7",
+        "link_type": "wan",
+        "label": "WAN Link to Branch Office"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n7",
+        "target": "n8",
+        "link_type": "uplink",
+        "label": "Branch Office Uplink"
+      },
+      {
+        "link_id": "nl8",
+        "source": "n7",
+        "target": "n9",
+        "link_type": "uplink",
+        "label": "Wireless Controller Uplink"
+      },
+      {
+        "link_id": "nl9",
+        "source": "n2",
+        "target": "n10",
+        "link_type": "uplink",
+        "label": "Internet Uplink"
+      },
+      {
+        "link_id": "nl10",
+        "source": "n10",
+        "target": "n11",
+        "link_type": "data_flow",
+        "label": "Web Filter Connection"
+      },
+      {
+        "link_id": "nl11",
+        "source": "n10",
+        "target": "n12",
+        "link_type": "data_flow",
+        "label": "Email Filter Connection"
+      },
+      {
+        "link_id": "nl12",
+        "source": "n13",
+        "target": "n2",
+        "link_type": "management",
+        "label": "Remote Access"
+      }
+    ],
+    "zone_links": []
+  }
+}

@@ -1,0 +1,28 @@
+ [
+  {
+  "schema_version": "2.1",
+  "template_id": "<TEMPLATE_ID>",
+  "model":"chatgpt-5.5 or gemini-3-flash",
+  "matched_cis_candidates": [
+    {
+      "cis_safeguard_id": "13.4",
+      "title": "Perform Traffic Filtering Between Network Segments",
+      "status": "satisfied",
+      "confidence": 0.0
+    }
+  ],
+  "rejected_cis_requirements": [
+    {
+      "cis_safeguard_id": "12.5",
+      "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+      "reject_reason": "string"
+    }
+  ],
+  "manual_review_flags": [
+    {
+      "cis_safeguard_id": "string",
+      "reason": "string"
+    }
+  ]
+}
+]

@@ -1,0 +1,898 @@
+{
+  "sample_id": "Government-4_req1",
+  "gt_template_id": "Government-4",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-4_req1",
+    "title": "Government Isolated Network",
+    "description": "A network for government operations with isolated sensitive systems and secure management workstations.",
+    "scenario": "government",
+    "topology_summary": "The network will consist of separate zones for standard and sensitive information, with dedicated management workstations and a secure internet gateway for the standard environment.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Standard Environment",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Sensitive Environment",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Management Workstations",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Internet",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Non-Production Environment",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z6",
+        "name": "External Penetration Testing",
+        "zone_type": "external"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Standard Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Sensitive Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Management Workstation (Standard)",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Management Workstation (Sensitive)",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n5",
+        "name": "Secure Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Standard Core Switch",
+        "normalized_type": "switch",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Sensitive Core Switch",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n9",
+        "name": "DNS Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n12",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n14",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "Non-Prod Core Switch",
+        "normalized_type": "switch",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n16",
+        "name": "Pen Test Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z6"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n6",
+          "link_type": "routing",
+          "label": "Internal Routing"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n2",
+          "target": "n7",
+          "link_type": "routing",
+          "label": "Internal Routing"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n5",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Internet Traffic"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n6",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Management Access"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n7",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Management Access"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n8",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "DNS Traffic"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n9",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n10",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Web Proxy"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n11",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "AAA Traffic"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n12",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "NIDS Monitoring"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n12",
+          "target": "n13",
+          "link_type": "monitoring",
+          "label": "NIDS to SIEM"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n14",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "NAC Enforcement"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "routing",
+          "label": "Non-Prod Routing"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n16",
+          "target": "n15",
+          "link_type": "data_flow",
+          "label": "Pen Test Traffic"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "uplink",
+          "label": "Internet Uplink"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z3",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Management Access"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z3",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Management Access"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "uplink",
+          "label": "Non-Prod Uplink"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z6",
+          "target": "z1",
+          "link_type": "uplink",
+          "label": "Pen Test Uplink"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-4_req1",
+    "ig_level": "IG2",
+    "all_required_satisfied": false,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology does not explicitly show an asset inventory system or process. However, it includes various nodes and zones that could be part of an inventory.",
+        "missing_reason": "No explicit asset inventory system or process is shown.",
+        "repair_suggestion": "Add a node representing an asset inventory system and links to all other nodes."
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not include any explicit documentation of data flows.",
+        "missing_reason": "No data flow documentation is present.",
+        "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes and zones."
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for Standard Environment (z1), Sensitive Environment (z2), and Non-Production Environment (z5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Firewalls (n1, n2, n5) are implemented in the Standard Environment (z1) and Sensitive Environment (z2).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "A DNS Server (n8) is present in the Standard Environment (z1) and is linked to the Standard Core Switch (n6).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not explicitly show MFA for remote network access.",
+        "missing_reason": "No MFA implementation is shown.",
+        "repair_suggestion": "Add a node representing an MFA system and links to relevant nodes and zones."
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "A DNS Filter (n9) is present in the Standard Environment (z1) and is linked to the Standard Core Switch (n6).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "A Web Proxy (n10) is present in the Standard Environment (z1) and is linked to the Standard Core Switch (n6).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes separate zones for different environments and security levels, with firewalls and switches managing traffic between them.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes management workstations (n3, n4) and a secure gateway (n5) for managing network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "An AAA Server (n11) is present in the Management Workstations zone (z3) and is linked to the Secure Gateway (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not explicitly show a VPN or remote device connections to the AAA infrastructure.",
+        "missing_reason": "No VPN or remote device connections are shown.",
+        "repair_suggestion": "Add a node representing a VPN and links to relevant nodes and zones."
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "A NIDS (n12) is present in the Standard Environment (z1) and is linked to the Standard Core Switch (n6) and SIEM (n13).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Firewalls (n1, n2, n5) and switches (n6, n7) are used to manage traffic between different zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not explicitly show access control for remote assets.",
+        "missing_reason": "No access control for remote assets is shown.",
+        "repair_suggestion": "Add a node representing access control for remote assets and links to relevant nodes and zones."
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "A NIDS (n12) is present in the Standard Environment (z1) and is linked to the Standard Core Switch (n6) and SIEM (n13).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Non-Production Environment (z5) separated from the Standard Environment (z1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "unsatisfied",
+        "confidence": 0.0,
+        "evidence": "The topology does not explicitly show a process for performing periodic external penetration tests.",
+        "missing_reason": "No penetration testing process is shown.",
+        "repair_suggestion": "Add a node representing a penetration testing process and links to relevant nodes and zones."
+      }
+    ]
+  },
+  "repair_history": [],
+  "test_cases": {
+    "template_id": "generated_Government-4_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Internal routing within Standard Environment."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Internal routing within Sensitive Environment."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Internet traffic through Secure Gateway."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Management access to Standard Core Switch."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n4",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Management access to Sensitive Core Switch."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n6",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS traffic within Standard Environment."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n9",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "DNS filtering within Standard Environment."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web proxy within Standard Environment."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "AAA traffic to Secure Gateway."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS monitoring within Standard Environment."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n12",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "NIDS to SIEM monitoring."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "NAC enforcement within Standard Environment."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Non-Prod routing to Standard Environment."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z6",
+        "target_zone": "z5",
+        "source_node": "n16",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Pen Test traffic to Non-Prod Core Switch."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "External to internal traffic blocked."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n6",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Standard to Sensitive traffic blocked."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Sensitive to Standard traffic blocked."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Management to Internet traffic blocked."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z5",
+        "target_zone": "z2",
+        "source_node": "n15",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Non-Prod to Sensitive traffic blocked."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n16",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Pen Test to Sensitive traffic blocked."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n6",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Standard to Management AAA traffic."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n6",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Standard to Management SIEM traffic."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Standard to NAC enforcement."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Standard to NIDS monitoring."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Standard to Web Proxy traffic."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Standard to DNS Filter traffic."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n8",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Standard to DNS Server traffic."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n6",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Standard to Management Workstation (Standard) access."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n6",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Standard to Management Workstation (Sensitive) access."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Standard to Secure Gateway traffic."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Standard to Standard Firewall traffic."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n6",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Standard to Non-Prod traffic blocked."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n6",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Standard to Pen Test traffic blocked."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Sensitive to Sensitive Firewall traffic."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n7",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Sensitive to Management Workstation (Sensitive) access."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n7",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Sensitive to AAA Server traffic."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n7",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Sensitive to SIEM traffic."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Sensitive to NIDS monitoring."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Sensitive to NAC enforcement."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Sensitive to Web Proxy traffic."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-4_req1/rag_without_repair/IG2/xml/IG2/generated_Government-4_req1_IG2.xml"
+}

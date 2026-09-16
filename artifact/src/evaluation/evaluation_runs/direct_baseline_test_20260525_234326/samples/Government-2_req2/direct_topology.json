@@ -1,0 +1,256 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Government-2_req2",
+  "title": "Secure Government Data Center Topology",
+  "description": "A secure government data center with a screened DMZ, load-balanced web servers, and segmented production, staging, and management zones.",
+  "scenario": "government",
+  "topology_summary": "This topology includes a DMZ with a WAF and load-balanced web servers, a production zone with core application and database servers, and segmented staging and management zones. Redundant connectivity, content filtering, and SIEM integration are provided for enhanced security and monitoring.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "DMZ",
+      "zone_type": "dmz"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Production",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Staging",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Management",
+      "zone_type": "management"
+    },
+    {
+      "zone_id": "z5",
+      "name": "DR Site",
+      "zone_type": "data_center"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Edge Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "WAF",
+      "normalized_type": "waf",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "Web Server 1",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "Web Server 2",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n5",
+      "name": "Load Balancer",
+      "normalized_type": "load_balancer",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n6",
+      "name": "Internal Firewall 1",
+      "normalized_type": "firewall",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n7",
+      "name": "Application Server",
+      "normalized_type": "server",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n8",
+      "name": "Database Server",
+      "normalized_type": "database",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n9",
+      "name": "Internal Firewall 2",
+      "normalized_type": "firewall",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n10",
+      "name": "Staging Application Server",
+      "normalized_type": "server",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n11",
+      "name": "Staging Database Server",
+      "normalized_type": "database",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n12",
+      "name": "Management Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n13",
+      "name": "Management Server",
+      "normalized_type": "server",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n14",
+      "name": "SIEM",
+      "normalized_type": "siem",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n15",
+      "name": "DR Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n16",
+      "name": "DR Application Server",
+      "normalized_type": "server",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n17",
+      "name": "DR Database Server",
+      "normalized_type": "database",
+      "zone_id": "z5"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "uplink",
+        "label": "Edge to WAF"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n5",
+        "link_type": "uplink",
+        "label": "WAF to Load Balancer"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n5",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "Load Balancer to Web Server 1"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n5",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "Load Balancer to Web Server 2"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n1",
+        "target": "n6",
+        "link_type": "uplink",
+        "label": "Edge to Internal Firewall 1"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n6",
+        "target": "n7",
+        "link_type": "data_flow",
+        "label": "Internal Firewall 1 to Application Server"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n6",
+        "target": "n8",
+        "link_type": "data_flow",
+        "label": "Internal Firewall 1 to Database Server"
+      },
+      {
+        "link_id": "nl8",
+        "source": "n6",
+        "target": "n9",
+        "link_type": "uplink",
+        "label": "Internal Firewall 1 to Internal Firewall 2"
+      },
+      {
+        "link_id": "nl9",
+        "source": "n9",
+        "target": "n10",
+        "link_type": "data_flow",
+        "label": "Internal Firewall 2 to Staging Application Server"
+      },
+      {
+        "link_id": "nl10",
+        "source": "n9",
+        "target": "n11",
+        "link_type": "data_flow",
+        "label": "Internal Firewall 2 to Staging Database Server"
+      },
+      {
+        "link_id": "nl11",
+        "source": "n6",
+        "target": "n12",
+        "link_type": "uplink",
+        "label": "Internal Firewall 1 to Management Firewall"
+      },
+      {
+        "link_id": "nl12",
+        "source": "n12",
+        "target": "n13",
+        "link_type": "data_flow",
+        "label": "Management Firewall to Management Server"
+      },
+      {
+        "link_id": "nl13",
+        "source": "n12",
+        "target": "n14",
+        "link_type": "data_flow",
+        "label": "Management Firewall to SIEM"
+      },
+      {
+        "link_id": "nl14",
+        "source": "n6",
+        "target": "n15",
+        "link_type": "uplink",
+        "label": "Internal Firewall 1 to DR Firewall"
+      },
+      {
+        "link_id": "nl15",
+        "source": "n15",
+        "target": "n16",
+        "link_type": "data_flow",
+        "label": "DR Firewall to DR Application Server"
+      },
+      {
+        "link_id": "nl16",
+        "source": "n15",
+        "target": "n17",
+        "link_type": "data_flow",
+        "label": "DR Firewall to DR Database Server"
+      }
+    ],
+    "zone_links": []
+  }
+}

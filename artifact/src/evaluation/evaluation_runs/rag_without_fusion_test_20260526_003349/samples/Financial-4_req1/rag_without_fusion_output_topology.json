@@ -1,0 +1,220 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Healthcare-4",
+  "title": "Healthcare Network Topology",
+  "description": "Network topology for a hospital environment with various VLANs and services.",
+  "scenario": "hospital",
+  "topology_summary": "The topology includes multiple VLANs for different services such as guest services, clinical applications, modality, databases, and enterprise services, interconnected through a Cisco FTD firewall and HIPswitches.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Guest Services",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Security Services",
+      "zone_type": "security"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Databases",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Clinical Applications",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Modalities",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z6",
+      "name": "VNA",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z7",
+      "name": "PACS B",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z8",
+      "name": "PACS A",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z9",
+      "name": "Clinical Viewers",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z10",
+      "name": "Enterprise Services",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z11",
+      "name": "Vendor Net",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z12",
+      "name": "Internet",
+      "zone_type": "external"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Cisco FTD",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "FTD Subinterface",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "HIPswitch",
+      "normalized_type": "switch",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n4",
+      "name": "HIPswitch",
+      "normalized_type": "switch",
+      "zone_id": "z10"
+    },
+    {
+      "node_id": "n5",
+      "name": "Corporate Router",
+      "normalized_type": "router",
+      "zone_id": "z12"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "management",
+        "label": "VLAN 1099"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "VLAN 1501"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n2",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "VLAN 1201"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n3",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "VLAN 1301"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z12",
+        "link_type": "other",
+        "label": "Internet"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z1",
+        "target": "z2",
+        "link_type": "data_flow",
+        "label": "VLAN 1901"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z1",
+        "target": "z3",
+        "link_type": "data_flow",
+        "label": "VLAN 1801"
+      },
+      {
+        "link_id": "zl4",
+        "source": "z1",
+        "target": "z4",
+        "link_type": "data_flow",
+        "label": "VLAN 1601"
+      },
+      {
+        "link_id": "zl5",
+        "source": "z1",
+        "target": "z5",
+        "link_type": "data_flow",
+        "label": "VLAN 1501"
+      },
+      {
+        "link_id": "zl6",
+        "source": "z1",
+        "target": "z6",
+        "link_type": "data_flow",
+        "label": "VLAN 1403"
+      },
+      {
+        "link_id": "zl7",
+        "source": "z1",
+        "target": "z7",
+        "link_type": "data_flow",
+        "label": "VLAN 1402"
+      },
+      {
+        "link_id": "zl8",
+        "source": "z1",
+        "target": "z8",
+        "link_type": "data_flow",
+        "label": "VLAN 1401"
+      },
+      {
+        "link_id": "zl9",
+        "source": "z1",
+        "target": "z9",
+        "link_type": "data_flow",
+        "label": "VLAN 1301"
+      },
+      {
+        "link_id": "zl10",
+        "source": "z1",
+        "target": "z10",
+        "link_type": "data_flow",
+        "label": "VLAN 1201"
+      },
+      {
+        "link_id": "zl11",
+        "source": "z1",
+        "target": "z11",
+        "link_type": "data_flow",
+        "label": "VLAN 1097"
+      },
+      {
+        "link_id": "zl12",
+        "source": "z1",
+        "target": "z12",
+        "link_type": "data_flow",
+        "label": "VLAN 1098"
+      }
+    ]
+  }
+}

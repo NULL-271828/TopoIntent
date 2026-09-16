@@ -1,0 +1,187 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Enterprise-1",
+  "title": "Enterprise Network Topology",
+  "description": "Topology of an enterprise network with private cloud, IaaS cloud, SaaS cloud, and WAN edges.",
+  "scenario": "enterprise",
+  "topology_summary": "The topology includes a private cloud with servers, an IaaS cloud with management components, a SaaS cloud with applications, and two remote sites with WAN edges connecting via biz-internet and MPLS.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Site 101",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Site 102",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Private Cloud",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z4",
+      "name": "IaaS Cloud",
+      "zone_type": "cloud_hub"
+    },
+    {
+      "zone_id": "z5",
+      "name": "SaaS Cloud",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z6",
+      "name": "biz-internet",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z7",
+      "name": "mpls",
+      "zone_type": "external"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Server 1",
+      "normalized_type": "server",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n2",
+      "name": "Server 2",
+      "normalized_type": "server",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n3",
+      "name": "Server 3",
+      "normalized_type": "server",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n4",
+      "name": "Manager",
+      "normalized_type": "other",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n5",
+      "name": "Controller",
+      "normalized_type": "other",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n6",
+      "name": "Validator",
+      "normalized_type": "other",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n7",
+      "name": "WAN Edge 10.101.0.1",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n8",
+      "name": "WAN Edge 10.101.0.2",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n9",
+      "name": "WAN Edge 10.102.0.1",
+      "normalized_type": "router",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n10",
+      "name": "Office 365",
+      "normalized_type": "cloud_service",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n11",
+      "name": "Google",
+      "normalized_type": "cloud_service",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n12",
+      "name": "Dropbox",
+      "normalized_type": "cloud_service",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n13",
+      "name": "Salesforce",
+      "normalized_type": "cloud_service",
+      "zone_id": "z5"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n7",
+        "target": "n8",
+        "link_type": "data_flow",
+        "label": "IPsec"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n8",
+        "target": "n9",
+        "link_type": "data_flow",
+        "label": "IPsec"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n7",
+        "target": "n9",
+        "link_type": "data_flow",
+        "label": "IPsec"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z6",
+        "link_type": "uplink",
+        "label": "biz-internet"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z2",
+        "target": "z6",
+        "link_type": "uplink",
+        "label": "biz-internet"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z1",
+        "target": "z7",
+        "link_type": "uplink",
+        "label": "mpls"
+      },
+      {
+        "link_id": "zl4",
+        "source": "z2",
+        "target": "z7",
+        "link_type": "uplink",
+        "label": "mpls"
+      },
+      {
+        "link_id": "zl5",
+        "source": "z4",
+        "target": "z6",
+        "link_type": "uplink",
+        "label": "biz-internet"
+      }
+    ]
+  }
+}

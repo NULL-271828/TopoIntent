@@ -1,0 +1,11 @@
+{
+  "xml_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-3_req1/stage4/xml/IG2/generated_Government-3_req1_IG2.xml",
+  "script_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-3_req1/stage5_1/mininet_scripts/IG2/validation_generated_Government-3_req1_IG2.py",
+  "expected_report_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Government-3_req1/stage5_1/mininet_scripts/IG2/policy_test_report_generated_Government-3_req1_IG2.json",
+  "template_id": "generated_Government-3_req1",
+  "ig_level": "IG2",
+  "domains": 11,
+  "nodes": 24,
+  "node_links": 49,
+  "policy_tests": 40
+}

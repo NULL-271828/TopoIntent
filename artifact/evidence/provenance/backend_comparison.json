@@ -1,0 +1,9 @@
+{
+  "same_metrics_and_rounded_rankings": {
+    "single_vector": true,
+    "multi_field_uniform": true,
+    "multi_field_weighted": true
+  },
+  "exact_elapsed_seconds": 73.50798922218382,
+  "qdrant_elapsed_seconds": 75.50745911709964
+}

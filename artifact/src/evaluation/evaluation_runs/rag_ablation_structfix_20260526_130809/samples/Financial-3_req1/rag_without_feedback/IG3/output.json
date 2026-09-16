@@ -1,0 +1,1390 @@
+{
+  "sample_id": "Financial-3_req1",
+  "gt_template_id": "Financial-3",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-3_req1",
+    "title": "Hybrid Cloud for Finance",
+    "description": "Set up a hybrid cloud environment with Azure Red Hat OpenShift and secure connection to on-premises datacenter.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes an Azure Red Hat OpenShift cluster in the cloud, connected to an on-premises datacenter via a secure link, with all traffic filtered through a central firewall.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "On-Premises Datacenter",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Azure VNet",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Azure Spoke VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Sensitive Data Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Non-Sensitive Data Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z7",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Security Operations Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Asset Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z10",
+        "name": "Documentation Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z11",
+        "name": "Network Management Zone",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Azure Red Hat OpenShift Cluster",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n2",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n3",
+        "name": "On-Premises Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "On-Premises Workloads",
+        "normalized_type": "workload",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Azure Bastion",
+        "normalized_type": "bastion",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Azure Monitor",
+        "normalized_type": "cloud_service",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Azure Workloads",
+        "normalized_type": "workload",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n8",
+        "name": "DNS Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n9",
+        "name": "DNS Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n10",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n11",
+        "name": "AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n12",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n13",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n14",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n15",
+        "name": "802.1X Controller",
+        "normalized_type": "access_point",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n16",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n17",
+        "name": "Penetration Testing Host",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Sensitive Data Zone Application Server",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n_struct2",
+        "name": "Non-Sensitive Data Zone Application Server",
+        "normalized_type": "server",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n_struct3",
+        "name": "Security Operations Zone Security Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n18",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n19",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n20",
+        "name": "Network Configuration Management",
+        "normalized_type": "server",
+        "zone_id": "z11"
+      },
+      {
+        "node_id": "n21",
+        "name": "Log Collection System",
+        "normalized_type": "siem",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n22",
+        "name": "Penetration Test Management System",
+        "normalized_type": "server",
+        "zone_id": "z8"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n2",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Traffic Filtering"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n3",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Private Connection"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n5",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Bastion Access"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n6",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "Monitoring"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n8",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS Resolution"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n9",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n10",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Web Proxy"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n11",
+          "target": "n5",
+          "link_type": "authentication",
+          "label": "AAA Authentication"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n12",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Admin Access"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n13",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "NIDS Monitoring"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n14",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "NIPS Protection"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "802.1X Control"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n16",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Application Layer Filtering"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n17",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n2",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct2",
+          "source": "n2",
+          "target": "n_struct2",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct3",
+          "source": "n2",
+          "target": "n_struct3",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n18",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Asset Inventory"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n19",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Data Flow Docs"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n20",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Config Management"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n21",
+          "target": "n13",
+          "link_type": "data_flow",
+          "label": "Log Collection"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n22",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "Test Management"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z2",
+          "link_type": "vpn",
+          "label": "Private Connection"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z4",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z5",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "Sensitive Data Peering"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z6",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "Non-Sensitive Data Peering"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z7",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "External Testing Peering"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z9",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z10",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Data Flow Docs"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z11",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Network Config"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-3_req1",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Management Zone' with an 'Asset Management System' node, which implies the presence of an asset inventory system.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Documentation Zone' with a 'Data Flow Documentation System' node, which implies the presence of documented data flows.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct 'Sensitive Data Zone' and 'Non-Sensitive Data Zone' zones, which implies data segmentation based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple firewalls ('Central Firewall', 'On-Premises Firewall', 'Security Operations Zone Security Gateway') which are connected to various zones and workloads.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' node in the 'Management Zone', which implies the presence of trusted DNS servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'AAA Server' node in the 'Management Zone', which implies the presence of a centralized authentication system that can enforce MFA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filter' node in the 'Management Zone', which implies the presence of DNS filtering services.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' node in the 'Management Zone', which implies the presence of network-based URL filters.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones and firewalls, which implies a segmented and secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Network Configuration Management' node in the 'Network Management Zone', which implies the presence of secure network infrastructure management.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'AAA Server' node in the 'Management Zone', which implies the presence of centralized AAA services.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'VPN' link between the 'On-Premises Datacenter' and 'Azure VNet', and an 'AAA Server' in the 'Management Zone', which implies the presence of a secure remote access mechanism.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Admin Workstation' node in the 'Management Zone', which implies the presence of dedicated computing resources for administrative tasks.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'NIDS' node in the 'Management Zone', which implies the presence of a network intrusion detection system.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple firewalls and links labeled 'Traffic Filtering', which implies the presence of traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'AAA Server' and a 'Bastion' node, which implies the presence of access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Log Collection System' node in the 'Management Zone', which implies the presence of network traffic flow log collection.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'NIPS' node in the 'Management Zone', which implies the presence of a network intrusion prevention system.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an '802.1X Controller' node in the 'Management Zone', which implies the presence of port-level access control.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Application Firewall' node in the 'Management Zone', which implies the presence of application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct 'Sensitive Data Zone' and 'Non-Sensitive Data Zone' zones, which implies the separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Penetration Testing Host' and a 'Penetration Test Management System' in the 'External Testing Zone', which implies the presence of periodic external penetration testing.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity",
+        "stage4_structural_integrity",
+        "stage4_ig_consistency"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z5\", \"name\": \"Sensitive Data Zone\", \"zone_type\": \"data_center\"}",
+          "missing_reason": "Zone z5 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z6\", \"name\": \"Non-Sensitive Data Zone\", \"zone_type\": \"data_center\"}",
+          "missing_reason": "Zone z6 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_ig_consistency",
+          "title": "ig3_missing_ig2_zone_semantics",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "[{\"zone_id\": \"z8\", \"name\": \"Security Operations Zone\", \"zone_type\": \"security\"}]",
+          "missing_reason": "IG3 topology removed or failed to preserve IG2 zone semantics.",
+          "repair_suggestion": "Add the missing IG2 zone semantics to IG3 as preserved or stricter zones, with representative nodes and concrete node_links. IG3 may add controls but must not reduce segmentation."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z8",
+            "name": "Security Operations Zone",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Sensitive Data Zone Application Server",
+            "normalized_type": "server",
+            "zone_id": "z5"
+          },
+          {
+            "node_id": "n_struct2",
+            "name": "Non-Sensitive Data Zone Application Server",
+            "normalized_type": "server",
+            "zone_id": "z6"
+          },
+          {
+            "node_id": "n_struct3",
+            "name": "Security Operations Zone Security Gateway",
+            "normalized_type": "firewall",
+            "zone_id": "z8"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n2",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct2",
+              "source": "n2",
+              "target": "n_struct2",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct3",
+              "source": "n2",
+              "target": "n_struct3",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 17,
+        "zone_links": 5,
+        "node_links": 14
+      },
+      "counts_after": {
+        "zones": 8,
+        "nodes": 20,
+        "zone_links": 5,
+        "node_links": 17
+      },
+      "count_delta": {
+        "zones": 1,
+        "nodes": 3,
+        "zone_links": 0,
+        "node_links": 3
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "12.3",
+        "13.6",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of a detailed and up-to-date inventory of all enterprise assets, including their network addresses, hardware addresses, machine names, asset owners, and departments.",
+          "missing_reason": "No explicit evidence of a detailed asset inventory.",
+          "repair_suggestion": "Add a node representing an asset management system or provide documentation of the asset inventory."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes data flow links, but there is no explicit evidence of documented data flows or regular updates to this documentation.",
+          "missing_reason": "No explicit evidence of documented data flows.",
+          "repair_suggestion": "Add a node representing a data flow documentation system or provide documentation of the data flows."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various network devices and links, but there is no explicit evidence of secure management practices such as version-controlled IaC or secure network protocols.",
+          "missing_reason": "No explicit evidence of secure network management practices.",
+          "repair_suggestion": "Add nodes or links representing secure network management practices or provide documentation of these practices."
+        },
+        {
+          "cis_safeguard_id": "13.6",
+          "title": "Collect Network Traffic Flow Logs",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a central firewall (n2) and a monitoring link (nl10) to the NIDS (n13), but there is no explicit evidence of collecting network traffic flow logs.",
+          "missing_reason": "No explicit evidence of collecting network traffic flow logs.",
+          "repair_suggestion": "Add a node representing a log collection system or provide documentation of log collection processes."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a penetration testing host (n17) with a testing link (nl14) to the Azure Red Hat OpenShift cluster (n1), but there is no explicit evidence of periodic external penetration tests.",
+          "missing_reason": "No explicit evidence of periodic external penetration tests.",
+          "repair_suggestion": "Add a node representing a penetration testing management system or provide documentation of the testing schedule and results."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z9",
+            "name": "Asset Management Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z10",
+            "name": "Documentation Zone",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z11",
+            "name": "Network Management Zone",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n18",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n19",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z10"
+          },
+          {
+            "node_id": "n20",
+            "name": "Network Configuration Management",
+            "normalized_type": "server",
+            "zone_id": "z11"
+          },
+          {
+            "node_id": "n21",
+            "name": "Log Collection System",
+            "normalized_type": "siem",
+            "zone_id": "z3"
+          },
+          {
+            "node_id": "n22",
+            "name": "Penetration Test Management System",
+            "normalized_type": "server",
+            "zone_id": "z8"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl15",
+              "source": "n18",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Asset Inventory"
+            },
+            {
+              "link_id": "nl16",
+              "source": "n19",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Data Flow Docs"
+            },
+            {
+              "link_id": "nl17",
+              "source": "n20",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Config Management"
+            },
+            {
+              "link_id": "nl18",
+              "source": "n21",
+              "target": "n13",
+              "link_type": "data_flow",
+              "label": "Log Collection"
+            },
+            {
+              "link_id": "nl19",
+              "source": "n22",
+              "target": "n17",
+              "link_type": "data_flow",
+              "label": "Test Management"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl6",
+              "source": "z9",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl7",
+              "source": "z10",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Data Flow Docs"
+            },
+            {
+              "link_id": "zl8",
+              "source": "z11",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Network Config"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 20,
+        "zone_links": 5,
+        "node_links": 17
+      },
+      "counts_after": {
+        "zones": 11,
+        "nodes": 25,
+        "zone_links": 8,
+        "node_links": 22
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 5,
+        "zone_links": 3,
+        "node_links": 5
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Financial-3_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n3",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Private connection between on-premises and cloud."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "VNet peering allows internal traffic."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n3",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Peering allows sensitive data access."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n3",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Peering allows non-sensitive data access."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Peering allows external testing access."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z9",
+        "target_zone": "z3",
+        "source_node": "n18",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Management link allows asset inventory."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z10",
+        "target_zone": "z3",
+        "source_node": "n19",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Management link allows data flow documentation."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z11",
+        "target_zone": "z3",
+        "source_node": "n20",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Management link allows network configuration."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n2",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Central firewall allows traffic to cloud."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n5",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Bastion allows SSH access to cloud."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n6",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Azure Monitor allows monitoring traffic."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n8",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS server allows DNS resolution."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n9",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS filter allows DNS filtering."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n10",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web proxy allows web traffic."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n11",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "AAA server allows authentication."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n12",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Admin workstation allows admin access."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n13",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS allows monitoring traffic."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n14",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIPS allows protection traffic."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "802.1X controller allows control traffic."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n16",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Application firewall allows application layer filtering."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z7",
+        "target_zone": "z2",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Penetration testing host allows testing traffic."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z8",
+        "target_zone": "z7",
+        "source_node": "n22",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Test management system allows test management."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n21",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Log collection system allows log collection."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n4",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "On-premises workloads allow traffic to cloud."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n3",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "On-premises firewall blocks external testing."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z7",
+        "target_zone": "z5",
+        "source_node": "n17",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "External testing host blocks sensitive data access."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z4",
+        "target_zone": "z5",
+        "source_node": "n7",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Azure workloads block sensitive data access."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z2",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Cloud hub blocks external testing access."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z3",
+        "target_zone": "z7",
+        "source_node": "n2",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks external testing access."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z3",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks sensitive data access."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z3",
+        "target_zone": "z4",
+        "source_node": "n2",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks Azure spoke access."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n2",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks on-premises workloads access."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z3",
+        "target_zone": "z6",
+        "source_node": "n2",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks non-sensitive data access."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z3",
+        "target_zone": "z8",
+        "source_node": "n2",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks security operations access."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z3",
+        "target_zone": "z9",
+        "source_node": "n2",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks asset management access."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z3",
+        "target_zone": "z10",
+        "source_node": "n2",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks data flow documentation access."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z3",
+        "target_zone": "z11",
+        "source_node": "n2",
+        "target_node": "n20",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks network configuration access."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks log collection access."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks NIDS access."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Central firewall blocks NIPS access."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-3_req1/rag_without_feedback/IG3/xml/IG3/generated_Financial-3_req1_IG3.xml"
+}

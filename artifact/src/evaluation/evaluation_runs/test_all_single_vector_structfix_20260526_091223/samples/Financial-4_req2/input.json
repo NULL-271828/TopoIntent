@@ -1,0 +1,6 @@
+{
+  "sample_id": "Financial-4_req2",
+  "template_id": "Financial-4",
+  "user_intent": "Please design the network for a branch office with resilient voice capabilities. It should feature redundant routers in the branch connecting over an MPLS WAN to the main data center. The branch must have survivable voice functionality, allowing it to connect directly to the PSTN and a SIP provider. The data center hosts our unified communications manager, an access control server for AAA, and a netflow collector for visibility.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

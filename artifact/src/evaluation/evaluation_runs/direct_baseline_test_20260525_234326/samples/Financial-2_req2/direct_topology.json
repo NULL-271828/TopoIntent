@@ -1,0 +1,192 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Financial-2_req2",
+  "title": "Financial Data Ingest and Processing Network",
+  "description": "A network designed for ingesting financial data feeds and processing them in dedicated market data pods before distributing to three campus sites.",
+  "scenario": "finance",
+  "topology_summary": "The network includes a data ingestion pod, multiple market data pods, and three campus sites. Data flows from the ingestion pod to the market data pods, which process the data and distribute it to the campus sites. Trunk links connect the site switches for inter-site communication.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Data Ingestion Pod",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Market Data Pod 1",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Market Data Pod 2",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Campus Site 1",
+      "zone_type": "campus"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Campus Site 2",
+      "zone_type": "campus"
+    },
+    {
+      "zone_id": "z6",
+      "name": "Campus Site 3",
+      "zone_type": "campus"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Ingestion Server",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Feed Handler 1",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n3",
+      "name": "Analytics Workload 1",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n4",
+      "name": "Execution Engine 1",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n5",
+      "name": "Feed Handler 2",
+      "normalized_type": "workload",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n6",
+      "name": "Analytics Workload 2",
+      "normalized_type": "workload",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n7",
+      "name": "Execution Engine 2",
+      "normalized_type": "workload",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n8",
+      "name": "Switch 1",
+      "normalized_type": "switch",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n9",
+      "name": "Switch 2",
+      "normalized_type": "switch",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n10",
+      "name": "Switch 3",
+      "normalized_type": "switch",
+      "zone_id": "z6"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "data_flow",
+        "label": "Data Feed 1"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n1",
+        "target": "n5",
+        "link_type": "data_flow",
+        "label": "Data Feed 2"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n2",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "Processed Data 1"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n3",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "Execution Data 1"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n5",
+        "target": "n6",
+        "link_type": "data_flow",
+        "label": "Processed Data 2"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n6",
+        "target": "n7",
+        "link_type": "data_flow",
+        "label": "Execution Data 2"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n4",
+        "target": "n8",
+        "link_type": "data_flow",
+        "label": "Output Data 1"
+      },
+      {
+        "link_id": "nl8",
+        "source": "n7",
+        "target": "n9",
+        "link_type": "data_flow",
+        "label": "Output Data 2"
+      },
+      {
+        "link_id": "nl9",
+        "source": "n7",
+        "target": "n10",
+        "link_type": "data_flow",
+        "label": "Output Data 3"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z4",
+        "target": "z5",
+        "link_type": "trunk",
+        "label": "Inter-Site Link 1"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z4",
+        "target": "z6",
+        "link_type": "trunk",
+        "label": "Inter-Site Link 2"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z5",
+        "target": "z6",
+        "link_type": "trunk",
+        "label": "Inter-Site Link 3"
+      }
+    ]
+  }
+}

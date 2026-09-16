@@ -1,0 +1,809 @@
+{
+  "sample_id": "Government-3_req1",
+  "gt_template_id": "Government-3",
+  "fused_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-3_req1",
+    "title": "Government Cloud Segmentation",
+    "description": "Secure cloud infrastructure for government agency with departmental segmentation and centralized monitoring.",
+    "scenario": "government",
+    "topology_summary": "The topology will include a central hub for management and monitoring, with separate spokes for each department, ensuring secure and isolated environments.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Management Hub",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Identity Management Spoke",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Operations Spoke",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Workload Spokes",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Security Services",
+        "zone_type": "cloud_hub"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Operations Server",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Workload Servers",
+        "normalized_type": "workload",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n5",
+        "name": "SIEM System",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Bastion Host",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Cloud Security Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n8",
+        "name": "MFA Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n9",
+        "name": "Workload Security Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n2",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "mfa"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n3",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "mfa"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n4",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "mfa"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n4",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "workload_security"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z3",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z4",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        }
+      ]
+    }
+  },
+  "target_cis_requirements": [
+    {
+      "cis_safeguard_id": "1.1",
+      "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+      "description": "Establish and maintain an accurate, detailed, and up-to-date inventory of all enterprise assets with the potential to store or process data, to include: end-user devices (including portable and mobile"
+    },
+    {
+      "cis_safeguard_id": "3.8",
+      "title": "Document Data Flows",
+      "description": "Document data flows. Data flow documentation includes service provider data flows and should be based on the enterprise’s data management process. Review and update documentation annually, or when sig"
+    },
+    {
+      "cis_safeguard_id": "3.12",
+      "title": "Segment Data Processing and Storage Based on Sensitivity",
+      "description": "Segment data processing and storage based on the sensitivity of the data. Do not process sensitive data on enterprise assets intended for lower sensitivity data."
+    },
+    {
+      "cis_safeguard_id": "4.4",
+      "title": "Implement and Manage a Firewall on Servers",
+      "description": "Implement and manage a firewall on servers, where supported. Example implementations include a virtual firewall, operating system firewall, or a third-party firewall agent."
+    },
+    {
+      "cis_safeguard_id": "4.9",
+      "title": "Configure Trusted DNS Servers on Enterprise Assets",
+      "description": "Configure trusted DNS servers on network infrastructure. Example implementations include configuring network devices to use enterprise-controlled DNS servers and/or reputable externally accessible DNS"
+    },
+    {
+      "cis_safeguard_id": "6.4",
+      "title": "Require MFA for Remote Network Access",
+      "description": "Require MFA for remote network access."
+    },
+    {
+      "cis_safeguard_id": "9.2",
+      "title": "Use DNS Filtering Services",
+      "description": "Use DNS filtering services on all end-user devices, including remote and on-premises assets, to block access to known malicious domains."
+    },
+    {
+      "cis_safeguard_id": "9.3",
+      "title": "Maintain and Enforce Network-Based URL Filters",
+      "description": "Enforce and update network-based URL filters to limit an enterprise asset from connecting to potentially malicious or unapproved websites. Example implementations include category-based filtering, rep"
+    },
+    {
+      "cis_safeguard_id": "12.2",
+      "title": "Establish and Maintain a Secure Network Architecture",
+      "description": "Design and maintain a secure network architecture. A secure network architecture must address segmentation, least privilege, and availability, at a minimum. Example implementations may include documen"
+    },
+    {
+      "cis_safeguard_id": "12.3",
+      "title": "Securely Manage Network Infrastructure",
+      "description": "Securely manage network infrastructure. Example implementations include version-controlled Infrastructure-as-Code (IaC), and the use of secure network protocols, such as SSH and HTTPS. "
+    },
+    {
+      "cis_safeguard_id": "12.5",
+      "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+      "description": "Centralize network AAA."
+    },
+    {
+      "cis_safeguard_id": "12.7",
+      "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+      "description": "Require users to authenticate to enterprise-managed VPN and authentication services prior to accessing enterprise resources on end-user devices."
+    },
+    {
+      "cis_safeguard_id": "13.3",
+      "title": "Deploy a Network Intrusion Detection Solution",
+      "description": "Deploy a network intrusion detection solution on enterprise assets, where appropriate. Example implementations include the use of a Network Intrusion Detection System (NIDS) or equivalent cloud servic"
+    },
+    {
+      "cis_safeguard_id": "13.4",
+      "title": "Perform Traffic Filtering Between Network Segments",
+      "description": "Perform traffic filtering between network segments, where appropriate."
+    },
+    {
+      "cis_safeguard_id": "13.5",
+      "title": "Manage Access Control for Remote Assets",
+      "description": "Manage access control for assets remotely connecting to enterprise resources. Determine amount of access to enterprise resources based on: up-to-date anti-malware software installed, configuration com"
+    },
+    {
+      "cis_safeguard_id": "13.6",
+      "title": "Collect Network Traffic Flow Logs ",
+      "description": "Collect network traffic flow logs and/or network traffic to review and alert upon from network devices."
+    },
+    {
+      "cis_safeguard_id": "16.8",
+      "title": "Separate Production and Non-Production Systems",
+      "description": "Maintain separate environments for production and non-production systems."
+    },
+    {
+      "cis_safeguard_id": "18.2",
+      "title": "Perform Periodic External Penetration Tests",
+      "description": "Perform periodic external penetration tests based on program requirements, no less than annually. External penetration testing must include enterprise and environmental reconnaissance to detect exploi"
+    }
+  ],
+  "completed_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-3_req1",
+    "title": "Government Cloud Segmentation",
+    "description": "Secure cloud infrastructure for government agency with departmental segmentation and centralized monitoring.",
+    "scenario": "government",
+    "topology_summary": "The topology will include a central hub for management and monitoring, with separate spokes for each department, ensuring secure and isolated environments.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Management Hub",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Identity Management Spoke",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Operations Spoke",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Workload Spokes",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Security Services",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Production Zone",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Non-Production Zone",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z8",
+        "name": "External Penetration Testing Zone",
+        "zone_type": "external"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Operations Server",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Workload Servers",
+        "normalized_type": "workload",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n5",
+        "name": "SIEM System",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Bastion Host",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Cloud Security Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n8",
+        "name": "MFA Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n9",
+        "name": "Workload Security Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n10",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "Web Proxy",
+        "normalized_type": "proxy",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n12",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "NAC",
+        "normalized_type": "network_access_control",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "Dedicated Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n16",
+        "name": "Penetration Testing Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z8"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n2",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "mfa"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n3",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "mfa"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n4",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "mfa"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n4",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "workload_security"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n10",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "dns"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n11",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "url_filtering"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n12",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "app_layer_filtering"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n13",
+          "target": "n5",
+          "link_type": "monitoring",
+          "label": "intrusion_detection"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n14",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "remote_access_control"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n15",
+          "target": "n2",
+          "link_type": "management",
+          "label": "admin_workstation"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n16",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "penetration_testing"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z3",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z4",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "production_segmentation"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "non_production_segmentation"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z8",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "penetration_testing"
+        }
+      ]
+    }
+  },
+  "repaired_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-3_req1",
+    "title": "Government Cloud Segmentation",
+    "description": "Secure cloud infrastructure for government agency with departmental segmentation and centralized monitoring.",
+    "scenario": "government",
+    "topology_summary": "The topology will include a central hub for management and monitoring, with separate spokes for each department, ensuring secure and isolated environments.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Management Hub",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Identity Management Spoke",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Operations Spoke",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Workload Spokes",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Security Services",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Production Zone",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Non-Production Zone",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z8",
+        "name": "External Penetration Testing Zone",
+        "zone_type": "external"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Operations Server",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Workload Servers",
+        "normalized_type": "workload",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n5",
+        "name": "SIEM System",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Bastion Host",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Cloud Security Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n8",
+        "name": "MFA Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n9",
+        "name": "Workload Security Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n10",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "Web Proxy",
+        "normalized_type": "proxy",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n12",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "NAC",
+        "normalized_type": "network_access_control",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "Dedicated Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n16",
+        "name": "Penetration Testing Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z8"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n2",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "mfa"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n3",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "mfa"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n4",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "mfa"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n4",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "workload_security"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n10",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "dns"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n11",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "url_filtering"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n12",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "app_layer_filtering"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n13",
+          "target": "n5",
+          "link_type": "monitoring",
+          "label": "intrusion_detection"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n14",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "remote_access_control"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n15",
+          "target": "n2",
+          "link_type": "management",
+          "label": "admin_workstation"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n16",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "penetration_testing"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z3",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z4",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "security_services"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "production_segmentation"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "non_production_segmentation"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z8",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "penetration_testing"
+        }
+      ]
+    }
+  }
+}

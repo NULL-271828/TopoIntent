@@ -1,0 +1,1773 @@
+{
+  "sample_id": "Financial-3_req1",
+  "gt_template_id": "Financial-3",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-3_req1",
+    "title": "Hybrid Cloud for Finance",
+    "description": "Set up a hybrid cloud environment with Azure Red Hat OpenShift and secure connection to on-premises datacenter.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes an Azure VNet with a Red Hat OpenShift cluster, a central firewall, and a private connection to the on-premises datacenter.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Azure VNet",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "On-Premises Datacenter",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Sensitive Data Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Non-Sensitive Data Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z6",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Security Management",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Azure Red Hat OpenShift Cluster",
+        "normalized_type": "workload",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "On-Premises Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n4",
+        "name": "On-Premises Workloads",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n5",
+        "name": "Azure Bastion",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Azure Monitor",
+        "normalized_type": "cloud_service",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n7",
+        "name": "Azure PaaS Services",
+        "normalized_type": "cloud_service",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n8",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n9",
+        "name": "DNS Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n10",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n11",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n12",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n16",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Sensitive Data Zone Application Server",
+        "normalized_type": "server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n_struct2",
+        "name": "Non-Sensitive Data Zone Application Server",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n_struct3",
+        "name": "External Testing Zone External Endpoint",
+        "normalized_type": "endpoint",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n_struct4",
+        "name": "Security Management Management Service",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n_new1",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n_new2",
+        "name": "Penetration Testing Service",
+        "normalized_type": "cloud_service",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n_new3",
+        "name": "Asset Inventory Database",
+        "normalized_type": "database",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n6469",
+        "name": "Recovered Endpoint n6469",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n2",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Bastion access"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n1",
+          "target": "n6",
+          "link_type": "monitoring",
+          "label": "Monitoring"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n1",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "PaaS services"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n8",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS resolution"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n8",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "DNS resolution"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n9",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS filtering"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n9",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "DNS filtering"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n10",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Web proxy"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n10",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Web proxy"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n11",
+          "target": "n5",
+          "link_type": "management",
+          "label": "MFA for remote access"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n12",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "NIDS monitoring"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n13",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "NIPS monitoring"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n14",
+          "target": "n5",
+          "link_type": "management",
+          "label": "NAC for remote access"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n15",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Admin workstation to identity server"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n2",
+          "target": "n16",
+          "link_type": "monitoring",
+          "label": "Flow logs to SIEM"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n2",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct2",
+          "source": "n2",
+          "target": "n_struct2",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct3",
+          "source": "n2",
+          "target": "n_struct3",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct4",
+          "source": "n2",
+          "target": "n_struct4",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_new1",
+          "source": "n_new1",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Admin workstation to asset management"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n_new2",
+          "target": "n_struct3",
+          "link_type": "data_flow",
+          "label": "Pen test results to external endpoint"
+        },
+        {
+          "link_id": "nl_new3",
+          "source": "n_new1",
+          "target": "n_new3",
+          "link_type": "data_flow",
+          "label": "Asset data to inventory DB"
+        },
+        {
+          "link_id": "nl_new4",
+          "source": "n15",
+          "target": "n_new3",
+          "link_type": "management",
+          "label": "Admin access to inventory DB"
+        },
+        {
+          "link_id": "nl_new5",
+          "source": "n1",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Bastion access"
+        },
+        {
+          "link_id": "nl_new6",
+          "source": "n2",
+          "target": "n_struct3",
+          "link_type": "data_flow",
+          "label": "Pen test results to external endpoint"
+        },
+        {
+          "link_id": "nl_new7",
+          "source": "n2",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Sensitive data flow"
+        },
+        {
+          "link_id": "nl_new8",
+          "source": "n2",
+          "target": "n_struct2",
+          "link_type": "data_flow",
+          "label": "Non-sensitive data flow"
+        },
+        {
+          "link_id": "nl_new9",
+          "source": "n1",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Sensitive data flow"
+        },
+        {
+          "link_id": "nl_new10",
+          "source": "n1",
+          "target": "n_struct2",
+          "link_type": "data_flow",
+          "label": "Non-sensitive data flow"
+        },
+        {
+          "link_id": "nl_new11",
+          "source": "n4",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Sensitive data flow"
+        },
+        {
+          "link_id": "nl_new12",
+          "source": "n4",
+          "target": "n_struct2",
+          "link_type": "data_flow",
+          "label": "Non-sensitive data flow"
+        },
+        {
+          "link_id": "nl_new13",
+          "source": "n6469",
+          "target": "n15",
+          "link_type": "data_flow",
+          "label": "Admin access to inventory DB"
+        },
+        {
+          "link_id": "nl_new14",
+          "source": "n6469",
+          "target": "n11",
+          "link_type": "data_flow",
+          "label": "Admin access to identity server"
+        },
+        {
+          "link_id": "nl_new15",
+          "source": "n6469",
+          "target": "n16",
+          "link_type": "data_flow",
+          "label": "Admin access to SIEM"
+        },
+        {
+          "link_id": "nl_new16",
+          "source": "n6469",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "DNS resolution"
+        },
+        {
+          "link_id": "nl_new17",
+          "source": "n6469",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "DNS filtering"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z2",
+          "link_type": "vpn",
+          "label": "Private connection"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Management access"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "peering",
+          "label": "Sensitive data flow"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Non-sensitive data flow"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z2",
+          "target": "z4",
+          "link_type": "peering",
+          "label": "Sensitive data flow"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z2",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Non-sensitive data flow"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z6",
+          "target": "z1",
+          "link_type": "peering",
+          "label": "External testing access"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z6",
+          "target": "z2",
+          "link_type": "peering",
+          "label": "External testing access"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-3_req1",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Management System' and an 'Asset Inventory Database', which suggests that an asset inventory is being maintained.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple data flow links (e.g., 'nl4', 'nl5', 'nl6', 'nl7') and peering links (e.g., 'zl3', 'zl4', 'zl5', 'zl6') that document data flows between different zones and nodes.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for 'Sensitive Data Zone' (z4) and 'Non-Sensitive Data Zone' (z5), with specific data flow links (e.g., 'nl_new7', 'nl_new8', 'nl_new9', 'nl_new10', 'nl_new11', 'nl_new12') that indicate segmentation based on data sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central Firewall' (n2) and an 'On-Premises Firewall' (n3), which are explicitly labeled as firewalls and are connected to various zones and nodes.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n8) and multiple DNS resolution links (e.g., 'nl4', 'nl5', 'nl_new16') that indicate the configuration of trusted DNS servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Identity Server' (n11) and a link (nl10) labeled 'MFA for remote access', indicating that MFA is required for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filter' (n9) and multiple DNS filtering links (e.g., 'nl6', 'nl7', 'nl_new17') that indicate the use of DNS filtering services.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n10) and multiple web proxy links (e.g., 'nl8', 'nl9') that suggest the enforcement of network-based URL filters.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (e.g., 'Management Zone', 'Sensitive Data Zone', 'Non-Sensitive Data Zone') and links (e.g., 'zl3', 'zl4', 'zl5', 'zl6') that indicate a secure network architecture with segmentation and least privilege.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central Firewall' (n2), an 'On-Premises Firewall' (n3), and a 'Management Zone' (z3) with nodes like 'Azure Monitor' (n6) and 'Azure PaaS Services' (n7), suggesting secure management of network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Identity Server' (n11) and multiple links (e.g., 'nl10', 'nl14', 'nl_new14') that indicate centralized network AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Private connection' (zl1) labeled as a VPN and an 'Identity Server' (n11) with links (e.g., 'nl10', 'nl14') that suggest remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Admin Workstation' (n15) in the 'Management Zone' (z3) and links (e.g., 'nl14', 'nl_new4', 'nl_new13') that indicate dedicated computing resources for administrative work.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIDS' (n12) and links (e.g., 'nl11') that indicate the deployment of a network intrusion detection solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central Firewall' (n2) and multiple peering links (e.g., 'zl3', 'zl4', 'zl5', 'zl6') that suggest traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Identity Server' (n11) and links (e.g., 'nl10', 'nl14') that suggest the management of access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'SIEM' (n16) and a link (nl15) labeled 'Flow logs to SIEM', indicating the collection of network traffic flow logs.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIPS' (n13) and links (e.g., 'nl12') that indicate the deployment of a network intrusion prevention solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NAC' (n14) and links (e.g., 'nl13') that suggest the deployment of port-level access control.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n10) and links (e.g., 'nl8', 'nl9') that suggest the performance of application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for 'Sensitive Data Zone' (z4) and 'Non-Sensitive Data Zone' (z5), which can be interpreted as production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Penetration Testing Service' (n_new2) and links (e.g., 'nl_new2', 'nl_new6') that suggest the performance of periodic external penetration tests.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity",
+        "stage4_structural_integrity",
+        "stage4_structural_integrity",
+        "stage4_ig_consistency"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z4\", \"name\": \"Sensitive Data Zone\", \"zone_type\": \"data_center\"}",
+          "missing_reason": "Zone z4 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z5\", \"name\": \"Non-Sensitive Data Zone\", \"zone_type\": \"data_center\"}",
+          "missing_reason": "Zone z5 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z6\", \"name\": \"External Testing Zone\", \"zone_type\": \"external\"}",
+          "missing_reason": "Zone z6 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_ig_consistency",
+          "title": "ig3_missing_ig2_zone_semantics",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "[{\"zone_id\": \"z7\", \"name\": \"Security Management\", \"zone_type\": \"management\"}]",
+          "missing_reason": "IG3 topology removed or failed to preserve IG2 zone semantics.",
+          "repair_suggestion": "Add the missing IG2 zone semantics to IG3 as preserved or stricter zones, with representative nodes and concrete node_links. IG3 may add controls but must not reduce segmentation."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z7",
+            "name": "Security Management",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Sensitive Data Zone Application Server",
+            "normalized_type": "server",
+            "zone_id": "z4"
+          },
+          {
+            "node_id": "n_struct2",
+            "name": "Non-Sensitive Data Zone Application Server",
+            "normalized_type": "server",
+            "zone_id": "z5"
+          },
+          {
+            "node_id": "n_struct3",
+            "name": "External Testing Zone External Endpoint",
+            "normalized_type": "endpoint",
+            "zone_id": "z6"
+          },
+          {
+            "node_id": "n_struct4",
+            "name": "Security Management Management Service",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n2",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct2",
+              "source": "n2",
+              "target": "n_struct2",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct3",
+              "source": "n2",
+              "target": "n_struct3",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct4",
+              "source": "n2",
+              "target": "n_struct4",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 6,
+        "nodes": 16,
+        "zone_links": 8,
+        "node_links": 15
+      },
+      "counts_after": {
+        "zones": 7,
+        "nodes": 20,
+        "zone_links": 8,
+        "node_links": 19
+      },
+      "count_delta": {
+        "zones": 1,
+        "nodes": 4,
+        "zone_links": 0,
+        "node_links": 4
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of a detailed and up-to-date inventory of all enterprise assets, including their network addresses, hardware addresses, machine names, asset owners, and departments.",
+          "missing_reason": "No explicit evidence of a detailed asset inventory.",
+          "repair_suggestion": "Add a node representing an asset management system or provide documentation of the asset inventory."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an External Testing Zone (z6) with peering links (zl7, zl8) to the Azure VNet and On-Premises Datacenter, which suggests the possibility of external penetration testing, but there is no explicit evidence of periodic testing.",
+          "missing_reason": "No explicit evidence of periodic external penetration tests.",
+          "repair_suggestion": "Add a node representing a penetration testing service or provide documentation of periodic external penetration tests."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [
+          {
+            "node_id": "n_new1",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z3"
+          },
+          {
+            "node_id": "n_new2",
+            "name": "Penetration Testing Service",
+            "normalized_type": "cloud_service",
+            "zone_id": "z6"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new1",
+              "source": "n_new1",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Admin workstation to asset management"
+            },
+            {
+              "link_id": "nl_new2",
+              "source": "n_new2",
+              "target": "n_struct3",
+              "link_type": "data_flow",
+              "label": "Pen test results to external endpoint"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 20,
+        "zone_links": 8,
+        "node_links": 19
+      },
+      "counts_after": {
+        "zones": 7,
+        "nodes": 22,
+        "zone_links": 8,
+        "node_links": 21
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 2,
+        "zone_links": 0,
+        "node_links": 2
+      }
+    },
+    {
+      "round": 2,
+      "controls_repaired": [
+        "1.1"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an 'Asset Management System' node, which suggests some form of asset management is in place. However, the specific details of the inventory, such as network addresses, hardware addresses, and asset owners, are not explicitly shown.",
+          "missing_reason": "Explicit details of the asset inventory, including network addresses, hardware addresses, and asset owners, are not provided.",
+          "repair_suggestion": "Add explicit labels or nodes that detail the asset inventory, including network addresses, hardware addresses, and asset owners."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [
+          {
+            "node_id": "n_new3",
+            "name": "Asset Inventory Database",
+            "normalized_type": "database",
+            "zone_id": "z3"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new3",
+              "source": "n_new1",
+              "target": "n_new3",
+              "link_type": "data_flow",
+              "label": "Asset data to inventory DB"
+            },
+            {
+              "link_id": "nl_new4",
+              "source": "n15",
+              "target": "n_new3",
+              "link_type": "management",
+              "label": "Admin access to inventory DB"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 22,
+        "zone_links": 8,
+        "node_links": 21
+      },
+      "counts_after": {
+        "zones": 7,
+        "nodes": 23,
+        "zone_links": 8,
+        "node_links": 23
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 1,
+        "zone_links": 0,
+        "node_links": 2
+      }
+    },
+    {
+      "round": 4,
+      "controls_repaired": [
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc1\", \"src\": \"nz1n1\", \"dst\": \"nz1n5\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc24\", \"src\": \"nz6n6469\", \"dst\": \"nz1n1\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc25\", \"src\": \"nz6n6469\", \"dst\": \"nz2n4\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc26\", \"src\": \"nz4n1abe\", \"dst\": \"nz1n1\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc27\", \"src\": \"nz4n1abe\", \"dst\": \"nz2n4\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc28\", \"src\": \"nz5n542f\", \"dst\": \"nz1n1\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc29\", \"src\": \"nz5n542f\", \"dst\": \"nz2n4\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc30\", \"src\": \"nz1n1\", \"dst\": \"nz6n6469\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc31\", \"src\": \"nz2n4\", \"dst\": \"nz6n6469\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc32\", \"src\": \"nz1n1\", \"dst\": \"nz4n1abe\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc33\", \"src\": \"nz2n4\", \"dst\": \"nz4n1abe\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc34\", \"src\": \"nz1n1\", \"dst\": \"nz5n542f\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc35\", \"src\": \"nz2n4\", \"dst\": \"nz5n542f\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc36\", \"src\": \"nz6n6469\", \"dst\": \"nz3n15\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc37\", \"src\": \"nz6n6469\", \"dst\": \"nz3n11\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc38\", \"src\": \"nz6n6469\", \"dst\": \"nz3n16\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc39\", \"src\": \"nz6n6469\", \"dst\": \"nz3n8\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc40\", \"src\": \"nz6n6469\", \"dst\": \"nz3n9\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": false, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_missing_node_path",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc1\", \"src\": \"nz1n1\", \"dst\": \"nz1n5\", \"resolved_src\": \"nz1n1\", \"resolved_dst\": \"nz1n5\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": false, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_missing_node_path",
+          "repair_suggestion": "Add or repair concrete node_links along the intended path; do not use zone_links as executable links."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [
+          {
+            "node_id": "n6469",
+            "name": "Recovered Endpoint n6469",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new5",
+              "source": "n1",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Bastion access"
+            },
+            {
+              "link_id": "nl_new6",
+              "source": "n2",
+              "target": "n_struct3",
+              "link_type": "data_flow",
+              "label": "Pen test results to external endpoint"
+            },
+            {
+              "link_id": "nl_new7",
+              "source": "n2",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Sensitive data flow"
+            },
+            {
+              "link_id": "nl_new8",
+              "source": "n2",
+              "target": "n_struct2",
+              "link_type": "data_flow",
+              "label": "Non-sensitive data flow"
+            },
+            {
+              "link_id": "nl_new9",
+              "source": "n1",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Sensitive data flow"
+            },
+            {
+              "link_id": "nl_new10",
+              "source": "n1",
+              "target": "n_struct2",
+              "link_type": "data_flow",
+              "label": "Non-sensitive data flow"
+            },
+            {
+              "link_id": "nl_new11",
+              "source": "n4",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Sensitive data flow"
+            },
+            {
+              "link_id": "nl_new12",
+              "source": "n4",
+              "target": "n_struct2",
+              "link_type": "data_flow",
+              "label": "Non-sensitive data flow"
+            },
+            {
+              "link_id": "nl_new13",
+              "source": "n6469",
+              "target": "n15",
+              "link_type": "data_flow",
+              "label": "Admin access to inventory DB"
+            },
+            {
+              "link_id": "nl_new14",
+              "source": "n6469",
+              "target": "n11",
+              "link_type": "data_flow",
+              "label": "Admin access to identity server"
+            },
+            {
+              "link_id": "nl_new15",
+              "source": "n6469",
+              "target": "n16",
+              "link_type": "data_flow",
+              "label": "Admin access to SIEM"
+            },
+            {
+              "link_id": "nl_new16",
+              "source": "n6469",
+              "target": "n8",
+              "link_type": "data_flow",
+              "label": "DNS resolution"
+            },
+            {
+              "link_id": "nl_new17",
+              "source": "n6469",
+              "target": "n9",
+              "link_type": "data_flow",
+              "label": "DNS filtering"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 23,
+        "zone_links": 8,
+        "node_links": 23
+      },
+      "counts_after": {
+        "zones": 7,
+        "nodes": 24,
+        "zone_links": 8,
+        "node_links": 36
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 1,
+        "zone_links": 0,
+        "node_links": 13
+      },
+      "source": "stage5_diagnostic_report"
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Financial-3_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Bastion access from Azure Red Hat OpenShift Cluster."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Monitoring from Azure Red Hat OpenShift Cluster to Azure Monitor."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Data flow from Azure Red Hat OpenShift Cluster to Azure PaaS Services."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n1",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS resolution from DNS Server to Azure Red Hat OpenShift Cluster."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n8",
+        "target_node": "n4",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS resolution from DNS Server to On-Premises Workloads."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n9",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "DNS filtering from DNS Filter to Azure Red Hat OpenShift Cluster."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n9",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "DNS filtering from DNS Filter to On-Premises Workloads."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web proxy from Web Proxy to Azure Red Hat OpenShift Cluster."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n10",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web proxy from Web Proxy to On-Premises Workloads."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA for remote access from Identity Server to Azure Bastion."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS monitoring from NIDS to Central Firewall."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIPS monitoring from NIPS to Central Firewall."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC for remote access from NAC to Azure Bastion."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n15",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin workstation to identity server."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Flow logs to SIEM from Central Firewall."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n2",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Sensitive data flow from Central Firewall to Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Non-sensitive data flow from Central Firewall to Non-Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n3",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Sensitive data flow from On-Premises Firewall to Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n3",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Non-sensitive data flow from On-Premises Firewall to Non-Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n_struct3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "External testing access blocked from Azure Red Hat OpenShift Cluster."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z2",
+        "target_zone": "z6",
+        "source_node": "n4",
+        "target_node": "n_struct3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "External testing access blocked from On-Premises Workloads."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n_struct3",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "External testing access blocked to Azure Red Hat OpenShift Cluster."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n_struct3",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "External testing access blocked to On-Premises Workloads."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Sensitive data flow from Azure Red Hat OpenShift Cluster to Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Non-sensitive data flow from Azure Red Hat OpenShift Cluster to Non-Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n4",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Sensitive data flow from On-Premises Workloads to Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n4",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Non-sensitive data flow from On-Premises Workloads to Non-Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z3",
+        "target_zone": "z3",
+        "source_node": "n15",
+        "target_node": "n_new3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin access to inventory DB from Admin Workstation."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n6469",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin access to inventory DB from Recovered Endpoint."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n6469",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin access to identity server from Recovered Endpoint."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n6469",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin access to SIEM from Recovered Endpoint."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n6469",
+        "target_node": "n8",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS resolution from Recovered Endpoint to DNS Server."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n6469",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "DNS filtering from Recovered Endpoint to DNS Filter."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n_new2",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Pen test results to Azure Red Hat OpenShift Cluster blocked."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n_new2",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Pen test results to On-Premises Workloads blocked."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z3",
+        "target_zone": "z4",
+        "source_node": "n15",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Admin access to Sensitive Data Zone blocked."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z3",
+        "target_zone": "z5",
+        "source_node": "n15",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Admin access to Non-Sensitive Data Zone blocked."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z3",
+        "target_zone": "z6",
+        "source_node": "n15",
+        "target_node": "n_struct3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Admin access to External Testing Zone blocked."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z3",
+        "target_zone": "z7",
+        "source_node": "n15",
+        "target_node": "n_struct4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Admin access to Security Management blocked."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n_struct4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Access to Security Management from Azure Red Hat OpenShift Cluster blocked."
+      }
+    ]
+  },
+  "stage5_diagnostic_summary": {
+    "total": 40,
+    "executed": 40,
+    "skipped": 0,
+    "passed": 39,
+    "failed": 1
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-3_req1/stage4_feedback/xml/IG3/generated_Financial-3_req1_IG3.xml"
+}

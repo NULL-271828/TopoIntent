@@ -1,0 +1,1034 @@
+{
+  "sample_id": "Government-1_req1",
+  "gt_template_id": "Government-1",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-1_req1",
+    "title": "Government Secure Network",
+    "description": "Connect main data center to regional and branch offices with secure internet and remote access.",
+    "scenario": "government",
+    "topology_summary": "The main data center will be connected to regional and branch offices via a dedicated WAN. A secure internet perimeter with email and web filtering will be implemented, along with remote access capabilities.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Main Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Regional Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z4",
+        "name": "DMZ",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Remote Access Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Internet",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Non-Production Zone",
+        "zone_type": "enterprise"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Data Center Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Data Center Switch",
+        "normalized_type": "switch",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "WAN Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Regional Office Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Regional Office Switch",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Wireless Controller",
+        "normalized_type": "wireless_controller",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Access Point",
+        "normalized_type": "access_point",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n9",
+        "name": "Branch Office Router",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n10",
+        "name": "Branch Office Switch",
+        "normalized_type": "switch",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n11",
+        "name": "Wireless Controller",
+        "normalized_type": "wireless_controller",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n12",
+        "name": "Access Point",
+        "normalized_type": "access_point",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n13",
+        "name": "Web Filter",
+        "normalized_type": "waf",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n14",
+        "name": "Email Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n15",
+        "name": "VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n16",
+        "name": "Internet Gateway",
+        "normalized_type": "router",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n17",
+        "name": "Remote Access Server",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n18",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n19",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n20",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n21",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n22",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n23",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n24",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n25",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n26",
+        "name": "Test Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Internet External Endpoint",
+        "normalized_type": "endpoint",
+        "zone_id": "z6"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n4",
+          "target": "n5",
+          "link_type": "routing",
+          "label": "WAN to Regional Office"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n4",
+          "target": "n9",
+          "link_type": "routing",
+          "label": "WAN to Branch Office"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n3",
+          "target": "n16",
+          "link_type": "routing",
+          "label": "Firewall to Internet Gateway"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n15",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "VPN Gateway to Remote Access Server"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n15",
+          "target": "n18",
+          "link_type": "management",
+          "label": "VPN Gateway to Identity Server"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n3",
+          "target": "n20",
+          "link_type": "monitoring",
+          "label": "Firewall to NIDS"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n3",
+          "target": "n21",
+          "link_type": "monitoring",
+          "label": "Firewall to NIPS"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n3",
+          "target": "n19",
+          "link_type": "monitoring",
+          "label": "Firewall to SIEM"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n16",
+          "target": "n22",
+          "link_type": "data_flow",
+          "label": "Internet Gateway to DNS Server"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n16",
+          "target": "n23",
+          "link_type": "data_flow",
+          "label": "Internet Gateway to Web Proxy"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n15",
+          "target": "n24",
+          "link_type": "management",
+          "label": "VPN Gateway to NAC"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n25",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Admin Workstation to Identity Server"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n26",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Test Workstation to Identity Server"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n3",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "routing",
+          "label": "Data Center to DMZ"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z4",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "DMZ to Internet"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z5",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Remote Access Zone to DMZ"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "management",
+          "label": "Data Center to Management Zone"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Data Center to Non-Production Zone"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-1_req1",
+    "ig_level": "IG2",
+    "all_required_satisfied": false,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of an asset inventory system or process.",
+        "missing_reason": "No explicit evidence of an asset inventory system or process.",
+        "repair_suggestion": "Add a node representing an asset management system and links to all other nodes."
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes data flow links, but there is no explicit evidence of documented data flows.",
+        "missing_reason": "No explicit evidence of documented data flows.",
+        "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (e.g., Main Data Center, DMZ, Remote Access Zone, Non-Production Zone) which imply segmentation based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a firewall (n3) and links to other nodes, implying firewall management.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS server (n22) and a link from the Internet Gateway (n16) to the DNS server, implying trusted DNS configuration.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Remote Access Server (n17) and an Identity Server (n18) linked to the VPN Gateway (n15), implying MFA for remote access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Web Proxy (n23) and a link from the Internet Gateway (n16) to the Web Proxy, implying DNS filtering services.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Web Filter (n13) and a link from the Internet Gateway (n16) to the Web Filter, implying URL filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones and nodes with clear segmentation and management links, implying a secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes management links and nodes such as the Identity Server (n18) and Admin Workstation (n25), implying secure management practices.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an Identity Server (n18) and links to various nodes, implying centralized AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a VPN Gateway (n15) and links to the Remote Access Server (n17) and Identity Server (n18), implying remote device management.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIDS (n20) and NIPS (n21) with links to the Firewall (n3), implying intrusion detection solutions.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones and links between them, implying traffic filtering between segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NAC (n24) and links to the VPN Gateway (n15), implying access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes a SIEM (n19) and links to the Firewall (n3), but there is no explicit evidence of collecting network traffic flow logs.",
+        "missing_reason": "No explicit evidence of collecting network traffic flow logs.",
+        "repair_suggestion": "Add a node representing a log collection system and links to relevant nodes."
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Non-Production Zone (z8) and a link from the Data Center (z1) to the Non-Production Zone, implying separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology does not include any explicit evidence of periodic external penetration tests.",
+        "missing_reason": "No explicit evidence of periodic external penetration tests.",
+        "repair_suggestion": "Add a node representing a penetration testing service and links to relevant nodes."
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z6\", \"name\": \"Internet\", \"zone_type\": \"external\"}",
+          "missing_reason": "Zone z6 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Internet External Endpoint",
+            "normalized_type": "endpoint",
+            "zone_id": "z6"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n3",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 26,
+        "zone_links": 5,
+        "node_links": 13
+      },
+      "counts_after": {
+        "zones": 8,
+        "nodes": 27,
+        "zone_links": 5,
+        "node_links": 14
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 1,
+        "zone_links": 0,
+        "node_links": 1
+      },
+      "source": "stage4_structural_normalization"
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-1_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n4",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "WAN to Regional Office allowed."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n4",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "WAN to Branch Office allowed."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n3",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Internet Gateway allowed."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z5",
+        "target_zone": "z5",
+        "source_node": "n15",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "VPN Gateway to Remote Access Server allowed."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z5",
+        "target_zone": "z7",
+        "source_node": "n15",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "VPN Gateway to Identity Server allowed."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n20",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to NIDS allowed."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to NIPS allowed."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n3",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to SIEM allowed."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Internet Gateway to DNS Server allowed."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z4",
+        "target_zone": "z4",
+        "source_node": "n16",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Internet Gateway to Web Proxy allowed."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z5",
+        "target_zone": "z5",
+        "source_node": "n15",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "VPN Gateway to NAC allowed."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z7",
+        "target_zone": "z7",
+        "source_node": "n25",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation to Identity Server allowed."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z8",
+        "target_zone": "z7",
+        "source_node": "n26",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Test Workstation to Identity Server allowed."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n3",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Internet External Endpoint allowed."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Regional Office to Data Center allowed."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n9",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Branch Office to Data Center allowed."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Remote Access Server to Data Center allowed."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n25",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation to Data Center allowed."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n26",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Test Workstation to Data Center allowed."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n_struct1",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Internet to Data Center blocked."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n_struct1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Internet to Regional Office blocked."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z6",
+        "target_zone": "z3",
+        "source_node": "n_struct1",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Internet to Branch Office blocked."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z6",
+        "target_zone": "z5",
+        "source_node": "n_struct1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Internet to Remote Access Server blocked."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z6",
+        "target_zone": "z7",
+        "source_node": "n_struct1",
+        "target_node": "n25",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Internet to Admin Workstation blocked."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z6",
+        "target_zone": "z8",
+        "source_node": "n_struct1",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Internet to Test Workstation blocked."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Data Center to Internet blocked."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z2",
+        "target_zone": "z6",
+        "source_node": "n5",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Regional Office to Internet blocked."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z3",
+        "target_zone": "z6",
+        "source_node": "n9",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Branch Office to Internet blocked."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z5",
+        "target_zone": "z6",
+        "source_node": "n17",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Remote Access Server to Internet blocked."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z7",
+        "target_zone": "z6",
+        "source_node": "n25",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Admin Workstation to Internet blocked."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z8",
+        "target_zone": "z6",
+        "source_node": "n26",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Test Workstation to Internet blocked."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Data Center to Non-Production Zone blocked."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z2",
+        "target_zone": "z8",
+        "source_node": "n5",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Regional Office to Non-Production Zone blocked."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z3",
+        "target_zone": "z8",
+        "source_node": "n9",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Branch Office to Non-Production Zone blocked."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z5",
+        "target_zone": "z8",
+        "source_node": "n17",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Remote Access Server to Non-Production Zone blocked."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z7",
+        "target_zone": "z8",
+        "source_node": "n25",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Admin Workstation to Non-Production Zone blocked."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n26",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Non-Production Zone to Data Center blocked."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z8",
+        "target_zone": "z2",
+        "source_node": "n26",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Non-Production Zone to Regional Office blocked."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z8",
+        "target_zone": "z3",
+        "source_node": "n26",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Non-Production Zone to Branch Office blocked."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z8",
+        "target_zone": "z5",
+        "source_node": "n26",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Non-Production Zone to Remote Access Server blocked."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Government-1_req1/rag_without_repair/IG2/xml/IG2/generated_Government-1_req1_IG2.xml"
+}

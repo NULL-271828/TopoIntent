@@ -1,0 +1,6 @@
+{
+  "sample_id": "Government-4_req1",
+  "template_id": "Government-4",
+  "user_intent": "We need to set up a network for our government operations that handles both standard and sensitive information. It's critical that the sensitive systems are completely isolated and managed separately from the standard ones. We need our administrators to have dedicated, secure workstations for managing each environment. All internet-bound traffic from the standard environment must be filtered through a secure gateway.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

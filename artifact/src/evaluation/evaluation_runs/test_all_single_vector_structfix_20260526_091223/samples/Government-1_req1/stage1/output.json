@@ -1,0 +1,129 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-1_req1",
+    "title": "Government Secure Network",
+    "description": "Connect main data center to regional and branch offices with secure internet and remote access.",
+    "scenario": "government",
+    "topology_summary": "The topology includes a main data center, a regional office, and a branch office connected via a dedicated WAN. It features a secure internet perimeter with email and web filtering, and remote access capabilities.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Main Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Regional Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z4",
+        "name": "DMZ",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Remote Access",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Data Center Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Data Center Switch",
+        "normalized_type": "switch",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "WAN Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Regional Office Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Regional Office Switch",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Wireless Controller",
+        "normalized_type": "wireless_controller",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Branch Office Router",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n9",
+        "name": "Branch Office Switch",
+        "normalized_type": "switch",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n10",
+        "name": "Wireless Controller",
+        "normalized_type": "wireless_controller",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n11",
+        "name": "Web Filter",
+        "normalized_type": "waf",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n12",
+        "name": "Email Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n13",
+        "name": "VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z5"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Government-1_req1\", \"title\": \"Government Secure Network\", \"description\": \"Connect main data center to regional and branch offices with secure internet and remote access.\", \"scenario\": \"government\", \"topology_summary\": \"The topology includes a main data center, a regional office, and a branch office connected via a dedicated WAN. It features a secure internet perimeter with email and web filtering, and remote access capabilities.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Main Data Center\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z2\", \"name\": \"Regional Office\", \"zone_type\": \"enterprise\"}, {\"zone_id\": \"z3\", \"name\": \"Branch Office\", \"zone_type\": \"enterprise\"}, {\"zone_id\": \"z4\", \"name\": \"DMZ\", \"zone_type\": \"dmz\"}, {\"zone_id\": \"z5\", \"name\": \"Remote Access\", \"zone_type\": \"management\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Data Center Router\", \"normalized_type\": \"router\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Data Center Switch\", \"normalized_type\": \"switch\", \"zone_id\": \"z1\"}, {\"node_id\": \"n3\", \"name\": \"Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}, {\"node_id\": \"n4\", \"name\": \"WAN Router\", \"normalized_type\": \"router\", \"zone_id\": \"z1\"}, {\"node_id\": \"n5\", \"name\": \"Regional Office Router\", \"normalized_type\": \"router\", \"zone_id\": \"z2\"}, {\"node_id\": \"n6\", \"name\": \"Regional Office Switch\", \"normalized_type\": \"switch\", \"zone_id\": \"z2\"}, {\"node_id\": \"n7\", \"name\": \"Wireless Controller\", \"normalized_type\": \"wireless_controller\", \"zone_id\": \"z2\"}, {\"node_id\": \"n8\", \"name\": \"Branch Office Router\", \"normalized_type\": \"router\", \"zone_id\": \"z3\"}, {\"node_id\": \"n9\", \"name\": \"Branch Office Switch\", \"normalized_type\": \"switch\", \"zone_id\": \"z3\"}, {\"node_id\": \"n10\", \"name\": \"Wireless Controller\", \"normalized_type\": \"wireless_controller\", \"zone_id\": \"z3\"}, {\"node_id\": \"n11\", \"name\": \"Web Filter\", \"normalized_type\": \"waf\", \"zone_id\": \"z4\"}, {\"node_id\": \"n12\", \"name\": \"Email Filter\", \"normalized_type\": \"ids_ips\", \"zone_id\": \"z4\"}, {\"node_id\": \"n13\", \"name\": \"VPN Gateway\", \"normalized_type\": \"vpn_gateway\", \"zone_id\": \"z5\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 12.018
+  }
+}

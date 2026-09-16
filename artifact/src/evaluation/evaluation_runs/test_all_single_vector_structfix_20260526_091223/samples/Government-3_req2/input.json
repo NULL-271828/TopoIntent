@@ -1,0 +1,6 @@
+{
+  "sample_id": "Government-3_req2",
+  "template_id": "Government-3",
+  "user_intent": "We require an Azure network built on a hub-and-spoke model. The central hub must contain an Azure Firewall for traffic inspection and an Azure Bastion for secure management access. The spokes should be separate VNETs for different tiers, including identity, operations, and workloads. All inter-spoke traffic must be forced through the hub firewall. Also, apply NSG rules to all subnets for granular filtering and ensure traffic logs are captured in a Log Analytics workspace.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

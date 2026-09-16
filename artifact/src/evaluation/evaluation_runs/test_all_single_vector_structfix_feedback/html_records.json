@@ -1,0 +1,114 @@
+[
+  {
+    "sample_id": "Financial-2_req1",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-2_req1/stage5_2_feedback/stage5_2_visualization_generated_Financial-2_req1_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Financial-2_req2",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-2_req2/stage5_2_feedback/stage5_2_visualization_generated_Financial-2_req2_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Financial-3_req1",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-3_req1/stage5_2_feedback/stage5_2_visualization_generated_Financial-3_req1_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Financial-3_req2",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-3_req2/stage5_2_feedback/stage5_2_visualization_generated_Financial-3_req2_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Financial-4_req1",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-4_req1/stage5_2_feedback/stage5_2_visualization_generated_Financial-4_req1_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Financial-4_req2",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Financial-4_req2/stage5_2_feedback/stage5_2_visualization_generated_Financial-4_req2_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Government-1_req1",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-1_req1/stage5_2_feedback/stage5_2_visualization_generated_Government-1_req1_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Government-1_req2",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-1_req2/stage5_2_feedback/stage5_2_visualization_generated_Government-1_req2_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Government-2_req1",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-2_req1/stage5_2_feedback/stage5_2_visualization_generated_Government-2_req1_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Government-2_req2",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-2_req2/stage5_2_feedback/stage5_2_visualization_generated_Government-2_req2_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Government-3_req1",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-3_req1/stage5_2_feedback/stage5_2_visualization_generated_Government-3_req1_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Government-3_req2",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-3_req2/stage5_2_feedback/stage5_2_visualization_generated_Government-3_req2_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Government-4_req1",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-4_req1/stage5_2_feedback/stage5_2_visualization_generated_Government-4_req1_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  },
+  {
+    "sample_id": "Government-4_req2",
+    "html_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-4_req2/stage5_2_feedback/stage5_2_visualization_generated_Government-4_req2_20260526_141759.html",
+    "ig_levels": [
+      "IG2",
+      "IG3"
+    ]
+  }
+]

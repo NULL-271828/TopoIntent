@@ -1,0 +1,218 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Government-2_req1",
+  "title": "Government Data Center with Isolated Zones and DR Site",
+  "description": "A secure and resilient data center topology for government services with isolated internal and public-facing zones, logging, and disaster recovery.",
+  "scenario": "government",
+  "topology_summary": "This topology includes a DMZ for public-facing services, isolated internal development and production zones, a management zone for monitoring and logging, and a disaster recovery site for business continuity.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "DMZ",
+      "zone_type": "dmz"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Internal Development",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Internal Production",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Management",
+      "zone_type": "management"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Disaster Recovery",
+      "zone_type": "data_center"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Firewall DMZ",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Web Server",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "Application Server",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "Database Server",
+      "normalized_type": "database",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n5",
+      "name": "Firewall Internal Dev",
+      "normalized_type": "firewall",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n6",
+      "name": "Development Workload",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n7",
+      "name": "Firewall Internal Prod",
+      "normalized_type": "firewall",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n8",
+      "name": "Production Workload",
+      "normalized_type": "workload",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n9",
+      "name": "SIEM",
+      "normalized_type": "siem",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n10",
+      "name": "IDS/IPS",
+      "normalized_type": "ids_ips",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n11",
+      "name": "DR Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n12",
+      "name": "DR Web Server",
+      "normalized_type": "server",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n13",
+      "name": "DR Application Server",
+      "normalized_type": "server",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n14",
+      "name": "DR Database Server",
+      "normalized_type": "database",
+      "zone_id": "z5"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "data_flow",
+        "label": "Web Traffic"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n1",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "App Traffic"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n1",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "DB Traffic"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n5",
+        "target": "n6",
+        "link_type": "data_flow",
+        "label": "Dev Traffic"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n7",
+        "target": "n8",
+        "link_type": "data_flow",
+        "label": "Prod Traffic"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n9",
+        "target": "n10",
+        "link_type": "monitoring",
+        "label": "Security Monitoring"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n11",
+        "target": "n12",
+        "link_type": "data_flow",
+        "label": "DR Web Traffic"
+      },
+      {
+        "link_id": "nl8",
+        "source": "n11",
+        "target": "n13",
+        "link_type": "data_flow",
+        "label": "DR App Traffic"
+      },
+      {
+        "link_id": "nl9",
+        "source": "n11",
+        "target": "n14",
+        "link_type": "data_flow",
+        "label": "DR DB Traffic"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z4",
+        "link_type": "monitoring",
+        "label": "Security Monitoring"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z2",
+        "target": "z4",
+        "link_type": "monitoring",
+        "label": "Security Monitoring"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z3",
+        "target": "z4",
+        "link_type": "monitoring",
+        "label": "Security Monitoring"
+      },
+      {
+        "link_id": "zl4",
+        "source": "z5",
+        "target": "z4",
+        "link_type": "monitoring",
+        "label": "Security Monitoring"
+      }
+    ]
+  }
+}

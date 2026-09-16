@@ -1,0 +1,2134 @@
+{
+  "sample_id": "Financial-4_req1",
+  "gt_template_id": "Financial-4",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-4_req1",
+    "title": "High Availability Branch Office",
+    "description": "A branch office network with emphasis on high availability and voice service continuity, connected to the central data center with a primary link and public phone network failover for voice services.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes a primary connection to the central data center and a secondary connection to the public phone network for voice failover. It supports SIP-based voice traffic and includes centralized user authentication and network traffic logging.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Public Phone Network",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Non-Production Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z6",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Security Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z9",
+        "name": "IaC Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z10",
+        "name": "Pen Test Management",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Primary Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Secondary Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "SIP Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Central Data Center Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Public Phone Network Gateway",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n9",
+        "name": "Voice Gateway",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "Switch",
+        "normalized_type": "switch",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "Firewall - Server",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n12",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "MFA/Identity Node",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "DNS Filtering Node",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n16",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n17",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n18",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n19",
+        "name": "NAC",
+        "normalized_type": "access_point",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n20",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n21",
+        "name": "Dedicated Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n22",
+        "name": "AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n23",
+        "name": "Penetration Testing Node",
+        "normalized_type": "other",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Non-Production Zone Representative Workload",
+        "normalized_type": "workload",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n_struct2",
+        "name": "Security Management Management Service",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n24",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n25",
+        "name": "IaC Tool",
+        "normalized_type": "server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n26",
+        "name": "Pen Test Schedule",
+        "normalized_type": "server",
+        "zone_id": "z10"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n3",
+          "link_type": "uplink",
+          "label": "Primary Link"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n2",
+          "target": "n3",
+          "link_type": "uplink",
+          "label": "Backup Link"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n3",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "SIP Traffic"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n3",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Authentication"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n3",
+          "target": "n6",
+          "link_type": "monitoring",
+          "label": "Traffic Logging"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n3",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Voice Failover"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n9",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Public Phone Network"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n10",
+          "target": "n4",
+          "link_type": "trunk",
+          "label": "Internal Network"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n10",
+          "target": "n5",
+          "link_type": "trunk",
+          "label": "Internal Network"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n10",
+          "target": "n6",
+          "link_type": "trunk",
+          "label": "Internal Network"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n10",
+          "target": "n9",
+          "link_type": "trunk",
+          "label": "Internal Network"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n11",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Server Firewall"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n12",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "DNS Resolution"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n13",
+          "target": "n3",
+          "link_type": "management",
+          "label": "MFA for Remote Access"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n14",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n15",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "URL Filtering"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n16",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "Central Firewall"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n16",
+          "target": "n2",
+          "link_type": "uplink",
+          "label": "Central Firewall"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n17",
+          "target": "n16",
+          "link_type": "monitoring",
+          "label": "NIDS"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n18",
+          "target": "n16",
+          "link_type": "monitoring",
+          "label": "NIPS"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n19",
+          "target": "n10",
+          "link_type": "management",
+          "label": "NAC"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n20",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Application Layer Filtering"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n21",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Admin Workstation"
+        },
+        {
+          "link_id": "nl24",
+          "source": "n22",
+          "target": "n16",
+          "link_type": "management",
+          "label": "AAA Integration"
+        },
+        {
+          "link_id": "nl25",
+          "source": "n23",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Penetration Testing"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n3",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct2",
+          "source": "n3",
+          "target": "n_struct2",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl26",
+          "source": "n24",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl27",
+          "source": "n24",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl28",
+          "source": "n24",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl29",
+          "source": "n24",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl30",
+          "source": "n24",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl31",
+          "source": "n24",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl32",
+          "source": "n24",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl33",
+          "source": "n24",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl34",
+          "source": "n24",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl35",
+          "source": "n24",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl36",
+          "source": "n24",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl37",
+          "source": "n24",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl38",
+          "source": "n24",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl39",
+          "source": "n24",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl40",
+          "source": "n24",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl41",
+          "source": "n24",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl42",
+          "source": "n24",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl43",
+          "source": "n24",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl44",
+          "source": "n24",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl45",
+          "source": "n24",
+          "target": "n20",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl46",
+          "source": "n24",
+          "target": "n21",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl47",
+          "source": "n24",
+          "target": "n22",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl48",
+          "source": "n24",
+          "target": "n23",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl49",
+          "source": "n24",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl50",
+          "source": "n24",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Asset Tracking"
+        },
+        {
+          "link_id": "nl51",
+          "source": "n25",
+          "target": "n1",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl52",
+          "source": "n25",
+          "target": "n2",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl53",
+          "source": "n25",
+          "target": "n3",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl54",
+          "source": "n25",
+          "target": "n4",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl55",
+          "source": "n25",
+          "target": "n5",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl56",
+          "source": "n25",
+          "target": "n6",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl57",
+          "source": "n25",
+          "target": "n7",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl58",
+          "source": "n25",
+          "target": "n8",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl59",
+          "source": "n25",
+          "target": "n9",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl60",
+          "source": "n25",
+          "target": "n10",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl61",
+          "source": "n25",
+          "target": "n11",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl62",
+          "source": "n25",
+          "target": "n12",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl63",
+          "source": "n25",
+          "target": "n13",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl64",
+          "source": "n25",
+          "target": "n14",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl65",
+          "source": "n25",
+          "target": "n15",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl66",
+          "source": "n25",
+          "target": "n16",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl67",
+          "source": "n25",
+          "target": "n17",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl68",
+          "source": "n25",
+          "target": "n18",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl69",
+          "source": "n25",
+          "target": "n19",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl70",
+          "source": "n25",
+          "target": "n20",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl71",
+          "source": "n25",
+          "target": "n21",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl72",
+          "source": "n25",
+          "target": "n22",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl73",
+          "source": "n25",
+          "target": "n23",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl74",
+          "source": "n25",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl75",
+          "source": "n25",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "nl76",
+          "source": "n26",
+          "target": "n23",
+          "link_type": "management",
+          "label": "Pen Test Schedule"
+        },
+        {
+          "link_id": "nl_new1",
+          "source": "n1",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Data Flow to Data Center"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n9",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Data Flow to Public Phone Network"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z2",
+          "link_type": "uplink",
+          "label": "Primary Link"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z3",
+          "link_type": "data_flow",
+          "label": "Voice Failover"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "Non-Production Peering"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Management Access"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Penetration Testing Access"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z8",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z9",
+          "target": "z1",
+          "link_type": "management",
+          "label": "IaC Management"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z10",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Pen Test Management"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-4_req1",
+    "ig_level": "IG3",
+    "all_required_satisfied": false,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an Asset Management System (n24) that tracks and manages assets across various zones, indicating a detailed and maintained inventory.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "manual_review",
+        "confidence": 0.5,
+        "evidence": "The topology includes several data flow links, but there is no explicit documentation of these data flows. A human review is needed to confirm if the data flows are documented.",
+        "missing_reason": "No explicit documentation of data flows.",
+        "repair_suggestion": "Add a node or link that explicitly represents data flow documentation."
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (e.g., z1, z5, z6) that are segmented, and there are specific links and nodes (e.g., n11, n20) that enforce security policies, indicating segmentation based on data sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Firewall - Server (n11) that is linked to the server (n4), indicating that a firewall is implemented and managed on the server.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS Server (n12) that is linked to the internal network (n10), indicating that trusted DNS servers are configured on enterprise assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA/Identity Node (n13) that is linked to the firewall (n3), indicating that MFA is required for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS Filtering Node (n14) that is linked to the internal network (n10), indicating that DNS filtering services are used.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Web Proxy (n15) that is linked to the internal network (n10), indicating that network-based URL filters are enforced.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones, firewalls, and security nodes (e.g., n11, n17, n18, n19, n20) that enforce security policies, indicating a secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes IaC Management (n25) that is linked to various nodes, indicating that network infrastructure is securely managed using IaC.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an AAA Server (n22) that is linked to the central firewall (n16), indicating centralized network AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Central Firewall (n16) that is linked to the primary and secondary routers (n1, n2), indicating that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Dedicated Admin Workstation (n21) that is linked to the central firewall (n16), indicating dedicated computing resources for administrative work.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIDS (n17) that is linked to the central firewall (n16), indicating a deployed network intrusion detection solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple firewalls (n3, n11, n16) and security nodes (n17, n18, n19, n20) that perform traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA/Identity Node (n13) and an AAA Server (n22) that manage access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a SIEM (n6) that is linked to the firewall (n3) and other nodes, indicating that network traffic flow logs are collected.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIPS (n18) that is linked to the central firewall (n16), indicating a deployed network intrusion prevention solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NAC (n19) that is linked to the internal network (n10), indicating deployed port-level access control.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an Application Firewall (n20) that is linked to the internal network (n10), indicating application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Non-Production Zone (z5) that is peered with the Branch Office (z1), indicating separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Penetration Testing Node (n23) that is linked to the central firewall (n16), indicating that periodic external penetration tests are performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity",
+        "stage4_ig_consistency"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z5\", \"name\": \"Non-Production Zone\", \"zone_type\": \"enterprise\"}",
+          "missing_reason": "Zone z5 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_ig_consistency",
+          "title": "ig3_missing_ig2_zone_semantics",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "[{\"zone_id\": \"z7\", \"name\": \"Security Management\", \"zone_type\": \"management\"}]",
+          "missing_reason": "IG3 topology removed or failed to preserve IG2 zone semantics.",
+          "repair_suggestion": "Add the missing IG2 zone semantics to IG3 as preserved or stricter zones, with representative nodes and concrete node_links. IG3 may add controls but must not reduce segmentation."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z7",
+            "name": "Security Management",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Non-Production Zone Representative Workload",
+            "normalized_type": "workload",
+            "zone_id": "z5"
+          },
+          {
+            "node_id": "n_struct2",
+            "name": "Security Management Management Service",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n3",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct2",
+              "source": "n3",
+              "target": "n_struct2",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 6,
+        "nodes": 23,
+        "zone_links": 5,
+        "node_links": 25
+      },
+      "counts_after": {
+        "zones": 7,
+        "nodes": 25,
+        "zone_links": 5,
+        "node_links": 27
+      },
+      "count_delta": {
+        "zones": 1,
+        "nodes": 2,
+        "zone_links": 0,
+        "node_links": 2
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "12.3",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of an asset inventory system or process.",
+          "missing_reason": "No explicit asset inventory system or process is shown in the topology.",
+          "repair_suggestion": "Add a node representing an asset management system and links to all other nodes to indicate asset tracking."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various network devices (e.g., routers, switches, firewalls) but does not explicitly show secure management practices like IaC or secure protocols.",
+          "missing_reason": "No explicit evidence of secure management practices like IaC or secure protocols.",
+          "repair_suggestion": "Add nodes representing IaC tools and links indicating secure protocol usage."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a Penetration Testing Node (n23) with a management link (nl25) to the central firewall (n16), but there is no explicit evidence of periodic testing.",
+          "missing_reason": "No explicit evidence of periodic external penetration testing.",
+          "repair_suggestion": "Add a node representing a penetration testing schedule and links to the Penetration Testing Node."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z8",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z9",
+            "name": "IaC Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z10",
+            "name": "Pen Test Management",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n24",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z8"
+          },
+          {
+            "node_id": "n25",
+            "name": "IaC Tool",
+            "normalized_type": "server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n26",
+            "name": "Pen Test Schedule",
+            "normalized_type": "server",
+            "zone_id": "z10"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl26",
+              "source": "n24",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl27",
+              "source": "n24",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl28",
+              "source": "n24",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl29",
+              "source": "n24",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl30",
+              "source": "n24",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl31",
+              "source": "n24",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl32",
+              "source": "n24",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl33",
+              "source": "n24",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl34",
+              "source": "n24",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl35",
+              "source": "n24",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl36",
+              "source": "n24",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl37",
+              "source": "n24",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl38",
+              "source": "n24",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl39",
+              "source": "n24",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl40",
+              "source": "n24",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl41",
+              "source": "n24",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl42",
+              "source": "n24",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl43",
+              "source": "n24",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl44",
+              "source": "n24",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl45",
+              "source": "n24",
+              "target": "n20",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl46",
+              "source": "n24",
+              "target": "n21",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl47",
+              "source": "n24",
+              "target": "n22",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl48",
+              "source": "n24",
+              "target": "n23",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl49",
+              "source": "n24",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl50",
+              "source": "n24",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Asset Tracking"
+            },
+            {
+              "link_id": "nl51",
+              "source": "n25",
+              "target": "n1",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl52",
+              "source": "n25",
+              "target": "n2",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl53",
+              "source": "n25",
+              "target": "n3",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl54",
+              "source": "n25",
+              "target": "n4",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl55",
+              "source": "n25",
+              "target": "n5",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl56",
+              "source": "n25",
+              "target": "n6",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl57",
+              "source": "n25",
+              "target": "n7",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl58",
+              "source": "n25",
+              "target": "n8",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl59",
+              "source": "n25",
+              "target": "n9",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl60",
+              "source": "n25",
+              "target": "n10",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl61",
+              "source": "n25",
+              "target": "n11",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl62",
+              "source": "n25",
+              "target": "n12",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl63",
+              "source": "n25",
+              "target": "n13",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl64",
+              "source": "n25",
+              "target": "n14",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl65",
+              "source": "n25",
+              "target": "n15",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl66",
+              "source": "n25",
+              "target": "n16",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl67",
+              "source": "n25",
+              "target": "n17",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl68",
+              "source": "n25",
+              "target": "n18",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl69",
+              "source": "n25",
+              "target": "n19",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl70",
+              "source": "n25",
+              "target": "n20",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl71",
+              "source": "n25",
+              "target": "n21",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl72",
+              "source": "n25",
+              "target": "n22",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl73",
+              "source": "n25",
+              "target": "n23",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl74",
+              "source": "n25",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl75",
+              "source": "n25",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "nl76",
+              "source": "n26",
+              "target": "n23",
+              "link_type": "management",
+              "label": "Pen Test Schedule"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl6",
+              "source": "z8",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl7",
+              "source": "z9",
+              "target": "z1",
+              "link_type": "management",
+              "label": "IaC Management"
+            },
+            {
+              "link_id": "zl8",
+              "source": "z10",
+              "target": "z6",
+              "link_type": "management",
+              "label": "Pen Test Management"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 25,
+        "zone_links": 5,
+        "node_links": 27
+      },
+      "counts_after": {
+        "zones": 10,
+        "nodes": 28,
+        "zone_links": 8,
+        "node_links": 78
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 3,
+        "zone_links": 3,
+        "node_links": 51
+      }
+    },
+    {
+      "round": 2,
+      "controls_repaired": [
+        "3.8"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show or label data flow documentation.",
+          "missing_reason": "No explicit data flow documentation is present in the topology.",
+          "repair_suggestion": "Add explicit data flow documentation to the topology, including service provider data flows."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new1",
+              "source": "n1",
+              "target": "n7",
+              "link_type": "data_flow",
+              "label": "Data Flow to Data Center"
+            },
+            {
+              "link_id": "nl_new2",
+              "source": "n9",
+              "target": "n8",
+              "link_type": "data_flow",
+              "label": "Data Flow to Public Phone Network"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 10,
+        "nodes": 28,
+        "zone_links": 8,
+        "node_links": 78
+      },
+      "counts_after": {
+        "zones": 10,
+        "nodes": 28,
+        "zone_links": 8,
+        "node_links": 80
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 0,
+        "zone_links": 0,
+        "node_links": 2
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Financial-4_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary Router to Firewall: Management"
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n4",
+        "protocol": "udp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Firewall to SIP Server: SIP Traffic"
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Firewall to Identity Server: Authentication"
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Firewall to SIEM: Traffic Logging"
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n3",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Firewall to Voice Gateway: Voice Failover"
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n9",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Voice Gateway to Public Phone Network Gateway: Voice Failover"
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Switch to SIP Server: Internal Network"
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Switch to Identity Server: Internal Network"
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Switch to SIEM: Internal Network"
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Switch to Voice Gateway: Internal Network"
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Firewall - Server to SIP Server: Server Firewall"
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Server to Switch: DNS Resolution"
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA/Identity Node to Firewall: MFA for Remote Access"
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS Filtering Node to Switch: DNS Filtering"
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web Proxy to Switch: URL Filtering"
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Central Firewall to Primary Router: Central Firewall"
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Central Firewall to Secondary Router: Central Firewall"
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS to Central Firewall: Monitoring"
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIPS to Central Firewall: Monitoring"
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n19",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "NAC to Switch: Management"
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n20",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Application Firewall to Switch: Application Layer Filtering"
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n21",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin Workstation to Central Firewall: Management"
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n22",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "AAA Server to Central Firewall: AAA Integration"
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n23",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Penetration Testing Node to Central Firewall: Penetration Testing"
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n3",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Firewall to Non-Production Workload: Structural Zone Attachment"
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n3",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall to Security Management Service: Structural Zone Attachment"
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n24",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset Management System to Primary Router: Asset Tracking"
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z9",
+        "target_zone": "z1",
+        "source_node": "n25",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC Tool to Primary Router: IaC Management"
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z10",
+        "target_zone": "z6",
+        "source_node": "n26",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen Test Schedule to Penetration Testing Node: Pen Test Schedule"
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary Router to Central Data Center Router: Data Flow"
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n9",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Voice Gateway to Public Phone Network Gateway: Data Flow"
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary Router to Non-Production Workload: Isolated"
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary Router to Penetration Testing Node: Isolated"
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary Router to Admin Workstation: Isolated"
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary Router to Security Management Service: Isolated"
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary Router to Asset Management System: Isolated"
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z1",
+        "target_zone": "z9",
+        "source_node": "n1",
+        "target_node": "n25",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary Router to IaC Tool: Isolated"
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z1",
+        "target_zone": "z10",
+        "source_node": "n1",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary Router to Pen Test Schedule: Isolated"
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary Router to Public Phone Network Gateway: Isolated"
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary Router to Central Data Center Router: Isolated"
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_structfix_20260526_130809/samples/Financial-4_req1/rag_without_feedback/IG3/xml/IG3/generated_Financial-4_req1_IG3.xml"
+}

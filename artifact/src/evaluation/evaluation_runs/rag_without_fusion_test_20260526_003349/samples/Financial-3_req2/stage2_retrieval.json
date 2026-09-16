@@ -1,0 +1,31 @@
+{
+  "sample_id": "Financial-3_req2",
+  "gt_template_id": "Financial-3",
+  "retrieved_templates": [
+    {
+      "template_id": "Cloud-2",
+      "score": 0.8365,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Cloud-1",
+      "score": 0.8021,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Education-3",
+      "score": 0.7593,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Cloud-3",
+      "score": 0.7377,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Enterprise-3",
+      "score": 0.7372,
+      "retrieval_mode": "single_vector"
+    }
+  ]
+}

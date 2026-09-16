@@ -1,0 +1,4216 @@
+{
+  "sample_id": "Government-2_req2",
+  "gt_template_id": "Government-2",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-2_req2",
+    "title": "Secure Government Data Center",
+    "description": "A secure government data center with a DMZ, load-balanced web servers, and segmented production, staging, and management zones.",
+    "scenario": "government",
+    "topology_summary": "The topology includes a screened DMZ with a WAF and load-balanced web servers. The core application and database servers are in a production zone, while internal firewalls segment the staging and management networks. Redundant connectivity, content filtering, and SIEM integration are provided.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "DMZ",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Production",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Staging",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z5",
+        "name": "DR Site",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Content Filtering",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z7",
+        "name": "External Testing",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Admin Workstations",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_preserve1",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Remote Access",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new1",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new2",
+        "name": "Data Flow Documentation",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z_new3",
+        "name": "Penetration Testing",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z_new4",
+        "name": "Asset Management",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "WAF",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Load Balancer",
+        "normalized_type": "load_balancer",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Web Server 1",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "Web Server 2",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Internal Firewall 1",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Internal Firewall 2",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Application Server",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Database Server",
+        "normalized_type": "database",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n9",
+        "name": "Internal Firewall 3",
+        "normalized_type": "firewall",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n10",
+        "name": "Staging Server",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n11",
+        "name": "Management Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n12",
+        "name": "Management Server",
+        "normalized_type": "server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n13",
+        "name": "Edge Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "DR Router",
+        "normalized_type": "router",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n16",
+        "name": "Content Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n17",
+        "name": "Switch 1",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n18",
+        "name": "Switch 2",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n19",
+        "name": "Switch 3",
+        "normalized_type": "switch",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n20",
+        "name": "Switch 4",
+        "normalized_type": "switch",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n21",
+        "name": "DR Switch",
+        "normalized_type": "switch",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n22",
+        "name": "DNS Server 1",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n23",
+        "name": "DNS Server 2",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n24",
+        "name": "MFA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n25",
+        "name": "DNS Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n26",
+        "name": "Web Proxy",
+        "normalized_type": "ids_ips",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n27",
+        "name": "AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n28",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n29",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n30",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n31",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n32",
+        "name": "Admin Workstation 1",
+        "normalized_type": "endpoint",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n33",
+        "name": "Admin Workstation 2",
+        "normalized_type": "endpoint",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "External Testing External Endpoint",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n_struct2",
+        "name": "Asset Management Management Service",
+        "normalized_type": "server",
+        "zone_id": "z_preserve1"
+      },
+      {
+        "node_id": "n_struct3",
+        "name": "Remote Access Management Service",
+        "normalized_type": "server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n_new1",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z_new1"
+      },
+      {
+        "node_id": "n_new2",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z_new2"
+      },
+      {
+        "node_id": "n_new3",
+        "name": "VPN Service",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n_new4",
+        "name": "Access Control Policy Manager",
+        "normalized_type": "identity_server",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n_new5",
+        "name": "Penetration Testing Service",
+        "normalized_type": "ids_ips",
+        "zone_id": "z_new3"
+      },
+      {
+        "node_id": "n_new6",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z_new4"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n13",
+          "target": "n17",
+          "link_type": "uplink",
+          "label": "Production to Switch 1"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n17",
+          "target": "n7",
+          "link_type": "uplink",
+          "label": "Switch 1 to Internal Firewall 1"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n17",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "Switch 1 to Internal Firewall 2"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n18",
+          "target": "n9",
+          "link_type": "uplink",
+          "label": "Switch 2 to Internal Firewall 3"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n18",
+          "target": "n11",
+          "link_type": "uplink",
+          "label": "Switch 2 to Management Firewall"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n19",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "Switch 3 to Staging Server"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n20",
+          "target": "n12",
+          "link_type": "uplink",
+          "label": "Switch 4 to Management Server"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n16",
+          "target": "n13",
+          "link_type": "uplink",
+          "label": "Content Filter to Edge Router"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n16",
+          "target": "n14",
+          "link_type": "uplink",
+          "label": "Content Filter to SIEM"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n21",
+          "target": "n15",
+          "link_type": "uplink",
+          "label": "DR Switch to DR Router"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n22",
+          "target": "n13",
+          "link_type": "uplink",
+          "label": "DNS Server 1 to Edge Router"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n23",
+          "target": "n13",
+          "link_type": "uplink",
+          "label": "DNS Server 2 to Edge Router"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n24",
+          "target": "n13",
+          "link_type": "uplink",
+          "label": "MFA Server to Edge Router"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n25",
+          "target": "n13",
+          "link_type": "uplink",
+          "label": "DNS Filter to Edge Router"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n26",
+          "target": "n13",
+          "link_type": "uplink",
+          "label": "Web Proxy to Edge Router"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n27",
+          "target": "n13",
+          "link_type": "uplink",
+          "label": "AAA Server to Edge Router"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n28",
+          "target": "n17",
+          "link_type": "uplink",
+          "label": "NIDS to Switch 1"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n29",
+          "target": "n17",
+          "link_type": "uplink",
+          "label": "NIPS to Switch 1"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n30",
+          "target": "n17",
+          "link_type": "uplink",
+          "label": "NAC to Switch 1"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n31",
+          "target": "n17",
+          "link_type": "uplink",
+          "label": "Application Firewall to Switch 1"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n32",
+          "target": "n20",
+          "link_type": "uplink",
+          "label": "Admin Workstation 1 to Switch 4"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n33",
+          "target": "n20",
+          "link_type": "uplink",
+          "label": "Admin Workstation 2 to Switch 4"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n5",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct2",
+          "source": "n5",
+          "target": "n_struct2",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct3",
+          "source": "n5",
+          "target": "n_struct3",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_new1",
+          "source": "n_new1",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Manage WAF"
+        },
+        {
+          "link_id": "nl_new2",
+          "source": "n_new1",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Manage Load Balancer"
+        },
+        {
+          "link_id": "nl_new3",
+          "source": "n_new1",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Manage Web Server 1"
+        },
+        {
+          "link_id": "nl_new4",
+          "source": "n_new1",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Manage Web Server 2"
+        },
+        {
+          "link_id": "nl_new5",
+          "source": "n_new1",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Manage Internal Firewall 1"
+        },
+        {
+          "link_id": "nl_new6",
+          "source": "n_new1",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Manage Internal Firewall 2"
+        },
+        {
+          "link_id": "nl_new7",
+          "source": "n_new1",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Manage Application Server"
+        },
+        {
+          "link_id": "nl_new8",
+          "source": "n_new1",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Manage Database Server"
+        },
+        {
+          "link_id": "nl_new9",
+          "source": "n_new1",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Manage Internal Firewall 3"
+        },
+        {
+          "link_id": "nl_new10",
+          "source": "n_new1",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Manage Staging Server"
+        },
+        {
+          "link_id": "nl_new11",
+          "source": "n_new1",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Manage Management Firewall"
+        },
+        {
+          "link_id": "nl_new12",
+          "source": "n_new1",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Manage Management Server"
+        },
+        {
+          "link_id": "nl_new13",
+          "source": "n_new1",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Manage Edge Router"
+        },
+        {
+          "link_id": "nl_new14",
+          "source": "n_new1",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Manage SIEM"
+        },
+        {
+          "link_id": "nl_new15",
+          "source": "n_new1",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Manage DR Router"
+        },
+        {
+          "link_id": "nl_new16",
+          "source": "n_new1",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Manage Content Filter"
+        },
+        {
+          "link_id": "nl_new17",
+          "source": "n_new1",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Manage Switch 1"
+        },
+        {
+          "link_id": "nl_new18",
+          "source": "n_new1",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Manage Switch 2"
+        },
+        {
+          "link_id": "nl_new19",
+          "source": "n_new1",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Manage Switch 3"
+        },
+        {
+          "link_id": "nl_new20",
+          "source": "n_new1",
+          "target": "n20",
+          "link_type": "management",
+          "label": "Manage Switch 4"
+        },
+        {
+          "link_id": "nl_new21",
+          "source": "n_new1",
+          "target": "n21",
+          "link_type": "management",
+          "label": "Manage DR Switch"
+        },
+        {
+          "link_id": "nl_new22",
+          "source": "n_new1",
+          "target": "n22",
+          "link_type": "management",
+          "label": "Manage DNS Server 1"
+        },
+        {
+          "link_id": "nl_new23",
+          "source": "n_new1",
+          "target": "n23",
+          "link_type": "management",
+          "label": "Manage DNS Server 2"
+        },
+        {
+          "link_id": "nl_new24",
+          "source": "n_new1",
+          "target": "n24",
+          "link_type": "management",
+          "label": "Manage MFA Server"
+        },
+        {
+          "link_id": "nl_new25",
+          "source": "n_new1",
+          "target": "n25",
+          "link_type": "management",
+          "label": "Manage DNS Filter"
+        },
+        {
+          "link_id": "nl_new26",
+          "source": "n_new1",
+          "target": "n26",
+          "link_type": "management",
+          "label": "Manage Web Proxy"
+        },
+        {
+          "link_id": "nl_new27",
+          "source": "n_new1",
+          "target": "n27",
+          "link_type": "management",
+          "label": "Manage AAA Server"
+        },
+        {
+          "link_id": "nl_new28",
+          "source": "n_new1",
+          "target": "n28",
+          "link_type": "management",
+          "label": "Manage NIDS"
+        },
+        {
+          "link_id": "nl_new29",
+          "source": "n_new1",
+          "target": "n29",
+          "link_type": "management",
+          "label": "Manage NIPS"
+        },
+        {
+          "link_id": "nl_new30",
+          "source": "n_new1",
+          "target": "n30",
+          "link_type": "management",
+          "label": "Manage NAC"
+        },
+        {
+          "link_id": "nl_new31",
+          "source": "n_new1",
+          "target": "n31",
+          "link_type": "management",
+          "label": "Manage Application Firewall"
+        },
+        {
+          "link_id": "nl_new32",
+          "source": "n_new1",
+          "target": "n32",
+          "link_type": "management",
+          "label": "Manage Admin Workstation 1"
+        },
+        {
+          "link_id": "nl_new33",
+          "source": "n_new1",
+          "target": "n33",
+          "link_type": "management",
+          "label": "Manage Admin Workstation 2"
+        },
+        {
+          "link_id": "nl_new34",
+          "source": "n_new1",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Manage External Testing External Endpoint"
+        },
+        {
+          "link_id": "nl_new35",
+          "source": "n_new1",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Manage Asset Management Management Service"
+        },
+        {
+          "link_id": "nl_new36",
+          "source": "n_new1",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "Manage Remote Access Management Service"
+        },
+        {
+          "link_id": "nl_new37",
+          "source": "n_new2",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Document WAF Data Flows"
+        },
+        {
+          "link_id": "nl_new38",
+          "source": "n_new2",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Document Load Balancer Data Flows"
+        },
+        {
+          "link_id": "nl_new39",
+          "source": "n_new2",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Document Web Server 1 Data Flows"
+        },
+        {
+          "link_id": "nl_new40",
+          "source": "n_new2",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Document Web Server 2 Data Flows"
+        },
+        {
+          "link_id": "nl_new41",
+          "source": "n_new2",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Document Internal Firewall 1 Data Flows"
+        },
+        {
+          "link_id": "nl_new42",
+          "source": "n_new2",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Document Internal Firewall 2 Data Flows"
+        },
+        {
+          "link_id": "nl_new43",
+          "source": "n_new2",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Document Application Server Data Flows"
+        },
+        {
+          "link_id": "nl_new44",
+          "source": "n_new2",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Document Database Server Data Flows"
+        },
+        {
+          "link_id": "nl_new45",
+          "source": "n_new2",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Document Internal Firewall 3 Data Flows"
+        },
+        {
+          "link_id": "nl_new46",
+          "source": "n_new2",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Document Staging Server Data Flows"
+        },
+        {
+          "link_id": "nl_new47",
+          "source": "n_new2",
+          "target": "n11",
+          "link_type": "data_flow",
+          "label": "Document Management Firewall Data Flows"
+        },
+        {
+          "link_id": "nl_new48",
+          "source": "n_new2",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "Document Management Server Data Flows"
+        },
+        {
+          "link_id": "nl_new49",
+          "source": "n_new2",
+          "target": "n13",
+          "link_type": "data_flow",
+          "label": "Document Edge Router Data Flows"
+        },
+        {
+          "link_id": "nl_new50",
+          "source": "n_new2",
+          "target": "n14",
+          "link_type": "data_flow",
+          "label": "Document SIEM Data Flows"
+        },
+        {
+          "link_id": "nl_new51",
+          "source": "n_new2",
+          "target": "n15",
+          "link_type": "data_flow",
+          "label": "Document DR Router Data Flows"
+        },
+        {
+          "link_id": "nl_new52",
+          "source": "n_new2",
+          "target": "n16",
+          "link_type": "data_flow",
+          "label": "Document Content Filter Data Flows"
+        },
+        {
+          "link_id": "nl_new53",
+          "source": "n_new2",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "Document Switch 1 Data Flows"
+        },
+        {
+          "link_id": "nl_new54",
+          "source": "n_new2",
+          "target": "n18",
+          "link_type": "data_flow",
+          "label": "Document Switch 2 Data Flows"
+        },
+        {
+          "link_id": "nl_new55",
+          "source": "n_new2",
+          "target": "n19",
+          "link_type": "data_flow",
+          "label": "Document Switch 3 Data Flows"
+        },
+        {
+          "link_id": "nl_new56",
+          "source": "n_new2",
+          "target": "n20",
+          "link_type": "data_flow",
+          "label": "Document Switch 4 Data Flows"
+        },
+        {
+          "link_id": "nl_new57",
+          "source": "n_new2",
+          "target": "n21",
+          "link_type": "data_flow",
+          "label": "Document DR Switch Data Flows"
+        },
+        {
+          "link_id": "nl_new58",
+          "source": "n_new2",
+          "target": "n22",
+          "link_type": "data_flow",
+          "label": "Document DNS Server 1 Data Flows"
+        },
+        {
+          "link_id": "nl_new59",
+          "source": "n_new2",
+          "target": "n23",
+          "link_type": "data_flow",
+          "label": "Document DNS Server 2 Data Flows"
+        },
+        {
+          "link_id": "nl_new60",
+          "source": "n_new2",
+          "target": "n24",
+          "link_type": "data_flow",
+          "label": "Document MFA Server Data Flows"
+        },
+        {
+          "link_id": "nl_new61",
+          "source": "n_new2",
+          "target": "n25",
+          "link_type": "data_flow",
+          "label": "Document DNS Filter Data Flows"
+        },
+        {
+          "link_id": "nl_new62",
+          "source": "n_new2",
+          "target": "n26",
+          "link_type": "data_flow",
+          "label": "Document Web Proxy Data Flows"
+        },
+        {
+          "link_id": "nl_new63",
+          "source": "n_new2",
+          "target": "n27",
+          "link_type": "data_flow",
+          "label": "Document AAA Server Data Flows"
+        },
+        {
+          "link_id": "nl_new64",
+          "source": "n_new2",
+          "target": "n28",
+          "link_type": "data_flow",
+          "label": "Document NIDS Data Flows"
+        },
+        {
+          "link_id": "nl_new65",
+          "source": "n_new2",
+          "target": "n29",
+          "link_type": "data_flow",
+          "label": "Document NIPS Data Flows"
+        },
+        {
+          "link_id": "nl_new66",
+          "source": "n_new2",
+          "target": "n30",
+          "link_type": "data_flow",
+          "label": "Document NAC Data Flows"
+        },
+        {
+          "link_id": "nl_new67",
+          "source": "n_new2",
+          "target": "n31",
+          "link_type": "data_flow",
+          "label": "Document Application Firewall Data Flows"
+        },
+        {
+          "link_id": "nl_new68",
+          "source": "n_new2",
+          "target": "n32",
+          "link_type": "data_flow",
+          "label": "Document Admin Workstation 1 Data Flows"
+        },
+        {
+          "link_id": "nl_new69",
+          "source": "n_new2",
+          "target": "n33",
+          "link_type": "data_flow",
+          "label": "Document Admin Workstation 2 Data Flows"
+        },
+        {
+          "link_id": "nl_new70",
+          "source": "n_new2",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Document External Testing External Endpoint Data Flows"
+        },
+        {
+          "link_id": "nl_new71",
+          "source": "n_new2",
+          "target": "n_struct2",
+          "link_type": "data_flow",
+          "label": "Document Asset Management Management Service Data Flows"
+        },
+        {
+          "link_id": "nl_new72",
+          "source": "n_new2",
+          "target": "n_struct3",
+          "link_type": "data_flow",
+          "label": "Document Remote Access Management Service Data Flows"
+        },
+        {
+          "link_id": "nl_new73",
+          "source": "n_new3",
+          "target": "n_struct3",
+          "link_type": "vpn",
+          "label": "Remote Access via VPN"
+        },
+        {
+          "link_id": "nl_new74",
+          "source": "n_new3",
+          "target": "n5",
+          "link_type": "vpn",
+          "label": "Internal Firewall via VPN"
+        },
+        {
+          "link_id": "nl_new75",
+          "source": "n_new4",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "Manage Remote Access Policies"
+        },
+        {
+          "link_id": "nl_new76",
+          "source": "n_new4",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Manage Internal Firewall Policies"
+        },
+        {
+          "link_id": "nl_new77",
+          "source": "n_new5",
+          "target": "n_struct1",
+          "link_type": "data_flow",
+          "label": "Pen Test External Endpoint"
+        },
+        {
+          "link_id": "nl_new78",
+          "source": "n_new5",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Pen Test WAF"
+        },
+        {
+          "link_id": "nl_new79",
+          "source": "n_new6",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Manage WAF"
+        },
+        {
+          "link_id": "nl_new80",
+          "source": "n_new6",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Manage Load Balancer"
+        },
+        {
+          "link_id": "nl_new81",
+          "source": "n_new6",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Manage Web Server 1"
+        },
+        {
+          "link_id": "nl_new82",
+          "source": "n_new6",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Manage Web Server 2"
+        },
+        {
+          "link_id": "nl_new83",
+          "source": "n_new6",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Manage Internal Firewall 1"
+        },
+        {
+          "link_id": "nl_new84",
+          "source": "n_new6",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Manage Internal Firewall 2"
+        },
+        {
+          "link_id": "nl_new85",
+          "source": "n_new6",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Manage Application Server"
+        },
+        {
+          "link_id": "nl_new86",
+          "source": "n_new6",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Manage Database Server"
+        },
+        {
+          "link_id": "nl_new87",
+          "source": "n_new6",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Manage Internal Firewall 3"
+        },
+        {
+          "link_id": "nl_new88",
+          "source": "n_new6",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Manage Staging Server"
+        },
+        {
+          "link_id": "nl_new89",
+          "source": "n_new6",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Manage Management Firewall"
+        },
+        {
+          "link_id": "nl_new90",
+          "source": "n_new6",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Manage Management Server"
+        },
+        {
+          "link_id": "nl_new91",
+          "source": "n_new6",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Manage Edge Router"
+        },
+        {
+          "link_id": "nl_new92",
+          "source": "n_new6",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Manage SIEM"
+        },
+        {
+          "link_id": "nl_new93",
+          "source": "n_new6",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Manage DR Router"
+        },
+        {
+          "link_id": "nl_new94",
+          "source": "n_new6",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Manage Content Filter"
+        },
+        {
+          "link_id": "nl_new95",
+          "source": "n_new6",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Manage Switch 1"
+        },
+        {
+          "link_id": "nl_new96",
+          "source": "n_new6",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Manage Switch 2"
+        },
+        {
+          "link_id": "nl_new97",
+          "source": "n_new6",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Manage Switch 3"
+        },
+        {
+          "link_id": "nl_new98",
+          "source": "n_new6",
+          "target": "n20",
+          "link_type": "management",
+          "label": "Manage Switch 4"
+        },
+        {
+          "link_id": "nl_new99",
+          "source": "n_new6",
+          "target": "n21",
+          "link_type": "management",
+          "label": "Manage DR Switch"
+        },
+        {
+          "link_id": "nl_new100",
+          "source": "n_new6",
+          "target": "n22",
+          "link_type": "management",
+          "label": "Manage DNS Server 1"
+        },
+        {
+          "link_id": "nl_new101",
+          "source": "n_new6",
+          "target": "n23",
+          "link_type": "management",
+          "label": "Manage DNS Server 2"
+        },
+        {
+          "link_id": "nl_new102",
+          "source": "n_new6",
+          "target": "n24",
+          "link_type": "management",
+          "label": "Manage MFA Server"
+        },
+        {
+          "link_id": "nl_new103",
+          "source": "n_new6",
+          "target": "n25",
+          "link_type": "management",
+          "label": "Manage DNS Filter"
+        },
+        {
+          "link_id": "nl_new104",
+          "source": "n_new6",
+          "target": "n26",
+          "link_type": "management",
+          "label": "Manage Web Proxy"
+        },
+        {
+          "link_id": "nl_new105",
+          "source": "n_new6",
+          "target": "n27",
+          "link_type": "management",
+          "label": "Manage AAA Server"
+        },
+        {
+          "link_id": "nl_new106",
+          "source": "n_new6",
+          "target": "n28",
+          "link_type": "management",
+          "label": "Manage NIDS"
+        },
+        {
+          "link_id": "nl_new107",
+          "source": "n_new6",
+          "target": "n29",
+          "link_type": "management",
+          "label": "Manage NIPS"
+        },
+        {
+          "link_id": "nl_new108",
+          "source": "n_new6",
+          "target": "n30",
+          "link_type": "management",
+          "label": "Manage NAC"
+        },
+        {
+          "link_id": "nl_new109",
+          "source": "n_new6",
+          "target": "n31",
+          "link_type": "management",
+          "label": "Manage Application Firewall"
+        },
+        {
+          "link_id": "nl_new110",
+          "source": "n_new6",
+          "target": "n32",
+          "link_type": "management",
+          "label": "Manage Admin Workstation 1"
+        },
+        {
+          "link_id": "nl_new111",
+          "source": "n_new6",
+          "target": "n33",
+          "link_type": "management",
+          "label": "Manage Admin Workstation 2"
+        },
+        {
+          "link_id": "nl_new112",
+          "source": "n_new6",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Manage External Testing External Endpoint"
+        },
+        {
+          "link_id": "nl_new113",
+          "source": "n_new6",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Manage Asset Management Management Service"
+        },
+        {
+          "link_id": "nl_new114",
+          "source": "n_new6",
+          "target": "n_struct3",
+          "link_type": "management",
+          "label": "Manage Remote Access Management Service"
+        },
+        {
+          "link_id": "nl_new115",
+          "source": "n13",
+          "target": "n7",
+          "link_type": "routing",
+          "label": "DMZ to Application Server"
+        },
+        {
+          "link_id": "nl_new116",
+          "source": "n13",
+          "target": "n8",
+          "link_type": "routing",
+          "label": "DMZ to Database Server"
+        },
+        {
+          "link_id": "nl_new117",
+          "source": "n13",
+          "target": "n28",
+          "link_type": "routing",
+          "label": "DMZ to NIDS"
+        },
+        {
+          "link_id": "nl_new118",
+          "source": "n13",
+          "target": "n29",
+          "link_type": "routing",
+          "label": "DMZ to NIPS"
+        },
+        {
+          "link_id": "nl_new119",
+          "source": "n13",
+          "target": "n30",
+          "link_type": "routing",
+          "label": "DMZ to NAC"
+        },
+        {
+          "link_id": "nl_new120",
+          "source": "n13",
+          "target": "n31",
+          "link_type": "routing",
+          "label": "DMZ to Application Firewall"
+        },
+        {
+          "link_id": "nl_new121",
+          "source": "n13",
+          "target": "n14",
+          "link_type": "routing",
+          "label": "DMZ to SIEM"
+        },
+        {
+          "link_id": "nl_new122",
+          "source": "n13",
+          "target": "n15",
+          "link_type": "routing",
+          "label": "DMZ to DR Router"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "DMZ to Content Filtering"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z2",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "Production to Content Filtering"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z3",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "Staging to Content Filtering"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z4",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "Management to Content Filtering"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z5",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "DR Site to Content Filtering"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z7",
+          "target": "z1",
+          "link_type": "uplink",
+          "label": "External Testing to DMZ"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z8",
+          "target": "z4",
+          "link_type": "uplink",
+          "label": "Admin Workstations to Management"
+        },
+        {
+          "link_id": "zl_new1",
+          "source": "z_new1",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Asset Management to DMZ"
+        },
+        {
+          "link_id": "zl_new2",
+          "source": "z_new1",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Asset Management to Production"
+        },
+        {
+          "link_id": "zl_new3",
+          "source": "z_new1",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Asset Management to Staging"
+        },
+        {
+          "link_id": "zl_new4",
+          "source": "z_new1",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Asset Management to Management"
+        },
+        {
+          "link_id": "zl_new5",
+          "source": "z_new1",
+          "target": "z5",
+          "link_type": "management",
+          "label": "Asset Management to DR Site"
+        },
+        {
+          "link_id": "zl_new6",
+          "source": "z_new1",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Asset Management to Content Filtering"
+        },
+        {
+          "link_id": "zl_new7",
+          "source": "z_new1",
+          "target": "z7",
+          "link_type": "management",
+          "label": "Asset Management to External Testing"
+        },
+        {
+          "link_id": "zl_new8",
+          "source": "z_new1",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Asset Management to Admin Workstations"
+        },
+        {
+          "link_id": "zl_new9",
+          "source": "z_new1",
+          "target": "z_preserve1",
+          "link_type": "management",
+          "label": "Asset Management to Asset Management"
+        },
+        {
+          "link_id": "zl_new10",
+          "source": "z_new1",
+          "target": "z9",
+          "link_type": "management",
+          "label": "Asset Management to Remote Access"
+        },
+        {
+          "link_id": "zl_new11",
+          "source": "z_new2",
+          "target": "z1",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to DMZ"
+        },
+        {
+          "link_id": "zl_new12",
+          "source": "z_new2",
+          "target": "z2",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Production"
+        },
+        {
+          "link_id": "zl_new13",
+          "source": "z_new2",
+          "target": "z3",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Staging"
+        },
+        {
+          "link_id": "zl_new14",
+          "source": "z_new2",
+          "target": "z4",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Management"
+        },
+        {
+          "link_id": "zl_new15",
+          "source": "z_new2",
+          "target": "z5",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to DR Site"
+        },
+        {
+          "link_id": "zl_new16",
+          "source": "z_new2",
+          "target": "z6",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Content Filtering"
+        },
+        {
+          "link_id": "zl_new17",
+          "source": "z_new2",
+          "target": "z7",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to External Testing"
+        },
+        {
+          "link_id": "zl_new18",
+          "source": "z_new2",
+          "target": "z8",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Admin Workstations"
+        },
+        {
+          "link_id": "zl_new19",
+          "source": "z_new2",
+          "target": "z_preserve1",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Asset Management"
+        },
+        {
+          "link_id": "zl_new20",
+          "source": "z_new2",
+          "target": "z9",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Remote Access"
+        },
+        {
+          "link_id": "zl_new21",
+          "source": "z_new3",
+          "target": "z7",
+          "link_type": "data_flow",
+          "label": "Penetration Testing to External Testing"
+        },
+        {
+          "link_id": "zl_new22",
+          "source": "z_new3",
+          "target": "z1",
+          "link_type": "data_flow",
+          "label": "Penetration Testing to DMZ"
+        },
+        {
+          "link_id": "zl_new23",
+          "source": "z_new4",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Asset Management to DMZ"
+        },
+        {
+          "link_id": "zl_new24",
+          "source": "z_new4",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Asset Management to Production"
+        },
+        {
+          "link_id": "zl_new25",
+          "source": "z_new4",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Asset Management to Staging"
+        },
+        {
+          "link_id": "zl_new26",
+          "source": "z_new4",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Asset Management to Management"
+        },
+        {
+          "link_id": "zl_new27",
+          "source": "z_new4",
+          "target": "z5",
+          "link_type": "management",
+          "label": "Asset Management to DR Site"
+        },
+        {
+          "link_id": "zl_new28",
+          "source": "z_new4",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Asset Management to Content Filtering"
+        },
+        {
+          "link_id": "zl_new29",
+          "source": "z_new4",
+          "target": "z7",
+          "link_type": "management",
+          "label": "Asset Management to External Testing"
+        },
+        {
+          "link_id": "zl_new30",
+          "source": "z_new4",
+          "target": "z8",
+          "link_type": "management",
+          "label": "Asset Management to Admin Workstations"
+        },
+        {
+          "link_id": "zl_new31",
+          "source": "z_new4",
+          "target": "z_preserve1",
+          "link_type": "management",
+          "label": "Asset Management to Asset Management"
+        },
+        {
+          "link_id": "zl_new32",
+          "source": "z_new4",
+          "target": "z9",
+          "link_type": "management",
+          "label": "Asset Management to Remote Access"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-2_req2",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones and nodes, including servers, firewalls, and management systems, which strongly imply an asset inventory is maintained.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation' zone with a server and numerous data flow links, indicating that data flows are documented.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for DMZ, Production, Staging, and Management, which implies segmentation based on data sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes internal firewalls (n5, n6, n9, n11) and a WAF (n1), which are used to protect servers in different zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes DNS servers (n22, n23) and links to various nodes, indicating that trusted DNS servers are configured.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA server (n24) and a remote access management service (n_struct3), indicating that MFA is required for remote access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a DNS filter (n25) and a web proxy (n26), which are used to filter DNS requests.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a web proxy (n26) and links to various nodes, indicating that URL filtering is enforced.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a well-defined network architecture with DMZ, production, staging, and management zones, and redundant connectivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an AAA server (n27) and management links to various nodes, indicating secure management of network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an AAA server (n27) and links to various nodes, indicating centralized AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a VPN service (n_new3) and links to the remote access management service (n_struct3) and internal firewall (n5), indicating that remote devices use a VPN and connect to the AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a dedicated management zone (z4) with a management server (n12) and admin workstations (n32, n33), indicating dedicated computing resources for administrative tasks.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIDS (n28) and links to various nodes, indicating that a network intrusion detection solution is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes internal firewalls (n5, n6, n9, n11) and links between different zones, indicating traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an MFA server (n24), a remote access management service (n_struct3), and links to various nodes, indicating that access control for remote assets is managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a SIEM (n14) and links to various nodes, indicating that network traffic flow logs are collected.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NIPS (n29) and links to various nodes, indicating that a network intrusion prevention solution is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a NAC (n30) and links to various nodes, indicating that port-level access control is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an application firewall (n31) and links to various nodes, indicating that application layer filtering is performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for production (z2) and non-production (z3, z4, z5), indicating separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a penetration testing service (n_new5) and links to various nodes, indicating that periodic external penetration tests are performed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity",
+        "stage4_ig_consistency"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z7\", \"name\": \"External Testing\", \"zone_type\": \"external\"}",
+          "missing_reason": "Zone z7 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_ig_consistency",
+          "title": "ig3_missing_ig2_zone_semantics",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "[{\"zone_id\": \"z8\", \"name\": \"Asset Management\", \"zone_type\": \"management\"}, {\"zone_id\": \"z9\", \"name\": \"Remote Access\", \"zone_type\": \"management\"}]",
+          "missing_reason": "IG3 topology removed or failed to preserve IG2 zone semantics.",
+          "repair_suggestion": "Add the missing IG2 zone semantics to IG3 as preserved or stricter zones, with representative nodes and concrete node_links. IG3 may add controls but must not reduce segmentation."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_preserve1",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z9",
+            "name": "Remote Access",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "External Testing External Endpoint",
+            "normalized_type": "endpoint",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n_struct2",
+            "name": "Asset Management Management Service",
+            "normalized_type": "server",
+            "zone_id": "z_preserve1"
+          },
+          {
+            "node_id": "n_struct3",
+            "name": "Remote Access Management Service",
+            "normalized_type": "server",
+            "zone_id": "z9"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n5",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct2",
+              "source": "n5",
+              "target": "n_struct2",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct3",
+              "source": "n5",
+              "target": "n_struct3",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 8,
+        "nodes": 33,
+        "zone_links": 7,
+        "node_links": 22
+      },
+      "counts_after": {
+        "zones": 10,
+        "nodes": 36,
+        "zone_links": 7,
+        "node_links": 25
+      },
+      "count_delta": {
+        "zones": 2,
+        "nodes": 3,
+        "zone_links": 0,
+        "node_links": 3
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "12.7",
+        "13.5",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various zones and nodes, but there is no explicit evidence of an asset inventory system or process.",
+          "missing_reason": "No explicit asset inventory system or process is shown in the topology.",
+          "repair_suggestion": "Add a node representing an asset management system and links to all other nodes."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology shows various zones and links, but there is no explicit documentation of data flows.",
+          "missing_reason": "No explicit data flow documentation is shown in the topology.",
+          "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant zones and nodes."
+        },
+        {
+          "cis_safeguard_id": "12.7",
+          "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a remote access management service (n_struct3) and links to the internal firewall (n5), but there is no explicit evidence of a VPN.",
+          "missing_reason": "No explicit VPN node or links are shown in the topology.",
+          "repair_suggestion": "Add a node representing a VPN service and links to the remote access management service and internal firewall."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a remote access management service (n_struct3) and links to the internal firewall (n5), but there is no explicit evidence of access control policies.",
+          "missing_reason": "No explicit access control policies or mechanisms are shown in the topology.",
+          "repair_suggestion": "Add a node representing an access control policy management system and links to the remote access management service and internal firewall."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an external testing zone (z7) and links to the DMZ (z1), but there is no explicit evidence of periodic external penetration tests.",
+          "missing_reason": "No explicit evidence of periodic external penetration tests is shown in the topology.",
+          "repair_suggestion": "Add a node representing a penetration testing service and links to the external testing zone and DMZ."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_new1",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_new2",
+            "name": "Data Flow Documentation",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z_new3",
+            "name": "Penetration Testing",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_new1",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z_new1"
+          },
+          {
+            "node_id": "n_new2",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z_new2"
+          },
+          {
+            "node_id": "n_new3",
+            "name": "VPN Service",
+            "normalized_type": "vpn_gateway",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n_new4",
+            "name": "Access Control Policy Manager",
+            "normalized_type": "identity_server",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n_new5",
+            "name": "Penetration Testing Service",
+            "normalized_type": "ids_ips",
+            "zone_id": "z_new3"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new1",
+              "source": "n_new1",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Manage WAF"
+            },
+            {
+              "link_id": "nl_new2",
+              "source": "n_new1",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Manage Load Balancer"
+            },
+            {
+              "link_id": "nl_new3",
+              "source": "n_new1",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Manage Web Server 1"
+            },
+            {
+              "link_id": "nl_new4",
+              "source": "n_new1",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Manage Web Server 2"
+            },
+            {
+              "link_id": "nl_new5",
+              "source": "n_new1",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Manage Internal Firewall 1"
+            },
+            {
+              "link_id": "nl_new6",
+              "source": "n_new1",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Manage Internal Firewall 2"
+            },
+            {
+              "link_id": "nl_new7",
+              "source": "n_new1",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Manage Application Server"
+            },
+            {
+              "link_id": "nl_new8",
+              "source": "n_new1",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Manage Database Server"
+            },
+            {
+              "link_id": "nl_new9",
+              "source": "n_new1",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Manage Internal Firewall 3"
+            },
+            {
+              "link_id": "nl_new10",
+              "source": "n_new1",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Manage Staging Server"
+            },
+            {
+              "link_id": "nl_new11",
+              "source": "n_new1",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Manage Management Firewall"
+            },
+            {
+              "link_id": "nl_new12",
+              "source": "n_new1",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Manage Management Server"
+            },
+            {
+              "link_id": "nl_new13",
+              "source": "n_new1",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Manage Edge Router"
+            },
+            {
+              "link_id": "nl_new14",
+              "source": "n_new1",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Manage SIEM"
+            },
+            {
+              "link_id": "nl_new15",
+              "source": "n_new1",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Manage DR Router"
+            },
+            {
+              "link_id": "nl_new16",
+              "source": "n_new1",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Manage Content Filter"
+            },
+            {
+              "link_id": "nl_new17",
+              "source": "n_new1",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Manage Switch 1"
+            },
+            {
+              "link_id": "nl_new18",
+              "source": "n_new1",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Manage Switch 2"
+            },
+            {
+              "link_id": "nl_new19",
+              "source": "n_new1",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Manage Switch 3"
+            },
+            {
+              "link_id": "nl_new20",
+              "source": "n_new1",
+              "target": "n20",
+              "link_type": "management",
+              "label": "Manage Switch 4"
+            },
+            {
+              "link_id": "nl_new21",
+              "source": "n_new1",
+              "target": "n21",
+              "link_type": "management",
+              "label": "Manage DR Switch"
+            },
+            {
+              "link_id": "nl_new22",
+              "source": "n_new1",
+              "target": "n22",
+              "link_type": "management",
+              "label": "Manage DNS Server 1"
+            },
+            {
+              "link_id": "nl_new23",
+              "source": "n_new1",
+              "target": "n23",
+              "link_type": "management",
+              "label": "Manage DNS Server 2"
+            },
+            {
+              "link_id": "nl_new24",
+              "source": "n_new1",
+              "target": "n24",
+              "link_type": "management",
+              "label": "Manage MFA Server"
+            },
+            {
+              "link_id": "nl_new25",
+              "source": "n_new1",
+              "target": "n25",
+              "link_type": "management",
+              "label": "Manage DNS Filter"
+            },
+            {
+              "link_id": "nl_new26",
+              "source": "n_new1",
+              "target": "n26",
+              "link_type": "management",
+              "label": "Manage Web Proxy"
+            },
+            {
+              "link_id": "nl_new27",
+              "source": "n_new1",
+              "target": "n27",
+              "link_type": "management",
+              "label": "Manage AAA Server"
+            },
+            {
+              "link_id": "nl_new28",
+              "source": "n_new1",
+              "target": "n28",
+              "link_type": "management",
+              "label": "Manage NIDS"
+            },
+            {
+              "link_id": "nl_new29",
+              "source": "n_new1",
+              "target": "n29",
+              "link_type": "management",
+              "label": "Manage NIPS"
+            },
+            {
+              "link_id": "nl_new30",
+              "source": "n_new1",
+              "target": "n30",
+              "link_type": "management",
+              "label": "Manage NAC"
+            },
+            {
+              "link_id": "nl_new31",
+              "source": "n_new1",
+              "target": "n31",
+              "link_type": "management",
+              "label": "Manage Application Firewall"
+            },
+            {
+              "link_id": "nl_new32",
+              "source": "n_new1",
+              "target": "n32",
+              "link_type": "management",
+              "label": "Manage Admin Workstation 1"
+            },
+            {
+              "link_id": "nl_new33",
+              "source": "n_new1",
+              "target": "n33",
+              "link_type": "management",
+              "label": "Manage Admin Workstation 2"
+            },
+            {
+              "link_id": "nl_new34",
+              "source": "n_new1",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Manage External Testing External Endpoint"
+            },
+            {
+              "link_id": "nl_new35",
+              "source": "n_new1",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Manage Asset Management Management Service"
+            },
+            {
+              "link_id": "nl_new36",
+              "source": "n_new1",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "Manage Remote Access Management Service"
+            },
+            {
+              "link_id": "nl_new37",
+              "source": "n_new2",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Document WAF Data Flows"
+            },
+            {
+              "link_id": "nl_new38",
+              "source": "n_new2",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Document Load Balancer Data Flows"
+            },
+            {
+              "link_id": "nl_new39",
+              "source": "n_new2",
+              "target": "n3",
+              "link_type": "data_flow",
+              "label": "Document Web Server 1 Data Flows"
+            },
+            {
+              "link_id": "nl_new40",
+              "source": "n_new2",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "Document Web Server 2 Data Flows"
+            },
+            {
+              "link_id": "nl_new41",
+              "source": "n_new2",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Document Internal Firewall 1 Data Flows"
+            },
+            {
+              "link_id": "nl_new42",
+              "source": "n_new2",
+              "target": "n6",
+              "link_type": "data_flow",
+              "label": "Document Internal Firewall 2 Data Flows"
+            },
+            {
+              "link_id": "nl_new43",
+              "source": "n_new2",
+              "target": "n7",
+              "link_type": "data_flow",
+              "label": "Document Application Server Data Flows"
+            },
+            {
+              "link_id": "nl_new44",
+              "source": "n_new2",
+              "target": "n8",
+              "link_type": "data_flow",
+              "label": "Document Database Server Data Flows"
+            },
+            {
+              "link_id": "nl_new45",
+              "source": "n_new2",
+              "target": "n9",
+              "link_type": "data_flow",
+              "label": "Document Internal Firewall 3 Data Flows"
+            },
+            {
+              "link_id": "nl_new46",
+              "source": "n_new2",
+              "target": "n10",
+              "link_type": "data_flow",
+              "label": "Document Staging Server Data Flows"
+            },
+            {
+              "link_id": "nl_new47",
+              "source": "n_new2",
+              "target": "n11",
+              "link_type": "data_flow",
+              "label": "Document Management Firewall Data Flows"
+            },
+            {
+              "link_id": "nl_new48",
+              "source": "n_new2",
+              "target": "n12",
+              "link_type": "data_flow",
+              "label": "Document Management Server Data Flows"
+            },
+            {
+              "link_id": "nl_new49",
+              "source": "n_new2",
+              "target": "n13",
+              "link_type": "data_flow",
+              "label": "Document Edge Router Data Flows"
+            },
+            {
+              "link_id": "nl_new50",
+              "source": "n_new2",
+              "target": "n14",
+              "link_type": "data_flow",
+              "label": "Document SIEM Data Flows"
+            },
+            {
+              "link_id": "nl_new51",
+              "source": "n_new2",
+              "target": "n15",
+              "link_type": "data_flow",
+              "label": "Document DR Router Data Flows"
+            },
+            {
+              "link_id": "nl_new52",
+              "source": "n_new2",
+              "target": "n16",
+              "link_type": "data_flow",
+              "label": "Document Content Filter Data Flows"
+            },
+            {
+              "link_id": "nl_new53",
+              "source": "n_new2",
+              "target": "n17",
+              "link_type": "data_flow",
+              "label": "Document Switch 1 Data Flows"
+            },
+            {
+              "link_id": "nl_new54",
+              "source": "n_new2",
+              "target": "n18",
+              "link_type": "data_flow",
+              "label": "Document Switch 2 Data Flows"
+            },
+            {
+              "link_id": "nl_new55",
+              "source": "n_new2",
+              "target": "n19",
+              "link_type": "data_flow",
+              "label": "Document Switch 3 Data Flows"
+            },
+            {
+              "link_id": "nl_new56",
+              "source": "n_new2",
+              "target": "n20",
+              "link_type": "data_flow",
+              "label": "Document Switch 4 Data Flows"
+            },
+            {
+              "link_id": "nl_new57",
+              "source": "n_new2",
+              "target": "n21",
+              "link_type": "data_flow",
+              "label": "Document DR Switch Data Flows"
+            },
+            {
+              "link_id": "nl_new58",
+              "source": "n_new2",
+              "target": "n22",
+              "link_type": "data_flow",
+              "label": "Document DNS Server 1 Data Flows"
+            },
+            {
+              "link_id": "nl_new59",
+              "source": "n_new2",
+              "target": "n23",
+              "link_type": "data_flow",
+              "label": "Document DNS Server 2 Data Flows"
+            },
+            {
+              "link_id": "nl_new60",
+              "source": "n_new2",
+              "target": "n24",
+              "link_type": "data_flow",
+              "label": "Document MFA Server Data Flows"
+            },
+            {
+              "link_id": "nl_new61",
+              "source": "n_new2",
+              "target": "n25",
+              "link_type": "data_flow",
+              "label": "Document DNS Filter Data Flows"
+            },
+            {
+              "link_id": "nl_new62",
+              "source": "n_new2",
+              "target": "n26",
+              "link_type": "data_flow",
+              "label": "Document Web Proxy Data Flows"
+            },
+            {
+              "link_id": "nl_new63",
+              "source": "n_new2",
+              "target": "n27",
+              "link_type": "data_flow",
+              "label": "Document AAA Server Data Flows"
+            },
+            {
+              "link_id": "nl_new64",
+              "source": "n_new2",
+              "target": "n28",
+              "link_type": "data_flow",
+              "label": "Document NIDS Data Flows"
+            },
+            {
+              "link_id": "nl_new65",
+              "source": "n_new2",
+              "target": "n29",
+              "link_type": "data_flow",
+              "label": "Document NIPS Data Flows"
+            },
+            {
+              "link_id": "nl_new66",
+              "source": "n_new2",
+              "target": "n30",
+              "link_type": "data_flow",
+              "label": "Document NAC Data Flows"
+            },
+            {
+              "link_id": "nl_new67",
+              "source": "n_new2",
+              "target": "n31",
+              "link_type": "data_flow",
+              "label": "Document Application Firewall Data Flows"
+            },
+            {
+              "link_id": "nl_new68",
+              "source": "n_new2",
+              "target": "n32",
+              "link_type": "data_flow",
+              "label": "Document Admin Workstation 1 Data Flows"
+            },
+            {
+              "link_id": "nl_new69",
+              "source": "n_new2",
+              "target": "n33",
+              "link_type": "data_flow",
+              "label": "Document Admin Workstation 2 Data Flows"
+            },
+            {
+              "link_id": "nl_new70",
+              "source": "n_new2",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Document External Testing External Endpoint Data Flows"
+            },
+            {
+              "link_id": "nl_new71",
+              "source": "n_new2",
+              "target": "n_struct2",
+              "link_type": "data_flow",
+              "label": "Document Asset Management Management Service Data Flows"
+            },
+            {
+              "link_id": "nl_new72",
+              "source": "n_new2",
+              "target": "n_struct3",
+              "link_type": "data_flow",
+              "label": "Document Remote Access Management Service Data Flows"
+            },
+            {
+              "link_id": "nl_new73",
+              "source": "n_new3",
+              "target": "n_struct3",
+              "link_type": "vpn",
+              "label": "Remote Access via VPN"
+            },
+            {
+              "link_id": "nl_new74",
+              "source": "n_new3",
+              "target": "n5",
+              "link_type": "vpn",
+              "label": "Internal Firewall via VPN"
+            },
+            {
+              "link_id": "nl_new75",
+              "source": "n_new4",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "Manage Remote Access Policies"
+            },
+            {
+              "link_id": "nl_new76",
+              "source": "n_new4",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Manage Internal Firewall Policies"
+            },
+            {
+              "link_id": "nl_new77",
+              "source": "n_new5",
+              "target": "n_struct1",
+              "link_type": "data_flow",
+              "label": "Pen Test External Endpoint"
+            },
+            {
+              "link_id": "nl_new78",
+              "source": "n_new5",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Pen Test WAF"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl_new1",
+              "source": "z_new1",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Asset Management to DMZ"
+            },
+            {
+              "link_id": "zl_new2",
+              "source": "z_new1",
+              "target": "z2",
+              "link_type": "management",
+              "label": "Asset Management to Production"
+            },
+            {
+              "link_id": "zl_new3",
+              "source": "z_new1",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Asset Management to Staging"
+            },
+            {
+              "link_id": "zl_new4",
+              "source": "z_new1",
+              "target": "z4",
+              "link_type": "management",
+              "label": "Asset Management to Management"
+            },
+            {
+              "link_id": "zl_new5",
+              "source": "z_new1",
+              "target": "z5",
+              "link_type": "management",
+              "label": "Asset Management to DR Site"
+            },
+            {
+              "link_id": "zl_new6",
+              "source": "z_new1",
+              "target": "z6",
+              "link_type": "management",
+              "label": "Asset Management to Content Filtering"
+            },
+            {
+              "link_id": "zl_new7",
+              "source": "z_new1",
+              "target": "z7",
+              "link_type": "management",
+              "label": "Asset Management to External Testing"
+            },
+            {
+              "link_id": "zl_new8",
+              "source": "z_new1",
+              "target": "z8",
+              "link_type": "management",
+              "label": "Asset Management to Admin Workstations"
+            },
+            {
+              "link_id": "zl_new9",
+              "source": "z_new1",
+              "target": "z_preserve1",
+              "link_type": "management",
+              "label": "Asset Management to Asset Management"
+            },
+            {
+              "link_id": "zl_new10",
+              "source": "z_new1",
+              "target": "z9",
+              "link_type": "management",
+              "label": "Asset Management to Remote Access"
+            },
+            {
+              "link_id": "zl_new11",
+              "source": "z_new2",
+              "target": "z1",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to DMZ"
+            },
+            {
+              "link_id": "zl_new12",
+              "source": "z_new2",
+              "target": "z2",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Production"
+            },
+            {
+              "link_id": "zl_new13",
+              "source": "z_new2",
+              "target": "z3",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Staging"
+            },
+            {
+              "link_id": "zl_new14",
+              "source": "z_new2",
+              "target": "z4",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Management"
+            },
+            {
+              "link_id": "zl_new15",
+              "source": "z_new2",
+              "target": "z5",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to DR Site"
+            },
+            {
+              "link_id": "zl_new16",
+              "source": "z_new2",
+              "target": "z6",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Content Filtering"
+            },
+            {
+              "link_id": "zl_new17",
+              "source": "z_new2",
+              "target": "z7",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to External Testing"
+            },
+            {
+              "link_id": "zl_new18",
+              "source": "z_new2",
+              "target": "z8",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Admin Workstations"
+            },
+            {
+              "link_id": "zl_new19",
+              "source": "z_new2",
+              "target": "z_preserve1",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Asset Management"
+            },
+            {
+              "link_id": "zl_new20",
+              "source": "z_new2",
+              "target": "z9",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Remote Access"
+            },
+            {
+              "link_id": "zl_new21",
+              "source": "z_new3",
+              "target": "z7",
+              "link_type": "data_flow",
+              "label": "Penetration Testing to External Testing"
+            },
+            {
+              "link_id": "zl_new22",
+              "source": "z_new3",
+              "target": "z1",
+              "link_type": "data_flow",
+              "label": "Penetration Testing to DMZ"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 10,
+        "nodes": 36,
+        "zone_links": 7,
+        "node_links": 25
+      },
+      "counts_after": {
+        "zones": 13,
+        "nodes": 41,
+        "zone_links": 29,
+        "node_links": 103
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 5,
+        "zone_links": 22,
+        "node_links": 78
+      }
+    },
+    {
+      "round": 2,
+      "controls_repaired": [
+        "1.1"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show an asset management system or service that maintains an inventory of all enterprise assets, including their network addresses, hardware addresses, machine names, asset owners, and departments.",
+          "missing_reason": "No explicit asset management system or service is present.",
+          "repair_suggestion": "Add an asset management system or service node and links to all other nodes to manage and maintain the asset inventory."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z_new4",
+            "name": "Asset Management",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n_new6",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z_new4"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new79",
+              "source": "n_new6",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Manage WAF"
+            },
+            {
+              "link_id": "nl_new80",
+              "source": "n_new6",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Manage Load Balancer"
+            },
+            {
+              "link_id": "nl_new81",
+              "source": "n_new6",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Manage Web Server 1"
+            },
+            {
+              "link_id": "nl_new82",
+              "source": "n_new6",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Manage Web Server 2"
+            },
+            {
+              "link_id": "nl_new83",
+              "source": "n_new6",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Manage Internal Firewall 1"
+            },
+            {
+              "link_id": "nl_new84",
+              "source": "n_new6",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Manage Internal Firewall 2"
+            },
+            {
+              "link_id": "nl_new85",
+              "source": "n_new6",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Manage Application Server"
+            },
+            {
+              "link_id": "nl_new86",
+              "source": "n_new6",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Manage Database Server"
+            },
+            {
+              "link_id": "nl_new87",
+              "source": "n_new6",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Manage Internal Firewall 3"
+            },
+            {
+              "link_id": "nl_new88",
+              "source": "n_new6",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Manage Staging Server"
+            },
+            {
+              "link_id": "nl_new89",
+              "source": "n_new6",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Manage Management Firewall"
+            },
+            {
+              "link_id": "nl_new90",
+              "source": "n_new6",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Manage Management Server"
+            },
+            {
+              "link_id": "nl_new91",
+              "source": "n_new6",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Manage Edge Router"
+            },
+            {
+              "link_id": "nl_new92",
+              "source": "n_new6",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Manage SIEM"
+            },
+            {
+              "link_id": "nl_new93",
+              "source": "n_new6",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Manage DR Router"
+            },
+            {
+              "link_id": "nl_new94",
+              "source": "n_new6",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Manage Content Filter"
+            },
+            {
+              "link_id": "nl_new95",
+              "source": "n_new6",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Manage Switch 1"
+            },
+            {
+              "link_id": "nl_new96",
+              "source": "n_new6",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Manage Switch 2"
+            },
+            {
+              "link_id": "nl_new97",
+              "source": "n_new6",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Manage Switch 3"
+            },
+            {
+              "link_id": "nl_new98",
+              "source": "n_new6",
+              "target": "n20",
+              "link_type": "management",
+              "label": "Manage Switch 4"
+            },
+            {
+              "link_id": "nl_new99",
+              "source": "n_new6",
+              "target": "n21",
+              "link_type": "management",
+              "label": "Manage DR Switch"
+            },
+            {
+              "link_id": "nl_new100",
+              "source": "n_new6",
+              "target": "n22",
+              "link_type": "management",
+              "label": "Manage DNS Server 1"
+            },
+            {
+              "link_id": "nl_new101",
+              "source": "n_new6",
+              "target": "n23",
+              "link_type": "management",
+              "label": "Manage DNS Server 2"
+            },
+            {
+              "link_id": "nl_new102",
+              "source": "n_new6",
+              "target": "n24",
+              "link_type": "management",
+              "label": "Manage MFA Server"
+            },
+            {
+              "link_id": "nl_new103",
+              "source": "n_new6",
+              "target": "n25",
+              "link_type": "management",
+              "label": "Manage DNS Filter"
+            },
+            {
+              "link_id": "nl_new104",
+              "source": "n_new6",
+              "target": "n26",
+              "link_type": "management",
+              "label": "Manage Web Proxy"
+            },
+            {
+              "link_id": "nl_new105",
+              "source": "n_new6",
+              "target": "n27",
+              "link_type": "management",
+              "label": "Manage AAA Server"
+            },
+            {
+              "link_id": "nl_new106",
+              "source": "n_new6",
+              "target": "n28",
+              "link_type": "management",
+              "label": "Manage NIDS"
+            },
+            {
+              "link_id": "nl_new107",
+              "source": "n_new6",
+              "target": "n29",
+              "link_type": "management",
+              "label": "Manage NIPS"
+            },
+            {
+              "link_id": "nl_new108",
+              "source": "n_new6",
+              "target": "n30",
+              "link_type": "management",
+              "label": "Manage NAC"
+            },
+            {
+              "link_id": "nl_new109",
+              "source": "n_new6",
+              "target": "n31",
+              "link_type": "management",
+              "label": "Manage Application Firewall"
+            },
+            {
+              "link_id": "nl_new110",
+              "source": "n_new6",
+              "target": "n32",
+              "link_type": "management",
+              "label": "Manage Admin Workstation 1"
+            },
+            {
+              "link_id": "nl_new111",
+              "source": "n_new6",
+              "target": "n33",
+              "link_type": "management",
+              "label": "Manage Admin Workstation 2"
+            },
+            {
+              "link_id": "nl_new112",
+              "source": "n_new6",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Manage External Testing External Endpoint"
+            },
+            {
+              "link_id": "nl_new113",
+              "source": "n_new6",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Manage Asset Management Management Service"
+            },
+            {
+              "link_id": "nl_new114",
+              "source": "n_new6",
+              "target": "n_struct3",
+              "link_type": "management",
+              "label": "Manage Remote Access Management Service"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl_new23",
+              "source": "z_new4",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Asset Management to DMZ"
+            },
+            {
+              "link_id": "zl_new24",
+              "source": "z_new4",
+              "target": "z2",
+              "link_type": "management",
+              "label": "Asset Management to Production"
+            },
+            {
+              "link_id": "zl_new25",
+              "source": "z_new4",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Asset Management to Staging"
+            },
+            {
+              "link_id": "zl_new26",
+              "source": "z_new4",
+              "target": "z4",
+              "link_type": "management",
+              "label": "Asset Management to Management"
+            },
+            {
+              "link_id": "zl_new27",
+              "source": "z_new4",
+              "target": "z5",
+              "link_type": "management",
+              "label": "Asset Management to DR Site"
+            },
+            {
+              "link_id": "zl_new28",
+              "source": "z_new4",
+              "target": "z6",
+              "link_type": "management",
+              "label": "Asset Management to Content Filtering"
+            },
+            {
+              "link_id": "zl_new29",
+              "source": "z_new4",
+              "target": "z7",
+              "link_type": "management",
+              "label": "Asset Management to External Testing"
+            },
+            {
+              "link_id": "zl_new30",
+              "source": "z_new4",
+              "target": "z8",
+              "link_type": "management",
+              "label": "Asset Management to Admin Workstations"
+            },
+            {
+              "link_id": "zl_new31",
+              "source": "z_new4",
+              "target": "z_preserve1",
+              "link_type": "management",
+              "label": "Asset Management to Asset Management"
+            },
+            {
+              "link_id": "zl_new32",
+              "source": "z_new4",
+              "target": "z9",
+              "link_type": "management",
+              "label": "Asset Management to Remote Access"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 13,
+        "nodes": 41,
+        "zone_links": 29,
+        "node_links": 103
+      },
+      "counts_after": {
+        "zones": 14,
+        "nodes": 42,
+        "zone_links": 39,
+        "node_links": 139
+      },
+      "count_delta": {
+        "zones": 1,
+        "nodes": 1,
+        "zone_links": 10,
+        "node_links": 36
+      }
+    },
+    {
+      "round": 4,
+      "controls_repaired": [
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation",
+        "stage5_validation"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc1\", \"src\": \"nz1n1\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc2\", \"src\": \"nz1n1\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc3\", \"src\": \"nz1n2\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc4\", \"src\": \"nz1n2\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc5\", \"src\": \"nz1n3\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc6\", \"src\": \"nz1n3\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc7\", \"src\": \"nz1n4\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc8\", \"src\": \"nz1n4\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc9\", \"src\": \"nz2n7\", \"dst\": \"nz2n8\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc10\", \"src\": \"nz2n7\", \"dst\": \"nz3n10\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc11\", \"src\": \"nz2n7\", \"dst\": \"nz4n12\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc12\", \"src\": \"nz3n10\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc13\", \"src\": \"nz4n12\", \"dst\": \"nz2n7\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc19\", \"src\": \"nz1n13\", \"dst\": \"nz2n28\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc20\", \"src\": \"nz1n13\", \"dst\": \"nz2n29\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc21\", \"src\": \"nz1n13\", \"dst\": \"nz2n30\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc22\", \"src\": \"nz1n13\", \"dst\": \"nz2n31\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc23\", \"src\": \"nz1n13\", \"dst\": \"nz1n14\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc24\", \"src\": \"nz1n13\", \"dst\": \"nz5n15\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc25\", \"src\": \"nz1n13\", \"dst\": \"nz5n21\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc32\", \"src\": \"nz1n13\", \"dst\": \"nz2n28\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc33\", \"src\": \"nz1n13\", \"dst\": \"nz2n29\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc34\", \"src\": \"nz1n13\", \"dst\": \"nz2n30\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc35\", \"src\": \"nz1n13\", \"dst\": \"nz2n31\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc36\", \"src\": \"nz1n13\", \"dst\": \"nz1n14\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc37\", \"src\": \"nz1n13\", \"dst\": \"nz5n15\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_pre_acl_topology_failure",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc38\", \"src\": \"nz1n13\", \"dst\": \"nz5n21\", \"pre_acl_actual\": \"deny\", \"post_acl_actual\": \"deny\", \"has_node_path\": true, \"reason\": \"flow is not reachable before ACL enforcement\"}",
+          "missing_reason": "stage5_pre_acl_topology_failure",
+          "repair_suggestion": "The flow is not reachable before ACL enforcement. Add or repair concrete node_links between the resolved source and destination path; do not use zone_links as executable links."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc1\", \"src\": \"nz1n1\", \"dst\": \"nz2n7\", \"resolved_src\": \"nz1n1\", \"resolved_dst\": \"nz2n7\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc2\", \"src\": \"nz1n1\", \"dst\": \"nz2n7\", \"resolved_src\": \"nz1n1\", \"resolved_dst\": \"nz2n7\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc3\", \"src\": \"nz1n2\", \"dst\": \"nz2n7\", \"resolved_src\": \"nz1n2\", \"resolved_dst\": \"nz2n7\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc4\", \"src\": \"nz1n2\", \"dst\": \"nz2n7\", \"resolved_src\": \"nz1n2\", \"resolved_dst\": \"nz2n7\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc5\", \"src\": \"nz1n3\", \"dst\": \"nz2n7\", \"resolved_src\": \"nz1n3\", \"resolved_dst\": \"nz2n7\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc6\", \"src\": \"nz1n3\", \"dst\": \"nz2n7\", \"resolved_src\": \"nz1n3\", \"resolved_dst\": \"nz2n7\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc7\", \"src\": \"nz1n4\", \"dst\": \"nz2n7\", \"resolved_src\": \"nz1n4\", \"resolved_dst\": \"nz2n7\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc8\", \"src\": \"nz1n4\", \"dst\": \"nz2n7\", \"resolved_src\": \"nz1n4\", \"resolved_dst\": \"nz2n7\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc9\", \"src\": \"nz2n7\", \"dst\": \"nz2n8\", \"resolved_src\": \"nz2n7\", \"resolved_dst\": \"nz2n8\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc19\", \"src\": \"nz1n13\", \"dst\": \"nz2n28\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz2n28\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc20\", \"src\": \"nz1n13\", \"dst\": \"nz2n29\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz2n29\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc21\", \"src\": \"nz1n13\", \"dst\": \"nz2n30\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz2n30\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc22\", \"src\": \"nz1n13\", \"dst\": \"nz2n31\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz2n31\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc23\", \"src\": \"nz1n13\", \"dst\": \"nz1n14\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz1n14\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc24\", \"src\": \"nz1n13\", \"dst\": \"nz5n15\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz5n15\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc25\", \"src\": \"nz1n13\", \"dst\": \"nz5n21\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz5n21\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc32\", \"src\": \"nz1n13\", \"dst\": \"nz2n28\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz2n28\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc33\", \"src\": \"nz1n13\", \"dst\": \"nz2n29\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz2n29\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc34\", \"src\": \"nz1n13\", \"dst\": \"nz2n30\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz2n30\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc35\", \"src\": \"nz1n13\", \"dst\": \"nz2n31\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz2n31\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc36\", \"src\": \"nz1n13\", \"dst\": \"nz1n14\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz1n14\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc37\", \"src\": \"nz1n13\", \"dst\": \"nz5n15\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz5n15\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        },
+        {
+          "cis_safeguard_id": "stage5_validation",
+          "title": "stage5_path_or_service_unreachable",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"test_id\": \"tc38\", \"src\": \"nz1n13\", \"dst\": \"nz5n21\", \"resolved_src\": \"nz1n13\", \"resolved_dst\": \"nz5n21\", \"expected\": \"allow\", \"actual\": \"deny\", \"has_node_path\": true, \"latency_ms\": null, \"reason\": \"\"}",
+          "missing_reason": "stage5_path_or_service_unreachable",
+          "repair_suggestion": "Inspect node-link path, service endpoint selection, and security-control placement; repair topology or testcase endpoint selection as needed."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_new115",
+              "source": "n13",
+              "target": "n7",
+              "link_type": "routing",
+              "label": "DMZ to Application Server"
+            },
+            {
+              "link_id": "nl_new116",
+              "source": "n13",
+              "target": "n8",
+              "link_type": "routing",
+              "label": "DMZ to Database Server"
+            },
+            {
+              "link_id": "nl_new117",
+              "source": "n13",
+              "target": "n28",
+              "link_type": "routing",
+              "label": "DMZ to NIDS"
+            },
+            {
+              "link_id": "nl_new118",
+              "source": "n13",
+              "target": "n29",
+              "link_type": "routing",
+              "label": "DMZ to NIPS"
+            },
+            {
+              "link_id": "nl_new119",
+              "source": "n13",
+              "target": "n30",
+              "link_type": "routing",
+              "label": "DMZ to NAC"
+            },
+            {
+              "link_id": "nl_new120",
+              "source": "n13",
+              "target": "n31",
+              "link_type": "routing",
+              "label": "DMZ to Application Firewall"
+            },
+            {
+              "link_id": "nl_new121",
+              "source": "n13",
+              "target": "n14",
+              "link_type": "routing",
+              "label": "DMZ to SIEM"
+            },
+            {
+              "link_id": "nl_new122",
+              "source": "n13",
+              "target": "n15",
+              "link_type": "routing",
+              "label": "DMZ to DR Router"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 14,
+        "nodes": 42,
+        "zone_links": 39,
+        "node_links": 139
+      },
+      "counts_after": {
+        "zones": 14,
+        "nodes": 42,
+        "zone_links": 39,
+        "node_links": 147
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 0,
+        "zone_links": 0,
+        "node_links": 8
+      },
+      "source": "stage5_diagnostic_report"
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-2_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "DMZ to Application Server HTTP access"
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 3306,
+        "expected": "allow",
+        "reason": "DMZ to Database Server MySQL access"
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n13",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "DMZ to Content Filter HTTP proxy access"
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n28",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "DMZ to NIDS HTTPS access"
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n29",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "DMZ to NIPS HTTPS access"
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n30",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "DMZ to NAC HTTPS access"
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n31",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "DMZ to Application Firewall HTTPS access"
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "DMZ to SIEM HTTPS access"
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n13",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "DMZ to DR Router HTTPS access"
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "DMZ to Application Server SSH access blocked"
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "DMZ to Database Server SSH access blocked"
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n28",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "DMZ to NIDS SSH access blocked"
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n29",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "DMZ to NIPS SSH access blocked"
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n30",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "DMZ to NAC SSH access blocked"
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n13",
+        "target_node": "n31",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "DMZ to Application Firewall SSH access blocked"
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "DMZ to SIEM SSH access blocked"
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n13",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "DMZ to DR Router SSH access blocked"
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n7",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Production to Staging HTTP access"
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n7",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Production to Management HTTPS access"
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z2",
+        "target_zone": "z6",
+        "source_node": "n7",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Production to Content Filter HTTP proxy access"
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 3306,
+        "expected": "allow",
+        "reason": "Production to Database Server MySQL access"
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n28",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Production to NIDS HTTPS access"
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n29",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Production to NIPS HTTPS access"
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n30",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Production to NAC HTTPS access"
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n31",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Production to Application Firewall HTTPS access"
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Production to SIEM HTTPS access"
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n7",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Production to DR Router HTTPS access"
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z2",
+        "target_zone": "z3",
+        "source_node": "n7",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Production to Staging SSH access blocked"
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z2",
+        "target_zone": "z4",
+        "source_node": "n7",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Production to Management SSH access blocked"
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z2",
+        "target_zone": "z6",
+        "source_node": "n7",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Production to Content Filter SSH access blocked"
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Production to Database Server SSH access blocked"
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n28",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Production to NIDS SSH access blocked"
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n29",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Production to NIPS SSH access blocked"
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n30",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Production to NAC SSH access blocked"
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z2",
+        "target_zone": "z2",
+        "source_node": "n7",
+        "target_node": "n31",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Production to Application Firewall SSH access blocked"
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z2",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Production to SIEM SSH access blocked"
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n7",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Production to DR Router SSH access blocked"
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n12",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Management to Application Server HTTPS access"
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n12",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 3306,
+        "expected": "allow",
+        "reason": "Management to Database Server MySQL access"
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n12",
+        "target_node": "n28",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Management to NIDS HTTPS access"
+      }
+    ]
+  },
+  "stage5_diagnostic_summary": {
+    "total": 40,
+    "executed": 40,
+    "skipped": 0,
+    "passed": 17,
+    "failed": 23
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/samples/Government-2_req2/stage4_feedback/xml/IG3/generated_Government-2_req2_IG3.xml"
+}

@@ -1,0 +1,181 @@
+{
+  "schema_version": "2.1",
+  "template_id": "generated_Government-1_req2",
+  "title": "Hierarchical Network Architecture for Government",
+  "description": "A secure hierarchical network with an Internet Edge, a three-tier data center, and WAN connections to remote sites.",
+  "scenario": "government",
+  "topology_summary": "The topology includes an Internet Edge with a firewall and application-layer security, a three-tier data center, and WAN connections to a regional office and a branch office. Each remote site has its own local routing and switching.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Internet Edge",
+      "zone_type": "dmz"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Data Center",
+      "zone_type": "data_center"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Regional Office",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Branch Office",
+      "zone_type": "enterprise"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "WAF",
+      "normalized_type": "waf",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "VPN Gateway",
+      "normalized_type": "vpn_gateway",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "Router",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n5",
+      "name": "Web Server",
+      "normalized_type": "server",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n6",
+      "name": "Application Server",
+      "normalized_type": "server",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n7",
+      "name": "Database Server",
+      "normalized_type": "database",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n8",
+      "name": "Regional Router",
+      "normalized_type": "router",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n9",
+      "name": "Regional Switch",
+      "normalized_type": "switch",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n10",
+      "name": "Branch Router",
+      "normalized_type": "router",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n11",
+      "name": "Branch Switch",
+      "normalized_type": "switch",
+      "zone_id": "z4"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "data_flow",
+        "label": "WAF"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n1",
+        "target": "n3",
+        "link_type": "data_flow",
+        "label": "VPN"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n1",
+        "target": "n4",
+        "link_type": "uplink",
+        "label": "Internet"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n4",
+        "target": "n5",
+        "link_type": "data_flow",
+        "label": "Web"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n4",
+        "target": "n6",
+        "link_type": "data_flow",
+        "label": "App"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n4",
+        "target": "n7",
+        "link_type": "data_flow",
+        "label": "DB"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n8",
+        "target": "n9",
+        "link_type": "uplink",
+        "label": "Local"
+      },
+      {
+        "link_id": "nl8",
+        "source": "n10",
+        "target": "n11",
+        "link_type": "uplink",
+        "label": "Local"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z2",
+        "link_type": "uplink",
+        "label": "Data Center"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z1",
+        "target": "z3",
+        "link_type": "wan",
+        "label": "Regional"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z1",
+        "target": "z4",
+        "link_type": "wan",
+        "label": "Branch"
+      }
+    ]
+  }
+}

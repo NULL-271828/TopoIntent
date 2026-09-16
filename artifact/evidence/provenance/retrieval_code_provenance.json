@@ -1,0 +1,30 @@
+[
+  {
+    "file": "main/Stage2_utils.py",
+    "function": "build_query_texts",
+    "v1_ast_sha256": "439e10b07d19c6f669ef1237574d33abfa7687e12eb487241d99b7db01ab2e31",
+    "v2_ast_sha256": "439e10b07d19c6f669ef1237574d33abfa7687e12eb487241d99b7db01ab2e31",
+    "same": true
+  },
+  {
+    "file": "main/Stage2_utils.py",
+    "function": "call_embedding_api",
+    "v1_ast_sha256": "ac5bcb9187a08cbf92f9380fcbfca5071f6385d2fe4529d1f853c077b2155e9a",
+    "v2_ast_sha256": "ac5bcb9187a08cbf92f9380fcbfca5071f6385d2fe4529d1f853c077b2155e9a",
+    "same": true
+  },
+  {
+    "file": "dataset/vector_dataset/build_vector_database.py",
+    "function": "build_field_texts",
+    "v1_ast_sha256": "a979950d23150933190555dd8e1639d45da8ca6e122746ce4d51fc46a09d773c",
+    "v2_ast_sha256": "a979950d23150933190555dd8e1639d45da8ca6e122746ce4d51fc46a09d773c",
+    "same": true
+  },
+  {
+    "file": "dataset/vector_dataset/build_vector_database.py",
+    "function": "get_embeddings",
+    "v1_ast_sha256": "47c405c8ade57def94b49ce42ae021dcf338e714220dc44b97ea7a7c3de521a1",
+    "v2_ast_sha256": "47c405c8ade57def94b49ce42ae021dcf338e714220dc44b97ea7a7c3de521a1",
+    "same": true
+  }
+]

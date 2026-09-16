@@ -1,0 +1,17 @@
+\begin{tabular}{l ccccccc cccc}
+\toprule
+ & \multicolumn{7}{c}{\textbf{Pipeline Components}}
+ & \multicolumn{4}{c}{\textbf{Metrics}} \\
+\cmidrule(lr){2-8} \cmidrule(lr){9-12}
+\textbf{Variant}
+ & \textbf{S1} & \textbf{S2} & \textbf{S3}
+ & \textbf{Verify} & \textbf{Repair} & \textbf{Emul} & \textbf{FB}
+ & \textbf{Zone} & \textbf{Node} & \textbf{CIS} & \textbf{Post-ACL} \\
+\midrule
+Direct           &            &            &            &            &            &            &            & 0.59 & 0.52 & -- & -- \\ \addlinespace[3pt]
+RAG w/o Fusion   & \checkmark & \checkmark &            &            &            &            &            & 0.55 & 0.55 & -- & -- \\ \addlinespace[3pt]
+RAG w/o Repair   & \checkmark & \checkmark & \checkmark & \checkmark &            &            &            & 0.77 & 0.73 & 0.70 & -- \\ \addlinespace[3pt]
+RAG w/o Feedback & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark &            & 0.78 & 0.82 & 1.00 & 0.78 \\ \addlinespace[3pt]
+Full TopoIntent  & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & 0.78 & 0.80 & 1.00 & 0.88 \\
+\bottomrule
+\end{tabular}

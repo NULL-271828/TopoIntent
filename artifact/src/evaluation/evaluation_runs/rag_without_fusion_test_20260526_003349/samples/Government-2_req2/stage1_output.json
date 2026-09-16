@@ -1,0 +1,141 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-2_req2",
+    "title": "Secure Government Data Center",
+    "description": "A secure government data center with a DMZ, load-balanced web servers, and segmented production, staging, and management zones.",
+    "scenario": "government",
+    "topology_summary": "The topology includes a screened DMZ with a WAF and load-balanced web servers. The core application and database servers are in a production zone, while internal firewalls segment the staging and management networks. Redundant connectivity, content filtering, and SIEM integration are provided.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "DMZ",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Production",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Staging",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z5",
+        "name": "DR Site",
+        "zone_type": "data_center"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "WAF",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Load Balancer",
+        "normalized_type": "load_balancer",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Web Server 1",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "Web Server 2",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Internal Firewall 1",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Internal Firewall 2",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Application Server",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Database Server",
+        "normalized_type": "database",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n9",
+        "name": "Internal Firewall 3",
+        "normalized_type": "firewall",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n10",
+        "name": "Staging Server",
+        "normalized_type": "server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n11",
+        "name": "Management Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n12",
+        "name": "Management Server",
+        "normalized_type": "server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n13",
+        "name": "Edge Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "DR Router",
+        "normalized_type": "router",
+        "zone_id": "z5"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Government-2_req2\", \"title\": \"Secure Government Data Center\", \"description\": \"A secure government data center with a DMZ, load-balanced web servers, and segmented production, staging, and management zones.\", \"scenario\": \"government\", \"topology_summary\": \"The topology includes a screened DMZ with a WAF and load-balanced web servers. The core application and database servers are in a production zone, while internal firewalls segment the staging and management networks. Redundant connectivity, content filtering, and SIEM integration are provided.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"DMZ\", \"zone_type\": \"dmz\"}, {\"zone_id\": \"z2\", \"name\": \"Production\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z3\", \"name\": \"Staging\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z4\", \"name\": \"Management\", \"zone_type\": \"management\"}, {\"zone_id\": \"z5\", \"name\": \"DR Site\", \"zone_type\": \"data_center\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"WAF\", \"normalized_type\": \"waf\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Load Balancer\", \"normalized_type\": \"load_balancer\", \"zone_id\": \"z1\"}, {\"node_id\": \"n3\", \"name\": \"Web Server 1\", \"normalized_type\": \"server\", \"zone_id\": \"z1\"}, {\"node_id\": \"n4\", \"name\": \"Web Server 2\", \"normalized_type\": \"server\", \"zone_id\": \"z1\"}, {\"node_id\": \"n5\", \"name\": \"Internal Firewall 1\", \"normalized_type\": \"firewall\", \"zone_id\": \"z2\"}, {\"node_id\": \"n6\", \"name\": \"Internal Firewall 2\", \"normalized_type\": \"firewall\", \"zone_id\": \"z2\"}, {\"node_id\": \"n7\", \"name\": \"Application Server\", \"normalized_type\": \"server\", \"zone_id\": \"z2\"}, {\"node_id\": \"n8\", \"name\": \"Database Server\", \"normalized_type\": \"database\", \"zone_id\": \"z2\"}, {\"node_id\": \"n9\", \"name\": \"Internal Firewall 3\", \"normalized_type\": \"firewall\", \"zone_id\": \"z3\"}, {\"node_id\": \"n10\", \"name\": \"Staging Server\", \"normalized_type\": \"server\", \"zone_id\": \"z3\"}, {\"node_id\": \"n11\", \"name\": \"Management Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z4\"}, {\"node_id\": \"n12\", \"name\": \"Management Server\", \"normalized_type\": \"server\", \"zone_id\": \"z4\"}, {\"node_id\": \"n13\", \"name\": \"Edge Router\", \"normalized_type\": \"router\", \"zone_id\": \"z1\"}, {\"node_id\": \"n14\", \"name\": \"SIEM\", \"normalized_type\": \"siem\", \"zone_id\": \"z1\"}, {\"node_id\": \"n15\", \"name\": \"DR Router\", \"normalized_type\": \"router\", \"zone_id\": \"z5\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 17.062
+  }
+}

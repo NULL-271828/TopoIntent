@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AE validation of observed Stage 5 report interface (not an original SCHEMACONTRACT)",
+  "type": "object",
+  "required": [
+    "node_link_summary",
+    "node_link_tests",
+    "diagnosis",
+    "pre_acl_policy_summary",
+    "pre_acl_policy_tests",
+    "post_acl_policy_summary",
+    "post_acl_policy_tests"
+  ],
+  "properties": {
+    "node_link_summary": {
+      "type": "object",
+      "required": [
+        "total",
+        "reachable",
+        "unreachable",
+        "avg_latency_ms"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reachable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unreachable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "avg_latency_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "node_link_tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "reachable",
+          "latency_ms"
+        ],
+        "properties": {
+          "reachable": {
+            "type": "boolean"
+          },
+          "latency_ms": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "diagnosis": {
+      "type": "object",
+      "required": [
+        "topology_failures",
+        "acl_failures",
+        "skipped_tests",
+        "node_link_failures",
+        "acl_conflicts"
+      ],
+      "properties": {
+        "topology_failures": {
+          "type": "array"
+        },
+        "acl_failures": {
+          "type": "array"
+        },
+        "skipped_tests": {
+          "type": "array"
+        },
+        "node_link_failures": {
+          "type": "array"
+        },
+        "acl_conflicts": {
+          "type": "array"
+        }
+      }
+    },
+    "pre_acl_policy_summary": {
+      "type": "object",
+      "required": [
+        "total",
+        "executed",
+        "skipped",
+        "passed",
+        "failed"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "executed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "skipped": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "passed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "pre_acl_policy_tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "actual",
+          "passed"
+        ],
+        "properties": {
+          "actual": {
+            "enum": [
+              "allow",
+              "deny",
+              "skip"
+            ]
+          },
+          "passed": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "post_acl_policy_summary": {
+      "type": "object",
+      "required": [
+        "total",
+        "executed",
+        "skipped",
+        "passed",
+        "failed"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "executed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "skipped": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "passed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "post_acl_policy_tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "actual",
+          "passed"
+        ],
+        "properties": {
+          "actual": {
+            "enum": [
+              "allow",
+              "deny",
+              "skip"
+            ]
+          },
+          "passed": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

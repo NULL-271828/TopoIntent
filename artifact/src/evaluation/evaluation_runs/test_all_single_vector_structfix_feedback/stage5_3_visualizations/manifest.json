@@ -1,0 +1,63 @@
+{
+  "run_dir": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback",
+  "output_dir": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations",
+  "index": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/index.html",
+  "html_files": [
+    {
+      "sample_id": "Financial-2_req1",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Financial-2_req1.html"
+    },
+    {
+      "sample_id": "Financial-2_req2",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Financial-2_req2.html"
+    },
+    {
+      "sample_id": "Financial-3_req1",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Financial-3_req1.html"
+    },
+    {
+      "sample_id": "Financial-3_req2",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Financial-3_req2.html"
+    },
+    {
+      "sample_id": "Financial-4_req1",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Financial-4_req1.html"
+    },
+    {
+      "sample_id": "Financial-4_req2",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Financial-4_req2.html"
+    },
+    {
+      "sample_id": "Government-1_req1",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Government-1_req1.html"
+    },
+    {
+      "sample_id": "Government-1_req2",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Government-1_req2.html"
+    },
+    {
+      "sample_id": "Government-2_req1",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Government-2_req1.html"
+    },
+    {
+      "sample_id": "Government-2_req2",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Government-2_req2.html"
+    },
+    {
+      "sample_id": "Government-3_req1",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Government-3_req1.html"
+    },
+    {
+      "sample_id": "Government-3_req2",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Government-3_req2.html"
+    },
+    {
+      "sample_id": "Government-4_req1",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Government-4_req1.html"
+    },
+    {
+      "sample_id": "Government-4_req2",
+      "html": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_feedback/stage5_3_visualizations/stage5_3_Government-4_req2.html"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Industrial-3",
+  "title": "Industrial Network Topology",
+  "description": "A network topology for an industrial environment following the Purdue model, with multiple zones and security controls including firewalls, remote access, and identity services.",
+  "scenario": "industrial",
+  "topology_summary": "The topology represents a multi-layered industrial network, starting from an external WAN, moving through an enterprise zone, an Industrial DMZ, and into the OT environment, which is further segmented. Security is enforced by firewalls between each zone.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Wide Area Network (WAN)",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Enterprise Zone Levels 4-5",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Industrial Demilitarized Zone (IDMZ)",
+      "zone_type": "dmz"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Industrial Zone Levels 0-3",
+      "zone_type": "ot"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Levels 0-2 Cell/Area Zone",
+      "zone_type": "ot"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "External DMZ / Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n2",
+      "name": "Core switches",
+      "normalized_type": "switch",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n3",
+      "name": "WLC (Enterprise)",
+      "normalized_type": "wireless_controller",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n4",
+      "name": "ISE (Enterprise)",
+      "normalized_type": "identity_server",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n5",
+      "name": "Firewalls (Active/Standby)",
+      "normalized_type": "firewall",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n6",
+      "name": "Remote Access Server",
+      "normalized_type": "server",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n7",
+      "name": "File Transfer Gateway",
+      "normalized_type": "server",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n8",
+      "name": "Core/Distribution Switch",
+      "normalized_type": "switch",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n9",
+      "name": "Firewall (Inspect Traffic)",
+      "normalized_type": "firewall",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n10",
+      "name": "Distribution Switch",
+      "normalized_type": "switch",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n11",
+      "name": "ISE",
+      "normalized_type": "identity_server",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n12",
+      "name": "WLC (Active)",
+      "normalized_type": "wireless_controller",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n13",
+      "name": "WLC (Standby)",
+      "normalized_type": "wireless_controller",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n14",
+      "name": "LWAP",
+      "normalized_type": "access_point",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n15",
+      "name": "WGB",
+      "normalized_type": "access_point",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n16",
+      "name": "PAC",
+      "normalized_type": "ot_controller",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n17",
+      "name": "FactoryTalk Client",
+      "normalized_type": "endpoint",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n18",
+      "name": "IO",
+      "normalized_type": "iot_device",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n19",
+      "name": "Drive",
+      "normalized_type": "iot_device",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n20",
+      "name": "MCC",
+      "normalized_type": "iot_device",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n21",
+      "name": "PAC",
+      "normalized_type": "ot_controller",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n22",
+      "name": "PAC",
+      "normalized_type": "ot_controller",
+      "zone_id": "z5"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n14",
+        "target": "n15",
+        "link_type": "wireless",
+        "label": "Wireless Connection"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z2",
+        "link_type": "routing",
+        "label": "Traffic via External Firewall"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z2",
+        "target": "z3",
+        "link_type": "routing",
+        "label": "Traffic via IDMZ Firewall"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z3",
+        "target": "z4",
+        "link_type": "routing",
+        "label": "Traffic via Industrial Firewall"
+      },
+      {
+        "link_id": "zl4",
+        "source": "z4",
+        "target": "z5",
+        "link_type": "data_flow",
+        "label": "EtherNet/IP"
+      }
+    ]
+  }
+}

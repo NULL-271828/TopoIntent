@@ -1,0 +1,343 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Enterprise-4",
+  "title": "Enterprise Network Topology",
+  "description": "A network topology diagram for an enterprise environment.",
+  "scenario": "enterprise",
+  "topology_summary": "The topology includes multiple network zones with various aggregation layers, gateways, and access points, connecting to the Internet, WAN, and a central cloud management platform. A data center houses core services like DNS, DHCP, NTP, and CPPM.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "AOS 10 Gateways",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Service Aggregation (L3)",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z3",
+      "name": "WAN Aggregation (L3)",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Core (L3)",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Access Aggregation (L3/L2)",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z6",
+      "name": "Wired Access (L2)",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z7",
+      "name": "Wireless Access (L2)",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z8",
+      "name": "SD-WAN Gateways",
+      "zone_type": "enterprise"
+    },
+    {
+      "zone_id": "z9",
+      "name": "Internet",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z10",
+      "name": "WAN",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z11",
+      "name": "HPE Aruba Networking Central & Cloud NAC",
+      "zone_type": "cloud_hub"
+    },
+    {
+      "zone_id": "z12",
+      "name": "DC",
+      "zone_type": "data_center"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "AOS 10 Gateways",
+      "normalized_type": "router",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Service Aggregation (L3)",
+      "normalized_type": "router",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n3",
+      "name": "WAN Aggregation (L3)",
+      "normalized_type": "router",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n4",
+      "name": "Core (L3)",
+      "normalized_type": "router",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n5",
+      "name": "Access Aggregation (L3/L2)",
+      "normalized_type": "router",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n6",
+      "name": "Wired Access (L2)",
+      "normalized_type": "switch",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n7",
+      "name": "Wireless Access (L2)",
+      "normalized_type": "access_point",
+      "zone_id": "z7"
+    },
+    {
+      "node_id": "n8",
+      "name": "SD-WAN Gateways",
+      "normalized_type": "router",
+      "zone_id": "z8"
+    },
+    {
+      "node_id": "n9",
+      "name": "Internet",
+      "normalized_type": "cloud_service",
+      "zone_id": "z9"
+    },
+    {
+      "node_id": "n10",
+      "name": "WAN",
+      "normalized_type": "cloud_service",
+      "zone_id": "z10"
+    },
+    {
+      "node_id": "n11",
+      "name": "HPE Aruba Networking Central & Cloud NAC",
+      "normalized_type": "cloud_service",
+      "zone_id": "z11"
+    },
+    {
+      "node_id": "n12",
+      "name": "CPPM",
+      "normalized_type": "identity_server",
+      "zone_id": "z12"
+    },
+    {
+      "node_id": "n13",
+      "name": "DNS",
+      "normalized_type": "server",
+      "zone_id": "z12"
+    },
+    {
+      "node_id": "n14",
+      "name": "DHCP",
+      "normalized_type": "server",
+      "zone_id": "z12"
+    },
+    {
+      "node_id": "n15",
+      "name": "NTP",
+      "normalized_type": "server",
+      "zone_id": "z12"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "uplink",
+        "label": "UBT GRE"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n1",
+        "target": "n3",
+        "link_type": "uplink",
+        "label": "WLAN GRE"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n2",
+        "target": "n4",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "nl4",
+        "source": "n3",
+        "target": "n4",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "nl5",
+        "source": "n4",
+        "target": "n5",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "nl6",
+        "source": "n5",
+        "target": "n6",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "nl7",
+        "source": "n5",
+        "target": "n7",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "nl8",
+        "source": "n8",
+        "target": "n9",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "nl9",
+        "source": "n8",
+        "target": "n10",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "nl10",
+        "source": "n8",
+        "target": "n1",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "nl11",
+        "source": "n12",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "nl12",
+        "source": "n13",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "nl13",
+        "source": "n14",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": ""
+      },
+      {
+        "link_id": "nl14",
+        "source": "n15",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": ""
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z2",
+        "link_type": "uplink",
+        "label": "UBT GRE"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z1",
+        "target": "z3",
+        "link_type": "uplink",
+        "label": "WLAN GRE"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z2",
+        "target": "z4",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl4",
+        "source": "z3",
+        "target": "z4",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl5",
+        "source": "z4",
+        "target": "z5",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl6",
+        "source": "z5",
+        "target": "z6",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl7",
+        "source": "z5",
+        "target": "z7",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl8",
+        "source": "z8",
+        "target": "z9",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl9",
+        "source": "z8",
+        "target": "z10",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl10",
+        "source": "z8",
+        "target": "z1",
+        "link_type": "uplink",
+        "label": ""
+      },
+      {
+        "link_id": "zl11",
+        "source": "z12",
+        "target": "z4",
+        "link_type": "data_flow",
+        "label": ""
+      }
+    ]
+  }
+}

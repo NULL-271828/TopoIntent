@@ -1,0 +1,78 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-4_req2",
+    "title": "Resilient Branch Office Network",
+    "description": "Design for a branch office with redundant routers, MPLS WAN connectivity, and survivable voice capabilities.",
+    "scenario": "enterprise",
+    "topology_summary": "The branch office will have redundant routers connected via MPLS to the main data center. It will also have direct connections to the PSTN and a SIP provider for survivable voice functionality.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Primary Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Secondary Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "PSTN Gateway",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "SIP Provider",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Unified Communications Manager",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Access Control Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n7",
+        "name": "Netflow Collector",
+        "normalized_type": "other",
+        "zone_id": "z2"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Financial-4_req2\", \"title\": \"Resilient Branch Office Network\", \"description\": \"Design for a branch office with redundant routers, MPLS WAN connectivity, and survivable voice capabilities.\", \"scenario\": \"enterprise\", \"topology_summary\": \"The branch office will have redundant routers connected via MPLS to the main data center. It will also have direct connections to the PSTN and a SIP provider for survivable voice functionality.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Branch Office\", \"zone_type\": \"enterprise\"}, {\"zone_id\": \"z2\", \"name\": \"Data Center\", \"zone_type\": \"data_center\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Primary Router\", \"normalized_type\": \"router\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Secondary Router\", \"normalized_type\": \"router\", \"zone_id\": \"z1\"}, {\"node_id\": \"n3\", \"name\": \"PSTN Gateway\", \"normalized_type\": \"other\", \"zone_id\": \"z1\"}, {\"node_id\": \"n4\", \"name\": \"SIP Provider\", \"normalized_type\": \"other\", \"zone_id\": \"z1\"}, {\"node_id\": \"n5\", \"name\": \"Unified Communications Manager\", \"normalized_type\": \"server\", \"zone_id\": \"z2\"}, {\"node_id\": \"n6\", \"name\": \"Access Control Server\", \"normalized_type\": \"identity_server\", \"zone_id\": \"z2\"}, {\"node_id\": \"n7\", \"name\": \"Netflow Collector\", \"normalized_type\": \"other\", \"zone_id\": \"z2\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 9.077
+  }
+}

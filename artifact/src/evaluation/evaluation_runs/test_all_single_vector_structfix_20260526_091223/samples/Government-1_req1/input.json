@@ -1,0 +1,6 @@
+{
+  "sample_id": "Government-1_req1",
+  "template_id": "Government-1",
+  "user_intent": "We need to set up a secure network for our government agency. The primary requirement is to connect our main data center to a regional office and a smaller branch office via a dedicated WAN. We must have a secure internet perimeter with email and web filtering, as well as provide remote access for authorized personnel. The branch and regional offices require both wired and wireless connectivity for users.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

@@ -1,0 +1,12 @@
+{
+  "metric": "stage1_intent_analysis_reference_set",
+  "reference_dataset": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_train.json",
+  "stage1_accuracy_source": "artifact/src/logs/stable_outputs/stage1_output/reference_train/stage1_accuracy.json",
+  "stage1_generated_source": "artifact/src/logs/stable_outputs/stage1_output/reference_train/stage1_generated_templates.json",
+  "reference_samples": 44,
+  "generated_templates": 44,
+  "total_samples": 44,
+  "scenario_accuracy": 0.9773,
+  "zone_type_recall": 0.6769,
+  "node_type_recall": 0.5323
+}

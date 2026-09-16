@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Topology schema_version="2.1" template_id="generated_Government-4_req1" title="Government Isolated Network" scenario="government" ig_level="IG3">
+  <Description>A network for government operations with isolated sensitive systems and secure management workstations.</Description>
+  <Summary>The network will consist of separate zones for standard and sensitive information, with dedicated management workstations and a secure internet gateway for the standard environment.</Summary>
+  <Domains>
+    <Domain id="z1" name="Standard Environment" type="enterprise"/>
+    <Domain id="z2" name="Sensitive Environment" type="security"/>
+    <Domain id="z3" name="Management Workstations" type="management"/>
+    <Domain id="z4" name="Internet" type="external"/>
+    <Domain id="z5" name="Non-Production Environment" type="enterprise"/>
+    <Domain id="z6" name="External Testing Zone" type="external"/>
+    <Domain id="z_preserve1" name="External Penetration Testing" type="external"/>
+    <Domain id="z7" name="Security Operations" type="security"/>
+    <Domain id="z_new1" name="Asset Management" type="management"/>
+    <Domain id="z_new2" name="Data Flow Documentation" type="management"/>
+    <Domain id="z_new3" name="Remote Access Management" type="management"/>
+  </Domains>
+  <Nodes>
+    <Node id="n1" name="Standard Firewall" domain="z1" domain_name="Standard Environment" type="firewall" ip=""/>
+    <Node id="n2" name="Sensitive Firewall" domain="z2" domain_name="Sensitive Environment" type="firewall" ip=""/>
+    <Node id="n3" name="Management Workstation (Standard)" domain="z3" domain_name="Management Workstations" type="endpoint" ip=""/>
+    <Node id="n4" name="Management Workstation (Sensitive)" domain="z3" domain_name="Management Workstations" type="endpoint" ip=""/>
+    <Node id="n5" name="Secure Gateway" domain="z1" domain_name="Standard Environment" type="firewall" ip=""/>
+    <Node id="n6" name="Standard Router" domain="z1" domain_name="Standard Environment" type="router" ip=""/>
+    <Node id="n7" name="Sensitive Router" domain="z2" domain_name="Sensitive Environment" type="router" ip=""/>
+    <Node id="n8" name="Management Router" domain="z3" domain_name="Management Workstations" type="router" ip=""/>
+    <Node id="n9" name="DNS Server" domain="z1" domain_name="Standard Environment" type="server" ip=""/>
+    <Node id="n10" name="DNS Filtering Server" domain="z1" domain_name="Standard Environment" type="server" ip=""/>
+    <Node id="n11" name="Web Proxy" domain="z1" domain_name="Standard Environment" type="proxy" ip=""/>
+    <Node id="n12" name="Central AAA Server" domain="z3" domain_name="Management Workstations" type="identity_server" ip=""/>
+    <Node id="n13" name="NIDS Sensor" domain="z1" domain_name="Standard Environment" type="ids_ips" ip=""/>
+    <Node id="n14" name="NIPS Sensor" domain="z1" domain_name="Standard Environment" type="ids_ips" ip=""/>
+    <Node id="n15" name="Application Firewall" domain="z1" domain_name="Standard Environment" type="waf" ip=""/>
+    <Node id="n16" name="802.1X Controller" domain="z1" domain_name="Standard Environment" type="access_point" ip=""/>
+    <Node id="n17" name="SIEM" domain="z3" domain_name="Management Workstations" type="siem" ip=""/>
+    <Node id="n18" name="Pentest Workstation" domain="z6" domain_name="External Testing Zone" type="endpoint" ip=""/>
+    <Node id="n_struct1" name="Internet External Endpoint" domain="z4" domain_name="Internet" type="endpoint" ip=""/>
+    <Node id="n_struct2" name="Non-Production Environment Representative Workload" domain="z5" domain_name="Non-Production Environment" type="workload" ip=""/>
+    <Node id="n_struct3" name="External Penetration Testing External Endpoint" domain="z_preserve1" domain_name="External Penetration Testing" type="endpoint" ip=""/>
+    <Node id="n_struct4" name="Security Operations Security Gateway" domain="z7" domain_name="Security Operations" type="firewall" ip=""/>
+    <Node id="n_new1" name="Asset Management System" domain="z_new1" domain_name="Asset Management" type="server" ip=""/>
+    <Node id="n_new2" name="Data Flow Documentation System" domain="z_new2" domain_name="Data Flow Documentation" type="server" ip=""/>
+    <Node id="n_new3" name="MFA Gateway" domain="z_new3" domain_name="Remote Access Management" type="vpn_gateway" ip=""/>
+    <Node id="n_new4" name="IaC Management System" domain="z_new3" domain_name="Remote Access Management" type="server" ip=""/>
+    <Node id="n_new5" name="Remote Device Manager" domain="z_new3" domain_name="Remote Access Management" type="server" ip=""/>
+    <Node id="n_new6" name="Network Traffic Logger" domain="z_new3" domain_name="Remote Access Management" type="server" ip=""/>
+    <Node id="n_new7" name="Penetration Test Scheduler" domain="z_new3" domain_name="Remote Access Management" type="server" ip=""/>
+  </Nodes>
+  <Links>
+    <ZoneLinks>
+      <Link id="zl1" source="z1" target="z4" type="uplink" label="Standard Environment to Internet"/>
+      <Link id="zl2" source="z2" target="z3" type="management" label="Sensitive Environment to Management Workstations"/>
+      <Link id="zl3" source="z1" target="z5" type="peering" label="Standard to Non-Production Environment"/>
+      <Link id="zl4" source="z6" target="z4" type="uplink" label="External Testing Zone to Internet"/>
+      <Link id="zl_new1" source="z_new1" target="z1" type="management" label="Asset Management to Standard Environment"/>
+      <Link id="zl_new2" source="z_new1" target="z2" type="management" label="Asset Management to Sensitive Environment"/>
+      <Link id="zl_new3" source="z_new1" target="z3" type="management" label="Asset Management to Management Workstations"/>
+      <Link id="zl_new4" source="z_new1" target="z4" type="management" label="Asset Management to Internet"/>
+      <Link id="zl_new5" source="z_new1" target="z5" type="management" label="Asset Management to Non-Production Environment"/>
+      <Link id="zl_new6" source="z_new1" target="z6" type="management" label="Asset Management to External Testing Zone"/>
+      <Link id="zl_new7" source="z_new1" target="z_preserve1" type="management" label="Asset Management to External Penetration Testing"/>
+      <Link id="zl_new8" source="z_new1" target="z7" type="management" label="Asset Management to Security Operations"/>
+      <Link id="zl_new9" source="z_new2" target="z1" type="management" label="Data Flow Documentation to Standard Environment"/>
+      <Link id="zl_new10" source="z_new2" target="z2" type="management" label="Data Flow Documentation to Sensitive Environment"/>
+    </ZoneLinks>
+    <NodeLinks>
+      <Link id="nl1" source="n1" target="n6" type="routing" label="Standard Environment Routing"/>
+      <Link id="nl2" source="n2" target="n7" type="routing" label="Sensitive Environment Routing"/>
+      <Link id="nl3" source="n3" target="n8" type="management" label="Management Workstation (Standard) Management"/>
+      <Link id="nl4" source="n4" target="n8" type="management" label="Management Workstation (Sensitive) Management"/>
+      <Link id="nl5" source="n5" target="n6" type="data_flow" label="Internet Traffic Filtering"/>
+      <Link id="nl6" source="n9" target="n6" type="data_flow" label="DNS Service to Standard Router"/>
+      <Link id="nl7" source="n10" target="n6" type="data_flow" label="DNS Filtering to Standard Router"/>
+      <Link id="nl8" source="n11" target="n6" type="data_flow" label="Web Proxy to Standard Router"/>
+      <Link id="nl9" source="n12" target="n8" type="management" label="Central AAA to Management Router"/>
+      <Link id="nl10" source="n13" target="n6" type="monitoring" label="NIDS to Standard Router"/>
+      <Link id="nl11" source="n14" target="n6" type="monitoring" label="NIPS to Standard Router"/>
+      <Link id="nl12" source="n15" target="n6" type="data_flow" label="Application Firewall to Standard Router"/>
+      <Link id="nl13" source="n16" target="n6" type="data_flow" label="802.1X Controller to Standard Router"/>
+      <Link id="nl14" source="n17" target="n13" type="monitoring" label="SIEM to NIDS Sensor"/>
+      <Link id="nl15" source="n17" target="n14" type="monitoring" label="SIEM to NIPS Sensor"/>
+      <Link id="nl16" source="n17" target="n6" type="monitoring" label="SIEM to Standard Router"/>
+      <Link id="nl17" source="n18" target="n5" type="data_flow" label="Pentest to Secure Gateway"/>
+      <Link id="nl_struct1" source="n1" target="n_struct1" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct2" source="n1" target="n_struct2" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct3" source="n1" target="n_struct3" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_struct4" source="n1" target="n_struct4" type="routing" label="Structural zone attachment"/>
+      <Link id="nl_new1" source="n_new1" target="n1" type="management" label="Asset Management to Standard Firewall"/>
+      <Link id="nl_new2" source="n_new1" target="n2" type="management" label="Asset Management to Sensitive Firewall"/>
+      <Link id="nl_new3" source="n_new1" target="n3" type="management" label="Asset Management to Management Workstation (Standard)"/>
+      <Link id="nl_new4" source="n_new1" target="n4" type="management" label="Asset Management to Management Workstation (Sensitive)"/>
+      <Link id="nl_new5" source="n_new1" target="n5" type="management" label="Asset Management to Secure Gateway"/>
+      <Link id="nl_new6" source="n_new1" target="n6" type="management" label="Asset Management to Standard Router"/>
+      <Link id="nl_new7" source="n_new1" target="n7" type="management" label="Asset Management to Sensitive Router"/>
+      <Link id="nl_new8" source="n_new1" target="n8" type="management" label="Asset Management to Management Router"/>
+      <Link id="nl_new9" source="n_new1" target="n9" type="management" label="Asset Management to DNS Server"/>
+      <Link id="nl_new10" source="n_new1" target="n10" type="management" label="Asset Management to DNS Filtering Server"/>
+      <Link id="nl_new11" source="n_new1" target="n11" type="management" label="Asset Management to Web Proxy"/>
+      <Link id="nl_new12" source="n_new1" target="n12" type="management" label="Asset Management to Central AAA Server"/>
+      <Link id="nl_new13" source="n_new1" target="n13" type="management" label="Asset Management to NIDS Sensor"/>
+      <Link id="nl_new14" source="n_new1" target="n14" type="management" label="Asset Management to NIPS Sensor"/>
+      <Link id="nl_new15" source="n_new1" target="n15" type="management" label="Asset Management to Application Firewall"/>
+      <Link id="nl_new16" source="n_new1" target="n16" type="management" label="Asset Management to 802.1X Controller"/>
+      <Link id="nl_new17" source="n_new1" target="n17" type="management" label="Asset Management to SIEM"/>
+      <Link id="nl_new18" source="n_new1" target="n18" type="management" label="Asset Management to Pentest Workstation"/>
+      <Link id="nl_new19" source="n_new1" target="n_struct1" type="management" label="Asset Management to Internet External Endpoint"/>
+      <Link id="nl_new20" source="n_new1" target="n_struct2" type="management" label="Asset Management to Non-Production Environment Representative Workload"/>
+      <Link id="nl_new21" source="n_new1" target="n_struct3" type="management" label="Asset Management to External Penetration Testing External Endpoint"/>
+      <Link id="nl_new22" source="n_new1" target="n_struct4" type="management" label="Asset Management to Security Operations Security Gateway"/>
+      <Link id="nl_new23" source="n_new2" target="n1" type="management" label="Data Flow Documentation to Standard Firewall"/>
+      <Link id="nl_new24" source="n_new2" target="n2" type="management" label="Data Flow Documentation to Sensitive Firewall"/>
+      <Link id="nl_new25" source="n_new2" target="n3" type="management" label="Data Flow Documentation to Management Workstation (Standard)"/>
+      <Link id="nl_new26" source="n_new2" target="n4" type="management" label="Data Flow Documentation to Management Workstation (Sensitive)"/>
+      <Link id="nl_new27" source="n_new2" target="n5" type="management" label="Data Flow Documentation to Secure Gateway"/>
+      <Link id="nl_new28" source="n_new2" target="n6" type="management" label="Data Flow Documentation to Standard Router"/>
+      <Link id="nl_new29" source="n_new2" target="n7" type="management" label="Data Flow Documentation to Sensitive Router"/>
+      <Link id="nl_new30" source="n_new2" target="n8" type="management" label="Data Flow Documentation to Management Router"/>
+      <Link id="nl_new31" source="n_new2" target="n9" type="management" label="Data Flow Documentation to DNS Server"/>
+      <Link id="nl_new32" source="n_new2" target="n10" type="management" label="Data Flow Documentation to DNS Filtering Server"/>
+      <Link id="nl_new33" source="n_new2" target="n11" type="management" label="Data Flow Documentation to Web Proxy"/>
+      <Link id="nl_new34" source="n_new2" target="n12" type="management" label="Data Flow Documentation to Central AAA Server"/>
+      <Link id="nl_new35" source="n_new2" target="n13" type="management" label="Data Flow Documentation to NIDS Sensor"/>
+      <Link id="nl_new36" source="n_new2" target="n14" type="management" label="Data Flow Documentation to NIPS Sensor"/>
+      <Link id="nl_new37" source="n_new2" target="n15" type="management" label="Data Flow Documentation to Application Firewall"/>
+      <Link id="nl_new38" source="n_new2" target="n16" type="management" label="Data Flow Documentation to 802.1X Controller"/>
+      <Link id="nl_new39" source="n_new2" target="n17" type="management" label="Data Flow Documentation to SIEM"/>
+      <Link id="nl_new40" source="n_new2" target="n18" type="management" label="Data Flow Documentation to Pentest Workstation"/>
+      <Link id="nl_new41" source="n_new2" target="n_struct1" type="management" label="Data Flow Documentation to Internet External Endpoint"/>
+      <Link id="nl_new42" source="n_new2" target="n_struct2" type="management" label="Data Flow Documentation to Non-Production Environment Representative Workload"/>
+      <Link id="nl_new43" source="n_new2" target="n_struct3" type="management" label="Data Flow Documentation to External Penetration Testing External Endpoint"/>
+      <Link id="nl_new44" source="n_new2" target="n_struct4" type="management" label="Data Flow Documentation to Security Operations Security Gateway"/>
+      <Link id="nl_new45" source="n_new3" target="n12" type="management" label="MFA Gateway to Central AAA Server"/>
+      <Link id="nl_new46" source="n_new4" target="n12" type="management" label="IaC Management to Central AAA Server"/>
+      <Link id="nl_new47" source="n_new5" target="n12" type="management" label="Remote Device Manager to Central AAA Server"/>
+      <Link id="nl_new48" source="n_new6" target="n17" type="data_flow" label="Network Traffic Logger to SIEM"/>
+      <Link id="nl_new49" source="n_new7" target="n18" type="management" label="Penetration Test Scheduler to Pentest Workstation"/>
+      <Link id="nl_new50" source="n1" target="n3" type="management" label="Standard Firewall to Management Workstation (Standard)"/>
+      <Link id="nl_new51" source="n1" target="n4" type="management" label="Standard Firewall to Management Workstation (Sensitive)"/>
+      <Link id="nl_new52" source="n2" target="n6" type="data_flow" label="Sensitive Firewall to Standard Router"/>
+      <Link id="nl_new53" source="n18" target="n2" type="data_flow" label="Pentest Workstation to Sensitive Firewall"/>
+      <Link id="nl_new54" source="n_struct2" target="n2" type="data_flow" label="Non-Production Environment Representative Workload to Sensitive Firewall"/>
+      <Link id="nl_new55" source="n18" target="n_struct1" type="data_flow" label="Pentest Workstation to Internet External Endpoint"/>
+      <Link id="nl_new56" source="n3" target="n6" type="data_flow" label="Management Workstation (Standard) to Standard Router"/>
+      <Link id="nl_new57" source="n4" target="n6" type="data_flow" label="Management Workstation (Sensitive) to Standard Router"/>
+      <Link id="nl_new58" source="n3" target="n7" type="data_flow" label="Management Workstation (Standard) to Sensitive Router"/>
+      <Link id="nl_new59" source="n4" target="n7" type="data_flow" label="Management Workstation (Sensitive) to Sensitive Router"/>
+      <Link id="nl_new60" source="n1" target="n17" type="management" label="Standard Firewall to SIEM"/>
+    </NodeLinks>
+  </Links>
+  <Policies>
+    <Allow id="tc1" src_zone="z1" dst_zone="z1" src_node="n1" dst_node="n6" protocol="tcp" port="80">
+      <Reason>Standard Firewall to Standard Router routing</Reason>
+    </Allow>
+    <Allow id="tc2" src_zone="z2" dst_zone="z2" src_node="n2" dst_node="n7" protocol="tcp" port="80">
+      <Reason>Sensitive Firewall to Sensitive Router routing</Reason>
+    </Allow>
+    <Allow id="tc3" src_zone="z3" dst_zone="z3" src_node="n3" dst_node="n8" protocol="tcp" port="22">
+      <Reason>Management Workstation (Standard) to Management Router management</Reason>
+    </Allow>
+    <Allow id="tc4" src_zone="z3" dst_zone="z3" src_node="n4" dst_node="n8" protocol="tcp" port="22">
+      <Reason>Management Workstation (Sensitive) to Management Router management</Reason>
+    </Allow>
+    <Allow id="tc5" src_zone="z1" dst_zone="z1" src_node="n5" dst_node="n6" protocol="tcp" port="80">
+      <Reason>Secure Gateway to Standard Router data flow</Reason>
+    </Allow>
+    <Allow id="tc6" src_zone="z1" dst_zone="z1" src_node="n9" dst_node="n6" protocol="tcp" port="53">
+      <Reason>DNS Server to Standard Router data flow</Reason>
+    </Allow>
+    <Allow id="tc7" src_zone="z1" dst_zone="z1" src_node="n10" dst_node="n6" protocol="tcp" port="53">
+      <Reason>DNS Filtering Server to Standard Router data flow</Reason>
+    </Allow>
+    <Allow id="tc8" src_zone="z1" dst_zone="z1" src_node="n11" dst_node="n6" protocol="tcp" port="8080">
+      <Reason>Web Proxy to Standard Router data flow</Reason>
+    </Allow>
+    <Allow id="tc9" src_zone="z3" dst_zone="z3" src_node="n12" dst_node="n8" protocol="tcp" port="88">
+      <Reason>Central AAA Server to Management Router management</Reason>
+    </Allow>
+    <Allow id="tc10" src_zone="z1" dst_zone="z1" src_node="n13" dst_node="n6" protocol="tcp" port="443">
+      <Reason>NIDS Sensor to Standard Router monitoring</Reason>
+    </Allow>
+    <Allow id="tc11" src_zone="z1" dst_zone="z1" src_node="n14" dst_node="n6" protocol="tcp" port="443">
+      <Reason>NIPS Sensor to Standard Router monitoring</Reason>
+    </Allow>
+    <Allow id="tc12" src_zone="z1" dst_zone="z1" src_node="n15" dst_node="n6" protocol="tcp" port="8080">
+      <Reason>Application Firewall to Standard Router data flow</Reason>
+    </Allow>
+    <Allow id="tc13" src_zone="z1" dst_zone="z1" src_node="n16" dst_node="n6" protocol="tcp" port="8021">
+      <Reason>802.1X Controller to Standard Router data flow</Reason>
+    </Allow>
+    <Allow id="tc14" src_zone="z3" dst_zone="z1" src_node="n17" dst_node="n13" protocol="tcp" port="443">
+      <Reason>SIEM to NIDS Sensor monitoring</Reason>
+    </Allow>
+    <Allow id="tc15" src_zone="z3" dst_zone="z1" src_node="n17" dst_node="n14" protocol="tcp" port="443">
+      <Reason>SIEM to NIPS Sensor monitoring</Reason>
+    </Allow>
+    <Allow id="tc16" src_zone="z3" dst_zone="z1" src_node="n17" dst_node="n6" protocol="tcp" port="443">
+      <Reason>SIEM to Standard Router monitoring</Reason>
+    </Allow>
+    <Allow id="tc17" src_zone="z6" dst_zone="z1" src_node="n18" dst_node="n5" protocol="tcp" port="443">
+      <Reason>Pentest Workstation to Secure Gateway data flow</Reason>
+    </Allow>
+    <Allow id="tc18" src_zone="z4" dst_zone="z1" src_node="n_struct1" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Internet External Endpoint to Standard Firewall routing</Reason>
+    </Allow>
+    <Allow id="tc19" src_zone="z5" dst_zone="z1" src_node="n_struct2" dst_node="n1" protocol="tcp" port="80">
+      <Reason>Non-Production Environment to Standard Firewall routing</Reason>
+    </Allow>
+    <Allow id="tc20" src_zone="z6" dst_zone="z4" src_node="n18" dst_node="n_struct1" protocol="tcp" port="443">
+      <Reason>Pentest Workstation to Internet External Endpoint data flow</Reason>
+    </Allow>
+    <Allow id="tc21" src_zone="z3" dst_zone="z1" src_node="n3" dst_node="n6" protocol="tcp" port="80">
+      <Reason>Management Workstation (Standard) to Standard Router data flow</Reason>
+    </Allow>
+    <Allow id="tc22" src_zone="z3" dst_zone="z1" src_node="n4" dst_node="n6" protocol="tcp" port="80">
+      <Reason>Management Workstation (Sensitive) to Standard Router data flow</Reason>
+    </Allow>
+    <Allow id="tc23" src_zone="z3" dst_zone="z2" src_node="n3" dst_node="n7" protocol="tcp" port="80">
+      <Reason>Management Workstation (Standard) to Sensitive Router data flow</Reason>
+    </Allow>
+    <Allow id="tc24" src_zone="z3" dst_zone="z2" src_node="n4" dst_node="n7" protocol="tcp" port="80">
+      <Reason>Management Workstation (Sensitive) to Sensitive Router data flow</Reason>
+    </Allow>
+    <Deny id="tc25" src_zone="z1" dst_zone="z2" src_node="n1" dst_node="n2" protocol="tcp" port="80">
+      <Reason>Standard Firewall to Sensitive Firewall blocked</Reason>
+    </Deny>
+    <Deny id="tc26" src_zone="z4" dst_zone="z2" src_node="n_struct1" dst_node="n2" protocol="tcp" port="80">
+      <Reason>Internet to Sensitive Firewall blocked</Reason>
+    </Deny>
+    <Deny id="tc27" src_zone="z5" dst_zone="z2" src_node="n_struct2" dst_node="n2" protocol="tcp" port="80">
+      <Reason>Non-Production to Sensitive Firewall blocked</Reason>
+    </Deny>
+    <Deny id="tc28" src_zone="z6" dst_zone="z2" src_node="n18" dst_node="n2" protocol="tcp" port="80">
+      <Reason>Pentest Workstation to Sensitive Firewall blocked</Reason>
+    </Deny>
+    <Deny id="tc29" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n3" protocol="tcp" port="80">
+      <Reason>Standard Firewall to Management Workstation (Standard) blocked</Reason>
+    </Deny>
+    <Deny id="tc30" src_zone="z1" dst_zone="z3" src_node="n1" dst_node="n4" protocol="tcp" port="80">
+      <Reason>Standard Firewall to Management Workstation (Sensitive) blocked</Reason>
+    </Deny>
+    <Deny id="tc31" src_zone="z2" dst_zone="z3" src_node="n2" dst_node="n3" protocol="tcp" port="80">
+      <Reason>Sensitive Firewall to Management Workstation (Standard) blocked</Reason>
+    </Deny>
+    <Deny id="tc32" src_zone="z2" dst_zone="z3" src_node="n2" dst_node="n4" protocol="tcp" port="80">
+      <Reason>Sensitive Firewall to Management Workstation (Sensitive) blocked</Reason>
+    </Deny>
+    <Deny id="tc33" src_zone="z4" dst_zone="z3" src_node="n_struct1" dst_node="n3" protocol="tcp" port="80">
+      <Reason>Internet to Management Workstation (Standard) blocked</Reason>
+    </Deny>
+    <Deny id="tc34" src_zone="z4" dst_zone="z3" src_node="n_struct1" dst_node="n4" protocol="tcp" port="80">
+      <Reason>Internet to Management Workstation (Sensitive) blocked</Reason>
+    </Deny>
+    <Deny id="tc35" src_zone="z5" dst_zone="z3" src_node="n_struct2" dst_node="n3" protocol="tcp" port="80">
+      <Reason>Non-Production to Management Workstation (Standard) blocked</Reason>
+    </Deny>
+    <Deny id="tc36" src_zone="z5" dst_zone="z3" src_node="n_struct2" dst_node="n4" protocol="tcp" port="80">
+      <Reason>Non-Production to Management Workstation (Sensitive) blocked</Reason>
+    </Deny>
+    <Deny id="tc37" src_zone="z6" dst_zone="z3" src_node="n18" dst_node="n3" protocol="tcp" port="80">
+      <Reason>Pentest Workstation to Management Workstation (Standard) blocked</Reason>
+    </Deny>
+    <Deny id="tc38" src_zone="z6" dst_zone="z3" src_node="n18" dst_node="n4" protocol="tcp" port="80">
+      <Reason>Pentest Workstation to Management Workstation (Sensitive) blocked</Reason>
+    </Deny>
+    <Allow id="tc39" src_zone="z1" dst_zone="z4" src_node="n1" dst_node="n_struct1" protocol="tcp" port="80">
+      <Reason>Standard Firewall to Internet External Endpoint routing</Reason>
+    </Allow>
+    <Allow id="tc40" src_zone="z1" dst_zone="z5" src_node="n1" dst_node="n_struct2" protocol="tcp" port="80">
+      <Reason>Standard Firewall to Non-Production Environment routing</Reason>
+    </Allow>
+  </Policies>
+  <Compliance ig_level="IG3" all_required_satisfied="true">
+    <Control id="1.1" title="Establish and Maintain Detailed Enterprise Asset Inventory" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Asset Management System' (n_new1) that is connected to various nodes and zones, indicating the presence of an asset management system.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.8" title="Document Data Flows" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Data Flow Documentation System' (n_new2) that is connected to various nodes and zones, indicating the presence of a system for documenting data flows.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="3.12" title="Segment Data Processing and Storage Based on Sensitivity" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes separate zones for 'Standard Environment' (z1), 'Sensitive Environment' (z2), and 'Non-Production Environment' (z5), indicating that data processing and storage are segmented based on sensitivity.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.4" title="Implement and Manage a Firewall on Servers" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes firewalls (n1, n2, n5, n_struct4) in various zones, indicating that firewalls are implemented and managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="4.9" title="Configure Trusted DNS Servers on Enterprise Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Server' (n9) and a 'DNS Filtering Server' (n10) connected to the 'Standard Router' (n6), indicating that trusted DNS servers are configured.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="6.4" title="Require MFA for Remote Network Access" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'MFA Gateway' (n_new3) connected to the 'Central AAA Server' (n12), indicating that MFA is required for remote network access.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.2" title="Use DNS Filtering Services" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'DNS Filtering Server' (n10) connected to the 'Standard Router' (n6), indicating that DNS filtering services are used.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="9.3" title="Maintain and Enforce Network-Based URL Filters" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Web Proxy' (n11) connected to the 'Standard Router' (n6), indicating that network-based URL filters are maintained and enforced.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.2" title="Establish and Maintain a Secure Network Architecture" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes separate zones for different environments and security levels, and various security controls (firewalls, routers, DNS servers, etc.), indicating a secure network architecture.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.3" title="Securely Manage Network Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'IaC Management System' (n_new4) connected to the 'Central AAA Server' (n12), indicating that network infrastructure is securely managed using IaC.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.5" title="Centralize Network Authentication, Authorization, and Auditing (AAA)" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Central AAA Server' (n12) connected to various nodes and zones, indicating centralized network AAA.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.7" title="Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'MFA Gateway' (n_new3) connected to the 'Central AAA Server' (n12), indicating that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="12.8" title="Establish and Maintain Dedicated Computing Resources for All Administrative Work" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Management Workstations' zone (z3) with dedicated workstations (n3, n4) and a 'Management Router' (n8), indicating dedicated computing resources for administrative work.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.3" title="Deploy a Network Intrusion Detection Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'NIDS Sensor' (n13) connected to the 'Standard Router' (n6) and 'SIEM' (n17), indicating the deployment of a network intrusion detection solution.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.4" title="Perform Traffic Filtering Between Network Segments" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes firewalls (n1, n2, n5, n_struct4) and routers (n6, n7) that perform traffic filtering between network segments, as indicated by the links between these nodes.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.5" title="Manage Access Control for Remote Assets" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'MFA Gateway' (n_new3) and a 'Remote Device Manager' (n_new5) connected to the 'Central AAA Server' (n12), indicating that access control for remote assets is managed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.6" title="Collect Network Traffic Flow Logs" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes a 'Network Traffic Logger' (n_new6) connected to the 'SIEM' (n17), indicating that network traffic flow logs are collected.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.8" title="Deploy a Network Intrusion Prevention Solution" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'NIPS Sensor' (n14) connected to the 'Standard Router' (n6) and 'SIEM' (n17), indicating the deployment of a network intrusion prevention solution.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.9" title="Deploy Port-Level Access Control" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an '802.1X Controller' (n16) connected to the 'Standard Router' (n6), indicating the deployment of port-level access control.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="13.10" title="Perform Application Layer Filtering" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'Application Firewall' (n15) connected to the 'Standard Router' (n6), indicating the performance of application layer filtering.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="16.8" title="Separate Production and Non-Production Systems" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes separate zones for 'Standard Environment' (z1) and 'Non-Production Environment' (z5), indicating that production and non-production systems are separated.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+    <Control id="18.2" title="Perform Periodic External Penetration Tests" status="satisfied" confidence="1.0">
+      <Evidence>The topology includes an 'External Penetration Testing Zone' (z6) with a 'Pentest Workstation' (n18) and a 'Penetration Test Scheduler' (n_new7) connected to the 'Pentest Workstation', indicating that periodic external penetration tests are performed.</Evidence>
+      <MissingReason/>
+      <Remediation/>
+    </Control>
+  </Compliance>
+  <RepairHistory>
+    <Repair round="0" controls="stage4_structural_integrity,stage4_structural_integrity,stage4_ig_consistency" zones_added="2" nodes_added="4" zone_links_added="0" node_links_added="4"/>
+    <Repair round="1" controls="1.1,3.8,6.4,12.3,12.7,13.5,13.6,18.2" zones_added="3" nodes_added="7" zone_links_added="10" node_links_added="49"/>
+    <Repair round="3" controls="stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation,stage5_validation" zones_added="0" nodes_added="0" zone_links_added="0" node_links_added="11"/>
+  </RepairHistory>
+  <DataFlows/>
+  <Risks/>
+</Topology>

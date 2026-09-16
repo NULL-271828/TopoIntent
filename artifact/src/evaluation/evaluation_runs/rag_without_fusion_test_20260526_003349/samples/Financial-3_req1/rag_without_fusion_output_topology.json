@@ -1,0 +1,198 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Cloud-1",
+  "title": "Azure Virtual Network Manager Topology",
+  "description": "Topology of an Azure Virtual Network Manager setup with hub and spoke virtual networks.",
+  "scenario": "cloud",
+  "topology_summary": "The topology includes a hub virtual network with various services and multiple production and non-production spoke virtual networks connected through VNet peering and forced tunnels.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Hub virtual network",
+      "zone_type": "cloud_hub"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Production spoke virtual network 1",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Production spoke virtual network 2",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Non-production spoke virtual network 1",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Non-production spoke virtual network 2",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z6",
+      "name": "Cross-premises network",
+      "zone_type": "external"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "Azure Bastion",
+      "normalized_type": "bastion",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "Azure Firewall",
+      "normalized_type": "firewall",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "VPN Gateway/ExpressRoute",
+      "normalized_type": "vpn_gateway",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "Azure Monitor",
+      "normalized_type": "cloud_service",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n5",
+      "name": "Virtual Machine 1",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n6",
+      "name": "Virtual Machine 2",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n7",
+      "name": "Virtual Machine 3",
+      "normalized_type": "workload",
+      "zone_id": "z2"
+    },
+    {
+      "node_id": "n8",
+      "name": "Virtual Machine 4",
+      "normalized_type": "workload",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n9",
+      "name": "Virtual Machine 5",
+      "normalized_type": "workload",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n10",
+      "name": "Virtual Machine 6",
+      "normalized_type": "workload",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n11",
+      "name": "Virtual Machine 7",
+      "normalized_type": "workload",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n12",
+      "name": "Virtual Machine 8",
+      "normalized_type": "workload",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n13",
+      "name": "Virtual Machine 9",
+      "normalized_type": "workload",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n14",
+      "name": "Virtual Machine 10",
+      "normalized_type": "workload",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n15",
+      "name": "Virtual Machine 11",
+      "normalized_type": "workload",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n16",
+      "name": "Virtual Machine 12",
+      "normalized_type": "workload",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n17",
+      "name": "Virtual Machine 13",
+      "normalized_type": "workload",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n18",
+      "name": "Virtual Machine 14",
+      "normalized_type": "workload",
+      "zone_id": "z6"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n2",
+        "target": "n4",
+        "link_type": "monitoring",
+        "label": "Diagnostics"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z2",
+        "link_type": "peering",
+        "label": "VNet peering"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z1",
+        "target": "z3",
+        "link_type": "peering",
+        "label": "VNet peering"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z1",
+        "target": "z4",
+        "link_type": "peering",
+        "label": "VNet peering"
+      },
+      {
+        "link_id": "zl4",
+        "source": "z1",
+        "target": "z5",
+        "link_type": "peering",
+        "label": "VNet peering"
+      },
+      {
+        "link_id": "zl5",
+        "source": "z6",
+        "target": "z1",
+        "link_type": "vpn",
+        "label": "(no label)"
+      }
+    ]
+  }
+}

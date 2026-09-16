@@ -1,0 +1,1535 @@
+{
+  "sample_id": "Financial-3_req1",
+  "gt_template_id": "Financial-3",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-3_req1",
+    "title": "Hybrid Cloud for Finance",
+    "description": "Set up a hybrid cloud environment with Azure Red Hat OpenShift and secure connection to on-premises datacenter.",
+    "scenario": "cloud",
+    "topology_summary": "The topology includes an Azure VNet with a Red Hat OpenShift cluster, a central firewall, and a private connection to the on-premises datacenter.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Azure VNet",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "On-Premises Datacenter",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Sensitive Data Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Non-Sensitive Data Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z6",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Security Management",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Azure Red Hat OpenShift Cluster",
+        "normalized_type": "workload",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Central Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "On-Premises Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n4",
+        "name": "On-Premises Workloads",
+        "normalized_type": "workload",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n5",
+        "name": "Azure Bastion",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "Azure Monitor",
+        "normalized_type": "cloud_service",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n7",
+        "name": "Azure PaaS Services",
+        "normalized_type": "cloud_service",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n8",
+        "name": "DNS Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n9",
+        "name": "DNS Filter",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n12",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n14",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n16",
+        "name": "Penetration Testing Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n_struct1",
+        "name": "Sensitive Data Zone Application Server",
+        "normalized_type": "server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n_struct2",
+        "name": "Non-Sensitive Data Zone Application Server",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n17",
+        "name": "Asset Inventory System",
+        "normalized_type": "identity_server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n18",
+        "name": "MFA Gateway",
+        "normalized_type": "identity_server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n19",
+        "name": "IaC Repository",
+        "normalized_type": "server",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n20",
+        "name": "Access Control Manager",
+        "normalized_type": "ids_ips",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n21",
+        "name": "Pen Test Manager",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n2",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Bastion access"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n1",
+          "target": "n6",
+          "link_type": "monitoring",
+          "label": "Monitoring"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n1",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "PaaS services"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n8",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS resolution"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n9",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS filtering"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n10",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Web proxy"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n11",
+          "target": "n5",
+          "link_type": "management",
+          "label": "AAA for bastion"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n12",
+          "target": "n2",
+          "link_type": "monitoring",
+          "label": "NIDS monitoring"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n2",
+          "target": "n13",
+          "link_type": "monitoring",
+          "label": "Flow logs"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n14",
+          "target": "n5",
+          "link_type": "management",
+          "label": "NAC for remote access"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Application firewall"
+        },
+        {
+          "link_id": "nl_struct1",
+          "source": "n2",
+          "target": "n_struct1",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl_struct2",
+          "source": "n2",
+          "target": "n_struct2",
+          "link_type": "routing",
+          "label": "Structural zone attachment"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n17",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n17",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n17",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n17",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n17",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n17",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n17",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n17",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n17",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n17",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n17",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n17",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl24",
+          "source": "n17",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl25",
+          "source": "n17",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl26",
+          "source": "n17",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl27",
+          "source": "n17",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl28",
+          "source": "n17",
+          "target": "n_struct1",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl29",
+          "source": "n17",
+          "target": "n_struct2",
+          "link_type": "management",
+          "label": "Inventory management"
+        },
+        {
+          "link_id": "nl30",
+          "source": "n18",
+          "target": "n5",
+          "link_type": "management",
+          "label": "MFA for remote access"
+        },
+        {
+          "link_id": "nl31",
+          "source": "n19",
+          "target": "n2",
+          "link_type": "management",
+          "label": "IaC management"
+        },
+        {
+          "link_id": "nl32",
+          "source": "n20",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Access control enforcement"
+        },
+        {
+          "link_id": "nl33",
+          "source": "n21",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Pen test management"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z2",
+          "link_type": "vpn",
+          "label": "Private connection"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Management access"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "data_flow",
+          "label": "Sensitive data flow"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "data_flow",
+          "label": "Non-sensitive data flow"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Penetration testing access"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z7",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Security management access"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z7",
+          "target": "z2",
+          "link_type": "management",
+          "label": "Security management access"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z7",
+          "target": "z3",
+          "link_type": "management",
+          "label": "Security management access"
+        },
+        {
+          "link_id": "zl9",
+          "source": "z7",
+          "target": "z4",
+          "link_type": "management",
+          "label": "Security management access"
+        },
+        {
+          "link_id": "zl10",
+          "source": "z7",
+          "target": "z5",
+          "link_type": "management",
+          "label": "Security management access"
+        },
+        {
+          "link_id": "zl11",
+          "source": "z7",
+          "target": "z6",
+          "link_type": "management",
+          "label": "Security management access"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-3_req1",
+    "ig_level": "IG2",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Inventory System' (n17) that manages inventory for various nodes and zones, indicating a detailed and maintained asset inventory.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple data flow links (e.g., nl3, nl4, nl5, etc.) and zone links (e.g., zl3, zl4) that document data flows between different components and zones.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for sensitive and non-sensitive data (z4 and z5) with specific application servers (n_struct1 and n_struct2) and data flow links (zl3 and zl4) that segment data processing and storage based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central Firewall' (n2) and an 'On-Premises Firewall' (n3) that manage firewalls on servers and other assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n8) and links (nl4) that configure DNS resolution for the Azure Red Hat OpenShift Cluster (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Gateway' (n18) and links (nl30) that enforce MFA for remote access to the Azure Bastion (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filter' (n9) and links (nl5) that provide DNS filtering services for the Azure Red Hat OpenShift Cluster (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Web Proxy' (n10) and links (nl6) that enforce web proxy and URL filtering for the Azure Red Hat OpenShift Cluster (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (e.g., z1, z2, z3, z4, z5, z6, z7) and links (e.g., zl1, zl2, zl3, zl4, zl5, zl6, zl7, zl8, zl9, zl10, zl11) that demonstrate a segmented and secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IaC Repository' (n19) and links (nl31) that manage infrastructure as code, and secure network protocols are implied by the use of management and monitoring links.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'AAA Server' (n11) and links (nl7) that centralize AAA for the Azure Bastion (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Private connection' (zl1) between the Azure VNet (z1) and the On-Premises Datacenter (z2) via a VPN, and an 'AAA Server' (n11) that manages AAA for the Azure Bastion (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIDS' (n12) and links (nl8) that monitor the Central Firewall (n2) for network intrusions.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Central Firewall' (n2) and links (nl_struct1, nl_struct2) that perform traffic filtering between the Sensitive Data Zone (z4) and Non-Sensitive Data Zone (z5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Access Control Manager' (n20) and links (nl32) that enforce access control for remote access to the Azure Bastion (n5).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'SIEM' (n13) and links (nl9) that collect flow logs from the Central Firewall (n2).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for sensitive and non-sensitive data (z4 and z5) and links (zl3 and zl4) that separate production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Penetration Testing Workstation' (n16) and links (nl33) that manage penetration testing activities.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 0,
+      "controls_repaired": [
+        "stage4_structural_integrity",
+        "stage4_structural_integrity"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z4\", \"name\": \"Sensitive Data Zone\", \"zone_type\": \"data_center\"}",
+          "missing_reason": "Zone z4 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        },
+        {
+          "cis_safeguard_id": "stage4_structural_integrity",
+          "title": "empty_zone_without_node",
+          "status": "unsatisfied",
+          "confidence": 1.0,
+          "evidence": "{\"zone_id\": \"z5\", \"name\": \"Non-Sensitive Data Zone\", \"zone_type\": \"data_center\"}",
+          "missing_reason": "Zone z5 has no concrete node assigned to it.",
+          "repair_suggestion": "Add one representative concrete node in this zone and connect it with node_links to the nearest hub, firewall, router, or management/security node."
+        }
+      ],
+      "additions": {
+        "zones": [],
+        "nodes": [
+          {
+            "node_id": "n_struct1",
+            "name": "Sensitive Data Zone Application Server",
+            "normalized_type": "server",
+            "zone_id": "z4"
+          },
+          {
+            "node_id": "n_struct2",
+            "name": "Non-Sensitive Data Zone Application Server",
+            "normalized_type": "server",
+            "zone_id": "z5"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl_struct1",
+              "source": "n2",
+              "target": "n_struct1",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            },
+            {
+              "link_id": "nl_struct2",
+              "source": "n2",
+              "target": "n_struct2",
+              "link_type": "routing",
+              "label": "Structural zone attachment"
+            }
+          ],
+          "zone_links": []
+        }
+      },
+      "counts_before": {
+        "zones": 6,
+        "nodes": 16,
+        "zone_links": 5,
+        "node_links": 11
+      },
+      "counts_after": {
+        "zones": 6,
+        "nodes": 18,
+        "zone_links": 5,
+        "node_links": 13
+      },
+      "count_delta": {
+        "zones": 0,
+        "nodes": 2,
+        "zone_links": 0,
+        "node_links": 2
+      },
+      "source": "stage4_structural_normalization"
+    },
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "6.4",
+        "12.3",
+        "13.5",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of an asset inventory system or process.",
+          "missing_reason": "No explicit asset inventory system or process is shown in the topology.",
+          "repair_suggestion": "Add a node representing an asset inventory system and links to all other nodes to indicate inventory management."
+        },
+        {
+          "cis_safeguard_id": "6.4",
+          "title": "Require MFA for Remote Network Access",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an Azure Bastion (n5) and an AAA Server (n11) linked for management (nl7), but there is no explicit evidence of MFA being required for remote access.",
+          "missing_reason": "No explicit evidence of MFA requirement for remote access.",
+          "repair_suggestion": "Add a label or node indicating MFA is required for remote access."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various network devices and services, but there is no explicit evidence of secure management practices such as version-controlled IaC or secure network protocols.",
+          "missing_reason": "No explicit evidence of secure management practices.",
+          "repair_suggestion": "Add nodes or labels indicating the use of version-controlled IaC and secure network protocols."
+        },
+        {
+          "cis_safeguard_id": "13.5",
+          "title": "Manage Access Control for Remote Assets",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an Azure Bastion (n5) and an AAA Server (n11) linked for management (nl7), but there is no explicit evidence of access control based on up-to-date software, configuration compliance, and OS/app updates.",
+          "missing_reason": "No explicit evidence of access control criteria.",
+          "repair_suggestion": "Add a label or node indicating access control criteria are enforced."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes a Penetration Testing Workstation (n16) in the External Testing Zone (z6), but there is no explicit evidence of periodic external penetration tests.",
+          "missing_reason": "No explicit evidence of periodic external penetration tests.",
+          "repair_suggestion": "Add a label or node indicating periodic external penetration tests are performed."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z7",
+            "name": "Security Management",
+            "zone_type": "management"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n17",
+            "name": "Asset Inventory System",
+            "normalized_type": "identity_server",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n18",
+            "name": "MFA Gateway",
+            "normalized_type": "identity_server",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n19",
+            "name": "IaC Repository",
+            "normalized_type": "server",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n20",
+            "name": "Access Control Manager",
+            "normalized_type": "ids_ips",
+            "zone_id": "z7"
+          },
+          {
+            "node_id": "n21",
+            "name": "Pen Test Manager",
+            "normalized_type": "endpoint",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl12",
+              "source": "n17",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl13",
+              "source": "n17",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl14",
+              "source": "n17",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl15",
+              "source": "n17",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl16",
+              "source": "n17",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl17",
+              "source": "n17",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl18",
+              "source": "n17",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl19",
+              "source": "n17",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl20",
+              "source": "n17",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl21",
+              "source": "n17",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl22",
+              "source": "n17",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl23",
+              "source": "n17",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl24",
+              "source": "n17",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl25",
+              "source": "n17",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl26",
+              "source": "n17",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl27",
+              "source": "n17",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl28",
+              "source": "n17",
+              "target": "n_struct1",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl29",
+              "source": "n17",
+              "target": "n_struct2",
+              "link_type": "management",
+              "label": "Inventory management"
+            },
+            {
+              "link_id": "nl30",
+              "source": "n18",
+              "target": "n5",
+              "link_type": "management",
+              "label": "MFA for remote access"
+            },
+            {
+              "link_id": "nl31",
+              "source": "n19",
+              "target": "n2",
+              "link_type": "management",
+              "label": "IaC management"
+            },
+            {
+              "link_id": "nl32",
+              "source": "n20",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Access control enforcement"
+            },
+            {
+              "link_id": "nl33",
+              "source": "n21",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Pen test management"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl6",
+              "source": "z7",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Security management access"
+            },
+            {
+              "link_id": "zl7",
+              "source": "z7",
+              "target": "z2",
+              "link_type": "management",
+              "label": "Security management access"
+            },
+            {
+              "link_id": "zl8",
+              "source": "z7",
+              "target": "z3",
+              "link_type": "management",
+              "label": "Security management access"
+            },
+            {
+              "link_id": "zl9",
+              "source": "z7",
+              "target": "z4",
+              "link_type": "management",
+              "label": "Security management access"
+            },
+            {
+              "link_id": "zl10",
+              "source": "z7",
+              "target": "z5",
+              "link_type": "management",
+              "label": "Security management access"
+            },
+            {
+              "link_id": "zl11",
+              "source": "z7",
+              "target": "z6",
+              "link_type": "management",
+              "label": "Security management access"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 6,
+        "nodes": 18,
+        "zone_links": 5,
+        "node_links": 13
+      },
+      "counts_after": {
+        "zones": 7,
+        "nodes": 23,
+        "zone_links": 11,
+        "node_links": 35
+      },
+      "count_delta": {
+        "zones": 1,
+        "nodes": 5,
+        "zone_links": 6,
+        "node_links": 22
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Financial-3_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Bastion access from OpenShift to Azure Bastion."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Monitoring access from OpenShift to Azure Monitor."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Data flow from OpenShift to Azure PaaS Services."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n1",
+        "protocol": "udp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS resolution from DNS Server to OpenShift."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n9",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS filtering from DNS Filter to OpenShift."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web proxy from Web Proxy to OpenShift."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z3",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "AAA for bastion from AAA Server to Azure Bastion."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS monitoring from NIDS to Central Firewall."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Flow logs from Central Firewall to SIEM."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "NAC for remote access from NAC to Azure Bastion."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Application firewall from Application Firewall to OpenShift."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n2",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Routing from Central Firewall to Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n2",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Routing from Central Firewall to Non-Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to OpenShift."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to Central Firewall."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z7",
+        "target_zone": "z2",
+        "source_node": "n17",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to On-Premises Firewall."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z7",
+        "target_zone": "z2",
+        "source_node": "n17",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to On-Premises Workloads."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to Azure Bastion."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z7",
+        "target_zone": "z3",
+        "source_node": "n17",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to Azure Monitor."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z7",
+        "target_zone": "z3",
+        "source_node": "n17",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to Azure PaaS Services."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to DNS Server."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to DNS Filter."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to Web Proxy."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z7",
+        "target_zone": "z3",
+        "source_node": "n17",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to AAA Server."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to NIDS."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z7",
+        "target_zone": "z3",
+        "source_node": "n17",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to SIEM."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to NAC."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to Application Firewall."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z7",
+        "target_zone": "z6",
+        "source_node": "n17",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to Pen Test Workstation."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z7",
+        "target_zone": "z4",
+        "source_node": "n17",
+        "target_node": "n_struct1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z7",
+        "target_zone": "z5",
+        "source_node": "n17",
+        "target_node": "n_struct2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Inventory management from Asset Inventory System to Non-Sensitive Data Zone."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA for remote access from MFA Gateway to Azure Bastion."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n19",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC management from IaC Repository to Central Firewall."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n20",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Access control enforcement from Access Control Manager to Azure Bastion."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z7",
+        "target_zone": "z6",
+        "source_node": "n21",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen test management from Pen Test Manager to Pen Test Workstation."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z6",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Pen test access from Pen Test Workstation to OpenShift."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z6",
+        "target_zone": "z2",
+        "source_node": "n16",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Pen test access from Pen Test Workstation to On-Premises Workloads."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z4",
+        "target_zone": "z6",
+        "source_node": "n_struct1",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Sensitive data access from Sensitive Data Zone to Pen Test Workstation."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z5",
+        "target_zone": "z6",
+        "source_node": "n_struct2",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Non-sensitive data access from Non-Sensitive Data Zone to Pen Test Workstation."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z6",
+        "target_zone": "z7",
+        "source_node": "n16",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Pen test access from Pen Test Workstation to Asset Inventory System."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/test_all_single_vector_structfix_20260526_091223/samples/Financial-3_req1/stage4/xml/IG2/generated_Financial-3_req1_IG2.xml"
+}

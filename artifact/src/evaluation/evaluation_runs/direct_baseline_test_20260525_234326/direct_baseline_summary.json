@@ -1,0 +1,17 @@
+{
+  "variant": "Direct",
+  "definition": "Raw user intent plus Schema Contract prompt directly generates topology JSON. No Stage1 extraction, no RAG, no fusion, no repair, and no Stage5 feedback.",
+  "run_dir": "artifact/src/evaluation/evaluation_runs/direct_baseline_test_20260525_234326",
+  "dataset": "test",
+  "dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json",
+  "samples": 14,
+  "success_samples": 14,
+  "failed_samples": 0,
+  "scenario_accuracy": 0.9286,
+  "zone_type_recall": 0.6333,
+  "node_type_recall": 0.6105,
+  "cis_satisfaction_rate": null,
+  "post_acl_pass_rate": null,
+  "note": "CIS satisfaction and Post-ACL pass rate are N/A for Direct because this baseline intentionally skips Stage4 and Stage5.",
+  "elapsed_sec": 335.689
+}

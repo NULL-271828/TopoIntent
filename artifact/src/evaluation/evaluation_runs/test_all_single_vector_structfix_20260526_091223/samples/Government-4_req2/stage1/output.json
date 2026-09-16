@@ -1,0 +1,70 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-4_req2",
+    "title": "Government Segmented Network",
+    "description": "A network with distinct zones for standard and sensitive information systems, each with dedicated administrative infrastructure.",
+    "scenario": "government",
+    "topology_summary": "The network includes a standard zone with a secure internet gateway and a sensitive zone isolated from the internet, both with their own administrative access points.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Standard Systems Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Sensitive Systems Zone",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Administrative Zone for Standard Systems",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Administrative Zone for Sensitive Systems",
+        "zone_type": "management"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Secure Internet Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Class 1 Gateway",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n3",
+        "name": "Standard Administrative Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n4",
+        "name": "Sensitive Administrative Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z4"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Government-4_req2\", \"title\": \"Government Segmented Network\", \"description\": \"A network with distinct zones for standard and sensitive information systems, each with dedicated administrative infrastructure.\", \"scenario\": \"government\", \"topology_summary\": \"The network includes a standard zone with a secure internet gateway and a sensitive zone isolated from the internet, both with their own administrative access points.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Standard Systems Zone\", \"zone_type\": \"enterprise\"}, {\"zone_id\": \"z2\", \"name\": \"Sensitive Systems Zone\", \"zone_type\": \"dmz\"}, {\"zone_id\": \"z3\", \"name\": \"Administrative Zone for Standard Systems\", \"zone_type\": \"management\"}, {\"zone_id\": \"z4\", \"name\": \"Administrative Zone for Sensitive Systems\", \"zone_type\": \"management\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Secure Internet Gateway\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Class 1 Gateway\", \"normalized_type\": \"firewall\", \"zone_id\": \"z2\"}, {\"node_id\": \"n3\", \"name\": \"Standard Administrative Workstation\", \"normalized_type\": \"endpoint\", \"zone_id\": \"z3\"}, {\"node_id\": \"n4\", \"name\": \"Sensitive Administrative Workstation\", \"normalized_type\": \"endpoint\", \"zone_id\": \"z4\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 6.632
+  }
+}

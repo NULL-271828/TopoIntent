@@ -1,0 +1,1645 @@
+{
+  "sample_id": "Government-1_req2",
+  "gt_template_id": "Government-1",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-1_req2",
+    "title": "Hierarchical Network Architecture",
+    "description": "A secure hierarchical network with an Internet Edge, a three-tier data center, and WAN connections to remote sites.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes an Internet Edge with a firewall and application-layer security, a three-tier data center, and WAN links to a regional and branch office with local routing and switching.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Internet Edge",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Regional Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Non-Production Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z7",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Security Operations",
+        "zone_type": "security"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Application Layer Security Appliance",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Web Server",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n4",
+        "name": "Application Server",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n5",
+        "name": "Database Server",
+        "normalized_type": "database",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n7",
+        "name": "Switch",
+        "normalized_type": "switch",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n8",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n9",
+        "name": "Switch",
+        "normalized_type": "switch",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n10",
+        "name": "Remote Access VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "Core Switch",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n12",
+        "name": "Distribution Switch",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n13",
+        "name": "Access Switch",
+        "normalized_type": "switch",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n14",
+        "name": "WAN Aggregation Switch",
+        "normalized_type": "switch",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n15",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n16",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n17",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n18",
+        "name": "NIPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n19",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n20",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n21",
+        "name": "MFA/Identity Node",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n22",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n23",
+        "name": "Dedicated Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n24",
+        "name": "Non-Prod Web Server",
+        "normalized_type": "server",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n25",
+        "name": "Non-Prod App Server",
+        "normalized_type": "server",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n26",
+        "name": "Non-Prod DB Server",
+        "normalized_type": "database",
+        "zone_id": "z6"
+      },
+      {
+        "node_id": "n27",
+        "name": "Pen Test Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n28",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n29",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n30",
+        "name": "Server Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n31",
+        "name": "DNS Filtering Service",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n32",
+        "name": "URL Filtering Service",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n33",
+        "name": "IaC Management",
+        "normalized_type": "server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n34",
+        "name": "Network Log Collector",
+        "normalized_type": "siem",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n35",
+        "name": "Port-Level Access Control",
+        "normalized_type": "ids_ips",
+        "zone_id": "z8"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n11",
+          "target": "n12",
+          "link_type": "trunk",
+          "label": "Core to Distribution"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n12",
+          "target": "n13",
+          "link_type": "trunk",
+          "label": "Distribution to Access"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n11",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Core to Web Server"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n11",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Core to Application Server"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n11",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Core to Database Server"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n14",
+          "target": "n1",
+          "link_type": "uplink",
+          "label": "WAN Agg to Firewall"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n14",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "WAN Agg to RA-VPN"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n6",
+          "target": "n8",
+          "link_type": "uplink",
+          "label": "Regional Office Router to Switch"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n8",
+          "target": "n9",
+          "link_type": "uplink",
+          "label": "Branch Office Router to Switch"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n15",
+          "target": "n10",
+          "link_type": "management",
+          "label": "AAA to RA-VPN"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "management",
+          "label": "AAA to Firewall"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n17",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "NIDS to Firewall"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n18",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "NIPS to Firewall"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n19",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS to Firewall"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n20",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Web Proxy to Firewall"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n21",
+          "target": "n10",
+          "link_type": "management",
+          "label": "MFA to RA-VPN"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n22",
+          "target": "n1",
+          "link_type": "management",
+          "label": "NAC to Firewall"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n1",
+          "target": "n16",
+          "link_type": "monitoring",
+          "label": "Firewall to SIEM"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n11",
+          "target": "n23",
+          "link_type": "management",
+          "label": "Core to Admin Workstation"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n11",
+          "target": "n24",
+          "link_type": "data_flow",
+          "label": "Core to Non-Prod Web Server"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n11",
+          "target": "n25",
+          "link_type": "data_flow",
+          "label": "Core to Non-Prod App Server"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n11",
+          "target": "n26",
+          "link_type": "data_flow",
+          "label": "Core to Non-Prod DB Server"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n14",
+          "target": "n27",
+          "link_type": "uplink",
+          "label": "WAN Agg to Pen Test Workstation"
+        },
+        {
+          "link_id": "nl24",
+          "source": "n28",
+          "target": "n1",
+          "link_type": "management",
+          "label": "AMS to Firewall"
+        },
+        {
+          "link_id": "nl25",
+          "source": "n28",
+          "target": "n3",
+          "link_type": "management",
+          "label": "AMS to Web Server"
+        },
+        {
+          "link_id": "nl26",
+          "source": "n28",
+          "target": "n4",
+          "link_type": "management",
+          "label": "AMS to App Server"
+        },
+        {
+          "link_id": "nl27",
+          "source": "n28",
+          "target": "n5",
+          "link_type": "management",
+          "label": "AMS to DB Server"
+        },
+        {
+          "link_id": "nl28",
+          "source": "n29",
+          "target": "n11",
+          "link_type": "management",
+          "label": "DFDS to Core Switch"
+        },
+        {
+          "link_id": "nl29",
+          "source": "n29",
+          "target": "n12",
+          "link_type": "management",
+          "label": "DFDS to Dist Switch"
+        },
+        {
+          "link_id": "nl30",
+          "source": "n29",
+          "target": "n13",
+          "link_type": "management",
+          "label": "DFDS to Access Switch"
+        },
+        {
+          "link_id": "nl31",
+          "source": "n30",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Server FW to Web Server"
+        },
+        {
+          "link_id": "nl32",
+          "source": "n30",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Server FW to App Server"
+        },
+        {
+          "link_id": "nl33",
+          "source": "n30",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Server FW to DB Server"
+        },
+        {
+          "link_id": "nl34",
+          "source": "n31",
+          "target": "n19",
+          "link_type": "data_flow",
+          "label": "DNS Filter to DNS Server"
+        },
+        {
+          "link_id": "nl35",
+          "source": "n32",
+          "target": "n20",
+          "link_type": "data_flow",
+          "label": "URL Filter to Web Proxy"
+        },
+        {
+          "link_id": "nl36",
+          "source": "n33",
+          "target": "n11",
+          "link_type": "management",
+          "label": "IaC to Core Switch"
+        },
+        {
+          "link_id": "nl37",
+          "source": "n33",
+          "target": "n12",
+          "link_type": "management",
+          "label": "IaC to Dist Switch"
+        },
+        {
+          "link_id": "nl38",
+          "source": "n33",
+          "target": "n13",
+          "link_type": "management",
+          "label": "IaC to Access Switch"
+        },
+        {
+          "link_id": "nl39",
+          "source": "n34",
+          "target": "n11",
+          "link_type": "monitoring",
+          "label": "Log Collector to Core Switch"
+        },
+        {
+          "link_id": "nl40",
+          "source": "n34",
+          "target": "n12",
+          "link_type": "monitoring",
+          "label": "Log Collector to Dist Switch"
+        },
+        {
+          "link_id": "nl41",
+          "source": "n34",
+          "target": "n13",
+          "link_type": "monitoring",
+          "label": "Log Collector to Access Switch"
+        },
+        {
+          "link_id": "nl42",
+          "source": "n35",
+          "target": "n11",
+          "link_type": "management",
+          "label": "PLAC to Core Switch"
+        },
+        {
+          "link_id": "nl43",
+          "source": "n35",
+          "target": "n12",
+          "link_type": "management",
+          "label": "PLAC to Dist Switch"
+        },
+        {
+          "link_id": "nl44",
+          "source": "n35",
+          "target": "n13",
+          "link_type": "management",
+          "label": "PLAC to Access Switch"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z2",
+          "link_type": "uplink",
+          "label": "Internet Edge to Data Center"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z3",
+          "link_type": "routing",
+          "label": "Internet Edge to Regional Office"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "routing",
+          "label": "Internet Edge to Branch Office"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "management",
+          "label": "Internet Edge to Management Zone"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z2",
+          "target": "z6",
+          "link_type": "uplink",
+          "label": "Data Center to Non-Production Zone"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "uplink",
+          "label": "Internet Edge to External Testing Zone"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z8",
+          "target": "z1",
+          "link_type": "management",
+          "label": "SecOps to Internet Edge"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z8",
+          "target": "z2",
+          "link_type": "management",
+          "label": "SecOps to Data Center"
+        },
+        {
+          "link_id": "zl9",
+          "source": "z8",
+          "target": "z5",
+          "link_type": "management",
+          "label": "SecOps to Management Zone"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-1_req2",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Management System' (n28) that manages assets in the Data Center (n3, n4, n5) and other zones, indicating a detailed asset inventory.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation System' (n29) that manages data flows in the Data Center (n3, n4, n5) and other zones, indicating documented data flows.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Non-Production Zone' (z6) and a 'Data Center' (z2) with separate servers (n24, n25, n26) for non-production and production environments, respectively, indicating proper segmentation based on data sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Server Firewall' (n30) that manages traffic to the Web Server (n3), Application Server (n4), and Database Server (n5) in the Data Center (z2).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n19) in the Internet Edge (z1) and a link (nl14) from the DNS Server to the Firewall, indicating that trusted DNS servers are configured.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Remote Access VPN Gateway' (n10) and an 'MFA/Identity Node' (n21) that manages remote access, indicating that MFA is required for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filtering Service' (n31) that manages traffic to the DNS Server (n19), indicating the use of DNS filtering services.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'URL Filtering Service' (n32) that manages traffic to the Web Proxy (n20), indicating the enforcement of network-based URL filters.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones (z1, z2, z3, z4, z5, z6, z7, z8) with defined roles and links, indicating a well-designed and maintained secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IaC Management' (n33) node that manages the Core Switch (n11), Distribution Switch (n12), and Access Switch (n13), indicating secure management of network infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Identity Server' (n15) that manages AAA for the Remote Access VPN Gateway (n10) and the Firewall (n1), indicating centralized network AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Remote Access VPN Gateway' (n10) and an 'Identity Server' (n15) that manages remote access, indicating that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Dedicated Admin Workstation' (n23) in the Management Zone (z5) that is managed by the Core Switch (n11), indicating dedicated computing resources for administrative work.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIDS' (n17) that monitors the Firewall (n1), indicating the deployment of a network intrusion detection solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Firewall' (n1) that manages traffic between the Internet Edge (z1) and the Data Center (z2), and a 'Server Firewall' (n30) that manages traffic to the servers in the Data Center (z2), indicating traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Remote Access VPN Gateway' (n10) and an 'Identity Server' (n15) that manages remote access, indicating that access control for remote assets is managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Network Log Collector' (n34) that collects logs from the Core Switch (n11), Distribution Switch (n12), and Access Switch (n13), indicating the collection of network traffic flow logs.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'NIPS' (n18) that monitors the Firewall (n1), indicating the deployment of a network intrusion prevention solution.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Port-Level Access Control' (n35) that manages the Core Switch (n11), Distribution Switch (n12), and Access Switch (n13), indicating the deployment of port-level access control.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Application Layer Security Appliance' (n2) and a 'Web Proxy' (n20) that manage application layer traffic, indicating the performance of application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Non-Production Zone' (z6) with separate servers (n24, n25, n26) for non-production environments, indicating the separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Pen Test Workstation' (n27) in the External Testing Zone (z7), indicating the capability to perform periodic external penetration tests.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "4.4",
+        "9.2",
+        "9.3",
+        "12.3",
+        "13.6",
+        "13.9",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various nodes and zones, but there is no explicit evidence of an inventory system or process.",
+          "missing_reason": "No explicit inventory system or process is shown in the topology.",
+          "repair_suggestion": "Add a node representing an asset management system and links to all other nodes."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes data flow links, but there is no explicit evidence of documented data flows.",
+          "missing_reason": "No explicit documentation of data flows is shown in the topology.",
+          "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes and zones."
+        },
+        {
+          "cis_safeguard_id": "4.4",
+          "title": "Implement and Manage a Firewall on Servers",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology includes a firewall (n1) but does not show firewalls on individual servers.",
+          "missing_reason": "No firewalls are shown on individual servers.",
+          "repair_suggestion": "Add firewall nodes to each server and link them appropriately."
+        },
+        {
+          "cis_safeguard_id": "9.2",
+          "title": "Use DNS Filtering Services",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology includes a DNS server (n19) but does not show any DNS filtering services.",
+          "missing_reason": "No DNS filtering services are shown in the topology.",
+          "repair_suggestion": "Add a node representing a DNS filtering service and link it to the DNS server and other relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "9.3",
+          "title": "Maintain and Enforce Network-Based URL Filters",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology includes a Web Proxy (n20) but does not show any URL filtering services.",
+          "missing_reason": "No URL filtering services are shown in the topology.",
+          "repair_suggestion": "Add a node representing a URL filtering service and link it to the web proxy and other relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various network devices but does not explicitly show secure management practices.",
+          "missing_reason": "No explicit evidence of secure management practices is shown in the topology.",
+          "repair_suggestion": "Add nodes representing IaC and secure network protocols and link them to relevant network devices."
+        },
+        {
+          "cis_safeguard_id": "13.6",
+          "title": "Collect Network Traffic Flow Logs",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not show any nodes or links for collecting network traffic flow logs.",
+          "missing_reason": "No network traffic flow log collection is shown in the topology.",
+          "repair_suggestion": "Add a node representing a log collection system and link it to relevant network devices."
+        },
+        {
+          "cis_safeguard_id": "13.9",
+          "title": "Deploy Port-Level Access Control",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not show any nodes or links for port-level access control.",
+          "missing_reason": "No port-level access control is shown in the topology.",
+          "repair_suggestion": "Add a node representing a port-level access control system and link it to relevant network devices."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes an External Testing Zone (z7) but does not explicitly show penetration testing processes.",
+          "missing_reason": "No explicit evidence of penetration testing processes is shown in the topology.",
+          "repair_suggestion": "Add a node representing a penetration testing service and link it to the External Testing Zone and other relevant nodes."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z8",
+            "name": "Security Operations",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n28",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z5"
+          },
+          {
+            "node_id": "n29",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z5"
+          },
+          {
+            "node_id": "n30",
+            "name": "Server Firewall",
+            "normalized_type": "firewall",
+            "zone_id": "z2"
+          },
+          {
+            "node_id": "n31",
+            "name": "DNS Filtering Service",
+            "normalized_type": "waf",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n32",
+            "name": "URL Filtering Service",
+            "normalized_type": "waf",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n33",
+            "name": "IaC Management",
+            "normalized_type": "server",
+            "zone_id": "z5"
+          },
+          {
+            "node_id": "n34",
+            "name": "Network Log Collector",
+            "normalized_type": "siem",
+            "zone_id": "z8"
+          },
+          {
+            "node_id": "n35",
+            "name": "Port-Level Access Control",
+            "normalized_type": "ids_ips",
+            "zone_id": "z8"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl24",
+              "source": "n28",
+              "target": "n1",
+              "link_type": "management",
+              "label": "AMS to Firewall"
+            },
+            {
+              "link_id": "nl25",
+              "source": "n28",
+              "target": "n3",
+              "link_type": "management",
+              "label": "AMS to Web Server"
+            },
+            {
+              "link_id": "nl26",
+              "source": "n28",
+              "target": "n4",
+              "link_type": "management",
+              "label": "AMS to App Server"
+            },
+            {
+              "link_id": "nl27",
+              "source": "n28",
+              "target": "n5",
+              "link_type": "management",
+              "label": "AMS to DB Server"
+            },
+            {
+              "link_id": "nl28",
+              "source": "n29",
+              "target": "n11",
+              "link_type": "management",
+              "label": "DFDS to Core Switch"
+            },
+            {
+              "link_id": "nl29",
+              "source": "n29",
+              "target": "n12",
+              "link_type": "management",
+              "label": "DFDS to Dist Switch"
+            },
+            {
+              "link_id": "nl30",
+              "source": "n29",
+              "target": "n13",
+              "link_type": "management",
+              "label": "DFDS to Access Switch"
+            },
+            {
+              "link_id": "nl31",
+              "source": "n30",
+              "target": "n3",
+              "link_type": "data_flow",
+              "label": "Server FW to Web Server"
+            },
+            {
+              "link_id": "nl32",
+              "source": "n30",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "Server FW to App Server"
+            },
+            {
+              "link_id": "nl33",
+              "source": "n30",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Server FW to DB Server"
+            },
+            {
+              "link_id": "nl34",
+              "source": "n31",
+              "target": "n19",
+              "link_type": "data_flow",
+              "label": "DNS Filter to DNS Server"
+            },
+            {
+              "link_id": "nl35",
+              "source": "n32",
+              "target": "n20",
+              "link_type": "data_flow",
+              "label": "URL Filter to Web Proxy"
+            },
+            {
+              "link_id": "nl36",
+              "source": "n33",
+              "target": "n11",
+              "link_type": "management",
+              "label": "IaC to Core Switch"
+            },
+            {
+              "link_id": "nl37",
+              "source": "n33",
+              "target": "n12",
+              "link_type": "management",
+              "label": "IaC to Dist Switch"
+            },
+            {
+              "link_id": "nl38",
+              "source": "n33",
+              "target": "n13",
+              "link_type": "management",
+              "label": "IaC to Access Switch"
+            },
+            {
+              "link_id": "nl39",
+              "source": "n34",
+              "target": "n11",
+              "link_type": "monitoring",
+              "label": "Log Collector to Core Switch"
+            },
+            {
+              "link_id": "nl40",
+              "source": "n34",
+              "target": "n12",
+              "link_type": "monitoring",
+              "label": "Log Collector to Dist Switch"
+            },
+            {
+              "link_id": "nl41",
+              "source": "n34",
+              "target": "n13",
+              "link_type": "monitoring",
+              "label": "Log Collector to Access Switch"
+            },
+            {
+              "link_id": "nl42",
+              "source": "n35",
+              "target": "n11",
+              "link_type": "management",
+              "label": "PLAC to Core Switch"
+            },
+            {
+              "link_id": "nl43",
+              "source": "n35",
+              "target": "n12",
+              "link_type": "management",
+              "label": "PLAC to Dist Switch"
+            },
+            {
+              "link_id": "nl44",
+              "source": "n35",
+              "target": "n13",
+              "link_type": "management",
+              "label": "PLAC to Access Switch"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl7",
+              "source": "z8",
+              "target": "z1",
+              "link_type": "management",
+              "label": "SecOps to Internet Edge"
+            },
+            {
+              "link_id": "zl8",
+              "source": "z8",
+              "target": "z2",
+              "link_type": "management",
+              "label": "SecOps to Data Center"
+            },
+            {
+              "link_id": "zl9",
+              "source": "z8",
+              "target": "z5",
+              "link_type": "management",
+              "label": "SecOps to Management Zone"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 27,
+        "zone_links": 6,
+        "node_links": 23
+      },
+      "counts_after": {
+        "zones": 8,
+        "nodes": 35,
+        "zone_links": 9,
+        "node_links": 44
+      },
+      "count_delta": {
+        "zones": 1,
+        "nodes": 8,
+        "zone_links": 3,
+        "node_links": 21
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-1_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web server accessible from firewall."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "App server accessible from firewall."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 3306,
+        "expected": "allow",
+        "reason": "DB server accessible from firewall."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Regional router accessible from firewall."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Branch router accessible from firewall."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Identity server accessible from firewall."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n27",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Pen test workstation accessible from firewall."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Non-prod web server not accessible from firewall."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z2",
+        "target_zone": "z6",
+        "source_node": "n3",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Non-prod web server not accessible from prod web server."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z2",
+        "target_zone": "z7",
+        "source_node": "n3",
+        "target_node": "n27",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "block",
+        "reason": "Pen test workstation not accessible from prod web server."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z3",
+        "target_zone": "z2",
+        "source_node": "n6",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Prod web server not accessible from regional router."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z4",
+        "target_zone": "z2",
+        "source_node": "n8",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Prod web server not accessible from branch router."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z5",
+        "target_zone": "z2",
+        "source_node": "n15",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Prod web server not accessible from identity server."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z7",
+        "target_zone": "z2",
+        "source_node": "n27",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Prod web server not accessible from pen test workstation."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Non-prod web server not accessible from firewall."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n25",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "block",
+        "reason": "Non-prod app server not accessible from firewall."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z6",
+        "source_node": "n1",
+        "target_node": "n26",
+        "protocol": "tcp",
+        "port": 3306,
+        "expected": "block",
+        "reason": "Non-prod DB server not accessible from firewall."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Admin workstation accessible from firewall."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n28",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "AMS accessible from firewall."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n29",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "DFDS accessible from firewall."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n34",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Log collector accessible from firewall."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n35",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "PLAC accessible from firewall."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n3",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Identity server accessible from web server."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n4",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Identity server accessible from app server."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n5",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 88,
+        "expected": "allow",
+        "reason": "Identity server accessible from DB server."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n3",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Admin workstation accessible from web server."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n4",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Admin workstation accessible from app server."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n5",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 22,
+        "expected": "allow",
+        "reason": "Admin workstation accessible from DB server."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n3",
+        "target_node": "n28",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "AMS accessible from web server."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n4",
+        "target_node": "n28",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "AMS accessible from app server."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n5",
+        "target_node": "n28",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "AMS accessible from DB server."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n3",
+        "target_node": "n29",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "DFDS accessible from web server."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n4",
+        "target_node": "n29",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "DFDS accessible from app server."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z2",
+        "target_zone": "z5",
+        "source_node": "n5",
+        "target_node": "n29",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "DFDS accessible from DB server."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z2",
+        "target_zone": "z8",
+        "source_node": "n3",
+        "target_node": "n34",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Log collector accessible from web server."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z2",
+        "target_zone": "z8",
+        "source_node": "n4",
+        "target_node": "n34",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Log collector accessible from app server."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z2",
+        "target_zone": "z8",
+        "source_node": "n5",
+        "target_node": "n34",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Log collector accessible from DB server."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z2",
+        "target_zone": "z8",
+        "source_node": "n3",
+        "target_node": "n35",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "PLAC accessible from web server."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z2",
+        "target_zone": "z8",
+        "source_node": "n4",
+        "target_node": "n35",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "PLAC accessible from app server."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z2",
+        "target_zone": "z8",
+        "source_node": "n5",
+        "target_node": "n35",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "PLAC accessible from DB server."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-1_req2/rag_without_feedback/IG3/xml/IG3/generated_Government-1_req2_IG3.xml"
+}

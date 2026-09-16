@@ -1,0 +1,43 @@
+{
+  "schema_version": "2.1",
+  "template_id": "string",
+  "title": "string",
+  "description": "string",
+  "scenario": "industrial | cloud | higher_education | government | hospital | enterprise | finance",
+  "topology_summary": "string",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "string",
+      "zone_type": "enterprise | dmz | data_center | campus | cloud_hub | cloud_spoke | management | security | ot | iot | external | other"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "string",
+      "normalized_type": "router | switch | firewall | waf | load_balancer | vpn_gateway | bastion | ids_ips | siem | identity_server | wireless_controller | access_point | server | database | storage | workload | endpoint | cloud_service | ot_controller | iot_device | other",
+      "zone_id": "z1"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n2",
+        "link_type": "peering | vpn | routing | trunk | uplink | wireless | management | monitoring | data_flow | other",
+        "label": "string"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z2",
+        "link_type": "peering | vpn | routing | trunk | uplink | wireless | management | monitoring | data_flow | other",
+        "label": "string"
+      }
+    ]
+  }
+}

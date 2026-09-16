@@ -1,0 +1,1146 @@
+[
+  {
+    "sample_id": "Cloud-1_req1",
+    "gt_template_id": "Cloud-1",
+    "retrieved_templates": [
+      {
+        "template_id": "Cloud-1",
+        "score": 0.8605
+      },
+      {
+        "template_id": "Cloud-2",
+        "score": 0.8227
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.7624
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.7538
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.7422
+      }
+    ]
+  },
+  {
+    "sample_id": "Cloud-1_req2",
+    "gt_template_id": "Cloud-1",
+    "retrieved_templates": [
+      {
+        "template_id": "Cloud-1",
+        "score": 0.9064
+      },
+      {
+        "template_id": "Cloud-2",
+        "score": 0.8708
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.7685
+      },
+      {
+        "template_id": "Cloud-3",
+        "score": 0.7547
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.7451
+      }
+    ]
+  },
+  {
+    "sample_id": "Cloud-2_req1",
+    "gt_template_id": "Cloud-2",
+    "retrieved_templates": [
+      {
+        "template_id": "Cloud-2",
+        "score": 0.8807
+      },
+      {
+        "template_id": "Cloud-1",
+        "score": 0.8515
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.8027
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.7908
+      },
+      {
+        "template_id": "Cloud-3",
+        "score": 0.7725
+      }
+    ]
+  },
+  {
+    "sample_id": "Cloud-2_req2",
+    "gt_template_id": "Cloud-2",
+    "retrieved_templates": [
+      {
+        "template_id": "Cloud-2",
+        "score": 0.9394
+      },
+      {
+        "template_id": "Cloud-1",
+        "score": 0.8713
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.797
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.781
+      },
+      {
+        "template_id": "Cloud-3",
+        "score": 0.7721
+      }
+    ]
+  },
+  {
+    "sample_id": "Cloud-3_req1",
+    "gt_template_id": "Cloud-3",
+    "retrieved_templates": [
+      {
+        "template_id": "Cloud-1",
+        "score": 0.7955
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.7875
+      },
+      {
+        "template_id": "Cloud-3",
+        "score": 0.7869
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.7812
+      },
+      {
+        "template_id": "Enterprise-2",
+        "score": 0.7789
+      }
+    ]
+  },
+  {
+    "sample_id": "Cloud-3_req2",
+    "gt_template_id": "Cloud-3",
+    "retrieved_templates": [
+      {
+        "template_id": "Cloud-3",
+        "score": 0.9191
+      },
+      {
+        "template_id": "Cloud-1",
+        "score": 0.8021
+      },
+      {
+        "template_id": "Cloud-2",
+        "score": 0.7999
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.7632
+      },
+      {
+        "template_id": "Cloud-4",
+        "score": 0.7597
+      }
+    ]
+  },
+  {
+    "sample_id": "Cloud-4_req1",
+    "gt_template_id": "Cloud-4",
+    "retrieved_templates": [
+      {
+        "template_id": "Cloud-4",
+        "score": 0.8516
+      },
+      {
+        "template_id": "Cloud-3",
+        "score": 0.812
+      },
+      {
+        "template_id": "Enterprise-3",
+        "score": 0.7993
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.7938
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.7896
+      }
+    ]
+  },
+  {
+    "sample_id": "Cloud-4_req2",
+    "gt_template_id": "Cloud-4",
+    "retrieved_templates": [
+      {
+        "template_id": "Cloud-4",
+        "score": 0.8909
+      },
+      {
+        "template_id": "Cloud-3",
+        "score": 0.8212
+      },
+      {
+        "template_id": "Enterprise-3",
+        "score": 0.771
+      },
+      {
+        "template_id": "Cloud-2",
+        "score": 0.7641
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.7617
+      }
+    ]
+  },
+  {
+    "sample_id": "Education-1_req1",
+    "gt_template_id": "Education-1",
+    "retrieved_templates": [
+      {
+        "template_id": "Education-1",
+        "score": 0.8772
+      },
+      {
+        "template_id": "Education-2",
+        "score": 0.861
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.8305
+      },
+      {
+        "template_id": "Education-4",
+        "score": 0.8175
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8048
+      }
+    ]
+  },
+  {
+    "sample_id": "Education-1_req2",
+    "gt_template_id": "Education-1",
+    "retrieved_templates": [
+      {
+        "template_id": "Education-1",
+        "score": 0.9302
+      },
+      {
+        "template_id": "Education-2",
+        "score": 0.8818
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.8579
+      },
+      {
+        "template_id": "Education-4",
+        "score": 0.8078
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.8045
+      }
+    ]
+  },
+  {
+    "sample_id": "Education-2_req1",
+    "gt_template_id": "Education-2",
+    "retrieved_templates": [
+      {
+        "template_id": "Education-2",
+        "score": 0.8857
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.8422
+      },
+      {
+        "template_id": "Education-1",
+        "score": 0.8407
+      },
+      {
+        "template_id": "Education-4",
+        "score": 0.7894
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.7794
+      }
+    ]
+  },
+  {
+    "sample_id": "Education-2_req2",
+    "gt_template_id": "Education-2",
+    "retrieved_templates": [
+      {
+        "template_id": "Education-2",
+        "score": 0.8992
+      },
+      {
+        "template_id": "Education-1",
+        "score": 0.8578
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.8179
+      },
+      {
+        "template_id": "Education-4",
+        "score": 0.8049
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.797
+      }
+    ]
+  },
+  {
+    "sample_id": "Education-3_req1",
+    "gt_template_id": "Education-3",
+    "retrieved_templates": [
+      {
+        "template_id": "Education-3",
+        "score": 0.882
+      },
+      {
+        "template_id": "Education-2",
+        "score": 0.845
+      },
+      {
+        "template_id": "Education-1",
+        "score": 0.8292
+      },
+      {
+        "template_id": "Education-4",
+        "score": 0.8158
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.8041
+      }
+    ]
+  },
+  {
+    "sample_id": "Education-3_req2",
+    "gt_template_id": "Education-3",
+    "retrieved_templates": [
+      {
+        "template_id": "Education-3",
+        "score": 0.8653
+      },
+      {
+        "template_id": "Cloud-2",
+        "score": 0.8218
+      },
+      {
+        "template_id": "Cloud-1",
+        "score": 0.7751
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.7742
+      },
+      {
+        "template_id": "Education-1",
+        "score": 0.7723
+      }
+    ]
+  },
+  {
+    "sample_id": "Education-4_req1",
+    "gt_template_id": "Education-4",
+    "retrieved_templates": [
+      {
+        "template_id": "Education-1",
+        "score": 0.9058
+      },
+      {
+        "template_id": "Education-2",
+        "score": 0.876
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.8568
+      },
+      {
+        "template_id": "Education-4",
+        "score": 0.8487
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.826
+      }
+    ]
+  },
+  {
+    "sample_id": "Education-4_req2",
+    "gt_template_id": "Education-4",
+    "retrieved_templates": [
+      {
+        "template_id": "Education-1",
+        "score": 0.8738
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.8659
+      },
+      {
+        "template_id": "Education-2",
+        "score": 0.8625
+      },
+      {
+        "template_id": "Education-4",
+        "score": 0.8589
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8267
+      }
+    ]
+  },
+  {
+    "sample_id": "Enterprise-1_req1",
+    "gt_template_id": "Enterprise-1",
+    "retrieved_templates": [
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.8783
+      },
+      {
+        "template_id": "Enterprise-4",
+        "score": 0.8166
+      },
+      {
+        "template_id": "Enterprise-2",
+        "score": 0.8054
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.7923
+      },
+      {
+        "template_id": "Enterprise-3",
+        "score": 0.7823
+      }
+    ]
+  },
+  {
+    "sample_id": "Enterprise-1_req2",
+    "gt_template_id": "Enterprise-1",
+    "retrieved_templates": [
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.8817
+      },
+      {
+        "template_id": "Enterprise-2",
+        "score": 0.843
+      },
+      {
+        "template_id": "Enterprise-3",
+        "score": 0.8171
+      },
+      {
+        "template_id": "Enterprise-4",
+        "score": 0.8074
+      },
+      {
+        "template_id": "Education-3",
+        "score": 0.7992
+      }
+    ]
+  },
+  {
+    "sample_id": "Enterprise-2_req1",
+    "gt_template_id": "Enterprise-2",
+    "retrieved_templates": [
+      {
+        "template_id": "Enterprise-4",
+        "score": 0.8361
+      },
+      {
+        "template_id": "Enterprise-2",
+        "score": 0.8117
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.8083
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.8072
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.7997
+      }
+    ]
+  },
+  {
+    "sample_id": "Enterprise-2_req2",
+    "gt_template_id": "Enterprise-2",
+    "retrieved_templates": [
+      {
+        "template_id": "Enterprise-2",
+        "score": 0.8627
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8263
+      },
+      {
+        "template_id": "Enterprise-4",
+        "score": 0.8259
+      },
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.8234
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.8195
+      }
+    ]
+  },
+  {
+    "sample_id": "Enterprise-3_req1",
+    "gt_template_id": "Enterprise-3",
+    "retrieved_templates": [
+      {
+        "template_id": "Enterprise-3",
+        "score": 0.8511
+      },
+      {
+        "template_id": "Enterprise-4",
+        "score": 0.846
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.8357
+      },
+      {
+        "template_id": "Enterprise-2",
+        "score": 0.8171
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.8118
+      }
+    ]
+  },
+  {
+    "sample_id": "Enterprise-3_req2",
+    "gt_template_id": "Enterprise-3",
+    "retrieved_templates": [
+      {
+        "template_id": "Enterprise-3",
+        "score": 0.8858
+      },
+      {
+        "template_id": "Enterprise-2",
+        "score": 0.802
+      },
+      {
+        "template_id": "Education-2",
+        "score": 0.7889
+      },
+      {
+        "template_id": "Enterprise-4",
+        "score": 0.7852
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.7749
+      }
+    ]
+  },
+  {
+    "sample_id": "Enterprise-4_req1",
+    "gt_template_id": "Enterprise-4",
+    "retrieved_templates": [
+      {
+        "template_id": "Enterprise-2",
+        "score": 0.8275
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.818
+      },
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.812
+      },
+      {
+        "template_id": "Enterprise-4",
+        "score": 0.8094
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8004
+      }
+    ]
+  },
+  {
+    "sample_id": "Enterprise-4_req2",
+    "gt_template_id": "Enterprise-4",
+    "retrieved_templates": [
+      {
+        "template_id": "Enterprise-4",
+        "score": 0.8914
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.8486
+      },
+      {
+        "template_id": "Enterprise-2",
+        "score": 0.8432
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.8302
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8292
+      }
+    ]
+  },
+  {
+    "sample_id": "Enterprise-5_req1",
+    "gt_template_id": "Enterprise-5",
+    "retrieved_templates": [
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.8541
+      },
+      {
+        "template_id": "Education-1",
+        "score": 0.8442
+      },
+      {
+        "template_id": "Education-2",
+        "score": 0.8287
+      },
+      {
+        "template_id": "Enterprise-4",
+        "score": 0.8226
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8159
+      }
+    ]
+  },
+  {
+    "sample_id": "Enterprise-5_req2",
+    "gt_template_id": "Enterprise-5",
+    "retrieved_templates": [
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.8773
+      },
+      {
+        "template_id": "Enterprise-4",
+        "score": 0.858
+      },
+      {
+        "template_id": "Enterprise-1",
+        "score": 0.8509
+      },
+      {
+        "template_id": "Enterprise-2",
+        "score": 0.8398
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8159
+      }
+    ]
+  },
+  {
+    "sample_id": "Healthcare-1_req1",
+    "gt_template_id": "Healthcare-1",
+    "retrieved_templates": [
+      {
+        "template_id": "Healthcare-1",
+        "score": 0.8551
+      },
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.8383
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8335
+      },
+      {
+        "template_id": "Healthcare-4",
+        "score": 0.8264
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8172
+      }
+    ]
+  },
+  {
+    "sample_id": "Healthcare-1_req2",
+    "gt_template_id": "Healthcare-1",
+    "retrieved_templates": [
+      {
+        "template_id": "Healthcare-1",
+        "score": 0.8924
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.834
+      },
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.8186
+      },
+      {
+        "template_id": "Healthcare-4",
+        "score": 0.8066
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8063
+      }
+    ]
+  },
+  {
+    "sample_id": "Healthcare-2_req1",
+    "gt_template_id": "Healthcare-2",
+    "retrieved_templates": [
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.8757
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8646
+      },
+      {
+        "template_id": "Healthcare-4",
+        "score": 0.841
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8243
+      },
+      {
+        "template_id": "Healthcare-1",
+        "score": 0.8122
+      }
+    ]
+  },
+  {
+    "sample_id": "Healthcare-2_req2",
+    "gt_template_id": "Healthcare-2",
+    "retrieved_templates": [
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.864
+      },
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.8512
+      },
+      {
+        "template_id": "Healthcare-4",
+        "score": 0.8163
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8016
+      },
+      {
+        "template_id": "Healthcare-1",
+        "score": 0.7958
+      }
+    ]
+  },
+  {
+    "sample_id": "Healthcare-3_req1",
+    "gt_template_id": "Healthcare-3",
+    "retrieved_templates": [
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8965
+      },
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.8849
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8761
+      },
+      {
+        "template_id": "Healthcare-1",
+        "score": 0.8559
+      },
+      {
+        "template_id": "Healthcare-4",
+        "score": 0.8437
+      }
+    ]
+  },
+  {
+    "sample_id": "Healthcare-3_req2",
+    "gt_template_id": "Healthcare-3",
+    "retrieved_templates": [
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8704
+      },
+      {
+        "template_id": "Healthcare-1",
+        "score": 0.8354
+      },
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.8312
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8189
+      },
+      {
+        "template_id": "Healthcare-4",
+        "score": 0.8079
+      }
+    ]
+  },
+  {
+    "sample_id": "Healthcare-4_req1",
+    "gt_template_id": "Healthcare-4",
+    "retrieved_templates": [
+      {
+        "template_id": "Healthcare-4",
+        "score": 0.8805
+      },
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.8516
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8443
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.837
+      },
+      {
+        "template_id": "Healthcare-1",
+        "score": 0.8165
+      }
+    ]
+  },
+  {
+    "sample_id": "Healthcare-4_req2",
+    "gt_template_id": "Healthcare-4",
+    "retrieved_templates": [
+      {
+        "template_id": "Healthcare-4",
+        "score": 0.855
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8291
+      },
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.82
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8102
+      },
+      {
+        "template_id": "Healthcare-1",
+        "score": 0.8007
+      }
+    ]
+  },
+  {
+    "sample_id": "Healthcare-5_req1",
+    "gt_template_id": "Healthcare-5",
+    "retrieved_templates": [
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.8673
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8452
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8362
+      },
+      {
+        "template_id": "Healthcare-4",
+        "score": 0.8292
+      },
+      {
+        "template_id": "Healthcare-1",
+        "score": 0.8156
+      }
+    ]
+  },
+  {
+    "sample_id": "Healthcare-5_req2",
+    "gt_template_id": "Healthcare-5",
+    "retrieved_templates": [
+      {
+        "template_id": "Healthcare-5",
+        "score": 0.9288
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.8978
+      },
+      {
+        "template_id": "Healthcare-3",
+        "score": 0.8562
+      },
+      {
+        "template_id": "Healthcare-4",
+        "score": 0.8462
+      },
+      {
+        "template_id": "Healthcare-1",
+        "score": 0.8426
+      }
+    ]
+  },
+  {
+    "sample_id": "Industrial-1_req1",
+    "gt_template_id": "Industrial-1",
+    "retrieved_templates": [
+      {
+        "template_id": "Industrial-3",
+        "score": 0.8618
+      },
+      {
+        "template_id": "Industrial-2",
+        "score": 0.8614
+      },
+      {
+        "template_id": "Industrial-1",
+        "score": 0.8606
+      },
+      {
+        "template_id": "Industrial-4",
+        "score": 0.8351
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.7898
+      }
+    ]
+  },
+  {
+    "sample_id": "Industrial-1_req2",
+    "gt_template_id": "Industrial-1",
+    "retrieved_templates": [
+      {
+        "template_id": "Industrial-3",
+        "score": 0.9056
+      },
+      {
+        "template_id": "Industrial-1",
+        "score": 0.903
+      },
+      {
+        "template_id": "Industrial-2",
+        "score": 0.8918
+      },
+      {
+        "template_id": "Industrial-4",
+        "score": 0.8566
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.7763
+      }
+    ]
+  },
+  {
+    "sample_id": "Industrial-2_req1",
+    "gt_template_id": "Industrial-2",
+    "retrieved_templates": [
+      {
+        "template_id": "Industrial-3",
+        "score": 0.8738
+      },
+      {
+        "template_id": "Industrial-2",
+        "score": 0.8697
+      },
+      {
+        "template_id": "Industrial-1",
+        "score": 0.8593
+      },
+      {
+        "template_id": "Industrial-4",
+        "score": 0.8099
+      },
+      {
+        "template_id": "Healthcare-2",
+        "score": 0.7678
+      }
+    ]
+  },
+  {
+    "sample_id": "Industrial-2_req2",
+    "gt_template_id": "Industrial-2",
+    "retrieved_templates": [
+      {
+        "template_id": "Industrial-2",
+        "score": 0.9052
+      },
+      {
+        "template_id": "Industrial-3",
+        "score": 0.9032
+      },
+      {
+        "template_id": "Industrial-1",
+        "score": 0.8823
+      },
+      {
+        "template_id": "Industrial-4",
+        "score": 0.8791
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.763
+      }
+    ]
+  },
+  {
+    "sample_id": "Industrial-3_req1",
+    "gt_template_id": "Industrial-3",
+    "retrieved_templates": [
+      {
+        "template_id": "Industrial-3",
+        "score": 0.8367
+      },
+      {
+        "template_id": "Industrial-2",
+        "score": 0.8247
+      },
+      {
+        "template_id": "Industrial-1",
+        "score": 0.8233
+      },
+      {
+        "template_id": "Industrial-4",
+        "score": 0.7797
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.7414
+      }
+    ]
+  },
+  {
+    "sample_id": "Industrial-3_req2",
+    "gt_template_id": "Industrial-3",
+    "retrieved_templates": [
+      {
+        "template_id": "Industrial-3",
+        "score": 0.8949
+      },
+      {
+        "template_id": "Industrial-2",
+        "score": 0.8917
+      },
+      {
+        "template_id": "Industrial-1",
+        "score": 0.8765
+      },
+      {
+        "template_id": "Industrial-4",
+        "score": 0.8687
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.7431
+      }
+    ]
+  },
+  {
+    "sample_id": "Industrial-4_req1",
+    "gt_template_id": "Industrial-4",
+    "retrieved_templates": [
+      {
+        "template_id": "Industrial-1",
+        "score": 0.8503
+      },
+      {
+        "template_id": "Industrial-3",
+        "score": 0.8487
+      },
+      {
+        "template_id": "Industrial-2",
+        "score": 0.8327
+      },
+      {
+        "template_id": "Industrial-4",
+        "score": 0.8161
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.7815
+      }
+    ]
+  },
+  {
+    "sample_id": "Industrial-4_req2",
+    "gt_template_id": "Industrial-4",
+    "retrieved_templates": [
+      {
+        "template_id": "Industrial-1",
+        "score": 0.8827
+      },
+      {
+        "template_id": "Industrial-3",
+        "score": 0.8817
+      },
+      {
+        "template_id": "Industrial-4",
+        "score": 0.8731
+      },
+      {
+        "template_id": "Industrial-2",
+        "score": 0.8718
+      },
+      {
+        "template_id": "Enterprise-5",
+        "score": 0.7719
+      }
+    ]
+  }
+]

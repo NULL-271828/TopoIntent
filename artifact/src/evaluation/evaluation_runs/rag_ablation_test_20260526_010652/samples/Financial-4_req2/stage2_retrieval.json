@@ -1,0 +1,31 @@
+{
+  "sample_id": "Financial-4_req2",
+  "gt_template_id": "Financial-4",
+  "retrieved_templates": [
+    {
+      "template_id": "Enterprise-5",
+      "score": 0.7521,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Healthcare-2",
+      "score": 0.7434,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Enterprise-4",
+      "score": 0.7357,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Enterprise-1",
+      "score": 0.7324,
+      "retrieval_mode": "single_vector"
+    },
+    {
+      "template_id": "Enterprise-2",
+      "score": 0.7171,
+      "retrieval_mode": "single_vector"
+    }
+  ]
+}

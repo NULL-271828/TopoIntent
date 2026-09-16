@@ -1,0 +1,6 @@
+{
+  "sample_id": "Government-4_req2",
+  "template_id": "Government-4",
+  "user_intent": "Please design a segmented network architecture with distinct zones for standard and sensitive information systems. Each zone requires its own dedicated administrative infrastructure. The standard systems need a secure internet gateway for outbound traffic. The sensitive systems zone must be isolated from the internet and protected by a Class 1 gateway that filters traffic from the less secure zones. Administrative access should be from separate workstations.",
+  "source_dataset_file": "artifact/src/dataset/topology/metadata_process/Stage4_synthetic_intent/Stage4_synthetic_intent_test.json"
+}

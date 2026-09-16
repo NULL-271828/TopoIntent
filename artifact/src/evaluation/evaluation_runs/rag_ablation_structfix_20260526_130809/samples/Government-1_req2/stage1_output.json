@@ -1,0 +1,106 @@
+{
+  "template": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-1_req2",
+    "title": "Hierarchical Network Architecture",
+    "description": "A secure hierarchical network with an Internet Edge, a three-tier data center, and WAN connections to remote sites.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes an Internet Edge with a firewall and application-layer security, a three-tier data center, and WAN links to a regional and branch office with local routing and switching.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Internet Edge",
+        "zone_type": "dmz"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Regional Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Application Layer Security Appliance",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Web Server",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n4",
+        "name": "Application Server",
+        "normalized_type": "server",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n5",
+        "name": "Database Server",
+        "normalized_type": "database",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n6",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n7",
+        "name": "Switch",
+        "normalized_type": "switch",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n8",
+        "name": "Router",
+        "normalized_type": "router",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n9",
+        "name": "Switch",
+        "normalized_type": "switch",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n10",
+        "name": "Remote Access VPN Gateway",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z1"
+      }
+    ],
+    "links": {
+      "node_links": [],
+      "zone_links": []
+    }
+  },
+  "metadata": {
+    "attempts": 1,
+    "raw_outputs": [
+      "{\"schema_version\": \"2.1\", \"template_id\": \"generated_Government-1_req2\", \"title\": \"Hierarchical Network Architecture\", \"description\": \"A secure hierarchical network with an Internet Edge, a three-tier data center, and WAN connections to remote sites.\", \"scenario\": \"enterprise\", \"topology_summary\": \"The topology includes an Internet Edge with a firewall and application-layer security, a three-tier data center, and WAN links to a regional and branch office with local routing and switching.\", \"zones\": [{\"zone_id\": \"z1\", \"name\": \"Internet Edge\", \"zone_type\": \"dmz\"}, {\"zone_id\": \"z2\", \"name\": \"Data Center\", \"zone_type\": \"data_center\"}, {\"zone_id\": \"z3\", \"name\": \"Regional Office\", \"zone_type\": \"enterprise\"}, {\"zone_id\": \"z4\", \"name\": \"Branch Office\", \"zone_type\": \"enterprise\"}], \"nodes\": [{\"node_id\": \"n1\", \"name\": \"Firewall\", \"normalized_type\": \"firewall\", \"zone_id\": \"z1\"}, {\"node_id\": \"n2\", \"name\": \"Application Layer Security Appliance\", \"normalized_type\": \"waf\", \"zone_id\": \"z1\"}, {\"node_id\": \"n3\", \"name\": \"Web Server\", \"normalized_type\": \"server\", \"zone_id\": \"z2\"}, {\"node_id\": \"n4\", \"name\": \"Application Server\", \"normalized_type\": \"server\", \"zone_id\": \"z2\"}, {\"node_id\": \"n5\", \"name\": \"Database Server\", \"normalized_type\": \"database\", \"zone_id\": \"z2\"}, {\"node_id\": \"n6\", \"name\": \"Router\", \"normalized_type\": \"router\", \"zone_id\": \"z3\"}, {\"node_id\": \"n7\", \"name\": \"Switch\", \"normalized_type\": \"switch\", \"zone_id\": \"z3\"}, {\"node_id\": \"n8\", \"name\": \"Router\", \"normalized_type\": \"router\", \"zone_id\": \"z4\"}, {\"node_id\": \"n9\", \"name\": \"Switch\", \"normalized_type\": \"switch\", \"zone_id\": \"z4\"}, {\"node_id\": \"n10\", \"name\": \"Remote Access VPN Gateway\", \"normalized_type\": \"vpn_gateway\", \"zone_id\": \"z1\"}], \"links\": {\"node_links\": [], \"zone_links\": []}}"
+    ],
+    "error": null,
+    "elapsed_sec": 9.688
+  }
+}

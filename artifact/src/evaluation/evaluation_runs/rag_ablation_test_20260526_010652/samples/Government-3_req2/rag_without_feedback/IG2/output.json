@@ -1,0 +1,1289 @@
+{
+  "sample_id": "Government-3_req2",
+  "gt_template_id": "Government-3",
+  "ig_level": "IG2",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Government-3_req2",
+    "title": "Azure Hub-Spoke Network",
+    "description": "A hub-and-spoke Azure network with centralized security and management.",
+    "scenario": "cloud",
+    "topology_summary": "The hub contains an Azure Firewall and Azure Bastion. Spokes are VNETs for identity, operations, and workloads, with all inter-spoke traffic routed through the hub firewall.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Hub VNet",
+        "zone_type": "cloud_hub"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Identity VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Operations VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Workload VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Management VNet",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Non-Production VNet",
+        "zone_type": "cloud_spoke"
+      },
+      {
+        "zone_id": "z7",
+        "name": "Security Operations",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Asset Management",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Data Flow Documentation",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z10",
+        "name": "Pen Test Management",
+        "zone_type": "security"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Azure Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Azure Bastion",
+        "normalized_type": "bastion",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Log Analytics Workspace",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "DNS Server",
+        "normalized_type": "dns_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "MFA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n6",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "NIDS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n8",
+        "name": "AAA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n9",
+        "name": "NAC",
+        "normalized_type": "ids_ips",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n11",
+        "name": "Asset Inventory",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n12",
+        "name": "DNS Filter",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "URL Filter",
+        "normalized_type": "other",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n14",
+        "name": "Pen Test Server",
+        "normalized_type": "other",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n15",
+        "name": "Asset Management System",
+        "normalized_type": "other",
+        "zone_id": "z8"
+      },
+      {
+        "node_id": "n16",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "other",
+        "zone_id": "z9"
+      },
+      {
+        "node_id": "n17",
+        "name": "Pen Test Management System",
+        "normalized_type": "other",
+        "zone_id": "z10"
+      },
+      {
+        "node_id": "n18",
+        "name": "Pen Test Report Repository",
+        "normalized_type": "other",
+        "zone_id": "z10"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n3",
+          "link_type": "monitoring",
+          "label": "Firewall Logs"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n4",
+          "target": "n1",
+          "link_type": "management",
+          "label": "DNS Management"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n5",
+          "target": "n2",
+          "link_type": "management",
+          "label": "MFA Management"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n6",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Web Proxy Data Flow"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n7",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "NIDS Monitoring"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n8",
+          "target": "n2",
+          "link_type": "management",
+          "label": "AAA Management"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n9",
+          "target": "n1",
+          "link_type": "management",
+          "label": "NAC Management"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n10",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Admin Workstation Management"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n11",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Inventory Management"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n12",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "DNS Filtering"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n13",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "URL Filtering"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n14",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Pen Test Data Flow"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n15",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Asset Inventory Management"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n16",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n17",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Pen Test Management"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n17",
+          "target": "n18",
+          "link_type": "data_flow",
+          "label": "Pen Test Reports"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z2",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z3",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z4",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z5",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl5",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "VNet Peering"
+        },
+        {
+          "link_id": "zl6",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "Security Operations Peering"
+        },
+        {
+          "link_id": "zl7",
+          "source": "z8",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Asset Management"
+        },
+        {
+          "link_id": "zl8",
+          "source": "z9",
+          "target": "z1",
+          "link_type": "management",
+          "label": "Data Flow Documentation"
+        },
+        {
+          "link_id": "zl9",
+          "source": "z10",
+          "target": "z7",
+          "link_type": "management",
+          "label": "Pen Test Management"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Government-3_req2",
+    "ig_level": "IG2",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n11 (Asset Inventory) is linked to Log Analytics Workspace (n3) via link nl9 (Inventory Management). Node n15 (Asset Management System) is linked to n11 (Asset Inventory) via link nl13 (Asset Inventory Management).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n16 (Data Flow Documentation System) is linked to Azure Firewall (n1) via link nl14 (Data Flow Documentation).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple VNETs (z2, z3, z4, z6) peered with the Hub VNet (z1) via zone links zl1, zl2, zl3, zl5, which implies segmentation based on different functions and potentially different sensitivity levels.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n1 (Azure Firewall) is present in the Hub VNet (z1) and is linked to various other nodes for monitoring and management.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n4 (DNS Server) is present in the Hub VNet (z1) and is linked to Azure Firewall (n1) via link nl2 (DNS Management).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n5 (MFA Server) is present in the Management VNet (z5) and is linked to Azure Bastion (n2) via link nl3 (MFA Management).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n12 (DNS Filter) is present in the Hub VNet (z1) and is linked to DNS Server (n4) via link nl10 (DNS Filtering).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n13 (URL Filter) is present in the Hub VNet (z1) and is linked to Azure Firewall (n1) via link nl11 (URL Filtering).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a hub-and-spoke design with a central Hub VNet (z1) containing security and management components, and multiple peered VNETs (z2, z3, z4, z6) for different functions.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes nodes for secure management, such as Azure Bastion (n2), MFA Server (n5), and AAA Server (n8), which are linked to the Hub VNet (z1) for management.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n8 (AAA Server) is present in the Management VNet (z5) and is linked to Azure Bastion (n2) via link nl6 (AAA Management).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n2 (Azure Bastion) is present in the Hub VNet (z1) and is linked to MFA Server (n5) and AAA Server (n8) for management.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n7 (NIDS) is present in the Hub VNet (z1) and is linked to Azure Firewall (n1) via link nl5 (NIDS Monitoring).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes VNet peering links (zl1, zl2, zl3, zl5) between the Hub VNet (z1) and other VNETs, with traffic routed through the Azure Firewall (n1).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n9 (NAC) is present in the Hub VNet (z1) and is linked to Azure Firewall (n1) via link nl7 (NAC Management).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Node n1 (Azure Firewall) is linked to Log Analytics Workspace (n3) via link nl1 (Firewall Logs).",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a Non-Production VNet (z6) peered with the Hub VNet (z1) via link zl5, indicating separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "Nodes n14 (Pen Test Server), n17 (Pen Test Management System), and n18 (Pen Test Report Repository) are present in the Security Operations (z7) and Pen Test Management (z10) zones, indicating a structured approach to penetration testing.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "9.2",
+        "9.3",
+        "12.3",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology does not explicitly show an asset inventory. However, it includes various nodes and zones which could be part of an inventory.",
+          "missing_reason": "Explicit asset inventory records are not shown.",
+          "repair_suggestion": "Add explicit asset inventory records to the topology."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology shows some data flows but does not explicitly document them.",
+          "missing_reason": "Data flow documentation is missing.",
+          "repair_suggestion": "Add explicit data flow documentation to the topology."
+        },
+        {
+          "cis_safeguard_id": "9.2",
+          "title": "Use DNS Filtering Services",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show DNS filtering services.",
+          "missing_reason": "DNS filtering services are not shown.",
+          "repair_suggestion": "Add DNS filtering services to the topology."
+        },
+        {
+          "cis_safeguard_id": "9.3",
+          "title": "Maintain and Enforce Network-Based URL Filters",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show network-based URL filters.",
+          "missing_reason": "Network-based URL filters are not shown.",
+          "repair_suggestion": "Add network-based URL filters to the topology."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "manual_review",
+          "confidence": 0.5,
+          "evidence": "The topology includes various security and management nodes but does not explicitly show how they are managed securely.",
+          "missing_reason": "Secure management practices are not explicitly shown.",
+          "repair_suggestion": "Add explicit secure management practices to the topology."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show any penetration testing activities.",
+          "missing_reason": "Penetration testing activities are not shown.",
+          "repair_suggestion": "Add explicit penetration testing activities to the topology."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z7",
+            "name": "Security Operations",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n11",
+            "name": "Asset Inventory",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n12",
+            "name": "DNS Filter",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n13",
+            "name": "URL Filter",
+            "normalized_type": "other",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n14",
+            "name": "Pen Test Server",
+            "normalized_type": "other",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl9",
+              "source": "n11",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Inventory Management"
+            },
+            {
+              "link_id": "nl10",
+              "source": "n12",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "DNS Filtering"
+            },
+            {
+              "link_id": "nl11",
+              "source": "n13",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "URL Filtering"
+            },
+            {
+              "link_id": "nl12",
+              "source": "n14",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Pen Test Data Flow"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl6",
+              "source": "z1",
+              "target": "z7",
+              "link_type": "peering",
+              "label": "Security Operations Peering"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 6,
+        "nodes": 10,
+        "zone_links": 5,
+        "node_links": 8
+      },
+      "counts_after": {
+        "zones": 7,
+        "nodes": 14,
+        "zone_links": 6,
+        "node_links": 12
+      },
+      "count_delta": {
+        "zones": 1,
+        "nodes": 4,
+        "zone_links": 1,
+        "node_links": 4
+      }
+    },
+    {
+      "round": 2,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology includes an 'Asset Inventory' node, but there is no explicit evidence of a detailed and up-to-date inventory of all enterprise assets, including their network addresses, hardware addresses, machine names, asset owners, and departments.",
+          "missing_reason": "Lack of explicit evidence of a comprehensive asset inventory.",
+          "repair_suggestion": "Add explicit nodes and links representing the detailed asset inventory and its management processes."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology includes several data flow links, but there is no explicit evidence of documented data flows, especially for service provider data flows.",
+          "missing_reason": "Lack of explicit evidence of documented data flows.",
+          "repair_suggestion": "Add explicit nodes and links representing the documentation and management of data flows."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology includes a 'Pen Test Server' node, but there is no explicit evidence of periodic external penetration tests being performed.",
+          "missing_reason": "Lack of explicit evidence of periodic external penetration tests.",
+          "repair_suggestion": "Add explicit nodes and links representing the process and results of periodic external penetration tests."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z8",
+            "name": "Asset Management",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z9",
+            "name": "Data Flow Documentation",
+            "zone_type": "management"
+          },
+          {
+            "zone_id": "z10",
+            "name": "Pen Test Management",
+            "zone_type": "security"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n15",
+            "name": "Asset Management System",
+            "normalized_type": "other",
+            "zone_id": "z8"
+          },
+          {
+            "node_id": "n16",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "other",
+            "zone_id": "z9"
+          },
+          {
+            "node_id": "n17",
+            "name": "Pen Test Management System",
+            "normalized_type": "other",
+            "zone_id": "z10"
+          },
+          {
+            "node_id": "n18",
+            "name": "Pen Test Report Repository",
+            "normalized_type": "other",
+            "zone_id": "z10"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl13",
+              "source": "n15",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Asset Inventory Management"
+            },
+            {
+              "link_id": "nl14",
+              "source": "n16",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "nl15",
+              "source": "n17",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Pen Test Management"
+            },
+            {
+              "link_id": "nl16",
+              "source": "n17",
+              "target": "n18",
+              "link_type": "data_flow",
+              "label": "Pen Test Reports"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl7",
+              "source": "z8",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Asset Management"
+            },
+            {
+              "link_id": "zl8",
+              "source": "z9",
+              "target": "z1",
+              "link_type": "management",
+              "label": "Data Flow Documentation"
+            },
+            {
+              "link_id": "zl9",
+              "source": "z10",
+              "target": "z7",
+              "link_type": "management",
+              "label": "Pen Test Management"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 14,
+        "zone_links": 6,
+        "node_links": 12
+      },
+      "counts_after": {
+        "zones": 10,
+        "nodes": 18,
+        "zone_links": 9,
+        "node_links": 16
+      },
+      "count_delta": {
+        "zones": 3,
+        "nodes": 4,
+        "zone_links": 3,
+        "node_links": 4
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Government-3_req2",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall logs to Log Analytics Workspace."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS server manages DNS through firewall."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA server managed by Azure Bastion."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n6",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "Web proxy data flow through firewall."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n7",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NIDS monitoring through firewall."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "AAA server managed by Azure Bastion."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n9",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "NAC management through firewall."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin workstation managed by Azure Bastion."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset inventory management through Log Analytics."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS filtering through DNS server."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8080,
+        "expected": "allow",
+        "reason": "URL filtering through firewall."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen test data flow through firewall."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n11",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset management system manages inventory."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z9",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data flow documentation through firewall."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z10",
+        "target_zone": "z7",
+        "source_node": "n17",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen test management through pen test server."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z10",
+        "target_zone": "z10",
+        "source_node": "n17",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen test reports through pen test management."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall allows traffic to identity VNet."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall allows traffic to operations VNet."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall allows traffic to workload VNet."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall allows traffic to management VNet."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z1",
+        "target_zone": "z9",
+        "source_node": "n1",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall allows traffic to non-production VNet."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z1",
+        "target_zone": "z10",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Firewall allows traffic to security operations."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n5",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Identity VNet traffic to firewall."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n8",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Operations VNet traffic to firewall."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n10",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Workload VNet traffic to firewall."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Management VNet traffic to firewall."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z9",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Non-production VNet traffic to firewall."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z10",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Security operations traffic to firewall."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z5",
+        "target_zone": "z5",
+        "source_node": "n5",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Identity VNet to operations VNet blocked."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z5",
+        "target_zone": "z5",
+        "source_node": "n8",
+        "target_node": "n10",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Operations VNet to workload VNet blocked."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z5",
+        "target_zone": "z8",
+        "source_node": "n10",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Workload VNet to management VNet blocked."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z8",
+        "target_zone": "z9",
+        "source_node": "n15",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Management VNet to non-production VNet blocked."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z9",
+        "target_zone": "z10",
+        "source_node": "n16",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Non-production VNet to security operations blocked."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z10",
+        "target_zone": "z5",
+        "source_node": "n17",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Security operations to identity VNet blocked."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z1",
+        "target_zone": "z8",
+        "source_node": "n1",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Firewall to asset management blocked."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z1",
+        "target_zone": "z9",
+        "source_node": "n1",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Firewall to data flow documentation blocked."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z1",
+        "target_zone": "z10",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Firewall to pen test management blocked."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z8",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Asset management to firewall blocked."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z9",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Data flow documentation to firewall blocked."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z10",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Pen test management to firewall blocked."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Government-3_req2/rag_without_feedback/IG2/xml/IG2/generated_Government-3_req2_IG2.xml"
+}

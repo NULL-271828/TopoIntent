@@ -1,0 +1,322 @@
+{
+  "schema_version": "2.1",
+  "template_id": "Education-3",
+  "title": "Higher Education Network Topology",
+  "description": "Network topology for a higher education institution with a hub-and-spoke architecture connecting public and private cloud zones through a central SINET security and transit hub. The architecture utilizes several central SaaS security services.",
+  "scenario": "higher_education",
+  "topology_summary": "The topology features a public cloud DMZ and several private cloud spokes (local, DMZ, PC, 事務). These connect via a central SINET zone containing routers and firewalls. A separate SaaS zone provides shared security services like Umbrella, Duo, and SecureWorkload to the entire network.",
+  "zones": [
+    {
+      "zone_id": "z1",
+      "name": "Pub. Cloud (DMZ)",
+      "zone_type": "cloud_hub"
+    },
+    {
+      "zone_id": "z2",
+      "name": "Priv. Cloud (local)",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z3",
+      "name": "Priv. Cloud (DMZ)",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z4",
+      "name": "Priv. Cloud (PC)",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z5",
+      "name": "Priv. Cloud (事務)",
+      "zone_type": "cloud_spoke"
+    },
+    {
+      "zone_id": "z6",
+      "name": "SINET",
+      "zone_type": "external"
+    },
+    {
+      "zone_id": "z7",
+      "name": "SaaS",
+      "zone_type": "cloud_hub"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "n1",
+      "name": "外DNS",
+      "normalized_type": "cloud_service",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n2",
+      "name": "CDN",
+      "normalized_type": "cloud_service",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n3",
+      "name": "idp",
+      "normalized_type": "identity_server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n4",
+      "name": "WWW",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n5",
+      "name": "CMS",
+      "normalized_type": "server",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n6",
+      "name": "DB",
+      "normalized_type": "database",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n7",
+      "name": "R",
+      "normalized_type": "router",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n8",
+      "name": "FW",
+      "normalized_type": "firewall",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n9",
+      "name": "L3-SW",
+      "normalized_type": "switch",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n10",
+      "name": "FW",
+      "normalized_type": "firewall",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n11",
+      "name": "FW",
+      "normalized_type": "firewall",
+      "zone_id": "z6"
+    },
+    {
+      "node_id": "n12",
+      "name": "VPN",
+      "normalized_type": "vpn_gateway",
+      "zone_id": "z1"
+    },
+    {
+      "node_id": "n17",
+      "name": "WWW",
+      "normalized_type": "server",
+      "zone_id": "z3"
+    },
+    {
+      "node_id": "n20",
+      "name": "サーバー",
+      "normalized_type": "server",
+      "zone_id": "z4"
+    },
+    {
+      "node_id": "n23",
+      "name": "各サーバ",
+      "normalized_type": "server",
+      "zone_id": "z5"
+    },
+    {
+      "node_id": "n24",
+      "name": "Umbrella",
+      "normalized_type": "cloud_service",
+      "zone_id": "z7"
+    },
+    {
+      "node_id": "n25",
+      "name": "Duo",
+      "normalized_type": "cloud_service",
+      "zone_id": "z7"
+    },
+    {
+      "node_id": "n26",
+      "name": "SecureWorkload (SWL)",
+      "normalized_type": "cloud_service",
+      "zone_id": "z7"
+    }
+  ],
+  "links": {
+    "node_links": [
+      {
+        "link_id": "nl1",
+        "source": "n1",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "dns_query"
+      },
+      {
+        "link_id": "nl2",
+        "source": "n2",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "cdn_content"
+      },
+      {
+        "link_id": "nl3",
+        "source": "n3",
+        "target": "n4",
+        "link_type": "data_flow",
+        "label": "auth_flow"
+      },
+      {
+        "link_id": "nl4",
+        "source": "n4",
+        "target": "n5",
+        "link_type": "data_flow",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "nl5",
+        "source": "n5",
+        "target": "n6",
+        "link_type": "data_flow",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "nl6",
+        "source": "n7",
+        "target": "n8",
+        "link_type": "uplink",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "nl7",
+        "source": "n8",
+        "target": "n9",
+        "link_type": "uplink",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "nl8",
+        "source": "n9",
+        "target": "n10",
+        "link_type": "uplink",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "nl9",
+        "source": "n9",
+        "target": "n11",
+        "link_type": "uplink",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "nl10",
+        "source": "n12",
+        "target": "n9",
+        "link_type": "vpn",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "nl20",
+        "source": "n17",
+        "target": "n25",
+        "link_type": "data_flow",
+        "label": "mfa"
+      },
+      {
+        "link_id": "nl21",
+        "source": "n17",
+        "target": "n26",
+        "link_type": "data_flow",
+        "label": "workload_security"
+      },
+      {
+        "link_id": "nl22",
+        "source": "n20",
+        "target": "n25",
+        "link_type": "data_flow",
+        "label": "mfa"
+      },
+      {
+        "link_id": "nl23",
+        "source": "n20",
+        "target": "n26",
+        "link_type": "data_flow",
+        "label": "workload_security"
+      },
+      {
+        "link_id": "nl24",
+        "source": "n23",
+        "target": "n25",
+        "link_type": "data_flow",
+        "label": "mfa"
+      },
+      {
+        "link_id": "nl25",
+        "source": "n23",
+        "target": "n26",
+        "link_type": "data_flow",
+        "label": "workload_security"
+      }
+    ],
+    "zone_links": [
+      {
+        "link_id": "zl1",
+        "source": "z1",
+        "target": "z6",
+        "link_type": "peering",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "zl2",
+        "source": "z1",
+        "target": "z7",
+        "link_type": "peering",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "zl3",
+        "source": "z6",
+        "target": "z3",
+        "link_type": "peering",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "zl4",
+        "source": "z6",
+        "target": "z2",
+        "link_type": "peering",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "zl5",
+        "source": "z6",
+        "target": "z4",
+        "link_type": "peering",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "zl6",
+        "source": "z6",
+        "target": "z5",
+        "link_type": "peering",
+        "label": "(no label)"
+      },
+      {
+        "link_id": "zl7",
+        "source": "z6",
+        "target": "z7",
+        "link_type": "peering",
+        "label": "(no label)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2433 @@
+{
+  "sample_id": "Financial-4_req1",
+  "gt_template_id": "Financial-4",
+  "ig_level": "IG3",
+  "final_topology": {
+    "schema_version": "2.1",
+    "template_id": "generated_Financial-4_req1",
+    "title": "High Availability Branch Office",
+    "description": "A branch office network with emphasis on high availability and voice service continuity, connected to the central data center with a primary link and public phone network failover for voice services.",
+    "scenario": "enterprise",
+    "topology_summary": "The topology includes a branch office connected to the central data center via a primary link, with a failover mechanism for voice services to the public phone network. It supports SIP-based voice traffic and includes centralized user authentication and network traffic logging.",
+    "zones": [
+      {
+        "zone_id": "z1",
+        "name": "Branch Office",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z2",
+        "name": "Data Center",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z3",
+        "name": "Public Phone Network",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z4",
+        "name": "Management Zone",
+        "zone_type": "management"
+      },
+      {
+        "zone_id": "z5",
+        "name": "Security Zone",
+        "zone_type": "security"
+      },
+      {
+        "zone_id": "z6",
+        "name": "Non-Production Zone",
+        "zone_type": "enterprise"
+      },
+      {
+        "zone_id": "z7",
+        "name": "External Testing Zone",
+        "zone_type": "external"
+      },
+      {
+        "zone_id": "z8",
+        "name": "Sensitive Data Zone",
+        "zone_type": "data_center"
+      },
+      {
+        "zone_id": "z9",
+        "name": "Non-Sensitive Data Zone",
+        "zone_type": "data_center"
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "n1",
+        "name": "Primary Router",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n2",
+        "name": "Voice Gateway",
+        "normalized_type": "router",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n3",
+        "name": "Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n4",
+        "name": "SIP Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n5",
+        "name": "Identity Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n6",
+        "name": "SIEM",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n7",
+        "name": "Central Data Center Router",
+        "normalized_type": "router",
+        "zone_id": "z2"
+      },
+      {
+        "node_id": "n8",
+        "name": "Public Phone Network Gateway",
+        "normalized_type": "router",
+        "zone_id": "z3"
+      },
+      {
+        "node_id": "n9",
+        "name": "Primary Link",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n10",
+        "name": "Failover Link",
+        "normalized_type": "vpn_gateway",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n11",
+        "name": "MFA Server",
+        "normalized_type": "identity_server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n12",
+        "name": "DNS Server",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n13",
+        "name": "Web Proxy",
+        "normalized_type": "waf",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n14",
+        "name": "IDS/IPS",
+        "normalized_type": "ids_ips",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n15",
+        "name": "NAC",
+        "normalized_type": "access_point",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n16",
+        "name": "Admin Workstation",
+        "normalized_type": "endpoint",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n17",
+        "name": "Application Firewall",
+        "normalized_type": "waf",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n18",
+        "name": "802.1X Controller",
+        "normalized_type": "access_point",
+        "zone_id": "z5"
+      },
+      {
+        "node_id": "n19",
+        "name": "Penetration Testing Host",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      },
+      {
+        "node_id": "n20",
+        "name": "Asset Management System",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n21",
+        "name": "Data Flow Documentation System",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n22",
+        "name": "Server Firewall",
+        "normalized_type": "firewall",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n23",
+        "name": "DNS Filtering Service",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n24",
+        "name": "URL Filtering Service",
+        "normalized_type": "server",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n25",
+        "name": "IaC Management System",
+        "normalized_type": "server",
+        "zone_id": "z4"
+      },
+      {
+        "node_id": "n26",
+        "name": "Network Traffic Log Collector",
+        "normalized_type": "siem",
+        "zone_id": "z1"
+      },
+      {
+        "node_id": "n27",
+        "name": "Penetration Testing Service",
+        "normalized_type": "endpoint",
+        "zone_id": "z7"
+      }
+    ],
+    "links": {
+      "node_links": [
+        {
+          "link_id": "nl1",
+          "source": "n1",
+          "target": "n9",
+          "link_type": "uplink",
+          "label": "Primary Link to Data Center"
+        },
+        {
+          "link_id": "nl2",
+          "source": "n9",
+          "target": "n7",
+          "link_type": "vpn",
+          "label": "Primary Link to Data Center"
+        },
+        {
+          "link_id": "nl3",
+          "source": "n2",
+          "target": "n10",
+          "link_type": "uplink",
+          "label": "Failover Link to Public Phone Network"
+        },
+        {
+          "link_id": "nl4",
+          "source": "n10",
+          "target": "n8",
+          "link_type": "vpn",
+          "label": "Failover Link to Public Phone Network"
+        },
+        {
+          "link_id": "nl5",
+          "source": "n4",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "SIP Server to Identity Server"
+        },
+        {
+          "link_id": "nl6",
+          "source": "n4",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "SIP Server to SIEM"
+        },
+        {
+          "link_id": "nl7",
+          "source": "n11",
+          "target": "n9",
+          "link_type": "management",
+          "label": "MFA to VPN Gateway"
+        },
+        {
+          "link_id": "nl8",
+          "source": "n12",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "DNS to Primary Router"
+        },
+        {
+          "link_id": "nl9",
+          "source": "n13",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Web Proxy to Primary Router"
+        },
+        {
+          "link_id": "nl10",
+          "source": "n14",
+          "target": "n1",
+          "link_type": "monitoring",
+          "label": "IDS/IPS to Primary Router"
+        },
+        {
+          "link_id": "nl11",
+          "source": "n15",
+          "target": "n1",
+          "link_type": "management",
+          "label": "NAC to Primary Router"
+        },
+        {
+          "link_id": "nl12",
+          "source": "n16",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Admin Workstation to Identity Server"
+        },
+        {
+          "link_id": "nl13",
+          "source": "n17",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Application Firewall to Primary Router"
+        },
+        {
+          "link_id": "nl14",
+          "source": "n18",
+          "target": "n1",
+          "link_type": "management",
+          "label": "802.1X Controller to Primary Router"
+        },
+        {
+          "link_id": "nl15",
+          "source": "n19",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Penetration Testing Host to Primary Router"
+        },
+        {
+          "link_id": "nl16",
+          "source": "n20",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Asset Management to Primary Router"
+        },
+        {
+          "link_id": "nl17",
+          "source": "n20",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Asset Management to Voice Gateway"
+        },
+        {
+          "link_id": "nl18",
+          "source": "n20",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Asset Management to Firewall"
+        },
+        {
+          "link_id": "nl19",
+          "source": "n20",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Asset Management to SIP Server"
+        },
+        {
+          "link_id": "nl20",
+          "source": "n20",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Asset Management to Identity Server"
+        },
+        {
+          "link_id": "nl21",
+          "source": "n20",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Asset Management to SIEM"
+        },
+        {
+          "link_id": "nl22",
+          "source": "n20",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Asset Management to Central Data Center Router"
+        },
+        {
+          "link_id": "nl23",
+          "source": "n20",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Asset Management to Public Phone Network Gateway"
+        },
+        {
+          "link_id": "nl24",
+          "source": "n20",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Asset Management to Primary Link"
+        },
+        {
+          "link_id": "nl25",
+          "source": "n20",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Asset Management to Failover Link"
+        },
+        {
+          "link_id": "nl26",
+          "source": "n20",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Asset Management to MFA Server"
+        },
+        {
+          "link_id": "nl27",
+          "source": "n20",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Asset Management to DNS Server"
+        },
+        {
+          "link_id": "nl28",
+          "source": "n20",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Asset Management to Web Proxy"
+        },
+        {
+          "link_id": "nl29",
+          "source": "n20",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Asset Management to IDS/IPS"
+        },
+        {
+          "link_id": "nl30",
+          "source": "n20",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Asset Management to NAC"
+        },
+        {
+          "link_id": "nl31",
+          "source": "n20",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Asset Management to Admin Workstation"
+        },
+        {
+          "link_id": "nl32",
+          "source": "n20",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Asset Management to Application Firewall"
+        },
+        {
+          "link_id": "nl33",
+          "source": "n20",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Asset Management to 802.1X Controller"
+        },
+        {
+          "link_id": "nl34",
+          "source": "n20",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Asset Management to Penetration Testing Host"
+        },
+        {
+          "link_id": "nl35",
+          "source": "n21",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Primary Router"
+        },
+        {
+          "link_id": "nl36",
+          "source": "n21",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Voice Gateway"
+        },
+        {
+          "link_id": "nl37",
+          "source": "n21",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Firewall"
+        },
+        {
+          "link_id": "nl38",
+          "source": "n21",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to SIP Server"
+        },
+        {
+          "link_id": "nl39",
+          "source": "n21",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Identity Server"
+        },
+        {
+          "link_id": "nl40",
+          "source": "n21",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to SIEM"
+        },
+        {
+          "link_id": "nl41",
+          "source": "n21",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Central Data Center Router"
+        },
+        {
+          "link_id": "nl42",
+          "source": "n21",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Public Phone Network Gateway"
+        },
+        {
+          "link_id": "nl43",
+          "source": "n21",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Primary Link"
+        },
+        {
+          "link_id": "nl44",
+          "source": "n21",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Failover Link"
+        },
+        {
+          "link_id": "nl45",
+          "source": "n21",
+          "target": "n11",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to MFA Server"
+        },
+        {
+          "link_id": "nl46",
+          "source": "n21",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to DNS Server"
+        },
+        {
+          "link_id": "nl47",
+          "source": "n21",
+          "target": "n13",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Web Proxy"
+        },
+        {
+          "link_id": "nl48",
+          "source": "n21",
+          "target": "n14",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to IDS/IPS"
+        },
+        {
+          "link_id": "nl49",
+          "source": "n21",
+          "target": "n15",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to NAC"
+        },
+        {
+          "link_id": "nl50",
+          "source": "n21",
+          "target": "n16",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Admin Workstation"
+        },
+        {
+          "link_id": "nl51",
+          "source": "n21",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Application Firewall"
+        },
+        {
+          "link_id": "nl52",
+          "source": "n21",
+          "target": "n18",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to 802.1X Controller"
+        },
+        {
+          "link_id": "nl53",
+          "source": "n21",
+          "target": "n19",
+          "link_type": "data_flow",
+          "label": "Data Flow Documentation to Penetration Testing Host"
+        },
+        {
+          "link_id": "nl54",
+          "source": "n22",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Server Firewall to SIP Server"
+        },
+        {
+          "link_id": "nl55",
+          "source": "n22",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "Server Firewall to DNS Server"
+        },
+        {
+          "link_id": "nl56",
+          "source": "n23",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "DNS Filtering to DNS Server"
+        },
+        {
+          "link_id": "nl57",
+          "source": "n24",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "URL Filtering to Primary Router"
+        },
+        {
+          "link_id": "nl58",
+          "source": "n25",
+          "target": "n1",
+          "link_type": "management",
+          "label": "IaC Management to Primary Router"
+        },
+        {
+          "link_id": "nl59",
+          "source": "n25",
+          "target": "n3",
+          "link_type": "management",
+          "label": "IaC Management to Firewall"
+        },
+        {
+          "link_id": "nl60",
+          "source": "n25",
+          "target": "n13",
+          "link_type": "management",
+          "label": "IaC Management to Web Proxy"
+        },
+        {
+          "link_id": "nl61",
+          "source": "n25",
+          "target": "n14",
+          "link_type": "management",
+          "label": "IaC Management to IDS/IPS"
+        },
+        {
+          "link_id": "nl62",
+          "source": "n25",
+          "target": "n15",
+          "link_type": "management",
+          "label": "IaC Management to NAC"
+        },
+        {
+          "link_id": "nl63",
+          "source": "n25",
+          "target": "n17",
+          "link_type": "management",
+          "label": "IaC Management to Application Firewall"
+        },
+        {
+          "link_id": "nl64",
+          "source": "n25",
+          "target": "n18",
+          "link_type": "management",
+          "label": "IaC Management to 802.1X Controller"
+        },
+        {
+          "link_id": "nl65",
+          "source": "n26",
+          "target": "n1",
+          "link_type": "data_flow",
+          "label": "Log Collector to Primary Router"
+        },
+        {
+          "link_id": "nl66",
+          "source": "n26",
+          "target": "n2",
+          "link_type": "data_flow",
+          "label": "Log Collector to Voice Gateway"
+        },
+        {
+          "link_id": "nl67",
+          "source": "n26",
+          "target": "n3",
+          "link_type": "data_flow",
+          "label": "Log Collector to Firewall"
+        },
+        {
+          "link_id": "nl68",
+          "source": "n26",
+          "target": "n4",
+          "link_type": "data_flow",
+          "label": "Log Collector to SIP Server"
+        },
+        {
+          "link_id": "nl69",
+          "source": "n26",
+          "target": "n5",
+          "link_type": "data_flow",
+          "label": "Log Collector to Identity Server"
+        },
+        {
+          "link_id": "nl70",
+          "source": "n26",
+          "target": "n6",
+          "link_type": "data_flow",
+          "label": "Log Collector to SIEM"
+        },
+        {
+          "link_id": "nl71",
+          "source": "n26",
+          "target": "n7",
+          "link_type": "data_flow",
+          "label": "Log Collector to Central Data Center Router"
+        },
+        {
+          "link_id": "nl72",
+          "source": "n26",
+          "target": "n8",
+          "link_type": "data_flow",
+          "label": "Log Collector to Public Phone Network Gateway"
+        },
+        {
+          "link_id": "nl73",
+          "source": "n26",
+          "target": "n9",
+          "link_type": "data_flow",
+          "label": "Log Collector to Primary Link"
+        },
+        {
+          "link_id": "nl74",
+          "source": "n26",
+          "target": "n10",
+          "link_type": "data_flow",
+          "label": "Log Collector to Failover Link"
+        },
+        {
+          "link_id": "nl75",
+          "source": "n26",
+          "target": "n11",
+          "link_type": "data_flow",
+          "label": "Log Collector to MFA Server"
+        },
+        {
+          "link_id": "nl76",
+          "source": "n26",
+          "target": "n12",
+          "link_type": "data_flow",
+          "label": "Log Collector to DNS Server"
+        },
+        {
+          "link_id": "nl77",
+          "source": "n26",
+          "target": "n13",
+          "link_type": "data_flow",
+          "label": "Log Collector to Web Proxy"
+        },
+        {
+          "link_id": "nl78",
+          "source": "n26",
+          "target": "n14",
+          "link_type": "data_flow",
+          "label": "Log Collector to IDS/IPS"
+        },
+        {
+          "link_id": "nl79",
+          "source": "n26",
+          "target": "n15",
+          "link_type": "data_flow",
+          "label": "Log Collector to NAC"
+        },
+        {
+          "link_id": "nl80",
+          "source": "n26",
+          "target": "n16",
+          "link_type": "data_flow",
+          "label": "Log Collector to Admin Workstation"
+        },
+        {
+          "link_id": "nl81",
+          "source": "n26",
+          "target": "n17",
+          "link_type": "data_flow",
+          "label": "Log Collector to Application Firewall"
+        },
+        {
+          "link_id": "nl82",
+          "source": "n26",
+          "target": "n18",
+          "link_type": "data_flow",
+          "label": "Log Collector to 802.1X Controller"
+        },
+        {
+          "link_id": "nl83",
+          "source": "n26",
+          "target": "n19",
+          "link_type": "data_flow",
+          "label": "Log Collector to Penetration Testing Host"
+        },
+        {
+          "link_id": "nl84",
+          "source": "n27",
+          "target": "n1",
+          "link_type": "management",
+          "label": "Pen Test Service to Primary Router"
+        },
+        {
+          "link_id": "nl85",
+          "source": "n27",
+          "target": "n2",
+          "link_type": "management",
+          "label": "Pen Test Service to Voice Gateway"
+        },
+        {
+          "link_id": "nl86",
+          "source": "n27",
+          "target": "n3",
+          "link_type": "management",
+          "label": "Pen Test Service to Firewall"
+        },
+        {
+          "link_id": "nl87",
+          "source": "n27",
+          "target": "n4",
+          "link_type": "management",
+          "label": "Pen Test Service to SIP Server"
+        },
+        {
+          "link_id": "nl88",
+          "source": "n27",
+          "target": "n5",
+          "link_type": "management",
+          "label": "Pen Test Service to Identity Server"
+        },
+        {
+          "link_id": "nl89",
+          "source": "n27",
+          "target": "n6",
+          "link_type": "management",
+          "label": "Pen Test Service to SIEM"
+        },
+        {
+          "link_id": "nl90",
+          "source": "n27",
+          "target": "n7",
+          "link_type": "management",
+          "label": "Pen Test Service to Central Data Center Router"
+        },
+        {
+          "link_id": "nl91",
+          "source": "n27",
+          "target": "n8",
+          "link_type": "management",
+          "label": "Pen Test Service to Public Phone Network Gateway"
+        },
+        {
+          "link_id": "nl92",
+          "source": "n27",
+          "target": "n9",
+          "link_type": "management",
+          "label": "Pen Test Service to Primary Link"
+        },
+        {
+          "link_id": "nl93",
+          "source": "n27",
+          "target": "n10",
+          "link_type": "management",
+          "label": "Pen Test Service to Failover Link"
+        },
+        {
+          "link_id": "nl94",
+          "source": "n27",
+          "target": "n11",
+          "link_type": "management",
+          "label": "Pen Test Service to MFA Server"
+        },
+        {
+          "link_id": "nl95",
+          "source": "n27",
+          "target": "n12",
+          "link_type": "management",
+          "label": "Pen Test Service to DNS Server"
+        },
+        {
+          "link_id": "nl96",
+          "source": "n27",
+          "target": "n13",
+          "link_type": "management",
+          "label": "Pen Test Service to Web Proxy"
+        },
+        {
+          "link_id": "nl97",
+          "source": "n27",
+          "target": "n14",
+          "link_type": "management",
+          "label": "Pen Test Service to IDS/IPS"
+        },
+        {
+          "link_id": "nl98",
+          "source": "n27",
+          "target": "n15",
+          "link_type": "management",
+          "label": "Pen Test Service to NAC"
+        },
+        {
+          "link_id": "nl99",
+          "source": "n27",
+          "target": "n16",
+          "link_type": "management",
+          "label": "Pen Test Service to Admin Workstation"
+        },
+        {
+          "link_id": "nl100",
+          "source": "n27",
+          "target": "n17",
+          "link_type": "management",
+          "label": "Pen Test Service to Application Firewall"
+        },
+        {
+          "link_id": "nl101",
+          "source": "n27",
+          "target": "n18",
+          "link_type": "management",
+          "label": "Pen Test Service to 802.1X Controller"
+        },
+        {
+          "link_id": "nl102",
+          "source": "n27",
+          "target": "n19",
+          "link_type": "management",
+          "label": "Pen Test Service to Penetration Testing Host"
+        }
+      ],
+      "zone_links": [
+        {
+          "link_id": "zl1",
+          "source": "z1",
+          "target": "z6",
+          "link_type": "peering",
+          "label": "Branch Office to Non-Production Zone"
+        },
+        {
+          "link_id": "zl2",
+          "source": "z1",
+          "target": "z7",
+          "link_type": "peering",
+          "label": "Branch Office to External Testing Zone"
+        },
+        {
+          "link_id": "zl3",
+          "source": "z1",
+          "target": "z8",
+          "link_type": "peering",
+          "label": "Branch Office to Sensitive Data Zone"
+        },
+        {
+          "link_id": "zl4",
+          "source": "z1",
+          "target": "z9",
+          "link_type": "peering",
+          "label": "Branch Office to Non-Sensitive Data Zone"
+        }
+      ]
+    }
+  },
+  "compliance_check": {
+    "template_id": "generated_Financial-4_req1",
+    "ig_level": "IG3",
+    "all_required_satisfied": true,
+    "controls": [
+      {
+        "cis_safeguard_id": "1.1",
+        "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Asset Management System' (n20) that manages various assets and their connections, indicating a detailed inventory of enterprise assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.8",
+        "title": "Document Data Flows",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Data Flow Documentation System' (n21) that documents data flows between various nodes, indicating that data flows are documented.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "3.12",
+        "title": "Segment Data Processing and Storage Based on Sensitivity",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes distinct zones for 'Sensitive Data Zone' (z8) and 'Non-Sensitive Data Zone' (z9), indicating that data processing and storage are segmented based on sensitivity.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.4",
+        "title": "Implement and Manage a Firewall on Servers",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Server Firewall' (n22) that is connected to the 'SIP Server' (n4) and 'DNS Server' (n12), indicating that firewalls are implemented on servers.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "4.9",
+        "title": "Configure Trusted DNS Servers on Enterprise Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Server' (n12) that is connected to the 'Primary Router' (n1), indicating that trusted DNS servers are configured on enterprise assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "6.4",
+        "title": "Require MFA for Remote Network Access",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Server' (n11) that is connected to the 'Primary Link' (n9), indicating that MFA is required for remote network access.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.2",
+        "title": "Use DNS Filtering Services",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'DNS Filtering Service' (n23) that is connected to the 'DNS Server' (n12), indicating that DNS filtering services are used.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "9.3",
+        "title": "Maintain and Enforce Network-Based URL Filters",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'URL Filtering Service' (n24) that is connected to the 'Primary Router' (n1), indicating that network-based URL filters are enforced.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.2",
+        "title": "Establish and Maintain a Secure Network Architecture",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes multiple zones and nodes that are interconnected in a structured manner, indicating a secure network architecture.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.3",
+        "title": "Securely Manage Network Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IaC Management System' (n25) that manages various network components, indicating that network infrastructure is securely managed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.5",
+        "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Identity Server' (n5) and 'MFA Server' (n11) that are connected to various nodes, indicating centralized AAA.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.7",
+        "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise’s AAA Infrastructure",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Primary Link' (n9) and 'Failover Link' (n10) that are connected to the 'Primary Router' (n1) and 'MFA Server' (n11), indicating that remote devices utilize a VPN and connect to the enterprise’s AAA infrastructure.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "12.8",
+        "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Admin Workstation' (n16) in the 'Management Zone' (z4) that is connected to the 'Identity Server' (n5), indicating dedicated computing resources for administrative work.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.3",
+        "title": "Deploy a Network Intrusion Detection Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IDS/IPS' (n14) that is connected to the 'Primary Router' (n1), indicating that a network intrusion detection solution is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.4",
+        "title": "Perform Traffic Filtering Between Network Segments",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Firewall' (n3) and 'Server Firewall' (n22) that are connected to various nodes, indicating traffic filtering between network segments.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.5",
+        "title": "Manage Access Control for Remote Assets",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'MFA Server' (n11) and '802.1X Controller' (n18) that are connected to the 'Primary Router' (n1), indicating access control for remote assets.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.6",
+        "title": "Collect Network Traffic Flow Logs",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Network Traffic Log Collector' (n26) that collects logs from various nodes, indicating that network traffic flow logs are collected.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.8",
+        "title": "Deploy a Network Intrusion Prevention Solution",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'IDS/IPS' (n14) that is connected to the 'Primary Router' (n1), indicating that a network intrusion prevention solution is deployed.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.9",
+        "title": "Deploy Port-Level Access Control",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an '802.1X Controller' (n18) that is connected to the 'Primary Router' (n1), indicating port-level access control.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "13.10",
+        "title": "Perform Application Layer Filtering",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes an 'Application Firewall' (n17) that is connected to the 'Primary Router' (n1), indicating application layer filtering.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "16.8",
+        "title": "Separate Production and Non-Production Systems",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Non-Production Zone' (z6) that is peered with the 'Branch Office' (z1), indicating separation of production and non-production systems.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      },
+      {
+        "cis_safeguard_id": "18.2",
+        "title": "Perform Periodic External Penetration Tests",
+        "status": "satisfied",
+        "confidence": 1.0,
+        "evidence": "The topology includes a 'Penetration Testing Host' (n19) and 'Penetration Testing Service' (n27) that are connected to various nodes, indicating periodic external penetration tests.",
+        "missing_reason": "",
+        "repair_suggestion": ""
+      }
+    ]
+  },
+  "repair_history": [
+    {
+      "round": 1,
+      "controls_repaired": [
+        "1.1",
+        "3.8",
+        "3.12",
+        "4.4",
+        "9.2",
+        "9.3",
+        "12.3",
+        "13.6",
+        "18.2"
+      ],
+      "findings_before": [
+        {
+          "cis_safeguard_id": "1.1",
+          "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide evidence of an asset inventory system or process.",
+          "missing_reason": "No evidence of an asset inventory system or process.",
+          "repair_suggestion": "Add a node representing an asset management system and links to all other nodes."
+        },
+        {
+          "cis_safeguard_id": "3.8",
+          "title": "Document Data Flows",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide evidence of documented data flows.",
+          "missing_reason": "No evidence of documented data flows.",
+          "repair_suggestion": "Add a node representing a data flow documentation system and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "3.12",
+          "title": "Segment Data Processing and Storage Based on Sensitivity",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not explicitly show segmentation based on data sensitivity.",
+          "missing_reason": "No explicit evidence of data segmentation based on sensitivity.",
+          "repair_suggestion": "Add zones and nodes specifically labeled for different data sensitivity levels."
+        },
+        {
+          "cis_safeguard_id": "4.4",
+          "title": "Implement and Manage a Firewall on Servers",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not show firewalls implemented on servers.",
+          "missing_reason": "No evidence of firewalls on servers.",
+          "repair_suggestion": "Add firewall nodes or labels to server nodes indicating firewall implementation."
+        },
+        {
+          "cis_safeguard_id": "9.2",
+          "title": "Use DNS Filtering Services",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide evidence of DNS filtering services.",
+          "missing_reason": "No evidence of DNS filtering services.",
+          "repair_suggestion": "Add a node representing a DNS filtering service and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "9.3",
+          "title": "Maintain and Enforce Network-Based URL Filters",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide evidence of network-based URL filters.",
+          "missing_reason": "No evidence of network-based URL filters.",
+          "repair_suggestion": "Add a node representing a URL filtering service and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "12.3",
+          "title": "Securely Manage Network Infrastructure",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide evidence of securely managed network infrastructure, such as version-controlled IaC or secure network protocols.",
+          "missing_reason": "No evidence of securely managed network infrastructure.",
+          "repair_suggestion": "Add nodes and links representing IaC and secure network protocols."
+        },
+        {
+          "cis_safeguard_id": "13.6",
+          "title": "Collect Network Traffic Flow Logs",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide evidence of network traffic flow log collection.",
+          "missing_reason": "No evidence of network traffic flow log collection.",
+          "repair_suggestion": "Add a node representing a log collection system and links to relevant nodes."
+        },
+        {
+          "cis_safeguard_id": "18.2",
+          "title": "Perform Periodic External Penetration Tests",
+          "status": "unsatisfied",
+          "confidence": 0.0,
+          "evidence": "The topology does not provide evidence of periodic external penetration tests.",
+          "missing_reason": "No evidence of periodic external penetration tests.",
+          "repair_suggestion": "Add a node representing a penetration testing service and links to relevant nodes."
+        }
+      ],
+      "additions": {
+        "zones": [
+          {
+            "zone_id": "z8",
+            "name": "Sensitive Data Zone",
+            "zone_type": "data_center"
+          },
+          {
+            "zone_id": "z9",
+            "name": "Non-Sensitive Data Zone",
+            "zone_type": "data_center"
+          }
+        ],
+        "nodes": [
+          {
+            "node_id": "n20",
+            "name": "Asset Management System",
+            "normalized_type": "server",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n21",
+            "name": "Data Flow Documentation System",
+            "normalized_type": "server",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n22",
+            "name": "Server Firewall",
+            "normalized_type": "firewall",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n23",
+            "name": "DNS Filtering Service",
+            "normalized_type": "server",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n24",
+            "name": "URL Filtering Service",
+            "normalized_type": "server",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n25",
+            "name": "IaC Management System",
+            "normalized_type": "server",
+            "zone_id": "z4"
+          },
+          {
+            "node_id": "n26",
+            "name": "Network Traffic Log Collector",
+            "normalized_type": "siem",
+            "zone_id": "z1"
+          },
+          {
+            "node_id": "n27",
+            "name": "Penetration Testing Service",
+            "normalized_type": "endpoint",
+            "zone_id": "z7"
+          }
+        ],
+        "links": {
+          "node_links": [
+            {
+              "link_id": "nl16",
+              "source": "n20",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Asset Management to Primary Router"
+            },
+            {
+              "link_id": "nl17",
+              "source": "n20",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Asset Management to Voice Gateway"
+            },
+            {
+              "link_id": "nl18",
+              "source": "n20",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Asset Management to Firewall"
+            },
+            {
+              "link_id": "nl19",
+              "source": "n20",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Asset Management to SIP Server"
+            },
+            {
+              "link_id": "nl20",
+              "source": "n20",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Asset Management to Identity Server"
+            },
+            {
+              "link_id": "nl21",
+              "source": "n20",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Asset Management to SIEM"
+            },
+            {
+              "link_id": "nl22",
+              "source": "n20",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Asset Management to Central Data Center Router"
+            },
+            {
+              "link_id": "nl23",
+              "source": "n20",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Asset Management to Public Phone Network Gateway"
+            },
+            {
+              "link_id": "nl24",
+              "source": "n20",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Asset Management to Primary Link"
+            },
+            {
+              "link_id": "nl25",
+              "source": "n20",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Asset Management to Failover Link"
+            },
+            {
+              "link_id": "nl26",
+              "source": "n20",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Asset Management to MFA Server"
+            },
+            {
+              "link_id": "nl27",
+              "source": "n20",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Asset Management to DNS Server"
+            },
+            {
+              "link_id": "nl28",
+              "source": "n20",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Asset Management to Web Proxy"
+            },
+            {
+              "link_id": "nl29",
+              "source": "n20",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Asset Management to IDS/IPS"
+            },
+            {
+              "link_id": "nl30",
+              "source": "n20",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Asset Management to NAC"
+            },
+            {
+              "link_id": "nl31",
+              "source": "n20",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Asset Management to Admin Workstation"
+            },
+            {
+              "link_id": "nl32",
+              "source": "n20",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Asset Management to Application Firewall"
+            },
+            {
+              "link_id": "nl33",
+              "source": "n20",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Asset Management to 802.1X Controller"
+            },
+            {
+              "link_id": "nl34",
+              "source": "n20",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Asset Management to Penetration Testing Host"
+            },
+            {
+              "link_id": "nl35",
+              "source": "n21",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Primary Router"
+            },
+            {
+              "link_id": "nl36",
+              "source": "n21",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Voice Gateway"
+            },
+            {
+              "link_id": "nl37",
+              "source": "n21",
+              "target": "n3",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Firewall"
+            },
+            {
+              "link_id": "nl38",
+              "source": "n21",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to SIP Server"
+            },
+            {
+              "link_id": "nl39",
+              "source": "n21",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Identity Server"
+            },
+            {
+              "link_id": "nl40",
+              "source": "n21",
+              "target": "n6",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to SIEM"
+            },
+            {
+              "link_id": "nl41",
+              "source": "n21",
+              "target": "n7",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Central Data Center Router"
+            },
+            {
+              "link_id": "nl42",
+              "source": "n21",
+              "target": "n8",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Public Phone Network Gateway"
+            },
+            {
+              "link_id": "nl43",
+              "source": "n21",
+              "target": "n9",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Primary Link"
+            },
+            {
+              "link_id": "nl44",
+              "source": "n21",
+              "target": "n10",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Failover Link"
+            },
+            {
+              "link_id": "nl45",
+              "source": "n21",
+              "target": "n11",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to MFA Server"
+            },
+            {
+              "link_id": "nl46",
+              "source": "n21",
+              "target": "n12",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to DNS Server"
+            },
+            {
+              "link_id": "nl47",
+              "source": "n21",
+              "target": "n13",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Web Proxy"
+            },
+            {
+              "link_id": "nl48",
+              "source": "n21",
+              "target": "n14",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to IDS/IPS"
+            },
+            {
+              "link_id": "nl49",
+              "source": "n21",
+              "target": "n15",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to NAC"
+            },
+            {
+              "link_id": "nl50",
+              "source": "n21",
+              "target": "n16",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Admin Workstation"
+            },
+            {
+              "link_id": "nl51",
+              "source": "n21",
+              "target": "n17",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Application Firewall"
+            },
+            {
+              "link_id": "nl52",
+              "source": "n21",
+              "target": "n18",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to 802.1X Controller"
+            },
+            {
+              "link_id": "nl53",
+              "source": "n21",
+              "target": "n19",
+              "link_type": "data_flow",
+              "label": "Data Flow Documentation to Penetration Testing Host"
+            },
+            {
+              "link_id": "nl54",
+              "source": "n22",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "Server Firewall to SIP Server"
+            },
+            {
+              "link_id": "nl55",
+              "source": "n22",
+              "target": "n12",
+              "link_type": "data_flow",
+              "label": "Server Firewall to DNS Server"
+            },
+            {
+              "link_id": "nl56",
+              "source": "n23",
+              "target": "n12",
+              "link_type": "data_flow",
+              "label": "DNS Filtering to DNS Server"
+            },
+            {
+              "link_id": "nl57",
+              "source": "n24",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "URL Filtering to Primary Router"
+            },
+            {
+              "link_id": "nl58",
+              "source": "n25",
+              "target": "n1",
+              "link_type": "management",
+              "label": "IaC Management to Primary Router"
+            },
+            {
+              "link_id": "nl59",
+              "source": "n25",
+              "target": "n3",
+              "link_type": "management",
+              "label": "IaC Management to Firewall"
+            },
+            {
+              "link_id": "nl60",
+              "source": "n25",
+              "target": "n13",
+              "link_type": "management",
+              "label": "IaC Management to Web Proxy"
+            },
+            {
+              "link_id": "nl61",
+              "source": "n25",
+              "target": "n14",
+              "link_type": "management",
+              "label": "IaC Management to IDS/IPS"
+            },
+            {
+              "link_id": "nl62",
+              "source": "n25",
+              "target": "n15",
+              "link_type": "management",
+              "label": "IaC Management to NAC"
+            },
+            {
+              "link_id": "nl63",
+              "source": "n25",
+              "target": "n17",
+              "link_type": "management",
+              "label": "IaC Management to Application Firewall"
+            },
+            {
+              "link_id": "nl64",
+              "source": "n25",
+              "target": "n18",
+              "link_type": "management",
+              "label": "IaC Management to 802.1X Controller"
+            },
+            {
+              "link_id": "nl65",
+              "source": "n26",
+              "target": "n1",
+              "link_type": "data_flow",
+              "label": "Log Collector to Primary Router"
+            },
+            {
+              "link_id": "nl66",
+              "source": "n26",
+              "target": "n2",
+              "link_type": "data_flow",
+              "label": "Log Collector to Voice Gateway"
+            },
+            {
+              "link_id": "nl67",
+              "source": "n26",
+              "target": "n3",
+              "link_type": "data_flow",
+              "label": "Log Collector to Firewall"
+            },
+            {
+              "link_id": "nl68",
+              "source": "n26",
+              "target": "n4",
+              "link_type": "data_flow",
+              "label": "Log Collector to SIP Server"
+            },
+            {
+              "link_id": "nl69",
+              "source": "n26",
+              "target": "n5",
+              "link_type": "data_flow",
+              "label": "Log Collector to Identity Server"
+            },
+            {
+              "link_id": "nl70",
+              "source": "n26",
+              "target": "n6",
+              "link_type": "data_flow",
+              "label": "Log Collector to SIEM"
+            },
+            {
+              "link_id": "nl71",
+              "source": "n26",
+              "target": "n7",
+              "link_type": "data_flow",
+              "label": "Log Collector to Central Data Center Router"
+            },
+            {
+              "link_id": "nl72",
+              "source": "n26",
+              "target": "n8",
+              "link_type": "data_flow",
+              "label": "Log Collector to Public Phone Network Gateway"
+            },
+            {
+              "link_id": "nl73",
+              "source": "n26",
+              "target": "n9",
+              "link_type": "data_flow",
+              "label": "Log Collector to Primary Link"
+            },
+            {
+              "link_id": "nl74",
+              "source": "n26",
+              "target": "n10",
+              "link_type": "data_flow",
+              "label": "Log Collector to Failover Link"
+            },
+            {
+              "link_id": "nl75",
+              "source": "n26",
+              "target": "n11",
+              "link_type": "data_flow",
+              "label": "Log Collector to MFA Server"
+            },
+            {
+              "link_id": "nl76",
+              "source": "n26",
+              "target": "n12",
+              "link_type": "data_flow",
+              "label": "Log Collector to DNS Server"
+            },
+            {
+              "link_id": "nl77",
+              "source": "n26",
+              "target": "n13",
+              "link_type": "data_flow",
+              "label": "Log Collector to Web Proxy"
+            },
+            {
+              "link_id": "nl78",
+              "source": "n26",
+              "target": "n14",
+              "link_type": "data_flow",
+              "label": "Log Collector to IDS/IPS"
+            },
+            {
+              "link_id": "nl79",
+              "source": "n26",
+              "target": "n15",
+              "link_type": "data_flow",
+              "label": "Log Collector to NAC"
+            },
+            {
+              "link_id": "nl80",
+              "source": "n26",
+              "target": "n16",
+              "link_type": "data_flow",
+              "label": "Log Collector to Admin Workstation"
+            },
+            {
+              "link_id": "nl81",
+              "source": "n26",
+              "target": "n17",
+              "link_type": "data_flow",
+              "label": "Log Collector to Application Firewall"
+            },
+            {
+              "link_id": "nl82",
+              "source": "n26",
+              "target": "n18",
+              "link_type": "data_flow",
+              "label": "Log Collector to 802.1X Controller"
+            },
+            {
+              "link_id": "nl83",
+              "source": "n26",
+              "target": "n19",
+              "link_type": "data_flow",
+              "label": "Log Collector to Penetration Testing Host"
+            },
+            {
+              "link_id": "nl84",
+              "source": "n27",
+              "target": "n1",
+              "link_type": "management",
+              "label": "Pen Test Service to Primary Router"
+            },
+            {
+              "link_id": "nl85",
+              "source": "n27",
+              "target": "n2",
+              "link_type": "management",
+              "label": "Pen Test Service to Voice Gateway"
+            },
+            {
+              "link_id": "nl86",
+              "source": "n27",
+              "target": "n3",
+              "link_type": "management",
+              "label": "Pen Test Service to Firewall"
+            },
+            {
+              "link_id": "nl87",
+              "source": "n27",
+              "target": "n4",
+              "link_type": "management",
+              "label": "Pen Test Service to SIP Server"
+            },
+            {
+              "link_id": "nl88",
+              "source": "n27",
+              "target": "n5",
+              "link_type": "management",
+              "label": "Pen Test Service to Identity Server"
+            },
+            {
+              "link_id": "nl89",
+              "source": "n27",
+              "target": "n6",
+              "link_type": "management",
+              "label": "Pen Test Service to SIEM"
+            },
+            {
+              "link_id": "nl90",
+              "source": "n27",
+              "target": "n7",
+              "link_type": "management",
+              "label": "Pen Test Service to Central Data Center Router"
+            },
+            {
+              "link_id": "nl91",
+              "source": "n27",
+              "target": "n8",
+              "link_type": "management",
+              "label": "Pen Test Service to Public Phone Network Gateway"
+            },
+            {
+              "link_id": "nl92",
+              "source": "n27",
+              "target": "n9",
+              "link_type": "management",
+              "label": "Pen Test Service to Primary Link"
+            },
+            {
+              "link_id": "nl93",
+              "source": "n27",
+              "target": "n10",
+              "link_type": "management",
+              "label": "Pen Test Service to Failover Link"
+            },
+            {
+              "link_id": "nl94",
+              "source": "n27",
+              "target": "n11",
+              "link_type": "management",
+              "label": "Pen Test Service to MFA Server"
+            },
+            {
+              "link_id": "nl95",
+              "source": "n27",
+              "target": "n12",
+              "link_type": "management",
+              "label": "Pen Test Service to DNS Server"
+            },
+            {
+              "link_id": "nl96",
+              "source": "n27",
+              "target": "n13",
+              "link_type": "management",
+              "label": "Pen Test Service to Web Proxy"
+            },
+            {
+              "link_id": "nl97",
+              "source": "n27",
+              "target": "n14",
+              "link_type": "management",
+              "label": "Pen Test Service to IDS/IPS"
+            },
+            {
+              "link_id": "nl98",
+              "source": "n27",
+              "target": "n15",
+              "link_type": "management",
+              "label": "Pen Test Service to NAC"
+            },
+            {
+              "link_id": "nl99",
+              "source": "n27",
+              "target": "n16",
+              "link_type": "management",
+              "label": "Pen Test Service to Admin Workstation"
+            },
+            {
+              "link_id": "nl100",
+              "source": "n27",
+              "target": "n17",
+              "link_type": "management",
+              "label": "Pen Test Service to Application Firewall"
+            },
+            {
+              "link_id": "nl101",
+              "source": "n27",
+              "target": "n18",
+              "link_type": "management",
+              "label": "Pen Test Service to 802.1X Controller"
+            },
+            {
+              "link_id": "nl102",
+              "source": "n27",
+              "target": "n19",
+              "link_type": "management",
+              "label": "Pen Test Service to Penetration Testing Host"
+            }
+          ],
+          "zone_links": [
+            {
+              "link_id": "zl3",
+              "source": "z1",
+              "target": "z8",
+              "link_type": "peering",
+              "label": "Branch Office to Sensitive Data Zone"
+            },
+            {
+              "link_id": "zl4",
+              "source": "z1",
+              "target": "z9",
+              "link_type": "peering",
+              "label": "Branch Office to Non-Sensitive Data Zone"
+            }
+          ]
+        }
+      },
+      "counts_before": {
+        "zones": 7,
+        "nodes": 19,
+        "zone_links": 2,
+        "node_links": 15
+      },
+      "counts_after": {
+        "zones": 9,
+        "nodes": 27,
+        "zone_links": 4,
+        "node_links": 102
+      },
+      "count_delta": {
+        "zones": 2,
+        "nodes": 8,
+        "zone_links": 2,
+        "node_links": 87
+      }
+    }
+  ],
+  "test_cases": {
+    "template_id": "generated_Financial-4_req1",
+    "test_cases": [
+      {
+        "test_id": "tc1",
+        "source_zone": "z1",
+        "target_zone": "z2",
+        "source_node": "n1",
+        "target_node": "n7",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Primary link to data center is active."
+      },
+      {
+        "test_id": "tc2",
+        "source_zone": "z1",
+        "target_zone": "z3",
+        "source_node": "n2",
+        "target_node": "n8",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Failover link to public phone network is active."
+      },
+      {
+        "test_id": "tc3",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "SIP server communicates with identity server."
+      },
+      {
+        "test_id": "tc4",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n4",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "SIP server logs to SIEM."
+      },
+      {
+        "test_id": "tc5",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n11",
+        "target_node": "n9",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "MFA server manages primary link."
+      },
+      {
+        "test_id": "tc6",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n12",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS server provides DNS to primary router."
+      },
+      {
+        "test_id": "tc7",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n13",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Web proxy forwards web traffic to primary router."
+      },
+      {
+        "test_id": "tc8",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n14",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IDS/IPS monitors primary router."
+      },
+      {
+        "test_id": "tc9",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n15",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8021,
+        "expected": "allow",
+        "reason": "NAC manages primary router."
+      },
+      {
+        "test_id": "tc10",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n16",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Admin workstation manages identity server."
+      },
+      {
+        "test_id": "tc11",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n17",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "Application firewall forwards web traffic to primary router."
+      },
+      {
+        "test_id": "tc12",
+        "source_zone": "z5",
+        "target_zone": "z1",
+        "source_node": "n18",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 8021,
+        "expected": "allow",
+        "reason": "802.1X controller manages primary router."
+      },
+      {
+        "test_id": "tc13",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n19",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen testing host manages primary router."
+      },
+      {
+        "test_id": "tc14",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n20",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Asset management system manages primary router."
+      },
+      {
+        "test_id": "tc15",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n21",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Data flow documentation system manages primary router."
+      },
+      {
+        "test_id": "tc16",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n22",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "allow",
+        "reason": "Server firewall protects SIP server."
+      },
+      {
+        "test_id": "tc17",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n22",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "Server firewall protects DNS server."
+      },
+      {
+        "test_id": "tc18",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n23",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "allow",
+        "reason": "DNS filtering service manages DNS server."
+      },
+      {
+        "test_id": "tc19",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n24",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "allow",
+        "reason": "URL filtering service manages primary router."
+      },
+      {
+        "test_id": "tc20",
+        "source_zone": "z4",
+        "target_zone": "z1",
+        "source_node": "n25",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "IaC management system manages primary router."
+      },
+      {
+        "test_id": "tc21",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n26",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "allow",
+        "reason": "Log collector collects logs from primary router."
+      },
+      {
+        "test_id": "tc22",
+        "source_zone": "z7",
+        "target_zone": "z1",
+        "source_node": "n27",
+        "target_node": "n1",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "allow",
+        "reason": "Pen testing service manages primary router."
+      },
+      {
+        "test_id": "tc23",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n2",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "block",
+        "reason": "Primary router does not communicate with voice gateway."
+      },
+      {
+        "test_id": "tc24",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n3",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary router does not communicate with firewall."
+      },
+      {
+        "test_id": "tc25",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n4",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "block",
+        "reason": "Primary router does not communicate with SIP server."
+      },
+      {
+        "test_id": "tc26",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n5",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Primary router does not communicate with identity server."
+      },
+      {
+        "test_id": "tc27",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n6",
+        "protocol": "tcp",
+        "port": 514,
+        "expected": "block",
+        "reason": "Primary router does not communicate with SIEM."
+      },
+      {
+        "test_id": "tc28",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n12",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Primary router does not communicate with DNS server."
+      },
+      {
+        "test_id": "tc29",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n13",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary router does not communicate with web proxy."
+      },
+      {
+        "test_id": "tc30",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n14",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Primary router does not communicate with IDS/IPS."
+      },
+      {
+        "test_id": "tc31",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n15",
+        "protocol": "tcp",
+        "port": 8021,
+        "expected": "block",
+        "reason": "Primary router does not communicate with NAC."
+      },
+      {
+        "test_id": "tc32",
+        "source_zone": "z1",
+        "target_zone": "z4",
+        "source_node": "n1",
+        "target_node": "n16",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Primary router does not communicate with admin workstation."
+      },
+      {
+        "test_id": "tc33",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n17",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary router does not communicate with application firewall."
+      },
+      {
+        "test_id": "tc34",
+        "source_zone": "z1",
+        "target_zone": "z5",
+        "source_node": "n1",
+        "target_node": "n18",
+        "protocol": "tcp",
+        "port": 8021,
+        "expected": "block",
+        "reason": "Primary router does not communicate with 802.1X controller."
+      },
+      {
+        "test_id": "tc35",
+        "source_zone": "z1",
+        "target_zone": "z7",
+        "source_node": "n1",
+        "target_node": "n19",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Primary router does not communicate with pen testing host."
+      },
+      {
+        "test_id": "tc36",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n20",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Primary router does not communicate with asset management system."
+      },
+      {
+        "test_id": "tc37",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n21",
+        "protocol": "tcp",
+        "port": 443,
+        "expected": "block",
+        "reason": "Primary router does not communicate with data flow documentation system."
+      },
+      {
+        "test_id": "tc38",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n22",
+        "protocol": "tcp",
+        "port": 5060,
+        "expected": "block",
+        "reason": "Primary router does not communicate with server firewall."
+      },
+      {
+        "test_id": "tc39",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n23",
+        "protocol": "tcp",
+        "port": 53,
+        "expected": "block",
+        "reason": "Primary router does not communicate with DNS filtering service."
+      },
+      {
+        "test_id": "tc40",
+        "source_zone": "z1",
+        "target_zone": "z1",
+        "source_node": "n1",
+        "target_node": "n24",
+        "protocol": "tcp",
+        "port": 80,
+        "expected": "block",
+        "reason": "Primary router does not communicate with URL filtering service."
+      }
+    ]
+  },
+  "xml_file": "artifact/src/evaluation/evaluation_runs/rag_ablation_test_20260526_010652/samples/Financial-4_req1/rag_without_feedback/IG3/xml/IG3/generated_Financial-4_req1_IG3.xml"
+}
