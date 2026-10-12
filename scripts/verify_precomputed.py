@@ -77,6 +77,7 @@ def compare(actual,expected,tolerance):
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--claim',choices=['all','stage1','retrieval','cis_repair','stage5_validation','end_to_end'],default='all');group=ap.add_mutually_exclusive_group();group.add_argument('--evidence-only',action='store_true',help='Compatibility alias for the default evidence verification');group.add_argument('--strict-paper',action='store_true',help='Also fail on paper-display discrepancies');args=ap.parse_args();start=time.monotonic()
+ (A / 'outputs').mkdir(exist_ok=True)
  print(__doc__);print('This does not independently rerun Qwen2.5-72B inference or Mininet.')
  expected1=load(M/'metric_stage1_summary.json');expected1={k:expected1[k] for k in ['scenario_accuracy','zone_type_recall','node_type_recall']}
  jobs={'stage1':(stage1,expected1),'retrieval':(stage2,load(M/'metric_stage2_summary.json')['variants']),'cis_repair':(stage4,load(M/(INITIAL+'_metric_stage4_summary.json'))['summary']),'stage5_validation':(stage5,load(M/'test_all_single_vector_structfix_full_metric_stage5_summary.json')['summary']),'end_to_end':(end_to_end,load(M/'ablation_table_old_gt_original_sources_check_summary.json')['summary'])}

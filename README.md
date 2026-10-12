@@ -98,6 +98,16 @@ The command loads the actual BAAI/bge-m3 model, embeds the released reference
 templates and Stage 1 queries, recomputes cosine rankings, and calculates
 Top-1, Top-3, Top-5 and MRR. It runs on CPU and does not invoke the LLM.
 
+The paper's five-field representation corresponds to multi-field retrieval over
+`title`, `scenario`, `description`, `topology_summary`, and `security`. The
+primary reproducible single-vector strategy instead uses
+`scripts/retrieval_core.py::flatten_template_text()` as its exact input
+representation. It serializes `template_id`, `title`, `scenario`,
+`description`, and `topology_summary`; each zone's `zone_id`, `name`, and
+`zone_type`; each node's `node_id`, `name`, `normalized_type`, and `zone_id`;
+and each `node_links` and `zone_links` entry's `link_id`, `source`, `target`,
+`link_type`, and `label` into one text string.
+
 | Metric | Expected |
 |---|---:|
 | Top-1 | 0.7500 |
@@ -214,3 +224,9 @@ artifact, including derived topology data and CIS information; third-party
 terms remain listed in [THIRD_PARTY.md](THIRD_PARTY.md). The official
 `metadata.toml` is included; the permanent public repository/archive URL must
 be confirmed after upload.
+
+Evaluation update (Oct. 12, 2026): Fixed shell executable permissions, removed
+stale references to unavailable optional helper scripts, ensured `outputs/` is
+created automatically, enabled Python UTF-8 mode, and documented the exact
+single-vector retrieval input representation. No experimental data, reported
+metrics, or evaluation logic were changed.
